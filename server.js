@@ -1,3 +1,4 @@
+// Can be deleted when migrating away from Heroku
 const express = require('express');
 const favicon = require('express-favicon');
 const path = require('path');
