@@ -1,3 +1,7 @@
+Heroku Automated deployment of master: https://toynet-react.herokuapp.com/
+
+-------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
