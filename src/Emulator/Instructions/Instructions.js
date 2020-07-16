@@ -5,8 +5,8 @@ const Instructions = ({ panelData }) => {
   return (
     <div className="instructions">
       <div className="title-container">
-        <h4 className="module-num">Module {panelData.module_number}</h4>
-        <p className="module-name">{panelData.module_name}</p>
+        <h4 className="module-num">Module {panelData.submodule_number}</h4>
+        <p className="module-name">{panelData.submodule_name}</p>
       </div>
       <div className="objective-container">
         <h4 className="objective-title">Objective</h4>
