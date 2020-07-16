@@ -1,12 +1,25 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {Nav, Navbar, Button} from 'react-bootstrap';
 import logo from './logo.png';
-
+import Header from './Header/Header';
+import Emulator from './Emulator/Emulator';
 
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined
+
+const data = {
+  "id": 1,
+  "module_number": 1,
+  "module_name": "Local Area Networks",
+  "objective": "Connect two hosts together and check they can communicate",
+  "tasks": [
+    "Attach h1 to s1.",
+    "Attach h2 to s1.",
+    "Launch.",
+    "In Console, run h4> ping 172.16.0.100.",   
+  ],
+}
 
 function App() {
   return (
@@ -27,6 +40,7 @@ function App() {
         </Navbar.Collapse>
         </Navbar>
       </header>
+      <Emulator panelData={data} />
     </div>
   );
 }
