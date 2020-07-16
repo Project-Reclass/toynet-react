@@ -2,7 +2,7 @@ const functions = require('./functions');
 
 
 test('adds 1 + 2 to equal 3', () => {
-  expect(functions.sum(1, 2)).toBe(0);
+  expect(functions.sum(1, 2)).toBe(3);
 });
 
 // Mock functions allow you to test the links between code by erasing the 
