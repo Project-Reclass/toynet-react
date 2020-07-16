@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
   "addons": ["heroku-postgresql:standard-0"],
+=======
+  "addons": ["heroku-postgresql:standard-0"]
+>>>>>>> Create app.json
   "environments": {
     "review": {
       "addons": ["heroku-postgresql:hobby-dev"]
     }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> Create app.json
 }
