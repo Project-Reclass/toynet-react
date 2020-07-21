@@ -1,19 +1,7 @@
 .instructions {
-    height: 92vh;
-    width: 33vw;
+    color: white;
+    background-color: #454950;
+    height: 91vh;
+    width: 25vw;
+    overflow-y: auto;
 }
-
-.title-container {
-    padding: 10px;
-    background-color: #f2f2f2;
-}
-
-.module-num, .objective-title, .objective {
-    margin: 0;
-}
-
-.module-name {
-    font-style: italic;
-    margin: 0;
-}
-

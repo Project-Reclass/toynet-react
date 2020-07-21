@@ -1,5 +1,27 @@
 .tabs {
-    background-color: grey;
-    height: 92vh;
-    width: 34vw;
+    background-color: #454950;
+    border-top: 0;
+    height: 41vh;
+    width: 75vw;
+}
+
+.tabs-container {
+    display: flex;
+    background-color: #595D62;
+}
+
+.tab {
+    color: white;
+    opacity: 0.75;
+    font-size: large;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #454950;
+    border: 1.5px solid black;
+    border-bottom: 0;
+    font-weight: bold;
+    opacity: 1;
 }
