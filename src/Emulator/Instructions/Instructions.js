@@ -1,12 +1,10 @@
-import React from 'react';
-import './Instructions.css';
+import React from "react";
+import "./Instructions.css";
 
 const Instructions = ({ panelData }) => {
   return (
     <div className="instructions">
-      <div className="icon-container">
-        icon1 icon2 ...
-      </div>
+      <div className="icon-container">icon1 icon2 ...</div>
       <div className="title-container">
         <h4 className="module-num">Module {panelData.submodule_number}</h4>
         <p className="module-name">{panelData.submodule_name}</p>
@@ -18,14 +16,9 @@ const Instructions = ({ panelData }) => {
       <div>
         <h4 className="tasks-title">Tasks</h4>
         <ol>
-          {panelData.tasks.map(task => <li>{task}</li>)}
-          {/* {panelData.tasks.map(task => <li>{task}</li>)}
-          {panelData.tasks.map(task => <li>{task}</li>)}
-          {panelData.tasks.map(task => <li>{task}</li>)}
-          {panelData.tasks.map(task => <li>{task}</li>)}
-          {panelData.tasks.map(task => <li>{task}</li>)}
-          {panelData.tasks.map(task => <li>{task}</li>)}
-          {panelData.tasks.map(task => <li>{task}</li>)} */}
+          {panelData.tasks.map((task) => (
+            <li>{task}</li>
+          ))}
         </ol>
       </div>
     </div>
