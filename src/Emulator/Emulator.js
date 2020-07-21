@@ -1,11 +1,11 @@
-import React from 'react';
-import Instructions from './Instructions/Instructions';
-import Tabs from './Tabs/Tabs';
-import Visuals from './Visuals/Visuals';
+import React from "react";
+import Instructions from "./Instructions/Instructions";
+import Tabs from "./Tabs/Tabs";
+import Visuals from "./Visuals/Visuals";
 
 const Emulator = ({ panelData }) => {
   return (
-    <div style={{display: 'flex'}}>
+    <div style={{ display: "flex" }}>
       <Instructions panelData={panelData} />
       <div>
         <Tabs />
@@ -16,4 +16,3 @@ const Emulator = ({ panelData }) => {
 };
 
 export default Emulator;
-
