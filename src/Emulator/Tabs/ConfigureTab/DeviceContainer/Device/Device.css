@@ -1,0 +1,31 @@
+.device-box {
+  display: flex;
+  width: 100%;
+  background-color: #595D62;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.device-name-box {
+  text-transform: capitalize;
+  display: flex;
+  font-size: large;
+  height: 50px;
+  width: 60px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.router-color {
+  background-color: #BDA913;
+}
+
+.switch-color {
+  background-color: #9E1059;
+}
+
+.host-color {
+  background-color: #008A9E;
+}

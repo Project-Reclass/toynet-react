@@ -1,0 +1,22 @@
+.configure {
+  height: 35vh;
+  padding: 20px;
+  border: 1.5px solid black;
+  border-top: 0;
+}
+
+.network-devices {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-run-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-run {
+  border: 0;
+  background-color: #707070;
+  width: 100px;
+}
