@@ -16,6 +16,17 @@
   border-radius: 10px;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
+}
+
+.vertical-bar {
+  border-right: 2px solid #B2B2B2;
+}
+
+.connections-container {
+  font-size: small;
+  color: #B2B2B2;
+  margin-left: 20px;
 }
 
 .router-color {

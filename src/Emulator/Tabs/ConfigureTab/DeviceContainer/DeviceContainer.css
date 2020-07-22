@@ -1,7 +1,11 @@
 .device-container {
   width: 25vw;
   border: 1.5px solid black;
-  margin-bottom: 20px;
+  border-right: 0;
+}
+
+.device-container:last-child {
+  border-right: 1.5px solid black;
 }
 
 .device-container-name {
