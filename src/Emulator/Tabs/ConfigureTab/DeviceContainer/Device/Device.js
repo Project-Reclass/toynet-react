@@ -16,8 +16,11 @@ const Device = ({ deviceName, deviceData }) => {
       <div className={boxClass}>
         <div>{deviceData.name}</div>
       </div>
-      <div> --&gt; </div>
-      {deviceData.connections}
+      <div className="vertical-bar"></div>
+      <div className="connections-container">
+        Connections:<br></br>
+        {deviceData.connections}
+      </div>
     </div>
   );
 };

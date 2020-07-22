@@ -1,6 +1,7 @@
 .configure {
   height: 35vh;
   padding: 20px;
+  padding-bottom: 0;
   border: 1.5px solid black;
   border-top: 0;
 }
@@ -11,11 +12,14 @@
 }
 
 .btn-run-container {
+  height: 9.5vh;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .btn-run {
+  height: 5vh;
   border: 0;
   background-color: #707070;
   width: 100px;
