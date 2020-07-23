@@ -3,7 +3,9 @@ import "./Device.css";
 
 const Device = ({ deviceName, deviceData }) => {
   let boxClass = "device-name-box ";
-  if (deviceName === "Router") {
+  if (deviceData.connections.length === 0) {
+    boxClass += "empty-color";
+  } else if (deviceName === "Router") {
     boxClass += "router-color";
   } else if (deviceName === "Switch") {
     boxClass += "switch-color";
@@ -18,8 +20,20 @@ const Device = ({ deviceName, deviceData }) => {
       </div>
       <div className="vertical-bar"></div>
       <div className="connections-container">
-        Connections:<br></br>
-        {deviceData.connections}
+        <div>Connections:</div>
+        <div className="connections-boxes">
+          {deviceData.connections.map((connection) => {
+            let colorClass = "connection ";
+            if (connection[0] === "r") {
+              colorClass += "router-color";
+            } else if (connection[0] === "s") {
+              colorClass += "switch-color";
+            } else {
+              colorClass += "host-color";
+            }
+            return <div className={colorClass}>{connection}</div>;
+          })}
+        </div>
       </div>
     </div>
   );

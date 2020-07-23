@@ -29,6 +29,28 @@
   margin-left: 20px;
 }
 
+.connections-boxes {
+  display: flex;
+}
+
+.connection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 25px;
+  font-size: 0.6rem;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.empty-color {
+  background-color: #707070;
+}
+
 .router-color {
   background-color: #BDA913;
 }

@@ -11,13 +11,6 @@ const Tabs = () => {
     setActiveTab(tabName);
   };
 
-  let activeComponent = <ConfigureTab />;
-  if (activeTab === "console") {
-    activeComponent = <ConsoleTab />;
-  } else if (activeTab === "history") {
-    activeComponent = <HistoryTab />;
-  }
-
   return (
     <div className="tabs">
       <div className="tabs-container">
@@ -41,7 +34,9 @@ const Tabs = () => {
         </div>
         <div className="tab empty"></div>
       </div>
-      {activeComponent}
+      <ConfigureTab status={(activeTab === "configure") ? "show" : "hide"} />
+      <ConsoleTab status={(activeTab === "console") ? "show" : "hide"} />
+      <HistoryTab status={(activeTab === "history") ? "show" : "hide"} />
     </div>
   );
 };
