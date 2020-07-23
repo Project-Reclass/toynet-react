@@ -1,8 +1,10 @@
 import React from "react";
 import "./HistoryTab.css";
 
-const HistoryTab = () => {
-  return <div className="history">Hi, I am the history component</div>;
+const HistoryTab = ({ status }) => {
+  return (
+    <div className={`history ${status}`}>Hi, I am the history component</div>
+  );
 };
 
 export default HistoryTab;
