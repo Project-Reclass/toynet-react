@@ -6,6 +6,6 @@ const History = () => {
       Hi, I am the history component
     </div>
   );
-}
+};
 
 export default History;

@@ -22,6 +22,6 @@ const Header = () => {
       </Navbar>
     </header>
   );
-}
+};
 
 export default Header;
