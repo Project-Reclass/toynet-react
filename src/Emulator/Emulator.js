@@ -5,7 +5,7 @@ import Visuals from './Visuals/Visuals';
 
 const Emulator = ({ panelData }) => {
   return (
-    <div style={{display: "flex"}}>
+    <div style={{display: 'flex'}}>
       <Instructions panelData={panelData} />
       <div>
         <Tabs />
@@ -13,7 +13,7 @@ const Emulator = ({ panelData }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Emulator;
 

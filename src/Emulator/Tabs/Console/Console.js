@@ -6,6 +6,6 @@ const Console = () => {
       Hi, I am the console component
     </div>
   );
-}
+};
 
 export default Console;

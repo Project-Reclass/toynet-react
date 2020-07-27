@@ -6,6 +6,6 @@ const Configure = () => {
       Hi, I am the configure component
     </div>
   );
-}
+};
 
 export default Configure;
