@@ -1,16 +1,23 @@
 import React from "react";
 import "./Device.css";
 
+const CONSTANTS = {
+  EMPTY_COLOR: "empty-color",
+  ROUTER_COLOR: "router-color",
+  SWITCH_COLOR: "switch-color",
+  HOST_COLOR: "host-color",
+};
+
 const Device = ({ deviceName, deviceData }) => {
   let boxClass = "device-name-box ";
   if (deviceData.connections.length === 0) {
-    boxClass += "empty-color";
+    boxClass += CONSTANTS.EMPTY_COLOR;
   } else if (deviceName === "Router") {
-    boxClass += "router-color";
+    boxClass += CONSTANTS.ROUTER_COLOR;
   } else if (deviceName === "Switch") {
-    boxClass += "switch-color";
+    boxClass += CONSTANTS.SWITCH_COLOR;
   } else {
-    boxClass += "host-color";
+    boxClass += CONSTANTS.HOST_COLOR;
   }
 
   return (
@@ -25,11 +32,11 @@ const Device = ({ deviceName, deviceData }) => {
           {deviceData.connections.map((connection) => {
             let colorClass = "connection ";
             if (connection[0] === "r") {
-              colorClass += "router-color";
+              colorClass += CONSTANTS.ROUTER_COLOR;
             } else if (connection[0] === "s") {
-              colorClass += "switch-color";
+              colorClass += CONSTANTS.SWITCH_COLOR;
             } else {
-              colorClass += "host-color";
+              colorClass += CONSTANTS.HOST_COLOR;
             }
             return <div className={colorClass}>{connection}</div>;
           })}

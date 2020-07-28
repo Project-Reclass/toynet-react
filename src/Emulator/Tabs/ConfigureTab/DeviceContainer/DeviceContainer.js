@@ -1,17 +1,17 @@
 import React from "react";
 import "./DeviceContainer.css";
-import { PlusCircle } from "react-bootstrap-icons";
+import PlusIcon from "../../../../assets/add.svg";
 import Device from "./Device/Device";
 
-const DeviceContainer = ({ deviceName, devices, add }) => {
+const DeviceContainer = React.forwardRef(({ deviceName, devices, addDevice }, ref) => {
   return (
     <div className="device-container">
       <div className="device-container-name">
-        <PlusCircle
+        <img
+          src={PlusIcon}
           className="plus-circle"
-          color="white"
-          size={15}
-          onClick={add}
+          onClick={addDevice}
+          alt="plus icon"
         />
         {deviceName}
       </div>
@@ -19,9 +19,10 @@ const DeviceContainer = ({ deviceName, devices, add }) => {
         {devices.map((device) => (
           <Device deviceName={deviceName} deviceData={device} />
         ))}
+        <div ref={ref}></div>
       </div>
     </div>
   );
-};
+});
 
 export default DeviceContainer;
