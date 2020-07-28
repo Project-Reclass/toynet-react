@@ -39,6 +39,12 @@ const hostConfig = [
   },
 ];
 
+const getNextNumber = (s) => Number(s.slice(1)) + 1;
+const getNextDeviceName = (device) => {
+  const lastDeviceName = device[device.length - 1].name;
+  return `${lastDeviceName[0]}${getNextNumber(lastDeviceName)}`;
+};
+
 const ConfigureTab = ({ status }) => {
   const [routers, setRouters] = useState(routerConfig);
   const [switches, setSwitches] = useState(switchConfig);
@@ -48,11 +54,6 @@ const ConfigureTab = ({ status }) => {
   const switchScrollRef = useRef(null);
   const hostScrollRef = useRef(null);
 
-  const getNextNumber = (s) => Number(s.slice(1)) + 1;
-  const getNextDeviceName = (device) => {
-    const lastDeviceName = device[device.length - 1].name;
-    return `${lastDeviceName[0]}${getNextNumber(lastDeviceName)}`;
-  };
   const scrollDeviceContainer = (ref) => {
     // A slight delay seems to be necessary for the scroll to work properly
     // ref.current.scrollIntoView() on its own does not scroll down enough
