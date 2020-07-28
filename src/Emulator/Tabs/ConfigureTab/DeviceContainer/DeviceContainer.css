@@ -10,6 +10,7 @@
 
 .device-container-name {
   height: 4vh;
+  line-height: 4vh;
   font-size: large;
   text-align: center;
   color: white;
@@ -24,8 +25,10 @@
 }
 
 .plus-circle {
+  height: auto;
+  width: 18px;
   float: left;
-  margin-top: 1vh;
-  margin-left: 1vh;
+  margin-top: 0.7vh;
+  margin-left: 0.7vh;
   cursor: pointer;
 }

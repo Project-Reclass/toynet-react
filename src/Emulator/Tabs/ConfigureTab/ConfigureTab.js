@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./ConfigureTab.css";
 import DeviceContainer from "./DeviceContainer/DeviceContainer";
 
@@ -44,24 +44,59 @@ const ConfigureTab = ({ status }) => {
   const [switches, setSwitches] = useState(switchConfig);
   const [hosts, setHosts] = useState(hostConfig);
 
-  const getNextNumber = (s) => parseInt(s.slice(1, s.length)) + 1;
+  const routerScrollRef = useRef(null);
+  const switchScrollRef = useRef(null);
+  const hostScrollRef = useRef(null);
+
+  const getNextNumber = (s) => Number(s.slice(1)) + 1;
+  const getNextDeviceName = (device) => {
+    const lastDeviceName = device[device.length - 1].name;
+    return `${lastDeviceName[0]}${getNextNumber(lastDeviceName)}`;
+  };
+  const scrollDeviceContainer = (ref) => {
+    // A slight delay seems to be necessary for the scroll to work properly
+    // ref.current.scrollIntoView() on its own does not scroll down enough
+    if (ref.current) {
+      setTimeout(() => {
+        ref.current.scrollIntoView();
+      }, 0);
+    }
+  };
 
   const addRouter = () => {
-    const lastRouterName = routers[routers.length - 1].name;
-    const newRouterName = `r${getNextNumber(lastRouterName)}`;
-    setRouters([...routers, { name: newRouterName, connections: [] }]);
+    // TODO: Let user know they've added the maximum number of routers
+    if (routers.length < 10) {
+      setRouters([
+        ...routers,
+        { name: getNextDeviceName(routers), connections: [] },
+      ]);
+
+      scrollDeviceContainer(routerScrollRef);
+    }
   };
 
   const addSwitch = () => {
-    const lastSwitchName = switches[switches.length - 1].name;
-    const newSwitchName = `s${getNextNumber(lastSwitchName)}`;
-    setSwitches([...switches, { name: newSwitchName, connections: [] }]);
+    // TODO: Let user know they've added the maximum number of switches
+    if (switches.length < 10) {
+      setSwitches([
+        ...switches,
+        { name: getNextDeviceName(switches), connections: [] },
+      ]);
+
+      scrollDeviceContainer(switchScrollRef);
+    }
   };
 
   const addHost = () => {
-    const lastHostName = hosts[hosts.length - 1].name;
-    const newHostName = `h${getNextNumber(lastHostName)}`;
-    setHosts([...hosts, { name: newHostName, connections: [] }]);
+    // TODO: Let user know they've added the maximum number of hosts
+    if (hosts.length < 10) {
+      setHosts([
+        ...hosts, 
+        { name: getNextDeviceName(hosts), connections: [] },
+      ]);
+
+      scrollDeviceContainer(hostScrollRef);
+    }
   };
 
   return (
@@ -70,14 +105,21 @@ const ConfigureTab = ({ status }) => {
         <DeviceContainer
           deviceName="Router"
           devices={routers}
-          add={addRouter}
+          addDevice={addRouter}
+          ref={routerScrollRef}
         />
         <DeviceContainer
           deviceName="Switch"
           devices={switches}
-          add={addSwitch}
+          addDevice={addSwitch}
+          ref={switchScrollRef}
         />
-        <DeviceContainer deviceName="Host" devices={hosts} add={addHost} />
+        <DeviceContainer
+          deviceName="Host"
+          devices={hosts}
+          addDevice={addHost}
+          ref={hostScrollRef}
+        />
       </div>
       <div className="btn-run-container">
         <button type="button" className="btn-run">

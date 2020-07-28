@@ -4,6 +4,12 @@ import ConfigureTab from "./ConfigureTab/ConfigureTab";
 import ConsoleTab from "./ConsoleTab/ConsoleTab";
 import HistoryTab from "./HistoryTab/HistoryTab";
 
+const CONSTANTS = {
+  CONFIGURE: "configure",
+  CONSOLE: "console",
+  HISTORY: "history",
+};
+
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("configure");
 
@@ -15,28 +21,28 @@ const Tabs = () => {
     <div className="tabs">
       <div className="tabs-container">
         <div
-          className={activeTab === "configure" ? "tab active" : "tab"}
-          onClick={() => changeTabHandler("configure")}
+          className={activeTab === CONSTANTS.CONFIGURE ? "tab active" : "tab"}
+          onClick={() => changeTabHandler(CONSTANTS.CONFIGURE)}
         >
           Configure
         </div>
         <div
-          className={activeTab === "console" ? "tab active" : "tab"}
-          onClick={() => changeTabHandler("console")}
+          className={activeTab === CONSTANTS.CONSOLE ? "tab active" : "tab"}
+          onClick={() => changeTabHandler(CONSTANTS.CONSOLE)}
         >
           Console
         </div>
         <div
-          className={activeTab === "history" ? "tab active" : "tab"}
-          onClick={() => changeTabHandler("history")}
+          className={activeTab === CONSTANTS.HISTORY ? "tab active" : "tab"}
+          onClick={() => changeTabHandler(CONSTANTS.HISTORY)}
         >
           History
         </div>
         <div className="tab empty"></div>
       </div>
-      <ConfigureTab status={(activeTab === "configure") ? "show" : "hide"} />
-      <ConsoleTab status={(activeTab === "console") ? "show" : "hide"} />
-      <HistoryTab status={(activeTab === "history") ? "show" : "hide"} />
+      <ConfigureTab status={(activeTab === CONSTANTS.CONFIGURE) ? "show" : "hide"} />
+      <ConsoleTab status={(activeTab === CONSTANTS.CONSOLE) ? "show" : "hide"} />
+      <HistoryTab status={(activeTab === CONSTANTS.HISTORY) ? "show" : "hide"} />
     </div>
   );
 };
