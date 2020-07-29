@@ -1,17 +1,14 @@
 import React from 'react';
 import './Header.css';
-import logo from './logo.png';
+import logo from '../assets/logo.png';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 
 const Header = () => {
   return (
     <header className="navHeader">
-      <Navbar
-        expand="lg"
-        class="d-flex flex-column flex-md-row align-items-center px-3 pt-2 px-md-4 mb-3 bg-white border-bottom shadow-sm"
-      >
+      <Navbar expand="lg">
         <Navbar.Brand href="#home">
-          <img src={logo} class="logo" alt="Reclass logo" />
+          <img src={logo} className="logo" alt="Reclass logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
