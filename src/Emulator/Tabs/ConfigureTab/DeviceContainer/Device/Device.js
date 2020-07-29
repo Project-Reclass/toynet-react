@@ -1,20 +1,20 @@
-import React from "react";
-import "./Device.css";
+import React from 'react';
+import './Device.css';
 
 const CONSTANTS = {
-  EMPTY_COLOR: "empty-color",
-  ROUTER_COLOR: "router-color",
-  SWITCH_COLOR: "switch-color",
-  HOST_COLOR: "host-color",
+  EMPTY_COLOR: 'empty-color',
+  ROUTER_COLOR: 'router-color',
+  SWITCH_COLOR: 'switch-color',
+  HOST_COLOR: 'host-color',
 };
 
 const Device = ({ deviceName, deviceData }) => {
-  let boxClass = "device-name-box ";
+  let boxClass = 'device-name-box ';
   if (deviceData.connections.length === 0) {
     boxClass += CONSTANTS.EMPTY_COLOR;
-  } else if (deviceName === "Router") {
+  } else if (deviceName === 'Router') {
     boxClass += CONSTANTS.ROUTER_COLOR;
-  } else if (deviceName === "Switch") {
+  } else if (deviceName === 'Switch') {
     boxClass += CONSTANTS.SWITCH_COLOR;
   } else {
     boxClass += CONSTANTS.HOST_COLOR;
@@ -30,10 +30,10 @@ const Device = ({ deviceName, deviceData }) => {
         <div>Connections:</div>
         <div className="connections-boxes">
           {deviceData.connections.map((connection) => {
-            let colorClass = "connection ";
-            if (connection[0] === "r") {
+            let colorClass = 'connection ';
+            if (connection[0] === 'r') {
               colorClass += CONSTANTS.ROUTER_COLOR;
-            } else if (connection[0] === "s") {
+            } else if (connection[0] === 's') {
               colorClass += CONSTANTS.SWITCH_COLOR;
             } else {
               colorClass += CONSTANTS.HOST_COLOR;

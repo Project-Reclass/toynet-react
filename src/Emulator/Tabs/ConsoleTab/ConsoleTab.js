@@ -1,5 +1,5 @@
-import React from "react";
-import "./ConsoleTab.css";
+import React from 'react';
+import './ConsoleTab.css';
 
 const ConsoleTab = ({ status }) => {
   return (

@@ -1,7 +1,7 @@
-import React from "react";
-import "./DeviceContainer.css";
-import PlusIcon from "../../../../assets/add.svg";
-import Device from "./Device/Device";
+import React from 'react';
+import './DeviceContainer.css';
+import PlusIcon from '../../../../assets/add.svg';
+import Device from './Device/Device';
 
 const DeviceContainer = React.forwardRef(({ deviceName, devices, addDevice }, ref) => {
   return (

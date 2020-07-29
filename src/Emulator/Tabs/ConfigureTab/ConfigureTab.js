@@ -1,40 +1,42 @@
-import React, { useState, useRef } from "react";
-import "./ConfigureTab.css";
-import DeviceContainer from "./DeviceContainer/DeviceContainer";
+import React, { useState, useRef } from 'react';
+import './ConfigureTab.css';
+import DeviceContainer from './DeviceContainer/DeviceContainer';
+
+const MAX_DEVICES = 10;
 
 // Sample responses from currently non-existent API
 // These represent the starting config for a lesson
 const routerConfig = [
   {
-    name: "r1",
-    connections: ["s1", "s2"],
+    name: 'r1',
+    connections: ['s1', 's2'],
   },
 ];
 const switchConfig = [
   {
-    name: "s1",
-    connections: ["r1", "h1", "h2", "h3"],
+    name: 's1',
+    connections: ['r1', 'h1', 'h2', 'h3'],
   },
   {
-    name: "s2",
+    name: 's2',
     connections: [],
   },
 ];
 const hostConfig = [
   {
-    name: "h1",
-    connections: ["s1"],
+    name: 'h1',
+    connections: ['s1'],
   },
   {
-    name: "h2",
-    connections: ["s1"],
+    name: 'h2',
+    connections: ['s1'],
   },
   {
-    name: "h3",
-    connections: ["s1"],
+    name: 'h3',
+    connections: ['s1'],
   },
   {
-    name: "h4",
+    name: 'h4',
     connections: [],
   },
 ];
@@ -66,7 +68,7 @@ const ConfigureTab = ({ status }) => {
 
   const addRouter = () => {
     // TODO: Let user know they've added the maximum number of routers
-    if (routers.length < 10) {
+    if (routers.length < MAX_DEVICES) {
       setRouters([
         ...routers,
         { name: getNextDeviceName(routers), connections: [] },
@@ -78,7 +80,7 @@ const ConfigureTab = ({ status }) => {
 
   const addSwitch = () => {
     // TODO: Let user know they've added the maximum number of switches
-    if (switches.length < 10) {
+    if (switches.length < MAX_DEVICES) {
       setSwitches([
         ...switches,
         { name: getNextDeviceName(switches), connections: [] },
@@ -90,9 +92,9 @@ const ConfigureTab = ({ status }) => {
 
   const addHost = () => {
     // TODO: Let user know they've added the maximum number of hosts
-    if (hosts.length < 10) {
+    if (hosts.length < MAX_DEVICES) {
       setHosts([
-        ...hosts, 
+        ...hosts,
         { name: getNextDeviceName(hosts), connections: [] },
       ]);
 

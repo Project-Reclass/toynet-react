@@ -1,5 +1,5 @@
-import React from "react";
-import "./Instructions.css";
+import React from 'react';
+import './Instructions.css';
 
 const Instructions = ({ panelData }) => {
   return (

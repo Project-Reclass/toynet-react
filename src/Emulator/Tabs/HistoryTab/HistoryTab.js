@@ -1,5 +1,5 @@
-import React from "react";
-import "./HistoryTab.css";
+import React from 'react';
+import './HistoryTab.css';
 
 const HistoryTab = ({ status }) => {
   return (
