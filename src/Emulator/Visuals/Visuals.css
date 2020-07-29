@@ -3,3 +3,61 @@
     height: 50vh;
     width: 75vw;
 }
+
+.imageContainer {
+    position: relative;
+    overflow: auto;
+    padding: '0';
+    border-style: solid;
+    border-color: blue;
+    margin: auto;
+ }
+ 
+ .imageSpace {
+    height: 1000px;
+    width: 1000px;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+ }
+ 
+ .image {
+    position: relative;
+    zoom: 1;
+    display: inline-block;
+    border-style:solid;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+ }
+ 
+ .iconButtons {
+    background-color: transparent;
+    border-color: transparent;
+ }
+ 
+ .icons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 50vh;
+    bottom: 100px;
+ }
+ 
+ .icon {
+    margin: 5px;
+    display: flex !important;
+    visibility: visible !important;
+ }
+ 
+ .icon:hover {
+    cursor: pointer;
+ }
+ 
+ 
+ .buttons {
+    margin: auto;
+ }
+ 
+ 
