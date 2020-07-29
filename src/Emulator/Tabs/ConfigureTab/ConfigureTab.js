@@ -42,16 +42,16 @@ const hostConfig = [
 ];
 
 /**
- * Determines the number of the newly added device 
+ * Determines the number of the newly added device
  * @param   {string} s - A device name (e.g. "s1", "h3", "r5")
- * @returns {Number}   - The next number in this device's sequence 
- */ 
+ * @returns {Number}   - The next number in this device's sequence
+ */
 const getNextNumber = (s) => Number(s.slice(1)) + 1;
 
 /**
  * Determines the name of the newly added device
  * @param   {Object} device - Object representing a device, its name, and its connections
- * @returns {string}        - The newly added device's name 
+ * @returns {string}        - The newly added device's name
  */
 const getNextDeviceName = (device) => {
   const lastDeviceName = device[device.length - 1].name;
