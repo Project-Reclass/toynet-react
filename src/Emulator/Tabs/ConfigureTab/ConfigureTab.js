@@ -47,7 +47,7 @@ const hostConfig = [
  * @param   {string} s - A device name (e.g. "s1", "h3", "r5")
  * @returns {Number}   - The next number in this device's sequence
  */
-const getNextNumber = (s) => Number(s.slice(1)) + 1;
+export const getNextNumber = (s) => Number(s.slice(1)) + 1;
 
 /**
  * Determines the name of the newly added device
@@ -55,7 +55,7 @@ const getNextNumber = (s) => Number(s.slice(1)) + 1;
  * @param   {string} deviceLetter - Letter portion of the device name (e.g. "r", "s", "h")
  * @returns {string}              - The newly added device's name
  */
-const getNextDeviceName = (device, deviceLetter) => {
+export const getNextDeviceName = (device, deviceLetter) => {
   if (device.length < 1) {
     return `${deviceLetter}1`;
   } else {

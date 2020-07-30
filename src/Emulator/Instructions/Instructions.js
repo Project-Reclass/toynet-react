@@ -16,8 +16,8 @@ const Instructions = ({ panelData }) => {
       <div>
         <h4 className="tasks-title">Tasks</h4>
         <ol>
-          {panelData.tasks.map((task) => (
-            <li>{task}</li>
+          {panelData.tasks.map((task, idx) => (
+            <li key={`${task}${idx}`}>{task}</li>
           ))}
         </ol>
       </div>

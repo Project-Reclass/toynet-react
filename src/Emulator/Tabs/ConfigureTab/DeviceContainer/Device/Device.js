@@ -29,7 +29,7 @@ const Device = ({ deviceName, deviceData }) => {
       <div className="connections-container">
         <div>Connections:</div>
         <div className="connections-boxes">
-          {deviceData.connections.map((connection) => {
+          {deviceData.connections.map((connection, idx) => {
             let colorClass = 'connection ';
             if (connection[0] === 'r') {
               colorClass += CONSTANTS.ROUTER_COLOR;
@@ -38,7 +38,11 @@ const Device = ({ deviceName, deviceData }) => {
             } else {
               colorClass += CONSTANTS.HOST_COLOR;
             }
-            return <div className={colorClass}>{connection}</div>;
+            return (
+              <div id={`${connection}${idx}`} className={colorClass}>
+                {connection}
+              </div>
+            );
           })}
         </div>
       </div>
