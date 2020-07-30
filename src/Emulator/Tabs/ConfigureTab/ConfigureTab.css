@@ -27,6 +27,12 @@
   border-radius: 8px;
 }
 
-.btn-run:active, .btn-run:focus {
+.btn-run:active,
+.btn-run:focus {
   outline: none;
+}
+
+.max-nodes {
+  color: red;
+  margin-right: auto;
 }

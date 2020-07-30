@@ -1,42 +1,43 @@
-import React, { useState, useRef } from 'react';
-import './ConfigureTab.css';
-import DeviceContainer from './DeviceContainer/DeviceContainer';
+import React, { useState, useRef } from "react";
+import "./ConfigureTab.css";
+import DeviceContainer from "./DeviceContainer/DeviceContainer";
 
 const MAX_DEVICES = 10;
+const FIVE_SECONDS = 5000;
 
 // Sample responses from currently non-existent API
 // These represent the starting config for a lesson
 const routerConfig = [
   {
-    name: 'r1',
-    connections: ['s1', 's2'],
+    name: "r1",
+    connections: ["s1", "s2"],
   },
 ];
 const switchConfig = [
   {
-    name: 's1',
-    connections: ['r1', 'h1', 'h2', 'h3'],
+    name: "s1",
+    connections: ["r1", "h1", "h2", "h3"],
   },
   {
-    name: 's2',
+    name: "s2",
     connections: [],
   },
 ];
 const hostConfig = [
   {
-    name: 'h1',
-    connections: ['s1'],
+    name: "h1",
+    connections: ["s1"],
   },
   {
-    name: 'h2',
-    connections: ['s1'],
+    name: "h2",
+    connections: ["s1"],
   },
   {
-    name: 'h3',
-    connections: ['s1'],
+    name: "h3",
+    connections: ["s1"],
   },
   {
-    name: 'h4',
+    name: "h4",
     connections: [],
   },
 ];
@@ -62,6 +63,7 @@ const ConfigureTab = ({ status }) => {
   const [routers, setRouters] = useState(routerConfig);
   const [switches, setSwitches] = useState(switchConfig);
   const [hosts, setHosts] = useState(hostConfig);
+  const [showError, setShowError] = useState(false);
 
   const routerScrollRef = useRef(null);
   const switchScrollRef = useRef(null);
@@ -77,6 +79,13 @@ const ConfigureTab = ({ status }) => {
     }
   };
 
+  const toggleErrorMessage = () => {
+    setShowError(true);
+    setTimeout(() => {
+      setShowError(false);
+    }, FIVE_SECONDS);
+  };
+
   const addRouter = () => {
     // TODO: Let user know they've added the maximum number of routers
     if (routers.length < MAX_DEVICES) {
@@ -86,6 +95,8 @@ const ConfigureTab = ({ status }) => {
       ]);
 
       scrollDeviceContainer(routerScrollRef);
+    } else {
+      toggleErrorMessage();
     }
   };
 
@@ -98,18 +109,19 @@ const ConfigureTab = ({ status }) => {
       ]);
 
       scrollDeviceContainer(switchScrollRef);
+    } else {
+      toggleErrorMessage();
     }
   };
 
   const addHost = () => {
     // TODO: Let user know they've added the maximum number of hosts
     if (hosts.length < MAX_DEVICES) {
-      setHosts([
-        ...hosts,
-        { name: getNextDeviceName(hosts), connections: [] },
-      ]);
+      setHosts([...hosts, { name: getNextDeviceName(hosts), connections: [] }]);
 
       scrollDeviceContainer(hostScrollRef);
+    } else {
+      toggleErrorMessage();
     }
   };
 
@@ -136,6 +148,12 @@ const ConfigureTab = ({ status }) => {
         />
       </div>
       <div className="btn-run-container">
+        <div
+          className="max-nodes"
+          style={{ display: showError ? "initial" : "none" }}
+        >
+          Each device type can have maximum 10 nodes
+        </div>
         <button type="button" className="btn-run">
           Run
         </button>

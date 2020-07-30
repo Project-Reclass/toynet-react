@@ -31,4 +31,5 @@
   margin-top: 0.7vh;
   margin-left: 0.7vh;
   cursor: pointer;
+  user-select: none;
 }
