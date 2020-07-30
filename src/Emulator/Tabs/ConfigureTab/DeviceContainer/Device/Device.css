@@ -1,0 +1,64 @@
+.device-box {
+  display: flex;
+  width: 100%;
+  background-color: #595D62;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.device-name-box {
+  text-transform: capitalize;
+  display: flex;
+  font-size: large;
+  height: 50px;
+  width: 60px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.vertical-bar {
+  border-right: 2px solid #B2B2B2;
+}
+
+.connections-container {
+  font-size: small;
+  color: #B2B2B2;
+  margin-left: 20px;
+}
+
+.connections-boxes {
+  display: flex;
+}
+
+.connection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 25px;
+  font-size: 0.6rem;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.empty-color {
+  background-color: #707070;
+}
+
+.router-color {
+  background-color: #BDA913;
+}
+
+.switch-color {
+  background-color: #9E1059;
+}
+
+.host-color {
+  background-color: #008A9E;
+}

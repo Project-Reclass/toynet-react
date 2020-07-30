@@ -1,0 +1,38 @@
+.configure {
+  height: 35vh;
+  padding: 20px;
+  padding-bottom: 0;
+  border: 1.5px solid black;
+  border-top: 0;
+}
+
+.network-devices {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-run-container {
+  height: 9.5vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-run {
+  color: white;
+  height: 5vh;
+  border: 0;
+  background-color: #707070;
+  width: 100px;
+  border-radius: 8px;
+}
+
+.btn-run:active,
+.btn-run:focus {
+  outline: none;
+}
+
+.max-nodes {
+  color: red;
+  margin-right: auto;
+}

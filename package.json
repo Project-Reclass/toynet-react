@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/react": "^9.5.0",
+    "@testing-library/jest-dom": "^5.11.2",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
     "express": "^4.17.1",
@@ -20,7 +20,7 @@
     "dev": "react-scripts start",
     "start": "node server.js",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -149,5 +149,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.5.0",
+    "jsdoc": "^3.6.5",
+    "react-test-renderer": "^16.13.1"
   }
 }
