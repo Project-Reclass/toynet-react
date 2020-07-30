@@ -51,12 +51,17 @@ const getNextNumber = (s) => Number(s.slice(1)) + 1;
 
 /**
  * Determines the name of the newly added device
- * @param   {Object} device - Object representing a device, its name, and its connections
- * @returns {string}        - The newly added device's name
+ * @param   {Object} device       - Object representing a device, its name, and its connections
+ * @param   {string} deviceLetter - Letter portion of the device name (e.g. "r", "s", "h")
+ * @returns {string}              - The newly added device's name
  */
-const getNextDeviceName = (device) => {
-  const lastDeviceName = device[device.length - 1].name;
-  return `${lastDeviceName[0]}${getNextNumber(lastDeviceName)}`;
+const getNextDeviceName = (device, deviceLetter) => {
+  if (device.length < 1) {
+    return `${deviceLetter}1`;
+  } else {
+    const lastDeviceName = device[device.length - 1].name;
+    return `${deviceLetter}${getNextNumber(lastDeviceName)}`;
+  }
 };
 
 const ConfigureTab = ({ status }) => {
@@ -86,12 +91,11 @@ const ConfigureTab = ({ status }) => {
     }, FIVE_SECONDS);
   };
 
-  const addRouter = () => {
-    // TODO: Let user know they've added the maximum number of routers
+  const addRouter = (deviceLetter) => {
     if (routers.length < MAX_DEVICES) {
       setRouters([
         ...routers,
-        { name: getNextDeviceName(routers), connections: [] },
+        { name: getNextDeviceName(routers, deviceLetter), connections: [] },
       ]);
 
       scrollDeviceContainer(routerScrollRef);
@@ -100,12 +104,11 @@ const ConfigureTab = ({ status }) => {
     }
   };
 
-  const addSwitch = () => {
-    // TODO: Let user know they've added the maximum number of switches
+  const addSwitch = (deviceLetter) => {
     if (switches.length < MAX_DEVICES) {
       setSwitches([
         ...switches,
-        { name: getNextDeviceName(switches), connections: [] },
+        { name: getNextDeviceName(switches, deviceLetter), connections: [] },
       ]);
 
       scrollDeviceContainer(switchScrollRef);
@@ -114,10 +117,12 @@ const ConfigureTab = ({ status }) => {
     }
   };
 
-  const addHost = () => {
-    // TODO: Let user know they've added the maximum number of hosts
+  const addHost = (deviceLetter) => {
     if (hosts.length < MAX_DEVICES) {
-      setHosts([...hosts, { name: getNextDeviceName(hosts), connections: [] }]);
+      setHosts([
+        ...hosts,
+        { name: getNextDeviceName(hosts, deviceLetter), connections: [] },
+      ]);
 
       scrollDeviceContainer(hostScrollRef);
     } else {

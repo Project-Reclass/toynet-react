@@ -10,7 +10,7 @@ const DeviceContainer = React.forwardRef(({ deviceName, devices, addDevice }, re
         <img
           src={PlusIcon}
           className="plus-circle"
-          onClick={addDevice}
+          onClick={() => addDevice(deviceName[0].toLowerCase())}
           alt="plus icon"
         />
         {deviceName}
