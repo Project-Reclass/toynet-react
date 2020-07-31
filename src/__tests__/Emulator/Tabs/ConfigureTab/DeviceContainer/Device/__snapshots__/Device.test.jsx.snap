@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Device should match previous snapshot with router connections 1`] = `
+<div
+  className="device-box"
+>
+  <div
+    className="device-name-box router-color"
+  >
+    <div />
+  </div>
+  <div
+    className="vertical-bar"
+  />
+  <div
+    className="connections-container"
+  >
+    <div>
+      Connections:
+    </div>
+    <div
+      className="connections-boxes"
+    >
+      <div
+        className="connection host-color"
+        id="h10"
+      >
+        h1
+      </div>
+      <div
+        className="connection host-color"
+        id="h21"
+      >
+        h2
+      </div>
+      <div
+        className="connection host-color"
+        id="h32"
+      >
+        h3
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The Device should match previous snapshots 1`] = `
+<div
+  className="device-box"
+>
+  <div
+    className="device-name-box empty-color"
+  >
+    <div />
+  </div>
+  <div
+    className="vertical-bar"
+  />
+  <div
+    className="connections-container"
+  >
+    <div>
+      Connections:
+    </div>
+    <div
+      className="connections-boxes"
+    />
+  </div>
+</div>
+`;
+
+exports[`The Device should match previous snapshots with host connections 1`] = `
+<div
+  className="device-box"
+>
+  <div
+    className="device-name-box router-color"
+  >
+    <div />
+  </div>
+  <div
+    className="vertical-bar"
+  />
+  <div
+    className="connections-container"
+  >
+    <div>
+      Connections:
+    </div>
+    <div
+      className="connections-boxes"
+    >
+      <div
+        className="connection router-color"
+        id="r10"
+      >
+        r1
+      </div>
+      <div
+        className="connection router-color"
+        id="r21"
+      >
+        r2
+      </div>
+      <div
+        className="connection router-color"
+        id="r32"
+      >
+        r3
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The Device should match previous snapshots with switch connections 1`] = `
+<div
+  className="device-box"
+>
+  <div
+    className="device-name-box router-color"
+  >
+    <div />
+  </div>
+  <div
+    className="vertical-bar"
+  />
+  <div
+    className="connections-container"
+  >
+    <div>
+      Connections:
+    </div>
+    <div
+      className="connections-boxes"
+    >
+      <div
+        className="connection switch-color"
+        id="s20"
+      >
+        s2
+      </div>
+      <div
+        className="connection switch-color"
+        id="s31"
+      >
+        s3
+      </div>
+      <div
+        className="connection switch-color"
+        id="s42"
+      >
+        s4
+      </div>
+    </div>
+  </div>
+</div>
+`;

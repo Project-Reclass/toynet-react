@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
+
 import './Emulator.css';
-import Instructions from './Instructions/Instructions';
 import Tabs from './Tabs/Tabs';
 import Visuals from './Visuals/Visuals';
+import Instructions, { PanelData } from './Instructions/Instructions';
 
-const Emulator = ({ panelData }) => {
+interface Props {
+  panelData: PanelData;
+}
+
+const Emulator: FC<Props> = ({ panelData }) => {
   return (
     <div className="emulator">
       <Instructions panelData={panelData} />

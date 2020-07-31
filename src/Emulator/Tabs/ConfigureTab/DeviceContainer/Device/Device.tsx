@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './Device.css';
 
 const CONSTANTS = {
@@ -8,7 +8,17 @@ const CONSTANTS = {
   HOST_COLOR: 'host-color',
 };
 
-const Device = ({ deviceName, deviceData }) => {
+export interface DeviceInterface {
+  name: string;
+  connections: string[];
+}
+
+interface Props {
+  deviceName: string;
+  deviceData: DeviceInterface
+}
+
+const Device: FC<Props> = ({ deviceName, deviceData }) => {
   let boxClass = 'device-name-box ';
   if (deviceData.connections.length === 0) {
     boxClass += CONSTANTS.EMPTY_COLOR;
@@ -39,7 +49,7 @@ const Device = ({ deviceName, deviceData }) => {
               colorClass += CONSTANTS.HOST_COLOR;
             }
             return (
-              <div id={`${connection}${idx}`} className={colorClass}>
+              <div id={`${connection}${idx}`} className={colorClass} key={`${connection}`}>
                 {connection}
               </div>
             );

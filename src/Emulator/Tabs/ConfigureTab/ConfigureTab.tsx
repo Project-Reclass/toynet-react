@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, FC } from 'react';
 import './ConfigureTab.css';
 import DeviceContainer from './DeviceContainer/DeviceContainer';
 
@@ -44,18 +44,13 @@ const hostConfig = [
 
 /**
  * Determines the number of the newly added device
- * @param   {string} s - A device name (e.g. "s1", "h3", "r5")
- * @returns {Number}   - The next number in this device's sequence
  */
-export const getNextNumber = (s) => Number(s.slice(1)) + 1;
+export const getNextNumber = (s: string) => Number(s.slice(1)) + 1;
 
 /**
  * Determines the name of the newly added device
- * @param   {Object} device       - Object representing a device, its name, and its connections
- * @param   {string} deviceLetter - Letter portion of the device name (e.g. "r", "s", "h")
- * @returns {string}              - The newly added device's name
  */
-export const getNextDeviceName = (device, deviceLetter) => {
+export const getNextDeviceName = (device: Array<{name: string}>, deviceLetter: string) => {
   if (device.length < 1) {
     return `${deviceLetter}1`;
   } else {
@@ -64,7 +59,7 @@ export const getNextDeviceName = (device, deviceLetter) => {
   }
 };
 
-const ConfigureTab = ({ status }) => {
+const ConfigureTab: FC<{status: string}> = ({ status }) => {
   const [routers, setRouters] = useState(routerConfig);
   const [switches, setSwitches] = useState(switchConfig);
   const [hosts, setHosts] = useState(hostConfig);
@@ -74,12 +69,13 @@ const ConfigureTab = ({ status }) => {
   const switchScrollRef = useRef(null);
   const hostScrollRef = useRef(null);
 
-  const scrollDeviceContainer = (ref) => {
+  const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null>) => {
     // A slight delay seems to be necessary for the scroll to work properly
     // ref.current.scrollIntoView() on its own does not scroll down enough
     if (ref.current) {
       setTimeout(() => {
-        ref.current.scrollIntoView();
+        if (ref.current)
+          ref.current.scrollIntoView();
       }, 0);
     }
   };
@@ -91,7 +87,7 @@ const ConfigureTab = ({ status }) => {
     }, FIVE_SECONDS);
   };
 
-  const addRouter = (deviceLetter) => {
+  const addRouter = (deviceLetter: string) => {
     if (routers.length < MAX_DEVICES) {
       setRouters([
         ...routers,
@@ -104,7 +100,7 @@ const ConfigureTab = ({ status }) => {
     }
   };
 
-  const addSwitch = (deviceLetter) => {
+  const addSwitch = (deviceLetter: string) => {
     if (switches.length < MAX_DEVICES) {
       setSwitches([
         ...switches,
@@ -117,7 +113,7 @@ const ConfigureTab = ({ status }) => {
     }
   };
 
-  const addHost = (deviceLetter) => {
+  const addHost = (deviceLetter: string) => {
     if (hosts.length < MAX_DEVICES) {
       setHosts([
         ...hosts,

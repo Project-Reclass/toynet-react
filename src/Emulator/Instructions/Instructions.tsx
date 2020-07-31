@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './Instructions.css';
 
-const Instructions = ({ panelData }) => {
+export interface PanelData {
+  submoduleNumber: number;
+  submoduleName: string;
+  objective: string;
+  tasks: string[];
+}
+
+interface Props {
+  panelData: PanelData;
+}
+
+const Instructions: FC<Props> = ({ panelData }) => {
   return (
     <div className="instructions">
       <div className="icon-container">icon1 icon2 ...</div>
       <div className="title-container">
-        <h4 className="module-num">Module {panelData.submodule_number}</h4>
-        <p className="module-name">{panelData.submodule_name}</p>
+        <h4 className="module-num">Module {panelData.submoduleNumber}</h4>
+        <p className="module-name">{panelData.submoduleName}</p>
       </div>
       <div className="objective-container">
         <h4 className="objective-title">Objective</h4>
