@@ -20,17 +20,18 @@ const defaultProps = {
   ],
 
   addDevice: addDeviceMock,
-}
+};
 
 describe('The DeviceContainer', () => {
   afterEach(() => {
     addDeviceMock.mockClear();
-  })
+  });
 
   it('should match previous snapshots', () => {
     const tree = renderer.create(<DeviceContainer {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
+
   it('should add device when plus icon is clicked', () => {
     const { getByAltText } = render(<DeviceContainer {...defaultProps} />);
     const plusIcon = getByAltText(/plus icon/i);

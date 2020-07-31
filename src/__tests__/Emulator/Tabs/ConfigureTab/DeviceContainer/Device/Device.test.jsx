@@ -9,22 +9,22 @@ const defaultProps = {
     deviceName: 'test',
     connections: [],
   }
-}
+};
 
 const routerConnectionsData = {
   deviceName: 'r1',
   connections: ['h1', 'h2', 'h3']
-}
+};
 
 const hostConnections = {
   deviceName: 'h1',
   connections: ['r1', 'r2', 'r3']
-}
+};
 
 const switchConnections = {
   deviceName: 's1',
   connections: ['s2', 's3', 's4']
-}
+};
 
 describe('The Device', () => {
   it('should match previous snapshots', () => {
