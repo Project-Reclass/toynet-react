@@ -1,6 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+
+jest.mock('src/common/api/topology');
+import { getTopology } from 'src/common/api/topology';
+
 import ConfigureTab, { getNextDeviceName, getNextNumber } from 'src/Emulator/Tabs/ConfigureTab';
+
+const xml = `
+<?xml version=\"1.0\" encoding=\"UTF-8\"?><topology><root>r0</root><routerList><router name=\"r0\" ip=\"172.16.0.1/24\"><intf>10.0.0.1/30</intf><intf>172.16.0.1/24</intf><intf>172.16.1.1/24</intf></router></routerList><switchList><switch name=\"s1\" /><switch name=\"s2\" /></switchList><hostList><host name=\"h1\" ip=\"172.16.0.2/24\"><defaultRouter><name>r0</name><intf>1</intf></defaultRouter></host><host name=\"h2\" ip=\"172.16.1.2/24\"><defaultRouter><name>r0</name><intf>2</intf></defaultRouter></host></hostList><linkList><link><dvc name=\"r0\"><intf>1</intf></dvc><dvc name=\"s1\"><intf>0</intf></dvc></link><link><dvc name=\"r0\"><intf>2</intf></dvc><dvc name=\"s2\"><intf>0</intf></dvc></link><link><dvc name=\"s1\"><intf>1</intf></dvc><dvc name=\"h1\" /></link><link><dvc name=\"s2\"><intf>1</intf></dvc><dvc name=\"h2\" /></link></linkList></topology>
+`
 
 describe('ConfigureTab helper functions', () => {
   it('should increment numbers correctly', () => {
@@ -32,6 +40,9 @@ describe('ConfigureTab helper functions', () => {
 
 describe('ConfigureTab', ()=> {
   it('should match previous snapshots', () => {
+    getTopology.mockResolvedValue({
+      networkconfig: xml,
+    })
     const tree = renderer.create(<ConfigureTab status={'online'} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
