@@ -15,6 +15,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "check-types": "tsc",
     "style:check": "eslint --ext .js --ext .jsx --ext tsx --ext ts ./src --cache",
     "style:fix": "eslint --ext .js --ext .jsx --ext tsx --ext ts ./src --quiet --fix --cache",
     "dev": "react-scripts start",
@@ -152,7 +153,10 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.5.0",
+    "awesome-typescript-loader": "^5.2.1",
     "jsdoc": "^3.6.5",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "source-map-loader": "^1.0.1",
+    "typescript": "^3.9.7"
   }
 }

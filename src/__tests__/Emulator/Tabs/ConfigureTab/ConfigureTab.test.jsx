@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import ConfigureTab, { getNextDeviceName, getNextNumber } from '../Emulator/Tabs/ConfigureTab/ConfigureTab';
+import renderer from 'react-test-renderer';
+import ConfigureTab, { getNextDeviceName, getNextNumber } from 'src/Emulator/Tabs/ConfigureTab';
 
-describe('<ConfigureTab /> helper functions', () => {
+describe('ConfigureTab helper functions', () => {
   it('should increment numbers correctly', () => {
     const randomInt = Math.floor(Math.random() * 10) + 1;
 
@@ -31,12 +31,8 @@ describe('<ConfigureTab /> helper functions', () => {
 });
 
 describe('ConfigureTab', ()=> {
-  it('should be able to add new devices', () => {
-    // Still need to write code to add new devices and assert correctness
-    const configureTab = render(<ConfigureTab />);
-    screen.debug();
-    expect(true).toEqual(true);
+  it('should match previous snapshots', () => {
+    const tree = renderer.create(<ConfigureTab status={'online'} />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
-
-
 });

@@ -36,3 +36,25 @@ jobs:
           node-version: 10
       - run: npm i
       - run: npm run style:check
+
+  check-types:
+    name: check types
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm i
+      - run: npm run check-types
+    
+  check-build:
+    name: check build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm i
+      - run: npm run build

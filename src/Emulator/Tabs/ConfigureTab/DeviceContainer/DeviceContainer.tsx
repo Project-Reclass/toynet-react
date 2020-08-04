@@ -1,9 +1,15 @@
 import React from 'react';
 import './DeviceContainer.css';
 import PlusIcon from '../../../../assets/add.svg';
-import Device from './Device/Device';
+import Device, { DeviceInterface } from './Device/Device';
 
-const DeviceContainer = React.forwardRef(
+interface Props {
+  deviceName: string;
+  devices: DeviceInterface[];
+  addDevice: (prefix: string) => any;
+}
+
+const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
   ({ deviceName, devices, addDevice }, ref) => {
     return (
       <div className="device-container">

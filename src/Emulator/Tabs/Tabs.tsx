@@ -13,7 +13,7 @@ const CONSTANTS = {
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState('configure');
 
-  const changeTabHandler = (tabName) => {
+  const changeTabHandler = (tabName: string) => {
     setActiveTab(tabName);
   };
 
