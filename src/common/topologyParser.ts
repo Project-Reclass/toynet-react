@@ -13,7 +13,7 @@ const xmlVersionMatcher = /[\<\?xml version].+\?>/;
  * This is required because DOMParser cannot parse the version.
  */
 function removeXMLVersion(xml: string): string {
-    return xml.replace(xmlVersionMatcher, '');
+  return xml.replace(xmlVersionMatcher, '');
 }
 
 /**
