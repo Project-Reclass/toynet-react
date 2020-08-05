@@ -35,6 +35,9 @@ export interface ParsedXML {
 /**
  * Parses xml string to a NetworkNode tree returning hosts, routers, and switches
  * as well as creating appropriate parent child links between NetworkNodes.
+ *
+ * parseXMLTopology is used instead of DOMParser because it is more forgiving on the XML
+ * that is returned from the server.
  */
 export function parseXMLTopology(xml: string): ParsedXML {
   const topology: XML2Json = converter.xml2js(xml, {compact: false}) as any;
