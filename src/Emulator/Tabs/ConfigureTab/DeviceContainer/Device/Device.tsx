@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import { DeviceInterface } from 'src/common/types';
+
 import './Device.css';
 
 const CONSTANTS = {
@@ -7,11 +9,6 @@ const CONSTANTS = {
   SWITCH_COLOR: 'switch-color',
   HOST_COLOR: 'host-color',
 };
-
-export interface DeviceInterface {
-  name: string;
-  connections: string[];
-}
 
 interface Props {
   deviceName: string;

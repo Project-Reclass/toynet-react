@@ -1,8 +1,9 @@
 import { useEffect, useReducer } from 'react';
 import { useQuery } from 'react-query';
 
-import { parseXMLTopology, ParsedXML, NetworkNode } from '../topologyParser';
+import { parseXMLTopology, ParsedXML } from '../topologyParser';
 import { getTopology } from '../api/topology';
+import { DeviceInterface } from '../types';
 
 export enum TopologyActions {
   ADD_SWITCH,
@@ -20,7 +21,7 @@ export enum TopologyActions {
 
 interface Action {
   type: TopologyActions;
-  payload: NetworkNode | NetworkNode[] | ParsedXML;
+  payload: DeviceInterface | DeviceInterface[] | ParsedXML;
 }
 
 function reducer(state: ParsedXML, action: Action) {

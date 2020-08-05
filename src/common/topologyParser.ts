@@ -1,111 +1,87 @@
-import converter from 'xml-js';
-
-type XMLElementParser = (element: XMLElement) => void;
-type DeviceTypes = 'router' | 'switch' | 'host';
-
-export interface NetworkNode {
-  type: DeviceTypes;
-  parent: NetworkNode | null;
-  name: string;
-  children: NetworkNode[];
-
-  ip: string;
-}
-
-interface XMLElement {
-  type: string;
-  name: string;
-  attributes: {
-    [key: string]: string;
-  },
-  text?: string;
-  elements?: XMLElement[];
-}
-
-interface XML2Json {
-  elements: XMLElement[];
-}
+import { DeviceInterface, DeviceType } from './types';
 
 export interface ParsedXML {
-  hosts: NetworkNode[];
-  routers: NetworkNode[];
-  switches: NetworkNode[];
+  hosts: DeviceInterface[];
+  routers: DeviceInterface[];
+  switches: DeviceInterface[];
+}
+
+const xmlVersionMatcher = /[\<\?xml version].+\?>/;
+
+/**
+ * Removes the XML Version from the xml string.
+ * This is required because DOMParser cannot parse the version.
+ */
+function removeXMLVersion(xml: string): string {
+    return xml.replace(xmlVersionMatcher, '');
+}
+
+/**
+ * Parses the XML document and creates an array of default DeviceInterfaces from the document.
+ */
+function getDevicesFromXMLDocument(document: Document, tag: string, type: DeviceType): DeviceInterface[] {
+  const devices: DeviceInterface[] = [];
+  const elements = document.getElementsByTagName(tag);
+  if (elements.length < 1)
+    return devices;
+
+  const { childNodes } = elements[0];
+  for (const child of childNodes) {
+    devices.push({
+      name: (child as Element).attributes.getNamedItem('name')!.value,
+      type: type,
+      connections: [],
+    });
+  }
+
+  return devices;
+}
+
+function createDeviceLink(allDevices: DeviceInterface[], parentName: string, childName: string) {
+  const parent = allDevices.find(device => device.name === parentName);
+  if (!parent)
+    throw new Error(`Invalid link for ${parentName}->${childName}. Parent does not exists`);
+
+  parent.connections.push(childName);
+}
+
+/**
+ * Creates links in place in the DeviceInterfaces by adding the child name to the parent's
+ * connections array. It also will throw an error if the parent cannot be found from
+ * links provided in the XML document.
+ */
+function createDeviceLinksFromXMLDocument(devices: ParsedXML, document: Document) {
+  const elements = document.getElementsByTagName('linkList');
+  if (elements.length < 1) return;
+
+  const allDevices = [...devices.hosts, ...devices.routers, ...devices.switches];
+  const { childNodes } = elements[0];
+  for (const link of childNodes) {
+    const links = [];
+    for (const child of link.childNodes) {
+      links.push((child as Element).attributes.getNamedItem('name')!.value);
+    }
+
+    const [parentName, childName] = links;
+    createDeviceLink(allDevices, parentName, childName);
+  }
 }
 
 /**
  * Parses xml string to a NetworkNode tree returning hosts, routers, and switches
  * as well as creating appropriate parent child links between NetworkNodes.
- *
- * parseXMLTopology is used instead of DOMParser because it is more forgiving on the XML
- * that is returned from the server.
  */
 export function parseXMLTopology(xml: string): ParsedXML {
-  const topology: XML2Json = converter.xml2js(xml, {compact: false}) as any;
-  const devices: NetworkNode[] = [];
+  const parser = new DOMParser();
+  const sanitizedXML = removeXMLVersion(xml);
+  const parsedXML = parser.parseFromString(sanitizedXML, 'application/xml');
 
-  const cmds = new Map<string, XMLElementParser>();
-  cmds.set('router', handleAddDevice('router'));
-  cmds.set('switch', handleAddDevice('switch'));
-  cmds.set('host', handleAddDevice('host'));
-  cmds.set('link', handleLink);
-
-  parse(topology);
-
-  /**
-   * Recursively navigates XML as JSON and parses each node as
-   * a router, switch, host or a link between nodes.
-   */
-  function parse({ elements }: XML2Json) {
-    for (const el of elements) {
-      const fn = cmds.get(el.name);
-      if (fn) fn(el);
-
-      if (el.elements) {
-        parse(el as XML2Json);
-      }
-    }
-  }
-
-  /**
-   * Creates links between child and parent of a NetworkNode,
-   * setting the parent of the NetworkNode and adding the NetworkNode
-   * as a child to the parent.
-   */
-  function handleLink({ elements }: XMLElement) {
-    if (!!!elements || (elements && elements.length < 2))
-      throw new Error('Invalid link!');
-
-    const { name: parentName } = elements[0].attributes;
-    const { name: childName } = elements[1].attributes;
-
-    const parentDevice = devices.find(device => device.name === parentName);
-    const childDevice = devices.find(device => device.name === childName);
-
-    if (childDevice && parentDevice) {
-      parentDevice.children.push(childDevice!);
-      childDevice.parent = parentDevice || null;
-    }
-  }
-
-  /**
-   * Creates a default NetworkNode of the appropriate type and pushes
-   * it into the `devices` array.
-   */
-  function handleAddDevice(type: DeviceTypes): XMLElementParser {
-    return (element: XMLElement) => {
-      devices.push({
-        type,
-        parent: null,
-        children: [],
-        ip: element.attributes['ip'],
-        name: element.attributes['name'],
-      });
-    };
-  }
-
-  return {
-    hosts: devices.filter(device => device.type === 'host'),
-    switches: devices.filter(device => device.type === 'switch'),
-    routers: devices.filter(device => device.type === 'router'),
+  const devices = {
+    switches: getDevicesFromXMLDocument(parsedXML, 'switchList', 'switch'),
+    routers: getDevicesFromXMLDocument(parsedXML, 'routerList', 'router'),
+    hosts: getDevicesFromXMLDocument(parsedXML, 'hostList', 'switch'),
   };
+
+  createDeviceLinksFromXMLDocument(devices, parsedXML);
+  return devices;
 }

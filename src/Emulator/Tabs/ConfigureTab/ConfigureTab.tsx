@@ -1,29 +1,13 @@
 import React, { useRef, FC, useCallback, useMemo } from 'react';
 
 import { useBoolean } from 'src/common/hooks';
-import { NetworkNode } from 'src/common/topologyParser';
 import { useTopology, TopologyActions } from 'src/common/hooks/useTopology';
 
 import DeviceContainer from './DeviceContainer';
-import { DeviceInterface } from './DeviceContainer/Device/Device';
 import './ConfigureTab.css';
 
 const MAX_DEVICES = 10;
 const FIVE_SECONDS = 5000;
-
-/**
- * Adapter to convert a NetworkNode[] to a DeviceInterface[].
- */
-const toConfig = (nodes: NetworkNode[]): DeviceInterface[] => {
-  const res = [];
-  for (let node of nodes) {
-    res.push({
-      name: node.name,
-      connections: node.children.map(n => n.name),
-    });
-  }
-  return res;
-};
 
 /**
  * Determines the number of the newly added device
@@ -88,9 +72,7 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
         payload: {
           type,
           name: getNextDeviceName(device, deviceLetter),
-          parent: null,
-          children: [],
-          ip: '0.0.0.0',
+          connections: [],
         },
       });
     };
@@ -100,28 +82,24 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
   const addSwitch= useMemo(() => addDevice('switch'), [addDevice]);
   const addHost = useMemo(() => addDevice('host'), [addDevice]);
 
-  const routerConfigs = useMemo(() => toConfig(routers), [routers]);
-  const switchConfig = useMemo(() => toConfig(switches), [switches]);
-  const hostConfig = useMemo(() => toConfig(hosts), [hosts]);
-
   return (
     <div className={`configure ${status}`}>
       <div className="network-devices">
         <DeviceContainer
           deviceName="Router"
-          devices={routerConfigs}
+          devices={routers}
           addDevice={addRouter}
           ref={routerScrollRef}
         />
         <DeviceContainer
           deviceName="Switch"
-          devices={switchConfig}
+          devices={switches}
           addDevice={addSwitch}
           ref={switchScrollRef}
         />
         <DeviceContainer
           deviceName="Host"
-          devices={hostConfig}
+          devices={hosts}
           addDevice={addHost}
           ref={hostScrollRef}
         />
