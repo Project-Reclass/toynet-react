@@ -19,6 +19,7 @@
     padding: 10px;
     display: flex;
     text-align: center;
+    position: relative;
  }
  
  .image {
@@ -41,8 +42,11 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    left: 50vh;
-    bottom: 100px;
+    /* left: 50vh;
+    bottom: 100px; */
+    position: absolute;
+   top: 50%;
+   left: 0;
  }
  
  .icon {
