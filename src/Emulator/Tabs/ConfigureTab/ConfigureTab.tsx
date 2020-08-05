@@ -1,5 +1,6 @@
 import React, { useRef, FC, useCallback, useMemo, useState } from 'react';
 
+import { DeviceType } from 'src/common/types';
 import { useTopology, TopologyActions } from 'src/common/hooks/useTopology';
 
 import DeviceContainer from './DeviceContainer';
@@ -51,7 +52,7 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
     }, FIVE_SECONDS);
   }, []);
 
-  const addDevice = useCallback((type: 'router' | 'host' | 'switch') => {
+  const addDevice = useCallback((type: DeviceType) => {
     const device = type === 'router' ? routers :
       type === 'host' ? hosts : switches;
     const actionType = type === 'router' ? TopologyActions.ADD_ROUTER :

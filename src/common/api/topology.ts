@@ -8,6 +8,6 @@ interface TopologyResponse {
 }
 
 export const getBaseTopology = async (id: number) => {
-  const { data } = await axios.get<TopologyResponse>(`/api/mininet/${1}/`);
+  const { data } = await axios.get<TopologyResponse>(`/api/mininet/${id}/`);
   return data;
 };

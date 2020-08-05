@@ -1,4 +1,4 @@
-export type DeviceType = 'router' | 'switch' | 'host' | 'link';
+export type DeviceType = 'router' | 'switch' | 'host';
 
 export interface DeviceInterface {
   name: string;
