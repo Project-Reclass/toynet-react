@@ -1,6 +1,5 @@
-import React, { useRef, FC, useCallback, useMemo } from 'react';
+import React, { useRef, FC, useCallback, useMemo, useState } from 'react';
 
-import { useBoolean } from 'src/common/hooks';
 import { useTopology, TopologyActions } from 'src/common/hooks/useTopology';
 
 import DeviceContainer from './DeviceContainer';
@@ -39,18 +38,18 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
 
 const ConfigureTab: FC<{status: string}> = ({ status }) => {
   const { switches, hosts, routers, dispatch } = useTopology(1);
-  const { bool: showError, setTrue, setFalse } = useBoolean(false);
+  const [showError, setShowError] = useState(false);
 
   const routerScrollRef = useRef(null);
   const switchScrollRef = useRef(null);
   const hostScrollRef = useRef(null);
 
   const toggleErrorMessage = useCallback(() => {
-    setTrue();
+    setShowError(true);
     setTimeout(() => {
-      setFalse();
+      setShowError(false);
     }, FIVE_SECONDS);
-  }, [setFalse, setTrue]);
+  }, []);
 
   const addDevice = useCallback((type: 'router' | 'host' | 'switch') => {
     const device = type === 'router' ? routers :
