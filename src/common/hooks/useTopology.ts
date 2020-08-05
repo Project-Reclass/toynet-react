@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react';
 import { useQuery } from 'react-query';
 
 import { parseXMLTopology, ParsedXML } from '../topologyParser';
-import { getTopology } from '../api/topology';
+import { getBaseTopology } from '../api/topology';
 import { DeviceInterface } from '../types';
 
 export enum TopologyActions {
@@ -78,7 +78,7 @@ const initialState: ParsedXML = {
  * Provides parsed topology state retrieved from the server.
  */
 export function useTopology(id: number) {
-  const { data, isLoading, ...rest } = useQuery(`get-topology-${id}`, () => getTopology(id));
+  const { data, isLoading, ...rest } = useQuery(`get-topology-${id}`, () => getBaseTopology(id));
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {

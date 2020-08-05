@@ -7,7 +7,7 @@ interface TopologyResponse {
   networkconfig: string;
 }
 
-export const getTopology = async (id: number) => {
+export const getBaseTopology = async (id: number) => {
   const { data } = await axios.get<TopologyResponse>(`/api/mininet/${1}/`);
   return data;
 };
