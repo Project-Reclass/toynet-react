@@ -6,7 +6,7 @@ export interface ParsedXML {
   switches: DeviceInterface[];
 }
 
-const xmlVersionMatcher = /[\<\?xml version].+\?>/;
+const xmlVersionMatcher = /[<?xml version].+\?>/;
 
 /**
  * Removes the XML Version from the xml string.
