@@ -19,12 +19,10 @@ FROM nginx:alpine
 WORKDIR app
 
 RUN mkdir -p /app/frontend/build
-RUN mkdir -p /app/frontend/node_modules
 
 COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
 
 COPY --from=builder "/app/build" "/usr/share/nginx/html"
-COPY --from=builder "/app/node_modules" "/app/frontend/node_modules"
 
 RUN chmod +x /app/docker-entrypoint.sh
 
