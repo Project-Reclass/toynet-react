@@ -13,9 +13,6 @@ export enum TopologyActions {
   SET_HOSTS,
   SET_ROUTERS,
   SET_TOPOLOGY,
-  DELETE_SWITCH,
-  DELETE_HOST,
-  DELETE_ROUTER,
   CLEAR,
 }
 
@@ -49,13 +46,6 @@ function reducer(state: ParsedXML, action: Action) {
     case TopologyActions.SET_TOPOLOGY:
       return {
         ...action.payload as ParsedXML,
-      };
-
-    case TopologyActions.DELETE_HOST:
-    case TopologyActions.DELETE_ROUTER:
-    case TopologyActions.DELETE_SWITCH:
-      return {
-        ...state,
       };
 
     case TopologyActions.CLEAR:
