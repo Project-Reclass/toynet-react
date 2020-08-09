@@ -6,6 +6,92 @@ Changes made in package.json related to the Heroku deployment (specifically the 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Getting Started
+
+<!-- toc -->
+- [Running in Development](#running-in-development)
+- [Testing PRs](#testing-pull-requests-with-docker-compose)
+- [Testing Master](#testing-the-master-branch)
+- [Available Scripts](#available-scripts)
+- [Learn More](#learn-more)
+<!-- tocstop -->
+
+-------------------------------------------
+
+Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines.
+
+## Running in Development
+
+Because there are two parts to `toynet` there is a docker-compose that is useful to get started developing as a fast as possible.
+
+To start
+
+```bash
+$ git clone https://github.com/Project-Reclass/toynet-react.git
+$ cd toynet-react
+```
+
+The docker-compose file can then be ran in the background using
+
+```bash
+$ docker-compose -f docker-compose.dev.yml up -d --build
+```
+
+After the docker-compose starts up you can start `toynet-react` for development using
+```bash
+$ npm run dev
+```
+
+and navate to http://localhost:3000.
+
+## Testing Pull Requests with Docker Compose
+
+Testing pull requests can be done without cloning down or checking out the pull request on the local machine. Because `toynet-react` uses docker-compose pull-requests can be preview by just using the docker-compose file.
+
+```bash
+$ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml
+```
+
+Edit the `docker-compose.yml` file to include the GitHub PR id.
+```yml
+services:
+  ...
+  frontend:
+    build: https://github.com/Project-Reclass/toynet-react.git#pull/{pull-request-number}/head
+    # e.g. https://github.com/Project-Reclass/toynet-react.git#pull/14/head
+```
+
+And then run
+```bash
+$ docker-compose up --build
+```
+
+The PR app can then be previewed at http://localhost:3000
+
+## Testing the Master Branch
+
+The master or default branch can be tested in much the same way that PR previews can be tested.
+
+```bash
+$ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml
+```
+
+Edit the `docker-compose.yml` file use master or the default branch instead of a PR id.
+```yml
+services:
+  ...
+  frontend:
+    build: https://github.com/Project-Reclass/toynet-react.git#master
+    # e.g. instead of https://github.com/Project-Reclass/toynet-react.git#pull/14/head
+```
+
+And then run
+```bash
+$ docker-compose up --build
+```
+
+The app can then be accessed at http://localhost:3000.
+
 ## Available Scripts
 
 In the project directory, you can run:

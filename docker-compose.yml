@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  backend:
+    build: https://github.com/Project-Reclass/toynet-django.git#master
+    networks:
+      - reclass_network
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: https://github.com/Project-Reclass/toynet-react.git#pull/{pull-request-number}/head
+    ports:
+      - "3000:80"
+    networks:
+      - reclass_network
+    depends_on:
+      - backend
+    environment:
+      - SERVER_URI="http://backend:8000"
+
+networks:
+  reclass_network:
