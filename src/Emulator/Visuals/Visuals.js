@@ -1,69 +1,110 @@
 import React, {useRef, useState, useEffect} from 'react';
 import './Visuals.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearchPlus, faSearchMinus, faExpand, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import { faSearchPlus, faSearchMinus, faUndo, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import Draggable from 'react-draggable';
-import { parse } from 'path';
 
 const Visuals = () => {
   const containerHeight = '50vh';
   const containerWidth = '75vw';
-  const additionalImageSpace = 20;
+  const additionalImageSpace = 21;
+  const hundred = 100;
 
   const [zoom, setZoom] = useState(true);
   const [hideImage, setHideImage] = useState(false);
-  const [toggleMax, setMax] = useState(false);
   const imageRef = useRef();
   const [containerDimensions, setContainerDimensions] = useState({height: containerHeight, width: containerWidth});
-  const [contentDimensions, setContentDimensions] = useState({height: 0, width: 0});
+  const [contentDimensions, setContentDimensions] = useState({height: '125px', width: '125px'});
   const [image, setImage] = useState('null');
   const [, setSrc] = useState('');
   const [, setDrags] = useState(0);
-  const defaultX = 200;
-  const defaultY = 200;
+  const defaultX = 550;
+  const defaultY = 180;
   const [pos, setPos] = useState({x: defaultX, y: defaultY});
-  const [handleDetect, setHandleDetect] = useState({x: '', y: ''})
-  const [elementBounds, setElementBounds] = useState({top: contentDimensions.height || 125, bottom: contentDimensions.height|| 125, left: '', right: contentDimensions.width || 125})
-
-  const [maxRes, setMaxRes] = useState({
-    height: null,
-    width: null,
-    prevHeight: null,
-    prevWidth: null});
+  const [handleDetect, setHandleDetect] = useState({x: '', y: ''});
+  const [elementBounds, setElementBounds] = useState({bottom: contentDimensions.height, right: contentDimensions.width});
+  const [reset, setReset] = useState(false);
+  const [grabbed, setGrabbed] = useState(false);
 
   function convert2Px(containerDimensions) {
-    const movableSpaceReg = /([\d]+)+/g
-    const movableSpaceStringH = containerDimensions.height.toString()
-    const movableSpaceStringW = containerDimensions.width.toString()
-    const movableSpaceH = movableSpaceStringH.match(movableSpaceReg)[0]
-    const movableSpaceW = movableSpaceStringW.match(movableSpaceReg)[0]
-    const movableSpacePxH = window.innerHeight * movableSpaceH / 100
-    const movableSpacePxW = window.innerWidth * movableSpaceW / 100    
-    return {movableSpacePxH, movableSpacePxW}
-  }
-
-  function convert2Vh(movableSpace) {
-    const hundred = 100
-    const movableSpaceH = movableSpace / window.innerHeight * hundred + 'vh'
-    setContainerDimensions({
-      height: movableSpaceH, width: containerWidth
-    }) 
-    return movableSpaceH
+    const movableSpaceReg = /([\d]+)+/g;
+    const movableSpaceStringH = containerDimensions.height.toString();
+    const movableSpaceStringW = containerDimensions.width.toString();
+    const movableSpaceH = movableSpaceStringH.match(movableSpaceReg)[0];
+    const movableSpaceW = movableSpaceStringW.match(movableSpaceReg)[0];
+    const movableSpacePxH = window.innerHeight * movableSpaceH / hundred;
+    const movableSpacePxW = window.innerWidth * movableSpaceW / hundred;
+    return {movableSpacePxH, movableSpacePxW};
   }
 
   useEffect(() => {
-    const padding = 20
-    const movableSpace = convert2Px(containerDimensions)
-    const elementBot = parseInt(handleDetect.y) + parseInt(elementBounds.bottom) + padding
-    console.log(elementBounds.bottom)
-    
-    if (elementBot > movableSpace.movableSpacePxH) {
-      const addSpace = 50
-      const addMovableSpace = movableSpace.movableSpacePxH + addSpace
-      const newMovableSpace = convert2Vh(addMovableSpace)
+    const movableSpace = convert2Px(containerDimensions);
+    const elementBot = parseInt(handleDetect.y) + parseInt(elementBounds.bottom) + additionalImageSpace;
+    const elementRight = parseInt(handleDetect.x) + parseInt(elementBounds.right) + additionalImageSpace;
+
+    function convert2Vh(movableSpace) {
+      const movableSpaceH = movableSpace / window.innerHeight * hundred + 'vh';
+      setContainerDimensions({
+        height: movableSpaceH, width: containerDimensions.width,
+      });
     }
-    console.log(elementBot, movableSpace.movableSpacePxH, containerDimensions.height)
-  }, [handleDetect, containerDimensions, elementBounds, contentDimensions])
+
+    function convert2Vw(movableSpace) {
+      const movableSpaceW = movableSpace / window.innerWidth * hundred + 'vw';
+      setContainerDimensions({
+        height: containerDimensions.height, width: movableSpaceW,
+      });
+    }
+
+    if (reset === true) {
+      setPos({
+        x: defaultX, y: defaultY,
+      });
+      setHandleDetect({
+        x: defaultX, y: defaultY,
+      });
+      setContainerDimensions({
+        height: containerHeight, width: containerWidth,
+      });
+      setReset(!reset);
+    }
+
+    if (elementBot > movableSpace.movableSpacePxH) {
+      const addMovableSpace = movableSpace.movableSpacePxH + additionalImageSpace;
+      const newMovableSpace = convert2Vh(addMovableSpace);
+      return newMovableSpace;
+    }
+
+    if (elementRight > movableSpace.movableSpacePxW) {
+      const addMovableSpace = movableSpace.movableSpacePxW + additionalImageSpace;
+      const newMovableSpace = convert2Vw(addMovableSpace);
+      return newMovableSpace;
+    }
+
+    if (parseInt(handleDetect.y) === 0) {
+      setPos({
+        x: pos.x, y: parseInt(handleDetect.y) + additionalImageSpace,
+      });
+      setHandleDetect({
+        x: handleDetect.x, y: parseInt(handleDetect.y) + additionalImageSpace,
+      });
+      const addMovableSpace = movableSpace.movableSpacePxH + additionalImageSpace;
+      const newMovableSpace = convert2Vh(addMovableSpace);
+      return newMovableSpace;
+    }
+
+    if (parseInt(handleDetect.x) === 0) {
+      setPos({
+        x: parseInt(handleDetect.x) + additionalImageSpace, y: pos.y,
+      });
+      setHandleDetect({
+        x: parseInt(handleDetect.x) + additionalImageSpace, y: handleDetect.y,
+      });
+      const addMovableSpace = movableSpace.movableSpacePxW + additionalImageSpace;
+      const newMovableSpace = convert2Vw(addMovableSpace);
+      return newMovableSpace;
+    }
+  }, [handleDetect, containerDimensions, elementBounds, contentDimensions, pos, reset]);
 
   // Handles dragging
   const handleDrag = (e, ui) => {
@@ -74,22 +115,24 @@ const Visuals = () => {
     });
 
     var dragging = document.getElementsByClassName('handle')[0].style.transform;
-    var draggedPos = /([\d]+)+/g
-    var dragX = dragging.match(draggedPos)
-    
+    var draggedPos = /([\d]+)+/g;
+    var dragX = dragging.match(draggedPos);
+
     setHandleDetect({
       x: dragX[0],
-      y: dragX[1]
-    })
+      y: dragX[1],
+    });
   };
-  
+
   // Handles what to do when starting drag and stopping drag
   const onStart = () => {
     setDrags(drags => drags + 1);
+    setGrabbed(true);
   };
 
   const onStop = () => {
     setDrags(drags => drags - 1);
+    setGrabbed(false);
   };
 
   // When image is added, adjusts the container and drag handler sizes to accomodate for image size
@@ -102,10 +145,17 @@ const Visuals = () => {
       top: imageRef.current.offsetHeightt + additionalImageSpace,
       bottom: imageRef.current.offsetWidth + additionalImageSpace,
       left: '',
-      right: imageRef.current.offsetWidth + additionalImageSpace
-    })
+      right: imageRef.current.offsetWidth + additionalImageSpace,
+    });
     setSrc(image);
   };
+
+  function elementBoundsAdjust() {
+    setElementBounds({
+      bottom: contentDimensions.width + additionalImageSpace,
+      right: contentDimensions.width + additionalImageSpace,
+    });
+  }
 
   // Zoom in function and adjusts drag handler size (the invisible space you can click and start drag with)
   function plusClick() {
@@ -115,12 +165,7 @@ const Visuals = () => {
       height: contentDimensions.height + additionalImageSpace,
       width: contentDimensions.width + additionalImageSpace,
     });
-    setElementBounds({
-      top: contentDimensions.height + additionalImageSpace,
-      bottom: contentDimensions.width + additionalImageSpace,
-      left: '',
-      right: contentDimensions.width + additionalImageSpace
-    })
+    elementBoundsAdjust();
   }
 
   // Zoom out function and adjusts drag handler size (the invisible space you can click and start drag with)
@@ -131,60 +176,15 @@ const Visuals = () => {
       height: contentDimensions.height - additionalImageSpace,
       width: contentDimensions.width - additionalImageSpace,
     });
-    setElementBounds({
-      top: contentDimensions.height + additionalImageSpace,
-      bottom: contentDimensions.width + additionalImageSpace,
-      left: '',
-      right: contentDimensions.width + additionalImageSpace
-    })
+    elementBoundsAdjust();
   }
 
-  // Full screen function; changes element resolution to container's max dimensions when when maxRes and toggleMax state changes
-  useEffect(() => {
-    if (toggleMax === true) {
-      setContentDimensions({
-        height: maxRes.height,
-        width: maxRes.width,
-      });
-    } else {
-      setContentDimensions({
-        height: maxRes.height,
-        width: maxRes.width,
-      });
-    }}, [maxRes, toggleMax]);
-
-  // Full screen function; finds cotainer and container space resolution sizes and sets them so that image fills the whole container using true/false states
-  function maxClick() {
-    setMax(!toggleMax);
-    if (toggleMax === false) {
-      setMaxRes({
-        height: containerDimensions.height || '49vh',
-        width: containerDimensions.width || '74vh',
-        prevHeight: contentDimensions.height,
-        prevWidth: contentDimensions.width,
-      });
-      setPos({
-        x: 0, y: 0,
-      });
-    } else {
-      const centerX = 150;
-      const centerY = 150;
-      setMaxRes({
-        height: maxRes.prevHeight,
-        width: maxRes.prevHeight,
-        prevHeight: maxRes.height,
-        prevWidth: maxRes.width,
-      });
-      setPos({
-        x: centerX, y: centerY,
-      });
-    }
+  function recenterClick() {
+    setReset(!reset);
   }
 
   function hideClick() {
-    return (
-        setHideImage(!hideImage)
-    );
+    setHideImage(!hideImage);
   }
 
   return (
@@ -201,7 +201,10 @@ const Visuals = () => {
             onDrag={handleDrag}
             onStop={onStop}
             bounds="parent">
-          <div className="handle" style={{height: contentDimensions.height || '125px', width: contentDimensions.width || '125px'}}>
+          <div className="handle" style={{
+            height: contentDimensions.height,
+            width: contentDimensions.width,
+            cursor: grabbed ? '-webkit-grabbing': ''}}>
             {/* Functional buttons that changes the element inside the container */}
             <div>
                 <button onClick={() => setImage('https://picsum.photos/200')}>Image 200px</button> <br></br>
@@ -209,13 +212,12 @@ const Visuals = () => {
                 <button onClick={() => setImage('https://picsum.photos/400')}>Image 400px</button> <br></br>
                 <img
                   className="image"
-                  style={{ 
-                    zoom, 
-                    visibility: hideImage ? 'hidden' : 'visible', 
-                    width: toggleMax ? '100%' : '', 
-                    height: toggleMax ? '100%' : ''}}
-                  src= {image} 
-                  alt=""
+                  style={{
+                    zoom,
+                    visibility: hideImage ? 'hidden' : 'visible',
+                  }}
+                  src= {image}
+                  alt="Network Topology Visualization"
                   ref={imageRef}
                   onLoad={imageLoad}/>
             </div>
@@ -226,7 +228,7 @@ const Visuals = () => {
       <div className="icons">
         <button className='iconButtons' onClick={plusClick}><FontAwesomeIcon className='icon' icon={faSearchPlus} /></button>
         <button className='iconButtons' onClick={minusClick}><FontAwesomeIcon className='icon' icon={faSearchMinus} /></button>
-        <button className='iconButtons' onClick={maxClick}><FontAwesomeIcon className='icon' icon={faExpand} /></button>
+        <button className='iconButtons' onClick={recenterClick}><FontAwesomeIcon className='icon' icon={faUndo} /></button>
         <button className='iconButtons' onClick={hideClick}><FontAwesomeIcon className='icon' icon={faEyeSlash} /></button>
       </div>
     </div>
