@@ -4,93 +4,108 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus, faSearchMinus, faUndo, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import Draggable from 'react-draggable';
 
+
+/**
+ *
+ *
+ *
+ * We have image 300px x 300px
+ * container -> 75vw x 50vh
+ *
+ * We change css zoom property || maybe transform??
+ *
+ * Center -> transform(-50%, -50%);
+ *
+ */
+
+const containerHeight = '50vh';
+const containerWidth = '75vw';
+const hundred = 100;
+
+const image = require('./demo1.png');
+
+// Conversion functions for pixel to viewport and vice versa
+function convert2Px(containerDimensions) {
+  const movableSpaceReg = /([\d]+)+/g;
+  const movableSpaceStringH = containerDimensions.height.toString();
+  const movableSpaceStringW = containerDimensions.width.toString();
+  const movableSpaceH = movableSpaceStringH.match(movableSpaceReg)[0];
+  const movableSpaceW = movableSpaceStringW.match(movableSpaceReg)[0];
+  const movableSpacePxH = window.innerHeight * movableSpaceH / hundred;
+  const movableSpacePxW = window.innerWidth * movableSpaceW / hundred;
+  return {movableSpacePxH, movableSpacePxW};
+}
+
+function pxStrip(pxElement) {
+  const noPx = /([\d]+)+/g;
+  const pxStringH = pxElement.height.toString();
+  const pxStringW = pxElement.width.toString();
+  const noPxH = parseInt(pxStringH.match(noPx)[0]);
+  const noPxW = parseInt(pxStringW.match(noPx)[0]);
+  return {noPxH, noPxW};
+}
+
+// Gets center of image space and centers element to the middle on render
+function getCenter(containerDimensions, contentDimensions) {
+  const pxContainerDimensions = convert2Px(containerDimensions);
+  const pxContentDimensions = pxStrip(contentDimensions);
+  const centerHeight = (pxContainerDimensions.movableSpacePxH - pxContentDimensions.noPxH) / 2;
+  const centerWidth = (pxContainerDimensions.movableSpacePxW - pxContentDimensions.noPxW) / 2;
+  return {centerHeight, centerWidth};
+}
+
 const Visuals = () => {
-  const containerHeight = '50vh';
-  const containerWidth = '75vw';
-  const additionalImageSpace = 21;
-  const hundred = 100;
-  const demo1 = require('./demo1.png')
-  const demo2 = require('./demo2.png')
-  const demo3 = require('./demo3.png')
-  const demo = {demo1, demo2, demo3}
+  const imageRef = useRef();
 
   const [zoom, setZoom] = useState(true);
   const [hideImage, setHideImage] = useState(false);
-  const imageRef = useRef();
   const [containerDimensions, setContainerDimensions] = useState({height: containerHeight, width: containerWidth});
-  const [contentDimensions, setContentDimensions] = useState({height: '125px', width: '125px'});
-  const [image, setImage] = useState(demo);
-  const [, setSrc] = useState('');
-  const [, setDrags] = useState(0);
+  const [contentDimensions, setContentDimensions] = useState({height: '0px', width: '0px'});
   const [handleDetect, setHandleDetect] = useState({x: '', y: ''});
   const [reset, setReset] = useState(false);
   const [grabbed, setGrabbed] = useState(false);
 
-  // Conversion functions for pixel to viewport and vice versa
-  function convert2Px(containerDimensions) {
-    const movableSpaceReg = /([\d]+)+/g;
-    const movableSpaceStringH = containerDimensions.height.toString();
-    const movableSpaceStringW = containerDimensions.width.toString();
-    const movableSpaceH = movableSpaceStringH.match(movableSpaceReg)[0];
-    const movableSpaceW = movableSpaceStringW.match(movableSpaceReg)[0];
-    const movableSpacePxH = window.innerHeight * movableSpaceH / hundred;
-    const movableSpacePxW = window.innerWidth * movableSpaceW / hundred;
-    return {movableSpacePxH, movableSpacePxW};
-  }
-
-  function pxStrip(pxElement) {
-    const noPx = /([\d]+)+/g;
-    const pxStringH = pxElement.height.toString();
-    const pxStringW = pxElement.width.toString();
-    const noPxH = parseInt(pxStringH.match(noPx)[0]);
-    const noPxW = parseInt(pxStringW.match(noPx)[0]);
-    return {noPxH, noPxW}
-  }
-
-  // Gets center of image space and centers element to the middle on render
-  function getCenter() {
-    const pxContainerDimensions = convert2Px(containerDimensions);
-    const pxContentDimensions = pxStrip(contentDimensions);
-    const centerHeight = (pxContainerDimensions.movableSpacePxH - pxContentDimensions.noPxH) / 2;
-    const centerWidth = (pxContainerDimensions.movableSpacePxW - pxContentDimensions.noPxW) / 2;
-    return {centerHeight, centerWidth}
-  }
-
-  const onRender = getCenter()
-
-  const defaultX = onRender.centerWidth;
-  const defaultY = onRender.centerHeight;
-
-  const [pos, setPos] = useState({x: defaultX, y: defaultY});
   const [elementBounds, setElementBounds] = useState({bottom: contentDimensions.height, right: contentDimensions.width});
+
+  const [pos, setPos] = useState({x: 0, y: 0});
+
+  useEffect(() => {
+    const { centerWidth, centerHeight } = getCenter(containerDimensions, contentDimensions);
+    setPos({
+      x: centerWidth,
+      y: centerHeight,
+    });
+  }, [containerDimensions, contentDimensions]);
 
   useEffect(() => {
     const movableSpace = convert2Px(containerDimensions);
-    const elementBot = parseInt(handleDetect.y) + parseInt(elementBounds.bottom) + additionalImageSpace;
-    const elementRight = parseInt(handleDetect.x) + parseInt(elementBounds.right) + additionalImageSpace;
+    const elementBot = parseInt(handleDetect.y) + parseInt(elementBounds.bottom);
 
-    console.log(elementBot, movableSpace.movableSpacePxH, elementBounds.bottom)
+    // const elementRight = parseInt(handleDetect.x) + parseInt(elementBounds.right);
 
-    function convert2Vh(movableSpace) {
-      const movableSpaceH = movableSpace / window.innerHeight * hundred + 'vh';
-      setContainerDimensions({
-        height: movableSpaceH, width: containerDimensions.width,
-      });
-    }
+    // console.log(elementBot, movableSpace.movableSpacePxH, elementBounds.bottom);
 
-    function convert2Vw(movableSpace) {
-      const movableSpaceW = movableSpace / window.innerWidth * hundred + 'vw';
-      setContainerDimensions({
-        height: containerDimensions.height, width: movableSpaceW,
-      });
-    }
+    // function convert2Vh(movableSpace) {
+    //   const movableSpaceH = movableSpace / window.innerHeight * hundred + 'vh';
+    //   setContainerDimensions({
+    //     height: movableSpaceH, width: containerDimensions.width,
+    //   });
+    // }
+
+    // function convert2Vw(movableSpace) {
+    //   const movableSpaceW = movableSpace / window.innerWidth * hundred + 'vw';
+    //   setContainerDimensions({
+    //     height: containerDimensions.height, width: movableSpaceW,
+    //   });
+    // }
 
     if (reset === true) {
+      const { centerHeight, centerWidth } = getCenter(containerDimensions, contentDimensions);
       setPos({
-        x: defaultX, y: defaultY,
+        x: centerWidth, y: centerHeight,
       });
       setHandleDetect({
-        x: defaultX, y: defaultY,
+        x: centerWidth, y: centerHeight,
       });
       setContainerDimensions({
         height: containerHeight, width: containerWidth,
@@ -98,105 +113,96 @@ const Visuals = () => {
       setReset(!reset);
     }
 
-    if (elementBot > movableSpace.movableSpacePxH) {
-      const addMovableSpace = movableSpace.movableSpacePxH + additionalImageSpace;
-      const newMovableSpace = convert2Vh(addMovableSpace);
-      return newMovableSpace;
-    }
+    // if (elementBot > movableSpace.movableSpacePxH) {
+    //   const addMovableSpace = movableSpace.movableSpacePxH;
+    //   convert2Vh(addMovableSpace);
+    // }
 
-    if (elementRight > movableSpace.movableSpacePxW) {
-      const addMovableSpace = movableSpace.movableSpacePxW + additionalImageSpace;
-      const newMovableSpace = convert2Vw(addMovableSpace);
-      return newMovableSpace;
-    }
+    // if (elementRight > movableSpace.movableSpacePxW) {
+    //   const addMovableSpace = movableSpace.movableSpacePxW;
+    //   convert2Vw(addMovableSpace);
+    // }
 
-    if (parseInt(handleDetect.y) === 0) {
-      setPos({
-        x: pos.x, y: parseInt(handleDetect.y) + additionalImageSpace,
-      });
-      setHandleDetect({
-        x: handleDetect.x, y: parseInt(handleDetect.y) + additionalImageSpace,
-      });
-      const addMovableSpace = movableSpace.movableSpacePxH + additionalImageSpace;
-      const newMovableSpace = convert2Vh(addMovableSpace);
-      return newMovableSpace;
-    }
+    // if (parseInt(handleDetect.y) === 0) {
+    //   setPos({
+    //     x: pos.x, y: parseInt(handleDetect.y),
+    //   });
+    //   setHandleDetect({
+    //     x: handleDetect.x, y: parseInt(handleDetect.y),
+    //   });
+    //   const addMovableSpace = movableSpace.movableSpacePxH;
+    //   convert2Vh(addMovableSpace);
+    // }
 
-    if (parseInt(handleDetect.x) === 0) {
-      setPos({
-        x: parseInt(handleDetect.x) + additionalImageSpace, y: pos.y,
-      });
-      setHandleDetect({
-        x: parseInt(handleDetect.x) + additionalImageSpace, y: handleDetect.y,
-      });
-      const addMovableSpace = movableSpace.movableSpacePxW + additionalImageSpace;
-      const newMovableSpace = convert2Vw(addMovableSpace);
-      return newMovableSpace;
-    }
-  }, [handleDetect, containerDimensions, elementBounds, contentDimensions, pos, reset, defaultX, defaultY]);
+    // if (parseInt(handleDetect.x) === 0) {
+    //   setPos({
+    //     x: parseInt(handleDetect.x), y: pos.y,
+    //   });
+    //   setHandleDetect({
+    //     x: parseInt(handleDetect.x), y: handleDetect.y,
+    //   });
+    //   const addMovableSpace = movableSpace.movableSpacePxW;
+    //   convert2Vw(addMovableSpace);
+    // }
+  }, [handleDetect, containerDimensions, elementBounds, contentDimensions, pos, reset]);
 
   // Handles dragging
-  const handleDrag = (e, ui) => {
+  const handleDrag = (e, {deltaX, deltaY}) => {
     const {x, y} = pos;
     setPos({
-        x: x + ui.deltaX,
-        y: y + ui.deltaY,
+        x: x + deltaX,
+        y: y + deltaY,
     });
 
-    var dragging = document.getElementsByClassName('handle')[0].style.transform;
-    var draggedPos = /([\d]+)+/g;
-    var dragX = dragging.match(draggedPos);
+    // var dragging = document.getElementsByClassName('handle')[0].style.transform;
+    // var draggedPos = /([\d]+)+/g;
+    // var dragX = dragging.match(draggedPos);
 
-    setHandleDetect({
-      x: dragX[0],
-      y: dragX[1],
-    });
+    // setHandleDetect({
+    //   x: dragX[0],
+    //   y: dragX[1],
+    // });
   };
 
   // Handles what to do when starting drag and stopping drag
   const onStart = () => {
-    setDrags(drags => drags + 1);
     setGrabbed(true);
   };
 
   const onStop = () => {
-    setDrags(drags => drags - 1);
     setGrabbed(false);
   };
 
   // When image is added, adjusts the container and drag handler sizes to accomodate for image size
   const imageLoad = () => {
-    setContentDimensions({
-      height: imageRef.current.offsetHeight + additionalImageSpace,
-      width: imageRef.current.offsetWidth + additionalImageSpace,
-    });
+    // setContentDimensions({
+    //   height: imageRef.current.offsetHeight,
+    //   width: imageRef.current.offsetWidth,
+    // });
     setElementBounds({
-      top: imageRef.current.offsetHeightt + additionalImageSpace,
-      bottom: imageRef.current.offsetWidth + additionalImageSpace,
-      left: '',
-      right: imageRef.current.offsetWidth + additionalImageSpace,
+      bottom: imageRef.current.offsetWidth,
+      right: imageRef.current.offsetWidth,
     });
-    setSrc(image);
   };
 
   function elementBoundsAdjust() {
     setElementBounds({
-      bottom: contentDimensions.width + additionalImageSpace,
-      right: contentDimensions.width + additionalImageSpace,
+      bottom: contentDimensions.width,
+      right: contentDimensions.width,
     });
   }
 
   // Zoom in function and adjusts drag handler size (the invisible space you can click and start drag with)
   function plusClick() {
     if (hideImage === true) {
-      return null
+      return null;
     } else {
       const zoomAmount = .1;
       setZoom(zoom => zoom + zoomAmount);
-      setContentDimensions({
-      height: contentDimensions.height + additionalImageSpace,
-      width: contentDimensions.width + additionalImageSpace,
-      });
+      // setContentDimensions({
+      //   height: contentDimensions.height,
+      //   width: contentDimensions.width,
+      // });
       elementBoundsAdjust();
       }
     }
@@ -204,21 +210,21 @@ const Visuals = () => {
   // Zoom out function and adjusts drag handler size (the invisible space you can click and start drag with)
   function minusClick() {
     if (hideImage === true) {
-      return null
+      return null;
     } else {
       const zoomAmount = .1;
       setZoom(zoom => zoom - zoomAmount);
-      setContentDimensions({
-      height: parseInt(contentDimensions.height) - additionalImageSpace,
-      width: parseInt(contentDimensions.width) - additionalImageSpace,
-      });
+      // setContentDimensions({
+      //   height: parseInt(contentDimensions.height),
+      //   width: parseInt(contentDimensions.width),
+      // });
       elementBoundsAdjust();
     }
   }
 
   function recenterClick() {
     if (hideImage === true){
-      return null
+      return null;
     } else {
       setReset(!reset);
     }
@@ -239,32 +245,29 @@ const Visuals = () => {
     </div>
     {/* Sets container size, space you can drag in container, and the element inside the container's size */}
     <div className="imageContainer" style={{height: containerHeight, width: containerWidth, overflow: 'auto', padding: '0px'}}>
-      <div className="imageSpace" style={{height: containerDimensions.height || '49vh', width: containerDimensions.width || '74vw'}}>
+      {/* <div className="imageSpace" style={{height: containerDimensions.height || '49vh', width: containerDimensions.width || '74vw'}}> */}
+      <div className="imageSpace" style={{height: '100%', width: '100%'}}>
         {/* Handles drag */}
         <Draggable
-            handle=".handle"
-            position={pos}
-            scale={1}
-            onStart={onStart}
-            onDrag={handleDrag}
-            onStop={onStop}
-            bounds="parent">
+          handle=".handle"
+          position={pos}
+          scale={1}
+          onStart={onStart}
+          onDrag={handleDrag}
+          onStop={onStop}
+          bounds="parent"
+        >
           <div className="handle" style={{
-            height: contentDimensions.height,
-            width: contentDimensions.width,
             cursor: grabbed ? '-webkit-grabbing': ''}}>
             {/* Functional buttons that changes the element inside the container */}
             <div>
-                <button onClick={() => setImage(demo.demo1)}>Demo 1</button> <br></br>
-                <button onClick={() => setImage(demo.demo2)}>Demo 2</button> <br></br>
-                <button onClick={() => setImage('https://picsum.photos/200')}>Demo 3</button> <br></br>
                 <img
                   className="image"
                   style={{
-                    zoom,
+                    transform: `scale(${zoom})`,
                     visibility: hideImage ? 'hidden' : 'visible',
                   }}
-                  src= {image}
+                  src={image}
                   alt="Network Topology Visualization"
                   ref={imageRef}
                   onLoad={imageLoad}/>
