@@ -5,6 +5,8 @@ services:
     build: https://github.com/Project-Reclass/toynet-django.git
     networks:
       - reclass_network
+    environment:
+      - SECRET_KEY="iamnotaverysecretkey"
     ports:
       - "8000:8000"
 
