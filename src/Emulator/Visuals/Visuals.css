@@ -24,7 +24,8 @@
    position: relative;
    zoom: 1;
    display: inline-block;
-   border-style:solid;
+   border: solid 0.1rem rgba(0,0,0,0.4);
+   border-radius: 5px;
    -webkit-user-drag: none;
    -khtml-user-drag: none;
    -moz-user-drag: none;
@@ -40,8 +41,8 @@
    position: absolute;
    display: flex;
    flex-direction: column;
-   top: 50%;
-   left: 0;
+   top: 0%;
+   right: 0;
    z-index: 10;
 }
 
