@@ -5,3 +5,8 @@ export interface DeviceInterface {
   type: DeviceType;
   connections: string[];
 }
+
+export type StateHook<T> = [
+  T,
+  (value: T) => void,
+]
