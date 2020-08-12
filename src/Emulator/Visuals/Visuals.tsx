@@ -25,7 +25,7 @@ const Visuals = () => {
   const [isGrabbing, setIsGrabbing] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(INITIAL_ZOOM_LEVEL);
 
-  const imageRef = useRef<HTMLImageElement>(null); 
+  const imageRef = useRef<HTMLImageElement>(null);
 
   const handleDrag = (_: any, {deltaX, deltaY}: DraggableData) => {
     const {x, y} = pos;
@@ -57,7 +57,7 @@ const Visuals = () => {
         y: (realContainerHeight - imageRef.current.offsetHeight) / 2,
       });
     }
-   
+
   };
 
   const toggleHideImage = () => {
