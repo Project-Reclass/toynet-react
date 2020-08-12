@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Draggable from 'react-draggable';
+import Draggable, { DraggableData } from 'react-draggable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus, faSearchMinus, faUndo, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +14,7 @@ const ZOOM_MAX_LIMIT = 2;
 const CONTAINER_HEIGHT = '50vh';
 const CONTAINER_WIDTH = '75vw';
 
-function convertToPixelFromView(text, measurement, toStrip) {
+function convertToPixelFromView(text: string, measurement: number, toStrip: string) {
   const PERCENT_TO_WHOLE = 100;
   return measurement * parseInt(text.replace(toStrip, '')) / PERCENT_TO_WHOLE;
 }
@@ -25,9 +25,9 @@ const Visuals = () => {
   const [isGrabbing, setIsGrabbing] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(INITIAL_ZOOM_LEVEL);
 
-  const imageRef = useRef();
+  const imageRef = useRef<HTMLImageElement>(null); 
 
-  const handleDrag = (_, {deltaX, deltaY}) => {
+  const handleDrag = (_: any, {deltaX, deltaY}: DraggableData) => {
     const {x, y} = pos;
     setPos({
         x: x + deltaX,
@@ -51,10 +51,13 @@ const Visuals = () => {
 
     setZoomLevel(INITIAL_ZOOM_LEVEL);
     setHideImage(false);
-    setPos({
-      x: (realContainerWidth - imageRef.current.offsetWidth) / 2,
-      y: (realContainerHeight - imageRef.current.offsetHeight) / 2,
-    });
+    if (imageRef.current) {
+      setPos({
+        x: (realContainerWidth - imageRef.current.offsetWidth) / 2,
+        y: (realContainerHeight - imageRef.current.offsetHeight) / 2,
+      });
+    }
+   
   };
 
   const toggleHideImage = () => {
