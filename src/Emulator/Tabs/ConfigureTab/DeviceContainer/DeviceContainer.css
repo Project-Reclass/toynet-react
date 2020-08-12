@@ -1,0 +1,35 @@
+.device-container {
+  width: 25vw;
+  border: 1.5px solid black;
+  border-right: 0;
+}
+
+.device-container:last-child {
+  border-right: 1.5px solid black;
+}
+
+.device-container-name {
+  height: 4vh;
+  line-height: 4vh;
+  font-size: large;
+  text-align: center;
+  color: white;
+  border-bottom: 1.5px solid black;
+}
+
+.device-container-content {
+  color: white;
+  height: 18vh;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.plus-circle {
+  height: auto;
+  width: 18px;
+  float: left;
+  margin-top: 0.7vh;
+  margin-left: 0.7vh;
+  cursor: pointer;
+  user-select: none;
+}

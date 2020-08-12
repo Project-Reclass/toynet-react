@@ -4,22 +4,6 @@
    width: 75vw;
 }
 
-.imageContainer {
-   position: relative;
-   overflow: auto;
-   padding: '0';
-   border-style: solid;
-   margin: auto;
-}
-
-.imageSpace {
-   padding: 10px;
-   display: flex;
-   text-align: center;
-   position: relative;
-   background-color: lightgray;
-}
-
 .image {
    position: relative;
    zoom: 1;
@@ -50,14 +34,6 @@
    margin: 5px;
    display: flex;
 }
-
-/* .icon:hover {
-   cursor: pointer;
-} */
- 
-.buttons {
-   margin: auto;
- }
 
 .handle {
    background: white;

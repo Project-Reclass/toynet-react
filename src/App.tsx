@@ -9,8 +9,8 @@ import Emulator from './Emulator/Emulator';
 
 const data = {
   'id': 1,
-  'submodule_number': 1,
-  'submodule_name': 'Local Area Networks',
+  'submoduleNumber': 1,
+  'submoduleName': 'Local Area Networks',
   'objective': 'Connect two hosts together and check they can communicate',
   'tasks': [
     'Attach h1 to s1.',
