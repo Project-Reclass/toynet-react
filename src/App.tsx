@@ -6,6 +6,10 @@ import './App.css';
 import Emulator from './Emulator/Emulator';
 import Layout from './layout';
 
+import ModuleList from './ModuleList';
+import Article from './ModuleList/Article';
+import Quiz from './ModuleList/Quiz';
+
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined
 
@@ -30,10 +34,20 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Layout>
-            <div></div>
+            <ModuleList />
           </Layout>
         </Route>
-        <Route path="/console">
+        <Route exact path="/module/:moduleId/quiz/:quizId">
+          <Layout>
+            <Quiz />
+          </Layout>
+        </Route>
+        <Route exact path="/module/:moduleId/article/:articleId">
+          <Layout>
+            <Article />
+          </Layout>
+        </Route>
+        <Route path="/module/:moduleId/emulator/:emulatorId">
           <Layout>
            <Emulator panelData={data} />
           </Layout>
