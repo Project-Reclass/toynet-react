@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import React from 'react';
-import { ModuleTypes, IModule } from './Module/Module';
+import { ModuleTypes, ModuleInterface } from './Module/Module';
 
 const mockData = [
   {
@@ -72,8 +72,8 @@ const mockData = [
   },
 ];
 
-interface Data extends IModule {
-  subModules: IModule[];
+interface Data extends ModuleInterface {
+  subModules: ModuleInterface[];
 }
 
 export default (Component: React.ComponentType<{moduleData: Data[]}>) => () => {

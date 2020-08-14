@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 
-import Caret from './Caret.svg';
+import { ReactComponent as CaretIcon } from 'src/assets/caret-up-solid.svg';
 
-import styles from './Dropdown.module.css';
+import styles from './Module.module.css';
 import SubModule from './SubModule';
 
 export enum ModuleTypes {
@@ -13,7 +13,7 @@ export enum ModuleTypes {
   EMULATOR = 'emulator',
 }
 
-export interface IModule {
+export interface ModuleInterface {
   id: number | string;
   moduleId: number | string;
   title: string;
@@ -22,7 +22,7 @@ export interface IModule {
 }
 
 interface Props {
-  subModules: IModule[];
+  subModules: ModuleInterface[];
 }
 
 const SubModules: FC<Props> = ({ subModules }) => (
@@ -33,19 +33,19 @@ const SubModules: FC<Props> = ({ subModules }) => (
   </div>
 );
 
-const Module: FC<Props & IModule> = ({ title, progress, subModules }) => {
+const Module: FC<Props & ModuleInterface> = ({ title, progress, subModules }) => {
   const [show, setShow] = useState(false);
 
   return (
     <div>
       <div className={styles.dropdownContainer}>
         <span className={`${styles.arrow} ${show && styles.rotated}`} onClick={() => setShow(!show)}>
-          <Caret />
+          <CaretIcon />
         </span>
-        <span className={styles.title}>
+        <span>
           {title}
         </span>
-        <span className={styles.progress}>
+        <span>
           <ProgressBar label={`${progress}%`} now={progress} />
         </span>
       </div>

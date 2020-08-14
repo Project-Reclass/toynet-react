@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 
-import { IModule } from '../Module';
+import { ModuleInterface } from '../Module';
 
 import styles from './SubModule.module.css';
 
-const SubModule: FC<IModule> = ({ title, progress, id, moduleId, type }) => (
+const SubModule: FC<ModuleInterface> = ({ title, progress, id, moduleId, type }) => (
   <div className={styles.dropdownItem}>
     <span className={styles.title}>
       <a href={`/module/${moduleId}/${type.toString()}/${id}`}>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Module, { IModule } from './Module/Module';
+import Module, { ModuleInterface } from './Module';
 
-interface Data extends IModule {
-  subModules: IModule[];
+interface Data extends ModuleInterface {
+  subModules: ModuleInterface[];
 }
 
 const ModuleList = ({ moduleData }: {moduleData: Data[]}) => {
