@@ -1,5 +1,45 @@
 .visuals {
-  background-color: darkgrey;
-  height: 50vh;
-  width: 75vw;
+   background-color: darkgrey;
+   height: 50vh;
+   width: 75vw;
 }
+
+.image {
+   position: relative;
+   zoom: 1;
+   display: inline-block;
+   border: solid 0.1rem rgba(0,0,0,0.4);
+   border-radius: 5px;
+   -webkit-user-drag: none;
+   -khtml-user-drag: none;
+   -moz-user-drag: none;
+   -o-user-drag: none;
+}
+
+.iconButtons {
+   background-color: transparent;
+   border-color: transparent;
+}
+
+.icons {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   top: 0%;
+   right: 0;
+   z-index: 10;
+}
+
+.icon {
+   margin: 5px;
+   display: flex;
+}
+
+.handle {
+   background: white;
+}
+
+.handle:hover {
+   cursor: -webkit-grab; 
+   cursor: grab;
+ }
