@@ -39,7 +39,11 @@ const Module: FC<Props & ModuleInterface> = ({ title, progress, subModules }) =>
   return (
     <div>
       <div className={styles.dropdownContainer}>
-        <span className={`${styles.arrow} ${show && styles.rotated}`} onClick={() => setShow(!show)}>
+        <span
+          data-testid="caret"
+          className={`${styles.arrow} ${show && styles.rotated}`}
+          onClick={() => setShow(!show)}
+        >
           <CaretIcon />
         </span>
         <span>

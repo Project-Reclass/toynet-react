@@ -9,7 +9,7 @@ const ModuleList = ({ moduleData }: {moduleData: Data[]}) => {
   return (
     <div>
       {moduleData.map(data => (
-        <Module {...data} />
+        <Module key={`${data.title}-${data.id}-${data.moduleId}`} {...data} />
       ))}
     </div>
   );
