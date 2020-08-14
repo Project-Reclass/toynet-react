@@ -3,25 +3,30 @@
   background-color: #454950;
   height: 91vh;
   width: 25vw;
-  overflow-y: auto;
+  word-wrap: break-word;
 }
 .instructions {
-  padding-left: 1vh;
+  padding-left: 4vh;
 }
 
 .icon-container, .title-container, .objective-container, .tasks-title {
   padding-top: 2vh;
+  padding-right: 2vh;
 }
 
 .iconButtons {
   padding-bottom: 2vh
 }
 
+.objective-container {
+}
+
 .line {
-  width: 95%;
+  width: 100%;
   height: 2px;
   margin: 0px auto;
   border-bottom: 1.3px solid black;
+  margin-left: -2vh;
 }
 
 .icons {
@@ -37,14 +42,23 @@ button {
   outline:none;
 }
 
+.tasks-title{
+  padding-bottom: 5%;
+}
+
 ol { 
   counter-reset: item;
   list-style-type: none;
-  padding-left: 1vh;
+  padding-left: 0vh;
 }
-li { display: block; }
 
-li:before { 
-  content: counter(item) " "; 
-  counter-increment: item 
+li { 
+  display: block;
+}
+
+li::before { 
+  display: inline-block;
+  content: " "counter(item)" ";
+  counter-increment: item;
+  width: 3em;
 }
