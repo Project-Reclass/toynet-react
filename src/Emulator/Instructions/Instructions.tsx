@@ -43,7 +43,7 @@ const Instructions: FC<Props> = ({ panelData }) => {
             <li key={`${task}${idx}`}>{task}</li>
           ))}
         </ol>
-      </div>    
+      </div>
     </div>
   );
 };
