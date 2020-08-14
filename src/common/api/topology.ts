@@ -4,10 +4,10 @@ interface TopologyResponse {
   id: number;
   user: number;
   created: string;
-  networkconfig: string;
+  topology: string;
 }
 
 export const getBaseTopology = async (id: number) => {
-  const { data } = await axios.get<TopologyResponse>(`/api/mininet/${id}/`);
+  const { data } = await axios.post<TopologyResponse>(`/api/toynet/session/create/`, {toynet_id: 1, user_id: 0});
   return data;
 };

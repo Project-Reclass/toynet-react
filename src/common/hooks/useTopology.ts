@@ -73,7 +73,7 @@ export function useTopology(id: number) {
 
   useEffect(() => {
     if (!isLoading && data) {
-      const res = parseXMLTopology(data.networkconfig);
+      const res = parseXMLTopology(data.topology);
       dispatch({ type: TopologyActions.SET_TOPOLOGY, payload: res });
     }
   }, [data, dispatch, isLoading]);
