@@ -5,3 +5,46 @@
   width: 25vw;
   overflow-y: auto;
 }
+.instructions {
+  padding-left: 1vh;
+}
+
+.icon-container, .title-container, .objective-container, .tasks-title {
+  padding-top: 2vh;
+}
+
+.iconButtons {
+  padding-bottom: 2vh
+}
+
+.line {
+  width: 95%;
+  height: 2px;
+  margin: 0px auto;
+  border-bottom: 1.3px solid black;
+}
+
+.icons {
+  color: white;
+}
+
+button {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+ol { 
+  counter-reset: item;
+  list-style-type: none;
+  padding-left: 1vh;
+}
+li { display: block; }
+
+li:before { 
+  content: counter(item) " "; 
+  counter-increment: item 
+}
