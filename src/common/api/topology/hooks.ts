@@ -1,9 +1,8 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useQuery, useMutation } from 'react-query';
 
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 import { getBaseTopology, createToynetSession, getToynetSession } from './requests';
-import { TopologyResponse } from './types';
 
 export function useBaseTopology(id: number) {
   return useQuery(`base-topology-${id}`, () => getBaseTopology(id));
