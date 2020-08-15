@@ -71,6 +71,7 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
         type: actionType,
         payload: {
           type,
+          parent: null,
           name: getNextDeviceName(device, deviceLetter),
           connections: [],
         },

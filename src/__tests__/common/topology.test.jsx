@@ -28,7 +28,14 @@ describe('The topology parser', () => {
     expect(res.routers[0].connections).toContain('s1');
     expect(res.routers[0].connections).toContain('s2');
   });
-
+  it('should allow connections to know their parent', () => {
+    const res = parseXMLTopology(xml);
+    expect(res.hosts).toHaveLength(2);
+    expect(res.hosts[0].parent).toBeTruthy();
+    expect(res.hosts[1].parent).toBeTruthy();
+    expect(res.hosts[0].parent.name).toBe('s1');
+    expect(res.hosts[1].parent.name).toBe('s2');
+  });
   it('should throw an error if there is an invalid link', () => {
     expect(() => parseXMLTopology(xmlInvalidLink)).toThrowError();
   });
