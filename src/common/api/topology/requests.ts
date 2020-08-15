@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-import { TopologyResponse, SessionRequest, SessionRequestResponse, ToynetSessionResponse } from './types';
+import { SessionRequest, SessionRequestResponse, ToynetSessionResponse } from './types';
 
 const BASE_PATH = '/api/toynet';
 
 export const getBaseTopology = async (id: number) => {
-  const { data } = await axios.get<TopologyResponse>(`${BASE_PATH}/config/show/${id}/`);
-  return data;
+  return createToynetSession({ toynet_id: id, user_id: 0 });
 };
 
 export const createToynetSession = async (request: SessionRequest) => {
