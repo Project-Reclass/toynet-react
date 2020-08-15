@@ -1,14 +1,22 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
 
-const CONSTANTS = {
-  EMPTY_COLOR: 'empty-color',
-  ROUTER_COLOR: 'router-color',
-  SWITCH_COLOR: 'switch-color',
-  HOST_COLOR: 'host-color',
-};
+enum DeviceColor {
+  EMPTY = 'empty-color',
+  ROUTER = 'router-color',
+  SWITCH = 'switch-color',
+  HOST = 'host-color',
+}
+
+const deviceColorClasses = new Map<string, DeviceColor>();
+deviceColorClasses.set('Router', DeviceColor.ROUTER);
+deviceColorClasses.set('r', DeviceColor.ROUTER);
+deviceColorClasses.set('Switch', DeviceColor.SWITCH);
+deviceColorClasses.set('s', DeviceColor.SWITCH);
+deviceColorClasses.set('Host', DeviceColor.HOST);
+deviceColorClasses.set('h', DeviceColor.HOST);
 
 interface Props {
   deviceName: string;
@@ -16,41 +24,34 @@ interface Props {
 }
 
 const Device: FC<Props> = ({ deviceName, deviceData }) => {
-  let boxClass = 'device-name-box ';
-  if (deviceData.connections.length === 0) {
-    boxClass += CONSTANTS.EMPTY_COLOR;
-  } else if (deviceName === 'Router') {
-    boxClass += CONSTANTS.ROUTER_COLOR;
-  } else if (deviceName === 'Switch') {
-    boxClass += CONSTANTS.SWITCH_COLOR;
-  } else {
-    boxClass += CONSTANTS.HOST_COLOR;
-  }
+  const connections = useMemo(() => {
+    return deviceData.connections.concat(deviceData.parent?.name || []);
+  }, [deviceData.connections, deviceData.parent]);
+
+  const deviceClassName = useMemo(() => {
+    if (connections.length === 0)
+      return DeviceColor.EMPTY;
+    return deviceColorClasses.get(deviceName);
+  }, [connections.length, deviceName]);
 
   return (
     <div className="device-box">
-      <div className={boxClass}>
+      <div className={`device-name-box ${deviceClassName}`}>
         <div>{deviceData.name}</div>
       </div>
       <div className="vertical-bar"></div>
       <div className="connections-container">
         <div>Connections:</div>
         <div className="connections-boxes">
-          {deviceData.connections.map((connection, idx) => {
-            let colorClass = 'connection ';
-            if (connection[0] === 'r') {
-              colorClass += CONSTANTS.ROUTER_COLOR;
-            } else if (connection[0] === 's') {
-              colorClass += CONSTANTS.SWITCH_COLOR;
-            } else {
-              colorClass += CONSTANTS.HOST_COLOR;
-            }
-            return (
-              <div id={`${connection}${idx}`} className={colorClass} key={`${connection}`}>
+          {connections.map((connection, idx) => (
+              <div
+                id={`${connection}${idx}`}
+                className={`connection ${deviceColorClasses.get(connection[0])}`}
+                key={`${connection}`}
+              >
                 {connection}
               </div>
-            );
-          })}
+            ))}
         </div>
       </div>
     </div>
