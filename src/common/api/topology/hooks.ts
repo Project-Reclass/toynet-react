@@ -24,35 +24,16 @@ export function useToynetSession(id: number) {
  */
 export function useToynetTopology(id: number) {
   const [sessionId, setSessionId] = useSessionStorage('toynet-session', -1, (value) => parseInt(value));
-  const [topology, setTopology] = useState<Omit<TopologyResponse, 'author_id'> | undefined>();
-
-  const [hasLoaded, setHasLoaded] = useState(false);
+  const [topology, setTopology] = useState<string>('');
 
   const createNewSession = useCallback(async () => {
-    const { data } = await createToynetSession({
+    const { session_id, topology } = await createToynetSession({
       toynet_id: id,
       user_id: 0,
     });
-    setSessionId(data);
+    setSessionId(session_id);
+    setTopology(topology);
   }, [id, setSessionId]);
 
-  useEffect(() => {
-    setHasLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      if (hasLoaded) {
-        if (sessionId < 0) {
-          setTopology(await getBaseTopology(id));
-          createNewSession();
-          return;
-        }
-        const data = await getToynetSession(sessionId);
-        setTopology(data);
-      }
-    })();
-  }, [createNewSession, hasLoaded, id, sessionId]);
-
-  return { topology };
+  return { topology, sessionId, createNewSession };
 }

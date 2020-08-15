@@ -11,7 +11,8 @@ export interface SessionRequest {
 
 export interface SessionRequestResponse {
   message: string;
-  data: number;
+  session_id: number;
+  topology: string;
 }
 
 export interface ToynetSessionResponse {
