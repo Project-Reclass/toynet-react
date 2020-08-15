@@ -7,6 +7,8 @@ services:
       - reclass_network
     ports:
       - "8000:8000"
+    environment:
+      - SECRET_KEY="iamnotaverysecretkey"
 
   frontend:
     build: https://github.com/Project-Reclass/toynet-react.git#pull/{pull-request-number}/head
