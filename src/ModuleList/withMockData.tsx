@@ -62,7 +62,7 @@ const mockData = [
         type: ModuleTypes.ARTICLE,
       },
       {
-        id: 1,
+        id: 2,
         moduleId: 2,
         title: 'Quiz',
         progress: 0,

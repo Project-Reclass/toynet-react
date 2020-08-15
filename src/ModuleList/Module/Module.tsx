@@ -28,21 +28,21 @@ interface Props {
 const SubModules: FC<Props> = ({ subModules }) => (
   <div className={styles.dropdownItemContainer}>
     {subModules.map(module => (
-      <SubModule {...module} />
+      <SubModule key={`${module.id}-${module.title}-${module.moduleId}`} {...module} />
     ))}
   </div>
 );
 
 const Module: FC<Props & ModuleInterface> = ({ title, progress, subModules }) => {
-  const [show, setShow] = useState(false);
+  const [showSubModules, setShowSubModules] = useState(true);
 
   return (
     <div>
       <div className={styles.dropdownContainer}>
         <span
           data-testid="caret"
-          className={`${styles.arrow} ${show && styles.rotated}`}
-          onClick={() => setShow(!show)}
+          className={`${styles.arrow} ${showSubModules && styles.rotated}`}
+          onClick={() => setShowSubModules(!showSubModules)}
         >
           <CaretIcon />
         </span>
@@ -53,7 +53,7 @@ const Module: FC<Props & ModuleInterface> = ({ title, progress, subModules }) =>
           <ProgressBar label={`${progress}%`} now={progress} />
         </span>
       </div>
-      {show && <SubModules subModules={subModules} />}
+      {showSubModules && <SubModules subModules={subModules} />}
     </div>
   );
 };
