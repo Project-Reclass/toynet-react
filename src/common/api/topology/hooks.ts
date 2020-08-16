@@ -1,19 +1,19 @@
-import { useState, useCallback } from 'react';
-import { useQuery, useMutation } from 'react-query';
+import { useQuery, useMutation, queryCache } from 'react-query';
 
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
-import { getBaseTopology, createToynetSession, getToynetSession } from './requests';
 
-export function useBaseTopology(id: number) {
-  return useQuery(`base-topology-${id}`, () => getBaseTopology(id));
-}
+import { SessionId } from './types';
+import { createToynetSession, getToynetSession, updateToynetSession } from './requests';
 
-export function useCreateSession() {
-  return useMutation(createToynetSession);
-}
-
-export function useToynetSession(id: number) {
-  return useQuery(`toynet-session-${id}`, () => getToynetSession(id));
+export function useModifyTopology(sessionId: SessionId) {
+  return useMutation(updateToynetSession, {
+    onSuccess: () => {
+      queryCache.invalidateQueries(['toynet-session', {
+        sessionId,
+        hasInitialized: true,
+      }]);
+    },
+  });
 }
 
 /**
@@ -21,18 +21,30 @@ export function useToynetSession(id: number) {
  * If there is a session saved, then we grab the topology saved with the
  * session id that is stored in session storage.
  */
-export function useToynetTopology(id: number) {
-  const [sessionId, setSessionId] = useSessionStorage('toynet-session', -1, (value) => parseInt(value));
-  const [topology, setTopology] = useState<string>('');
+export function useToynetSession(id: number) {
+  const [sessionId, setSessionId, hasInitialized] = useSessionStorage(
+    `toynet-session-${id}`, -1,
+    (value) => parseInt(value),
+  );
 
-  const createNewSession = useCallback(async () => {
-    const { session_id, topology } = await createToynetSession({
-      toynet_id: id,
-      user_id: 0,
-    });
-    setSessionId(session_id);
-    setTopology(topology);
-  }, [id, setSessionId]);
+  return useQuery(['toynet-session', { sessionId, hasInitialized }], async (_, { sessionId }) => {
+    if (sessionId < 0) {
+      if (hasInitialized) {
+        const { session_id } = await createToynetSession({
+          user_id: 0, toynet_id: id,
+        });
+        setSessionId(session_id);
+      }
+      return {
+        sessionId,
+        topology: '',
+      };
+    }
 
-  return { topology, sessionId, createNewSession };
+    const { topology } = await getToynetSession(sessionId);
+    return {
+      sessionId,
+      topology,
+    };
+  });
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { StateHook } from '../types';
+import { AsyncStateHook } from '../types';
+import useBoolean from './useBoolean';
 
 /**
  * Stores the value in session storage. When component is initially loaded
@@ -18,15 +19,17 @@ export function useSessionStorage<T>(
   key: string,
   value: T,
   parser?: (value: string) => T,
-): StateHook<T> {
+): AsyncStateHook<T> {
   const [sessionValue, setSessionValue] = useState<T>(value);
+  const {bool: hasInitialize, setTrue: setInitialized} = useBoolean(false);
 
   useEffect(() => {
+    setInitialized();
     const loadedValue = sessionStorage.getItem(key);
     if (loadedValue) {
       setSessionValue(parser ? parser(loadedValue) : loadedValue as any);
     }
-  }, [key, parser]);
+  }, [key, parser, setInitialized]);
 
   const setValueInStorage = useCallback((value: T) => {
     // Since sessionStorage blocks the main thread it's probably best to
@@ -39,5 +42,5 @@ export function useSessionStorage<T>(
     setSessionValue(value);
   }, [key]);
 
-  return [sessionValue, setValueInStorage];
+  return [sessionValue, setValueInStorage, hasInitialize];
 }

@@ -1,3 +1,5 @@
+export type SessionId = string | number;
+
 export interface TopologyResponse {
   id: number;
   author_id: number;
@@ -5,8 +7,13 @@ export interface TopologyResponse {
 }
 
 export interface SessionRequest {
-  toynet_id: number;
+  toynet_id: SessionId;
   user_id: number;
+}
+
+export interface CommandRequest {
+  id: SessionId;
+  command: string;
 }
 
 export interface SessionRequestResponse {

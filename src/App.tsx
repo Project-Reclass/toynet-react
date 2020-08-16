@@ -1,8 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
 import Header from './Header/Header';
-import Emulator from './Emulator/Emulator';
+import Emulator from './Emulator';
+
 
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined

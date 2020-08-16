@@ -1,2 +1,3 @@
 import Emulator from './Emulator';
-export default Emulator;
+import { withEmulatorProvider } from './EmulatorProvider';
+export default withEmulatorProvider(Emulator);

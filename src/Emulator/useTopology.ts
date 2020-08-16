@@ -1,8 +1,20 @@
 import { useEffect, useReducer } from 'react';
 
-import { parseXMLTopology, ParsedXML } from '../topologyParser';
-import { DeviceInterface } from '../types';
-import { useBaseTopology } from '../api/topology';
+import { SessionId } from '../common/api/topology/types';
+import { DeviceInterface, Action } from '../common/types';
+import { useToynetSession } from '../common/api/topology';
+import { parseXMLTopology, ParsedXML } from '../common/topologyParser';
+
+type ReducerAction = Action<TopologyActions, DeviceInterface | DeviceInterface[] | ParsedXML>;
+
+export interface TopologyState {
+  hosts: DeviceInterface[];
+  routers: DeviceInterface[];
+  switches: DeviceInterface[];
+  dispatch: React.Dispatch<ReducerAction>;
+  isLoading: boolean;
+  sessionId: SessionId;
+}
 
 export enum TopologyActions {
   ADD_SWITCH,
@@ -15,12 +27,7 @@ export enum TopologyActions {
   CLEAR,
 }
 
-interface Action {
-  type: TopologyActions;
-  payload: DeviceInterface | DeviceInterface[] | ParsedXML;
-}
-
-function reducer(state: ParsedXML, action: Action) {
+function reducer(state: ParsedXML, action: ReducerAction) {
   switch (action.type) {
     case TopologyActions.ADD_ROUTER:
     case TopologyActions.ADD_SWITCH:
@@ -55,7 +62,7 @@ function reducer(state: ParsedXML, action: Action) {
         ...state,
       };
   }
-}
+};
 
 const initialState: ParsedXML = {
   switches: [],
@@ -67,20 +74,20 @@ const initialState: ParsedXML = {
  * Provides parsed topology state retrieved from the server.
  */
 export function useTopology(id: number) {
-  const { data, isLoading, ...rest } = useBaseTopology(1);
+  const { data, isLoading } = useToynetSession(id);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (!isLoading && data) {
+    if (data && !isLoading) {
       const res = parseXMLTopology(data.topology);
       dispatch({ type: TopologyActions.SET_TOPOLOGY, payload: res });
     }
-  }, [data, dispatch, isLoading]);
+  }, [dispatch, isLoading, data]);
 
   return {
+    ...state,
     dispatch,
     isLoading,
-    ...rest,
-    ...state,
+    sessionId: data?.sessionId || -1,
   };
 }

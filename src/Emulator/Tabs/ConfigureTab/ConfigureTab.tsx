@@ -1,7 +1,8 @@
 import React, { useRef, FC, useCallback, useMemo, useState } from 'react';
 
 import { DeviceType } from 'src/common/types';
-import { useTopology, TopologyActions } from 'src/common/hooks/useTopology';
+import { TopologyActions } from 'src/Emulator/useTopology';
+import { useEmulator } from 'src/Emulator/EmulatorProvider';
 
 import DeviceContainer from './DeviceContainer';
 import './ConfigureTab.css';
@@ -38,7 +39,7 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
 };
 
 const ConfigureTab: FC<{status: string}> = ({ status }) => {
-  const { switches, hosts, routers, dispatch } = useTopology(1);
+  const { switches, hosts, routers, dispatch } = useEmulator();
   const [showError, setShowError] = useState(false);
 
   const routerScrollRef = useRef(null);
