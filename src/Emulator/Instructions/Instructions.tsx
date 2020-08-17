@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import folder from './folder.png';
+import user from './user.png';
 import './Instructions.css';
 
 export interface PanelData {
@@ -12,17 +14,28 @@ interface Props {
   panelData: PanelData;
 }
 
+// TODO: replace temp folder & user icons with transparent icons
 const Instructions: FC<Props> = ({ panelData }) => {
   return (
     <div className="instructions">
-      <div className="icon-container">icon1 icon2 ...</div>
+      <div className="icon-container">
+        <button className='iconButtons'>
+          <img className='folder' src={folder} alt='temporary folder icon' />
+        </button>
+        <button className='iconButtons'>
+          <img className='user' src={user} alt='temporary user icon' />
+        </button>
+        <div className="line">&nbsp;</div>
+      </div>
       <div className="title-container">
         <h4 className="module-num">Module {panelData.submoduleNumber}</h4>
         <p className="module-name">{panelData.submoduleName}</p>
+        <div className="line">&nbsp;</div>
       </div>
       <div className="objective-container">
         <h4 className="objective-title">Objective</h4>
         <p className="objective">{panelData.objective}</p>
+        <div className="line">&nbsp;</div>
       </div>
       <div>
         <h4 className="tasks-title">Tasks</h4>
