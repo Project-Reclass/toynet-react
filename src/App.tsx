@@ -11,14 +11,14 @@ const data = {
   'id': 1,
   'submoduleNumber': 1,
   'submoduleName': 'Local Area Networks',
-  'objective': 'Connect two hosts together and check they can communicate',
+  'objective': 'Connect two hosts together and check if they\'re communicate',
   'tasks': [
-    'Attach h1 to s1.',
-    'Attach h2 to s1.',
-    'Launch.',
-    'In Console, run h1> arp 172.16.0.100.',
-    'In Console, run h1> ping 172.16.0.100.',
-    'In Console, run h1> arp 172.16.0.100.',
+    'Attach h1 to s1',
+    'Attach h2 to s1',
+    'Run',
+    'In Console, run h1> arp 172.16.0.100',
+    'In Console, run h1> ping 172.16.0.100',
+    'In Console, run h1> arp 172.16.0.100',
   ],
 };
 

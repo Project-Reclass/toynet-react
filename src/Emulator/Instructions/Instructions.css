@@ -53,12 +53,13 @@ ol {
 }
 
 li { 
-  display: block;
+  display: flex;
 }
 
 li::before { 
   display: inline-block;
   content: " "counter(item)" ";
   counter-increment: item;
+  flex: 0 0 3em;
   width: 3em;
 }
