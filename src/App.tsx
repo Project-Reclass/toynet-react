@@ -1,8 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
-import Header from './Header/Header';
 import Emulator from './Emulator/Emulator';
+import Layout from './layout';
+
+import ModuleList from './ModuleList';
+import Article from './ModuleList/Article';
+import Quiz from './ModuleList/Quiz';
 
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined
@@ -24,10 +30,35 @@ const data = {
 
 function App() {
   return (
-    <>
-      <Header />
-      <Emulator panelData={data} />
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Layout>
+            <ModuleList />
+          </Layout>
+        </Route>
+        <Route exact path="/module/:moduleId/quiz/:quizId">
+          <Layout>
+            <Quiz />
+          </Layout>
+        </Route>
+        <Route exact path="/module/:moduleId/article/:articleId">
+          <Layout>
+            <Article />
+          </Layout>
+        </Route>
+        <Route path="/module/:moduleId/emulator/:emulatorId">
+          <Layout>
+           <Emulator panelData={data} />
+          </Layout>
+        </Route>
+        <Route path="*">
+          <Layout>
+            <h1>Page not found...</h1>
+          </Layout>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
