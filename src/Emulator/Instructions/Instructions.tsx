@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolder, faUser } from '@fortawesome/free-solid-svg-icons';
+import folder from './folder.png';
+import user from './user.png';
 import './Instructions.css';
 
 export interface PanelData {
@@ -19,10 +19,10 @@ const Instructions: FC<Props> = ({ panelData }) => {
     <div className="instructions">
       <div className="icon-container">
         <button className='iconButtons'>
-          <FontAwesomeIcon className='icons' size='lg' icon={faFolder} />
+          <img className='folder' src={folder} />
         </button>
         <button className='iconButtons'>
-          <FontAwesomeIcon className='icons' icon={faUser} />
+          <img className='user' src={user} />
         </button>
         <div className="line">&nbsp;</div>
       </div>

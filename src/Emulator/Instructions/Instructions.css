@@ -63,3 +63,13 @@ li::before {
   flex: 0 0 3em;
   width: 3em;
 }
+
+.user {
+  height: 25px;
+  width: 25px;
+}
+
+.folder {
+  height: 25px;
+  width: 30px;
+}
