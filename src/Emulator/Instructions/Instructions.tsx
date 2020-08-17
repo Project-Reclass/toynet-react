@@ -23,7 +23,7 @@ const Instructions: FC<Props> = ({ panelData }) => {
           <img className='folder' src={folder} alt='temporary folder icon' />
         </button>
         <button className='iconButtons'>
-          <img className='user' src={user} alt='temporary folder icon' />
+          <img className='user' src={user} alt='temporary user icon' />
         </button>
         <div className="line">&nbsp;</div>
       </div>
