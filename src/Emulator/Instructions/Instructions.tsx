@@ -14,15 +14,16 @@ interface Props {
   panelData: PanelData;
 }
 
+// TODO: replace temp folder & user icons with transparent icons
 const Instructions: FC<Props> = ({ panelData }) => {
   return (
     <div className="instructions">
       <div className="icon-container">
         <button className='iconButtons'>
-          <img className='folder' src={folder} />
+          <img className='folder' src={folder} alt='temporary folder icon' />
         </button>
         <button className='iconButtons'>
-          <img className='user' src={user} />
+          <img className='user' src={user} alt='temporary folder icon' />
         </button>
         <div className="line">&nbsp;</div>
       </div>
