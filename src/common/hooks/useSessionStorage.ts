@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
+
 import { AsyncStateHook } from '../types';
+
 import useBoolean from './useBoolean';
 
 /**
@@ -36,7 +38,7 @@ export function useSessionStorage<T>(
     // throw it on the callback queue so that the runtime loop can decide
     // when there is free time to run the callback.
     setTimeout(() => {
-      const serializedValue = JSON.stringify(value);
+      const serializedValue = typeof value === 'string' ? value : JSON.stringify(value);
       sessionStorage.setItem(key, serializedValue);
     }, 0);
     setSessionValue(value);

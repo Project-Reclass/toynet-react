@@ -101,6 +101,7 @@ const Visuals = () => {
         <div className="handle" style={{ cursor: isGrabbing ? '-webkit-grabbing': '', visibility: hideImage ? 'hidden' : 'initial' }}>
           {sessionId > 0 &&
             <img
+              data-testid={'toynet-session-img'}
               className="image"
               src={visualizeToynetSession(sessionId)}
               alt=""
