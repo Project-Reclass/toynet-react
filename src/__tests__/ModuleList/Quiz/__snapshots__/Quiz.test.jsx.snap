@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Quiz page should render the same based on URL parameters 1`] = `
+<div>
+  <h1>
+    Module: 
+    42
+  </h1>
+  <h2>
+    Quiz: 
+    64
+  </h2>
+</div>
+`;
