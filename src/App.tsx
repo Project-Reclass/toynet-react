@@ -28,7 +28,7 @@ const Home = () => (
     <a href='http://localhost:3000/emulator'>Visit Emulator</a> <br />
     <a href='#'>Visit Courses</a>
   </div>
-)
+);
 
 function App() {
   return (
