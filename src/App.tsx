@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
-import Header from './Header/Header';
 import Emulator from './Emulator';
 import Layout from './layout';
 import ModuleList from './ModuleList';

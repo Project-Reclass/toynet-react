@@ -10,7 +10,29 @@ exports[`The emulator should render and match snapshots 1`] = `
     <div
       className="icon-container"
     >
-      icon1 icon2 ...
+      <button
+        className="iconButtons"
+      >
+        <img
+          alt="temporary folder icon"
+          className="folder"
+          src="folder.png"
+        />
+      </button>
+      <button
+        className="iconButtons"
+      >
+        <img
+          alt="temporary user icon"
+          className="user"
+          src="user.png"
+        />
+      </button>
+      <div
+        className="line"
+      >
+         
+      </div>
     </div>
     <div
       className="title-container"
@@ -26,6 +48,11 @@ exports[`The emulator should render and match snapshots 1`] = `
       >
         Local Area Networks
       </p>
+      <div
+        className="line"
+      >
+         
+      </div>
     </div>
     <div
       className="objective-container"
@@ -40,6 +67,11 @@ exports[`The emulator should render and match snapshots 1`] = `
       >
         Connect two hosts together and check they can communicate
       </p>
+      <div
+        className="line"
+      >
+         
+      </div>
     </div>
     <div>
       <h4
