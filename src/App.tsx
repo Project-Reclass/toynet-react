@@ -1,14 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.css';
+import Header from './Header/Header';
 import Emulator from './Emulator/Emulator';
-import Layout from './layout';
-
-import ModuleList from './ModuleList';
-import Article from './ModuleList/Article';
-import Quiz from './ModuleList/Quiz';
+import Index from './ModuleList/index';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined
@@ -17,7 +13,7 @@ const data = {
   'id': 1,
   'submoduleNumber': 1,
   'submoduleName': 'Local Area Networks',
-  'objective': 'Connect two hosts together and check if they\'re communicate',
+  'objective': 'Connect two hosts together and check if they\'re able to communicate',
   'tasks': [
     'Attach h1 to s1',
     'Attach h2 to s1',
@@ -28,35 +24,21 @@ const data = {
   ],
 };
 
+const Home = () => (
+  <div>
+    <a href='http://localhost:3000/emulator'>Visit Emulator</a> <br />
+    <a href='http://localhost:3000/courses'>Visit Courses</a>
+  </div>
+);
+
 function App() {
   return (
     <Router>
+      <Header />
       <Switch>
-        <Route exact path="/">
-          <Layout>
-            <ModuleList />
-          </Layout>
-        </Route>
-        <Route exact path="/module/:moduleId/quiz/:quizId">
-          <Layout>
-            <Quiz />
-          </Layout>
-        </Route>
-        <Route exact path="/module/:moduleId/article/:articleId">
-          <Layout>
-            <Article />
-          </Layout>
-        </Route>
-        <Route path="/module/:moduleId/emulator/:emulatorId">
-          <Layout>
-           <Emulator panelData={data} />
-          </Layout>
-        </Route>
-        <Route path="*">
-          <Layout>
-            <h1>Page not found...</h1>
-          </Layout>
-        </Route>
+        <Route path='/' exact component={ Home } />
+        <Route path='/emulator' exact component={ () => <Emulator panelData={data} /> } />
+        <Route path='/courses' exact component={ Index } />
       </Switch>
     </Router>
   );
