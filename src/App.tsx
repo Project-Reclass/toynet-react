@@ -30,8 +30,8 @@ const data = {
 
 const Home = () => (
   <div>
-    <a href='http://localhost:3000/module/0/emulator/0'>Visit Emulator</a> <br />
-    <a href='http://localhost:3000/module'>Visit Courses</a>
+    <a href='/module/0/emulator/0'>Visit Emulator</a> <br />
+    <a href='/module'>Visit Courses</a>
   </div>
 );
 
