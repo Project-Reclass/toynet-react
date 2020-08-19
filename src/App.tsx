@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import Emulator from './Emulator/Emulator';
-import Header from './Header/Header';
+import Layout from './layout';
 
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
@@ -28,35 +28,34 @@ const data = {
   ],
 };
 
-const Home = () => (
-  <div>
-    <a href='http://localhost:3000/module/0/emulator/0'>Visit Emulator</a> <br />
-    <a href='http://localhost:3000/module'>Visit Courses</a>
-  </div>
-);
-
 function App() {
   return (
     <Router>
-      <Header />
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route exact path="/module">
+        <Route exact path="/">
+          <Layout>
             <ModuleList />
+          </Layout>
         </Route>
         <Route exact path="/module/:moduleId/quiz/:quizId">
+          <Layout>
             <Quiz />
+          </Layout>
         </Route>
         <Route exact path="/module/:moduleId/article/:articleId">
+          <Layout>
             <Article />
+          </Layout>
         </Route>
         <Route path="/module/:moduleId/emulator/:emulatorId">
+          <Layout>
            <Emulator panelData={data} />
+          </Layout>
         </Route>
         <Route path="*">
+          <Layout>
             <h1>Page not found...</h1>
+          </Layout>
         </Route>
       </Switch>
     </Router>
