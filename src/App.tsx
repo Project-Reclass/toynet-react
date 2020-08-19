@@ -1,10 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
-import Header from './Header/Header';
 import Emulator from './Emulator/Emulator';
-import Index from './ModuleList/index';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './Header/Header';
+
+import ModuleList from './ModuleList';
+import Article from './ModuleList/Article';
+import Quiz from './ModuleList/Quiz';
 
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined
@@ -13,7 +17,7 @@ const data = {
   'id': 1,
   'submoduleNumber': 1,
   'submoduleName': 'Local Area Networks',
-  'objective': 'Connect two hosts together and check if they\'re able to communicate',
+  'objective': 'Connect two hosts together and check if they\'re communicate',
   'tasks': [
     'Attach h1 to s1',
     'Attach h2 to s1',
@@ -26,8 +30,8 @@ const data = {
 
 const Home = () => (
   <div>
-    <a href='http://localhost:3000/emulator'>Visit Emulator</a> <br />
-    <a href='http://localhost:3000/courses'>Visit Courses</a>
+    <a href='http://localhost:3000/module/0/emulator/0'>Visit Emulator</a> <br />
+    <a href='http://localhost:3000/module'>Visit Courses</a>
   </div>
 );
 
@@ -36,9 +40,24 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path='/' exact component={ Home } />
-        <Route path='/emulator' exact component={ () => <Emulator panelData={data} /> } />
-        <Route path='/courses' exact component={ Index } />
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route exact path="/module">
+            <ModuleList />
+        </Route>
+        <Route exact path="/module/:moduleId/quiz/:quizId">
+            <Quiz />
+        </Route>
+        <Route exact path="/module/:moduleId/article/:articleId">
+            <Article />
+        </Route>
+        <Route path="/module/:moduleId/emulator/:emulatorId">
+           <Emulator panelData={data} />
+        </Route>
+        <Route path="*">
+            <h1>Page not found...</h1>
+        </Route>
       </Switch>
     </Router>
   );
