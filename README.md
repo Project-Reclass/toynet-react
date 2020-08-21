@@ -18,7 +18,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 -------------------------------------------
 
-Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines.
+Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines. Docker compose port maps each service running (e.g. frontend and backend).
+The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 3000
+on the container and port 3000 is also exposed on the local machine through port forwarding.
+
+backend -> 8000  
+frontend -> 3000
 
 ## Running in Development
 
@@ -31,7 +36,7 @@ $ git clone https://github.com/Project-Reclass/toynet-react.git
 $ cd toynet-react
 ```
 
-The docker-compose file can then be ran in the background using
+The docker-compose file can then be run in the background using
 
 ```bash
 $ docker-compose -f docker-compose.dev.yml up -d --build
@@ -46,7 +51,7 @@ and navate to http://localhost:3000.
 
 ## Testing Pull Requests with Docker Compose
 
-Testing pull requests can be done without cloning down or checking out the pull request on the local machine. Because `toynet-react` uses docker-compose pull-requests can be preview by just using the docker-compose file.
+Testing pull requests can be done without cloning down or checking out the pull request on the local machine. Because `toynet-react` uses docker-compose pull-requests can be previewed by just using the docker-compose file.
 
 ```bash
 $ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml

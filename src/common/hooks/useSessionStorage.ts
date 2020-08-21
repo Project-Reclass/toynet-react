@@ -11,7 +11,7 @@ import useBoolean from './useBoolean';
  * the value from session storage. Setting the value from sessionStorage is
  * async so do not expect the value from sessionStorage to be loaded instantly.
  *
- * It takes in an optional `parser` which is a function that is ran before returning
+ * It takes in an optional `parser` which is a function that is run before returning
  * that value from the state hook. This is necessary because session storage only returns
  * a string, however, we might want a JSON object or a number stored in session storage.
  *
