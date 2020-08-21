@@ -19,8 +19,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 -------------------------------------------
 
 Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines. Docker compose port maps each service running (e.g. frontend and backend).
-The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 3000
-on the container and port 3000 is also exposed on the local machine through port forwarding.
+The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 8000
+in the container, because port 8000 is not a system port, the docker-compose just maps port 8000 to port 8000 on the local machine.
+
+This port mapping is represented in the docker-compose as
+
+```yml
+services:
+  backend:
+    ...
+    ports:
+      - "8000:8000"
+# or
+  frontend:
+    ...
+    ports:
+      - "3000:80"
+```
 
 backend -> 8000  
 frontend -> 3000
