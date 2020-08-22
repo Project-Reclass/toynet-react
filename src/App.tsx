@@ -38,28 +38,28 @@ function App() {
   return (
     <Router>
       <Header />
-      <div className='main'>
-      <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route exact path="/module">
-            <ModuleList />
-        </Route>
-        <Route exact path="/module/:moduleId/quiz/:quizId">
-            <Quiz />
-        </Route>
-        <Route exact path="/module/:moduleId/article/:articleId">
-            <Article />
-        </Route>
-        <Route path="/module/:moduleId/emulator/:emulatorId">
-           <Emulator panelData={data} />
-        </Route>
-        <Route path="*">
-            <h1>Page not found...</h1>
-        </Route>
-      </Switch>
-      </div>
+        <div className='main'>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route exact path="/module">
+                <ModuleList />
+            </Route>
+            <Route exact path="/module/:moduleId/quiz/:quizId">
+                <Quiz />
+            </Route>
+            <Route exact path="/module/:moduleId/article/:articleId">
+                <Article />
+            </Route>
+            <Route path="/module/:moduleId/emulator/:emulatorId">
+              <Emulator panelData={data} />
+            </Route>
+            <Route path="*">
+                <h1>Page not found...</h1>
+            </Route>
+          </Switch>
+        </div>
     </Router>
   );
 }
