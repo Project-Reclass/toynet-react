@@ -3,7 +3,6 @@ import './Header.css';
 import logo from '../assets/logo.png';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import {SidebarData} from './SidebarData';
 
 const Header = () => {
   const history = useHistory();
