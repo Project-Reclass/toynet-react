@@ -40,6 +40,13 @@ services:
 backend -> 8000  
 frontend -> 3000
 
+## Dependencies
+
+Docker and docker-compose are required to start developing with toynet.
+
+If you do not have **docker** installed see [this guide](https://docs.docker.com/engine/install/).  
+If you do not have **docker-compose** install see [this guide](https://docs.docker.com/compose/install/)
+
 ## Running in Development
 
 Because there are two parts to `toynet` there is a docker-compose that is useful to get started developing as a fast as possible.
