@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
-import { useHistory } from 'react-router-dom';
 
 const Header = () => {
-  const history = useHistory();
   const [Menu, setMenu] = useState(false);
 
   function openMenu() {
@@ -19,27 +17,27 @@ const Header = () => {
         <div className='top'>
           <ul>
             <li>
-              <a href='#' onClick={openMenu}>Logo</a>
+              <a href='blank' onClick={openMenu}>Logo</a>
             </li>
           </ul>
         </div>
         <div className='options'>
           <ul>
             <li>
-              <a href='#'>Curriculum</a>
+              <a href='blank'>Curriculum</a>
             </li>
             <li>
-              <a href='#'>Profile</a>
+              <a href='blank'>Profile</a>
             </li>
             <li>
-              <a href='#'>FAQ</a>
+              <a href='blank'>FAQ</a>
             </li>
           </ul>
         </div>
         <div className='bottom'>
           <ul>
             <li>
-              <a href='#'>Log out</a>
+              <a href='blank'>Log out</a>
             </li>
           </ul>
         </div>
