@@ -1,7 +1,10 @@
 import React from 'react';
+
+import PlusIcon from 'src/assets/add.svg';
+import { DeviceInterface } from 'src/common/types';
+
 import './DeviceContainer.css';
-import PlusIcon from '../../../../assets/add.svg';
-import Device, { DeviceInterface } from './Device/Device';
+import Device from './Device';
 
 interface Props {
   deviceName: string;

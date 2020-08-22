@@ -6,6 +6,119 @@ Changes made in package.json related to the Heroku deployment (specifically the 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Getting Started
+
+<!-- toc -->
+- [Running in Development](#running-in-development)
+- [Testing PRs](#testing-pull-requests-with-docker-compose)
+- [Testing Master](#testing-the-master-branch)
+- [Available Scripts](#available-scripts)
+- [Learn More](#learn-more)
+<!-- tocstop -->
+
+-------------------------------------------
+
+Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines. Docker compose port maps each service running (e.g. frontend and backend).
+The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 8000
+in the container, because port 8000 is not a system port, the docker-compose just maps port 8000 to port 8000 on the local machine.
+
+This port mapping is represented in the docker-compose as
+
+```yml
+services:
+  backend:
+    ...
+    ports:
+      - "8000:8000"
+# or
+  frontend:
+    ...
+    ports:
+      - "3000:80"
+```
+
+backend -> 8000  
+frontend -> 3000
+
+## Dependencies
+
+Docker and docker-compose are required to start developing with toynet.
+
+If you do not have **docker** installed see [this guide](https://docs.docker.com/engine/install/).  
+If you do not have **docker-compose** install see [this guide](https://docs.docker.com/compose/install/)
+
+## Running in Development
+
+Because there are two parts to `toynet` there is a docker-compose that is useful to get started developing as a fast as possible.
+
+To start
+
+```bash
+$ git clone https://github.com/Project-Reclass/toynet-react.git
+$ cd toynet-react
+```
+
+The docker-compose file can then be run in the background using
+
+```bash
+$ docker-compose -f docker-compose.dev.yml up -d --build
+```
+
+After the docker-compose starts up you can start `toynet-react` for development using
+```bash
+$ npm run dev
+```
+
+and navate to http://localhost:3000.
+
+## Testing Pull Requests with Docker Compose
+
+Testing pull requests can be done without cloning down or checking out the pull request on the local machine. Because `toynet-react` uses docker-compose pull-requests can be previewed by just using the docker-compose file.
+
+```bash
+$ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml
+```
+
+Edit the `docker-compose.yml` file to include the GitHub PR id.
+```yml
+services:
+  ...
+  frontend:
+    build: https://github.com/Project-Reclass/toynet-react.git#pull/{pull-request-number}/head
+    # e.g. https://github.com/Project-Reclass/toynet-react.git#pull/14/head
+```
+
+And then run
+```bash
+$ docker-compose up --build
+```
+
+The PR app can then be previewed at http://localhost:3000
+
+## Testing the Master Branch
+
+The master or default branch can be tested in much the same way that PR previews can be tested.
+
+```bash
+$ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml
+```
+
+Edit the `docker-compose.yml` file use master or the default branch instead of a PR id.
+```yml
+services:
+  ...
+  frontend:
+    build: https://github.com/Project-Reclass/toynet-react.git#master
+    # e.g. instead of https://github.com/Project-Reclass/toynet-react.git#pull/14/head
+```
+
+And then run
+```bash
+$ docker-compose up --build
+```
+
+The app can then be accessed at http://localhost:3000.
+
 ## Available Scripts
 
 In the project directory, you can run:

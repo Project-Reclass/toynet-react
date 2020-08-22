@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Emulator from './Emulator/Emulator';
 import Header from './Header/Header';
-
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
