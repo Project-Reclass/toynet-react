@@ -52,11 +52,11 @@ ol {
   padding-left: 0vh;
 }
 
-li { 
+.steps { 
   display: flex;
 }
 
-li::before { 
+.steps::before { 
   display: inline-block;
   content: " "counter(item)". ";
   counter-increment: item;
