@@ -13,7 +13,11 @@
             }],
             "essential": true,
             "mountPoints": [],
-            "volumesFrom": []
+            "volumesFrom": [],
+            "environment": [{
+                "name": "SERVER_URI",
+                "value": "taytay"
+            }],
         }
     ],
     "executionRoleArn": "arn:aws:iam::909056806605:role/ecsTaskExecutionRole",
