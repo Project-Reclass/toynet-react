@@ -16,7 +16,7 @@
             "volumesFrom": [],
             "environment": [{
                 "name": "SERVER_URI",
-                "value": "taytay"
+                "value": "http://localhost:8000"
             }]
         }
     ],
