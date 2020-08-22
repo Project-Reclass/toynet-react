@@ -17,7 +17,7 @@
         }
     ],
     "executionRoleArn": "arn:aws:iam::909056806605:role/ecsTaskExecutionRole",
-    "family": "toynet-react-service",
+    "family": "toynet",
     "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
