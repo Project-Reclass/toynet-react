@@ -20,9 +20,11 @@ WORKDIR app
 
 RUN mkdir -p /app/frontend/build
 
-COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
 
 COPY --from=builder "/app/build" "/usr/share/nginx/html"
+
+COPY ./docker-entrypoint.sh /app/docker-entrypoint.sh
+COPY ./http.conf /app/http.conf
 
 RUN chmod +x /app/docker-entrypoint.sh
 

@@ -6,9 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/jest-dom": "^5.11.2",
-    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
@@ -17,6 +15,7 @@
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
     "react-draggable": "^4.4.3",
+    "react-query": "^2.5.7-tsnext.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
@@ -159,12 +158,16 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.5.0",
+    "@testing-library/react-hooks": "^3.4.1",
     "@types/react": "^16.9.46",
     "@types/react-router-dom": "^5.1.5",
     "awesome-typescript-loader": "^5.2.1",
     "jsdoc": "^3.6.5",
     "react-test-renderer": "^16.13.1",
     "source-map-loader": "^1.0.1",
+    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/user-event": "^7.2.1",
     "typescript": "^3.9.7"
-  }
+  },
+  "proxy": "http://localhost:8000"
 }

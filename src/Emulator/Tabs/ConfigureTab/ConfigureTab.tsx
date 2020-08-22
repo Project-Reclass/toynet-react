@@ -1,46 +1,14 @@
-import React, { useState, useRef, FC } from 'react';
+import React, { useRef, FC, useCallback, useMemo, useState } from 'react';
+
+import { DeviceType } from 'src/common/types';
+import { TopologyActions } from 'src/Emulator/useTopology';
+import { useEmulator } from 'src/Emulator/EmulatorProvider';
+
+import DeviceContainer from './DeviceContainer';
 import './ConfigureTab.css';
-import DeviceContainer from './DeviceContainer/DeviceContainer';
 
 const MAX_DEVICES = 10;
 const FIVE_SECONDS = 5000;
-
-// Sample responses from currently non-existent API
-// These represent the starting config for a lesson
-const routerConfig = [
-  {
-    name: 'r1',
-    connections: ['s1', 's2'],
-  },
-];
-const switchConfig = [
-  {
-    name: 's1',
-    connections: ['r1', 'h1', 'h2', 'h3'],
-  },
-  {
-    name: 's2',
-    connections: [],
-  },
-];
-const hostConfig = [
-  {
-    name: 'h1',
-    connections: ['s1'],
-  },
-  {
-    name: 'h2',
-    connections: ['s1'],
-  },
-  {
-    name: 'h3',
-    connections: ['s1'],
-  },
-  {
-    name: 'h4',
-    connections: [],
-  },
-];
 
 /**
  * Determines the number of the newly added device
@@ -59,72 +27,62 @@ export const getNextDeviceName = (device: Array<{name: string}>, deviceLetter: s
   }
 };
 
+const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null>) => {
+  // A slight delay seems to be necessary for the scroll to work properly
+  // ref.current.scrollIntoView() on its own does not scroll down enough
+  if (ref.current) {
+    setTimeout(() => {
+      if (ref.current)
+        ref.current.scrollIntoView();
+    }, 0);
+  }
+};
+
 const ConfigureTab: FC<{status: string}> = ({ status }) => {
-  const [routers, setRouters] = useState(routerConfig);
-  const [switches, setSwitches] = useState(switchConfig);
-  const [hosts, setHosts] = useState(hostConfig);
+  const { switches, hosts, routers, dispatch } = useEmulator();
   const [showError, setShowError] = useState(false);
 
   const routerScrollRef = useRef(null);
   const switchScrollRef = useRef(null);
   const hostScrollRef = useRef(null);
 
-  const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null>) => {
-    // A slight delay seems to be necessary for the scroll to work properly
-    // ref.current.scrollIntoView() on its own does not scroll down enough
-    if (ref.current) {
-      setTimeout(() => {
-        if (ref.current)
-          ref.current.scrollIntoView();
-      }, 0);
-    }
-  };
-
-  const toggleErrorMessage = () => {
+  const toggleErrorMessage = useCallback(() => {
     setShowError(true);
     setTimeout(() => {
       setShowError(false);
     }, FIVE_SECONDS);
-  };
+  }, []);
 
-  const addRouter = (deviceLetter: string) => {
-    if (routers.length < MAX_DEVICES) {
-      setRouters([
-        ...routers,
-        { name: getNextDeviceName(routers, deviceLetter), connections: [] },
-      ]);
+  const addDevice = useCallback((type: DeviceType) => {
+    const device = type === 'router' ? routers :
+      type === 'host' ? hosts : switches;
+    const actionType = type === 'router' ? TopologyActions.ADD_ROUTER :
+      type === 'host' ? TopologyActions.ADD_HOST : TopologyActions.ADD_SWITCH;
+    const deviceRef = type === 'router' ? routerScrollRef :
+      type === 'switch' ? switchScrollRef : hostScrollRef;
 
-      scrollDeviceContainer(routerScrollRef);
-    } else {
-      toggleErrorMessage();
-    }
-  };
+    return (deviceLetter: string) => {
+      if (device.length >= MAX_DEVICES) {
+        toggleErrorMessage();
+        return;
+      }
 
-  const addSwitch = (deviceLetter: string) => {
-    if (switches.length < MAX_DEVICES) {
-      setSwitches([
-        ...switches,
-        { name: getNextDeviceName(switches, deviceLetter), connections: [] },
-      ]);
+      scrollDeviceContainer(deviceRef);
+      dispatch({
+        type: actionType,
+        payload: {
+          type,
+          parent: null,
+          name: getNextDeviceName(device, deviceLetter),
+          connections: [],
+        },
+      });
+    };
+  }, [dispatch, hosts, routers, switches, toggleErrorMessage]);
 
-      scrollDeviceContainer(switchScrollRef);
-    } else {
-      toggleErrorMessage();
-    }
-  };
-
-  const addHost = (deviceLetter: string) => {
-    if (hosts.length < MAX_DEVICES) {
-      setHosts([
-        ...hosts,
-        { name: getNextDeviceName(hosts, deviceLetter), connections: [] },
-      ]);
-
-      scrollDeviceContainer(hostScrollRef);
-    } else {
-      toggleErrorMessage();
-    }
-  };
+  const addRouter = useMemo(() => addDevice('router'), [addDevice]);
+  const addSwitch= useMemo(() => addDevice('switch'), [addDevice]);
+  const addHost = useMemo(() => addDevice('host'), [addDevice]);
 
   return (
     <div className={`configure ${status}`}>
