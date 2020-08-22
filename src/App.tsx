@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
-import Emulator from './Emulator/Emulator';
-import Layout from './layout';
 
+import Emulator from './Emulator';
+import Layout from './layout';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';

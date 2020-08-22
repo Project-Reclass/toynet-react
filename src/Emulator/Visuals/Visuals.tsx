@@ -3,9 +3,11 @@ import Draggable, { DraggableData } from 'react-draggable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus, faSearchMinus, faUndo, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import './Visuals.css';
+import { visualizeToynetSession } from 'src/common/api/topology/requests';
 
-const image = require('./demo1.png');
+import { useEmulator } from '../EmulatorProvider';
+
+import './Visuals.css';
 
 const ZOOM_INCREMENT = 0.1;
 const INITIAL_ZOOM_LEVEL = 1;
@@ -20,6 +22,7 @@ function convertToPixelFromView(text: string, measurement: number, toStrip: stri
 }
 
 const Visuals = () => {
+  const { sessionId } = useEmulator();
   const [pos, setPos] = useState({x: 0, y: 0});
   const [hideImage, setHideImage] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
@@ -96,15 +99,18 @@ const Visuals = () => {
         onDrag={handleDrag}
       >
         <div className="handle" style={{ cursor: isGrabbing ? '-webkit-grabbing': '', visibility: hideImage ? 'hidden' : 'initial' }}>
-          <img
-            className="image"
-            src={image}
-            alt=""
-            ref={imageRef}
-            style={{
-              transform: `scale(${zoomLevel})`,
-            }}
-          />
+          {sessionId > 0 &&
+            <img
+              data-testid={'toynet-session-img'}
+              className="image"
+              src={visualizeToynetSession(sessionId)}
+              alt=""
+              ref={imageRef}
+              style={{
+                transform: `scale(${zoomLevel})`,
+              }}
+            />
+          }
         </div>
       </Draggable>
     </div>
