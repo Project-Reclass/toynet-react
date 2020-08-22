@@ -30,7 +30,7 @@ const data = {
 
 const Home = () => (
   <div>
-    <a href='/module/0/emulator/0'>Visit Emulator</a> <br />
+    <a  style={{marginLeft: '1000px'}} href='/module/0/emulator/0'>Visit Emulator</a> <br />
     <a href='/module'>Visit Courses</a>
   </div>
 );
@@ -39,6 +39,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <div className='main'>
       <Switch>
         <Route exact path='/'>
           <Home />
@@ -59,6 +60,7 @@ function App() {
             <h1>Page not found...</h1>
         </Route>
       </Switch>
+      </div>
     </Router>
   );
 }

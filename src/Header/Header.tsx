@@ -1,28 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import logo from '../assets/logo.png';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import {SidebarData} from './SidebarData';
 
 const Header = () => {
   const history = useHistory();
+  const [Menu, setMenu] = useState(false);
+
+  function openMenu() {
+    setMenu(!Menu);
+  }
+
   return (
-    <header className="navHeader">
-      <Navbar expand="lg">
-        <Navbar.Brand href="/">
-          <img src={logo} className="logo" alt="Reclass logo" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-            <Nav.Link onClick={() => history.push('/')}>Home</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#contact">Contact Us</Nav.Link>
-            <Button className="btn-reclass" variant="link">Sign In</Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </header>
+    <div>
+      <header className='sidebar-menu'
+      style={{
+        marginLeft: Menu ? '50px' : '-250px',
+      }}>
+        <div className='top'>
+          <ul>
+            <li>
+              <a href='#' onClick={openMenu}>Logo</a>
+            </li>
+          </ul>
+        </div>
+        <div className='options'>
+          <ul>
+            <li>
+              <a href='#'>Curriculum</a>
+            </li>
+            <li>
+              <a href='#'>Profile</a>
+            </li>
+            <li>
+              <a href='#'>FAQ</a>
+            </li>
+          </ul>
+        </div>
+        <div className='bottom'>
+          <ul>
+            <li>
+              <a href='#'>Log out</a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <img className='temporary-sidebar' alt='' onClick={openMenu} src='https://via.placeholder.com/50' />
+    </div>
   );
 };
 

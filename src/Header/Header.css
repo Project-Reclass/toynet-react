@@ -1,37 +1,57 @@
-.nav-header {
-  background-color: #008080;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.sidebar-menu {
+  z-index: 10;
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgb(24, 21, 21);
+  float: left;
+  transition: .3s;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 45px;
+  margin-left: 25px;
+}
+
+.sidebar-menu a {
+  text-decoration: none;
+  margin-bottom: 30px;
+  font-size: 1.7rem;
+  font-weight: 350;
+  color: gray;
+  display: block;
+}
+
+.sidebar-menu a:hover {
   color: white;
+  transition: 0.2s;
+  transition-property: color;
 }
 
-.navbar {
-  background-color: #008080;
+.temporary-sidebar {
+  z-index: 10;
+  height: 100vh;
+  width: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  float: left;
 }
 
-.navbar-light .navbar-nav .nav-link {
-  color: white;
+.bottom {
+  bottom: 0;
+  position: fixed;
 }
 
-.btn-reclass {
-  color: white;
-  border: solid;
-  background-color: darkgray;
-  padding: 7px;
-}
-
-.row {
-  background-color: 	#D3D3D3;
-}
-
-#footer-pic {
-  margin-left: 20vw
-}
-
-.logo {
-  height: 40px;
-  width: auto;
+.options {
+  position: fixed;
+  top: 25%;
 }
