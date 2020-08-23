@@ -3,8 +3,8 @@ import { useTopology, TopologyState } from 'src/Emulator/useTopology';
 
 const EmulatorContext = createContext<TopologyState>({
   isLoading: true,
-  switches: [],
   routers: [],
+  switches: [],
   hosts: [],
   sessionId: -1,
   dispatch: () => {},

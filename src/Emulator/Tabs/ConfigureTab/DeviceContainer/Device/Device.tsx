@@ -1,4 +1,5 @@
 import React, { FC, useMemo } from 'react';
+import { useDrag, useDrop } from 'react-dnd';
 import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
@@ -20,13 +21,78 @@ deviceColorClasses.set('h', DeviceColor.HOST);
 
 interface Props {
   deviceName: string;
-  deviceData: DeviceInterface
+  deviceData: DeviceInterface;
+  onDrop: (from: string, to: string) => any;
+  onDropError?: () => any;
 }
 
-const Device: FC<Props> = ({ deviceName, deviceData }) => {
+type LinkValidator = (from: string, to: string, connections: string[]) => boolean;
+
+const validateSwitchLink = (from: string, to: string, connections: string[]) => {
+  if (from.startsWith('s') && (to.startsWith('s') || to.startsWith('r') || to.startsWith('h')))
+    if (connections.indexOf(from) < 0)
+      return true;
+  return false;
+};
+
+const validateRouterLink = (from: string, to: string, connections: string[]) => {
+  if (from.startsWith('r') && (to.startsWith('r') || to.startsWith('s')))
+    if (connections.indexOf(from) < 0)
+      return true;
+  return false;
+};
+
+const validateHostLink = (from: string, to: string, connections: string[]) => {
+  if (from.startsWith('h') && to.startsWith('s')) {
+    if (!!!connections || connections.length < 1)
+      return true;
+  }
+  return false;
+};
+
+const linkValidators = new Map<string, LinkValidator>();
+linkValidators.set('s', validateSwitchLink);
+linkValidators.set('h', validateHostLink);
+linkValidators.set('r', validateRouterLink);
+
+const isValidLink = (from: string, to: string, connections: string[]) => {
+  if (from.length < 1 || to.length < 1 || from === to)
+    return false;
+  const validator = linkValidators.get(from[0]);
+  return validator ? validator(from, to, connections) : false;
+};
+
+const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onDropError }) => {
   const connections = useMemo(() => {
     return deviceData.connections.concat(deviceData.parent?.name || []);
   }, [deviceData.connections, deviceData.parent]);
+
+  const [{ isDragging }, drag] = useDrag({
+    item: { type: 'device', deviceData },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
+
+  const [{ isHover }, drop] = useDrop({
+    accept: 'device',
+    drop: (item: any, monitor) => {
+      if (monitor.canDrop()) {
+        onDrop(item.deviceData.name, deviceData.name);
+        return;
+      }
+      onDropError && onDropError();
+    },
+    canDrop: (item: any): boolean => {
+      const { deviceData: { name } } = item;
+      return isValidLink(name, deviceData.name, connections);
+    },
+    collect: (monitor) => {
+      return {
+        isHover: monitor.isOver() && monitor.canDrop(),
+      };
+    },
+  });
 
   const deviceClassName = useMemo(() => {
     if (connections.length === 0)
@@ -35,11 +101,11 @@ const Device: FC<Props> = ({ deviceName, deviceData }) => {
   }, [connections.length, deviceName]);
 
   return (
-    <div className="device-box">
-      <div className={`device-name-box ${deviceClassName}`}>
+    <div className="device-box" ref={drop}>
+      <div className={`device-name-box ${deviceClassName}${isDragging ? ' is-dragging' : ''}${isHover ? ' is-hover' : ''}`} ref={drag}>
         <div>{deviceData.name}</div>
       </div>
-      <div className="vertical-bar"></div>
+      <div className="vertical-bar" />
       <div className="connections-container">
         <div>Connections:</div>
         <div className="connections-boxes">

@@ -8,6 +8,8 @@
 }
 
 .device-name-box {
+  transition: 0.15s opacity ease-in-out;
+  cursor: pointer;
   text-transform: capitalize;
   display: flex;
   font-size: large;
@@ -17,6 +19,14 @@
   justify-content: center;
   align-items: center;
   margin-right: 20px;
+}
+
+.device-name-box:hover, .is-dragging {
+  opacity: 0.2;
+}
+
+.is-hover {
+  border: 1pt solid rgba(255, 255, 255, 0.5);
 }
 
 .vertical-bar {

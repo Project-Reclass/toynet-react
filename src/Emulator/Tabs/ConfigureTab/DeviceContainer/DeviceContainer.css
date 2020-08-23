@@ -32,4 +32,10 @@
   margin-left: 0.7vh;
   cursor: pointer;
   user-select: none;
+  transition: 0.1s background-color ease-in-out;
+  border-radius: 5px;
+}
+
+.plus-circle:hover {
+  background-color: #3c841b;
 }

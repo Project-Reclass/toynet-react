@@ -51,7 +51,9 @@ exports[`The Device should match previous snapshots 1`] = `
   <div
     className="device-name-box empty-color"
   >
-    <div />
+    <div>
+      test
+    </div>
   </div>
   <div
     className="vertical-bar"

@@ -13,12 +13,13 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
       <div
         className="device-container-name"
       >
-        <img
-          alt="plus icon"
+        <svg
           className="plus-circle"
+          data-testid="plus-icon"
           onClick={[Function]}
-          src="add.svg"
-        />
+        >
+          add.svg
+        </svg>
         Router
       </div>
       <div
@@ -33,12 +34,13 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
       <div
         className="device-container-name"
       >
-        <img
-          alt="plus icon"
+        <svg
           className="plus-circle"
+          data-testid="plus-icon"
           onClick={[Function]}
-          src="add.svg"
-        />
+        >
+          add.svg
+        </svg>
         Switch
       </div>
       <div
@@ -53,12 +55,13 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
       <div
         className="device-container-name"
       >
-        <img
-          alt="plus icon"
+        <svg
           className="plus-circle"
+          data-testid="plus-icon"
           onClick={[Function]}
-          src="add.svg"
-        />
+        >
+          add.svg
+        </svg>
         Host
       </div>
       <div
