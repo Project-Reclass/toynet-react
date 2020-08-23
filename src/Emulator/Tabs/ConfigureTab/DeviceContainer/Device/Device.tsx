@@ -43,10 +43,8 @@ const validateRouterLink = (from: string, to: string, connections: string[]) => 
 };
 
 const validateHostLink = (from: string, to: string, connections: string[]) => {
-  if (from.startsWith('h') && to.startsWith('s')) {
-    if (!!!connections || connections.length < 1)
-      return true;
-  }
+  if (from.startsWith('h') && to.startsWith('s') && connections.length < 1)
+    return true;
   return false;
 };
 
