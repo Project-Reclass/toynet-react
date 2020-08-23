@@ -22,39 +22,6 @@ const defaultProps = {
   }
 };
 
-const TestStuff = withDnDProvider(() => {
-  const [{isDragging}, drag] = useDrag({
-    item: { type: 'device', defaultProps },
-    collect: monitor => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  });
-
-  const [collectedProps, drop] = useDrop({
-    accept: 'device',
-    drop: (item, monitor) => {
-      console.log({ item, monitor });
-    },
-  });
-
-  useEffect(() => {
-    console.log({ isDragging });
-  }, [isDragging]);
-
-  useEffect(() => {
-    console.log({ collectedProps })
-  }, [collectedProps])
-
-  return (
-    <DndProvider backend={HTML5Backend}>
-      <div>
-        <div ref={drag}>test</div>
-        <div ref={drop}>Drop</div>
-      </div>
-    </DndProvider>
-  )
-});
-
 const TestComponent = withDnDProvider(Device);
 
 const routerConnectionsData = {
@@ -94,20 +61,5 @@ describe('The Device', () => {
     const tree = renderer.create(<TestComponent {...defaultProps} deviceData={switchConnections} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
-  });
-
-  it('should allows dragging and dropping by device-name-box', async () => {
-    const { getByText, debug } = render(<TestStuff />);
- 
-    const name = getByText(defaultProps.deviceData.name);
-    const drop = getByText(/drop/i);
-    act(() => {
-      fireEvent.dragStart(name);
-      fireEvent.dragEnter(drop);
-      fireEvent.dragOver(drop);
-      fireEvent.drop(drop);
-    });
-    
-    debug();
   });
 });
