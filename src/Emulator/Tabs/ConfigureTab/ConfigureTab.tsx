@@ -106,17 +106,6 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
           ref={hostScrollRef}
         />
       </div>
-      <div className="btn-run-container">
-        <div
-          className="max-nodes"
-          style={{ display: showError ? 'initial' : 'none' }}
-        >
-          Each device type can have maximum 10 nodes
-        </div>
-        <button type="button" className="btn-run">
-          Run
-        </button>
-      </div>
     </div>
   );
 };

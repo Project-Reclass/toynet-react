@@ -38,7 +38,6 @@ function App() {
   return (
     <Router>
       <Header />
-        <div className='main'>
           <Switch>
             <Route exact path='/'>
               <Home />
@@ -59,7 +58,6 @@ function App() {
                 <h1>Page not found...</h1>
             </Route>
           </Switch>
-        </div>
     </Router>
   );
 }

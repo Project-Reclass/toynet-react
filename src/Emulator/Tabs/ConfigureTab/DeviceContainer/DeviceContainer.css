@@ -1,27 +1,27 @@
 .device-container {
   width: 25vw;
-  border: 1.5px solid black;
-  border-right: 0;
+  background-color: #212529;
+  border-radius: 10px;
+  margin: 0 0.5vw
 }
 
 .device-container:last-child {
-  border-right: 1.5px solid black;
 }
 
 .device-container-name {
+  background-color: #454950;
   height: 4vh;
   line-height: 4vh;
   font-size: large;
   text-align: center;
   color: white;
-  border-bottom: 1.5px solid black;
 }
 
 .device-container-content {
   color: white;
   height: 18vh;
   overflow-y: scroll;
-  padding: 10px;
+  margin: 1vh .1vw
 }
 
 .plus-circle {

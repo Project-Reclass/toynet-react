@@ -15,7 +15,7 @@ const Emulator: FC<Props> = ({ panelData }) => {
       <Instructions panelData={panelData} />
       <div>
         <Tabs />
-        <Visuals />
+        {/* <Visuals /> */}
       </div>
     </div>
   );

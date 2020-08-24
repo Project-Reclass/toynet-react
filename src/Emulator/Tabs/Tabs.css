@@ -1,33 +1,39 @@
 .tabs {
+  margin-top: 2vh;
+  margin-left: 1vw;
   background-color: #454950;
   border-top: 0;
-  height: 41vh;
-  width: 75vw;
+  height: 33vh;
+  width: 69vw;
+  border-radius: 10px;
 }
 
 .tabs-container {
   height: 6vh;
   display: flex;
-  background-color: #595d62;
+  background-color: #454950;
+  border-radius: 10px;
+  padding: 1vh;
+  width: 20vw;
+  background-color: green;
 }
 
 .tab {
-  border-bottom: 1.5px solid black;
   color: white;
   opacity: 0.75;
   font-size: large;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
 }
 
 .empty {
-  width: 100%;
+  width: 10%
 }
 
 .active {
-  background-color: #454950;
-  border: 1.5px solid black;
-  border-bottom: 0;
+  display: inline-block;
+  background-color: rgb(17, 15, 15);
+  border-radius: 10px;
   font-weight: bold;
   opacity: 1;
 }
