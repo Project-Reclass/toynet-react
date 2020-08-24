@@ -30,6 +30,12 @@ export enum TopologyActions {
   SET_ROUTERS,
   ADD_CONNECTION,
   SET_TOPOLOGY,
+
+  DELETE_CONNECTION,
+  DELETE_SWITCH,
+  DELETE_HOST,
+  DELETE_ROUTER,
+
   CLEAR,
 
   FLUSH_QUEUE,
@@ -63,6 +69,29 @@ function reducer(state: ParsedXML, action: ReducerAction) {
           device.connections.push(to);
       }
       return;
+
+    case TopologyActions.DELETE_HOST:
+    case TopologyActions.DELETE_ROUTER:
+    case TopologyActions.DELETE_SWITCH:
+      const deleteKey = action.type === TopologyActions.DELETE_ROUTER ? 'routers' :
+        action.type === TopologyActions.DELETE_SWITCH ? 'switches' : 'hosts';
+      const device = action.payload as DeviceInterface;
+      const deviceIndex = state[deleteKey].findIndex(d => d.name === device.name);
+      if (deviceIndex !== -1)
+        state[deleteKey].splice(deviceIndex, 1);
+
+      return;
+
+    case TopologyActions.DELETE_CONNECTION:
+      const { to: toDelete, from: fromDelete } = action.payload as Connection;
+      const deleteDevices = [...state.routers, ...state.hosts, ...state.switches];
+      for (const device of deleteDevices) {
+        if (device.name === toDelete) {
+          device.connections.splice(device.connections.findIndex(name => name === fromDelete), 1);
+          break;
+        }
+      }
+      break;
 
     case TopologyActions.SET_TOPOLOGY:
       state.routers = (action.payload as ParsedXML).routers;

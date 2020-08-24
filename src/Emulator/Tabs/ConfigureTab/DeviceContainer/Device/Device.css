@@ -72,3 +72,21 @@
 .host-color {
   background-color: #9E1059;
 }
+
+.trash-icon-container {
+  display: flex;
+  margin-left: auto;
+}
+
+.trash-icon {
+  margin: 1rem;
+}
+
+.trash-icon__active > svg {
+  opacity: 1 !important;
+}
+
+.trash-icon > svg {
+  transition: 0.15s opacity ease-in-out;
+  opacity: 0.2;
+}

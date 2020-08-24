@@ -1,5 +1,8 @@
 import React, { FC, useMemo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
@@ -18,6 +21,20 @@ deviceColorClasses.set('Switch', DeviceColor.SWITCH);
 deviceColorClasses.set('s', DeviceColor.SWITCH);
 deviceColorClasses.set('Host', DeviceColor.HOST);
 deviceColorClasses.set('h', DeviceColor.HOST);
+
+export function mergeRefs<T = any>(
+  refs: Array<React.MutableRefObject<T> | React.LegacyRef<T>>,
+): React.RefCallback<T> {
+  return (value) => {
+    refs.forEach((ref) => {
+      if (typeof ref === 'function') {
+        ref(value);
+      } else if (ref != null) {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
+}
 
 interface Props {
   deviceName: string;
@@ -43,7 +60,7 @@ const validateRouterLink = (from: string, to: string, connections: string[]) => 
 };
 
 const validateHostLink = (from: string, to: string, connections: string[]) => {
-  if (from.startsWith('h') && to.startsWith('s') && connections.length < 1)
+  if (from.startsWith('h') && to.startsWith('s'))
     return true;
   return false;
 };
@@ -92,6 +109,19 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onDropError }) => {
     },
   });
 
+  const [{ isHover: deleteHover }, deleteDrop] = useDrop({
+    accept: 'device',
+    canDrop: (item: any): boolean => {
+      const { deviceData: {connections } } = item;
+      return connections.length === 0;
+    },
+    collect: (monitor) => {
+      return {
+        isHover: monitor.isOver() && monitor.canDrop(),
+      };
+    },
+  });
+
   const deviceClassName = useMemo(() => {
     if (connections.length === 0)
       return DeviceColor.EMPTY;
@@ -99,8 +129,11 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onDropError }) => {
   }, [connections.length, deviceName]);
 
   return (
-    <div className="device-box" ref={drop}>
-      <div className={`device-name-box ${deviceClassName}${isDragging ? ' is-dragging' : ''}${isHover ? ' is-hover' : ''}`} ref={drag}>
+    <div className="device-box">
+      <div
+        ref={mergeRefs([drag, drop])}
+        className={`device-name-box ${deviceClassName}${isDragging ? ' is-dragging' : ''}${isHover ? ' is-hover' : ''}`}
+      >
         <div>{deviceData.name}</div>
       </div>
       <div className="vertical-bar" />
@@ -112,10 +145,18 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onDropError }) => {
                 id={`${connection}${idx}`}
                 className={`connection ${deviceColorClasses.get(connection[0])}`}
                 key={`${connection}`}
+                ref={drag}
+                style={{ cursor: 'pointer' }}
               >
                 {connection}
               </div>
             ))}
+        </div>
+      </div>
+      <div className={'trash-icon-container'} ref={deleteDrop}>
+        <div className="vertical-bar" />
+        <div className={`trash-icon ${deleteHover ? 'trash-icon__active': ''}`}>
+          <FontAwesomeIcon icon={faTrashAlt} />
         </div>
       </div>
     </div>
