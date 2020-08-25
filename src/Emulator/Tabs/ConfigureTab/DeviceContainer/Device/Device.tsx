@@ -40,7 +40,6 @@ interface Props {
   deviceName: string;
   deviceData: DeviceInterface;
   onDrop: (from: string, to: string) => any;
-  onDropError?: () => any;
 }
 
 type LinkValidator = (from: string, to: string, connections: string[]) => boolean;
@@ -77,7 +76,7 @@ const isValidLink = (from: string, to: string, connections: string[]) => {
   return validator ? validator(from, to, connections) : false;
 };
 
-const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onDropError }) => {
+const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
   const connections = useMemo(() => {
     return deviceData.connections.concat(deviceData.parent?.name || []);
   }, [deviceData.connections, deviceData.parent]);
@@ -96,24 +95,10 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onDropError }) => {
         onDrop(item.deviceData.name, deviceData.name);
         return;
       }
-      onDropError && onDropError();
     },
     canDrop: (item: any): boolean => {
       const { deviceData: { name } } = item;
       return isValidLink(name, deviceData.name, connections);
-    },
-    collect: (monitor) => {
-      return {
-        isHover: monitor.isOver() && monitor.canDrop(),
-      };
-    },
-  });
-
-  const [{ isHover: deleteHover }, deleteDrop] = useDrop({
-    accept: 'device',
-    canDrop: (item: any): boolean => {
-      const { deviceData: {connections } } = item;
-      return connections.length === 0;
     },
     collect: (monitor) => {
       return {
@@ -153,9 +138,9 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onDropError }) => {
             ))}
         </div>
       </div>
-      <div className={'trash-icon-container'} ref={deleteDrop}>
+      <div className={'trash-icon-container'}>
         <div className="vertical-bar" />
-        <div className={`trash-icon ${deleteHover ? 'trash-icon__active': ''}`}>
+        <div className={'trash-icon'}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </div>
       </div>
