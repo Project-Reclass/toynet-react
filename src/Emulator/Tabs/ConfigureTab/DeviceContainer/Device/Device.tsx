@@ -24,59 +24,11 @@ deviceColorClasses.set('s', DeviceColor.SWITCH);
 deviceColorClasses.set('Host', DeviceColor.HOST);
 deviceColorClasses.set('h', DeviceColor.HOST);
 
-export function mergeRefs<T = any>(
-  refs: Array<React.MutableRefObject<T> | React.LegacyRef<T>>,
-): React.RefCallback<T> {
-  return (value) => {
-    refs.forEach((ref) => {
-      if (typeof ref === 'function') {
-        ref(value);
-      } else if (ref != null) {
-        (ref as React.MutableRefObject<T | null>).current = value;
-      }
-    });
-  };
-}
-
 interface Props {
   deviceName: string;
   deviceData: DeviceInterface;
   onDrop: (from: string, to: string) => any;
 }
-
-type LinkValidator = (from: string, to: string, connections: string[]) => boolean;
-
-const validateSwitchLink = (from: string, to: string, connections: string[]) => {
-  if (from.startsWith('s') && (to.startsWith('s') || to.startsWith('r') || to.startsWith('h')))
-    if (connections.indexOf(from) < 0)
-      return true;
-  return false;
-};
-
-const validateRouterLink = (from: string, to: string, connections: string[]) => {
-  if (from.startsWith('r') && (to.startsWith('r') || to.startsWith('s')))
-    if (connections.indexOf(from) < 0)
-      return true;
-  return false;
-};
-
-const validateHostLink = (from: string, to: string, connections: string[]) => {
-  if (from.startsWith('h') && to.startsWith('s'))
-    return true;
-  return false;
-};
-
-const linkValidators = new Map<string, LinkValidator>();
-linkValidators.set('s', validateSwitchLink);
-linkValidators.set('h', validateHostLink);
-linkValidators.set('r', validateRouterLink);
-
-const isValidLink = (from: string, to: string, connections: string[]) => {
-  if (from.length < 1 || to.length < 1 || from === to)
-    return false;
-  const validator = linkValidators.get(from[0]);
-  return validator ? validator(from, to, connections) : false;
-};
 
 const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
   const connections = useMemo(() => {
@@ -84,7 +36,7 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
   }, [deviceData.connections, deviceData.parent]);
 
   const [{ isDragging }, drag] = useDrag({
-    item: { type: 'device', deviceData },
+    item: { type: 'device', deviceData: { ...deviceData, connections } },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -99,8 +51,8 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
       }
     },
     canDrop: (item: any): boolean => {
-      const { deviceData: { name } } = item;
-      return isValidLink(name, deviceData.name, connections);
+      const { deviceData: fromDeviceData } = item;
+      return isValidLink(fromDeviceData, {...deviceData, connections});
     },
     collect: (monitor) => {
       return {
