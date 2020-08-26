@@ -7,6 +7,7 @@ import { mergeRefs } from 'src/common/utils';
 import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
+import { isValidLink } from './linkValidators';
 
 enum DeviceColor {
   EMPTY = 'empty-color',
