@@ -107,193 +107,275 @@ describe('The Device', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should allow routers to connect switches', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={routerDeviceMock}
-      deviceTwo={switchDeviceMock}
-    />);
-
-    const routerDevice = getByText('router-one');
-    const switchDevice = getByText('switch-one');
-
-    act(() => {
-      fireEvent.dragStart(routerDevice);
-      fireEvent.drag(routerDevice);
-      fireEvent.dragOver(switchDevice);
-      fireEvent.drop(switchDevice);
+  describe('routers', () => {
+    it('should be able to connect to switches', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={routerDeviceMock}
+        deviceTwo={switchDeviceMock}
+      />);
+  
+      const routerDevice = getByText('router-one');
+      const switchDevice = getByText('switch-one');
+  
+      act(() => {
+        fireEvent.dragStart(routerDevice);
+        fireEvent.drag(routerDevice);
+        fireEvent.dragOver(switchDevice);
+        fireEvent.drop(switchDevice);
+      });
+  
+      expect(onDropMock).toHaveBeenCalled();
+    });
+  
+    it('should be able to connect to other routers', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={routerDeviceMock}
+        deviceTwo={{...routerDeviceMock, deviceData: { ...routerDeviceMock.deviceData, name: 'router-two' }}}
+      />);
+  
+      const routerDevice = getByText('router-one');
+      const switchDevice = getByText('router-two');
+  
+      act(() => {
+        fireEvent.dragStart(routerDevice);
+        fireEvent.drag(routerDevice);
+        fireEvent.dragOver(switchDevice);
+        fireEvent.drop(switchDevice);
+      });
+  
+      expect(onDropMock).toHaveBeenCalled();
     });
 
-    expect(onDropMock).toHaveBeenCalled();
-  });
-
-  it('should allow routers to connect to other routers', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={routerDeviceMock}
-      deviceTwo={{...routerDeviceMock, deviceData: { ...routerDeviceMock.deviceData, name: 'router-two' }}}
-    />);
-
-    const routerDevice = getByText('router-one');
-    const switchDevice = getByText('router-two');
-
-    act(() => {
-      fireEvent.dragStart(routerDevice);
-      fireEvent.drag(routerDevice);
-      fireEvent.dragOver(switchDevice);
-      fireEvent.drop(switchDevice);
+    it('should not be able to connect to a device already connected to it', () => {
+      const { getByText, getAllByText } = render(<InteractionTestComponent
+        deviceOne={routerDeviceMock}
+        deviceTwo={{...switchDeviceMock, deviceData: {...switchDeviceMock.deviceData, connections: ['router-one']}}}
+      />);
+  
+      const routerDevice = getAllByText('router-one');
+      const switchDevice = getByText('switch-one');
+  
+      act(() => {
+        fireEvent.dragStart(routerDevice[0]);
+        fireEvent.drag(routerDevice[0]);
+        fireEvent.dragOver(switchDevice);
+        fireEvent.drop(switchDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
     });
 
-    expect(onDropMock).toHaveBeenCalled();
+    it('should not be able to connect to hosts', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={routerDeviceMock}
+        deviceTwo={hostDeviceMock}
+      />);
+  
+      const routerDevice = getByText('router-one');
+      const hostDevice = getByText('host-one');
+  
+      act(() => {
+        fireEvent.dragStart(routerDevice);
+        fireEvent.drag(routerDevice);
+        fireEvent.dragOver(hostDevice);
+        fireEvent.drop(hostDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
+    });
   });
 
-  it('should not allow routers to connect to hosts', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={routerDeviceMock}
-      deviceTwo={hostDeviceMock}
-    />);
-
-    const routerDevice = getByText('router-one');
-    const hostDevice = getByText('host-one');
-
-    act(() => {
-      fireEvent.dragStart(routerDevice);
-      fireEvent.drag(routerDevice);
-      fireEvent.dragOver(hostDevice);
-      fireEvent.drop(hostDevice);
+  describe('switches', () => {
+    it('should be able to connect to routers', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={switchDeviceMock}
+        deviceTwo={routerDeviceMock}
+      />);
+  
+      const routerDevice = getByText('router-one');
+      const switchDevice = getByText('switch-one');
+  
+      act(() => {
+        fireEvent.dragStart(switchDevice);
+        fireEvent.drag(switchDevice);
+        fireEvent.dragOver(routerDevice);
+        fireEvent.drop(routerDevice);
+      });
+  
+      expect(onDropMock).toHaveBeenCalled();
+    });
+  
+    it('should be able to connect other switches', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={switchDeviceMock}
+        deviceTwo={{...switchDeviceMock, deviceData: { ...switchDeviceMock.deviceData, name: 'switch-two' }}}
+      />);
+  
+      const switchTwoDevice = getByText('switch-two');
+      const switchDevice = getByText('switch-one');
+  
+      act(() => {
+        fireEvent.dragStart(switchDevice);
+        fireEvent.drag(switchDevice);
+        fireEvent.dragOver(switchTwoDevice);
+        fireEvent.drop(switchTwoDevice);
+      });
+  
+      expect(onDropMock).toHaveBeenCalled();
+    });
+  
+    it('should be able to connect to hosts', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={switchDeviceMock}
+        deviceTwo={hostDeviceMock}
+      />);
+  
+      const switchDevice = getByText('switch-one');
+      const hostDevice = getByText('host-one');
+  
+      act(() => {
+        fireEvent.dragStart(switchDevice);
+        fireEvent.drag(switchDevice);
+        fireEvent.dragOver(hostDevice);
+        fireEvent.drop(hostDevice);
+      });
+  
+      expect(onDropMock).toHaveBeenCalled();
     });
 
-    expect(onDropMock).not.toHaveBeenCalled();
-  });
-
-  it('should allow switches to connect to routers', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={switchDeviceMock}
-      deviceTwo={routerDeviceMock}
-    />);
-
-    const routerDevice = getByText('router-one');
-    const switchDevice = getByText('switch-one');
-
-    act(() => {
-      fireEvent.dragStart(switchDevice);
-      fireEvent.drag(switchDevice);
-      fireEvent.dragOver(routerDevice);
-      fireEvent.drop(routerDevice);
+    it('should not be able to connect to hosts if they already have a connection', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={switchDeviceMock}
+        deviceTwo={{...hostDeviceMock, deviceData: {...hostDeviceMock.deviceData, connections: ['r1']}}}
+      />);
+  
+      const switchDevice = getByText('switch-one');
+      const hostDevice = getByText('host-one');
+  
+      act(() => {
+        fireEvent.dragStart(switchDevice);
+        fireEvent.drag(switchDevice);
+        fireEvent.dragOver(hostDevice);
+        fireEvent.drop(hostDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
     });
 
-    expect(onDropMock).toHaveBeenCalled();
+    it('should not be able to connect to a device already connected', () => {
+      const { getByText, getAllByText } = render(<InteractionTestComponent
+        deviceOne={switchDeviceMock}
+        deviceTwo={{...routerDeviceMock, deviceData: {...routerDeviceMock.deviceData, connections: ['switch-one']}}}
+      />);
+  
+      const routerDevice = getByText('router-one');
+      const switchDevice = getAllByText('switch-one');
+  
+      act(() => {
+        fireEvent.dragStart(switchDevice[0]);
+        fireEvent.drag(switchDevice[0]);
+        fireEvent.dragOver(routerDevice);
+        fireEvent.drop(routerDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
+    });
   });
 
-  it('should allow switches to connect other switches', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={switchDeviceMock}
-      deviceTwo={{...switchDeviceMock, deviceData: { ...switchDeviceMock.deviceData, name: 'switch-two' }}}
-    />);
-
-    const switchTwoDevice = getByText('switch-two');
-    const switchDevice = getByText('switch-one');
-
-    act(() => {
-      fireEvent.dragStart(switchDevice);
-      fireEvent.drag(switchDevice);
-      fireEvent.dragOver(switchTwoDevice);
-      fireEvent.drop(switchTwoDevice);
+  describe('hosts', () => {
+    it('should be able to connect to switches', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={hostDeviceMock}
+        deviceTwo={switchDeviceMock}
+      />);
+  
+      const hostDevice = getByText('host-one');
+      const switchDevice = getByText('switch-one');
+  
+      act(() => {
+        fireEvent.dragStart(hostDevice);
+        fireEvent.drag(hostDevice);
+        fireEvent.dragOver(switchDevice);
+        fireEvent.drop(switchDevice);
+      });
+  
+      expect(onDropMock).toHaveBeenCalled();
+    });
+  
+    it('should not be able to connect to other hosts', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={hostDeviceMock}
+        deviceTwo={{...hostDeviceMock, deviceData: { ...hostDeviceMock.deviceData, name: 'host-two' }}}
+      />);
+  
+      const hostDevice = getByText('host-one');
+      const hostTwoDevice = getByText('host-two');
+  
+      act(() => {
+        fireEvent.dragStart(hostDevice);
+        fireEvent.drag(hostDevice);
+        fireEvent.dragOver(hostTwoDevice);
+        fireEvent.drop(hostTwoDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
+    });
+  
+    it('should not be able to connect to a router', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={hostDeviceMock}
+        deviceTwo={routerDeviceMock}
+      />);
+  
+      const hostDevice = getByText('host-one');
+      const routerDevice = getByText('router-one');
+  
+      act(() => {
+        fireEvent.dragStart(hostDevice);
+        fireEvent.drag(hostDevice);
+        fireEvent.dragOver(routerDevice);
+        fireEvent.drop(routerDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
+    });
+  
+    it('should be able to have one connection', () => {
+      const { getByText } = render(<InteractionTestComponent
+        deviceOne={{...hostDeviceMock, deviceData: { ...hostDeviceMock.deviceData, connections: ['s1'] }}}
+        deviceTwo={switchDeviceMock}
+      />);
+  
+      const hostDevice = getByText('host-one');
+      const switchDevice = getByText('switch-one');
+  
+      act(() => {
+        fireEvent.dragStart(hostDevice);
+        fireEvent.drag(hostDevice);
+        fireEvent.dragOver(switchDevice);
+        fireEvent.drop(switchDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
     });
 
-    expect(onDropMock).toHaveBeenCalled();
-  });
-
-  it('should allow switches to connect to hosts', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={switchDeviceMock}
-      deviceTwo={hostDeviceMock}
-    />);
-
-    const switchDevice = getByText('switch-one');
-    const hostDevice = getByText('host-one');
-
-    act(() => {
-      fireEvent.dragStart(switchDevice);
-      fireEvent.drag(switchDevice);
-      fireEvent.dragOver(hostDevice);
-      fireEvent.drop(hostDevice);
+    it('should not be able to connect to a device already connected', () => {
+      const { getByText, getAllByText } = render(<InteractionTestComponent
+        deviceOne={hostDeviceMock}
+        deviceTwo={{...routerDeviceMock, deviceData: {...routerDeviceMock.deviceData, connections: ['host-one']}}}
+      />);
+  
+      const hostDevice = getAllByText('host-one');
+      const switchDevice = getByText('router-one');
+  
+      act(() => {
+        fireEvent.dragStart(hostDevice[0]);
+        fireEvent.drag(hostDevice[0]);
+        fireEvent.dragOver(switchDevice);
+        fireEvent.drop(switchDevice);
+      });
+  
+      expect(onDropMock).not.toHaveBeenCalled();
     });
-
-    expect(onDropMock).toHaveBeenCalled();
   });
-
-  it('should allow hosts to connect to switches', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={hostDeviceMock}
-      deviceTwo={switchDeviceMock}
-    />);
-
-    const hostDevice = getByText('host-one');
-    const switchDevice = getByText('switch-one');
-
-    act(() => {
-      fireEvent.dragStart(hostDevice);
-      fireEvent.drag(hostDevice);
-      fireEvent.dragOver(switchDevice);
-      fireEvent.drop(switchDevice);
-    });
-
-    expect(onDropMock).toHaveBeenCalled();
-  });
-
-  it('should not allow hosts to connect to other hosts', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={hostDeviceMock}
-      deviceTwo={{...hostDeviceMock, deviceData: { ...hostDeviceMock.deviceData, name: 'host-two' }}}
-    />);
-
-    const hostDevice = getByText('host-one');
-    const hostTwoDevice = getByText('host-two');
-
-    act(() => {
-      fireEvent.dragStart(hostDevice);
-      fireEvent.drag(hostDevice);
-      fireEvent.dragOver(hostTwoDevice);
-      fireEvent.drop(hostTwoDevice);
-    });
-
-    expect(onDropMock).not.toHaveBeenCalled();
-  });
-
-  it('should not allow hosts to connect to a router', () => {
-    const { getByText } = render(<InteractionTestComponent
-      deviceOne={hostDeviceMock}
-      deviceTwo={routerDeviceMock}
-    />);
-
-    const hostDevice = getByText('host-one');
-    const routerDevice = getByText('router-one');
-
-    act(() => {
-      fireEvent.dragStart(hostDevice);
-      fireEvent.drag(hostDevice);
-      fireEvent.dragOver(routerDevice);
-      fireEvent.drop(routerDevice);
-    });
-
-    expect(onDropMock).not.toHaveBeenCalled();
-  });
-
-  // it('should only allow a host to have one connection', () => {
-  //   const { getByText } = render(<InteractionTestComponent
-  //     deviceOne={{...hostDeviceMock, deviceData: { ...hostDeviceMock.deviceData, connections: ['s1'] }}}
-  //     deviceTwo={switchDeviceMock}
-  //   />);
-
-  //   const hostDevice = getByText('host-one');
-  //   const switchDevice = getByText('switch-one');
-
-  //   act(() => {
-  //     fireEvent.dragStart(hostDevice);
-  //     fireEvent.drag(hostDevice);
-  //     fireEvent.dragOver(switchDevice);
-  //     fireEvent.drop(switchDevice);
-  //   });
-
-  //   expect(onDropMock).not.toHaveBeenCalled();
-  // });
 });
