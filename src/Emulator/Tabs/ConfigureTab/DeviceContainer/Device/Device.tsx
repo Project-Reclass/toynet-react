@@ -130,7 +130,6 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
                 id={`${connection}${idx}`}
                 className={`connection ${deviceColorClasses.get(connection[0])}`}
                 key={`${connection}`}
-                ref={drag}
                 style={{ cursor: 'pointer' }}
               >
                 {connection}
