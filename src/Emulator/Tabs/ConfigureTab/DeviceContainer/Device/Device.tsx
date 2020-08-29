@@ -8,6 +8,8 @@ import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
 import { isValidLink } from './linkValidators';
+import { useEmulator } from 'src/Emulator/EmulatorProvider';
+import { TopologyActions } from 'src/Emulator/useTopology';
 
 enum DeviceColor {
   EMPTY = 'empty-color',
@@ -30,13 +32,56 @@ interface Props {
   onDrop: (from: string, to: string) => any;
 }
 
+const DeleteDevice = ({ connection, idx }: {connection: string, idx: number}) => {
+  const [, drag] = useDrag({ item: {type: 'device', deviceData: { name: connection, connections: [], isLink: true }} });
+  return (
+    <div
+      id={`${connection}${idx}`}
+      className={`connection ${deviceColorClasses.get(connection[0])}`}
+      key={`${connection}`}
+      style={{ cursor: 'pointer' }}
+      ref={drag}
+    >
+      {connection}
+    </div>
+  );
+};
+
+const TrashCan = ({ name }: {name: string}) => {
+  const { dispatch } = useEmulator();
+  const [, drop] = useDrop({
+    accept: 'device',
+    canDrop: (item: any) => {
+      const { deviceData } = item;
+      return deviceData.isLink || deviceData.connections.length === 0;
+    },
+    drop: (item: any, monitor) => {
+      if (monitor.canDrop()) {
+        dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: {from: name, to: item.deviceData.name} });
+        console.log('can drop!', { item, name });
+        return;
+      }
+      console.log('cannot drop!', { item });
+    },
+  });
+
+  return (
+    <div className={'trash-icon-container'} ref={drop}>
+    <div className="vertical-bar" />
+    <div className={'trash-icon'}>
+      <FontAwesomeIcon icon={faTrashAlt} />
+    </div>
+  </div>
+  );
+};
+
 const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
   const connections = useMemo(() => {
     return deviceData.connections.concat(deviceData.parent?.name || []);
   }, [deviceData.connections, deviceData.parent]);
 
   const [{ isDragging }, drag] = useDrag({
-    item: { type: 'device', deviceData: { ...deviceData, connections } },
+    item: { type: 'device', deviceData: { ...deviceData, connections, isLink: false } },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -80,23 +125,11 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
         <div>Connections:</div>
         <div className="connections-boxes">
           {connections.map((connection, idx) => (
-              <div
-                id={`${connection}${idx}`}
-                className={`connection ${deviceColorClasses.get(connection[0])}`}
-                key={`${connection}`}
-                style={{ cursor: 'pointer' }}
-              >
-                {connection}
-              </div>
-            ))}
+            <DeleteDevice connection={connection} idx={idx} />
+          ))}
         </div>
       </div>
-      <div className={'trash-icon-container'}>
-        <div className="vertical-bar" />
-        <div className={'trash-icon'}>
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </div>
-      </div>
+      <TrashCan name={deviceData.name} />
     </div>
   );
 };
