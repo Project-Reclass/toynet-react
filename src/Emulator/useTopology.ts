@@ -136,9 +136,9 @@ function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mut
       case TopologyActions.DELETE_CONNECTION:
         const { to: toDelete, from: fromDelete } = action.payload as Connection;
         if (toDelete === fromDelete) {
-          mutate({ id, command: `delete switch ${fromDelete}` });
+          mutate({ id, command: `remove ${getNameFromDevice(fromDelete)} ${fromDelete}` });
         } else {
-          mutate({ id, command: `delete ${fromDelete} ${toDelete}` });
+          mutate({ id, command: `remove link ${fromDelete} ${toDelete}` });
         }
         break;
 
@@ -148,6 +148,16 @@ function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mut
 
     dispatch(action);
   };
+};
+
+const getNameFromDevice = (key: string): string => {
+  if (key.length < 1) return '';
+  switch (key[0].toLocaleLowerCase()) {
+    case 'h': return 'host';
+    case 's': return 'switch';
+    case 'r': return 'router';
+    default: return '';
+  }
 };
 
 const initialState: ParsedXML = {
