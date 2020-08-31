@@ -2,20 +2,37 @@
   margin-top: 2vh;
   margin-left: 1vw;
   background-color: #454950;
-  border-top: 0;
-  height: 33vh;
+  height: 31vh;
   width: 69vw;
-  border-radius: 10px;
+  border-radius: 0 10px 10px 10px;
+  margin-top: 6.6vh;
+}
+
+.outer-tabs-container {
+  height: 6vh;
+  display: flex;
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  bottom: 15%;
+  padding-top: 1vh;
+  width: 300px;
+  background-color: #33373b
 }
 
 .tabs-container {
-  height: 6vh;
+  height: 6vh; 
   display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: #454950;
-  border-radius: 10px;
-  padding: 1vh;
-  width: 20vw;
-  background-color: green;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  padding-bottom: 1.5vh;
+  padding-top: 1.5%;
+  padding-left: 1%;
 }
 
 .tab {

@@ -13,8 +13,8 @@ const ZOOM_INCREMENT = 0.1;
 const INITIAL_ZOOM_LEVEL = 1;
 const ZOOM_MIN_LIMIT = 0.2;
 const ZOOM_MAX_LIMIT = 2;
-const CONTAINER_HEIGHT = '50vh';
-const CONTAINER_WIDTH = '75vw';
+const CONTAINER_HEIGHT = '58.3vh';
+const CONTAINER_WIDTH = '69vw';
 
 function convertToPixelFromView(text: string, measurement: number, toStrip: string) {
   const PERCENT_TO_WHOLE = 100;
@@ -73,14 +73,11 @@ const Visuals = () => {
       width: CONTAINER_WIDTH,
       overflow: 'hidden',
       position: 'relative',
+      marginTop: '2vh',
+      marginLeft: '2vh',
+      border: '5px solid red',
     }}>
       <div className="icons">
-        <button className='iconButtons' onClick={toggleHideImage}>
-          <FontAwesomeIcon className='icon' icon={faEyeSlash} />
-        </button>
-        <button className='iconButtons' onClick={recenterImage}>
-          <FontAwesomeIcon className='icon' icon={faUndo} />
-        </button>
         {!hideImage &&
         <>
         <button className='iconButtons' onClick={zoomIn} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
@@ -90,6 +87,13 @@ const Visuals = () => {
           <FontAwesomeIcon className='icon' icon={faSearchMinus} />
         </button>
         </>}
+        <button className='iconButtons' onClick={toggleHideImage}>
+          <FontAwesomeIcon className='icon' icon={faEyeSlash} />
+          {/* <img src='https://picsum.photos/200' alt=''></img> */}
+        </button>
+        <button className='iconButtons' onClick={recenterImage}>
+          <FontAwesomeIcon className='icon' icon={faUndo} />
+        </button>
       </div>
       <Draggable
         handle=".handle"
@@ -111,6 +115,7 @@ const Visuals = () => {
               }}
             />
           }
+          <img src='https://picsum.photos/200' alt=''></img>
         </div>
       </Draggable>
     </div>

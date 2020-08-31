@@ -19,26 +19,28 @@ const Tabs = () => {
 
   return (
     <div className="tabs">
-      <div className="tabs-container">
-        <div
-          className={activeTab === CONSTANTS.CONFIGURE ? 'tab active' : 'tab'}
-          onClick={() => changeTabHandler(CONSTANTS.CONFIGURE)}
-        >
-          Configure
+      <div className="outer-tabs-container">
+        <div className="tabs-container">
+          <div
+            className={activeTab === CONSTANTS.CONFIGURE ? 'tab active' : 'tab'}
+            onClick={() => changeTabHandler(CONSTANTS.CONFIGURE)}
+          >
+            Configure
+          </div>
+          <div
+            className={activeTab === CONSTANTS.CONSOLE ? 'tab active' : 'tab'}
+            onClick={() => changeTabHandler(CONSTANTS.CONSOLE)}
+          >
+            Console
+          </div>
+          <div
+            className={activeTab === CONSTANTS.HISTORY ? 'tab active' : 'tab'}
+            onClick={() => changeTabHandler(CONSTANTS.HISTORY)}
+          >
+            History
+          </div>
+          <div className="tab empty"></div>
         </div>
-        <div
-          className={activeTab === CONSTANTS.CONSOLE ? 'tab active' : 'tab'}
-          onClick={() => changeTabHandler(CONSTANTS.CONSOLE)}
-        >
-          Console
-        </div>
-        <div
-          className={activeTab === CONSTANTS.HISTORY ? 'tab active' : 'tab'}
-          onClick={() => changeTabHandler(CONSTANTS.HISTORY)}
-        >
-          History
-        </div>
-        <div className="tab empty"></div>
       </div>
       <ConfigureTab status={(activeTab === CONSTANTS.CONFIGURE) ? 'show' : 'hide'} />
       <ConsoleTab status={(activeTab === CONSTANTS.CONSOLE) ? 'show' : 'hide'} />

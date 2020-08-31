@@ -12,7 +12,7 @@ const Header = () => {
     <div>
       <header className='sidebar-menu'
       style={{
-        marginLeft: Menu ? '50px' : '-250px',
+        marginLeft: Menu ? '2.7vw' : '-250px',
       }}>
         <div className='top'>
           <ul>

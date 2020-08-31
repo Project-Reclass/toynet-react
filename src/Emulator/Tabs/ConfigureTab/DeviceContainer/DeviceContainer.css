@@ -2,7 +2,8 @@
   width: 25vw;
   background-color: #212529;
   border-radius: 10px;
-  margin: 0 0.5vw
+  margin: 0 0.5vw;
+  margin-top: -5vh
 }
 
 .device-container:last-child {

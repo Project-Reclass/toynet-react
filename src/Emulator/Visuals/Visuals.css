@@ -1,9 +1,3 @@
-/* .visuals {
-   background-color: darkgrey;
-   height: 50vh;
-   width: 75vw;
-} */
-
 .image {
    position: relative;
    zoom: 1;
@@ -14,6 +8,7 @@
    -khtml-user-drag: none;
    -moz-user-drag: none;
    -o-user-drag: none;
+   border: 5px solid red;
 }
 
 .iconButtons {
@@ -25,8 +20,8 @@
    position: absolute;
    display: flex;
    flex-direction: column;
-   top: 0%;
    right: 0;
+   bottom: 0;
    z-index: 10;
 }
 
