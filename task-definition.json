@@ -13,11 +13,15 @@
             }],
             "essential": true,
             "mountPoints": [],
-            "volumesFrom": []
+            "volumesFrom": [],
+            "environment": [{
+                "name": "SERVER_URI",
+                "value": "http://localhost:8000"
+            }]
         }
     ],
     "executionRoleArn": "arn:aws:iam::909056806605:role/ecsTaskExecutionRole",
-    "family": "toynet-react-service",
+    "family": "toynet-react",
     "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
