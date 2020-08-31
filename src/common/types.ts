@@ -22,3 +22,5 @@ export interface Action<TActions, TPayload> {
   type: TActions;
   payload: TPayload;
 }
+
+export type ReducerFn<T> = (action: T) => void;

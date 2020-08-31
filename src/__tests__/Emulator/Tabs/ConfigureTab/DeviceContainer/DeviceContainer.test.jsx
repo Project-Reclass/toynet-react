@@ -3,6 +3,9 @@ import renderer from 'react-test-renderer';
 
 import DeviceContainer from 'src/Emulator/Tabs/ConfigureTab/DeviceContainer';
 import { render, fireEvent } from '@testing-library/react';
+import { wrapInTestContext } from 'react-dnd-test-utils';
+
+const TestComponent = wrapInTestContext(DeviceContainer);
 
 const addDeviceMock = jest.fn();
 
@@ -28,13 +31,13 @@ describe('The DeviceContainer', () => {
   });
 
   it('should match previous snapshots', () => {
-    const tree = renderer.create(<DeviceContainer {...defaultProps} />).toJSON();
+    const tree = renderer.create(<TestComponent {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should add device when plus icon is clicked', () => {
-    const { getByAltText } = render(<DeviceContainer {...defaultProps} />);
-    const plusIcon = getByAltText(/plus icon/i);
+    const { getByTestId } = render(<TestComponent {...defaultProps} />);
+    const plusIcon = getByTestId(/plus-icon/i);
 
     fireEvent.click(plusIcon);
 

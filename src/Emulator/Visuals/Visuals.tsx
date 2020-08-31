@@ -3,7 +3,7 @@ import Draggable, { DraggableData } from 'react-draggable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus, faSearchMinus, faUndo, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import { visualizeToynetSession } from 'src/common/api/topology/requests';
+import { useVisualizeToynetImage } from 'src/common/api/topology';
 
 import { useEmulator } from '../EmulatorProvider';
 
@@ -23,6 +23,7 @@ function convertToPixelFromView(text: string, measurement: number, toStrip: stri
 
 const Visuals = () => {
   const { sessionId } = useEmulator();
+  const { data } = useVisualizeToynetImage(sessionId);
   const [pos, setPos] = useState({x: 0, y: 0});
   const [hideImage, setHideImage] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
@@ -99,11 +100,11 @@ const Visuals = () => {
         onDrag={handleDrag}
       >
         <div className="handle" style={{ cursor: isGrabbing ? '-webkit-grabbing': '', visibility: hideImage ? 'hidden' : 'initial' }}>
-          {sessionId > 0 &&
+          {sessionId > 0 && data && data.length > 0 &&
             <img
               data-testid={'toynet-session-img'}
               className="image"
-              src={visualizeToynetSession(sessionId)}
+              src={data}
               alt=""
               ref={imageRef}
               style={{
