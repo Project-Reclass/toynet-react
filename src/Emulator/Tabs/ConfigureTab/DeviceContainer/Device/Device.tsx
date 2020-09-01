@@ -1,30 +1,14 @@
 import React, { FC, useMemo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { mergeRefs } from 'src/common/utils';
 import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
+import Link from './Link';
+import DeleteLink from './DeleteLink';
 import { isValidLink } from './linkValidators';
-
-enum DeviceColor {
-  EMPTY = 'empty-color',
-  ROUTER = 'router-color',
-  SWITCH = 'switch-color',
-  HOST = 'host-color',
-}
-
-const deviceColorClasses = new Map<string, DeviceColor>();
-deviceColorClasses.set('Router', DeviceColor.ROUTER);
-deviceColorClasses.set('r', DeviceColor.ROUTER);
-deviceColorClasses.set('Switch', DeviceColor.SWITCH);
-deviceColorClasses.set('s', DeviceColor.SWITCH);
-deviceColorClasses.set('Host', DeviceColor.HOST);
-deviceColorClasses.set('h', DeviceColor.HOST);
-
-type LinkFunc = (from: string, to: string) => any;
+import { LinkFunc, DeviceColor, deviceColorClasses } from './shared';
 
 interface Props {
   deviceName: string;
@@ -32,49 +16,6 @@ interface Props {
   onDrop: LinkFunc;
   onRemove: LinkFunc;
 }
-
-const DeleteDevice = ({ connection, idx }: {connection: string, idx: number}) => {
-  const [, drag] = useDrag({ item: {type: 'device', deviceData: { name: connection, connections: [], isLink: true }} });
-  return (
-    <div
-      id={`${connection}${idx}`}
-      className={`connection ${deviceColorClasses.get(connection[0])}`}
-      key={`${connection}`}
-      style={{ cursor: 'pointer' }}
-      ref={drag}
-    >
-      {connection}
-    </div>
-  );
-};
-
-const TrashCan = ({ name, onRemove }: {name: string, onRemove: LinkFunc}) => {
-  const [{ isHover }, drop] = useDrop({
-    accept: 'device',
-    canDrop: (item: any) => {
-      const { deviceData } = item;
-      return deviceData.isLink || deviceData.connections.length === 0;
-    },
-    drop: (item: any, monitor) => {
-      if (monitor.canDrop())
-        onRemove(item.deviceData.name, name);
-    },
-    collect: (monitor) => {
-      return {
-        isHover: monitor.isOver() && monitor.canDrop(),
-      };
-    },
-  });
-
-  return (
-    <div className={'trash-icon-container'} ref={drop} data-testid='trash-icon'>
-    <div className="vertical-bar" />
-    <div className={`trash-icon${isHover ? ' trash-icon__active' : ''}`}>
-      <FontAwesomeIcon icon={faTrashAlt} />
-    </div>
-  </div>
-  );
-};
 
 const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onRemove }) => {
   const connections = useMemo(() => {
@@ -126,11 +67,11 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onRemove }) => {
         <div>Connections:</div>
         <div className="connections-boxes">
           {connections.map((connection, idx) => (
-            <DeleteDevice key={connection} connection={connection} idx={idx} />
+            <Link key={connection} connection={connection} idx={idx} />
           ))}
         </div>
       </div>
-      <TrashCan name={deviceData.name} onRemove={onRemove} />
+      <DeleteLink name={deviceData.name} onRemove={onRemove} />
     </div>
   );
 };
