@@ -8,8 +8,6 @@ import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
 import { isValidLink } from './linkValidators';
-import { useEmulator } from 'src/Emulator/EmulatorProvider';
-import { TopologyActions } from 'src/Emulator/useTopology';
 
 enum DeviceColor {
   EMPTY = 'empty-color',
@@ -26,10 +24,13 @@ deviceColorClasses.set('s', DeviceColor.SWITCH);
 deviceColorClasses.set('Host', DeviceColor.HOST);
 deviceColorClasses.set('h', DeviceColor.HOST);
 
+type LinkFunc = (from: string, to: string) => any;
+
 interface Props {
   deviceName: string;
   deviceData: DeviceInterface;
-  onDrop: (from: string, to: string) => any;
+  onDrop: LinkFunc;
+  onRemove: LinkFunc;
 }
 
 const DeleteDevice = ({ connection, idx }: {connection: string, idx: number}) => {
@@ -47,35 +48,35 @@ const DeleteDevice = ({ connection, idx }: {connection: string, idx: number}) =>
   );
 };
 
-const TrashCan = ({ name }: {name: string}) => {
-  const { dispatch } = useEmulator();
-  const [, drop] = useDrop({
+const TrashCan = ({ name, onRemove }: {name: string, onRemove: LinkFunc}) => {
+  const [{ isHover }, drop] = useDrop({
     accept: 'device',
     canDrop: (item: any) => {
       const { deviceData } = item;
       return deviceData.isLink || deviceData.connections.length === 0;
     },
     drop: (item: any, monitor) => {
-      if (monitor.canDrop()) {
-        dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: {from: name, to: item.deviceData.name} });
-        console.log('can drop!', { item, name });
-        return;
-      }
-      console.log('cannot drop!', { item });
+      if (monitor.canDrop())
+        onRemove(item.deviceData.name, name);
+    },
+    collect: (monitor) => {
+      return {
+        isHover: monitor.isOver() && monitor.canDrop(),
+      };
     },
   });
 
   return (
-    <div className={'trash-icon-container'} ref={drop}>
+    <div className={'trash-icon-container'} ref={drop} data-testid='trash-icon'>
     <div className="vertical-bar" />
-    <div className={'trash-icon'}>
+    <div className={`trash-icon${isHover ? ' trash-icon__active' : ''}`}>
       <FontAwesomeIcon icon={faTrashAlt} />
     </div>
   </div>
   );
 };
 
-const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
+const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onRemove }) => {
   const connections = useMemo(() => {
     return deviceData.connections.concat(deviceData.parent?.name || []);
   }, [deviceData.connections, deviceData.parent]);
@@ -125,11 +126,11 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
         <div>Connections:</div>
         <div className="connections-boxes">
           {connections.map((connection, idx) => (
-            <DeleteDevice connection={connection} idx={idx} />
+            <DeleteDevice key={connection} connection={connection} idx={idx} />
           ))}
         </div>
       </div>
-      <TrashCan name={deviceData.name} />
+      <TrashCan name={deviceData.name} onRemove={onRemove} />
     </div>
   );
 };

@@ -78,6 +78,7 @@ exports[`The DeviceContainer should match previous snapshots 1`] = `
       </div>
       <div
         className="trash-icon-container"
+        data-testid="trash-icon"
       >
         <div
           className="vertical-bar"
@@ -153,6 +154,7 @@ exports[`The DeviceContainer should match previous snapshots 1`] = `
       </div>
       <div
         className="trash-icon-container"
+        data-testid="trash-icon"
       >
         <div
           className="vertical-bar"

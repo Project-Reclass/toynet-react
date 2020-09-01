@@ -34,6 +34,7 @@ const InteractionTestComponent = ({ deviceOne, deviceTwo }) => {
 }
 
 const onDropMock = jest.fn();
+const onRemoveMock = jest.fn();
 
 const routerConnectionsData = {
   deviceName: 'r1',
@@ -58,6 +59,7 @@ const routerDeviceMock = {
     connections: [],
   },
   onDrop: onDropMock,
+  onRemove: onRemoveMock,
 }
 const switchDeviceMock = {
   deviceName: 'Switch',
@@ -67,6 +69,7 @@ const switchDeviceMock = {
     connections: [],
   },
   onDrop: onDropMock,
+  onRemove: onRemoveMock,
 }
 
 const hostDeviceMock = {
@@ -77,11 +80,13 @@ const hostDeviceMock = {
     connections: [],
   },
   onDrop: onDropMock,
+  onRemove: onRemoveMock,
 }
 
 describe('The Device', () => {
   beforeEach(() => {
     onDropMock.mockClear();
+    onRemoveMock.mockClear();
   });
 
   it('should match previous snapshots', () => {
@@ -105,6 +110,66 @@ describe('The Device', () => {
     const tree = renderer.create(<TestComponent {...defaultProps} deviceData={switchConnections} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('should be able to delete connection', () => {
+    const { getByText, getByTestId } = render(<TestComponent
+      {...hostDeviceMock}
+      deviceData={{
+        ...hostDeviceMock.deviceData,
+        connections: ['h1-conn']
+      }}
+    />);
+
+    const connection = getByText('h1-conn');
+    const trash = getByTestId('trash-icon');
+
+    act(() => {
+      fireEvent.dragStart(connection);
+      fireEvent.drag(connection);
+      fireEvent.dragOver(trash);
+      fireEvent.drop(trash);
+    });
+
+    expect(onRemoveMock).toHaveBeenCalled();
+  });
+
+  it('should be able to delete itself with no connections', () => {
+    const { getByText, getByTestId } = render(<TestComponent {...hostDeviceMock} />);
+
+    const device = getByText(hostDeviceMock.deviceData.name);
+    const trash = getByTestId('trash-icon');
+
+    act(() => {
+      fireEvent.dragStart(device);
+      fireEvent.drag(device);
+      fireEvent.dragOver(trash);
+      fireEvent.drop(trash);
+    });
+
+    expect(onRemoveMock).toHaveBeenCalled();
+  });
+
+  it('should not delete itself when it still has connections', () => {
+    const { getByText, getByTestId } = render(<TestComponent
+      {...hostDeviceMock}
+      deviceData={{
+        ...hostDeviceMock.deviceData,
+        connections: ['h1-conn']
+      }}
+    />);
+
+    const connection = getByText(hostDeviceMock.deviceData.name);
+    const trash = getByTestId('trash-icon');
+
+    act(() => {
+      fireEvent.dragStart(connection);
+      fireEvent.drag(connection);
+      fireEvent.dragOver(trash);
+      fireEvent.drop(trash);
+    });
+
+    expect(onRemoveMock).not.toHaveBeenCalled();
   });
 
   describe('routers', () => {

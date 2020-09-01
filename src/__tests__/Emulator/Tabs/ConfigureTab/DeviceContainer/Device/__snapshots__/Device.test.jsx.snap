@@ -58,6 +58,7 @@ exports[`The Device should match previous snapshot with router connections 1`] =
   </div>
   <div
     className="trash-icon-container"
+    data-testid="trash-icon"
   >
     <div
       className="vertical-bar"
@@ -113,6 +114,7 @@ exports[`The Device should match previous snapshots 1`] = `
   </div>
   <div
     className="trash-icon-container"
+    data-testid="trash-icon"
   >
     <div
       className="vertical-bar"
@@ -200,6 +202,7 @@ exports[`The Device should match previous snapshots with host connections 1`] = 
   </div>
   <div
     className="trash-icon-container"
+    data-testid="trash-icon"
   >
     <div
       className="vertical-bar"
@@ -287,6 +290,7 @@ exports[`The Device should match previous snapshots with switch connections 1`] 
   </div>
   <div
     className="trash-icon-container"
+    data-testid="trash-icon"
   >
     <div
       className="vertical-bar"
