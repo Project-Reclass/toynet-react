@@ -160,6 +160,42 @@ const getNameFromDevice = (key: string): string => {
   }
 };
 
+// This is probably not the best way to do this, but it's the best way right now.
+// we should look at a better way to handle mutations after dispatch in the future.
+type CommandFn = (cmd: CommandRequest) => any;
+function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mutate: CommandFn) {
+  const queue: CommandRequest[] = [];
+  return (action: ReducerAction) => {
+    switch (action.type) {
+      case TopologyActions.ADD_CONNECTION:
+        const { to, from } = action.payload as Connection;
+        queue.push({ id, command: `add link ${to} ${from}` });
+        mutate({ id, command: `add link ${to} ${from}` });
+        break;
+
+      case TopologyActions.ADD_ROUTER:
+      case TopologyActions.ADD_SWITCH:
+      case TopologyActions.ADD_HOST:
+        const addKey = action.type === TopologyActions.ADD_ROUTER ? 'router' :
+          action.type === TopologyActions.ADD_SWITCH ? 'switch' : 'host';
+        const { name } = action.payload as DeviceInterface;
+        queue.push({ id, command: `add ${addKey} ${name}` });
+        mutate({ id, command: `add ${addKey} ${name}` });
+        break;
+
+      case TopologyActions.FLUSH_QUEUE:
+        queue.forEach(mutate);
+        queue.splice(0, queue.length);
+        break;
+
+      default:
+        break;
+    }
+
+    dispatch(action);
+  };
+};
+
 const initialState: ParsedXML = {
   switches: [],
   routers: [],

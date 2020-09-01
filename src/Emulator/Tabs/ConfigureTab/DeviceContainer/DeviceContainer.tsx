@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ReactComponent as PlusIcon } from 'src/assets/add.svg';
+
 import { DeviceInterface } from 'src/common/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
 import { useEmulator } from 'src/Emulator/EmulatorProvider';

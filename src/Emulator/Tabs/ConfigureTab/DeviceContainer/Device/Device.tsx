@@ -1,10 +1,14 @@
 import React, { FC, useMemo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 import { mergeRefs } from 'src/common/utils';
 import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
+
 import Link from './Link';
 import DeleteLink from './DeleteLink';
 import { isValidLink } from './linkValidators';
