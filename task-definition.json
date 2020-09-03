@@ -1,5 +1,4 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:909056806605:task-definition/toynet-react-task:1",
     "containerDefinitions": [
         {
             "name": "toynet-react-container",
@@ -16,7 +15,7 @@
             "volumesFrom": [],
             "environment": [{
                 "name": "SERVER_URI",
-                "value": "http://localhost:8000"
+                "value": "http://internal-toynet-django-lb-182235266.us-east-2.elb.amazonaws.com:8000"
             }]
         }
     ],
@@ -24,19 +23,7 @@
     "family": "toynet-react",
     "revision": 1,
     "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
-        {
-            "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
-        }
-    ],
     "placementConstraints": [],
-    "compatibilities": [
-        "EC2"
-    ],
     "requiresCompatibilities": [
         "EC2"
     ],
