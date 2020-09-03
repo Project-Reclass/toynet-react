@@ -74,20 +74,24 @@ function reducer(state: ParsedXML, action: ReducerAction) {
     case TopologyActions.DELETE_ROUTER:
     case TopologyActions.DELETE_SWITCH:
       const deleteKey = action.type === TopologyActions.DELETE_ROUTER ? 'routers' :
-        action.type === TopologyActions.DELETE_SWITCH ? 'switches' : 'hosts';
+      action.type === TopologyActions.DELETE_SWITCH ? 'switches' : 'hosts';
       const device = action.payload as DeviceInterface;
       const deviceIndex = state[deleteKey].findIndex(d => d.name === device.name);
       if (deviceIndex !== -1)
-        state[deleteKey].splice(deviceIndex, 1);
-
+      state[deleteKey].splice(deviceIndex, 1);
       return;
 
     case TopologyActions.DELETE_CONNECTION:
       const { to: toDelete, from: fromDelete } = action.payload as Connection;
       const deleteDevices = [...state.routers, ...state.hosts, ...state.switches];
       for (const device of deleteDevices) {
-        if (device.name === toDelete) {
-          device.connections.splice(device.connections.findIndex(name => name === fromDelete), 1);
+        if (device.name === fromDelete) {
+          if (device.parent?.name === toDelete) {
+            device.parent = null;
+          } else {
+            const idx = device.connections.findIndex(name => name === toDelete);
+            device.connections.splice(idx, 1);
+          }
           break;
         }
       }
@@ -129,12 +133,31 @@ function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mut
         queue.splice(0, queue.length);
         break;
 
+      case TopologyActions.DELETE_CONNECTION:
+        const { to: toDelete, from: fromDelete } = action.payload as Connection;
+        if (toDelete === fromDelete) {
+          mutate({ id, command: `remove ${getNameFromDevice(fromDelete)} ${fromDelete}` });
+        } else {
+          mutate({ id, command: `remove link ${fromDelete} ${toDelete}` });
+        }
+        break;
+
       default:
         break;
     }
 
     dispatch(action);
   };
+};
+
+const getNameFromDevice = (key: string): string => {
+  if (key.length < 1) return '';
+  switch (key[0].toLocaleLowerCase()) {
+    case 'h': return 'host';
+    case 's': return 'switch';
+    case 'r': return 'router';
+    default: return '';
+  }
 };
 
 const initialState: ParsedXML = {

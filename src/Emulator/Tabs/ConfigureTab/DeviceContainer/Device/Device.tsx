@@ -1,42 +1,30 @@
 import React, { FC, useMemo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { mergeRefs } from 'src/common/utils';
 import { DeviceInterface } from 'src/common/types';
 
 import './Device.css';
+
+import Link from './Link';
+import DeleteLink from './DeleteLink';
 import { isValidLink } from './linkValidators';
-
-enum DeviceColor {
-  EMPTY = 'empty-color',
-  ROUTER = 'router-color',
-  SWITCH = 'switch-color',
-  HOST = 'host-color',
-}
-
-const deviceColorClasses = new Map<string, DeviceColor>();
-deviceColorClasses.set('Router', DeviceColor.ROUTER);
-deviceColorClasses.set('r', DeviceColor.ROUTER);
-deviceColorClasses.set('Switch', DeviceColor.SWITCH);
-deviceColorClasses.set('s', DeviceColor.SWITCH);
-deviceColorClasses.set('Host', DeviceColor.HOST);
-deviceColorClasses.set('h', DeviceColor.HOST);
+import { LinkFunc, DeviceColor, deviceColorClasses } from './shared';
 
 interface Props {
   deviceName: string;
   deviceData: DeviceInterface;
-  onDrop: (from: string, to: string) => any;
+  onDrop: LinkFunc;
+  onRemove: LinkFunc;
 }
 
-const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
+const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onRemove }) => {
   const connections = useMemo(() => {
     return deviceData.connections.concat(deviceData.parent?.name || []);
   }, [deviceData.connections, deviceData.parent]);
 
   const [{ isDragging }, drag] = useDrag({
-    item: { type: 'device', deviceData: { ...deviceData, connections } },
+    item: { type: 'device', deviceData: { ...deviceData, connections, isLink: false } },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -80,23 +68,11 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop }) => {
         <div>Connections:</div>
         <div className="connections-boxes">
           {connections.map((connection, idx) => (
-              <div
-                id={`${connection}${idx}`}
-                className={`connection ${deviceColorClasses.get(connection[0])}`}
-                key={`${connection}`}
-                style={{ cursor: 'pointer' }}
-              >
-                {connection}
-              </div>
-            ))}
+            <Link key={connection} connection={connection} idx={idx} />
+          ))}
         </div>
       </div>
-      <div className={'trash-icon-container'}>
-        <div className="vertical-bar" />
-        <div className={'trash-icon'}>
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </div>
-      </div>
+      <DeleteLink name={deviceData.name} onRemove={onRemove} />
     </div>
   );
 };

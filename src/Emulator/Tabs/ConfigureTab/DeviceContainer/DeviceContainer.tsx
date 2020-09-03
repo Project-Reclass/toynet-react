@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { ReactComponent as PlusIcon} from 'src/assets/add.svg';
+import { ReactComponent as PlusIcon } from 'src/assets/add.svg';
+
 import { DeviceInterface } from 'src/common/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
 import { useEmulator } from 'src/Emulator/EmulatorProvider';
 
-import './DeviceContainer.css';
 import Device from './Device';
+import './DeviceContainer.css';
 
 interface Props {
   deviceName: string;
@@ -36,6 +37,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
               deviceName={deviceName}
               deviceData={device}
               onDrop={(from, to) => dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { to, from } })}
+              onRemove={(from, to) => dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: { to, from } })}
             />
           ))}
           <div ref={ref}></div>
