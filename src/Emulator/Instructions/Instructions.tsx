@@ -28,7 +28,7 @@ const Instructions: FC<Props> = ({ panelData }) => {
           <h4 className="objective-title">Objective</h4>
           <p className="objective">{panelData.objective}</p>
         </div>
-        <div>
+        <div className='task-container'>
           <h4 className="tasks-title">Tasks</h4>
           <ol>
             {panelData.tasks.map((task, idx) => (

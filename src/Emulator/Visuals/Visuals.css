@@ -8,7 +8,8 @@
    -khtml-user-drag: none;
    -moz-user-drag: none;
    -o-user-drag: none;
-   border: 5px solid red;
+   border-radius: 10px;
+   background-color: #454950;
 }
 
 .iconButtons {

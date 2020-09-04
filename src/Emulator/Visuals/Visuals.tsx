@@ -1,7 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, FC } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearchPlus, faSearchMinus, faUndo, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import zoomInButton from '../../assets/buttons/zoomInIcon.svg';
+import greenZoomInButton from '../../assets/buttons/greenZoomInIcon.svg';
+import zoomOutButton from '../../assets/buttons/zoomOutIcon.svg';
+import greenZoomOutButton from '../../assets/buttons/greenZoomOutIcon.svg';
+import showButton from '../../assets/buttons/greenShowIcon.svg';
+import greenShowButton from '../../assets/buttons/showIcon.svg';
+import hideButton from '../../assets/buttons/hideIcon.svg';
+import greenhideButton from '../../assets/buttons/hideIcon.svg';
+import centerButton from '../../assets/buttons/centerImageIcon.svg';
+import greenCenterButton from '../../assets/buttons/greenCenterImageIcon.svg';
 
 import { visualizeToynetSession } from 'src/common/api/topology/requests';
 
@@ -13,13 +21,27 @@ const ZOOM_INCREMENT = 0.1;
 const INITIAL_ZOOM_LEVEL = 1;
 const ZOOM_MIN_LIMIT = 0.2;
 const ZOOM_MAX_LIMIT = 2;
-const CONTAINER_HEIGHT = '58.3vh';
-const CONTAINER_WIDTH = '69vw';
+const CONTAINER_HEIGHT = '57.15vh';
+const CONTAINER_WIDTH = '68.18vw';
 
 function convertToPixelFromView(text: string, measurement: number, toStrip: string) {
   const PERCENT_TO_WHOLE = 100;
   return measurement * parseInt(text.replace(toStrip, '')) / PERCENT_TO_WHOLE;
 }
+
+interface BtnProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  hoverClass: string;
+}
+
+const HighlightButton: FC<BtnProps> = ({ children, hoverClass, ...rest }) => {
+  const [isHover, setIsHover] = useState(false);
+
+  return (
+    <button {... rest} className={`${rest.className} ${isHover ? {greenZoomInButton} : {zoomInButton}}`} onMouseOver={() => {setIsHover(true);}} onMouseLeave={() => {setIsHover(false);}}
+    {... children}>
+    </button>
+  );
+};
 
 const Visuals = () => {
   const { sessionId } = useEmulator();
@@ -60,7 +82,6 @@ const Visuals = () => {
         y: (realContainerHeight - imageRef.current.offsetHeight) / 2,
       });
     }
-
   };
 
   const toggleHideImage = () => {
@@ -71,28 +92,28 @@ const Visuals = () => {
     <div style={{
       height: CONTAINER_HEIGHT,
       width: CONTAINER_WIDTH,
+      marginTop: '2.5vh',
+      marginLeft: '1.5vw',
       overflow: 'hidden',
       position: 'relative',
-      marginTop: '2vh',
-      marginLeft: '2vh',
-      border: '5px solid red',
+      borderRadius: '10px',
+      backgroundColor: '#212529',
+      boxShadow: '0 0 0 0.4vw #454950',
     }}>
       <div className="icons">
-        {!hideImage &&
-        <>
-        <button className='iconButtons' onClick={zoomIn} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-          <FontAwesomeIcon className='icon' icon={faSearchPlus} />
-        </button>
-        <button className='iconButtons' onClick={zoomOut} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-          <FontAwesomeIcon className='icon' icon={faSearchMinus} />
-        </button>
-        </>}
+        {/* {!hideImage &&
+        <> */}
+        <HighlightButton hoverClass= {zoomInButton} className='iconButtons' onClick={zoomIn} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
+        </HighlightButton>
+        {/* <button className='iconButtons' onClick={zoomOut} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
+          <img src={highlight ? greenZoomOutButton : zoomOutButton} alt='X' />
+        </button> */}
+        {/* </>} */}
         <button className='iconButtons' onClick={toggleHideImage}>
-          <FontAwesomeIcon className='icon' icon={faEyeSlash} />
-          {/* <img src='https://picsum.photos/200' alt=''></img> */}
+          <img src={hideImage ? hideButton : showButton} alt='X' />
         </button>
         <button className='iconButtons' onClick={recenterImage}>
-          <FontAwesomeIcon className='icon' icon={faUndo} />
+        <img src={centerButton} alt='X' />
         </button>
       </div>
       <Draggable
@@ -102,7 +123,7 @@ const Visuals = () => {
         onStop={() => setIsGrabbing(false)}
         onDrag={handleDrag}
       >
-        <div className="handle" style={{ cursor: isGrabbing ? '-webkit-grabbing': '', visibility: hideImage ? 'hidden' : 'initial' }}>
+        <div className="handle" style={{ cursor: isGrabbing ? '-webkit-grabbing': '', visibility: hideImage ? 'hidden' : 'initial', backgroundColor: '#212529', borderRadius: '10px' }}>
           {sessionId > 0 &&
             <img
               data-testid={'toynet-session-img'}
@@ -115,7 +136,6 @@ const Visuals = () => {
               }}
             />
           }
-          <img src='https://picsum.photos/200' alt=''></img>
         </div>
       </Draggable>
     </div>

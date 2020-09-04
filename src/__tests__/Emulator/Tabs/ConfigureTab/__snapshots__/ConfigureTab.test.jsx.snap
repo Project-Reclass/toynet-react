@@ -68,25 +68,5 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="btn-run-container"
-  >
-    <div
-      className="max-nodes"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-    >
-      Each device type can have maximum 10 nodes
-    </div>
-    <button
-      className="btn-run"
-      type="button"
-    >
-      Run
-    </button>
-  </div>
 </div>
 `;

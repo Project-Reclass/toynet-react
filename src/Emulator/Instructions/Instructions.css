@@ -10,11 +10,27 @@
   width: 24vw;
   border-radius: 10px;
   word-wrap: break-word;
+  padding-left: 2vh;
+  overflow: auto;
 }
 
-.instructions {
-  padding-left: 4vh;
+.instructions::-webkit-scrollbar {
+  width: 10px;
+  color: #454950;
 }
+
+.instructions::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.instructions::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+.instructions::-webkit-scrollbar-corner {
+  border-radius: 10px;
+  color: #454950;
+} 
 
 .icon-container, .title-container, .objective-container, .tasks-title {
   padding-top: 2vh;
