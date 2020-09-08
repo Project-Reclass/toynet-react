@@ -101,7 +101,7 @@ const Visuals = () => {
       borderRadius: '10px',
       backgroundColor: '#212529',
       boxShadow: '0 0 0 0.4vw #454950',
-      zIndex: '-2',
+      zIndex: -1,
     }}>
       <div className="icons">
         {!hideImage &&
