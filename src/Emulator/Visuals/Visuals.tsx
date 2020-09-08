@@ -1,15 +1,13 @@
 import React, { useRef, useState, FC } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
-import zoomInButton from '../../assets/buttons/zoomInIcon.svg';
-import greenZoomInButton from '../../assets/buttons/greenZoomInIcon.svg';
-import zoomOutButton from '../../assets/buttons/zoomOutIcon.svg';
-import greenZoomOutButton from '../../assets/buttons/greenZoomOutIcon.svg';
-import showButton from '../../assets/buttons/greenShowIcon.svg';
-import greenShowButton from '../../assets/buttons/showIcon.svg';
-import hideButton from '../../assets/buttons/hideIcon.svg';
-import greenhideButton from '../../assets/buttons/hideIcon.svg';
-import centerButton from '../../assets/buttons/centerImageIcon.svg';
-import greenCenterButton from '../../assets/buttons/greenCenterImageIcon.svg';
+import {ReactComponent as ZoomInButton} from '../../assets/buttons/zoomInIcon.svg';
+import {ReactComponent as GreenZoomInButton } from '../../assets/buttons/greenZoomInIcon.svg';
+import {ReactComponent as ZoomOutButton} from '../../assets/buttons/zoomOutIcon.svg';
+import {ReactComponent as GreenZoomOutButton} from '../../assets/buttons/greenZoomOutIcon.svg';
+import {ReactComponent as HideButton} from '../../assets/buttons/hideIcon.svg';
+import {ReactComponent as GreenHideButton} from '../../assets/buttons/greenHideIcon.svg';
+import {ReactComponent as CenterButton} from '../../assets/buttons/centerImageIcon.svg';
+import {ReactComponent as GreenCenterButton} from '../../assets/buttons/greenCenterImageIcon.svg';
 
 import { visualizeToynetSession } from 'src/common/api/topology/requests';
 
@@ -30,15 +28,19 @@ function convertToPixelFromView(text: string, measurement: number, toStrip: stri
 }
 
 interface BtnProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  hoverClass: string;
+  hoverComponent: JSX.Element
+  component: JSX.Element
 }
 
-const HighlightButton: FC<BtnProps> = ({ children, hoverClass, ...rest }) => {
+const HighlightButton: FC<BtnProps> = ({ children, hoverComponent, component, ...rest }) => {
   const [isHover, setIsHover] = useState(false);
-
   return (
-    <button {... rest} className={`${rest.className} ${isHover ? {greenZoomInButton} : {zoomInButton}}`} onMouseOver={() => {setIsHover(true);}} onMouseLeave={() => {setIsHover(false);}}
-    {... children}>
+    <button {... rest} onMouseOver={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+    {isHover ?
+      hoverComponent
+      :
+      component
+    }
     </button>
   );
 };
@@ -99,22 +101,20 @@ const Visuals = () => {
       borderRadius: '10px',
       backgroundColor: '#212529',
       boxShadow: '0 0 0 0.4vw #454950',
+      zIndex: '-2',
     }}>
       <div className="icons">
-        {/* {!hideImage &&
-        <> */}
-        <HighlightButton hoverClass= {zoomInButton} className='iconButtons' onClick={zoomIn} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
+        {!hideImage &&
+        <>
+        <HighlightButton hoverComponent={<GreenZoomInButton />} component={<ZoomInButton />} className='iconButtons' onClick={zoomIn} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
         </HighlightButton>
-        {/* <button className='iconButtons' onClick={zoomOut} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-          <img src={highlight ? greenZoomOutButton : zoomOutButton} alt='X' />
-        </button> */}
-        {/* </>} */}
-        <button className='iconButtons' onClick={toggleHideImage}>
-          <img src={hideImage ? hideButton : showButton} alt='X' />
-        </button>
-        <button className='iconButtons' onClick={recenterImage}>
-        <img src={centerButton} alt='X' />
-        </button>
+        <HighlightButton hoverComponent={<GreenZoomOutButton />} component={<ZoomOutButton />} className='iconButtons' onClick={zoomOut} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
+        </HighlightButton>
+        </>}
+        <HighlightButton hoverComponent={<GreenHideButton />} component={<HideButton />} className='iconButtons' onClick={toggleHideImage} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
+        </HighlightButton>
+        <HighlightButton hoverComponent={<GreenCenterButton />} component={<CenterButton />} className='iconButtons' onClick={recenterImage} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
+        </HighlightButton>
       </div>
       <Draggable
         handle=".handle"

@@ -1,14 +1,43 @@
 .configure {
-  height: 27vh;
+  z-index: -1;
+  width: 69vw;
   padding: 20px;
-  padding-bottom: 0;
+  padding-top: 0px;
   border-radius: 10px;
   border-top: 0;
+  margin-top: -3vh;
+  position: relative;
+}
+
+.configure::-webkit-scrollbar {
+  width: 5px;
+  color: #454950;
+}
+
+.configure::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.configure::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+.network-devices::-webkit-scrollbar {
+  width: 10px;
+  color: #454950;
+}
+
+.network-devices::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.network-devices::-webkit-scrollbar-thumb {
+  border-radius: 10px;
 }
 
 .network-devices {
   display: flex;
-  justify-content: center;
+  overflow: auto;
 }
 
 .max-nodes {

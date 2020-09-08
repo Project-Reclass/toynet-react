@@ -15,8 +15,8 @@ interface Props {
 const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
   ({ deviceName, devices, addDevice }, ref) => {
     return (
-      <div className="device-container">
-        <div className="device-container-name">
+      <div>
+      <div className="device-container-name">
           <img
             key={`${deviceName}-button`}
             src={PlusIcon}
@@ -26,6 +26,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
           />
           {deviceName}
         </div>
+      <div className="device-container">
         <div className="device-container-content">
           {devices.map((device, idx) => (
             <Device
@@ -36,6 +37,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
           ))}
           <div ref={ref}></div>
         </div>
+      </div>
       </div>
     );
   },

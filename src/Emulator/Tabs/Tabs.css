@@ -1,14 +1,16 @@
 .tabs {
-  margin-top: 2vh;
+  z-index: -2;
   margin-left: 1vw;
   background-color: #454950;
   height: 31vh;
   width: 69vw;
   border-radius: 0 10px 10px 10px;
   margin-top: 6.6vh;
+  position: relative;
 }
 
 .outer-tabs-container {
+  z-index: -2;
   height: 6vh;
   display: flex;
   position: relative;
@@ -17,7 +19,7 @@
   bottom: 15%;
   padding-top: 1vh;
   width: 300px;
-  background-color: #33373b
+  background-color: #33373b;
 }
 
 .tabs-container {
@@ -57,8 +59,10 @@
 
 .hide {
   display: none;
+  height: 50vh;
 }
 
 .show {
   display: inherit;
+  z-index: -2;
 }

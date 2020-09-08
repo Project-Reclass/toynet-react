@@ -26,6 +26,11 @@
    z-index: 10;
 }
 
+.icons>button:focus {
+   border: none;
+   outline: none;
+}
+
 .icon {
    margin: 5px;
    display: flex;

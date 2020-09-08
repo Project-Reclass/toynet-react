@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Header.css';
+import folderIcon from '../assets/headerIcons/folderIcon.svg';
 
 const Header = () => {
   const [Menu, setMenu] = useState(false);
@@ -9,10 +10,13 @@ const Header = () => {
   }
 
   return (
-    <div>
+    <div className='fixed-sidebar' onClick={openMenu}>
+      <div className='fixed-sidebar-options'>
+        <input type='image' alt='' className='fixed-sidebar-icon'src={folderIcon} />
+      </div>
       <header className='sidebar-menu'
       style={{
-        marginLeft: Menu ? '2.7vw' : '-250px',
+        marginLeft: Menu ? '3%' : '-200px',
       }}>
         <div className='top'>
           <ul>
@@ -42,7 +46,6 @@ const Header = () => {
           </ul>
         </div>
       </header>
-      <img className='temporary-sidebar' alt='' onClick={openMenu} src='https://via.placeholder.com/50' />
     </div>
   );
 };
