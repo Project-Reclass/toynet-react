@@ -1,5 +1,5 @@
 .tabs {
-  z-index: -2;
+  z-index: 1;
   margin-left: 1vw;
   background-color: #454950;
   height: 31vh;
@@ -10,7 +10,6 @@
 }
 
 .outer-tabs-container {
-  z-index: -2;
   height: 6vh;
   display: flex;
   position: relative;

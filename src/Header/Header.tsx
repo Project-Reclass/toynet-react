@@ -16,7 +16,7 @@ const Header = () => {
       </div>
       <header className='sidebar-menu'
       style={{
-        marginLeft: Menu ? '3%' : '-200px',
+        marginLeft: Menu ? '2.7vw' : '-200px',
       }}>
         <div className='top'>
           <ul>

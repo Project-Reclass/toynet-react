@@ -1,6 +1,5 @@
 * {
   font-family: 'Roboto', sans-serif;
-  /* z-index:-2; */
 }
 
 .fixed-sidebar-options {
@@ -14,12 +13,13 @@
 }
 
 .fixed-sidebar {
-  z-index: 1;
+  z-index: 3;
   height: 100vh;
-  width: 3%;
+  width: 2.7vw;
   top: 0;
   left: 0;
   float: left;
+  position: fixed;
   /* background: rgb(24, 21, 21); */
   background: plum;
   display: flex;
@@ -27,7 +27,8 @@
 }
 
 .sidebar-menu {
-  z-index: -1;
+  position: absolute;
+  z-index: 2;
   height: 100vh;
   width: 200px;
   top: 0;
@@ -36,7 +37,6 @@
   float: left;
   transition: .3s;
   padding-left: 1%;
-  position: absolute;
 }
 
 .sidebar-menu ul {
