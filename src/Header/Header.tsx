@@ -24,6 +24,7 @@ const Header = () => {
       <ul className='navbar-nav'>
         <li className='logo'>
           <div className='nav-icon'>
+            {/* Temporarily. Needs a logo svg */}
             <span className='svg' onClick={toggleMenu}>X</span>
             <a href='blank' className='link-text' style={linkTextStyle}>
               Logo
