@@ -16,7 +16,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
   ({ deviceName, devices, addDevice }, ref) => {
     return (
       <div>
-      <div className="device-container-name">
+        <div className="device-container-name">
           <img
             key={`${deviceName}-button`}
             src={PlusIcon}
@@ -26,18 +26,18 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
           />
           {deviceName}
         </div>
-      <div className="device-container">
-        <div className="device-container-content">
-          {devices.map((device, idx) => (
-            <Device
-              key={`${deviceName}${idx}`}
-              deviceName={deviceName}
-              deviceData={device}
-            />
-          ))}
-          <div ref={ref}></div>
+        <div className="device-container">
+          <div className="device-container-content">
+            {devices.map((device, idx) => (
+              <Device
+                key={`${deviceName}${idx}`}
+                deviceName={deviceName}
+                deviceData={device}
+              />
+            ))}
+            <div ref={ref}></div>
+          </div>
         </div>
-      </div>
       </div>
     );
   },

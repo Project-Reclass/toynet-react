@@ -106,15 +106,27 @@ const Visuals = () => {
       <div className="icons">
         {!hideImage &&
         <>
-        <HighlightButton hoverComponent={<GreenZoomInButton />} component={<ZoomInButton />} className='iconButtons' onClick={zoomIn} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-        </HighlightButton>
-        <HighlightButton hoverComponent={<GreenZoomOutButton />} component={<ZoomOutButton />} className='iconButtons' onClick={zoomOut} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-        </HighlightButton>
+        <HighlightButton
+          hoverComponent={<GreenZoomInButton />}
+          component={<ZoomInButton />} className ='iconButtons'
+          onClick={zoomIn}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
+        <HighlightButton
+          hoverComponent={<GreenZoomOutButton />}
+          component={<ZoomOutButton />}
+          className='iconButtons' onClick={zoomOut}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
         </>}
-        <HighlightButton hoverComponent={<GreenHideButton />} component={<HideButton />} className='iconButtons' onClick={toggleHideImage} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-        </HighlightButton>
-        <HighlightButton hoverComponent={<GreenCenterButton />} component={<CenterButton />} className='iconButtons' onClick={recenterImage} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-        </HighlightButton>
+        <HighlightButton
+          hoverComponent={<GreenHideButton />}
+          component={<HideButton />} className='iconButtons'
+          onClick={toggleHideImage}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
+        <HighlightButton
+          hoverComponent={<GreenCenterButton />}
+          component={<CenterButton />}
+          className='iconButtons' onClick={recenterImage}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
       </div>
       <Draggable
         handle=".handle"
@@ -123,7 +135,11 @@ const Visuals = () => {
         onStop={() => setIsGrabbing(false)}
         onDrag={handleDrag}
       >
-        <div className="handle" style={{ cursor: isGrabbing ? '-webkit-grabbing': '', visibility: hideImage ? 'hidden' : 'initial', backgroundColor: '#212529', borderRadius: '10px' }}>
+        <div className="handle"
+          style={{ cursor: isGrabbing ? '-webkit-grabbing': '',
+          visibility: hideImage ? 'hidden' : 'initial',
+          backgroundColor: '#212529',
+          borderRadius: '10px' }}>
           {sessionId > 0 &&
             <img
               data-testid={'toynet-session-img'}

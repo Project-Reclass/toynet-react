@@ -39,7 +39,7 @@ const Tabs = () => {
           >
             History
           </div>
-          <div className="tab empty"></div>
+          <div className="tab empty" />
         </div>
       </div>
       <ConfigureTab status={(activeTab === CONSTANTS.CONFIGURE) ? 'show' : 'hide'} />
