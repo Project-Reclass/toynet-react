@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, cleanup, act } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 
 jest.mock('src/common/api/topology/requests')
 import { withEmulatorProvider, useEmulator } from 'src/Emulator/EmulatorProvider';
@@ -36,9 +36,9 @@ describe('The EmulatorProvider', () => {
 
   it('should provide switches, router, and hosts if a session key exits', async () => {
     window.sessionStorage.setItem(toynetSessionKey, 42);
-    const { getByText, findAllByText } = render(<TestingComponent />);
+    const { getByText } = render(<TestingComponent />);
 
-    await waitForElement(() => findAllByText(/SessionId: 42/i));
+    await waitFor(() => getByText(/SessionId: 42/i));
 
     expect(getByText(/r0/i)).toBeInTheDocument();
     expect(getByText(/s1/i)).toBeInTheDocument();
@@ -52,9 +52,9 @@ describe('The EmulatorProvider', () => {
       topology: '',
     });
 
-    const { getByText, findAllByText } = render(<TestingComponent />);
+    const { getByText } = render(<TestingComponent />);
 
-    await waitForElement(() => findAllByText(/SessionId: 2/i));
+    await waitFor(() => getByText(/SessionId: 2/i));
 
     expect(getByText(/r0/i)).toBeInTheDocument();
     expect(getByText(/s1/i)).toBeInTheDocument();
