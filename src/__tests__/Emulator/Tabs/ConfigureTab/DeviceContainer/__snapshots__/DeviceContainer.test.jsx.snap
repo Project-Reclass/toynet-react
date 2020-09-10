@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The DeviceContainer should match previous snapshots 1`] = `
-<div
-  className="device-container"
->
+<div>
   <div
     className="device-container-name"
   >
@@ -16,89 +14,93 @@ exports[`The DeviceContainer should match previous snapshots 1`] = `
     Router
   </div>
   <div
-    className="device-container-content"
+    className="device-container"
   >
     <div
-      className="device-box"
+      className="device-container-content"
     >
       <div
-        className="device-name-box router-color"
+        className="device-box"
       >
-        <div>
-          R1
-        </div>
-      </div>
-      <div
-        className="vertical-bar"
-      />
-      <div
-        className="connections-container"
-      >
-        <div>
-          Connections:
+        <div
+          className="device-name-box router-color"
+        >
+          <div>
+            R1
+          </div>
         </div>
         <div
-          className="connections-boxes"
+          className="vertical-bar"
+        />
+        <div
+          className="connections-container"
         >
-          <div
-            className="connection host-color"
-            id="h10"
-          >
-            h1
+          <div>
+            Connections:
           </div>
           <div
-            className="connection host-color"
-            id="h21"
+            className="connections-boxes"
           >
-            h2
-          </div>
-          <div
-            className="connection switch-color"
-            id="s12"
-          >
-            s1
+            <div
+              className="connection host-color"
+              id="h10"
+            >
+              h1
+            </div>
+            <div
+              className="connection host-color"
+              id="h21"
+            >
+              h2
+            </div>
+            <div
+              className="connection switch-color"
+              id="s12"
+            >
+              s1
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="device-box"
-    >
       <div
-        className="device-name-box router-color"
+        className="device-box"
       >
-        <div>
-          R2
-        </div>
-      </div>
-      <div
-        className="vertical-bar"
-      />
-      <div
-        className="connections-container"
-      >
-        <div>
-          Connections:
+        <div
+          className="device-name-box router-color"
+        >
+          <div>
+            R2
+          </div>
         </div>
         <div
-          className="connections-boxes"
+          className="vertical-bar"
+        />
+        <div
+          className="connections-container"
         >
-          <div
-            className="connection host-color"
-            id="h30"
-          >
-            h3
+          <div>
+            Connections:
           </div>
           <div
-            className="connection switch-color"
-            id="s11"
+            className="connections-boxes"
           >
-            s1
+            <div
+              className="connection host-color"
+              id="h30"
+            >
+              h3
+            </div>
+            <div
+              className="connection switch-color"
+              id="s11"
+            >
+              s1
+            </div>
           </div>
         </div>
       </div>
+      <div />
     </div>
-    <div />
   </div>
 </div>
 `;
