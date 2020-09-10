@@ -59,11 +59,12 @@
   color: #0C6474;
   opacity: 1;
 }
-a
+
 .splash-login, .splash-signup {
   border: 2px solid black;
   border-radius: 3.5px;
   padding: 3px 15px;
+  transition: 300ms;
 }
 
 .splash-signup {
@@ -71,6 +72,6 @@ a
   background-color: #d6c20e
 }
 
-/* .splash-signup:hover {
-  visibility: hidden;
-} */
+.splash-login:hover {
+  background-color: #18879b;
+}
