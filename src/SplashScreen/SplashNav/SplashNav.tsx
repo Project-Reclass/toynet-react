@@ -1,5 +1,5 @@
 import React from 'react';
-import './SplashHeader.css';
+import './SplashNav.css';
 
 function SplashHeader() {
   return (
