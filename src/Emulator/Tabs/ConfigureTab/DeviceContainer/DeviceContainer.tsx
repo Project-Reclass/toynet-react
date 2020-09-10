@@ -1,10 +1,13 @@
 import React from 'react';
 
-import PlusIcon from 'src/assets/add.svg';
-import { DeviceInterface } from 'src/common/types';
+import { ReactComponent as PlusIcon } from 'src/assets/add.svg';
 
-import './DeviceContainer.css';
+import { DeviceInterface } from 'src/common/types';
+import { TopologyActions } from 'src/Emulator/useTopology';
+import { useEmulator } from 'src/Emulator/EmulatorProvider';
+
 import Device from './Device';
+import './DeviceContainer.css';
 
 interface Props {
   deviceName: string;
@@ -14,15 +17,16 @@ interface Props {
 
 const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
   ({ deviceName, devices, addDevice }, ref) => {
+    const { dispatch } = useEmulator();
+
     return (
       <div>
         <div className="device-container-name">
-          <img
+          <PlusIcon
+            data-testid={'plus-icon'}
             key={`${deviceName}-button`}
-            src={PlusIcon}
             className="plus-circle"
             onClick={() => addDevice(deviceName[0].toLowerCase())}
-            alt="plus icon"
           />
           {deviceName}
         </div>
@@ -33,6 +37,8 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
                 key={`${deviceName}${idx}`}
                 deviceName={deviceName}
                 deviceData={device}
+                onDrop={(from, to) => dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { to, from } })}
+                onRemove={(from, to) => dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: { to, from } })}
               />
             ))}
             <div ref={ref}></div>

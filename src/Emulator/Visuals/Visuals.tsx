@@ -9,7 +9,7 @@ import {ReactComponent as GreenHideButton} from '../../assets/buttons/greenHideI
 import {ReactComponent as CenterButton} from '../../assets/buttons/centerImageIcon.svg';
 import {ReactComponent as GreenCenterButton} from '../../assets/buttons/greenCenterImageIcon.svg';
 
-import { visualizeToynetSession } from 'src/common/api/topology/requests';
+import { useVisualizeToynetImage } from 'src/common/api/topology';
 
 import { useEmulator } from '../EmulatorProvider';
 
@@ -47,6 +47,7 @@ const HighlightButton: FC<BtnProps> = ({ children, hoverComponent, component, ..
 
 const Visuals = () => {
   const { sessionId } = useEmulator();
+  const { data } = useVisualizeToynetImage(sessionId);
   const [pos, setPos] = useState({x: 0, y: 0});
   const [hideImage, setHideImage] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
@@ -140,11 +141,11 @@ const Visuals = () => {
           visibility: hideImage ? 'hidden' : 'initial',
           backgroundColor: '#212529',
           borderRadius: '10px' }}>
-          {sessionId > 0 &&
+          {sessionId > 0 && data && data.length > 0 &&
             <img
               data-testid={'toynet-session-img'}
               className="image"
-              src={visualizeToynetSession(sessionId)}
+              src={data}
               alt=""
               ref={imageRef}
               style={{
