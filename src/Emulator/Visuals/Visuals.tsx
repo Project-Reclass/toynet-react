@@ -1,7 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, FC } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearchPlus, faSearchMinus, faUndo, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import {ReactComponent as ZoomInButton} from '../../assets/buttons/zoomInIcon.svg';
+import {ReactComponent as GreenZoomInButton } from '../../assets/buttons/greenZoomInIcon.svg';
+import {ReactComponent as ZoomOutButton} from '../../assets/buttons/zoomOutIcon.svg';
+import {ReactComponent as GreenZoomOutButton} from '../../assets/buttons/greenZoomOutIcon.svg';
+import {ReactComponent as HideButton} from '../../assets/buttons/hideIcon.svg';
+import {ReactComponent as GreenHideButton} from '../../assets/buttons/greenHideIcon.svg';
+import {ReactComponent as CenterButton} from '../../assets/buttons/centerImageIcon.svg';
+import {ReactComponent as GreenCenterButton} from '../../assets/buttons/greenCenterImageIcon.svg';
 
 import { useVisualizeToynetImage } from 'src/common/api/topology';
 
@@ -13,13 +19,31 @@ const ZOOM_INCREMENT = 0.1;
 const INITIAL_ZOOM_LEVEL = 1;
 const ZOOM_MIN_LIMIT = 0.2;
 const ZOOM_MAX_LIMIT = 2;
-const CONTAINER_HEIGHT = '50vh';
-const CONTAINER_WIDTH = '75vw';
+const CONTAINER_HEIGHT = '57.15vh';
+const CONTAINER_WIDTH = '68.18vw';
 
 function convertToPixelFromView(text: string, measurement: number, toStrip: string) {
   const PERCENT_TO_WHOLE = 100;
   return measurement * parseInt(text.replace(toStrip, '')) / PERCENT_TO_WHOLE;
 }
+
+interface BtnProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  hoverComponent: JSX.Element
+  component: JSX.Element
+}
+
+const HighlightButton: FC<BtnProps> = ({ children, hoverComponent, component, ...rest }) => {
+  const [isHover, setIsHover] = useState(false);
+  return (
+    <button {... rest} onMouseOver={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+    {isHover ?
+      hoverComponent
+      :
+      component
+    }
+    </button>
+  );
+};
 
 const Visuals = () => {
   const { sessionId } = useEmulator();
@@ -61,7 +85,6 @@ const Visuals = () => {
         y: (realContainerHeight - imageRef.current.offsetHeight) / 2,
       });
     }
-
   };
 
   const toggleHideImage = () => {
@@ -72,25 +95,39 @@ const Visuals = () => {
     <div style={{
       height: CONTAINER_HEIGHT,
       width: CONTAINER_WIDTH,
+      marginTop: '2.5vh',
+      marginLeft: '1.5vw',
       overflow: 'hidden',
       position: 'relative',
+      borderRadius: '10px',
+      backgroundColor: '#212529',
+      boxShadow: '0 0 0 0.4vw #454950',
+      zIndex: 1,
     }}>
       <div className="icons">
-        <button className='iconButtons' onClick={toggleHideImage}>
-          <FontAwesomeIcon className='icon' icon={faEyeSlash} />
-        </button>
-        <button className='iconButtons' onClick={recenterImage}>
-          <FontAwesomeIcon className='icon' icon={faUndo} />
-        </button>
         {!hideImage &&
         <>
-        <button className='iconButtons' onClick={zoomIn} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-          <FontAwesomeIcon className='icon' icon={faSearchPlus} />
-        </button>
-        <button className='iconButtons' onClick={zoomOut} style={{ cursor: hideImage ? 'default' : 'pointer' }}>
-          <FontAwesomeIcon className='icon' icon={faSearchMinus} />
-        </button>
+        <HighlightButton
+          hoverComponent={<GreenZoomInButton />}
+          component={<ZoomInButton />} className ='iconButtons'
+          onClick={zoomIn}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
+        <HighlightButton
+          hoverComponent={<GreenZoomOutButton />}
+          component={<ZoomOutButton />}
+          className='iconButtons' onClick={zoomOut}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
         </>}
+        <HighlightButton
+          hoverComponent={<GreenHideButton />}
+          component={<HideButton />} className='iconButtons'
+          onClick={toggleHideImage}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
+        <HighlightButton
+          hoverComponent={<GreenCenterButton />}
+          component={<CenterButton />}
+          className='iconButtons' onClick={recenterImage}
+          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
       </div>
       <Draggable
         handle=".handle"
@@ -99,7 +136,11 @@ const Visuals = () => {
         onStop={() => setIsGrabbing(false)}
         onDrag={handleDrag}
       >
-        <div className="handle" style={{ cursor: isGrabbing ? '-webkit-grabbing': '', visibility: hideImage ? 'hidden' : 'initial' }}>
+        <div className="handle"
+          style={{ cursor: isGrabbing ? '-webkit-grabbing': '',
+          visibility: hideImage ? 'hidden' : 'initial',
+          backgroundColor: '#212529',
+          borderRadius: '10px' }}>
           {sessionId > 0 && data && data.length > 0 &&
             <img
               data-testid={'toynet-session-img'}

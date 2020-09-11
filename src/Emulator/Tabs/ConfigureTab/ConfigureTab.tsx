@@ -40,7 +40,7 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
 
 const ConfigureTab: FC<{status: string}> = ({ status }) => {
   const { switches, hosts, routers, dispatch } = useEmulator();
-  const [showError, setShowError] = useState(false);
+  const [, setShowError] = useState(false);
 
   const routerScrollRef = useRef(null);
   const switchScrollRef = useRef(null);
@@ -105,17 +105,6 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
           addDevice={addHost}
           ref={hostScrollRef}
         />
-      </div>
-      <div className="btn-run-container">
-        <div
-          className="max-nodes"
-          style={{ display: showError ? 'initial' : 'none' }}
-        >
-          Each device type can have maximum 10 nodes
-        </div>
-        <button type="button" className="btn-run">
-          Run
-        </button>
       </div>
     </div>
   );

@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
-
 import Emulator from './Emulator';
-import Layout from './layout';
+import Header from './Header/Header';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
@@ -28,34 +27,39 @@ const data = {
   ],
 };
 
+const Home = () => (
+  <div>
+    <a  style={{marginLeft: '1000px'}} href='/module/0/emulator/0'>Visit Emulator</a> <br />
+    <a href='/module'>Visit Courses</a>
+  </div>
+);
+
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Layout>
-            <ModuleList />
-          </Layout>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route exact path="/module">
+          <Header />
+          <ModuleList />
         </Route>
         <Route exact path="/module/:moduleId/quiz/:quizId">
-          <Layout>
-            <Quiz />
-          </Layout>
+          <Header />
+          <Quiz />
         </Route>
         <Route exact path="/module/:moduleId/article/:articleId">
-          <Layout>
-            <Article />
-          </Layout>
+          <Header />
+          <Article />
         </Route>
         <Route path="/module/:moduleId/emulator/:emulatorId">
-          <Layout>
-           <Emulator panelData={data} />
-          </Layout>
+          <Header />
+          <Emulator panelData={data} />
         </Route>
         <Route path="*">
-          <Layout>
-            <h1>Page not found...</h1>
-          </Layout>
+          <Header />
+          <h1>Page not found...</h1>
         </Route>
       </Switch>
     </Router>

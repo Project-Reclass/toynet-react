@@ -1,27 +1,51 @@
 .device-container {
-  width: 25vw;
-  border: 1.5px solid black;
-  border-right: 0;
+  width: 21vw;
+  background-color: #212529;
+  border-radius: 10px;
+  margin: 0 0.5vw;
+  overflow: auto;
+  display: flex;
+  z-index: 1;
 }
 
-.device-container:last-child {
-  border-right: 1.5px solid black;
+
+.device-container::-webkit-scrollbar {
+  width: 5px;
+  color: #595D62;
 }
+
+.device-container::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.device-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+.device-container::-webkit-scrollbar-corner {
+  border-radius: 10px;
+  color: #595D62;
+} 
 
 .device-container-name {
+  background-color: #454950;
   height: 4vh;
   line-height: 4vh;
   font-size: large;
   text-align: center;
   color: white;
-  border-bottom: 1.5px solid black;
+  z-index: 9900;
+  position: relative;
 }
 
 .device-container-content {
   color: white;
   height: 18vh;
-  overflow-y: scroll;
-  padding: 10px;
+  width: 21vw;
+  max-width: inherit;
+  margin: 1vh .1vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .plus-circle {

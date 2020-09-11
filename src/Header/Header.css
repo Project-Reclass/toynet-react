@@ -1,37 +1,96 @@
-.nav-header {
-  background-color: #008080;
-  min-height: 100vh;
+.fixed-sidebar {
+  z-index: 3;
+  height: 100vh;
+  width: 3rem;
+  position: fixed;
+  left: 0;
+  background: rgb(24, 21, 21);
+  transition: width 200ms ease;
+}
+
+.slider {
+  z-index: 3;
+  height: 100vh;
+  width: 3rem;
+  position: fixed;
+  left: 0;
+  background: rgb(24, 21, 21);
+  transition: width 200ms ease;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+.nav-icon {
+  display: flex;
   align-items: center;
-  justify-content: center;
+  height: 3rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.svg:hover {
+  cursor: pointer;
+}
+
+.link-text {
+  visibility: hidden;
+  opacity: 0;
+  margin-left: 1rem;
   color: white;
+  filter: grayscale(100%) opacity(0.7);
+  transition: color 200ms;
 }
 
-.navbar {
-  background-color: #008080;
-}
 
-.navbar-light .navbar-nav .nav-link {
+.link-text:hover {
+  filter: grayscale(0%) opacity(1);
+  text-decoration: none;
   color: white;
+  background: purple;
+  clear: both;
 }
 
-.btn-reclass {
-  color: white;
-  border: solid;
-  background-color: darkgray;
-  padding: 7px;
+.nav-item:hover {
+  border-left: solid 3px green;
 }
 
-.row {
-  background-color: 	#D3D3D3;
-}
-
-#footer-pic {
-  margin-left: 20vw
+.svg {
+  margin: 0 0.35rem;
 }
 
 .logo {
-  height: 40px;
-  width: auto;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  top: 0;
+  margin-bottom: 15rem;
+  color: red;
+}
+
+.nav-icon svg {
+  stroke-width: 2;
+  stroke: grey;
+  opacity: 0.5;
+  transition: opacity 100ms;
+}
+
+.nav-icon:hover svg {
+  stroke-width: 2.5;
+  stroke: #fff;
+  opacity: 0.95;
+}
+
+.divset-2:hover {
+  /* background: blue; */
 }

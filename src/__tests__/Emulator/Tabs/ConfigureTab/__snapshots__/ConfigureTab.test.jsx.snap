@@ -7,9 +7,7 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
   <div
     className="network-devices"
   >
-    <div
-      className="device-container"
-    >
+    <div>
       <div
         className="device-container-name"
       >
@@ -23,14 +21,16 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
         Router
       </div>
       <div
-        className="device-container-content"
+        className="device-container"
       >
-        <div />
+        <div
+          className="device-container-content"
+        >
+          <div />
+        </div>
       </div>
     </div>
-    <div
-      className="device-container"
-    >
+    <div>
       <div
         className="device-container-name"
       >
@@ -44,14 +44,16 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
         Switch
       </div>
       <div
-        className="device-container-content"
+        className="device-container"
       >
-        <div />
+        <div
+          className="device-container-content"
+        >
+          <div />
+        </div>
       </div>
     </div>
-    <div
-      className="device-container"
-    >
+    <div>
       <div
         className="device-container-name"
       >
@@ -65,31 +67,15 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
         Host
       </div>
       <div
-        className="device-container-content"
+        className="device-container"
       >
-        <div />
+        <div
+          className="device-container-content"
+        >
+          <div />
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    className="btn-run-container"
-  >
-    <div
-      className="max-nodes"
-      style={
-        Object {
-          "display": "none",
-        }
-      }
-    >
-      Each device type can have maximum 10 nodes
-    </div>
-    <button
-      className="btn-run"
-      type="button"
-    >
-      Run
-    </button>
   </div>
 </div>
 `;

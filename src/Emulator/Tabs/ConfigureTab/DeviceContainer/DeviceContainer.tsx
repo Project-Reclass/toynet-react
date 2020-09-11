@@ -20,7 +20,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
     const { dispatch } = useEmulator();
 
     return (
-      <div className="device-container">
+      <div>
         <div className="device-container-name">
           <PlusIcon
             data-testid={'plus-icon'}
@@ -30,17 +30,19 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
           />
           {deviceName}
         </div>
-        <div className="device-container-content">
-          {devices.map((device, idx) => (
-            <Device
-              key={`${deviceName}${idx}`}
-              deviceName={deviceName}
-              deviceData={device}
-              onDrop={(from, to) => dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { to, from } })}
-              onRemove={(from, to) => dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: { to, from } })}
-            />
-          ))}
-          <div ref={ref}></div>
+        <div className="device-container">
+          <div className="device-container-content">
+            {devices.map((device, idx) => (
+              <Device
+                key={`${deviceName}${idx}`}
+                deviceName={deviceName}
+                deviceData={device}
+                onDrop={(from, to) => dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { to, from } })}
+                onRemove={(from, to) => dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: { to, from } })}
+              />
+            ))}
+            <div ref={ref}></div>
+          </div>
         </div>
       </div>
     );
