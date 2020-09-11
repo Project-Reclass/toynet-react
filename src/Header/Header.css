@@ -62,7 +62,7 @@
 }
 
 .nav-item:hover {
- background: green;
+  border-left: solid 3px green;
 }
 
 .svg {

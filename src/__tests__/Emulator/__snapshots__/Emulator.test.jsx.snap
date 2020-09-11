@@ -13,7 +13,20 @@ exports[`The emulator should render and match snapshots 1`] = `
       <div
         className="instructions-exit"
       >
-        [x] Back to course
+        <a
+          className="svg"
+          href="blank"
+        >
+          <svg>
+            backIcon.svg
+          </svg>
+        </a>
+        <a
+          className="link-text"
+          href="blank"
+        >
+          Back to course
+        </a>
       </div>
       <div
         className="title-container"
