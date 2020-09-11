@@ -18,7 +18,6 @@ const Header = () => {
 
   const goToPageOnEnableHref = (path: string) => {
     if (enableHref) {
-      console.log({ path });
       history.push(path);
     }
   };
