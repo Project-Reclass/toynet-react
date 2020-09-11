@@ -39,6 +39,10 @@
   cursor: pointer;
 }
 
+.nav-item:hover {
+  color: white;
+}
+
 .svg:hover {
   cursor: pointer;
 }
