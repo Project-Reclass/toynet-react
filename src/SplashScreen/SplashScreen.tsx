@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import './SplashScreen.css';
-import SplashNav from './SplashNav/SplashNav';
+import SplashNav from './SplashNav';
 
 
 const Splashscreen: FC = () => {

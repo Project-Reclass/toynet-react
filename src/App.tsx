@@ -8,7 +8,7 @@ import Header from './Header/Header';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
-import SplashScreen from './SplashScreen/SplashScreen';
+import SplashScreen from './SplashScreen';
 
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined
