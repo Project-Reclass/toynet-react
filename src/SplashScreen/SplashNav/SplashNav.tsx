@@ -9,19 +9,19 @@ function SplashHeader() {
         <nav className='splash-nav'>
           <ul>
             <li>
-              <a href='blanks' className='splash-nav-link'>Home</a>
+              <a href='#home' className='splash-nav-link'>Home</a>
             </li>
             <li>
-              <a href='blanks' className='splash-nav-link'>About</a>
+              <a href='#about' className='splash-nav-link'>About</a>
             </li>
             <li>
-              <a href='blanks' className='splash-nav-link'>Contact</a>
+              <a href='#contact' className='splash-nav-link'>Contact</a>
             </li>
             <li>
-              <a href='blanks' className='splash-login'>Log in</a>
+              <a href='#login' className='splash-login'>Log in</a>
             </li>
             <li>
-              <a href='blanks' className='splash-signup'>Sign up</a>
+              <a href='#signup' className='splash-signup'>Sign up</a>
             </li>
           </ul>
         </nav>
