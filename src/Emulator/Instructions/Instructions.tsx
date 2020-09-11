@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import './Instructions.css';
+import {ReactComponent as Exit} from '../../assets/buttons/backIcon.svg';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -18,7 +19,8 @@ const Instructions: FC<Props> = ({ panelData }) => {
     <div className='instructions-background'>
       <div className="instructions">
         <div className='instructions-exit'>
-          [x] Back to course
+            <a href='blank' className='svg'><Exit /></a>
+            <a href='blank' className='link-text'>Back to course</a>
         </div>
         <div className="title-container">
           <h4 className="module-num">Module {panelData.submoduleNumber}</h4>

@@ -13,13 +13,14 @@ const Header = () => {
   }
 
   const linkTextStyle = {
-    visibility: menu ? 'visible' : '',
+    opacity: menu ? '1' : '0',
+    transition: 'opacity 300ms',
   } as React.CSSProperties;
 
   return (
     <nav className='fixed-sidebar' onClick={toggleMenu}
     style={{
-      width: menu ? '16rem' : '',
+      width: menu ? '15rem' : '',
     }}>
       <ul className='navbar-nav'>
         <li className='logo'>

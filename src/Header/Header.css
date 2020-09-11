@@ -19,28 +19,29 @@
 
 .nav-item:last-child {
   margin-top: auto;
+  /* width: 15rem; */
 }
 
-.nav-icon {
+.navbar-nav .nav-icon {
   display: flex;
   align-items: center;
   height: 3rem;
   text-decoration: none;
 }
 
-.svg:hover {
+.navbar-nav .svg:hover {
   cursor: pointer;
 }
 
-.link-text {
-  visibility: hidden;
+.navbar-nav .link-text {
+  opacity: 0;
   margin-left: 1rem;
   color: white;
   filter: grayscale(100%) opacity(0.7);
   transition: color 200ms;
 }
 
-.link-text:hover {
+.navbar-nav .link-text:hover {
   filter: grayscale(0%) opacity(1);
   text-decoration: none;
   color: white;
@@ -50,11 +51,11 @@
   background: rgb(139, 131, 131);
 }
 
-.svg {
+.navbar-nav .svg {
   margin: 0 0.35rem;
 }
 
-.logo {
+.navbar-nav .logo {
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
