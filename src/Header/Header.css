@@ -19,21 +19,20 @@
 
 .nav-item:last-child {
   margin-top: auto;
-  /* width: 15rem; */
 }
 
-.navbar-nav .nav-icon {
+.nav-icon {
   display: flex;
   align-items: center;
   height: 3rem;
   text-decoration: none;
 }
 
-.navbar-nav .svg:hover {
+.svg:hover {
   cursor: pointer;
 }
 
-.navbar-nav .link-text {
+.link-text {
   opacity: 0;
   margin-left: 1rem;
   color: white;
@@ -41,7 +40,7 @@
   transition: color 200ms;
 }
 
-.navbar-nav .link-text:hover {
+.link-text:hover {
   filter: grayscale(0%) opacity(1);
   text-decoration: none;
   color: white;
@@ -51,15 +50,26 @@
   background: rgb(139, 131, 131);
 }
 
-.navbar-nav .svg {
+.svg {
   margin: 0 0.35rem;
 }
 
-.navbar-nav .logo {
+.logo {
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
   top: 0;
   margin-bottom: 15rem;
   color: red;
+}
+
+.nav-icon svg {
+  stroke-width: 2;
+  stroke: grey;
+  opacity: 1;
+}
+
+.nav-icon:hover svg {
+  stroke-width: 3;
+  stroke: #fff;
 }

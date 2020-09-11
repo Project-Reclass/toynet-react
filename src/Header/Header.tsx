@@ -13,14 +13,15 @@ const Header = () => {
   }
 
   const linkTextStyle = {
-    opacity: menu ? '1' : '0',
-    transition: 'opacity 300ms',
+    opacity: menu ? '1' : '',
+    transition: 'opacity 200ms',
+    whiteSpace: 'nowrap',
   } as React.CSSProperties;
 
   return (
     <nav className='fixed-sidebar' onClick={toggleMenu}
     style={{
-      width: menu ? '15rem' : '',
+      width: menu ? '16rem' : '',
     }}>
       <ul className='navbar-nav'>
         <li className='logo'>
@@ -34,7 +35,7 @@ const Header = () => {
         </li>
         <li className='nav-item'>
           <div className='nav-icon'>
-            <span className='svg' onClick={toggleMenu}> <FolderIcon /> </span>
+            <span className='svg' onClick={toggleMenu}> <FolderIcon onClick={toggleMenu} className='svg-icon' /> </span>
             <a href='blank' className='link-text' style={linkTextStyle}>
               Curriculum
             </a>
@@ -42,7 +43,7 @@ const Header = () => {
         </li>
         <li className='nav-item'>
           <div className='nav-icon'>
-            <span className='svg' onClick={toggleMenu}> <AccountIcon /> </span>
+            <span className='svg' onClick={toggleMenu}> <AccountIcon onClick={toggleMenu}/> </span>
             <a href='blank' className='link-text' style={linkTextStyle}>Profile</a>
           </div>
         </li>
