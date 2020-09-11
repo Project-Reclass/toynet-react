@@ -40,7 +40,7 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
 
 const ConfigureTab: FC<{status: string}> = ({ status }) => {
   const { switches, hosts, routers, dispatch } = useEmulator();
-  const [showError, setShowError] = useState(false);
+  const [, setShowError] = useState(false);
 
   const routerScrollRef = useRef(null);
   const switchScrollRef = useRef(null);

@@ -47,5 +47,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: toynet-react-service
-        cluster: toynet-react-container
+        cluster: toynet-react-cluster
         wait-for-service-stability: true

@@ -15,7 +15,7 @@ export const getToynetSession = async (id: number) => {
 };
 
 export const updateToynetSession = async ({id, command}: CommandRequest) => {
-  const { data} = await axios.post<Pick<SessionRequestResponse, 'message' | 'topology'>>(
+  const { data} = await axios.put<Pick<SessionRequestResponse, 'message' | 'topology'>>(
     `${BASE_PATH}/session/modify/${id}/`,
     { command },
   );

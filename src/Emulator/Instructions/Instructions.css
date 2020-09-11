@@ -71,6 +71,7 @@ ol {
   counter-increment: item;
   flex: 0 0 2em;
   width: 2em;
+
 }
 
 .instructions-exit {
