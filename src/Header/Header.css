@@ -8,6 +8,16 @@
   transition: width 200ms ease;
 }
 
+.slider {
+  z-index: 3;
+  height: 100vh;
+  width: 3rem;
+  position: fixed;
+  left: 0;
+  background: rgb(24, 21, 21);
+  transition: width 200ms ease;
+}
+
 .navbar-nav {
   list-style: none;
   padding: 0;
@@ -26,6 +36,7 @@
   align-items: center;
   height: 3rem;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .svg:hover {
@@ -33,6 +44,7 @@
 }
 
 .link-text {
+  visibility: hidden;
   opacity: 0;
   margin-left: 1rem;
   color: white;
@@ -40,14 +52,17 @@
   transition: color 200ms;
 }
 
+
 .link-text:hover {
   filter: grayscale(0%) opacity(1);
   text-decoration: none;
   color: white;
+  background: purple;
+  clear: both;
 }
 
 .nav-item:hover {
-  background: rgb(139, 131, 131);
+ background: green;
 }
 
 .svg {
@@ -66,10 +81,16 @@
 .nav-icon svg {
   stroke-width: 2;
   stroke: grey;
-  opacity: 1;
+  opacity: 0.5;
+  transition: opacity 100ms;
 }
 
 .nav-icon:hover svg {
-  stroke-width: 3;
+  stroke-width: 2.5;
   stroke: #fff;
+  opacity: 0.95;
+}
+
+.divset-2:hover {
+  /* background: blue; */
 }
