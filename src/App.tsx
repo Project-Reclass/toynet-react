@@ -8,6 +8,7 @@ import Header from './Header/Header';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
+import SplashScreen from './SplashScreen';
 
 // rename App.js and App.css to navbar component
 // Move navbar.js, navbar.css, and logo(?) once file structure is determined
@@ -27,19 +28,12 @@ const data = {
   ],
 };
 
-const Home = () => (
-  <div>
-    <a  style={{marginLeft: '1000px'}} href='/module/0/emulator/0'>Visit Emulator</a> <br />
-    <a href='/module'>Visit Courses</a>
-  </div>
-);
-
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path='/'>
-          <Home />
+          <SplashScreen />
         </Route>
         <Route exact path="/module">
           <Header />

@@ -39,6 +39,10 @@
   cursor: pointer;
 }
 
+.nav-item:hover {
+  color: white;
+}
+
 .svg:hover {
   cursor: pointer;
 }
@@ -52,13 +56,10 @@
   transition: color 200ms;
 }
 
-
 .link-text:hover {
   filter: grayscale(0%) opacity(1);
   text-decoration: none;
   color: white;
-  background: purple;
-  clear: both;
 }
 
 .nav-item:hover {
@@ -89,8 +90,4 @@
   stroke-width: 2.5;
   stroke: #fff;
   opacity: 0.95;
-}
-
-.divset-2:hover {
-  /* background: blue; */
 }

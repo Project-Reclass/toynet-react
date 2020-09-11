@@ -1,7 +1,7 @@
 .instructions-background {
   margin-left: 3.5rem;
   margin-top: 2vh;
-  z-index: 0;
+  z-index: -2;
 }
 
 .instructions {
@@ -71,22 +71,11 @@ ol {
   counter-increment: item;
   flex: 0 0 2em;
   width: 2em;
+
 }
 
 .instructions-exit {
-  padding-top: 1.5rem;
-  margin: 0;
-  display: flex;
-}
-
-.instructions-exit .link-text {
-  margin-left: 1rem;
-  text-decoration: none;
-  color: gray;
-  margin-top: 0.1rem;
-  transition: color 250ms;
-}
-
-.instructions-exit .link-text:hover {
-  color: white;
+  padding-top: 3vh;
+  padding-bottom: 10%;
+  color: darkgray;
 }
