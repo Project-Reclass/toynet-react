@@ -16,15 +16,13 @@ import SplashScreen from './SplashScreen';
 const data = {
   'id': 1,
   'submoduleNumber': 1,
-  'submoduleName': 'Local Area Networks',
-  'objective': 'Connect two hosts together and check if they\'re communicate',
+  'submoduleName': 'Modifying Topology',
+  'objective': 'Add and remove devices and their connections.',
   'tasks': [
-    'Attach h1 to s1',
-    'Attach h2 to s1',
-    'Run',
-    'In Console, run h1> arp 172.16.0.100',
-    'In Console, run h1> ping 172.16.0.100',
-    'In Console, run h1> arp 172.16.0.100',
+    'Add a Host (h3)',
+    'Attach h3 to s2',
+    'Detach h3 from s2',
+    'Remove h2',
   ],
 };
 
