@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import './Tabs.css';
-import ConfigureTab from './ConfigureTab/ConfigureTab';
+
+import ConfigureTab from './ConfigureTab';
 import ConsoleTab from './ConsoleTab/ConsoleTab';
 import HistoryTab from './HistoryTab/HistoryTab';
+
+import './Tabs.css';
 
 const CONSTANTS = {
   CONFIGURE: 'configure',
