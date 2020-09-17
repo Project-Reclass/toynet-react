@@ -25,6 +25,7 @@
   height: 6vh; 
   display: flex;
   position: absolute;
+  justify-content: space-evenly;
   top: 0;
   left: 0;
   background-color: #454950;
