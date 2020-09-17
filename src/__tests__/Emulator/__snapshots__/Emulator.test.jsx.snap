@@ -112,28 +112,28 @@ exports[`The emulator should render and match snapshots 1`] = `
   >
     <div>
       <div
-        className="tabs"
+        className="tabs__container"
       >
         <div
-          className="outer-tabs-container"
+          className="tabs__outer-tabs-container "
         >
           <div
-            className="tabs-container"
+            className="tabs__tabs-container "
           >
             <div
-              className="tab active"
+              className="tabs__tab tabs__tab--active"
               onClick={[Function]}
             >
               Configure
             </div>
             <div
-              className="tab"
+              className="tabs__tab"
               onClick={[Function]}
             >
               Console
             </div>
             <div
-              className="tab"
+              className="tabs__tab"
               onClick={[Function]}
             >
               History
@@ -141,102 +141,106 @@ exports[`The emulator should render and match snapshots 1`] = `
           </div>
         </div>
         <div
-          className="configure show"
+          className="tabs__applications-container"
         >
           <div
-            className="network-devices"
+            className="configure tabs__aplication-container--show"
           >
-            <div>
-              <div
-                className="device-container-name"
-              >
-                <svg
-                  className="plus-circle"
-                  data-testid="plus-icon"
-                  onClick={[Function]}
-                >
-                  add.svg
-                </svg>
-                Router
-              </div>
-              <div
-                className="device-container"
-              >
+            <div
+              className="network-devices"
+            >
+              <div>
                 <div
-                  className="device-container-content"
+                  className="device-container-name"
                 >
-                  <div />
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Router
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <div
-                className="device-container-name"
-              >
-                <svg
-                  className="plus-circle"
-                  data-testid="plus-icon"
-                  onClick={[Function]}
-                >
-                  add.svg
-                </svg>
-                Switch
-              </div>
-              <div
-                className="device-container"
-              >
+              <div>
                 <div
-                  className="device-container-content"
+                  className="device-container-name"
                 >
-                  <div />
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Switch
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <div
-                className="device-container-name"
-              >
-                <svg
-                  className="plus-circle"
-                  data-testid="plus-icon"
-                  onClick={[Function]}
-                >
-                  add.svg
-                </svg>
-                Host
-              </div>
-              <div
-                className="device-container"
-              >
+              <div>
                 <div
-                  className="device-container-content"
+                  className="device-container-name"
                 >
-                  <div />
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Host
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <h2
+            className="console tabs__aplication-container--hide"
+            style={
+              Object {
+                "padding": "20px",
+              }
+            }
+          >
+            Coming soon...
+          </h2>
+          <h2
+            className="console tabs__aplication-container--hide"
+            style={
+              Object {
+                "padding": "20px",
+              }
+            }
+          >
+            Coming soon...
+          </h2>
         </div>
-        <h2
-          className="console hide"
-          style={
-            Object {
-              "margin": "1rem",
-            }
-          }
-        >
-          Coming soon...
-        </h2>
-        <h2
-          className="console hide"
-          style={
-            Object {
-              "margin": "1rem",
-            }
-          }
-        >
-          Coming soon...
-        </h2>
       </div>
     </div>
     <div
