@@ -128,9 +128,6 @@ exports[`The emulator should render and match snapshots 1`] = `
           >
             History
           </div>
-          <div
-            className="tab empty"
-          />
         </div>
       </div>
       <div
@@ -210,16 +207,26 @@ exports[`The emulator should render and match snapshots 1`] = `
           </div>
         </div>
       </div>
-      <div
+      <h2
         className="console hide"
+        style={
+          Object {
+            "margin": "1rem",
+          }
+        }
       >
-        Hi, I am the console component
-      </div>
-      <div
-        className="history hide"
+        Coming soon...
+      </h2>
+      <h2
+        className="console hide"
+        style={
+          Object {
+            "margin": "1rem",
+          }
+        }
       >
-        Hi, I am the history component
-      </div>
+        Coming soon...
+      </h2>
     </div>
     <div
       style={
