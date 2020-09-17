@@ -1,0 +1,54 @@
+.splash-content-body {
+  flex-grow: 1;
+  height: 100vh;
+  display: block;
+  position: relative;
+  margin-bottom: 5%;
+}
+
+.splash-content-text {
+  position: relative;
+  width: 100%;
+  float: right;
+  text-align: right;
+  margin-top: 10%;
+  margin-right: 10%;
+  color: white;
+}
+
+.splash-content-header {
+  font-size: 4rem;
+}
+
+.splash-content-subtext {
+  width: 40%;
+  float: right;
+  text-align: right;
+  margin-right: auto;
+  font-size: 1.5rem;
+  line-height: 115%;
+}
+
+.splash-content-image {
+  position: relative;
+  display: flex;
+  width: 60%;
+  height: 100%;
+  right: -10%;
+  top: -40%;
+}
+
+.splash-content-body svg {
+  height: 80%;
+}
+
+
+.splash-content-image-text1 {
+  color: white;
+  text-align: center;
+  width: 25%;
+  position: absolute;
+  margin-top: 70%;
+  left: 1%;
+  padding-bottom: 10%;
+}

@@ -1,0 +1,49 @@
+.splash-about-body {
+  height: 70vh;
+  display: block;
+  position: relative;
+  background-color: white;
+}
+
+.splash-about-text {
+  position: relative;
+  left: 10%;
+  top: 20%;
+  width: 40%;
+}
+
+.splash-about-header, .splash-about-subheader  {
+  width: 100%;
+}
+
+.splash-about-subheader {
+  float: left;
+  position: absolute;
+  text-align: left;
+  font-weight: 450;
+  font-size: 1.5em;
+  word-spacing: normal;
+  left: 7%;
+  width: 100%;
+}
+
+.splash-about-header {
+  position: relative;
+  text-align: center;
+  font-weight: 900;
+  font-size: 4em;
+  word-spacing: 10px;
+  padding-bottom: 5%;
+}
+
+.about-svg-container {
+  position: absolute;
+  top: 10%;
+  left: 55%;
+  height: 80%;
+}
+
+.splash-about-image {
+  position: absolute;
+  height: 100%;
+}

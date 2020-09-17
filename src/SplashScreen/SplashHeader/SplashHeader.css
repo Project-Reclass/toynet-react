@@ -1,0 +1,52 @@
+.splash-header-body {
+  display: block;
+  position: relative;
+  height: calc(100vh - 64px);
+  flex-grow: 1;
+  background: rgb(0,119,138);
+  background: linear-gradient(180deg, rgba(0,119,138,1) 0%, rgba(0,0,0,0.039653361344537785) 95%);
+  /* opacity: 75%; */
+}
+
+.splash-header-text {
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  margin-top: 10%;
+  margin-left: 10%;
+  color: white;
+  position: relative;
+  display: block;
+}
+
+.splash-header-subtext{
+  margin-top: 2.5rem;
+}
+
+.splash-h1 {
+  font-size: 7vh
+}
+
+.how-it-works {
+  position: absolute;
+  display: block;
+  padding: 0.7rem 2rem;
+  border-radius: 10px;
+  background-color: #c9b51e ;
+  box-shadow: 2px 4px 5px rgb(48, 41, 41);
+  margin-top: 2.5rem;
+}
+
+.splash-button-text {
+  text-align: center;
+  margin: auto;
+}
+
+.splash-header-image {
+  position: absolute;
+  height: 70%;
+  width: 50%;
+  display: block;
+  left: 50%;
+  bottom: 20%;
+}

@@ -1,7 +1,7 @@
 .instructions-background {
   margin-left: 3.5rem;
   margin-top: 2vh;
-  z-index: -2;
+  z-index: 0;
 }
 
 .instructions {

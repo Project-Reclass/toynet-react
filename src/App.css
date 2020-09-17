@@ -1,13 +1,8 @@
-/* selecting */
-* {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 * {
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* width */
@@ -29,4 +24,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #595D62;
 }
-

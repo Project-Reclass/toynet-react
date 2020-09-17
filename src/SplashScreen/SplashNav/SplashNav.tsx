@@ -1,7 +1,7 @@
 import React from 'react';
 import './SplashNav.css';
 
-function SplashHeader() {
+function SplashNav() {
   return (
     <header className='splash-header'>
       <div className='splash-header-container'>
@@ -30,5 +30,5 @@ function SplashHeader() {
   );
 }
 
-export default SplashHeader;
+export default SplashNav;
 
