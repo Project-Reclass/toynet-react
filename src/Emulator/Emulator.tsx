@@ -13,8 +13,10 @@ const Emulator: FC<Props> = ({ panelData }) => {
   return (
     <div className="emulator">
       <Instructions panelData={panelData} />
-      <div>
-        <Tabs />
+      <div style={{ marginLeft: '1.5vw', marginTop: '2vh', display: 'flex', flexDirection: 'column' }}>
+        <div>
+          <Tabs />
+        </div>
         <Visuals />
       </div>
     </div>

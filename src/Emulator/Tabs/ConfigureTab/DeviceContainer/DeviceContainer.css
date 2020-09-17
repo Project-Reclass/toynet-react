@@ -43,7 +43,7 @@
   height: 18vh;
   width: 21vw;
   max-width: inherit;
-  margin: 1vh .1vw;
+  margin: 0.61375rem 0.4rem;
   display: flex;
   flex-direction: column;
 }

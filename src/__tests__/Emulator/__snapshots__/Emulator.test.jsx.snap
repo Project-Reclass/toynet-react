@@ -100,125 +100,147 @@ exports[`The emulator should render and match snapshots 1`] = `
       </div>
     </div>
   </div>
-  <div>
-    <div
-      className="tabs"
-    >
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+        "marginLeft": "1.5vw",
+        "marginTop": "2vh",
+      }
+    }
+  >
+    <div>
       <div
-        className="outer-tabs-container"
+        className="tabs__container"
       >
         <div
-          className="tabs-container"
+          className="tabs__outer-tabs-container "
         >
           <div
-            className="tab active"
-            onClick={[Function]}
+            className="tabs__tabs-container "
           >
-            Configure
-          </div>
-          <div
-            className="tab"
-            onClick={[Function]}
-          >
-            Console
-          </div>
-          <div
-            className="tab"
-            onClick={[Function]}
-          >
-            History
-          </div>
-          <div
-            className="tab empty"
-          />
-        </div>
-      </div>
-      <div
-        className="configure show"
-      >
-        <div
-          className="network-devices"
-        >
-          <div>
             <div
-              className="device-container-name"
+              className="tabs__tab tabs__tab--active"
+              onClick={[Function]}
             >
-              <svg
-                className="plus-circle"
-                data-testid="plus-icon"
-                onClick={[Function]}
-              >
-                add.svg
-              </svg>
-              Router
+              Configure
             </div>
             <div
-              className="device-container"
+              className="tabs__tab"
+              onClick={[Function]}
             >
-              <div
-                className="device-container-content"
-              >
-                <div />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              className="device-container-name"
-            >
-              <svg
-                className="plus-circle"
-                data-testid="plus-icon"
-                onClick={[Function]}
-              >
-                add.svg
-              </svg>
-              Switch
+              Console
             </div>
             <div
-              className="device-container"
+              className="tabs__tab"
+              onClick={[Function]}
             >
-              <div
-                className="device-container-content"
-              >
-                <div />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              className="device-container-name"
-            >
-              <svg
-                className="plus-circle"
-                data-testid="plus-icon"
-                onClick={[Function]}
-              >
-                add.svg
-              </svg>
-              Host
-            </div>
-            <div
-              className="device-container"
-            >
-              <div
-                className="device-container-content"
-              >
-                <div />
-              </div>
+              History
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="console hide"
-      >
-        Hi, I am the console component
-      </div>
-      <div
-        className="history hide"
-      >
-        Hi, I am the history component
+        <div
+          className="tabs__applications-container"
+        >
+          <div
+            className="configure tabs__aplication-container--show"
+          >
+            <div
+              className="network-devices"
+            >
+              <div>
+                <div
+                  className="device-container-name"
+                >
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Router
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div
+                  className="device-container-name"
+                >
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Switch
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div
+                  className="device-container-name"
+                >
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Host
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2
+            className="console tabs__aplication-container--hide"
+            style={
+              Object {
+                "padding": "20px",
+              }
+            }
+          >
+            Coming soon...
+          </h2>
+          <h2
+            className="console tabs__aplication-container--hide"
+            style={
+              Object {
+                "padding": "20px",
+              }
+            }
+          >
+            Coming soon...
+          </h2>
+        </div>
       </div>
     </div>
     <div
@@ -227,8 +249,8 @@ exports[`The emulator should render and match snapshots 1`] = `
           "backgroundColor": "#212529",
           "borderRadius": "10px",
           "boxShadow": "0 0 0 0.4vw #454950",
+          "flex": "1 1 auto",
           "height": "57.15vh",
-          "marginLeft": "1.5vw",
           "marginTop": "2.5vh",
           "overflow": "hidden",
           "position": "relative",
