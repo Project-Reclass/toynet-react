@@ -1,6 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
+jest.mock('src/common/api/topology/requests')
 import ConfigureTab, { getNextDeviceName, getNextNumber } from 'src/Emulator/Tabs/ConfigureTab';
+import { withEmulatorProvider } from 'src/Emulator/EmulatorProvider';
+import { render, act, fireEvent } from '@testing-library/react';
+
 
 describe('ConfigureTab helper functions', () => {
   it('should increment numbers correctly', () => {
@@ -34,5 +41,24 @@ describe('ConfigureTab', ()=> {
   it('should match previous snapshots', () => {
     const tree = renderer.create(<ConfigureTab status={'online'} />).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('should show an error sign if there are too many devices added', () => {
+    const EmulatedConfigureTab = withEmulatorProvider(ConfigureTab);
+    const { getAllByTestId, getByText } = render(
+      <DndProvider backend={HTML5Backend}>
+        <EmulatedConfigureTab status={'show'} />
+      </DndProvider>
+    );
+
+    const plusIcon = getAllByTestId('plus-icon');
+
+    for (let i = 0; i < 12; i++) {
+      act(() => {
+        fireEvent.click(plusIcon[0]);
+      });
+    }
+
+    expect(getByText(/Max number of devices/i)).toBeInTheDocument();
   });
 });

@@ -1,0 +1,13 @@
+.errorBox {
+  font-style: italic;
+  color: rgb(194, 194, 194);
+  margin: 0.4rem auto
+}
+
+.icon {
+  margin: auto 0.2rem;
+}
+
+.error {
+  font-weight: bold;
+}
