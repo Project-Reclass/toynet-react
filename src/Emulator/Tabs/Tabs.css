@@ -1,30 +1,21 @@
 .tabs {
   z-index: 1;
-  margin-left: 1vw;
-  background-color: #454950;
-  height: 31vh;
-  width: 69vw;
   border-radius: 0 10px 10px 10px;
-  margin-top: 6.6vh;
   position: relative;
 }
 
 .outer-tabs-container {
-  height: 6vh;
   display: flex;
   position: relative;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   bottom: 15%;
-  padding-top: 1vh;
   width: 300px;
   background-color: #33373b;
 }
 
 .tabs-container {
-  height: 6vh; 
   display: flex;
-  position: absolute;
   justify-content: space-evenly;
   top: 0;
   left: 0;
@@ -32,16 +23,15 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 100%;
-  padding-bottom: 1.5vh;
-  padding-top: 1.5%;
-  padding-left: 1%;
+  padding: 0.459rem;
 }
 
 .tab {
   color: white;
   opacity: 0.75;
   font-size: large;
-  padding: 5px;
+  padding: 0.459rem;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -52,7 +42,6 @@
 .active {
   display: inline-block;
   background-color: rgb(17, 15, 15);
-  border-radius: 10px;
   font-weight: bold;
   opacity: 1;
 }
