@@ -7,7 +7,7 @@ interface Props {
 
 const HistoryTab: FC<Props> = ({ status }) => {
   return (
-    <div className={`history ${status}`}>Hi, I am the history component</div>
+    <h2 style={{ margin: '1rem' }} className={`console ${status}`}>Coming soon...</h2>
   );
 };
 

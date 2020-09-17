@@ -7,7 +7,7 @@ interface Props {
 
 const ConsoleTab: FC<Props> = ({ status }) => {
   return (
-    <div className={`console ${status}`}>Hi, I am the console component</div>
+    <h2 style={{ margin: '1rem' }} className={`console ${status}`}>Coming soon...</h2>
   );
 };
 
