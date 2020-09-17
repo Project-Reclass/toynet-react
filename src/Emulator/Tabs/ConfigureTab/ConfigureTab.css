@@ -38,6 +38,7 @@
 .network-devices {
   display: flex;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 .max-nodes {
