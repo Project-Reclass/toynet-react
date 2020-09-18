@@ -1,14 +1,15 @@
 .splash-about-body {
   height: 70vh;
-  display: block;
   position: relative;
   background-color: white;
+  display: flex;
 }
 
 .splash-about-text {
   position: relative;
-  left: 10%;
-  top: 20%;
+  margin: 8% 0 0 10%;
+  /* left: 10%; */
+  /* top: 20%; */
   width: 40%;
 }
 
@@ -37,13 +38,16 @@
 }
 
 .about-svg-container {
-  position: absolute;
-  top: 10%;
-  left: 55%;
-  height: 80%;
+    /* position: absolute; */
+    /* top: 10%; */
+    /* left: 55%; */
+    /* height: 80%; */
+    width: 60%;
+    /* height: 50%; */
 }
 
 .splash-about-image {
-  position: absolute;
-  height: 100%;
+  height: 80%;
+  width: 80%;
+  margin: 8% auto auto auto;
 }

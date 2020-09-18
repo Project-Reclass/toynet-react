@@ -4,9 +4,9 @@ import {ReactComponent as Illustration} from '../../assets/splashScreen/illustra
 
 function SplashHeader() {
   return (
-    <div className='splash-header-body'>
+    <div className='splash-header-body' id="home">
       <div className='splash-header-text'>
-        <h1 className='splash-h1' style={{zIndex: 100}}>
+        <h1 className='splash-h1'>
           Toynet, your new <br />
           computer networking <br />
           companion.</h1>
@@ -15,7 +15,9 @@ function SplashHeader() {
           <h3 className='splash-button-text'>How it works</h3>
         </button>
       </div>
-      <Illustration className='splash-header-image' />
+      <div>
+        <Illustration className='splash-header-image' />
+      </div>
     </div>
   );
 }

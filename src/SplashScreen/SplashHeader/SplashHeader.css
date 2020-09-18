@@ -1,19 +1,20 @@
 .splash-header-body {
-  display: block;
   position: relative;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 4rem);
   flex-grow: 1;
   background: rgb(0,119,138);
-  background: linear-gradient(180deg, rgba(0,119,138,1) 0%, rgba(0,0,0,0.039653361344537785) 95%);
+  background: linear-gradient(180deg, rgba(0,119,138,1) 0%, rgb(51 55 59) 95%);
   /* opacity: 75%; */
+  display: grid;
+  padding: 5rem;
+  grid-template-columns: 1fr 1fr;
 }
 
 .splash-header-text {
   z-index: 1;
-  width: 50%;
-  height: 50%;
-  margin-top: 10%;
-  margin-left: 10%;
+  /* width: 50%; */
+  /* height: 50%; */
+  margin: 0 auto;
   color: white;
   position: relative;
   display: block;
@@ -24,7 +25,7 @@
 }
 
 .splash-h1 {
-  font-size: 7vh
+  font-size: 4.560625rem;
 }
 
 .how-it-works {
@@ -43,10 +44,11 @@
 }
 
 .splash-header-image {
-  position: absolute;
-  height: 70%;
-  width: 50%;
+  /* position: absolute; */
+  /* height: 70%;
+  width: 50%; */
   display: block;
-  left: 50%;
-  bottom: 20%;
+  max-height: calc(100vh - 15rem - 64px); /* substract the vh from padding which is 5 top and bottom minus the height of the header */
+  /* left: 50%;
+  bottom: 20%; */
 }

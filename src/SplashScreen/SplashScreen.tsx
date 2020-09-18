@@ -4,7 +4,7 @@ import './SplashScreen.css';
 import SplashNav from './SplashNav';
 import SplashHeader from './SplashHeader';
 import SplashContent from './SplashContent';
-import SplashAbout from './SplashAbout'
+import SplashAbout from './SplashAbout';
 
 
 const Splashscreen: FC = () => {

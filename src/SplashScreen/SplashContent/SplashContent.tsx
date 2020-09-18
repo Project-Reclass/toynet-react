@@ -4,7 +4,7 @@ import {ReactComponent as Illustration} from '../../assets/splashScreen/illustra
 
 function SplashContent() {
   return (
-    <div className='splash-content-body'>
+    <div className='splash-content-body' id="content">
       <div className='splash-content-text'>
         <h1 className='splash-content-header'>Why Toynet?</h1>
         <br />
@@ -15,16 +15,34 @@ function SplashContent() {
           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
-      <div className='splash-content-image'> 
-        <Illustration />
-        <h4 className='splash-content-image-text1'>
-          Modules
-          <br />
-          <h5>
-            Structured as module by module demos of different netowrking configurations.
-            </h5>
-        </h4>
+      <div className='splash-content-image'>
+          <Illustration />
       </div>
+      {/* <div style={{ position: 'absolute', bottom: 0 }}>
+        <div style={{ margin: 'auto', display: 'flex' }}>
+          <h4 className='splash-content-image-text1'>
+            Modules
+            <br />
+            <h5>
+              Structured as module by module demos of different netowrking configurations.
+              </h5>
+          </h4>
+          <h4 className='splash-content-image-text1'>
+            Modules
+            <br />
+            <h5>
+              Structured as module by module demos of different netowrking configurations.
+              </h5>
+          </h4>
+          <h4 className='splash-content-image-text1'>
+            Modules
+            <br />
+            <h5>
+              Structured as module by module demos of different netowrking configurations.
+              </h5>
+          </h4>
+        </div>
+      </div> */}
     </div>
   );
 }

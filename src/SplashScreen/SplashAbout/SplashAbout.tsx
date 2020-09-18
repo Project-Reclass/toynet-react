@@ -4,7 +4,7 @@ import {ReactComponent as Illustration} from '../../assets/splashScreen/illustra
 
 function SplashAbout() {
   return (
-    <div className='splash-about-body'>
+    <div className='splash-about-body' id="about">
       <div className='splash-about-text'>
         <div className='splash-about-header'>
           About Project Reclass
@@ -18,7 +18,7 @@ function SplashAbout() {
       </div>
       <div className='about-svg-container'>
         <Illustration className='splash-about-image'/>
-        </div>
+      </div>
     </div>
   );
 }
