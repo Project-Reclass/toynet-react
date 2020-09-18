@@ -1,5 +1,5 @@
 .device-container {
-  width: 21vw;
+  /* width: 21vw; */
   background-color: #212529;
   border-radius: 10px;
   margin: 0 0.5vw;
@@ -41,7 +41,7 @@
 .device-container-content {
   color: white;
   height: 18vh;
-  width: 21vw;
+  width: 100%;
   max-width: inherit;
   padding: 0.61375rem 0.4rem;
   padding-left: calc(0.61375rem + 5px);
