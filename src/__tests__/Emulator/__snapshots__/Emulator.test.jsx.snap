@@ -14,18 +14,15 @@ exports[`The emulator should render and match snapshots 1`] = `
         className="instructions-exit"
       >
         <a
-          className="svg"
-          href="blank"
+          className="svg link-text instructions__back-link-container"
+          href="/"
         >
           <svg>
             backIcon.svg
           </svg>
-        </a>
-        <a
-          className="link-text"
-          href="blank"
-        >
-          Back to course
+          <span>
+            Back to site
+          </span>
         </a>
       </div>
       <div
@@ -106,7 +103,11 @@ exports[`The emulator should render and match snapshots 1`] = `
         "display": "flex",
         "flexDirection": "column",
         "marginLeft": "1.5vw",
+        "marginRight": "3.5rem",
         "marginTop": "2vh",
+        "maxHeight": "96vh",
+        "overflow": "hidden",
+        "width": "100%",
       }
     }
   >
@@ -219,6 +220,39 @@ exports[`The emulator should render and match snapshots 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              className="errorBox"
+            >
+              <span
+                className="icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-info-circle fa-w-16 "
+                  data-icon="info-circle"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+              </span>
+              <span>
+                <span
+                  className="error"
+                >
+                  Error:
+                </span>
+                 
+              </span>
+            </div>
           </div>
           <h2
             className="console tabs__aplication-container--hide"
@@ -246,99 +280,111 @@ exports[`The emulator should render and match snapshots 1`] = `
     <div
       style={
         Object {
-          "backgroundColor": "#212529",
+          "backgroundColor": "#454950",
           "borderRadius": "10px",
-          "boxShadow": "0 0 0 0.4vw #454950",
-          "flex": "1 1 auto",
-          "height": "57.15vh",
+          "height": "100%",
           "marginTop": "2.5vh",
           "overflow": "hidden",
-          "position": "relative",
-          "width": "68.18vw",
-          "zIndex": 1,
+          "padding": "0.4vw",
         }
       }
     >
       <div
-        className="icons"
-      >
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            zoomInIcon.svg
-          </svg>
-        </button>
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            zoomOutIcon.svg
-          </svg>
-        </button>
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            hideIcon.svg
-          </svg>
-        </button>
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            centerImageIcon.svg
-          </svg>
-        </button>
-      </div>
-      <div
-        className="handle react-draggable"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
         style={
           Object {
             "backgroundColor": "#212529",
             "borderRadius": "10px",
-            "cursor": "",
-            "transform": "translate(0px,0px)",
-            "visibility": "initial",
+            "flex": "1 1 auto",
+            "height": "100%",
+            "maxHeight": "100%",
+            "overflow": "hidden",
+            "position": "relative",
+            "width": "100%",
+            "zIndex": 1,
           }
         }
-        transform={null}
-      />
+      >
+        <div
+          className="icons"
+        >
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              plus-zoom.svg
+            </svg>
+          </button>
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              minus-zoom.svg
+            </svg>
+          </button>
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              eye-hide.svg
+            </svg>
+          </button>
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              center-image.svg
+            </svg>
+          </button>
+        </div>
+        <div
+          className="handle react-draggable"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#212529",
+              "borderRadius": "10px",
+              "cursor": "",
+              "transform": "translate(0px,0px)",
+              "visibility": "initial",
+            }
+          }
+          transform={null}
+        />
+      </div>
     </div>
   </div>
 </div>
