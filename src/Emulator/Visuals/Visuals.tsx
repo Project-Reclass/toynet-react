@@ -1,12 +1,12 @@
 import React, { useRef, useState, FC } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
-import {ReactComponent as ZoomInButton} from '../../assets/buttons/zoomInIcon.svg';
+import {ReactComponent as ZoomInButton} from 'src/assets/v2-buttons/plus-zoom.svg';
 import {ReactComponent as GreenZoomInButton } from '../../assets/buttons/greenZoomInIcon.svg';
-import {ReactComponent as ZoomOutButton} from '../../assets/buttons/zoomOutIcon.svg';
+import {ReactComponent as ZoomOutButton} from 'src/assets/v2-buttons/minus-zoom.svg';
 import {ReactComponent as GreenZoomOutButton} from '../../assets/buttons/greenZoomOutIcon.svg';
-import {ReactComponent as HideButton} from '../../assets/buttons/hideIcon.svg';
-import {ReactComponent as GreenHideButton} from '../../assets/buttons/greenHideIcon.svg';
-import {ReactComponent as CenterButton} from '../../assets/buttons/centerImageIcon.svg';
+import {ReactComponent as HideButton} from 'src/assets/v2-buttons/eye-hide.svg';
+import {ReactComponent as GreenHideButton} from 'src/assets/v2-buttons/eye-show.svg';
+import {ReactComponent as CenterButton} from 'src/assets/v2-buttons/center-image.svg';
 import {ReactComponent as GreenCenterButton} from '../../assets/buttons/greenCenterImageIcon.svg';
 
 import { useVisualizeToynetImage } from 'src/common/api/topology';
