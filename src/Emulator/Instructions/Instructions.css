@@ -1,7 +1,6 @@
 .instructions-background {
   margin-left: 3.5rem;
   margin-top: 2vh;
-  z-index: -2;
 }
 
 .instructions {
@@ -78,4 +77,13 @@ ol {
   padding-top: 3vh;
   padding-bottom: 10%;
   color: darkgray;
+}
+
+.instructions__back-link-container {
+  display: flex;
+}
+
+.instructions__back-link-container svg {
+  margin: auto 0.5rem auto 0;
+  display: block;
 }
