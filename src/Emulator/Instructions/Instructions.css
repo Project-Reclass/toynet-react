@@ -7,11 +7,13 @@
   color: white;
   background-color: #454950;
   height: 96vh;
-  width: 24vw;
+  width: 15vw;
   border-radius: 10px;
   word-wrap: break-word;
   padding-left: 2vh;
   overflow: auto;
+  max-width: 335px;
+  min-width: 250px;
 }
 
 .instructions::-webkit-scrollbar {

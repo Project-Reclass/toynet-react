@@ -21,8 +21,8 @@
    position: absolute;
    display: flex;
    flex-direction: column;
-   right: 0;
-   bottom: 0;
+   right: 11px;
+   bottom: 20px;
    z-index: 10;
 }
 

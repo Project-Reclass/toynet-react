@@ -92,69 +92,70 @@ const Visuals = () => {
   };
 
   return (
-    <div style={{
-      height: CONTAINER_HEIGHT,
-      width: CONTAINER_WIDTH,
-      marginTop: '2.5vh',
-      overflow: 'hidden',
-      position: 'relative',
-      borderRadius: '10px',
-      flex: '1 1 auto',
-      backgroundColor: '#212529',
-      boxShadow: '0 0 0 0.4vw #454950',
-      zIndex: 1,
-    }}>
-      <div className="icons">
-        {!hideImage &&
-        <>
-        <HighlightButton
-          hoverComponent={<GreenZoomInButton />}
-          component={<ZoomInButton />} className ='iconButtons'
-          onClick={zoomIn}
-          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
-        <HighlightButton
-          hoverComponent={<GreenZoomOutButton />}
-          component={<ZoomOutButton />}
-          className='iconButtons' onClick={zoomOut}
-          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
-        </>}
-        <HighlightButton
-          hoverComponent={<GreenHideButton />}
-          component={<HideButton />} className='iconButtons'
-          onClick={toggleHideImage}
-          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
-        <HighlightButton
-          hoverComponent={<GreenCenterButton />}
-          component={<CenterButton />}
-          className='iconButtons' onClick={recenterImage}
-          style={{ cursor: hideImage ? 'default' : 'pointer' }} />
-      </div>
-      <Draggable
-        handle=".handle"
-        position={pos}
-        onStart={() => setIsGrabbing(true)}
-        onStop={() => setIsGrabbing(false)}
-        onDrag={handleDrag}
-      >
-        <div className="handle"
-          style={{ cursor: isGrabbing ? '-webkit-grabbing': '',
-          visibility: hideImage ? 'hidden' : 'initial',
-          backgroundColor: '#212529',
-          borderRadius: '10px' }}>
-          {sessionId > 0 && data && data.length > 0 &&
-            <img
-              data-testid={'toynet-session-img'}
-              className="image"
-              src={data}
-              alt=""
-              ref={imageRef}
-              style={{
-                transform: `scale(${zoomLevel})`,
-              }}
-            />
-          }
+    <div style={{ backgroundColor: '#454950', padding: '0.4vw', marginTop: '2.5vh', borderRadius: '10px', height: '100%', overflow: 'hidden' }}>
+      <div style={{
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden',
+        position: 'relative',
+        borderRadius: '10px',
+        flex: '1 1 auto',
+        backgroundColor: '#212529',
+        maxHeight: '100%',
+        zIndex: 1,
+      }}>
+        <div className="icons">
+          {!hideImage &&
+          <>
+          <HighlightButton
+            hoverComponent={<GreenZoomInButton />}
+            component={<ZoomInButton />} className ='iconButtons'
+            onClick={zoomIn}
+            style={{ cursor: hideImage ? 'default' : 'pointer' }} />
+          <HighlightButton
+            hoverComponent={<GreenZoomOutButton />}
+            component={<ZoomOutButton />}
+            className='iconButtons' onClick={zoomOut}
+            style={{ cursor: hideImage ? 'default' : 'pointer' }} />
+          </>}
+          <HighlightButton
+            hoverComponent={<GreenHideButton />}
+            component={<HideButton />} className='iconButtons'
+            onClick={toggleHideImage}
+            style={{ cursor: hideImage ? 'default' : 'pointer' }} />
+          <HighlightButton
+            hoverComponent={<GreenCenterButton />}
+            component={<CenterButton />}
+            className='iconButtons' onClick={recenterImage}
+            style={{ cursor: hideImage ? 'default' : 'pointer' }} />
         </div>
-      </Draggable>
+        <Draggable
+          handle=".handle"
+          position={pos}
+          onStart={() => setIsGrabbing(true)}
+          onStop={() => setIsGrabbing(false)}
+          onDrag={handleDrag}
+        >
+          <div className="handle"
+            style={{ cursor: isGrabbing ? '-webkit-grabbing': '',
+            visibility: hideImage ? 'hidden' : 'initial',
+            backgroundColor: '#212529',
+            borderRadius: '10px' }}>
+            {sessionId > 0 && data && data.length > 0 &&
+              <img
+                data-testid={'toynet-session-img'}
+                className="image"
+                src={data}
+                alt=""
+                ref={imageRef}
+                style={{
+                  transform: `scale(${zoomLevel})`,
+                }}
+              />
+            }
+          </div>
+        </Draggable>
+      </div>
     </div>
   );
 };

@@ -43,7 +43,8 @@
   height: 18vh;
   width: 21vw;
   max-width: inherit;
-  margin: 0.61375rem 0.4rem;
+  padding: 0.61375rem 0.4rem;
+  padding-left: calc(0.61375rem + 5px);
   display: flex;
   flex-direction: column;
 }
