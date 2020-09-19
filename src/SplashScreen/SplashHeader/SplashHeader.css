@@ -1,41 +1,46 @@
 .splash-header-body {
   position: relative;
-  height: calc(100vh - 4rem);
+  padding: calc(100vh - (100vh - 5.8rem)) 0;
+  /* height: calc(100vh - 4rem); how to get remaining space of screen */
+  border: 1px solid red;
+  width: auto;
   flex-grow: 1;
   background: rgb(0,119,138);
   background: linear-gradient(180deg, rgba(0,119,138,1) 0%, rgb(51 55 59) 95%);
-  /* opacity: 75%; */
-  display: grid;
-  padding: 5rem;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
-.splash-header-text {
-  z-index: 1;
-  /* width: 50%; */
-  /* height: 50%; */
-  margin: 0 auto;
+.splash-header-content {
+  display: inline-block;
+  margin-left: 10%;
   color: white;
-  position: relative;
-  display: block;
+  width: 40%;
+  max-width: 40%;
+  max-height: 100%;
 }
 
-.splash-header-subtext{
-  margin-top: 2.5rem;
+.splash-header-content > h1 {
+  font-size: 50px;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
-.splash-h1 {
-  font-size: 4.560625rem;
+.splash-header-content > h3 {
+  word-spacing: 5px;
+  line-height: 70px;
+  font-weight: 430px;
 }
 
 .how-it-works {
-  position: absolute;
-  display: block;
   padding: 0.7rem 2rem;
   border-radius: 10px;
   background-color: #c9b51e ;
   box-shadow: 2px 4px 5px rgb(48, 41, 41);
-  margin-top: 2.5rem;
 }
 
 .splash-button-text {
@@ -43,12 +48,15 @@
   margin: auto;
 }
 
-.splash-header-image {
-  /* position: absolute; */
-  /* height: 70%;
-  width: 50%; */
+.splash-header-image-container {
+  height: 100%;
+  max-width: 50%;
+  padding-right: 10%;
+}
+
+.splash-header-body svg {
   display: block;
-  max-height: calc(100vh - 15rem - 64px); /* substract the vh from padding which is 5 top and bottom minus the height of the header */
-  /* left: 50%;
-  bottom: 20%; */
+  width: 700px;
+  height: 100%; 
+  max-width: 100%;
 }

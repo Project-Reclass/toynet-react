@@ -1,61 +1,66 @@
 .splash-content-body {
+  position: relative;
+  padding-top: 10vh;
+  border: 1px solid red;
+  width: auto;
   flex-grow: 1;
-  height: 100vh;
-  display: block;
-  position: relative;
-  margin-bottom: 5%;
-}
-
-.splash-content-text {
-  position: relative;
-  width: 100%;
-  float: right;
-  text-align: right;
-  margin-top: 10%;
-  margin-right: 10%;
-  color: white;
-}
-
-.splash-content-header {
-  font-size: 4rem;
-}
-
-.splash-content-subtext {
-  width: 40%;
-  float: right;
-  text-align: right;
-  margin-right: auto;
-  font-size: 1.5rem;
-  line-height: 115%;
-}
-
-.splash-content-image {
-  position: absolute;
   display: flex;
-  /* width: 60%; */
-  /* height: 100%; */
-  /* right: -10%; */
-  /* top: -40%; */
-  left: 50%;
-  transform: translatex(-50%);
-  width: 100%;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.wrapper {
   height: 100%;
-  max-height: calc(100vh - 100px);
+  width: 100vw;
+  margin-bottom: 20vh;
+  /* padding-bottom: 20vh; */
+}
+.splash-content-content {
+  display: block;
+  height: 100%;
+  position: relative;
+  text-align: right;
+  color: white;
+  height: auto;
+  width: 60%;
+  margin: 0 0 0 auto;
+  margin-right: 10%;
+  max-width: 40%;
+  max-height: 100%;
+  z-index: 1;
+  align-self: flex-end;
+
+}
+
+.splash-content-content > h1 {
+  font-size: 3em;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  right: 0;
+  top: 0;
+}
+
+.splash-content-content > h3 {
+  line-height: 35px;
+  font-size: 1.5em;
+  font-weight: 430;
+}
+
+.splash-content-image-container {
+  width: 70vw;
+  margin: auto;
+  /* border: 1px solid blue; */
+  position: absolute;
+  top: 10%;
+  left: 0;
+  margin-bottom: 10vh;
 }
 
 .splash-content-body svg {
-  height: 80%;
   display: block;
-  margin: auto;
-}
-
-
-.splash-content-image-text1 {
-  color: white;
-  text-align: center;
-  /* width: 25%;
-  position: absolute;
-  margin-top: 70%;
-  left: 1%;
-  padding-bottom: 10%; */
+  padding-left: 10%;
+  width: 80%; 
+  height: 70%;
+  max-width: 100%;
+  /* border: 1px solid red; */
 }

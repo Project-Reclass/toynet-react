@@ -5,6 +5,7 @@ import SplashNav from './SplashNav';
 import SplashHeader from './SplashHeader';
 import SplashContent from './SplashContent';
 import SplashAbout from './SplashAbout';
+import SplashFooter from './SplashFooter';
 
 
 const Splashscreen: FC = () => {
@@ -14,6 +15,7 @@ const Splashscreen: FC = () => {
       <SplashHeader />
       <SplashContent />
       <SplashAbout />
+      <SplashFooter />
       {/* temporary div below is needed for reference to getting to emulator */}
       {/* <div>
         <a  style={{marginLeft: '1000px'}} href='/module/0/emulator/0'>Visit Emulator</a> <br />

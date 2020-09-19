@@ -1,53 +1,50 @@
 .splash-about-body {
-  height: 70vh;
   position: relative;
-  background-color: white;
+  padding: calc((100vh - (100vh - 10rem)) / 2) 0;
+  border: 1px solid red;
+  width: auto;
+  flex-grow: 1;
+  background: white;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
-
-.splash-about-text {
-  position: relative;
-  margin: 8% 0 0 10%;
-  /* left: 10%; */
-  /* top: 20%; */
+.splash-about-content {
+  display: inline-block;
+  margin-left: 10%;
+  color: black;
   width: 40%;
-}
+  max-width: 40%;
+  max-height: 100%;
+  max-zoom: 1.5;
+} 
 
-.splash-about-header, .splash-about-subheader  {
+.splash-about-content > h1 {
+  font-size: 3em;
   width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
-.splash-about-subheader {
-  float: left;
-  position: absolute;
-  text-align: left;
-  font-weight: 450;
+.splash-about-content > h3 {
   font-size: 1.5em;
-  word-spacing: normal;
-  left: 7%;
-  width: 100%;
+  word-spacing: 5px;
+  line-height: 35px;
+  font-weight: 430;
 }
 
-.splash-about-header {
-  position: relative;
-  text-align: center;
-  font-weight: 900;
-  font-size: 4em;
-  word-spacing: 10px;
-  padding-bottom: 5%;
+.splash-about-image-container {
+  height: 100%;
+  max-width: 50%;
+  padding-right: 10%;
+  max-zoom: 1.5;
 }
 
-.about-svg-container {
-    /* position: absolute; */
-    /* top: 10%; */
-    /* left: 55%; */
-    /* height: 80%; */
-    width: 60%;
-    /* height: 50%; */
-}
-
-.splash-about-image {
-  height: 80%;
-  width: 80%;
-  margin: 8% auto auto auto;
+.splash-about-body svg {
+  display: block;
+  width: 700px;
+  height: 100%; 
+  max-width: 100%;
 }
