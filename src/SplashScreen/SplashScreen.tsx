@@ -15,7 +15,9 @@ const Splashscreen: FC = () => {
       <SplashHeader />
       <SplashContent />
       <SplashAbout />
-      <SplashFooter />
+      <section id='contact'>
+        <SplashFooter />
+      </section>
       {/* temporary div below is needed for reference to getting to emulator */}
       {/* <div>
         <a  style={{marginLeft: '1000px'}} href='/module/0/emulator/0'>Visit Emulator</a> <br />

@@ -4,20 +4,21 @@ import {ReactComponent as Illustration} from '../../assets/splashScreen/illustra
 
 function SplashAbout() {
   return (
-    <div className='splash-about-body' id="about">
-      <div className='splash-about-content'>
-        <h1>
-          About Project Reclass
-        </h1>
-        <h3>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </h3>
-      </div>
-      <div className='splash-about-image-container'>
-        <Illustration />
+    <div style={{ backgroundColor: 'white' }}>
+      <div className='splash-about-body container-1920 mx-auto' id="about">
+        <div className='splash-about-content'>
+          <h1>
+            About Project Reclass
+          </h1>
+          <h3>
+              Project Reclass is a Nonprofit Vocational Program teaching technical skills to incarcerated veterans based in
+              Atlanta, Georgia. Out team of researchers, technologists, and educators has built this learning platform to deliver
+              computer networking curriculum that will prepare users for the CompTIA Network+ Certification.
+          </h3>
+        </div>
+        <div className='splash-about-image-container'>
+          <Illustration />
+        </div>
       </div>
     </div>
   );

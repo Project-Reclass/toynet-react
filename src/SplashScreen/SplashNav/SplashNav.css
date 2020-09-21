@@ -1,5 +1,7 @@
 .splash-header-container {
   width: 80%;
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
 }
 
@@ -19,11 +21,12 @@
 }
 
 .splash-nav {
-  float: right;
+  display: flex;
 }
 
 .splash-nav ul {
   margin: 0;
+  margin: auto;
   padding: 0;
   list-style: none;
 }

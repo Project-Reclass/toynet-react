@@ -1,17 +1,17 @@
 .splash-content-body {
   position: relative;
   padding-top: 10vh;
-  border: 1px solid red;
   width: auto;
   flex-grow: 1;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+  height: calc(950px + 10vh);
 }
 .wrapper {
   height: 100%;
   width: 100vw;
-  margin-bottom: 20vh;
+  /* margin-bottom: 20vh; */
   /* padding-bottom: 20vh; */
 }
 .splash-content-content {
@@ -22,7 +22,7 @@
   color: white;
   height: auto;
   width: 60%;
-  margin: 0 0 0 auto;
+  margin: 10vh 0 0 auto;
   margin-right: 10%;
   max-width: 40%;
   max-height: 100%;
@@ -47,13 +47,15 @@
 }
 
 .splash-content-image-container {
-  width: 70vw;
+  width: 100%;
   margin: auto;
   /* border: 1px solid blue; */
   position: absolute;
-  top: 10%;
-  left: 0;
-  margin-bottom: 10vh;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  /* left: 0; */
+  /* margin-bottom: 10vh; */
 }
 
 .splash-content-body svg {

@@ -1,7 +1,6 @@
 .splash-about-body {
   position: relative;
   padding: calc((100vh - (100vh - 10rem)) / 2) 0;
-  border: 1px solid red;
   width: auto;
   flex-grow: 1;
   background: white;

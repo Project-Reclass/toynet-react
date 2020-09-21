@@ -1,8 +1,11 @@
+.spash-header__container {
+  background: linear-gradient(180deg, rgba(0,119,138,1) 0%, rgb(51 55 59) 95%);
+}
+
 .splash-header-body {
   position: relative;
   padding: calc(100vh - (100vh - 5.8rem)) 0;
   /* height: calc(100vh - 4rem); how to get remaining space of screen */
-  border: 1px solid red;
   width: auto;
   flex-grow: 1;
   background: rgb(0,119,138);
