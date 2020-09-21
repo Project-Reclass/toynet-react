@@ -6,6 +6,7 @@
   overflow: auto;
   display: flex;
   z-index: 1;
+  max-width: calc((100vw - 6.5vw - 15vw) / 3)
 }
 
 
@@ -47,6 +48,7 @@
   padding-left: calc(0.61375rem + 5px);
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .plus-circle {
