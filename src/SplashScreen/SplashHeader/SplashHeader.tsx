@@ -21,7 +21,7 @@ function SplashHeader() {
             learn anywhere, anytime.
           </h3>
           <button className='how-it-works' onClick={goToEmulator}>
-            <h3 className='splash-button-text'>Try it out!</h3>
+            <h3 className='splash-button-text'>Try it</h3>
           </button>
         </div>
         <div className='splash-header-image-container'>
