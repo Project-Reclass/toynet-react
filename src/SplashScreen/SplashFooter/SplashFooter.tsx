@@ -11,7 +11,7 @@ function SplashFooter() {
         <div className="splash-footer-content">
           <div className="splash-footer-section logo">
             <div className="splash-footer-logo">
-              <a href="">
+              <a href="https://www.projectreclass.org">
                 <img src={logo} alt={'white pr logo'} />
               </a>
             </div>

@@ -9,7 +9,7 @@ function SplashNav() {
     <header className='splash-header'>
       <div className='splash-header-container container-1920'>
         <div style={{ maxWidth: '25%' }}>
-          <a href="">
+          <a href="https://www.projectreclass.org">
             <img src={logo} alt='logo' className='splash-logo' style={{ width: '65%', height: 'auto' }} />
           </a>
         </div>
