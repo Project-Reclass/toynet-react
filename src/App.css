@@ -17,7 +17,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #454950;
+  background: #45495000;
 }
 
 /* Handle */
@@ -30,3 +30,11 @@
   background: #595D62;
 }
 
+/* .device-container-content {
+  overflow: auto;
+}
+
+.device-container-content::-webkit-scrollbar-thumb {
+  background: #595D62;
+  width: 5px;
+} */

@@ -37,6 +37,8 @@
   display: flex;
   overflow: auto;
   overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .max-nodes {

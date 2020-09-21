@@ -24,15 +24,21 @@ exports[`The DeviceContainer should match previous snapshots 1`] = `
         className="device-box"
       >
         <div
-          className="device-name-box router-color"
+          style={
+            Object {
+              "display": "flex",
+            }
+          }
         >
-          <div>
+          <div
+            className="device-name-box router-color"
+          >
             R1
           </div>
+          <div
+            className="vertical-bar"
+          />
         </div>
-        <div
-          className="vertical-bar"
-        />
         <div
           className="connections-container"
         >
@@ -111,15 +117,21 @@ exports[`The DeviceContainer should match previous snapshots 1`] = `
         className="device-box"
       >
         <div
-          className="device-name-box router-color"
+          style={
+            Object {
+              "display": "flex",
+            }
+          }
         >
-          <div>
+          <div
+            className="device-name-box router-color"
+          >
             R2
           </div>
+          <div
+            className="vertical-bar"
+          />
         </div>
-        <div
-          className="vertical-bar"
-        />
         <div
           className="connections-container"
         >
