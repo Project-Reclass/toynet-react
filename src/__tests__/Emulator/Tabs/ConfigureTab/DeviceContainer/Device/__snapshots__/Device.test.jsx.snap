@@ -5,13 +5,19 @@ exports[`The Device should match previous snapshot with router connections 1`] =
   className="device-box"
 >
   <div
-    className="device-name-box router-color"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
   >
-    <div />
+    <div
+      className="device-name-box router-color"
+    />
+    <div
+      className="vertical-bar"
+    />
   </div>
-  <div
-    className="vertical-bar"
-  />
   <div
     className="connections-container"
   >
@@ -93,15 +99,21 @@ exports[`The Device should match previous snapshots 1`] = `
   className="device-box"
 >
   <div
-    className="device-name-box empty-color"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
   >
-    <div>
+    <div
+      className="device-name-box empty-color"
+    >
       test
     </div>
+    <div
+      className="vertical-bar"
+    />
   </div>
-  <div
-    className="vertical-bar"
-  />
   <div
     className="connections-container"
   >
@@ -149,13 +161,19 @@ exports[`The Device should match previous snapshots with host connections 1`] = 
   className="device-box"
 >
   <div
-    className="device-name-box router-color"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
   >
-    <div />
+    <div
+      className="device-name-box router-color"
+    />
+    <div
+      className="vertical-bar"
+    />
   </div>
-  <div
-    className="vertical-bar"
-  />
   <div
     className="connections-container"
   >
@@ -237,13 +255,19 @@ exports[`The Device should match previous snapshots with switch connections 1`] 
   className="device-box"
 >
   <div
-    className="device-name-box router-color"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
   >
-    <div />
+    <div
+      className="device-name-box router-color"
+    />
+    <div
+      className="vertical-bar"
+    />
   </div>
-  <div
-    className="vertical-bar"
-  />
   <div
     className="connections-container"
   >
