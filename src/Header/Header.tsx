@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './Header.css';
+
 import {ReactComponent as FolderIcon} from '../assets/headerIcons/folderIcon.svg';
 import {ReactComponent as AccountIcon} from '../assets/headerIcons/accountIcon.svg';
 import {ReactComponent as HelpIcon} from '../assets/headerIcons/helpIcon.svg';
 import {ReactComponent as LogIcon} from '../assets/headerIcons/logIcon.svg';
+
+import './Header.css';
 
 const Header = () => {
   const history = useHistory();
