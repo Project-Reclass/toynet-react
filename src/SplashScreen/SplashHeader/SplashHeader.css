@@ -27,7 +27,7 @@
 }
 
 .splash-header-content > h1 {
-  font-size: 50px;
+  font-size: 4.375rem;
   width: 100%;
   max-width: 100%;
   word-wrap: break-word;
@@ -40,15 +40,16 @@
 }
 
 .how-it-works {
-  transition: background-color 0.18s ease;
+  transition: opacity 0.2s ease;
   padding: 0.7rem 2rem;
+  opacity: 1;
   border-radius: 10px;
   background-color: #c9b51e;
   box-shadow: 2px 4px 5px rgb(48, 41, 41);
 }
 
 .how-it-works:hover {
-  background-color: #c9b51e81;
+  opacity: 0.2;
 }
 
 .splash-button-text {
