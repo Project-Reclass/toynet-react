@@ -34,7 +34,6 @@ function SplashFooter() {
                 <h2>Contact</h2>
                 <p>
                   E: ProjectReclass.info@gmail.com <br />
-                  P: +1 000 000 0000
                 </p>
               </div>
             </div>
