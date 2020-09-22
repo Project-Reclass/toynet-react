@@ -15,6 +15,11 @@ function SplashAbout() {
               Atlanta, Georgia. Out team of researchers, technologists, and educators has built this learning platform to deliver
               computer networking curriculum that will prepare users for the CompTIA Network+ Certification.
           </h3>
+          <a href="https://www.projectreclass.org" style={{ marginTop: '1.5rem', display: 'block' }}>
+            <button className='how-it-works'>
+              <h3 className='splash-button-text'>Learn more</h3>
+            </button>
+          </a>
         </div>
         <div className='splash-about-image-container'>
           <Illustration />
