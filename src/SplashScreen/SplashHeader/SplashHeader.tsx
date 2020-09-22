@@ -1,6 +1,6 @@
 import React from 'react';
 import './SplashHeader.css';
-import {ReactComponent as Illustration} from '../../assets/splashScreen/illustration1.svg';
+import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/illustration-header.svg';
 import { useHistory } from 'react-router-dom';
 
 function SplashHeader() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './SplashContent.css';
-import {ReactComponent as Illustration} from '../../assets/splashScreen/content-with-text.svg';
+import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/content-with-text.svg';
 
 function SplashContent() {
   return (
