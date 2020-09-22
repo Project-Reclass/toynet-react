@@ -5,14 +5,10 @@
 }
 
 .splash-footer-section.logo {
-  margin-bottom: 0;
+  margin: auto;
 }
 .splash-footer-content {
   display: flex;
-}
-
-.splash-footer-body .splash-footer-content .splash-footer-section, .splash-footer-logo {
-  flex: 1;
 }
 
 .splash-footer-section.logo {
@@ -20,7 +16,6 @@
 }
 
 .splash-footer-logo {
-  margin-bottom: 15px;
   width: 25%;
 }
 
@@ -43,10 +38,6 @@
 .splash-footer-section > p {
   color: white;
   font-weight: normal;
-}
-
-.splash-footer-section.logo {
-  padding-top: 5vh;
 }
 
 .section-part {
