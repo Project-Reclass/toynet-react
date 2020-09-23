@@ -1,11 +1,18 @@
 import React from 'react';
+
+import logo from 'src/assets/PR-Logo-Long-FullColor.png';
+
 import './SplashNav.css';
 
-function SplashHeader() {
+function SplashNav() {
   return (
     <header className='splash-header'>
-      <div className='splash-header-container'>
-        <img src='LOGO' alt='logo' className='splash-logo' />
+      <div className='splash-header-container container-1920'>
+        <div style={{ maxWidth: '25%' }}>
+          <a href="https://www.projectreclass.org">
+            <img src={logo} alt='logo' className='splash-logo' style={{ width: '65%', height: 'auto' }} />
+          </a>
+        </div>
         <nav className='splash-nav'>
           <ul>
             <li>
@@ -30,5 +37,5 @@ function SplashHeader() {
   );
 }
 
-export default SplashHeader;
+export default SplashNav;
 

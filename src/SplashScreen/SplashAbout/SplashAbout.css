@@ -1,0 +1,49 @@
+.splash-about-body {
+  position: relative;
+  padding: calc((100vh - (100vh - 10rem)) / 2) 0;
+  width: auto;
+  flex-grow: 1;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.splash-about-content {
+  display: inline-block;
+  margin-left: 10%;
+  color: black;
+  width: 40%;
+  max-width: 40%;
+  max-height: 100%;
+  max-zoom: 1.5;
+} 
+
+.splash-about-content > h1 {
+  font-size: 4.375rem;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.splash-about-content > h3 {
+  font-size: 1.5em;
+  word-spacing: 5px;
+  line-height: 35px;
+  font-weight: 430;
+}
+
+.splash-about-image-container {
+  height: 100%;
+  max-width: 50%;
+  padding-right: 10%;
+  max-zoom: 1.5;
+}
+
+.splash-about-body svg {
+  display: block;
+  width: 700px;
+  height: 100%; 
+  max-width: 100%;
+}
