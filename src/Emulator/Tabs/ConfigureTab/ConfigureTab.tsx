@@ -1,14 +1,15 @@
-import React, { useRef, FC, useCallback, useMemo, useState } from 'react';
+import React, { useRef, FC, useCallback, useMemo } from 'react';
 
 import { DeviceType } from 'src/common/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
 import { useEmulator } from 'src/Emulator/EmulatorProvider';
 
 import DeviceContainer from './DeviceContainer';
+import ErrorBox, { useErrorBox } from './ErrorBox';
+
 import './ConfigureTab.css';
 
 const MAX_DEVICES = 10;
-const FIVE_SECONDS = 5000;
 
 /**
  * Determines the number of the newly added device
@@ -40,18 +41,11 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
 
 const ConfigureTab: FC<{status: string}> = ({ status }) => {
   const { switches, hosts, routers, dispatch } = useEmulator();
-  const [, setShowError] = useState(false);
+  const { setError } = useErrorBox();
 
   const routerScrollRef = useRef(null);
   const switchScrollRef = useRef(null);
   const hostScrollRef = useRef(null);
-
-  const toggleErrorMessage = useCallback(() => {
-    setShowError(true);
-    setTimeout(() => {
-      setShowError(false);
-    }, FIVE_SECONDS);
-  }, []);
 
   const addDevice = useCallback((type: DeviceType) => {
     const device = type === 'router' ? routers :
@@ -63,7 +57,7 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
 
     return (deviceLetter: string) => {
       if (device.length >= MAX_DEVICES) {
-        toggleErrorMessage();
+        setError('Max number of devices is 10!');
         return;
       }
 
@@ -78,7 +72,7 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
         },
       });
     };
-  }, [dispatch, hosts, routers, switches, toggleErrorMessage]);
+  }, [dispatch, hosts, routers, setError, switches]);
 
   const addRouter = useMemo(() => addDevice('router'), [addDevice]);
   const addSwitch= useMemo(() => addDevice('switch'), [addDevice]);
@@ -106,6 +100,7 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
           ref={hostScrollRef}
         />
       </div>
+      <ErrorBox />
     </div>
   );
 };

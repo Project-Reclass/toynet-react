@@ -57,13 +57,10 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onRemove }) => {
 
   return (
     <div className="device-box">
-      <div
-        ref={mergeRefs([drag, drop])}
-        className={`device-name-box ${deviceClassName}${isDragging ? ' is-dragging' : ''}${isHover ? ' is-hover' : ''}`}
-      >
-        <div>{deviceData.name}</div>
+      <div style={{ display: 'flex' }}>
+        <div ref={mergeRefs([drag, drop])} className={`device-name-box ${deviceClassName}${isDragging ? ' is-dragging' : ''}${isHover ? ' is-hover' : ''}`}>{deviceData.name}</div>
+        <div className="vertical-bar" />
       </div>
-      <div className="vertical-bar" />
       <div className="connections-container">
         <div>Connections:</div>
         <div className="connections-boxes">

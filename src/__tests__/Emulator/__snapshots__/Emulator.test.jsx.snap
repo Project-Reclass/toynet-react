@@ -14,18 +14,15 @@ exports[`The emulator should render and match snapshots 1`] = `
         className="instructions-exit"
       >
         <a
-          className="svg"
-          href="blank"
+          className="svg link-text instructions__back-link-container"
+          href="/"
         >
           <svg>
             backIcon.svg
           </svg>
-        </a>
-        <a
-          className="link-text"
-          href="blank"
-        >
-          Back to course
+          <span>
+            Back to site
+          </span>
         </a>
       </div>
       <div
@@ -100,223 +97,261 @@ exports[`The emulator should render and match snapshots 1`] = `
       </div>
     </div>
   </div>
-  <div>
-    <div
-      className="tabs"
-    >
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+        "marginLeft": "1.5vw",
+        "marginRight": "3.5rem",
+        "marginTop": "2vh",
+        "maxHeight": "96vh",
+        "overflow": "hidden",
+        "width": "100%",
+      }
+    }
+  >
+    <div>
       <div
-        className="outer-tabs-container"
+        className="tabs__container"
       >
         <div
-          className="tabs-container"
+          className="tabs__outer-tabs-container "
         >
           <div
-            className="tab active"
-            onClick={[Function]}
+            className="tabs__tabs-container "
           >
-            Configure
-          </div>
-          <div
-            className="tab"
-            onClick={[Function]}
-          >
-            Console
-          </div>
-          <div
-            className="tab"
-            onClick={[Function]}
-          >
-            History
-          </div>
-          <div
-            className="tab empty"
-          />
-        </div>
-      </div>
-      <div
-        className="configure show"
-      >
-        <div
-          className="network-devices"
-        >
-          <div>
             <div
-              className="device-container-name"
+              className="tabs__tab tabs__tab--active"
+              onClick={[Function]}
             >
-              <svg
-                className="plus-circle"
-                data-testid="plus-icon"
-                onClick={[Function]}
-              >
-                add.svg
-              </svg>
-              Router
+              Configure
             </div>
             <div
-              className="device-container"
+              className="tabs__tab"
+              onClick={[Function]}
             >
-              <div
-                className="device-container-content"
-              >
-                <div />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              className="device-container-name"
-            >
-              <svg
-                className="plus-circle"
-                data-testid="plus-icon"
-                onClick={[Function]}
-              >
-                add.svg
-              </svg>
-              Switch
+              Console
             </div>
             <div
-              className="device-container"
+              className="tabs__tab"
+              onClick={[Function]}
             >
-              <div
-                className="device-container-content"
-              >
-                <div />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              className="device-container-name"
-            >
-              <svg
-                className="plus-circle"
-                data-testid="plus-icon"
-                onClick={[Function]}
-              >
-                add.svg
-              </svg>
-              Host
-            </div>
-            <div
-              className="device-container"
-            >
-              <div
-                className="device-container-content"
-              >
-                <div />
-              </div>
+              History
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="console hide"
-      >
-        Hi, I am the console component
-      </div>
-      <div
-        className="history hide"
-      >
-        Hi, I am the history component
+        <div
+          className="tabs__applications-container"
+        >
+          <div
+            className="configure tabs__aplication-container--show"
+          >
+            <div
+              className="network-devices"
+            >
+              <div>
+                <div
+                  className="device-container-name"
+                >
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Router
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div
+                  className="device-container-name"
+                >
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Switch
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div
+                  className="device-container-name"
+                >
+                  <svg
+                    className="plus-circle"
+                    data-testid="plus-icon"
+                    onClick={[Function]}
+                  >
+                    add.svg
+                  </svg>
+                  Host
+                </div>
+                <div
+                  className="device-container"
+                >
+                  <div
+                    className="device-container-content"
+                  >
+                    <div />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2
+            className="console tabs__aplication-container--hide"
+            style={
+              Object {
+                "padding": "20px",
+              }
+            }
+          >
+            Coming soon...
+          </h2>
+          <h2
+            className="console tabs__aplication-container--hide"
+            style={
+              Object {
+                "padding": "20px",
+              }
+            }
+          >
+            Coming soon...
+          </h2>
+        </div>
       </div>
     </div>
     <div
       style={
         Object {
-          "backgroundColor": "#212529",
+          "backgroundColor": "#454950",
           "borderRadius": "10px",
-          "boxShadow": "0 0 0 0.4vw #454950",
-          "height": "57.15vh",
-          "marginLeft": "1.5vw",
+          "height": "100%",
           "marginTop": "2.5vh",
           "overflow": "hidden",
-          "position": "relative",
-          "width": "68.18vw",
-          "zIndex": 1,
+          "padding": "0.4vw",
         }
       }
     >
       <div
-        className="icons"
-      >
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            zoomInIcon.svg
-          </svg>
-        </button>
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            zoomOutIcon.svg
-          </svg>
-        </button>
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            hideIcon.svg
-          </svg>
-        </button>
-        <button
-          className="iconButtons"
-          onClick={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          <svg>
-            centerImageIcon.svg
-          </svg>
-        </button>
-      </div>
-      <div
-        className="handle react-draggable"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
         style={
           Object {
             "backgroundColor": "#212529",
             "borderRadius": "10px",
-            "cursor": "",
-            "transform": "translate(0px,0px)",
-            "visibility": "initial",
+            "flex": "1 1 auto",
+            "height": "100%",
+            "maxHeight": "100%",
+            "overflow": "hidden",
+            "position": "relative",
+            "width": "100%",
+            "zIndex": 1,
           }
         }
-        transform={null}
-      />
+      >
+        <div
+          className="icons"
+        >
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              plus-zoom.svg
+            </svg>
+          </button>
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              minus-zoom.svg
+            </svg>
+          </button>
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              eye-hide.svg
+            </svg>
+          </button>
+          <button
+            className="iconButtons"
+            onClick={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            <svg>
+              center-image.svg
+            </svg>
+          </button>
+        </div>
+        <div
+          className="handle react-draggable"
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#212529",
+              "borderRadius": "10px",
+              "cursor": "",
+              "transform": "translate(0px,0px)",
+              "visibility": "initial",
+            }
+          }
+          transform={null}
+        />
+      </div>
     </div>
   </div>
 </div>

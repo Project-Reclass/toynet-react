@@ -1,11 +1,12 @@
 .device-container {
-  width: 21vw;
+  /* width: 21vw; */
   background-color: #212529;
   border-radius: 10px;
   margin: 0 0.5vw;
   overflow: auto;
   display: flex;
   z-index: 1;
+  max-width: calc((100vw - 6.5vw - 15vw) / 3)
 }
 
 
@@ -41,11 +42,13 @@
 .device-container-content {
   color: white;
   height: 18vh;
-  width: 21vw;
+  width: 100%;
   max-width: inherit;
-  margin: 1vh .1vw;
+  padding: 0.61375rem 0.4rem;
+  padding-left: calc(0.61375rem + 5px);
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .plus-circle {

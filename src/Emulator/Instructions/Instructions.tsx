@@ -19,8 +19,12 @@ const Instructions: FC<Props> = ({ panelData }) => {
     <div className='instructions-background'>
       <div className="instructions">
         <div className='instructions-exit'>
-            <a href='blank' className='svg'><Exit /></a>
-            <a href='blank' className='link-text'>Back to course</a>
+            <a href='/' className='svg link-text instructions__back-link-container'>
+              <Exit />
+              <span>
+                Back to site
+              </span>
+            </a>
         </div>
         <div className="title-container">
           <h4 className="module-num">Module {panelData.submoduleNumber}</h4>

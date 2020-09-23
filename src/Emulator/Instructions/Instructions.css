@@ -8,11 +8,13 @@
   color: white;
   background-color: #454950;
   height: 96vh;
-  width: 24vw;
+  width: 15vw;
   border-radius: 10px;
   word-wrap: break-word;
   padding-left: 2vh;
   overflow: auto;
+  max-width: 335px;
+  min-width: 250px;
 }
 
 .instructions::-webkit-scrollbar {
@@ -78,4 +80,13 @@ ol {
   padding-top: 3vh;
   padding-bottom: 10%;
   color: darkgray;
+}
+
+.instructions__back-link-container {
+  display: flex;
+}
+
+.instructions__back-link-container svg {
+  margin: auto 0.5rem auto 0;
+  display: block;
 }
