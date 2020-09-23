@@ -1,5 +1,7 @@
 import React from 'react';
 import './SplashHeader.css';
+
+import {ReactComponent as Grid} from 'src/assets/splashScreen/v2/grid-background.svg';
 import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/illustration-header.svg';
 import { useHistory } from 'react-router-dom';
 
@@ -10,6 +12,9 @@ function SplashHeader() {
 
   return (
     <div className='spash-header__container '>
+      <div className='spash-header__grid-container '>
+        <Grid />
+      </div>
       <div className='splash-header-body container-1920 mx-auto' id="home">
         <div className='splash-header-content'>
           <h1>
