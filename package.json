@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.35",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
@@ -20,15 +21,14 @@
     "react-draggable": "^4.4.3",
     "react-query": "^2.5.7-tsnext.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.3",
     "use-immer": "^0.4.1"
   },
   "scripts": {
     "check-types": "tsc",
     "style:check": "eslint --ext .js --ext .jsx --ext tsx --ext ts ./src --cache",
     "style:fix": "eslint --ext .js --ext .jsx --ext tsx --ext ts ./src --quiet --fix --cache",
-    "dev": "react-scripts start",
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject"
