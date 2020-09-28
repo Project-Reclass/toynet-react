@@ -9,6 +9,7 @@ import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
 import SplashScreen from './SplashScreen';
 import { useFeatureFlags } from './FeatureFlags';
+import Layout from './layout';
 
 const data = {
   'id': 1,
@@ -29,27 +30,35 @@ function App() {
     <Router>
       <Switch>
         <Route exact path='/'>
-          <SplashScreen />
+          <Layout title={'Home'}>
+            <SplashScreen />
+          </Layout>
         </Route>
         <Route exact path="/module">
-          {sideNav && <Header /> }
-          <ModuleList />
+          <Layout title={'Modules'}>
+            <ModuleList />
+          </Layout>
         </Route>
         <Route exact path="/module/:moduleId/quiz/:quizId">
-          {sideNav && <Header /> }
-          <Quiz />
+          <Layout title={'Quiz'}>
+            <Quiz />
+          </Layout>
         </Route>
         <Route exact path="/module/:moduleId/article/:articleId">
-          {sideNav && <Header /> }
-          <Article />
+          <Layout title={'Article'}>
+            <Article />
+          </Layout>
         </Route>
         <Route path="/module/:moduleId/emulator/:emulatorId">
-          {sideNav && <Header /> }
-          <Emulator panelData={data} />
+          <Layout title={'Emulator'}>
+            {sideNav && <Header /> }
+            <Emulator panelData={data} />
+          </Layout>
         </Route>
         <Route path="*">
-          {sideNav && <Header /> }
-          <h1>Page not found...</h1>
+          <Layout title={'404'}>
+            <h1>Page not found...</h1>
+          </Layout>
         </Route>
       </Switch>
     </Router>
