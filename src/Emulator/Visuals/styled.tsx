@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { dynamicPosition } from 'src/common/css';
 
+import { dynamicPosition } from 'src/common/components/css';
 
 export const Icons = styled.div`
   position: absolute;
