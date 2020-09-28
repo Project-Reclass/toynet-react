@@ -1,15 +1,6 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 .splash-screen {
   display: flex;
   flex-direction: column;
   margin: auto;
-}
-
-::-webkit-scrollbar {
-  width: auto;
 }
