@@ -1,18 +1,15 @@
-Heroku Automated deployment of master: https://toynet-react.herokuapp.com/
+# ToyNet - Virtual Network Emulator In Your Browser
 
-Changes made in package.json related to the Heroku deployment (specifically the creation of `server.js`) have made it so that `npm start` no longer brings up the react development server. To run the React development server, run `npm run dev` or `npm run-script dev`.
+Check out your new networking buddy [https://www.toynet.projectreclass.org](https://www.toynet.projectreclass.org)
 
--------------------------------------------
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-# Getting Started
+## Getting Started
 
 <!-- toc -->
 - [Running in Development](#running-in-development)
 - [Testing PRs](#testing-pull-requests-with-docker-compose)
 - [Testing Master](#testing-the-master-branch)
 - [Available Scripts](#available-scripts)
+- [Recommended IDE Plugins](#ide-plugins)
 - [Learn More](#learn-more)
 <!-- tocstop -->
 
@@ -104,6 +101,7 @@ $ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/doc
 ```
 
 Edit the `docker-compose.yml` file use master or the default branch instead of a PR id.
+
 ```yml
 services:
   ...
@@ -113,19 +111,31 @@ services:
 ```
 
 And then run
+
 ```bash
 $ docker-compose up --build
 ```
 
-The app can then be accessed at http://localhost:3000.
+The app can then be accessed at [http://localhost:3000](http://localhost:3000).
+
+## IDE Plugins
+
+Some plugins that you might find helpful are
+
+- ESLint
+- React
+- VSCode Styled Components
 
 ## Available Scripts
 
 In the project directory, you can run:
-* `npm run dev` - Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
-* `npm start` - Runs the app from build. Open [http://localhost:8080](http://localhost:8080) to view it in the browser. You will also see any lint errors in the console.
-* `npm test` - Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-* `npm run build` - Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed!
+
+- `npm run start` - Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
+- `npm test` - Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `npm run style:fix` - Fixes any automatically fixable ESLint errors.
+- `npm run style:check` - Checks and displays any ESLint errors.
+- `npm run check-types` - Checks all typescript types to ensure correct typing.
+- `npm run build` - Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
@@ -135,5 +145,5 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 ### Contributors
 
-* Sammy Tran
-* Yi Yang
+- Sammy Tran
+- Yi Yang
