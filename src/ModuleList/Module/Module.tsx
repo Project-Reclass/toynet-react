@@ -28,7 +28,10 @@ interface Props {
 const SubModules: FC<Props> = ({ subModules }) => (
   <div className={styles.dropdownItemContainer}>
     {subModules.map(module => (
-      <SubModule key={`${module.id}-${module.title}-${module.moduleId}`} {...module} />
+      <SubModule
+        {...module}
+        key={`${module.id}-${module.title}-${module.moduleId}`}
+      />
     ))}
   </div>
 );
