@@ -1,10 +1,10 @@
 export type LinkFunc = (from: string, to: string) => any;
 
 export enum DeviceColor {
-  EMPTY = 'empty-color',
-  ROUTER = 'router-color',
-  SWITCH = 'switch-color',
-  HOST = 'host-color',
+  EMPTY = '#707070',
+  ROUTER = '#BDA913',
+  SWITCH = '#008A9E',
+  HOST = '#9E1059',
 }
 
 export const deviceColorClasses = new Map<string, DeviceColor>();
