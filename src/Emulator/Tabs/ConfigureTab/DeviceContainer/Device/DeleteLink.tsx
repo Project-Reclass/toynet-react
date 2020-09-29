@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { useDrop } from 'react-dnd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { Icon } from '@chakra-ui/core';
 
 import { LinkFunc } from './shared';
 
@@ -32,7 +31,7 @@ const DeleteLink: FC<Props> = ({ name, onRemove }) => {
     <div className={'trash-icon-container'} ref={drop} data-testid='trash-icon'>
     <div className="vertical-bar" />
     <div className={`trash-icon${isHover ? ' trash-icon__active' : ''}`}>
-      <FontAwesomeIcon icon={faTrashAlt} />
+      <Icon name='delete' size='1.2rem' focusable={true} />
     </div>
   </div>
   );
