@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { ProgressBar } from 'react-bootstrap';
+
+// import { ProgressBar } from 'react-bootstrap';
 
 import { ModuleInterface } from '../Module';
 
@@ -13,7 +14,7 @@ const SubModule: FC<ModuleInterface> = ({ title, progress, id, moduleId, type })
       </a>
     </span>
     <span className={styles.progress}>
-      <ProgressBar label={`${progress}%`} now={progress} />
+      {/* <ProgressBar label={`${progress}%`} now={progress} /> */}
     </span>
   </div>
 );

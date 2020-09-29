@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
-import { ProgressBar } from 'react-bootstrap';
+
+// import { ProgressBar } from 'react-bootstrap';
 
 import { ReactComponent as CaretIcon } from 'src/assets/caret-up-solid.svg';
 
@@ -53,7 +54,7 @@ const Module: FC<Props & ModuleInterface> = ({ title, progress, subModules }) =>
           {title}
         </span>
         <span>
-          <ProgressBar label={`${progress}%`} now={progress} />
+          {/* <ProgressBar label={`${progress}%`} now={progress} /> */}
         </span>
       </div>
       {showSubModules && <SubModules subModules={subModules} />}

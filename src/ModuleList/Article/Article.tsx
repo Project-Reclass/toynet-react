@@ -1,15 +1,21 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Carousel } from 'react-bootstrap';
+
+// import { Carousel } from 'react-bootstrap';
+
+interface ExpectedParams {
+  moduleId?: string;
+  articleId?: string;
+}
 
 const Article = () => {
-  const { moduleId, articleId } = useParams();
+  const { moduleId, articleId } = useParams<ExpectedParams>();
 
   return (
     <div>
       <h1>Module: {moduleId}</h1>
       <h2>Article: {articleId}</h2>
-      <Carousel>
+      {/* <Carousel>
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -44,7 +50,7 @@ const Article = () => {
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
     </div>
   );
 };
