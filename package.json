@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
@@ -10,6 +11,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.19.2",
     "emotion": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "immer": "^7.0.7",
     "path": "^0.12.7",
     "react": "^16.13.1",
