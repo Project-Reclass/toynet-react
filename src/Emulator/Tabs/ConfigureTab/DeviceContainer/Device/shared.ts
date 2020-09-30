@@ -14,3 +14,4 @@ deviceColorClasses.set('Switch', DeviceColor.SWITCH);
 deviceColorClasses.set('s', DeviceColor.SWITCH);
 deviceColorClasses.set('Host', DeviceColor.HOST);
 deviceColorClasses.set('h', DeviceColor.HOST);
+deviceColorClasses.set('empty', DeviceColor.EMPTY);
