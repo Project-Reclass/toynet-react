@@ -21,7 +21,7 @@
    position: absolute;
    display: flex;
    flex-direction: column;
-   right: 0;
+   right: 20px;
    bottom: 0;
    z-index: 1;
 }

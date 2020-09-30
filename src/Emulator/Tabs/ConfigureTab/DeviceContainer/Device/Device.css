@@ -20,7 +20,7 @@
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  margin: auto 1.25rem auto 0;
+  margin: auto 1rem auto 0.1rem;
 }
 
 .device-name-box:hover, .is-dragging {
