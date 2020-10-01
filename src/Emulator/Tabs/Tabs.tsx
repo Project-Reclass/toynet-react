@@ -1,55 +1,61 @@
-import React, { useState } from 'react';
+import React from 'react';
+import styled from '@emotion/styled';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/core';
 
 import ConfigureTab from './ConfigureTab';
 import ConsoleTab from './ConsoleTab/ConsoleTab';
 import HistoryTab from './HistoryTab/HistoryTab';
 
-import './Tabs.css';
+const CustomTab = styled(Tab)`
+  color: white;
+  opacity: 0.75;
+  font-size: large;
+  border-radius: 5px;
+`;
 
-const CONSTANTS = {
-  CONFIGURE: 'configure',
-  CONSOLE: 'console',
-  HISTORY: 'history',
-};
-
-const Tabs = () => {
-  const [activeTab, setActiveTab] = useState('configure');
-
-  const changeTabHandler = (tabName: string) => {
-    setActiveTab(tabName);
-  };
-
+const TabsPanel = () => {
   return (
-    <div className="tabs__container">
-      <div className="tabs__outer-tabs-container ">
-        <div className="tabs__tabs-container ">
-          <div
-            className={activeTab === CONSTANTS.CONFIGURE ? 'tabs__tab tabs__tab--active' : 'tabs__tab'}
-            onClick={() => changeTabHandler(CONSTANTS.CONFIGURE)}
-          >
-            Configure
-          </div>
-          <div
-            className={activeTab === CONSTANTS.CONSOLE ? 'tabs__tab tabs__tab--active' : 'tabs__tab'}
-            onClick={() => changeTabHandler(CONSTANTS.CONSOLE)}
-          >
-            Console
-          </div>
-          <div
-            className={activeTab === CONSTANTS.HISTORY ? 'tabs__tab tabs__tab--active' : 'tabs__tab'}
-            onClick={() => changeTabHandler(CONSTANTS.HISTORY)}
-          >
-            History
-          </div>
-        </div>
-      </div>
-      <div className='tabs__applications-container'>
-        <ConfigureTab status={(activeTab === CONSTANTS.CONFIGURE) ? 'tabs__aplication-container--show' : 'tabs__aplication-container--hide'} />
-        <ConsoleTab status={(activeTab === CONSTANTS.CONSOLE) ? 'tabs__aplication-container--show' : 'tabs__aplication-container--hide'} />
-        <HistoryTab status={(activeTab === CONSTANTS.HISTORY) ? 'tabs__aplication-container--show' : 'tabs__aplication-container--hide'} />
-      </div>
-    </div>
+    <Tabs variant='unstyled'>
+      <TabList
+        width='calc(300px + 2rem)'
+        backgroundColor='#454950'
+        borderRadius='10px 10px 0 0'
+        padding='0.459rem'
+      >
+        <CustomTab
+          _selected={{ backgroundColor: 'rgb(17, 15, 15)', opacity: 1 }}
+        >
+          Configure
+        </CustomTab>
+        <CustomTab
+          _selected={{ backgroundColor: 'rgb(17, 15, 15)', opacity: 1 }}
+        >
+          Console
+        </CustomTab>
+        <CustomTab
+          _selected={{ backgroundColor: 'rgb(17, 15, 15)', opacity: 1 }}
+        >
+          History
+        </CustomTab>
+      </TabList>
+
+      <TabPanels
+        minHeight='17rem'
+        backgroundColor='#454950'
+        borderRadius='0 10px 10px 10px'
+      >
+        <TabPanel>
+          <ConfigureTab />
+        </TabPanel>
+        <TabPanel>
+          <ConsoleTab />
+        </TabPanel>
+        <TabPanel>
+          <HistoryTab />
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   );
 };
 
-export default Tabs;
+export default TabsPanel;

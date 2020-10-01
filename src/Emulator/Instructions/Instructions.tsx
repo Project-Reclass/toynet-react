@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
+import { Heading, Text } from '@chakra-ui/core';
+import { ReactComponent as Exit } from '../../assets/buttons/backIcon.svg';
+
 import './Instructions.css';
-import {ReactComponent as Exit} from '../../assets/buttons/backIcon.svg';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -13,7 +15,6 @@ interface Props {
   panelData: PanelData;
 }
 
-// TODO: replace temp folder & user icons with transparent icons
 const Instructions: FC<Props> = ({ panelData }) => {
   return (
     <div className='instructions-background'>
@@ -21,24 +22,24 @@ const Instructions: FC<Props> = ({ panelData }) => {
         <div className='instructions-exit'>
             <a href='/' className='svg link-text instructions__back-link-container'>
               <Exit />
-              <span>
+              <Text>
                 Back to site
-              </span>
+              </Text>
             </a>
         </div>
         <div className="title-container">
-          <h4 className="module-num">Module {panelData.submoduleNumber}</h4>
-          <p className="module-name">{panelData.submoduleName}</p>
+          <Heading className="module-num" size='lg'>Module {panelData.submoduleNumber}</Heading>
+          <Text className="module-name">{panelData.submoduleName}</Text>
         </div>
         <div className="objective-container">
-          <h4 className="objective-title">Objective</h4>
-          <p className="objective">{panelData.objective}</p>
+          <Heading className="objective-title" size='lg'>Objective</Heading>
+          <Text className="objective">{panelData.objective}</Text>
         </div>
         <div className='task-container'>
-          <h4 className="tasks-title">Tasks</h4>
+          <Heading className="tasks-title" size='lg'>Tasks</Heading>
           <ol>
-            {panelData.tasks.map((task, idx) => (
-              <li className='steps' key={`${task}${idx}`}>{task}</li>
+            {panelData.tasks.map(task => (
+              <li className='steps' key={`${task}`}>{task}</li>
             ))}
           </ol>
         </div>

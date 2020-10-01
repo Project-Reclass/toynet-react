@@ -1,14 +1,10 @@
-import React, { FC } from 'react';
-import './HistoryTab.css';
+import React from 'react';
+import { Heading } from '@chakra-ui/core';
 
-interface Props {
-  status: string;
-}
-
-const HistoryTab: FC<Props> = ({ status }) => {
-  return (
-    <h2 style={{ padding: '20px' }} className={`console ${status}`}>Coming soon...</h2>
-  );
-};
+const HistoryTab = () => (
+  <Heading size='lg' color='white' padding='20px'>
+    Coming soon...
+  </Heading>
+);
 
 export default HistoryTab;

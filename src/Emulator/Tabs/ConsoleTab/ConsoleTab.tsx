@@ -1,14 +1,10 @@
-import React, { FC } from 'react';
-import './ConsoleTab.css';
+import React from 'react';
+import { Heading } from '@chakra-ui/core';
 
-interface Props {
-  status: string;
-}
-
-const ConsoleTab: FC<Props> = ({ status }) => {
-  return (
-    <h2 style={{ padding: '20px' }} className={`console ${status}`}>Coming soon...</h2>
-  );
-};
+const ConsoleTab = () => (
+  <Heading size='lg' color='white' padding='20px'>
+    Coming soon...
+  </Heading>
+);
 
 export default ConsoleTab;
