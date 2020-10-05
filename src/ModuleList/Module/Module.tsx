@@ -1,11 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import { Collapse, Flex, useDisclosure } from '@chakra-ui/core';
 
-// import { ProgressBar } from 'react-bootstrap';
-
-import { ReactComponent as CaretIcon } from 'src/assets/caret-up-solid.svg';
-
-import styles from './Module.module.css';
 import SubModule from './SubModule';
+import { DropdownContainer, RotatableIcon } from './styled';
 
 export enum ModuleTypes {
   QUIZ = 'quiz',
@@ -27,37 +24,34 @@ interface Props {
 }
 
 const SubModules: FC<Props> = ({ subModules }) => (
-  <div className={styles.dropdownItemContainer}>
+  <Flex flexDirection='column' alignItems='flex-end'>
     {subModules.map(module => (
       <SubModule
         {...module}
         key={`${module.id}-${module.title}-${module.moduleId}`}
       />
     ))}
-  </div>
+  </Flex>
 );
 
-const Module: FC<Props & ModuleInterface> = ({ title, progress, subModules }) => {
-  const [showSubModules, setShowSubModules] = useState(true);
+const Module: FC<Props & ModuleInterface> = ({ title, subModules }) => {
+  const { isOpen, onToggle } = useDisclosure(true);
 
   return (
     <div>
-      <div className={styles.dropdownContainer}>
-        <span
-          data-testid="caret"
-          className={`${styles.arrow} ${showSubModules && styles.rotated}`}
-          onClick={() => setShowSubModules(!showSubModules)}
-        >
-          <CaretIcon />
-        </span>
+      <DropdownContainer>
+        <RotatableIcon
+          name={'triangle-up'}
+          onClick={onToggle}
+          rotated={isOpen}
+        />
         <span>
           {title}
         </span>
-        <span>
-          {/* <ProgressBar label={`${progress}%`} now={progress} /> */}
-        </span>
-      </div>
-      {showSubModules && <SubModules subModules={subModules} />}
+      </DropdownContainer>
+      <Collapse isOpen={isOpen}>
+        <SubModules subModules={subModules} />
+      </Collapse>
     </div>
   );
 };

@@ -1,8 +1,15 @@
 import React, { FC } from 'react';
 import { Heading, Text } from '@chakra-ui/core';
-import { ReactComponent as Exit } from '../../assets/buttons/backIcon.svg';
 
-import './Instructions.css';
+import {
+  BackArea,
+  BackButton,
+  Container,
+  InstructionsContainer,
+  LinkText,
+  TaskItem,
+  TaskList,
+} from './styled';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -17,33 +24,33 @@ interface Props {
 
 const Instructions: FC<Props> = ({ panelData }) => {
   return (
-    <div className='instructions-background'>
-      <div className="instructions">
-        <div className='instructions-exit'>
-            <a href='/' className='svg link-text instructions__back-link-container'>
-              <Exit />
+    <div style={{ marginLeft: '3.5rem', marginTop: '2vh', zIndex: 0 }}>
+      <InstructionsContainer>
+        <BackArea>
+            <LinkText href='/'>
+              <BackButton />
               <Text>
                 Back to site
               </Text>
-            </a>
-        </div>
-        <div className="title-container">
-          <Heading className="module-num" size='lg'>Module {panelData.submoduleNumber}</Heading>
-          <Text className="module-name">{panelData.submoduleName}</Text>
-        </div>
-        <div className="objective-container">
-          <Heading className="objective-title" size='lg'>Objective</Heading>
-          <Text className="objective">{panelData.objective}</Text>
-        </div>
-        <div className='task-container'>
-          <Heading className="tasks-title" size='lg'>Tasks</Heading>
-          <ol>
+            </LinkText>
+        </BackArea>
+        <Container>
+          <Heading size='lg'>Module {panelData.submoduleNumber}</Heading>
+          <Text>{panelData.submoduleName}</Text>
+        </Container>
+        <Container>
+          <Heading size='lg'>Objective</Heading>
+          <Text>{panelData.objective}</Text>
+        </Container>
+        <Container>
+          <Heading size='lg'>Tasks</Heading>
+          <TaskList>
             {panelData.tasks.map(task => (
-              <li className='steps' key={`${task}`}>{task}</li>
+              <TaskItem key={`${task}`}>{task}</TaskItem>
             ))}
-          </ol>
-        </div>
-      </div>
+          </TaskList>
+        </Container>
+      </InstructionsContainer>
     </div>
   );
 };
