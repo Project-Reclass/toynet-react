@@ -65,6 +65,7 @@
 .splash-nav-link:hover::after {
   color: #0C6474;
   opacity: 1;
+  border-color: #0C6474;
 }
 
 .splash-login, .splash-signup {
