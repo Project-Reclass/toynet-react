@@ -2,7 +2,7 @@
     "containerDefinitions": [
         {
             "name": "toynet-react-container",
-            "image": "909056806605.dkr.ecr.us-west-1.amazonaws.com/toynet-react",
+            "image": "909056806605.dkr.ecr.us-west-2.amazonaws.com/toynet-react",
             "cpu": 0,
             "memoryReservation": 256,
             "portMappings": [{
@@ -15,7 +15,7 @@
             "volumesFrom": [],
             "environment": [{
                 "name": "SERVER_URI",
-                "value": "http://internal-toynet-django-alb-481331159.us-west-1.elb.amazonaws.com:8000"
+                "value": "http://internal-toynet-django-alb-1095919173.us-west-2.elb.amazonaws.com:8000"
             }]
         }
     ],
