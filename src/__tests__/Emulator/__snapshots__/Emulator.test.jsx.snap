@@ -2,280 +2,295 @@
 
 exports[`The emulator should render and match snapshots 1`] = `
 <div
-  className="emulator"
+  className="css-1af67e0"
 >
   <div
-    className="instructions-background"
+    style={
+      Object {
+        "marginLeft": "3.5rem",
+        "marginTop": "2vh",
+        "zIndex": 0,
+      }
+    }
   >
     <div
-      className="instructions"
+      className="css-1s5qpfo"
     >
       <div
-        className="instructions-exit"
+        className="css-ebb1fz"
       >
         <a
-          className="svg link-text instructions__back-link-container"
+          className="css-r59rv1"
           href="/"
         >
-          <svg>
+          <svg
+            className="css-112d3fm"
+          >
             backIcon.svg
           </svg>
-          <span>
+          <p
+            className="css-fzcsno"
+          >
             Back to site
-          </span>
+          </p>
         </a>
       </div>
       <div
-        className="title-container"
+        className="css-1f1lwn6"
       >
-        <h4
-          className="module-num"
+        <h2
+          className="css-nua0st"
         >
           Module 
           1
-        </h4>
+        </h2>
         <p
-          className="module-name"
+          className="css-fzcsno"
         >
           Local Area Networks
         </p>
       </div>
       <div
-        className="objective-container"
+        className="css-1f1lwn6"
       >
-        <h4
-          className="objective-title"
+        <h2
+          className="css-nua0st"
         >
           Objective
-        </h4>
+        </h2>
         <p
-          className="objective"
+          className="css-fzcsno"
         >
           Connect two hosts together and check they can communicate
         </p>
       </div>
       <div
-        className="task-container"
+        className="css-1f1lwn6"
       >
-        <h4
-          className="tasks-title"
+        <h2
+          className="css-nua0st"
         >
           Tasks
-        </h4>
-        <ol>
+        </h2>
+        <div
+          className="css-16cm47t"
+        >
           <li
-            className="steps"
+            className="css-p5me83"
           >
             Attach h1 to s1.
           </li>
           <li
-            className="steps"
+            className="css-p5me83"
           >
             Attach h2 to s1.
           </li>
           <li
-            className="steps"
+            className="css-p5me83"
           >
             Launch.
           </li>
           <li
-            className="steps"
+            className="css-p5me83"
           >
             In Console, run h1&gt; arp 172.16.0.100.
           </li>
           <li
-            className="steps"
+            className="css-p5me83"
           >
-            In Console, run h1&gt; ping 172.16.0.100.
+            In Console, run h2&gt; ping 172.16.0.100.
           </li>
           <li
-            className="steps"
+            className="css-p5me83"
           >
-            In Console, run h1&gt; arp 172.16.0.100.
+            In Console, run h3&gt; arp 172.16.0.100.
           </li>
-        </ol>
+        </div>
       </div>
     </div>
   </div>
   <div
-    style={
-      Object {
-        "display": "flex",
-        "flexDirection": "column",
-        "marginLeft": "1.5vw",
-        "marginRight": "3.5rem",
-        "marginTop": "2vh",
-        "maxHeight": "96vh",
-        "overflow": "hidden",
-        "width": "100%",
-      }
-    }
+    className="css-1xbpgl1"
   >
     <div>
       <div
-        className="tabs__container"
+        className="css-0"
       >
         <div
-          className="tabs__outer-tabs-container "
+          aria-orientation="horizontal"
+          className="css-e2etbk"
+          onKeyDown={[Function]}
+          role="tablist"
         >
-          <div
-            className="tabs__tabs-container "
+          <button
+            aria-controls="panel:1-0"
+            aria-selected={true}
+            className="css-16futwh"
+            id="tab:1-0"
+            onClick={[Function]}
+            role="tab"
+            tabIndex={0}
+            type="button"
           >
-            <div
-              className="tabs__tab tabs__tab--active"
-              onClick={[Function]}
-            >
-              Configure
-            </div>
-            <div
-              className="tabs__tab"
-              onClick={[Function]}
-            >
-              Console
-            </div>
-            <div
-              className="tabs__tab"
-              onClick={[Function]}
-            >
-              History
-            </div>
-          </div>
+            Configure
+          </button>
+          <button
+            aria-controls="panel:1-1"
+            aria-selected={false}
+            className="css-16futwh"
+            id="tab:1-1"
+            onClick={[Function]}
+            role="tab"
+            tabIndex={-1}
+            type="button"
+          >
+            Console
+          </button>
+          <button
+            aria-controls="panel:1-2"
+            aria-selected={false}
+            className="css-16futwh"
+            id="tab:1-2"
+            onClick={[Function]}
+            role="tab"
+            tabIndex={-1}
+            type="button"
+          >
+            History
+          </button>
         </div>
         <div
-          className="tabs__applications-container"
+          className="css-1vsi4k8"
+          tabIndex="-1"
         >
           <div
-            className="configure tabs__aplication-container--show"
+            aria-labelledby="tab:1-0"
+            className="css-1jj07fx"
+            hidden={false}
+            id="panel:1-0"
+            role="tabpanel"
+            tabIndex={-1}
           >
             <div
-              className="network-devices"
+              className="css-1j6w374"
             >
-              <div>
-                <div
-                  className="device-container-name"
-                >
-                  <svg
-                    className="plus-circle"
-                    data-testid="plus-icon"
-                    onClick={[Function]}
-                  >
-                    add.svg
-                  </svg>
-                  Router
-                </div>
-                <div
-                  className="device-container"
-                >
+              <div
+                className="css-lmdmu1"
+              >
+                <div>
                   <div
-                    className="device-container-content"
+                    className="css-vl1v3j"
                   >
-                    <div />
+                    <svg
+                      className="css-8s9z6t"
+                      data-testid="plus-icon"
+                      onClick={[Function]}
+                    >
+                      add.svg
+                    </svg>
+                    Router
+                  </div>
+                  <div
+                    className="css-zop8l2"
+                  >
+                    <div
+                      className="css-1nhkunl"
+                    >
+                      <div />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <div
-                  className="device-container-name"
-                >
-                  <svg
-                    className="plus-circle"
-                    data-testid="plus-icon"
-                    onClick={[Function]}
-                  >
-                    add.svg
-                  </svg>
-                  Switch
-                </div>
-                <div
-                  className="device-container"
-                >
+                <div>
                   <div
-                    className="device-container-content"
+                    className="css-vl1v3j"
                   >
-                    <div />
+                    <svg
+                      className="css-8s9z6t"
+                      data-testid="plus-icon"
+                      onClick={[Function]}
+                    >
+                      add.svg
+                    </svg>
+                    Switch
+                  </div>
+                  <div
+                    className="css-zop8l2"
+                  >
+                    <div
+                      className="css-1nhkunl"
+                    >
+                      <div />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <div
-                  className="device-container-name"
-                >
-                  <svg
-                    className="plus-circle"
-                    data-testid="plus-icon"
-                    onClick={[Function]}
-                  >
-                    add.svg
-                  </svg>
-                  Host
-                </div>
-                <div
-                  className="device-container"
-                >
+                <div>
                   <div
-                    className="device-container-content"
+                    className="css-vl1v3j"
                   >
-                    <div />
+                    <svg
+                      className="css-8s9z6t"
+                      data-testid="plus-icon"
+                      onClick={[Function]}
+                    >
+                      add.svg
+                    </svg>
+                    Host
+                  </div>
+                  <div
+                    className="css-zop8l2"
+                  >
+                    <div
+                      className="css-1nhkunl"
+                    >
+                      <div />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <h2
-            className="console tabs__aplication-container--hide"
-            style={
-              Object {
-                "padding": "20px",
-              }
-            }
+          <div
+            aria-labelledby="tab:1-1"
+            className="css-1jj07fx"
+            hidden={true}
+            id="panel:1-1"
+            role="tabpanel"
+            tabIndex={-1}
           >
-            Coming soon...
-          </h2>
-          <h2
-            className="console tabs__aplication-container--hide"
-            style={
-              Object {
-                "padding": "20px",
-              }
-            }
+            <h2
+              className="css-cumyq4"
+            >
+              Coming soon...
+            </h2>
+          </div>
+          <div
+            aria-labelledby="tab:1-2"
+            className="css-1jj07fx"
+            hidden={true}
+            id="panel:1-2"
+            role="tabpanel"
+            tabIndex={-1}
           >
-            Coming soon...
-          </h2>
+            <h2
+              className="css-cumyq4"
+            >
+              Coming soon...
+            </h2>
+          </div>
         </div>
       </div>
     </div>
     <div
-      style={
-        Object {
-          "backgroundColor": "#454950",
-          "borderRadius": "10px",
-          "height": "100%",
-          "marginTop": "2.5vh",
-          "overflow": "hidden",
-          "padding": "0.4vw",
-        }
-      }
+      className="css-1w23y4q"
     >
       <div
-        style={
-          Object {
-            "backgroundColor": "#212529",
-            "borderRadius": "10px",
-            "flex": "1 1 auto",
-            "height": "100%",
-            "maxHeight": "100%",
-            "overflow": "hidden",
-            "position": "relative",
-            "width": "100%",
-            "zIndex": 1,
-          }
-        }
+        className="css-ljj55y"
       >
         <div
-          className="icons"
+          className="css-11pv0ql"
         >
           <button
-            className="iconButtons"
+            className="pb-2vh"
             onClick={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
@@ -290,7 +305,7 @@ exports[`The emulator should render and match snapshots 1`] = `
             </svg>
           </button>
           <button
-            className="iconButtons"
+            className="pb-2vh"
             onClick={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
@@ -305,7 +320,7 @@ exports[`The emulator should render and match snapshots 1`] = `
             </svg>
           </button>
           <button
-            className="iconButtons"
+            className="pb-2vh"
             onClick={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
@@ -320,7 +335,7 @@ exports[`The emulator should render and match snapshots 1`] = `
             </svg>
           </button>
           <button
-            className="iconButtons"
+            className="pb-2vh"
             onClick={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
@@ -336,17 +351,13 @@ exports[`The emulator should render and match snapshots 1`] = `
           </button>
         </div>
         <div
-          className="handle react-draggable"
+          className="handle react-draggable css-11ocl2r"
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           onTouchEnd={[Function]}
           style={
             Object {
-              "backgroundColor": "#212529",
-              "borderRadius": "10px",
-              "cursor": "",
               "transform": "translate(0px,0px)",
-              "visibility": "initial",
             }
           }
           transform={null}

@@ -1,9 +1,21 @@
 import React, { FC } from 'react';
+import styled from '@emotion/styled';
+import { Flex } from '@chakra-ui/core';
 
-import './Emulator.css';
 import Tabs from './Tabs/Tabs';
-import Visuals from './Visuals/Visuals';
-import Instructions, { PanelData } from './Instructions/Instructions';
+import Visuals from './Visuals';
+import Instructions, { PanelData } from './Instructions';
+
+const Container = styled.div`
+  margin-left: 1.5vw;
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  margin-right: 3.5rem;
+  width: 100%;
+  max-height: 96vh;
+  overflow: hidden;
+`;
 
 interface Props {
   panelData: PanelData;
@@ -11,15 +23,15 @@ interface Props {
 
 const Emulator: FC<Props> = ({ panelData }) => {
   return (
-    <div className="emulator">
+    <Flex margin='auto' maxWidth='1920px'>
       <Instructions panelData={panelData} />
-      <div style={{ marginLeft: '1.5vw', marginTop: '2vh', display: 'flex', flexDirection: 'column', marginRight: '3.5rem', width: '100%', maxHeight: '96vh', overflow: 'hidden' }}>
+      <Container>
         <div>
           <Tabs />
         </div>
         <Visuals />
-      </div>
-    </div>
+      </Container>
+    </Flex>
   );
 };
 

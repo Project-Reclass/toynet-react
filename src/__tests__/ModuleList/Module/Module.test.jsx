@@ -1,5 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+
+import { renderTreeWithTheme } from 'src/common/test-utils/renderWithTheme';
 import Module from 'src/ModuleList/Module';
 
 const defaultProps = {
@@ -19,7 +20,7 @@ const defaultProps = {
 
 describe('The Module', () => {
   it('should render and match snapshots', () => {
-    const tree = renderer.create(<Module {...defaultProps} />).toJSON();
+    const tree = renderTreeWithTheme(<Module {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

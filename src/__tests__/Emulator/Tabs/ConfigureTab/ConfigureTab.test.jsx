@@ -7,6 +7,7 @@ jest.mock('src/common/api/topology/requests')
 import ConfigureTab, { getNextDeviceName, getNextNumber } from 'src/Emulator/Tabs/ConfigureTab';
 import { withEmulatorProvider } from 'src/Emulator/EmulatorProvider';
 import { render, act, fireEvent } from '@testing-library/react';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 
 describe('ConfigureTab helper functions', () => {
@@ -45,7 +46,7 @@ describe('ConfigureTab', ()=> {
 
   it('should show an error sign if there are too many devices added', () => {
     const EmulatedConfigureTab = withEmulatorProvider(ConfigureTab);
-    const { getAllByTestId, getByText } = render(
+    const { getAllByTestId, getByText } = renderWithTheme(
       <DndProvider backend={HTML5Backend}>
         <EmulatedConfigureTab status={'show'} />
       </DndProvider>

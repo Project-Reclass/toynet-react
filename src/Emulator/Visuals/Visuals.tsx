@@ -1,19 +1,19 @@
 import React, { useRef, useState, FC } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
+
+import { useVisualizeToynetImage } from 'src/common/api/topology';
 import {ReactComponent as ZoomInButton} from 'src/assets/v2-buttons/plus-zoom.svg';
-import {ReactComponent as GreenZoomInButton } from '../../assets/buttons/greenZoomInIcon.svg';
+import {ReactComponent as GreenZoomInButton } from 'src/assets/buttons/greenZoomInIcon.svg';
 import {ReactComponent as ZoomOutButton} from 'src/assets/v2-buttons/minus-zoom.svg';
-import {ReactComponent as GreenZoomOutButton} from '../../assets/buttons/greenZoomOutIcon.svg';
+import {ReactComponent as GreenZoomOutButton} from 'src/assets/buttons/greenZoomOutIcon.svg';
 import {ReactComponent as HideButton} from 'src/assets/v2-buttons/eye-hide.svg';
 import {ReactComponent as GreenHideButton} from 'src/assets/v2-buttons/eye-show.svg';
 import {ReactComponent as CenterButton} from 'src/assets/v2-buttons/center-image.svg';
-import {ReactComponent as GreenCenterButton} from '../../assets/buttons/greenCenterImageIcon.svg';
-
-import { useVisualizeToynetImage } from 'src/common/api/topology';
+import {ReactComponent as GreenCenterButton} from 'src/assets/buttons/greenCenterImageIcon.svg';
 
 import { useEmulator } from '../EmulatorProvider';
 
-import './Visuals.css';
+import { OuterContainer, DraggableImage, Icons, Image, InnerContainer } from './styled';
 
 const ZOOM_INCREMENT = 0.1;
 const INITIAL_ZOOM_LEVEL = 1;
@@ -35,7 +35,7 @@ interface BtnProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HT
 const HighlightButton: FC<BtnProps> = ({ children, hoverComponent, component, ...rest }) => {
   const [isHover, setIsHover] = useState(false);
   return (
-    <button {... rest} onMouseOver={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+    <button {...rest} onMouseOver={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
     {isHover ?
       hoverComponent
       :
@@ -92,43 +92,37 @@ const Visuals = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#454950', padding: '0.4vw', marginTop: '2.5vh', borderRadius: '10px', height: '100%', overflow: 'hidden' }}>
-      <div style={{
-        height: '100%',
-        width: '100%',
-        overflow: 'hidden',
-        position: 'relative',
-        borderRadius: '10px',
-        flex: '1 1 auto',
-        backgroundColor: '#212529',
-        maxHeight: '100%',
-        zIndex: 1,
-      }}>
-        <div className="icons">
+    <OuterContainer>
+      <InnerContainer>
+        <Icons bottom={'20px'} right={'20px'}>
           {!hideImage &&
           <>
           <HighlightButton
             hoverComponent={<GreenZoomInButton />}
-            component={<ZoomInButton />} className ='iconButtons'
+            component={<ZoomInButton />}
+            className ='pb-2vh'
             onClick={zoomIn}
             style={{ cursor: hideImage ? 'default' : 'pointer' }} />
           <HighlightButton
             hoverComponent={<GreenZoomOutButton />}
             component={<ZoomOutButton />}
-            className='iconButtons' onClick={zoomOut}
+            className='pb-2vh'
+            onClick={zoomOut}
             style={{ cursor: hideImage ? 'default' : 'pointer' }} />
           </>}
           <HighlightButton
             hoverComponent={<GreenHideButton />}
-            component={<HideButton />} className='iconButtons'
+            component={<HideButton />}
+            className='pb-2vh'
             onClick={toggleHideImage}
             style={{ cursor: hideImage ? 'default' : 'pointer' }} />
           <HighlightButton
             hoverComponent={<GreenCenterButton />}
             component={<CenterButton />}
-            className='iconButtons' onClick={recenterImage}
+            className='pb-2vh'
+            onClick={recenterImage}
             style={{ cursor: hideImage ? 'default' : 'pointer' }} />
-        </div>
+        </Icons>
         <Draggable
           handle=".handle"
           position={pos}
@@ -136,27 +130,21 @@ const Visuals = () => {
           onStop={() => setIsGrabbing(false)}
           onDrag={handleDrag}
         >
-          <div className="handle"
-            style={{ cursor: isGrabbing ? '-webkit-grabbing': '',
-            visibility: hideImage ? 'hidden' : 'initial',
-            backgroundColor: '#212529',
-            borderRadius: '10px' }}>
+          <DraggableImage isGrabbing={isGrabbing} hideImage={hideImage} className='handle'>
             {sessionId > 0 && data && data.length > 0 &&
-              <img
+              <Image
                 data-testid={'toynet-session-img'}
                 className="image"
                 src={data}
                 alt=""
                 ref={imageRef}
-                style={{
-                  transform: `scale(${zoomLevel})`,
-                }}
+                zoomLevel={zoomLevel}
               />
             }
-          </div>
+          </DraggableImage>
         </Draggable>
-      </div>
-    </div>
+      </InnerContainer>
+    </OuterContainer>
   );
 };
 

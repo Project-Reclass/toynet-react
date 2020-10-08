@@ -5,6 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import Device from 'src/Emulator/Tabs/ConfigureTab/DeviceContainer/Device';
+import { renderTreeWithTheme, renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 function withDnDProvider(Component) {
   return (props) => (
@@ -37,17 +38,17 @@ const onDropMock = jest.fn();
 const onRemoveMock = jest.fn();
 
 const routerConnectionsData = {
-  deviceName: 'r1',
+  name: 'r1',
   connections: ['h1', 'h2', 'h3']
 };
 
 const hostConnections = {
-  deviceName: 'h1',
+  name: 'h1',
   connections: ['r1', 'r2', 'r3']
 };
 
 const switchConnections = {
-  deviceName: 's1',
+  name: 's1',
   connections: ['s2', 's3', 's4']
 };
 
@@ -90,30 +91,30 @@ describe('The Device', () => {
   });
 
   it('should match previous snapshots', () => {
-    const tree = renderer.create(<TestComponent {...defaultProps} />).toJSON();
+    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should match previous snapshot with router connections', () => {
-    const tree = renderer.create(<TestComponent {...defaultProps} deviceData={routerConnectionsData} />)
+    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} deviceData={routerConnectionsData} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should match previous snapshots with host connections', () => {
-    const tree = renderer.create(<TestComponent {...defaultProps} deviceData={hostConnections} />)
+    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} deviceData={hostConnections} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should match previous snapshots with switch connections', () => {
-    const tree = renderer.create(<TestComponent {...defaultProps} deviceData={switchConnections} />)
+    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} deviceData={switchConnections} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should be able to delete connection', () => {
-    const { getByText, getByTestId } = render(<TestComponent
+    const { getByText, getByTestId } = renderWithTheme(<TestComponent
       {...hostDeviceMock}
       deviceData={{
         ...hostDeviceMock.deviceData,
@@ -135,7 +136,7 @@ describe('The Device', () => {
   });
 
   it('should be able to delete itself with no connections', () => {
-    const { getByText, getByTestId } = render(<TestComponent {...hostDeviceMock} />);
+    const { getByText, getByTestId } = renderWithTheme(<TestComponent {...hostDeviceMock} />);
 
     const device = getByText(hostDeviceMock.deviceData.name);
     const trash = getByTestId('trash-icon');
@@ -151,7 +152,7 @@ describe('The Device', () => {
   });
 
   it('should not delete itself when it still has connections', () => {
-    const { getByText, getByTestId } = render(<TestComponent
+    const { getByText, getByTestId } = renderWithTheme(<TestComponent
       {...hostDeviceMock}
       deviceData={{
         ...hostDeviceMock.deviceData,
@@ -174,7 +175,7 @@ describe('The Device', () => {
 
   describe('routers', () => {
     it('should be able to connect to switches', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={routerDeviceMock}
         deviceTwo={switchDeviceMock}
       />);
@@ -193,7 +194,7 @@ describe('The Device', () => {
     });
   
     it('should be able to connect to other routers', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={routerDeviceMock}
         deviceTwo={{...routerDeviceMock, deviceData: { ...routerDeviceMock.deviceData, name: 'router-two' }}}
       />);
@@ -212,7 +213,7 @@ describe('The Device', () => {
     });
 
     it('should not be able to connect to a device already connected to it', () => {
-      const { getByText, getAllByText } = render(<InteractionTestComponent
+      const { getByText, getAllByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={routerDeviceMock}
         deviceTwo={{...switchDeviceMock, deviceData: {...switchDeviceMock.deviceData, connections: ['router-one']}}}
       />);
@@ -231,7 +232,7 @@ describe('The Device', () => {
     });
 
     it('should not be able to connect to hosts', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={routerDeviceMock}
         deviceTwo={hostDeviceMock}
       />);
@@ -252,7 +253,7 @@ describe('The Device', () => {
 
   describe('switches', () => {
     it('should be able to connect to routers', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={switchDeviceMock}
         deviceTwo={routerDeviceMock}
       />);
@@ -290,7 +291,7 @@ describe('The Device', () => {
     // });
   
     it('should be able to connect to hosts', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={switchDeviceMock}
         deviceTwo={hostDeviceMock}
       />);
@@ -309,7 +310,7 @@ describe('The Device', () => {
     });
 
     it('should not be able to connect to hosts if they already have a connection', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={switchDeviceMock}
         deviceTwo={{...hostDeviceMock, deviceData: {...hostDeviceMock.deviceData, connections: ['r1']}}}
       />);
@@ -328,7 +329,7 @@ describe('The Device', () => {
     });
 
     it('should not be able to connect to a device already connected', () => {
-      const { getByText, getAllByText } = render(<InteractionTestComponent
+      const { getByText, getAllByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={switchDeviceMock}
         deviceTwo={{...routerDeviceMock, deviceData: {...routerDeviceMock.deviceData, connections: ['switch-one']}}}
       />);
@@ -349,7 +350,7 @@ describe('The Device', () => {
 
   describe('hosts', () => {
     it('should be able to connect to switches', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={hostDeviceMock}
         deviceTwo={switchDeviceMock}
       />);
@@ -368,7 +369,7 @@ describe('The Device', () => {
     });
   
     it('should not be able to connect to other hosts', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={hostDeviceMock}
         deviceTwo={{...hostDeviceMock, deviceData: { ...hostDeviceMock.deviceData, name: 'host-two' }}}
       />);
@@ -387,7 +388,7 @@ describe('The Device', () => {
     });
   
     it('should not be able to connect to a router', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={hostDeviceMock}
         deviceTwo={routerDeviceMock}
       />);
@@ -406,7 +407,7 @@ describe('The Device', () => {
     });
   
     it('should be able to have one connection', () => {
-      const { getByText } = render(<InteractionTestComponent
+      const { getByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={{...hostDeviceMock, deviceData: { ...hostDeviceMock.deviceData, connections: ['s1'] }}}
         deviceTwo={switchDeviceMock}
       />);
@@ -425,7 +426,7 @@ describe('The Device', () => {
     });
 
     it('should not be able to connect to a device already connected', () => {
-      const { getByText, getAllByText } = render(<InteractionTestComponent
+      const { getByText, getAllByText } = renderWithTheme(<InteractionTestComponent
         deviceOne={hostDeviceMock}
         deviceTwo={{...routerDeviceMock, deviceData: {...routerDeviceMock.deviceData, connections: ['host-one']}}}
       />);

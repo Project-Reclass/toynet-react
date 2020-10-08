@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import { useDrag } from 'react-dnd';
 
-import { deviceColorClasses } from './shared';
+import { Connection } from './styled';
 
 interface Props {
   connection: string;
-  idx: number;
 }
 
-const Link: FC<Props> = ({ connection, idx }) => {
+const Link: FC<Props> = ({ connection }) => {
   const [, drag] = useDrag({
     item: {
       type: 'device',
@@ -21,15 +20,16 @@ const Link: FC<Props> = ({ connection, idx }) => {
   });
 
   return (
-    <div
-      id={`${connection}${idx}`}
-      className={`connection ${deviceColorClasses.get(connection[0])}`}
-      key={`${connection}`}
-      style={{ cursor: 'pointer' }}
+    <Connection
+      isDragging={false}
       ref={drag}
+      key={`${connection}`}
+      id={`${connection}`}
+      type={connection[0].toLocaleLowerCase()}
+      style={{ transform: 'rotateX(-180deg)' }}
     >
       {connection}
-    </div>
+    </Connection>
   );
 };
 

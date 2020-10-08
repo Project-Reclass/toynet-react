@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -10,9 +11,12 @@ import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DndProvider backend={HTML5Backend}>
-      <App />
-    </DndProvider>
+    <ThemeProvider>
+      <DndProvider backend={HTML5Backend}>
+        <CSSReset />
+        <App />
+      </DndProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

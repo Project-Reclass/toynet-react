@@ -1,9 +1,19 @@
 import React, { FC } from 'react';
 import { useDrop } from 'react-dnd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { Icon } from '@chakra-ui/core';
+import styled from '@emotion/styled';
+import { Flex, Divider } from '@chakra-ui/core';
 
 import { LinkFunc } from './shared';
+
+const HoverableTrashCan = styled.div`
+  margin: auto;
+
+  > svg {
+    transition: 0.15s opacity ease-in-out;
+    opacity: ${({isHover}: {isHover: boolean}) => isHover ? '1' : '0.2'}
+  }
+`;
 
 interface Props {
   name: string;
@@ -29,12 +39,12 @@ const DeleteLink: FC<Props> = ({ name, onRemove }) => {
   });
 
   return (
-    <div className={'trash-icon-container'} ref={drop} data-testid='trash-icon'>
-    <div className="vertical-bar" />
-    <div className={`trash-icon${isHover ? ' trash-icon__active' : ''}`}>
-      <FontAwesomeIcon icon={faTrashAlt} />
-    </div>
-  </div>
+    <Flex marginLeft='auto' ref={drop} data-testid='trash-icon'>
+      <Divider orientation='vertical' />
+      <HoverableTrashCan isHover={isHover}>
+        <Icon name='delete' size='1.2rem' focusable={true} />
+      </HoverableTrashCan>
+    </Flex>
   );
 };
 

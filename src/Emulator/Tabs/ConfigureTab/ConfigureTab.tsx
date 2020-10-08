@@ -1,4 +1,4 @@
-import React, { useRef, FC, useCallback, useMemo } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 
 import { DeviceType } from 'src/common/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
@@ -6,8 +6,7 @@ import { useEmulator } from 'src/Emulator/EmulatorProvider';
 
 import DeviceContainer from './DeviceContainer';
 import ErrorBox, { useErrorBox } from './ErrorBox';
-
-import './ConfigureTab.css';
+import { Configure, NetworkDevices } from './styled';
 
 const MAX_DEVICES = 10;
 
@@ -39,7 +38,7 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
   }
 };
 
-const ConfigureTab: FC<{status: string}> = ({ status }) => {
+const ConfigureTab = () => {
   const { switches, hosts, routers, dispatch } = useEmulator();
   const { setError } = useErrorBox();
 
@@ -79,8 +78,8 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
   const addHost = useMemo(() => addDevice('host'), [addDevice]);
 
   return (
-    <div className={`configure ${status}`}>
-      <div className="network-devices">
+    <Configure>
+      <NetworkDevices>
         <DeviceContainer
           deviceName="Router"
           devices={routers}
@@ -99,9 +98,9 @@ const ConfigureTab: FC<{status: string}> = ({ status }) => {
           addDevice={addHost}
           ref={hostScrollRef}
         />
-      </div>
+      </NetworkDevices>
       <ErrorBox />
-    </div>
+    </Configure>
   );
 };
 

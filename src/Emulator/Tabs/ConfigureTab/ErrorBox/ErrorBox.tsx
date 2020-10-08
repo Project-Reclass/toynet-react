@@ -1,10 +1,15 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import styled from '@emotion/styled';
+import { Icon } from '@chakra-ui/core';
 
 import { useErrorBox } from './ErrorBoxProvider';
 
-import styles from './errorBox.module.css';
+const ErrorBoxContainer = styled.div`
+  font-style: italic;
+  color: rgb(194, 194, 194);
+  margin: 0.4rem auto;
+  display: flex;
+`;
 
 const ErrorBox = () => {
   const { showError, errorMessage } = useErrorBox();
@@ -12,17 +17,15 @@ const ErrorBox = () => {
   return (
     <>
     {showError &&
-      <div className={styles.errorBox}>
-        <span className={styles.icon}>
-          <FontAwesomeIcon icon={faInfoCircle} />
-        </span>
+      <ErrorBoxContainer>
+        <Icon name='info-outline' margin='auto 0.2rem' display='block' />
         <span>
-          <span className={styles.error}>
+          <span style={{ fontWeight: 'bold' }}>
             Error:
           </span>
           {` ${errorMessage}`}
         </span>
-      </div>
+      </ErrorBoxContainer>
     }
     </>
   );

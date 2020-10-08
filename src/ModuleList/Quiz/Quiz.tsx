@@ -1,8 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+interface Params {
+  moduleId: string;
+  quizId: string;
+}
+
 const Quiz = () => {
-  const { moduleId, quizId } = useParams();
+  const { moduleId, quizId } = useParams<Params>();
 
   return (
     <div>

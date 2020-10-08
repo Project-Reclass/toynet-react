@@ -41,9 +41,12 @@
   word-spacing: 5px;
   line-height: 70px;
   font-weight: 430px;
+  font-size: 1.75rem;
 }
 
 .how-it-works {
+  font-size: 1.75rem;
+  color: black;
   transition: opacity 0.2s ease;
   padding: 0.7rem 2rem;
   opacity: 1;

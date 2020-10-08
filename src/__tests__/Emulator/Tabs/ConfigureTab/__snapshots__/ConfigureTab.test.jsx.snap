@@ -2,17 +2,17 @@
 
 exports[`ConfigureTab should match previous snapshots 1`] = `
 <div
-  className="configure online"
+  className="css-1j6w374"
 >
   <div
-    className="network-devices"
+    className="css-lmdmu1"
   >
     <div>
       <div
-        className="device-container-name"
+        className="css-vl1v3j"
       >
         <svg
-          className="plus-circle"
+          className="css-8s9z6t"
           data-testid="plus-icon"
           onClick={[Function]}
         >
@@ -21,10 +21,10 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
         Router
       </div>
       <div
-        className="device-container"
+        className="css-zop8l2"
       >
         <div
-          className="device-container-content"
+          className="css-1nhkunl"
         >
           <div />
         </div>
@@ -32,10 +32,10 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
     </div>
     <div>
       <div
-        className="device-container-name"
+        className="css-vl1v3j"
       >
         <svg
-          className="plus-circle"
+          className="css-8s9z6t"
           data-testid="plus-icon"
           onClick={[Function]}
         >
@@ -44,10 +44,10 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
         Switch
       </div>
       <div
-        className="device-container"
+        className="css-zop8l2"
       >
         <div
-          className="device-container-content"
+          className="css-1nhkunl"
         >
           <div />
         </div>
@@ -55,10 +55,10 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
     </div>
     <div>
       <div
-        className="device-container-name"
+        className="css-vl1v3j"
       >
         <svg
-          className="plus-circle"
+          className="css-8s9z6t"
           data-testid="plus-icon"
           onClick={[Function]}
         >
@@ -67,10 +67,10 @@ exports[`ConfigureTab should match previous snapshots 1`] = `
         Host
       </div>
       <div
-        className="device-container"
+        className="css-zop8l2"
       >
         <div
-          className="device-container-content"
+          className="css-1nhkunl"
         >
           <div />
         </div>

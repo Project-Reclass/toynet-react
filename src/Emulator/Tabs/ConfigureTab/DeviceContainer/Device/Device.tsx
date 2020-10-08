@@ -1,15 +1,15 @@
 import React, { FC, useMemo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import { Divider, Flex } from '@chakra-ui/core';
 
 import { mergeRefs } from 'src/common/utils';
 import { DeviceInterface } from 'src/common/types';
 
-import './Device.css';
-
 import Link from './Link';
+import { LinkFunc } from './shared';
 import DeleteLink from './DeleteLink';
 import { isValidLink } from './linkValidators';
-import { LinkFunc, DeviceColor, deviceColorClasses } from './shared';
+import { Connection, ConnectionBox, ConnectionsContainer, DeviceBox } from './styled';
 
 interface Props {
   deviceName: string;
@@ -18,7 +18,7 @@ interface Props {
   onRemove: LinkFunc;
 }
 
-const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onRemove }) => {
+const Device: FC<Props> = ({ deviceData, onDrop, onRemove }) => {
   const connections = useMemo(() => {
     return deviceData.connections.concat(deviceData.parent?.name || []);
   }, [deviceData.connections, deviceData.parent]);
@@ -49,28 +49,32 @@ const Device: FC<Props> = ({ deviceName, deviceData, onDrop, onRemove }) => {
     },
   });
 
-  const deviceClassName = useMemo(() => {
-    if (connections.length === 0)
-      return DeviceColor.EMPTY;
-    return deviceColorClasses.get(deviceName);
-  }, [connections.length, deviceName]);
-
   return (
-    <div className="device-box">
-      <div style={{ display: 'flex' }}>
-        <div ref={mergeRefs([drag, drop])} className={`device-name-box ${deviceClassName}${isDragging ? ' is-dragging' : ''}${isHover ? ' is-hover' : ''}`}>{deviceData.name}</div>
-        <div className="vertical-bar" />
-      </div>
-      <div className="connections-container">
+    <DeviceBox>
+      <Flex>
+        <Connection
+          isHover={isHover}
+          isDragging={isDragging}
+          ref={mergeRefs([drag, drop])}
+          isEmpty={connections.length === 0}
+          type={deviceData.name[0].toLocaleLowerCase()}
+          size='large'
+          style={{ margin: 'auto' }}
+        >
+          {deviceData.name}
+        </Connection>
+        <Divider orientation='vertical' />
+      </Flex>
+      <ConnectionsContainer>
         <div>Connections:</div>
-        <div className="connections-boxes">
+        <ConnectionBox>
           {connections.map((connection, idx) => (
-            <Link key={connection} connection={connection} idx={idx} />
+            <Link key={connection} connection={connection }/>
           ))}
-        </div>
-      </div>
+        </ConnectionBox>
+      </ConnectionsContainer>
       <DeleteLink name={deviceData.name} onRemove={onRemove} />
-    </div>
+    </DeviceBox>
   );
 };
 
