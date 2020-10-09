@@ -33,7 +33,6 @@ function getDevicesFromXMLDocument(document: Document, tag: string, type: Device
       name: (child as Element).attributes.getNamedItem('name')!.value,
       type: type,
       connections: [],
-      parent: null,
     });
   }
 
@@ -46,7 +45,7 @@ function createDeviceLink(allDevices: DeviceInterface[], parentName: string, chi
   if (!parent || !child)
     throw new Error(`Invalid link for ${parentName}->${childName}. Parent or child does not exists`);
 
-  child.parent = parent;
+  child.connections.push(parentName);
   parent.connections.push(childName);
 }
 

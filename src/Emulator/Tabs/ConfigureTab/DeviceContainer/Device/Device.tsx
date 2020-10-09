@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { Divider, Flex } from '@chakra-ui/core';
 
@@ -19,12 +19,8 @@ interface Props {
 }
 
 const Device: FC<Props> = ({ deviceData, onDrop, onRemove }) => {
-  const connections = useMemo(() => {
-    return deviceData.connections.concat(deviceData.parent?.name || []);
-  }, [deviceData.connections, deviceData.parent]);
-
   const [{ isDragging }, drag] = useDrag({
-    item: { type: 'device', deviceData: { ...deviceData, connections, isLink: false } },
+    item: { type: 'device', deviceData: { ...deviceData, isLink: false } },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -40,7 +36,7 @@ const Device: FC<Props> = ({ deviceData, onDrop, onRemove }) => {
     },
     canDrop: (item: any): boolean => {
       const { deviceData: fromDeviceData } = item;
-      return isValidLink(fromDeviceData, {...deviceData, connections});
+      return isValidLink(fromDeviceData, {...deviceData});
     },
     collect: (monitor) => {
       return {
@@ -56,7 +52,7 @@ const Device: FC<Props> = ({ deviceData, onDrop, onRemove }) => {
           isHover={isHover}
           isDragging={isDragging}
           ref={mergeRefs([drag, drop])}
-          isEmpty={connections.length === 0}
+          isEmpty={deviceData.connections.length === 0}
           type={deviceData.name[0].toLocaleLowerCase()}
           size='large'
           style={{ margin: 'auto' }}
@@ -68,7 +64,7 @@ const Device: FC<Props> = ({ deviceData, onDrop, onRemove }) => {
       <ConnectionsContainer>
         <div>Connections:</div>
         <ConnectionBox>
-          {connections.map((connection, idx) => (
+          {deviceData.connections.map((connection, idx) => (
             <Link key={connection} connection={connection }/>
           ))}
         </ConnectionBox>
