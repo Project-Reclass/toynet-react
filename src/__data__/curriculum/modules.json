@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1001,
+    "curriculumId": 1,
+    "name": "Motivation",
+    "description": "",
+    "submoduleIds": [1,2,3]
+  },
+  {
+    "id": 1002,
+    "curriculumId": 1,
+    "name": "OSI Layer 1",
+    "description": "Hardware",
+    "submoduleIds": [4,5,6]
+  },
+  {
+    "id": 1003,
+    "curriculumId": 1,
+    "name": "OSI Layer 2",
+    "description": "Switches",
+    "submoduleIds": [6,7,8]
+  }
+]

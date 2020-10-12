@@ -1,4 +1,7 @@
 import React from 'react';
+import { GenericFunction } from './types';
+
+const DEFAULT_TIMEOUT = 5000;
 
 /**
  * A utility function to merge multiple refs together to use
@@ -24,4 +27,17 @@ export function mergeRefs<T = any>(
       }
     });
   };
+}
+
+export async function simulateNetwork<TFunc extends GenericFunction>(
+  fn: TFunc,
+  maxTimeout = DEFAULT_TIMEOUT,
+): Promise<ReturnType<TFunc>> {
+  // eslint-disable-next-line no-magic-numbers
+  const timeout = (Math.random() * 10 * 33) % maxTimeout;
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(fn());
+    }, timeout);
+  });
 }
