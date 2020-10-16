@@ -28,5 +28,6 @@ function SplashAbout() {
     </div>
   );
 }
+// change
 
 export default SplashAbout;
