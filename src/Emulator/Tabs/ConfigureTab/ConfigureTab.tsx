@@ -65,7 +65,6 @@ const ConfigureTab = () => {
         type: actionType,
         payload: {
           type,
-          parent: null,
           name: getNextDeviceName(device, deviceLetter),
           connections: [],
         },
