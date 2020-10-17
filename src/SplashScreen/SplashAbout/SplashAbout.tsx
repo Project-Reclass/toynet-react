@@ -2,33 +2,33 @@ import React from 'react';
 
 import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/illustration3.svg';
 
-import {SplashAboutBody, SplashAboutContent, H1, H3, H3s, Button, SplashAboutImageContainer} from './SplashAboutStyles';
+import {Body, Content, Title, About, Button, SplashAboutImageContainer} from './SplashAboutStyles';
 
 
 
 function SplashAbout() {
   return (
     <div style={{ backgroundColor: 'white' }}>
-      <SplashAboutBody>
-        <SplashAboutContent>
-          <H1>
+      <Body>
+        <Content>
+          <Title>
             About Project Reclass
-          </H1>
-          <H3>
+          </Title>
+          <About>
               Project Reclass is a Nonprofit Vocational Program teaching technical skills to incarcerated veterans based in
               Atlanta, Georgia. Out team of researchers, technologists, and educators has built this learning platform to deliver
               computer networking curriculum that will prepare users for the CompTIA Network+ Certification.
-          </H3>
+          </About>
           <a href="https://www.projectreclass.org" style={{ marginTop: '1.5rem', display: 'block' }}>
             <Button>
-              <H3s>Learn more</H3s>
+              <h3>Learn more</h3>
             </Button>
           </a>
-        </SplashAboutContent>
+        </Content>
         <SplashAboutImageContainer>
           <Illustration />
         </SplashAboutImageContainer>
-      </SplashAboutBody>
+      </Body>
     </div>
   );
 }

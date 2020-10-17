@@ -1,18 +1,18 @@
 import React from 'react';
 
 import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/content-with-text.svg';
-import {SplashContentBody, SplashContentImageContainer, SplashContentContent, Wrapper} from './SplashContentStyles';
+import {Body, ImageContainer, Content, Wrapper} from './SplashContentStyles';
 
 
 
 function SplashContent() {
   return (
-    <SplashContentBody>
+    <Body>
       <Wrapper>
-        <SplashContentImageContainer>
+        <ImageContainer>
           <Illustration />
-        </SplashContentImageContainer>
-        <SplashContentContent>
+        </ImageContainer>
+        <Content>
           <h1>
             Why Toynet?
           </h1>
@@ -21,9 +21,9 @@ function SplashContent() {
             of devices are covered in virtualized scenarios and made more comprehensible through hands-on learning, conceptual lectures
             and skills assessments.
           </h3>
-        </SplashContentContent>
+        </Content>
       </Wrapper>
-    </SplashContentBody>
+    </Body>
   );
 }
 

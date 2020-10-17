@@ -17,9 +17,9 @@ export const SignUp = styled('a')`
   padding: 5px 17px;
   border-radius: 3.5px;
   background-color: #d6c20e;
-  &:hover {
-  opacity: 0.2;
-}
+    &:hover {
+      opacity: 0.2;
+  }
 `;
 export const NavLink = styled('a')`
   color: #131111;
@@ -35,9 +35,12 @@ export const NavLink = styled('a')`
     border-color: #0C6474;
   }
 `;
-export const Img = styled('img')`
+export const Logo = styled('img')`
   float: left;
   padding: 20px 0;
+  width: '65%';
+  height: 'auto';
+
 `;
 export const Container = styled('header')`
   width: 80%;
@@ -54,13 +57,13 @@ export const Nav = styled('nav')`
   color: #131111;
   font-weight: bold;
 `;
-export const Ul = styled('ul')`
+export const NavLinksContainer = styled('ul')`
   margin: 0;
   margin: auto;
   padding: 0;
   list-style: none;
 `;
-export const Li = styled('li')`
+export const NavItem = styled('li')`
   display: inline-block;
   margin-left: 2.1875rem;
   position: relative;
