@@ -43,10 +43,10 @@ export const Button = styled('button')`
   border-radius: 10px;
   background-color: #c9b51e;
   box-shadow: 2px 4px 5px rgb(48, 41, 41);
-    &:hover {
-      opacity: 0.2;
-    }
-    h3 {
+  &:hover {
+    opacity: 0.2;
+  }
+  h3 {
     text-align: center;
     margin: auto;
   }
@@ -56,10 +56,10 @@ export const SplashAboutImageContainer = styled('div')`
   max-width: 50%;
   padding-right: 10%;
   max-zoom: 1.5;
-    svg {
-      display: block;
-      width: 700px;
-      height: 100%; 
-      max-width: 100%;
-    }
+  svg {
+    display: block;
+    width: 700px;
+    height: 100%; 
+    max-width: 100%;
+  }
 `;

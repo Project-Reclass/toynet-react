@@ -7,20 +7,21 @@ export const Login = styled('a')`
   padding: 3px 15px;
   transition: 300ms;
   &:hover {
-  background-color: #18879b;
-  border: 2px solid #18879b;
-  
-}
+    background-color: #18879b;
+    border: 2px solid #18879b;
+  }
 `;
+
 export const SignUp = styled('a')`
-   margin-left: -5px;
+  margin-left: -5px;
   padding: 5px 17px;
   border-radius: 3.5px;
   background-color: #d6c20e;
-    &:hover {
-      opacity: 0.2;
+  &:hover {
+    opacity: 0.2;
   }
 `;
+
 export const NavLink = styled('a')`
   color: #131111;
   text-decoration: none;
@@ -35,34 +36,39 @@ export const NavLink = styled('a')`
     border-color: #0C6474;
   }
 `;
+
 export const Logo = styled('img')`
   float: left;
   padding: 20px 0;
   width: '65%';
   height: 'auto';
-
 `;
+
 export const Container = styled('header')`
   width: 80%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
 `;
+
 export const Header = styled('header')`
   background: white;
 `;
+
 export const Nav = styled('nav')`
   padding-top: 1rem;
   display: flex;
   color: #131111;
   font-weight: bold;
 `;
+
 export const NavLinksContainer = styled('ul')`
   margin: 0;
   margin: auto;
   padding: 0;
   list-style: none;
 `;
+
 export const NavItem = styled('li')`
   display: inline-block;
   margin-left: 2.1875rem;

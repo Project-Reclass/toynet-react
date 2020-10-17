@@ -17,6 +17,7 @@ export const Body = styled('div')`
     padding-left: 10%;
   }
 `;
+
 export const ImageContainer = styled('div')`
   width: 100%;
   margin: auto;
@@ -25,6 +26,7 @@ export const ImageContainer = styled('div')`
   left: 50%;
   top: 50%;
 `;
+
 export const Content = styled('div')`
   display: block;
   height: 100%;
@@ -39,20 +41,21 @@ export const Content = styled('div')`
   max-height: 100%;
   z-index: 1;
   align-self: flex-end;
-    h1 {
-      font-size: 4.375rem;
-      width: 100%;
-      max-width: 100%;
-      word-wrap: break-word;
-      right: 0;
-      top: 0;
+  h1 {
+    font-size: 4.375rem;
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    right: 0;
+    top: 0;
   } 
-    h3 {
-      line-height: 35px;
-      font-size: 1.5em;
-      font-weight: 430;
+  h3 {
+    line-height: 35px;
+    font-size: 1.5em;
+    font-weight: 430;
   }
 `;
+
 export const Wrapper = styled('div')`
   height: 100%;
 `;
