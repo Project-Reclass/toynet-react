@@ -9,7 +9,7 @@ interface Meta {
 }
 
 export const getLessonSlide = async (submoduleId: number, quizId: number): Promise<LessonSlideURI> => {
-  const { data } = await axios.get(`/engine/lesson/data/${submoduleId}/${quizId}`);
+  const { data } = await axios.get(`/engine/lesson/data/${submoduleId}/${quizId}.png`);
   return data;
 };
 
