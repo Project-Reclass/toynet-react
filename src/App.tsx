@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { CircularProgress } from "@chakra-ui/core";
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Emulator from './Emulator';
+
 import Header from './Header/Header';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
-import SplashScreen from './SplashScreen';
+
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
+
+const SplashScreen = React.lazy(() => import('./SplashScreen'));
+const Emulator = React.lazy(() => import('./Emulator'));
 
 const data = {
   'id': 1,
@@ -32,7 +35,9 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <Layout title={'Home'}>
-            <SplashScreen />
+            <Suspense fallback={<CircularProgress isIndeterminate color="green"></CircularProgress>}>
+              <SplashScreen />
+            </Suspense>
           </Layout>
         </Route>
         <Route exact path="/module">
@@ -53,7 +58,9 @@ function App() {
         <Route path="/module/:moduleId/emulator/:emulatorId">
           <Layout title={'Emulator'}>
             {sideNav && <Header /> }
-            <Emulator panelData={data} />
+            <Suspense fallback={<CircularProgress isIndeterminate color="green"></CircularProgress>}>
+                <Emulator panelData={data} />
+            </Suspense>
           </Layout>
         </Route>
         <Route path="*">
