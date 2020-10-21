@@ -1,14 +1,12 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { CircularProgress } from "@chakra-ui/core";
+import styled from '@emotion/styled';
 
-
-
+import LoadingSpinner from './common/components/LoadingSpinner';
 import Header from './Header/Header';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
-
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
 
@@ -28,6 +26,11 @@ const data = {
   ],
 };
 
+const LoadingWrapper = styled('div')`
+  width: 100%;
+  height: 100vh;
+`;
+
 function App() {
   const { sideNav } = useFeatureFlags();
   return (
@@ -35,8 +38,8 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <Layout title={'Home'}>
-            <Suspense fallback={<CircularProgress isIndeterminate color="green"></CircularProgress>}>
-              <SplashScreen />
+            <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
+              <SplashScreen/>
             </Suspense>
           </Layout>
         </Route>
@@ -58,7 +61,7 @@ function App() {
         <Route path="/module/:moduleId/emulator/:emulatorId">
           <Layout title={'Emulator'}>
             {sideNav && <Header /> }
-            <Suspense fallback={<CircularProgress isIndeterminate color="green"></CircularProgress>}>
+            <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
                 <Emulator panelData={data} />
             </Suspense>
           </Layout>
