@@ -1,39 +1,40 @@
 import React from 'react';
-
 import logo from 'src/assets/PR-Logo-Long-FullColor.png';
+import {Login, SignUp, NavLink, Logo, Container, Nav, Header, NavLinksContainer, NavItem} from './SplashNavStyles';
 
-import './SplashNav.css';
+
+
 
 function SplashNav() {
   return (
-    <header className='splash-header'>
-      <div className='splash-header-container container-1920'>
+    <Header>
+      <Container>
         <div style={{ maxWidth: '25%' }}>
           <a href="https://www.projectreclass.org">
-            <img src={logo} alt='logo' className='splash-logo' style={{ width: '65%', height: 'auto' }} />
+            <Logo src={logo} alt='logo' />
           </a>
         </div>
-        <nav className='splash-nav'>
-          <ul>
-            <li>
-              <a href='#home' className='splash-nav-link'>Home</a>
-            </li>
-            <li>
-              <a href='#about' className='splash-nav-link'>About</a>
-            </li>
-            <li>
-              <a href='#contact' className='splash-nav-link'>Contact</a>
-            </li>
-            <li>
-              <a href='#login' className='splash-login'>Log in</a>
-            </li>
-            <li>
-              <a href='#signup' className='splash-signup'>Sign up</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+        <Nav>
+          <NavLinksContainer>
+            <NavItem>
+              <NavLink href='#home'>Home</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='#about'>About</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='#contact'>Contact</NavLink>
+            </NavItem>
+            <NavItem>
+              <Login>Log in</Login>
+            </NavItem>
+            <NavItem>
+              <SignUp href='#signup'>Sign up</SignUp>
+            </NavItem>
+          </NavLinksContainer>
+        </Nav>
+      </Container>
+    </Header>
   );
 }
 

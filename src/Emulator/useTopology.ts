@@ -78,21 +78,18 @@ function reducer(state: ParsedXML, action: ReducerAction) {
       const device = action.payload as DeviceInterface;
       const deviceIndex = state[deleteKey].findIndex(d => d.name === device.name);
       if (deviceIndex !== -1)
-      state[deleteKey].splice(deviceIndex, 1);
+        state[deleteKey].splice(deviceIndex, 1);
       return;
 
     case TopologyActions.DELETE_CONNECTION:
       const { to: toDelete, from: fromDelete } = action.payload as Connection;
       const deleteDevices = [...state.routers, ...state.hosts, ...state.switches];
       for (const device of deleteDevices) {
-        if (device.name === fromDelete) {
-          if (device.parent?.name === toDelete) {
-            device.parent = null;
-          } else {
-            const idx = device.connections.findIndex(name => name === toDelete);
+        if (device.name === fromDelete || device.name === toDelete) {
+          const deviceName = device.name === fromDelete ? toDelete : fromDelete;
+          const idx = device.connections.findIndex(name => name === deviceName);
+          if (idx !== -1)
             device.connections.splice(idx, 1);
-          }
-          break;
         }
       }
       break;

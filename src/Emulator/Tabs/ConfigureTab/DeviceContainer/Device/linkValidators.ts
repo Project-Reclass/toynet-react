@@ -8,8 +8,7 @@ linkValidators.set('h', validateHostLink);
 linkValidators.set('r', validateRouterLink);
 
 function validateSwitchLink(from: DeviceInterface, to: DeviceInterface) {
-  // to.name.startsWith('s') ||  re-add to add back switch-to-switch connections
-  if (to.name.startsWith('r') || (to.name.startsWith('h') && to.connections.length === 0))
+  if (to.name.startsWith('s') || to.name.startsWith('r') || (to.name.startsWith('h') && to.connections.length === 0))
     if (to.connections.indexOf(from.name) === -1)
       return true;
 
