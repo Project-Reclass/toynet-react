@@ -1,5 +1,9 @@
+on:
+  push:
+    branches: [ master, production ]
+  pull_request:
+    branches: [ master ]
 
-on: push
 name: Team Voltron Update
 jobs:
   slackNotification:
