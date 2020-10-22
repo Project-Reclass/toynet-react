@@ -1,28 +1,25 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from '@emotion/styled';
+import { Flex } from '@chakra-ui/core';
 
 import logo from 'src/assets/PR-Icon-Square-White.png';
 
-const Styled_splash_footer_body_div = styled.div`
+const StyledContainer = styled.div`
   height: auto;
   background-color: black;
   color: white;
-`
+`;
 
-const Styled_splash_footer_content = styled.div`
-  display: flex;
-`
-
-const Styled_splash_footer_section_logo = styled.div`
+const StyledSectionLogo = styled.div`
   margin: auto;
   padding-left: 10%;
-`
+`;
 
-const Styled_splash_footer_logo = styled.div`
+const StyledLogo = styled.div`
   width: 25%;
-`
+`;
 
-const Styled_splash_footer_section_info  = styled.div`
+const StyledSectionInfo  = styled.div`
   position: relative;
   width: 100%;
   display: flex;
@@ -31,14 +28,14 @@ const Styled_splash_footer_section_info  = styled.div`
   flex-wrap: wrap;
   max-width: 100%;
   margin-bottom: 0;
-`
+`;
 
-const Styled_section_part = styled.div`
+const StyledSectionPart = styled.div`
   padding: 1vh 0;
   padding-right: 25%;
-`
+`;
 
-const Styled_section_part_one_two = styled.div`
+const StyledSectionPartOneTwo = styled.div`
   position: relative;
   min-width: 100px;
   max-width: 430px;
@@ -56,45 +53,45 @@ const Styled_section_part_one_two = styled.div`
     color: gray;
     margin-bottom: 0;
   }
-`
+`;
 
 function SplashFooter() {
   return (
-    <Styled_splash_footer_body_div style={{ backgroundColor: 'black' }}>
-      <Styled_splash_footer_body_div className="container-1920 mx-auto" id="content">
-        <Styled_splash_footer_content>
-          <Styled_splash_footer_section_logo>
-            <Styled_splash_footer_logo>
+    <StyledContainer>
+      <StyledContainer className="container-1920 mx-auto" id="content">
+        <Flex>
+          <StyledSectionLogo>
+            <StyledLogo>
               <a href="https://www.projectreclass.org">
                 <img src={logo} alt={'white pr logo'} />
               </a>
-            </Styled_splash_footer_logo>
+            </StyledLogo>
             <p>
               Copyright 2020 Project Reclass LTD <br />
               All Rights Reserved
             </p>
-          </Styled_splash_footer_section_logo>
-          <Styled_splash_footer_section_info>
-            <Styled_section_part className='my-auto'>
-              <Styled_section_part_one_two>
+          </StyledSectionLogo>
+          <StyledSectionInfo>
+            <StyledSectionPart className='my-auto'>
+              <StyledSectionPartOneTwo>
                 <h2>Address</h2>
                 <p>
                   1234 Project Reclass Ln. <br />
                   Augusta, Georgia 12345
                 </p>
-              </Styled_section_part_one_two>
+              </StyledSectionPartOneTwo>
               <br />
-              <Styled_section_part_one_two>
+              <StyledSectionPartOneTwo>
                 <h2>Contact</h2>
                 <p>
                   E: ProjectReclass.info@gmail.com <br />
                 </p>
-              </Styled_section_part_one_two>
-            </Styled_section_part>
-          </Styled_splash_footer_section_info>
-        </Styled_splash_footer_content>
-      </Styled_splash_footer_body_div>
-    </Styled_splash_footer_body_div>
+              </StyledSectionPartOneTwo>
+            </StyledSectionPart>
+          </StyledSectionInfo>
+        </Flex>
+      </StyledContainer>
+    </StyledContainer>
   );
 }
 
