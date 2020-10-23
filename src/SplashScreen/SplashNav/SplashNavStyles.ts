@@ -36,11 +36,10 @@ export const NavLink = styled('a')`
     border-color: #0C6474;
   }
 `;
-
 export const Logo = styled('img')`
   float: left;
   padding: 20px 0;
-  width: '65%';
+  width: 65%;
   height: 'auto';
 `;
 
@@ -61,14 +60,12 @@ export const Nav = styled('nav')`
   color: #131111;
   font-weight: bold;
 `;
-
 export const NavLinksContainer = styled('ul')`
   margin: 0;
   margin: auto;
   padding: 0;
   list-style: none;
 `;
-
 export const NavItem = styled('li')`
   display: inline-block;
   margin-left: 2.1875rem;

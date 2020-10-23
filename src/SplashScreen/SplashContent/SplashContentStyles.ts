@@ -17,7 +17,6 @@ export const Body = styled('div')`
     padding-left: 10%;
   }
 `;
-
 export const ImageContainer = styled('div')`
   width: 100%;
   margin: auto;
@@ -26,7 +25,6 @@ export const ImageContainer = styled('div')`
   left: 50%;
   top: 50%;
 `;
-
 export const Content = styled('div')`
   display: block;
   height: 100%;
