@@ -13,19 +13,6 @@ import Layout from './layout';
 const SplashScreen = React.lazy(() => import('./SplashScreen'));
 const Emulator = React.lazy(() => import('./Emulator'));
 
-const data = {
-  'id': 1,
-  'submoduleNumber': 1,
-  'submoduleName': 'Modifying Topology',
-  'objective': 'Add and remove devices and their connections.',
-  'tasks': [
-    'Add a Host (h3)',
-    'Attach h3 to s2',
-    'Detach h3 from s2',
-    'Remove h2',
-  ],
-};
-
 const LoadingWrapper = styled('div')`
   width: 100%;
   height: 100vh;
@@ -62,7 +49,7 @@ function App() {
           <Layout title={'Emulator'}>
             {sideNav && <Header /> }
             <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
-                <Emulator panelData={data} />
+                <Emulator />
             </Suspense>
           </Layout>
         </Route>

@@ -47,7 +47,7 @@ exports[`The emulator should render and match snapshots 1`] = `
         <p
           className="css-fzcsno"
         >
-          Local Area Networks
+          Modifying Topology
         </p>
       </div>
       <div
@@ -61,7 +61,7 @@ exports[`The emulator should render and match snapshots 1`] = `
         <p
           className="css-fzcsno"
         >
-          Connect two hosts together and check they can communicate
+          Add and remove devices and their connections.
         </p>
       </div>
       <div
@@ -78,32 +78,22 @@ exports[`The emulator should render and match snapshots 1`] = `
           <li
             className="css-p5me83"
           >
-            Attach h1 to s1.
+            Add a Host (h3)
           </li>
           <li
             className="css-p5me83"
           >
-            Attach h2 to s1.
+            Attach h3 to s2
           </li>
           <li
             className="css-p5me83"
           >
-            Launch.
+            Detach h3 from s2
           </li>
           <li
             className="css-p5me83"
           >
-            In Console, run h1&gt; arp 172.16.0.100.
-          </li>
-          <li
-            className="css-p5me83"
-          >
-            In Console, run h2&gt; ping 172.16.0.100.
-          </li>
-          <li
-            className="css-p5me83"
-          >
-            In Console, run h3&gt; arp 172.16.0.100.
+            Remove h2
           </li>
         </div>
       </div>
