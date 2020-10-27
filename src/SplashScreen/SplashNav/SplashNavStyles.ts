@@ -39,8 +39,8 @@ export const NavLink = styled('a')`
 export const Logo = styled('img')`
   float: left;
   padding: 20px 0;
-  width: '65%';
-  height: 'auto';
+  width: 65%;
+  height: auto;
 `;
 
 export const Container = styled('header')`
