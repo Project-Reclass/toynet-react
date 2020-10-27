@@ -3,7 +3,7 @@ import React from 'react';
 import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/content-with-text.svg';
 import {Body, ImageContainer, Content, Wrapper} from './SplashContentStyles';
 
-import './index'
+import './index';
 
 function SplashContent() {
   return (
