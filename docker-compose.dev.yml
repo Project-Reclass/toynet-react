@@ -10,5 +10,16 @@ services:
     ports:
       - "8000:8000"
 
+  proxy:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    networks:
+      - reclass_network
+    environment:
+      - SERVER_URI="http://backend:8000"
+    ports:
+      - "8080:80"
+
 networks:
   reclass_network:

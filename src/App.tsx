@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import styled from '@emotion/styled';
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-import Emulator from './Emulator';
+import LoadingSpinner from './common/components/LoadingSpinner';
 import Header from './Header/Header';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
-import SplashScreen from './SplashScreen';
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
+
+const SplashScreen = React.lazy(() => import('./SplashScreen'));
+const Emulator = React.lazy(() => import('./Emulator'));
 
 const data = {
   'id': 1,
@@ -25,6 +26,11 @@ const data = {
   ],
 };
 
+const LoadingWrapper = styled('div')`
+  width: 100%;
+  height: 100vh;
+`;
+
 function App() {
   const { sideNav } = useFeatureFlags();
   return (
@@ -32,7 +38,9 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <Layout title={'Home'}>
-            <SplashScreen />
+            <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
+              <SplashScreen/>
+            </Suspense>
           </Layout>
         </Route>
         <Route exact path="/module">
@@ -53,7 +61,9 @@ function App() {
         <Route path="/module/:moduleId/emulator/:emulatorId">
           <Layout title={'Emulator'}>
             {sideNav && <Header /> }
-            <Emulator panelData={data} />
+            <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
+                <Emulator panelData={data} />
+            </Suspense>
           </Layout>
         </Route>
         <Route path="*">
