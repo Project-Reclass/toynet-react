@@ -8,25 +8,10 @@ import {ReactComponent as LogIcon} from '../assets/headerIcons/logIcon.svg';
 
 import styled from '@emotion/styled';
 
-const Header = () => {
-  const history = useHistory();
-  const [menu, setMenu] = useState(false);
-  const [enableHref, setEnableHref] = useState(false);
+interface StyledNavProps {
+  isMenuOpen: boolean;
+};
 
-  function toggleMenu() {
-    setMenu(prevMenu => !prevMenu);
-    setEnableHref(prevEnableHref => !prevEnableHref);
-  }
-
-  const goToPageOnEnableHref = (path: string) => {
-    if (enableHref) {
-      history.push(path);
-    }
-  };
-
-
-
-const width = menu ? '14rem' : '3rem';
 const StyledNav = styled.nav`
   z-index: 3;
   height: 100vh;
@@ -34,7 +19,7 @@ const StyledNav = styled.nav`
   left: 0;
   background: rgb(24, 21, 21);
   transition: width 200ms ease;
-  width: ${width};
+  width: ${({ isMenuOpen }: StyledNavProps) => isMenuOpen ? '14rem' : '3rem'};
 
   ul {
     list-style: none;
@@ -91,17 +76,15 @@ const StyledSvg = styled.span`
   }
 `;
 
-const visibility = menu ? 'visible' : '';
-const opacity = menu ? '1' : '';
 const StyledLinkText = styled.span`
   color: white;
   filter: grayscale(100%) opacity(0.7);
   transition: color 200ms;
 
   transition: opacity 200ms;
-  whiteSpace: nowrap;
-  visibility: ${visibility};
-  opacity: ${opacity};
+  white-space: nowrap;
+  visibility: ${({ isMenuOpen }: StyledNavProps) => isMenuOpen ? 'visible' : ''};
+  opacity: ${({ isMenuOpen }: StyledNavProps) => isMenuOpen ? '1' : ''};
 
   &:hover {
     filter: grayscale(0%) opacity(1);
@@ -110,14 +93,29 @@ const StyledLinkText = styled.span`
   }
 `;
 
+const Header = () => {
+  const history = useHistory();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [enableHref, setEnableHref] = useState(false);
+
+  function toggleMenu() {
+    setIsMenuOpen(prevMenu => !prevMenu);
+    setEnableHref(prevEnableHref => !prevEnableHref);
+  }
+
+  const goToPageOnEnableHref = (path: string) => {
+    if (enableHref) {
+      history.push(path);
+    }
+  };
+
   return (
-    <StyledNav onClick={toggleMenu}>
+    <StyledNav isMenuOpen={isMenuOpen} onClick={toggleMenu}>
       <ul>
         <StyledLogo>
           <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
-            {/* Temporarily. Needs a logo svg */}
             <StyledSvg>X</StyledSvg>
-            <StyledLinkText>
+            <StyledLinkText isMenuOpen={isMenuOpen}>
               Logo
             </StyledLinkText>
           </StyledNavIcon>
@@ -125,15 +123,15 @@ const StyledLinkText = styled.span`
         <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
           <StyledNavIcon>
             <StyledSvg> <FolderIcon className='svg-icon' /> </StyledSvg>
-            <StyledLinkText>
-              Curriculumm
+            <StyledLinkText isMenuOpen={isMenuOpen}>
+              Curriculum
             </StyledLinkText>
           </StyledNavIcon>
         </StyledNavItem>
         <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
           <StyledNavIcon>
             <StyledSvg> <AccountIcon /> </StyledSvg>
-            <StyledLinkText>
+            <StyledLinkText isMenuOpen={isMenuOpen}>
               Profile
             </StyledLinkText>
           </StyledNavIcon>
@@ -141,7 +139,7 @@ const StyledLinkText = styled.span`
         <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
           <StyledNavIcon>
             <StyledSvg> <HelpIcon /> </StyledSvg>
-            <StyledLinkText>
+            <StyledLinkText isMenuOpen={isMenuOpen}>
               FAQ
             </StyledLinkText>
           </StyledNavIcon>
@@ -149,7 +147,7 @@ const StyledLinkText = styled.span`
         <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
           <StyledNavIcon>
             <StyledSvg> <LogIcon /> </StyledSvg>
-            <StyledLinkText>
+            <StyledLinkText isMenuOpen={isMenuOpen}>
               Log Out
             </StyledLinkText>
           </StyledNavIcon>
