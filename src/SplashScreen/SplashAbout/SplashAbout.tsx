@@ -33,6 +33,6 @@ function SplashAbout() {
   );
 }
 
-// change
+
 
 export default SplashAbout;

@@ -40,7 +40,7 @@ export const Logo = styled('img')`
   float: left;
   padding: 20px 0;
   width: 65%;
-  height: 'auto';
+  height: auto;
 `;
 
 export const Container = styled('header')`
