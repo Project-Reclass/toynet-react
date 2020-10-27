@@ -3,13 +3,13 @@ import React from 'react';
 import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/content-with-text.svg';
 import {Body, ImageContainer, Content, Wrapper} from './SplashContentStyles';
 
-
+import './index'
 
 function SplashContent() {
   return (
     <Body>
       <Wrapper>
-        <ImageContainer>
+        <ImageContainer className='container-1920 mx-auto'>
           <Illustration />
         </ImageContainer>
         <Content>
