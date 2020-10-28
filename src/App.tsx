@@ -7,6 +7,7 @@ import Header from './Header/Header';
 import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
+import Lesson from './ModuleList/Lesson';
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
 
@@ -51,6 +52,11 @@ function App() {
             <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
                 <Emulator />
             </Suspense>
+          </Layout>
+        </Route>
+        <Route exact path="/module/:moduleId/lesson/:lessonId">
+          <Layout title={'Lesson'}>
+            <Lesson />
           </Layout>
         </Route>
         <Route path="*">
