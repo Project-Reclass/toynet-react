@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+import { useLesson } from './useLesson';
+
 interface Params {
   moduleId: string;
   lessonId: string;
@@ -8,6 +10,7 @@ interface Params {
 
 const Lesson = () => {
   const { moduleId, lessonId } = useParams<Params>();
+  const lessonState = useLesson();
 
   return (
     <div>
@@ -17,6 +20,7 @@ const Lesson = () => {
       <h2>
         Lesson: {lessonId}
       </h2>
+      <p>Num Slides: {lessonState.state.numSlides} </p>
     </div>
   );
 };
