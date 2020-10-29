@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useImmerReducer } from 'use-immer';
 
 import { Action } from '../../common/types';
-import { Meta } from '../../common/api/curriculum/lesson/requests'
+import { Meta } from '../../common/api/curriculum/lesson/requests';
 import { useLessonMeta } from '../../common/api/curriculum/lesson';
 
 export interface LessonState {
@@ -25,17 +25,17 @@ function reducer(state: LessonState, action: ReducerAction) {
 
 
 const initialState: LessonState = {
-    numSlides: 0
+  numSlides: 0,
 };
 
-export function useLesson() {
-    const { data, isLoading } = useLessonMeta(1001)
-    const [state, dispatch] = useImmerReducer(reducer, initialState);
-    useEffect(() => {
-        if (data && !isLoading) {
-            dispatch({type: LessonActions.SET_LESSON, payload: data});
-        }
-    }, [dispatch, isLoading, data]);
-    
-    return { state, isLoading };
+export function useLesson(lessonId: string) {
+const { data, isLoading } = useLessonMeta(Number(lessonId));
+  const [state, dispatch] = useImmerReducer(reducer, initialState);
+  useEffect(() => {
+    if (data && !isLoading) {
+      dispatch({type: LessonActions.SET_LESSON, payload: data});
+    }
+  }, [dispatch, isLoading, data]);
+
+  return { state, isLoading };
 }
