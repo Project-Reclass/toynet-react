@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useLessonMeta } from '../../common/api/curriculum/lesson';
-//import { useLesson } from './useLesson';
 
 interface Params {
   moduleId: string;
