@@ -10,7 +10,7 @@ interface Params {
 
 const Lesson = () => {
   const { moduleId, lessonId } = useParams<Params>();
-  const { data, isLoading } = useLessonMeta(Number(lessonId));
+  const { data } = useLessonMeta(Number(lessonId));
 
   return (
     <div>
