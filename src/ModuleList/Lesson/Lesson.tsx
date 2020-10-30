@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useLesson } from './useLesson';
+import { useLessonMeta } from '../../common/api/curriculum/lesson';
+//import { useLesson } from './useLesson';
 
 interface Params {
   moduleId: string;
@@ -10,7 +11,7 @@ interface Params {
 
 const Lesson = () => {
   const { moduleId, lessonId } = useParams<Params>();
-  const lessonState = useLesson(lessonId);
+  const { data, isLoading } = useLessonMeta(Number(lessonId));
 
   return (
     <div>
@@ -20,7 +21,7 @@ const Lesson = () => {
       <h2>
         Lesson: {lessonId}
       </h2>
-      <p>Num Slides: {lessonState.state.numSlides} </p>
+      <p>Num Slides: {data?.numSlides || 0} </p>
     </div>
   );
 };
