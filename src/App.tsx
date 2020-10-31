@@ -10,6 +10,7 @@ import Quiz from './ModuleList/Quiz';
 import Lesson from './ModuleList/Lesson';
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
+import ErrorBoundary from './common/components/ErrorBoundary';
 
 const SplashScreen = React.lazy(() => import('./SplashScreen'));
 const Emulator = React.lazy(() => import('./Emulator'));
@@ -27,7 +28,9 @@ function App() {
         <Route exact path='/'>
           <Layout title={'Home'}>
             <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
-              <SplashScreen/>
+              <ErrorBoundary>
+                <SplashScreen/>
+              </ErrorBoundary>
             </Suspense>
           </Layout>
         </Route>
