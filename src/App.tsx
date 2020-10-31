@@ -23,52 +23,52 @@ const LoadingWrapper = styled('div')`
 function App() {
   const { sideNav } = useFeatureFlags();
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          <Layout title={'Home'}>
-            <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
-              <ErrorBoundary>
+    <ErrorBoundary>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Layout title={'Home'}>
+              <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
                 <SplashScreen/>
-              </ErrorBoundary>
-            </Suspense>
-          </Layout>
-        </Route>
-        <Route exact path="/module">
-          <Layout title={'Modules'}>
-            <ModuleList />
-          </Layout>
-        </Route>
-        <Route exact path="/module/:moduleId/quiz/:quizId">
-          <Layout title={'Quiz'}>
-            <Quiz />
-          </Layout>
-        </Route>
-        <Route exact path="/module/:moduleId/article/:articleId">
-          <Layout title={'Article'}>
-            <Article />
-          </Layout>
-        </Route>
-        <Route path="/module/:moduleId/emulator/:emulatorId">
-          <Layout title={'Emulator'}>
-            {sideNav && <Header /> }
-            <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
-                <Emulator />
-            </Suspense>
-          </Layout>
-        </Route>
-        <Route exact path="/module/:moduleId/lesson/:lessonId">
-          <Layout title={'Lesson'}>
-            <Lesson />
-          </Layout>
-        </Route>
-        <Route path="*">
-          <Layout title={'404'}>
-            <h1>Page not found...</h1>
-          </Layout>
-        </Route>
-      </Switch>
-    </Router>
+              </Suspense>
+            </Layout>
+          </Route>
+          <Route exact path="/module">
+            <Layout title={'Modules'}>
+              <ModuleList />
+            </Layout>
+          </Route>
+          <Route exact path="/module/:moduleId/quiz/:quizId">
+            <Layout title={'Quiz'}>
+              <Quiz />
+            </Layout>
+          </Route>
+          <Route exact path="/module/:moduleId/article/:articleId">
+            <Layout title={'Article'}>
+              <Article />
+            </Layout>
+          </Route>
+          <Route path="/module/:moduleId/emulator/:emulatorId">
+            <Layout title={'Emulator'}>
+              {sideNav && <Header /> }
+              <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
+                  <Emulator />
+              </Suspense>
+            </Layout>
+          </Route>
+          <Route exact path="/module/:moduleId/lesson/:lessonId">
+            <Layout title={'Lesson'}>
+              <Lesson />
+            </Layout>
+          </Route>
+          <Route path="*">
+            <Layout title={'404'}>
+              <h1>Page not found...</h1>
+            </Layout>
+          </Route>
+        </Switch>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
