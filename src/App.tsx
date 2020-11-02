@@ -8,6 +8,7 @@ import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
 import Lesson from './ModuleList/Lesson';
+import Values from './ModuleList/Values';
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
 import ErrorBoundary from './common/components/ErrorBoundary';
@@ -61,6 +62,13 @@ function App() {
               <Lesson />
             </Layout>
           </Route>
+
+          <Route exact path="/values/:valuesId">
+            <Layout title={'Values'}>
+              <Values />
+            </Layout>
+          </Route>
+
           <Route path="*">
             <Layout title={'404'}>
               <h1>Page not found...</h1>
