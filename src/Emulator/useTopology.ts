@@ -7,7 +7,7 @@ import { SessionId, CommandRequest } from '../common/api/topology/types';
 import { useToynetSession, useModifyTopology } from '../common/api/topology';
 
 // This set is used to ensure that there are no duplicate names sent to the server to be created when there is latency
-const existingNames = new Set<string>();
+const existingDevices = new Set<string>();
 
 // This queue is used to queue up requests to the server for mininet commands. (currently not used)
 const queue: CommandRequest[] = [];
@@ -126,8 +126,8 @@ function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mut
         const addKey = action.type === TopologyActions.ADD_ROUTER ? 'router' :
           action.type === TopologyActions.ADD_SWITCH ? 'switch' : 'host';
         const { name } = action.payload as DeviceInterface;
-        if (!existingNames.has(name)) {
-          existingNames.add(name);
+        if (!existingDevices.has(name)) {
+          existingDevices.add(name);
           queue.push({ id, command: `add ${addKey} ${name}` });
           mutate({ id, command: `add ${addKey} ${name}` });
         }
@@ -143,7 +143,7 @@ function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mut
         const { to: toDelete, from: fromDelete } = action.payload as Connection;
         if (toDelete === fromDelete) {
             mutate({ id, command: `remove ${getNameFromDevice(fromDelete)} ${fromDelete}` });
-            existingNames.delete(toDelete);
+            existingDevices.delete(toDelete);
             return;
         } else {
           mutate({ id, command: `remove link ${fromDelete} ${toDelete}` });
