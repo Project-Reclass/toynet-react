@@ -10,7 +10,7 @@ import Quiz from './ModuleList/Quiz';
 import Lesson from './ModuleList/Lesson';
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
-import ErrorBoundary from './common/components/ErrorBoundary';
+import ErrorBoundary from './common/components/ErrorBoundary/ErrorBoundary';
 
 const SplashScreen = React.lazy(() => import('./SplashScreen'));
 const Emulator = React.lazy(() => import('./Emulator'));

@@ -1,8 +1,17 @@
 import React from 'react';
-import '../../SplashScreen/SplashHeader/SplashHeader.css';
 
 import {ReactComponent as Grid} from 'src/assets/splashScreen/v2/grid-background.svg';
 import {ReactComponent as Illustration} from 'src/assets/splashScreen/v2/illustration-header.svg';
+
+import {
+  SplashHeaderContainer,
+  SpashHeaderGridContainer,
+  SplashHeaderContent,
+  SplashHeaderContentH1,
+  SplashHeaderImageContainer,
+  SplashHeaderBody,
+  SplashHeaderBodySVG,
+} from './styled';
 
 interface Props {
   children: React.ReactNode
@@ -27,21 +36,23 @@ class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className='spash-header__container '>
-          <div className='spash-header__grid-container '>
+        <SplashHeaderContainer>
+          <SpashHeaderGridContainer>
             <Grid />
-          </div>
-          <div className='splash-header-body container-1920 mx-auto' id="home">
-            <div className='splash-header-content'>
-              <h1>
+          </SpashHeaderGridContainer>
+          <SplashHeaderBody>
+            <SplashHeaderContent>
+              <SplashHeaderContentH1>
                 Please refresh or close tab and reopen site.
-              </h1>
-            </div>
-            <div className='splash-header-image-container'>
-              <Illustration />
-            </div>
-          </div>
-        </div>
+              </SplashHeaderContentH1>
+            </SplashHeaderContent>
+            <SplashHeaderImageContainer>
+              <SplashHeaderBodySVG>
+                <Illustration />
+              </SplashHeaderBodySVG>
+            </SplashHeaderImageContainer>
+          </SplashHeaderBody>
+        </SplashHeaderContainer>
       );
     }
 
