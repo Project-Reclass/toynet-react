@@ -29,7 +29,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "cy:run": "cypress run",
+    "start:cy": "start-server-and-test start http://localhost:3000 cy:run",
+    "test:cy": "start-server-and-test start:docker:dev http://localhost:8080/ start:cy"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -168,12 +172,15 @@
     "@types/react-helmet": "^6.1.0",
     "@types/react-router-dom": "^5.1.5",
     "awesome-typescript-loader": "^5.2.1",
+    "concurrently": "^5.3.0",
+    "cypress": "^5.5.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jsdoc": "^3.6.5",
     "react-dnd-test-backend": "^11.1.3",
     "react-dnd-test-utils": "^11.1.3",
     "react-test-renderer": "^16.13.1",
     "source-map-loader": "^1.0.1",
+    "start-server-and-test": "^1.11.5",
     "typescript": "^3.9.7"
   },
   "proxy": "http://localhost:8080"
