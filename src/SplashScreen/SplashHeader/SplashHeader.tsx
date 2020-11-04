@@ -18,12 +18,12 @@ function SplashHeader() {
       <div className='splash-header-body container-1920 mx-auto' id="home">
         <div className='splash-header-content'>
           <h1>
-            Toynet, your new <br />
+            Toynet, your <br />
             computer networking <br />
-            companion.
+            companion
           </h1>
           <h3>
-            learn anywhere, anytime.
+            Learn anywhere, anytime
           </h3>
           <button className='how-it-works' onClick={goToEmulator}>
             <h3 className='splash-button-text'>Try it</h3>

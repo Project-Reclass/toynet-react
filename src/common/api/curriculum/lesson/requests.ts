@@ -1,18 +1,16 @@
 import axios from 'axios';
 
-import meta from './meta.json';
-
 type LessonSlideURI = string;
-interface Meta {
-  id: number;
+export interface Meta {
   numSlides: number;
 }
 
-export const getLessonSlide = async (submoduleId: number, quizId: number): Promise<LessonSlideURI> => {
-  const { data } = await axios.get(`/engine/lesson/data/${submoduleId}/${quizId}.png`);
+export const getLessonSlide = async (submoduleId: number, slideId: number): Promise<LessonSlideURI> => {
+  const { data } = await axios.get(`/data/lesson/${submoduleId}/${slideId}.png`);
   return data;
 };
 
 export const getLessonMeta = async (submoduleId: number): Promise<Meta | undefined> => {
-  return Promise.resolve(meta.find(submodule => submodule.id === submoduleId));
+  const { data } = await axios.get(`/data/lesson/${submoduleId}/meta.json`);
+  return data;
 };

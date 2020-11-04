@@ -9,7 +9,7 @@ function SplashContent() {
   return (
     <Body>
       <Wrapper>
-        <ImageContainer>
+        <ImageContainer className='container-1920 mx-auto'>
           <Illustration />
         </ImageContainer>
         <Content>

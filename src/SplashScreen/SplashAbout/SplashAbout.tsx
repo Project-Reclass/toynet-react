@@ -15,9 +15,9 @@ function SplashAbout() {
             About Project Reclass
           </Title>
           <About>
-              Project Reclass is a Nonprofit Vocational Program teaching technical skills to incarcerated veterans based in
-              Atlanta, Georgia. Out team of researchers, technologists, and educators has built this learning platform to deliver
-              computer networking curriculum that will prepare users for the CompTIA Network+ Certification.
+              Project Reclass is a nonprofit organization that teaches technical skills to incarcerated veterans.
+              Our team of researchers, technologists, and educators has built this learning platform to deliver
+              a computer networking curriculum that will prepare users for the CompTIA Network+ Certification.
           </About>
           <a href="https://www.projectreclass.org" style={{ marginTop: '1.5rem', display: 'block' }}>
             <Button>
@@ -33,5 +33,7 @@ function SplashAbout() {
   );
 }
 // change
+
+
 
 export default SplashAbout;
