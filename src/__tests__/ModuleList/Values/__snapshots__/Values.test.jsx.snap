@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The values page should render the same based on URL parameters for honor 1`] = `
-Array [
+<div
+  className="container-1920"
+>
   <h1
-    className="css-og6pbr"
+    className="css-33r5sp"
   >
     Reflection: 
     Honor
-  </h1>,
+  </h1>
   <div
     className="css-t5u34"
   >
@@ -17,7 +19,7 @@ Array [
     <p>
       Live up to Army values [...] Honor is a matter of carrying out, acting, and living the values of respect, duty, loyalty, selfless service, integrity and personal courage in everything you do.
     </p>
-  </div>,
+  </div>
   <div
     className="css-t5u34"
   >
@@ -27,27 +29,29 @@ Array [
     <p>
       The quality of maturity, dedication, trust, and dependability that commits Marines to act responsibly; to be accountable for actions; to fulfill obligations; and to hold others accountable for their actions.
     </p>
-  </div>,
-  <input
-    className="css-zoozs3"
+  </div>
+  <textarea
+    className="css-1el5fmb"
     placeholder="What does honor mean to you?"
-  />,
+  />
   <button
-    className="css-1pjsjw8"
+    className="css-ng8d2q"
   >
     Save
-  </button>,
-]
+  </button>
+</div>
 `;
 
 exports[`The values page should render the same based on URL parameters for integrity 1`] = `
-Array [
+<div
+  className="container-1920"
+>
   <h1
-    className="css-og6pbr"
+    className="css-33r5sp"
   >
     Reflection: 
     Integrity
-  </h1>,
+  </h1>
   <div
     className="css-t5u34"
   >
@@ -57,7 +61,7 @@ Array [
     <p>
       Integrity is the adherence to a strong moral code and consistency in one’s actions and values [...] Airmen should be guided by a deeply held sense of honor, not one of personal comfort or uncontrolled selfish appetites.
     </p>
-  </div>,
+  </div>
   <div
     className="css-t5u34"
   >
@@ -67,7 +71,7 @@ Array [
     <p>
       Do what’s right, legally and morally. Integrity is a quality you develop by adhering to moral principles. It requires that you do and say nothing that deceives others. As your integrity grows, so does the trust others place in you […] and, finally, the fundamental acceptance of yourself.
     </p>
-  </div>,
+  </div>
   <div
     className="css-t5u34"
   >
@@ -77,27 +81,29 @@ Array [
     <p>
       Integrity is our standard. We demonstrate uncompromising ethical conduct and moral behavior in all of our personal actions. We are loyal and accountable to the public trust.
     </p>
-  </div>,
-  <input
-    className="css-zoozs3"
+  </div>
+  <textarea
+    className="css-1el5fmb"
     placeholder="What does integrity mean to you?"
-  />,
+  />
   <button
-    className="css-1pjsjw8"
+    className="css-ng8d2q"
   >
     Save
-  </button>,
-]
+  </button>
+</div>
 `;
 
 exports[`The values page should render the same based on URL parameters for loyalty 1`] = `
-Array [
+<div
+  className="container-1920"
+>
   <h1
-    className="css-og6pbr"
+    className="css-33r5sp"
   >
     Reflection: 
     Loyalty
-  </h1>,
+  </h1>
   <div
     className="css-t5u34"
   >
@@ -107,27 +113,29 @@ Array [
     <p>
       Bear true faith and allegiance to the U.S. Constitution, the Army, your unit and other Soldiers. Bearing true faith and allegiance is a matter of believing in and devoting yourself to something or someone … By wearing the uniform of the U.S. Army you are expressing your loyalty. And by doing your share, you show your loyalty to your unit.
     </p>
-  </div>,
-  <input
-    className="css-zoozs3"
+  </div>
+  <textarea
+    className="css-1el5fmb"
     placeholder="What does loyalty mean to you?"
-  />,
+  />
   <button
-    className="css-1pjsjw8"
+    className="css-ng8d2q"
   >
     Save
-  </button>,
-]
+  </button>
+</div>
 `;
 
 exports[`The values page should render the same based on URL parameters for respect 1`] = `
-Array [
+<div
+  className="container-1920"
+>
   <h1
-    className="css-og6pbr"
+    className="css-33r5sp"
   >
     Reflection: 
     Respect
-  </h1>,
+  </h1>
   <div
     className="css-t5u34"
   >
@@ -137,15 +145,15 @@ Array [
     <p>
       Treat people as they should be treated [...] Respect is what allows us to appreciate the best in other people. Respect is trusting that all people have done their jobs and fulfilled their duty.
     </p>
-  </div>,
-  <input
-    className="css-zoozs3"
+  </div>
+  <textarea
+    className="css-1el5fmb"
     placeholder="What does respect mean to you?"
-  />,
+  />
   <button
-    className="css-1pjsjw8"
+    className="css-ng8d2q"
   >
     Save
-  </button>,
-]
+  </button>
+</div>
 `;

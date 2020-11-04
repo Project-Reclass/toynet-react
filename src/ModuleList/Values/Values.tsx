@@ -7,7 +7,15 @@ interface Params {
   valuesId: string;
 };
 
-const getMockData = (valuesId: string) => valuesId === '5001'
+interface Value {
+  value: string;
+  inspiration: {
+    organization: string;
+    definition: string;
+  }[];
+}
+
+const getMockData = (valuesId: string) : Value => valuesId === '5001'
   ? {
       'value': 'Integrity',
       'inspiration': [
@@ -73,6 +81,7 @@ const StyledReflection = styled.h1`
   font-size: 25px;
   color: white;
   font-weight: bold;
+  padding: 20px;
 `;
 
 const StyledBox = styled.div`
@@ -94,13 +103,14 @@ const StyledBox = styled.div`
   }
 `;
 
-const StyledInputbox = styled.input`
+const StyledTextArea = styled.textarea`
   background-color: #bbd3ea;
   width: 95%;
-  height: 250px;
+  height: 150px;
   border: 2px solid white;
   padding: 10px;
   margin: 20px;
+
 
   ::placeholder {
     color: black;
@@ -117,8 +127,7 @@ const StyledSavebutton = styled.button`
   margin: 20px;
   border-radius: 10px;
 
-  right: 0px;
-  position: absolute;
+  float: right;
 `;
 
 const Values = () => {
@@ -126,10 +135,10 @@ const Values = () => {
 
   const data = getMockData(valuesId);
 
-  const placeholder_text = `What does ${data.value.toLowerCase()} mean to you?`;
+  const placeholderText = `What does ${data.value.toLowerCase()} mean to you?`;
 
   return (
-    <>
+    <div className='container-1920'>
       <StyledReflection>Reflection: {data.value}</StyledReflection>
 
       {data.inspiration.map((org) => (
@@ -139,11 +148,15 @@ const Values = () => {
         </StyledBox>
       ))}
 
-      <StyledInputbox placeholder={placeholder_text}></StyledInputbox>
+      <StyledTextArea placeholder={placeholderText}></StyledTextArea>
 
       <StyledSavebutton>Save</StyledSavebutton>
-    </>
+    </div>
   );
 };
 
 export default Values;
+
+      // <div style={align: right;}>
+      //   <StyledSavebutton>Save</StyledSavebutton>
+      // </div>
