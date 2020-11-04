@@ -2,16 +2,21 @@
 
 exports[`The values page should render the same based on URL parameters for honor 1`] = `
 <div
-  className="container-1920"
+  className="container-1920 mx-auto"
+  style={
+    Object {
+      "padding": "1rem",
+    }
+  }
 >
   <h1
-    className="css-33r5sp"
+    className="css-1t3tbq3"
   >
     Reflection: 
     Honor
   </h1>
   <div
-    className="css-t5u34"
+    className="css-10ktr2a"
   >
     <h1>
       Army
@@ -21,7 +26,7 @@ exports[`The values page should render the same based on URL parameters for hono
     </p>
   </div>
   <div
-    className="css-t5u34"
+    className="css-10ktr2a"
   >
     <h1>
       Marines / Navy
@@ -31,11 +36,11 @@ exports[`The values page should render the same based on URL parameters for hono
     </p>
   </div>
   <textarea
-    className="css-1el5fmb"
+    className="css-21ory"
     placeholder="What does honor mean to you?"
   />
   <button
-    className="css-ng8d2q"
+    className="css-1ygofzf"
   >
     Save
   </button>
@@ -44,16 +49,21 @@ exports[`The values page should render the same based on URL parameters for hono
 
 exports[`The values page should render the same based on URL parameters for integrity 1`] = `
 <div
-  className="container-1920"
+  className="container-1920 mx-auto"
+  style={
+    Object {
+      "padding": "1rem",
+    }
+  }
 >
   <h1
-    className="css-33r5sp"
+    className="css-1t3tbq3"
   >
     Reflection: 
     Integrity
   </h1>
   <div
-    className="css-t5u34"
+    className="css-10ktr2a"
   >
     <h1>
       U.S. Air Force
@@ -63,7 +73,7 @@ exports[`The values page should render the same based on URL parameters for inte
     </p>
   </div>
   <div
-    className="css-t5u34"
+    className="css-10ktr2a"
   >
     <h1>
       U.S. Army
@@ -73,7 +83,7 @@ exports[`The values page should render the same based on URL parameters for inte
     </p>
   </div>
   <div
-    className="css-t5u34"
+    className="css-10ktr2a"
   >
     <h1>
       U.S. Coast Guard
@@ -83,11 +93,11 @@ exports[`The values page should render the same based on URL parameters for inte
     </p>
   </div>
   <textarea
-    className="css-1el5fmb"
+    className="css-21ory"
     placeholder="What does integrity mean to you?"
   />
   <button
-    className="css-ng8d2q"
+    className="css-1ygofzf"
   >
     Save
   </button>
@@ -96,16 +106,21 @@ exports[`The values page should render the same based on URL parameters for inte
 
 exports[`The values page should render the same based on URL parameters for loyalty 1`] = `
 <div
-  className="container-1920"
+  className="container-1920 mx-auto"
+  style={
+    Object {
+      "padding": "1rem",
+    }
+  }
 >
   <h1
-    className="css-33r5sp"
+    className="css-1t3tbq3"
   >
     Reflection: 
     Loyalty
   </h1>
   <div
-    className="css-t5u34"
+    className="css-10ktr2a"
   >
     <h1>
       U.S. Army
@@ -115,11 +130,11 @@ exports[`The values page should render the same based on URL parameters for loya
     </p>
   </div>
   <textarea
-    className="css-1el5fmb"
+    className="css-21ory"
     placeholder="What does loyalty mean to you?"
   />
   <button
-    className="css-ng8d2q"
+    className="css-1ygofzf"
   >
     Save
   </button>
@@ -128,16 +143,21 @@ exports[`The values page should render the same based on URL parameters for loya
 
 exports[`The values page should render the same based on URL parameters for respect 1`] = `
 <div
-  className="container-1920"
+  className="container-1920 mx-auto"
+  style={
+    Object {
+      "padding": "1rem",
+    }
+  }
 >
   <h1
-    className="css-33r5sp"
+    className="css-1t3tbq3"
   >
     Reflection: 
     Respect
   </h1>
   <div
-    className="css-t5u34"
+    className="css-10ktr2a"
   >
     <h1>
       Army
@@ -147,11 +167,11 @@ exports[`The values page should render the same based on URL parameters for resp
     </p>
   </div>
   <textarea
-    className="css-1el5fmb"
+    className="css-21ory"
     placeholder="What does respect mean to you?"
   />
   <button
-    className="css-ng8d2q"
+    className="css-1ygofzf"
   >
     Save
   </button>

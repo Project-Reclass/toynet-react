@@ -81,14 +81,14 @@ const StyledReflection = styled.h1`
   font-size: 25px;
   color: white;
   font-weight: bold;
-  padding: 20px;
+  margin: 1.25rem auto;
 `;
 
 const StyledBox = styled.div`
   width: auto;
   border: 2px solid white;
   padding: 20px;
-  margin: 20px;
+  margin: 1.25rem auto;
   font-style: italic;
 
   h1 {
@@ -105,11 +105,11 @@ const StyledBox = styled.div`
 
 const StyledTextArea = styled.textarea`
   background-color: #bbd3ea;
-  width: 95%;
+  width: 100%;
   height: 150px;
   border: 2px solid white;
   padding: 10px;
-  margin: 20px;
+  margin: 1.25rem auto;
 
 
   ::placeholder {
@@ -124,7 +124,7 @@ const StyledSavebutton = styled.button`
   padding: 10px 32px;
   text-align: center;
   font-size: 16px;
-  margin: 20px;
+  margin: 1.25rem auto;
   border-radius: 10px;
 
   float: right;
@@ -138,7 +138,7 @@ const Values = () => {
   const placeholderText = `What does ${data.value.toLowerCase()} mean to you?`;
 
   return (
-    <div className='container-1920'>
+    <div className='container-1920 mx-auto' style={{ padding: '1rem' }}>
       <StyledReflection>Reflection: {data.value}</StyledReflection>
 
       {data.inspiration.map((org) => (
@@ -156,7 +156,3 @@ const Values = () => {
 };
 
 export default Values;
-
-      // <div style={align: right;}>
-      //   <StyledSavebutton>Save</StyledSavebutton>
-      // </div>
