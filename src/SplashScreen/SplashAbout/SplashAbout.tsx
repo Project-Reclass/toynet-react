@@ -32,7 +32,6 @@ function SplashAbout() {
     </div>
   );
 }
-// change
 
 
 

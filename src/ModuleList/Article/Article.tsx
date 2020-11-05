@@ -1,13 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { text } from './mockData';
 import ReactMarkdown from 'react-markdown';
 import { Heading } from '@chakra-ui/core';
 import { HeadingContainer, AuthorContainer, MarkdownWrapper, Div } from './ArticleStyles';
-interface ExpectedParams {
-  moduleId?: string;
-  articleId?: string;
-}
+
 
 const data = {
   'source': 'https://www.wired.co.uk/article/subsea-internet-cable-ship-boat',
@@ -26,7 +22,6 @@ const data = {
 
 
 const Article = () => {
-  const { moduleId, articleId } = useParams<ExpectedParams>();
 
 
   return (
