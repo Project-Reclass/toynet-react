@@ -1,8 +1,7 @@
 import React from 'react';
 import { text } from './mockData';
 import ReactMarkdown from 'react-markdown';
-import { Heading } from '@chakra-ui/core';
-import { HeadingContainer, AuthorContainer, MarkdownWrapper, Div } from './ArticleStyles';
+import { ArticleHeader, MarkdownWrapper, Div } from './ArticleStyles';
 
 
 const data = {
@@ -26,8 +25,8 @@ const Article = () => {
 
   return (
     <Div>
-      <HeadingContainer><Heading as='h1'size='2xl'>{data.title}</Heading></HeadingContainer>
-      <AuthorContainer><Heading as='h2'size='xl'>{data.author}</Heading></AuthorContainer>
+      <ArticleHeader as='h1'size='2xl'>{data.title}</ArticleHeader>
+      <ArticleHeader as='h2'size='xl'>Author: {data.author}</ArticleHeader>
       <MarkdownWrapper><ReactMarkdown escapeHtml={false} source={text}/></MarkdownWrapper>
     </Div>
   );

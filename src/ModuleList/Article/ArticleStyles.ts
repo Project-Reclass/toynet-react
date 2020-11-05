@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Heading } from '@chakra-ui/core';
 
 export const MarkdownWrapper = styled('h3')`
   color: white;
@@ -9,20 +10,11 @@ export const MarkdownWrapper = styled('h3')`
   }
 `;
 
-export const HeadingContainer = styled('h1')`
+export const ArticleHeader = styled(Heading)`
   color: white;
   width: 80%;
   margin-bottom: 1rem;
-
 `;
-
-export const AuthorContainer = styled('h1')`
-  color: white;
-  width: 80%;
-  margin-bottom: 1rem;
-
-`;
-
 
 export const Div = styled('div')`
   display: flex;
