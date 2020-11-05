@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { text } from './mockData';
 import ReactMarkdown from 'react-markdown';
