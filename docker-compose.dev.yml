@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    build: https://github.com/Project-Reclass/toynet-django.git
+    build: https://github.com/Project-Reclass/toynet-django.git#PRODUCTION
     networks:
       - reclass_network
     environment:
