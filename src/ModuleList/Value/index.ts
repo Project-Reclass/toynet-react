@@ -1,2 +1,2 @@
-import Values from './Values';
-export default Values;
+import Value from './Value';
+export default Value;

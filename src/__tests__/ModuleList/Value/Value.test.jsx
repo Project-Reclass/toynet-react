@@ -2,53 +2,47 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
 
-import Values from 'src/ModuleList/Values/Values';
+import Value from 'src/ModuleList/Value';
 
 
-const RenderWithRouter = ({ children, valuesId }) => (
-  <MemoryRouter initialEntries={[`/values/${valuesId}`]}>
-    <Route path="/values/:valuesId">{children}</Route>
+const RenderWithRouter = ({ children, valueId }) => (
+  <MemoryRouter initialEntries={[`/value/${valueId}`]}>
+    <Route path="/value/:valueId">{children}</Route>
   </MemoryRouter>
 );
 
-describe('The values page', () => {
+describe('The value page', () => {
   it('should render the same based on URL parameters for integrity', () => {
     const tree = renderer.create(
-      <RenderWithRouter valuesId={5001}>
-        <Values />
+      <RenderWithRouter valueId={5001}>
+        <Value />
       </RenderWithRouter>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
-});
 
-describe('The values page', () => {
   it('should render the same based on URL parameters for respect', () => {
     const tree = renderer.create(
-      <RenderWithRouter valuesId={5002}>
-        <Values />
+      <RenderWithRouter valueId={5002}>
+        <Value />
       </RenderWithRouter>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
-});
 
-describe('The values page', () => {
   it('should render the same based on URL parameters for honor', () => {
     const tree = renderer.create(
-      <RenderWithRouter valuesId={5003}>
-        <Values />
+      <RenderWithRouter valueId={5003}>
+        <Value />
       </RenderWithRouter>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
-});
 
-describe('The values page', () => {
   it('should render the same based on URL parameters for loyalty', () => {
     const tree = renderer.create(
-      <RenderWithRouter valuesId={5004}>
-        <Values />
+      <RenderWithRouter valueId={5004}>
+        <Value />
       </RenderWithRouter>
     ).toJSON();
     expect(tree).toMatchSnapshot();

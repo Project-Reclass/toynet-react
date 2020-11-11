@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The values page should render the same based on URL parameters for honor 1`] = `
+exports[`The value page should render the same based on URL parameters for honor 1`] = `
 <div
   className="container-1920 mx-auto"
   style={
@@ -47,7 +47,7 @@ exports[`The values page should render the same based on URL parameters for hono
 </div>
 `;
 
-exports[`The values page should render the same based on URL parameters for integrity 1`] = `
+exports[`The value page should render the same based on URL parameters for integrity 1`] = `
 <div
   className="container-1920 mx-auto"
   style={
@@ -104,7 +104,7 @@ exports[`The values page should render the same based on URL parameters for inte
 </div>
 `;
 
-exports[`The values page should render the same based on URL parameters for loyalty 1`] = `
+exports[`The value page should render the same based on URL parameters for loyalty 1`] = `
 <div
   className="container-1920 mx-auto"
   style={
@@ -141,7 +141,7 @@ exports[`The values page should render the same based on URL parameters for loya
 </div>
 `;
 
-exports[`The values page should render the same based on URL parameters for respect 1`] = `
+exports[`The value page should render the same based on URL parameters for respect 1`] = `
 <div
   className="container-1920 mx-auto"
   style={
