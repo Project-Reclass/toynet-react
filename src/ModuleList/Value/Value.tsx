@@ -82,7 +82,7 @@ const Value = () => {
       <StyledReflection>Reflection: {data?.value}</StyledReflection>
 
       {data?.inspiration.map((org) => (
-        <StyledBox key={org.organization}>
+        <StyledBox key={org.organization} data-testid="styled-box">
           <h2>{org.organization}</h2>
           <p>{org.definition}</p>
         </StyledBox>
