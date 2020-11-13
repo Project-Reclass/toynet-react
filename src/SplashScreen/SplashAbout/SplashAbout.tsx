@@ -8,7 +8,7 @@ import {Body, Content, Title, About, Button, SplashAboutImageContainer} from './
 
 function SplashAbout() {
   return (
-    <div style={{ backgroundColor: 'white' }}>
+    <div style={{ backgroundColor: 'white' }} id="about">
       <Body>
         <Content>
           <Title>
