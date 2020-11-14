@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
 
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests'
 
@@ -36,19 +37,21 @@ const Quiz = () => {
         Quiz: {quizId}
       </h2>
 
-      {questions.map((q: Question, qIndex) => (
-        <div>
-          <p>{ q.question }</p>
-          <div>
-            {q.options.map(option => (
-              <div>
-                <input type="radio" id={option} name={qIndex.toString()} value={option} />
-                <label htmlFor={option}>{option}</label>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+      <SimpleGrid columns={1} spacing={10}>
+        {questions.map((q: Question, qIndex) => (
+          <Box p={5} color="white">
+            <p>{ `${qIndex + 1}. ${q.question}`}</p>
+            <SimpleGrid columns={2}>
+              {q.options.map(option => (
+                <div>
+                  <input type="radio" id={option} name={qIndex.toString()} value={option} />
+                  <label htmlFor={option}>{option}</label>
+                </div>
+              ))}
+            </SimpleGrid>
+          </Box>
+        ))}
+      </SimpleGrid>
       <input type="submit" value="Submit Quiz" />
     </div>
   );
