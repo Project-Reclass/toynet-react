@@ -15,10 +15,18 @@ interface Question {
   answer: number;
 }
 
+interface StringMap {
+  [key: string]: boolean;
+}
+
 const Quiz = () => {
   const { moduleId, quizId } = useParams<Params>();
 
   const [questions, setQuestions] = useState<any[]>([]);
+
+  const [inputsAreDisabled, setInputsAreDisabled] = useState<boolean>(false);
+
+  const [questionIndexesAnsweredCorrectly, setQuestionIndexesAnsweredCorrectly] = useState<StringMap>({});
 
   useEffect(() => {
     const getQuizData = async () => {
@@ -27,6 +35,22 @@ const Quiz = () => {
     };
     getQuizData();
   }, []);
+
+  const handleAnsweredQuestion = (q: any, qIndex: number, optionIndex: number) => {
+    return (e: React.ChangeEvent<any>) => {
+      console.log('selected value', e.target.value);
+      console.log('qIndex', qIndex);
+      console.log('correct', q.answer === optionIndex);
+      questionIndexesAnsweredCorrectly[qIndex] = q.answer === optionIndex;
+      setQuestionIndexesAnsweredCorrectly(questionIndexesAnsweredCorrectly);
+    };
+  };
+
+  const checkQuiz = () => {
+    console.log('Quiz submitted');
+    console.log('questionIndexesAnsweredCorrectly', questionIndexesAnsweredCorrectly);
+    // setInputsAreDisabled(true);
+  };
 
   return (
     <div>
@@ -39,12 +63,18 @@ const Quiz = () => {
 
       <SimpleGrid columns={1} spacing={10}>
         {questions.map((q: Question, qIndex) => (
-          <Box p={5} color="white">
+          <Box p={5} color="white" key={qIndex}>
             <p>{ `${qIndex + 1}. ${q.question}`}</p>
-            <SimpleGrid columns={2}>
-              {q.options.map(option => (
-                <div>
-                  <input type="radio" id={option} name={qIndex.toString()} value={option} />
+            <SimpleGrid columns={2} spacingX={1}>
+              {q.options.map((option, optionIndex) => (
+                <div key={optionIndex}>
+                  <input
+                    disabled={inputsAreDisabled}
+                    type="radio" id={option}
+                    name={qIndex.toString()}
+                    value={option}
+                    onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
+                  />
                   <label htmlFor={option}>{option}</label>
                 </div>
               ))}
@@ -52,7 +82,7 @@ const Quiz = () => {
           </Box>
         ))}
       </SimpleGrid>
-      <input type="submit" value="Submit Quiz" />
+      <button value="Submit Quiz" onClick={checkQuiz}>Submit Quiz</button>
     </div>
   );
 };
