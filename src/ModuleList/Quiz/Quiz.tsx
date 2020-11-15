@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
+import { SubmitQuiz } from './styled';
 
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests'
 
@@ -56,16 +57,13 @@ const Quiz = () => {
   };
 
   const getLabelStyle = (q: any, qIndex: number, optionIndex: number) => {
-    if (quizIsSubmitted === false) {
-      return { color: 'white' };
-    }
-
-    if (!!questionIndexesAnsweredCorrectly[qIndex] === false &&
+    let color = '#FFFFFF';
+    if (quizIsSubmitted &&
+      !!questionIndexesAnsweredCorrectly[qIndex] === false &&
       q.answer === optionIndex) {
-      return { color: 'red' };
-    } else {
-      return { color: 'white' };
+      color = '#C5A3B4';
     }
+    return { color };
   };
 
   return (
@@ -86,7 +84,8 @@ const Quiz = () => {
                 <div key={optionIndex}>
                   <input
                     disabled={inputsAreDisabled}
-                    type="radio" id={option}
+                    type="radio"
+                    id={option}
                     name={qIndex.toString()}
                     value={option}
                     onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
@@ -98,7 +97,9 @@ const Quiz = () => {
           </Box>
         ))}
       </SimpleGrid>
-      <button value="Submit Quiz" onClick={checkQuiz}>Submit Quiz</button>
+      <Flex>
+        <SubmitQuiz onClick={checkQuiz}>Submit Quiz</SubmitQuiz>
+      </Flex>
     </div>
   );
 };
