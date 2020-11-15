@@ -28,6 +28,8 @@ const Quiz = () => {
 
   const [questionIndexesAnsweredCorrectly, setQuestionIndexesAnsweredCorrectly] = useState<StringMap>({});
 
+  const [quizIsSubmitted, setQuizIsSubmitted] = useState<boolean>(false);
+
   useEffect(() => {
     const getQuizData = async () => {
       const questions = await getQuizMeta(quizId);
@@ -49,7 +51,21 @@ const Quiz = () => {
   const checkQuiz = () => {
     console.log('Quiz submitted');
     console.log('questionIndexesAnsweredCorrectly', questionIndexesAnsweredCorrectly);
-    // setInputsAreDisabled(true);
+    setInputsAreDisabled(true);
+    setQuizIsSubmitted(true);
+  };
+
+  const getLabelStyle = (q: any, qIndex: number, optionIndex: number) => {
+    if (quizIsSubmitted === false) {
+      return { color: 'white' };
+    }
+
+    if (!!questionIndexesAnsweredCorrectly[qIndex] === false &&
+      q.answer === optionIndex) {
+      return { color: 'red' };
+    } else {
+      return { color: 'white' };
+    }
   };
 
   return (
@@ -75,7 +91,7 @@ const Quiz = () => {
                     value={option}
                     onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
                   />
-                  <label htmlFor={option}>{option}</label>
+                  <label htmlFor={option} style={getLabelStyle(q, qIndex, optionIndex)}>{option}</label>
                 </div>
               ))}
             </SimpleGrid>
