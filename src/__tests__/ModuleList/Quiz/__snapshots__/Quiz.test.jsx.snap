@@ -10,5 +10,18 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
     Quiz: 
     64
   </h2>
+  <div
+    className="css-3pksgp"
+  />
+  <div
+    className="css-k008qs"
+  >
+    <a
+      className="css-w8x2zl"
+      onClick={[Function]}
+    >
+      Submit Quiz
+    </a>
+  </div>
 </div>
 `;

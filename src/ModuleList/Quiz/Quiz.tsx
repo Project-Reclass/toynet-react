@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
 import { SubmitQuiz } from './styled';
 
-import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests'
+import { useQuizMeta } from 'src/common/api/curriculum/quiz';
 
 interface Params {
   moduleId: string;
@@ -23,40 +23,25 @@ interface StringMap {
 const Quiz = () => {
   const { moduleId, quizId } = useParams<Params>();
 
-  const [questions, setQuestions] = useState<any[]>([]);
+  const { data } = useQuizMeta(Number(quizId));
 
   const [inputsAreDisabled, setInputsAreDisabled] = useState<boolean>(false);
-
   const [questionIndexesAnsweredCorrectly, setQuestionIndexesAnsweredCorrectly] = useState<StringMap>({});
-
   const [quizIsSubmitted, setQuizIsSubmitted] = useState<boolean>(false);
 
-  useEffect(() => {
-    const getQuizData = async () => {
-      const questions = await getQuizMeta(quizId);
-      setQuestions(questions);
-    };
-    getQuizData();
-  }, []);
-
-  const handleAnsweredQuestion = (q: any, qIndex: number, optionIndex: number) => {
+  const handleAnsweredQuestion = (q: Question, qIndex: number, optionIndex: number) => {
     return (e: React.ChangeEvent<any>) => {
-      console.log('selected value', e.target.value);
-      console.log('qIndex', qIndex);
-      console.log('correct', q.answer === optionIndex);
       questionIndexesAnsweredCorrectly[qIndex] = q.answer === optionIndex;
       setQuestionIndexesAnsweredCorrectly(questionIndexesAnsweredCorrectly);
     };
   };
 
   const checkQuiz = () => {
-    console.log('Quiz submitted');
-    console.log('questionIndexesAnsweredCorrectly', questionIndexesAnsweredCorrectly);
     setInputsAreDisabled(true);
     setQuizIsSubmitted(true);
   };
 
-  const getLabelStyle = (q: any, qIndex: number, optionIndex: number) => {
+  const getLabelStyle = (q: Question, qIndex: number, optionIndex: number) => {
     let color = '#FFFFFF';
     if (quizIsSubmitted &&
       !!questionIndexesAnsweredCorrectly[qIndex] === false &&
@@ -76,7 +61,7 @@ const Quiz = () => {
       </h2>
 
       <SimpleGrid columns={1} spacing={10}>
-        {questions.map((q: Question, qIndex) => (
+        {data?.map((q: Question, qIndex: number) => (
           <Box p={5} color="white" key={qIndex}>
             <p>{ `${qIndex + 1}. ${q.question}`}</p>
             <SimpleGrid columns={2} spacingX={1}>
