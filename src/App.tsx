@@ -8,7 +8,7 @@ import ModuleList from './ModuleList';
 import Article from './ModuleList/Article';
 import Quiz from './ModuleList/Quiz';
 import Lesson from './ModuleList/Lesson';
-import Values from './ModuleList/Values';
+import Value from './ModuleList/Value';
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
 import ErrorBoundary from './common/components/ErrorBoundary';
@@ -64,9 +64,9 @@ function App() {
             </Layout>
           </Route>
 
-          <Route exact path="/values/:valuesId">
-            <Layout title={'Values'}>
-              <Values />
+          <Route exact path="/value/:valueId">
+            <Layout title={'Value'}>
+              <Value />
             </Layout>
           </Route>
 

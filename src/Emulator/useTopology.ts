@@ -6,6 +6,12 @@ import { parseXMLTopology, ParsedXML } from '../common/topologyParser';
 import { SessionId, CommandRequest } from '../common/api/topology/types';
 import { useToynetSession, useModifyTopology } from '../common/api/topology';
 
+// This set is used to ensure that there are no duplicate names sent to the server to be created when there is latency
+const existingDevices = new Set<string>();
+
+// This queue is used to queue up requests to the server for mininet commands. (currently not used)
+const queue: CommandRequest[] = [];
+
 interface Connection {
   to: string;
   from: string;
@@ -106,7 +112,6 @@ function reducer(state: ParsedXML, action: ReducerAction) {
 // we should look at a better way to handle mutations after dispatch in the future.
 type CommandFn = (cmd: CommandRequest) => any;
 function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mutate: CommandFn) {
-  const queue: CommandRequest[] = [];
   return (action: ReducerAction) => {
     switch (action.type) {
       case TopologyActions.ADD_CONNECTION:
@@ -121,8 +126,11 @@ function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mut
         const addKey = action.type === TopologyActions.ADD_ROUTER ? 'router' :
           action.type === TopologyActions.ADD_SWITCH ? 'switch' : 'host';
         const { name } = action.payload as DeviceInterface;
-        queue.push({ id, command: `add ${addKey} ${name}` });
-        mutate({ id, command: `add ${addKey} ${name}` });
+        if (!existingDevices.has(name)) {
+          existingDevices.add(name);
+          queue.push({ id, command: `add ${addKey} ${name}` });
+          mutate({ id, command: `add ${addKey} ${name}` });
+        }
         break;
 
       case TopologyActions.FLUSH_QUEUE:
@@ -130,10 +138,13 @@ function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mut
         queue.splice(0, queue.length);
         break;
 
+      // DELETE_CONNECTION handles removing devices from the server and also removing links
       case TopologyActions.DELETE_CONNECTION:
         const { to: toDelete, from: fromDelete } = action.payload as Connection;
         if (toDelete === fromDelete) {
-          mutate({ id, command: `remove ${getNameFromDevice(fromDelete)} ${fromDelete}` });
+            mutate({ id, command: `remove ${getNameFromDevice(fromDelete)} ${fromDelete}` });
+            existingDevices.delete(toDelete);
+            return;
         } else {
           mutate({ id, command: `remove link ${fromDelete} ${toDelete}` });
         }
