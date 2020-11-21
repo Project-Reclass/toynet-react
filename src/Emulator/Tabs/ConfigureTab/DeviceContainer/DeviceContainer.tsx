@@ -49,7 +49,7 @@ const DeviceContainerName = styled.div`
 
 const DeviceContainerContent = styled.div`
   color: white;
-  height: 18vh;
+  height: 28vh;
   width: 100%;
   max-width: inherit;
   padding: 0.61375rem 0.4rem;
