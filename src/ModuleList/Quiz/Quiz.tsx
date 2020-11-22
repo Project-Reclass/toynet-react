@@ -7,7 +7,6 @@ import { SubmitQuiz } from './styled';
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
 
 interface Params {
-  moduleId: string;
   quizId: string;
 }
 
@@ -22,7 +21,7 @@ interface StringMap {
 }
 
 const Quiz = () => {
-  const { moduleId, quizId } = useParams<Params>();
+  const { quizId } = useParams<Params>();
 
   const { data } = useQuizMeta(Number(quizId));
 
@@ -69,7 +68,7 @@ const Quiz = () => {
                     name={qIndex.toString()}
                     value={option}
                     onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
-                    style={{margin: 5}}
+                    style={{margin: '5px'}}
                   />
                   <label htmlFor={option} style={getLabelStyle(q, qIndex, optionIndex)}>{option}</label>
                 </div>
