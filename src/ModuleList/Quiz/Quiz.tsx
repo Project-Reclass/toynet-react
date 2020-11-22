@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
+import { CheckIcon } from '@chakra-ui/icons';
 import { SubmitQuiz } from './styled';
 
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
@@ -63,7 +64,7 @@ const Quiz = () => {
       <SimpleGrid columns={1} spacing={10}>
         {data?.map((q: Question, qIndex: number) => (
           <Box p={5} color="white" key={qIndex}>
-            <p>{ `${qIndex + 1}. ${q.question}`}</p>
+            <CheckIcon /><p>{ `${qIndex + 1}. ${q.question}`}</p>
             <SimpleGrid columns={2} spacingX={1}>
               {q.options.map((option, optionIndex) => (
                 <div key={optionIndex}>
