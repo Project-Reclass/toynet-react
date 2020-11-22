@@ -5,15 +5,10 @@ import { CheckIcon, SmallCloseIcon as IncorrectIcon } from '@chakra-ui/icons';
 import { SubmitQuiz } from './styled';
 
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
+import { Question } from 'src/common/api/curriculum/quiz/requests';
 
 interface Params {
   quizId: string;
-}
-
-interface Question {
-  question: string;
-  options: string[];
-  answer: number;
 }
 
 interface StringMap {
@@ -52,7 +47,7 @@ const Quiz = () => {
   return (
     <div>
       <SimpleGrid columns={1} spacing={10}>
-        {data?.map((q: Question, qIndex: number) => (
+        {Array.isArray(data) && data.map((q: Question, qIndex: number) => (
           <Box p={5} color="white" key={qIndex}>
             <Flex>
               {quizIsSubmitted && (questionIndexesAnsweredCorrectly[qIndex] ?
