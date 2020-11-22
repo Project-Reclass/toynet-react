@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
-import { CheckIcon } from '@chakra-ui/icons';
+import { CheckIcon, SmallCloseIcon as IncorrectIcon } from '@chakra-ui/icons';
 import { SubmitQuiz } from './styled';
 
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
@@ -26,7 +26,6 @@ const Quiz = () => {
 
   const { data } = useQuizMeta(Number(quizId));
 
-  const [inputsAreDisabled, setInputsAreDisabled] = useState<boolean>(false);
   const [questionIndexesAnsweredCorrectly, setQuestionIndexesAnsweredCorrectly] = useState<StringMap>({});
   const [quizIsSubmitted, setQuizIsSubmitted] = useState<boolean>(false);
 
@@ -38,7 +37,6 @@ const Quiz = () => {
   };
 
   const checkQuiz = () => {
-    setInputsAreDisabled(true);
     setQuizIsSubmitted(true);
   };
 
@@ -54,27 +52,24 @@ const Quiz = () => {
 
   return (
     <div>
-      <h1>
-        Module: {moduleId}
-      </h1>
-      <h2>
-        Quiz: {quizId}
-      </h2>
-
       <SimpleGrid columns={1} spacing={10}>
         {data?.map((q: Question, qIndex: number) => (
           <Box p={5} color="white" key={qIndex}>
-            <CheckIcon /><p>{ `${qIndex + 1}. ${q.question}`}</p>
+            <Flex>
+              {quizIsSubmitted && (questionIndexesAnsweredCorrectly[qIndex] ?
+                <CheckIcon color="green.500"/> : <IncorrectIcon color="red.500" />)}
+              <p>{ `${qIndex + 1}. ${q.question}`}</p>
+            </Flex>
             <SimpleGrid columns={2} spacingX={1}>
               {q.options.map((option, optionIndex) => (
                 <div key={optionIndex}>
                   <input
-                    disabled={inputsAreDisabled}
                     type="radio"
                     id={option}
                     name={qIndex.toString()}
                     value={option}
                     onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
+                    style={{margin: 5}}
                   />
                   <label htmlFor={option} style={getLabelStyle(q, qIndex, optionIndex)}>{option}</label>
                 </div>

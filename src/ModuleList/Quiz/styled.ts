@@ -6,6 +6,7 @@ export const SubmitQuiz = styled('a')`
   border-radius: 3.5px;
   background-color: #4195A5;
   color: #FFFFFF;
+  cursor: pointer;
   &:hover {
     opacity: 0.2;
   }
