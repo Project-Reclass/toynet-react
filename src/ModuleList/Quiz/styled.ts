@@ -11,3 +11,17 @@ export const SubmitQuiz = styled('a')`
     opacity: 0.2;
   }
 `;
+
+export const CheckIcon = styled('p')`
+  &:after {
+    content: '✔';
+    color: #90EE90;
+  }
+`;
+
+export const IncorrectIcon = styled('p')`
+  &:after {
+    content: '✘';
+    color: red;
+  }
+`;

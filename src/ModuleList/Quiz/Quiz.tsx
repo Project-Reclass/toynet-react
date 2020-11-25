@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
-import { CheckIcon, SmallCloseIcon as IncorrectIcon } from '@chakra-ui/icons';
-import { SubmitQuiz } from './styled';
-
+import { SubmitQuiz, CheckIcon, IncorrectIcon } from './styled';
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
 import { Question } from 'src/common/api/curriculum/quiz/requests';
 
