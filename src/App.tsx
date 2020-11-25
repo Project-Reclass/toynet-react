@@ -41,7 +41,6 @@ function App() {
           </Route>
           <Route exact path="/module/:moduleId/quiz/:quizId">
             <Layout title={'Quiz'}>
-              {sideNav && <Header /> }
               <Quiz />
             </Layout>
           </Route>
