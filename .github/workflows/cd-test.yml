@@ -27,7 +27,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: toynet-react-repo-test
+        ECR_REPOSITORY: toynet-react-repo
         IMAGE_TAG: ${{ github.sha }}
       run: |
         cd $GITHUB_WORKSPACE
