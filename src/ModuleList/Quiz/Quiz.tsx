@@ -4,13 +4,10 @@ import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
 import { SubmitQuiz, CheckIcon, IncorrectIcon } from './styled';
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
 import { Question } from 'src/common/api/curriculum/quiz/requests';
+import { StringMap } from '../../common/types';
 
 interface Params {
   quizId: string;
-}
-
-interface StringMap {
-  [key: string]: boolean;
 }
 
 const Quiz = () => {
