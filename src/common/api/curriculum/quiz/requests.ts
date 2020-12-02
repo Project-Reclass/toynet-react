@@ -6,11 +6,7 @@ export interface Question {
   answer: number;
 }
 
-interface QuizMeta {
-  data: Question[];
-}
-
-export const getQuizMeta = async (quizId: number): Promise<QuizMeta> => {
+export const getQuizMeta = async (quizId: number): Promise<Question[]> => {
 	const { data } = await axios.get(`/data/quiz/${quizId}/meta.json`);
 	return data;
 };
