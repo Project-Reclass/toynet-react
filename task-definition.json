@@ -15,7 +15,7 @@
             "volumesFrom": [],
             "environment": [{
                 "name": "SERVER_URI",
-                "value": "http://internal-toynet-django-alb-481331159.us-west-1.elb.amazonaws.com:8000"
+                "value": "http://django.projectreclass.org:8000"
             }]
         }
     ],
