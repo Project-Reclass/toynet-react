@@ -19,7 +19,7 @@ const Quiz = () => {
   const [quizIsSubmitted, setQuizIsSubmitted] = useState<boolean>(false);
 
   const handleAnsweredQuestion = (q: Question, qIndex: number, optionIndex: number) => {
-    return (e: React.ChangeEvent<any>) => {
+    return () => {
       questionIndexesAnsweredCorrectly[qIndex] = q.answer === optionIndex;
       setQuestionIndexesAnsweredCorrectly(questionIndexesAnsweredCorrectly);
     };
