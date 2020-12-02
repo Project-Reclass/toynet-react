@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Quiz page should render the same based on URL parameters 1`] = `
-<div>
+<div
+  className="css-1cxsl7j"
+>
   <div
     className="css-3pksgp"
   />
