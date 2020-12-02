@@ -25,3 +25,7 @@ export const IncorrectIcon = styled('p')`
     color: red;
   }
 `;
+
+export const QuestionLabel = styled.label`
+  color: ${(props:{isIncorrect: boolean}) => props.isIncorrect ? '#C5A3B4' : '#FFFFFF'};
+`;
