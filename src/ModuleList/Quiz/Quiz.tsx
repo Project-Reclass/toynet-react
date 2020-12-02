@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
-import { SubmitQuiz, CheckIcon, IncorrectIcon, QuestionLabel } from './styled';
+import { SubmitQuiz, CheckIcon, IncorrectIcon, QuestionLabel, QuizContainer } from './styled';
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
 import { Question } from 'src/common/api/curriculum/quiz/requests';
 import { StringMap } from '../../common/types';
@@ -29,18 +29,8 @@ const Quiz = () => {
     setQuizIsSubmitted(true);
   };
 
-  const getLabelStyle = (q: Question, qIndex: number, optionIndex: number) => {
-    let color = '#FFFFFF';
-    if (quizIsSubmitted &&
-      !!questionIndexesAnsweredCorrectly[qIndex] === false &&
-      q.answer === optionIndex) {
-      color = '#C5A3B4';
-    }
-    return { color };
-  };
-
   return (
-    <div>
+    <QuizContainer>
       <SimpleGrid columns={1} spacing={10}>
         {Array.isArray(data) && data.map((q: Question, qIndex: number) => (
           <Box p={5} color="white" key={q.question}>
@@ -78,7 +68,7 @@ const Quiz = () => {
       <Flex>
         <SubmitQuiz onClick={checkQuiz}>Submit Quiz</SubmitQuiz>
       </Flex>
-    </div>
+    </QuizContainer>
   );
 };
 

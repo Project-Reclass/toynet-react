@@ -29,3 +29,9 @@ export const IncorrectIcon = styled('p')`
 export const QuestionLabel = styled.label`
   color: ${(props:{isIncorrect: boolean}) => props.isIncorrect ? '#C5A3B4' : '#FFFFFF'};
 `;
+
+export const QuizContainer = styled('div')`
+  margin: 0 auto;
+  width: 80vw;
+  padding: 50px;
+`;
