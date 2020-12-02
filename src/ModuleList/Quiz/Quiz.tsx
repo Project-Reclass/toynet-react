@@ -51,7 +51,7 @@ const Quiz = () => {
             </Flex>
             <SimpleGrid columns={2} spacingX={1}>
               {q.options.map((option, optionIndex) => (
-                <div key={optionIndex}>
+                <div key={option}>
                   <input
                     type="radio"
                     id={option}
