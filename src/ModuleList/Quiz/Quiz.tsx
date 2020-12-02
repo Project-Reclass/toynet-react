@@ -43,7 +43,7 @@ const Quiz = () => {
     <div>
       <SimpleGrid columns={1} spacing={10}>
         {Array.isArray(data) && data.map((q: Question, qIndex: number) => (
-          <Box p={5} color="white" key={qIndex}>
+          <Box p={5} color="white" key={q.question}>
             <Flex>
               {quizIsSubmitted && (questionIndexesAnsweredCorrectly[qIndex] ?
                 <CheckIcon color="green.500"/> : <IncorrectIcon color="red.500" />)}
