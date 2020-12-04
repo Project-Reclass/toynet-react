@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/core';
-import { SubmitQuiz, CheckIcon, IncorrectIcon, QuestionLabel, QuizContainer } from './styled';
+import { SubmitQuiz, CheckIcon, IncorrectIcon, QuestionLabel, QuizContainer, AnswerContainer } from './styled';
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
 import { Question } from 'src/common/api/curriculum/quiz/requests';
 import { StringMap } from '../../common/types';
@@ -39,29 +39,31 @@ const Quiz = () => {
                 <CheckIcon color="green.500"/> : <IncorrectIcon color="red.500" />)}
               <p>{ `${qIndex + 1}. ${q.question}`}</p>
             </Flex>
-            <SimpleGrid columns={2} spacingX={1}>
-              {q.options.map((option, optionIndex) => (
-                <div key={option}>
-                  <input
-                    type="radio"
-                    id={option}
-                    name={qIndex.toString()}
-                    value={option}
-                    onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
-                    style={{margin: '5px'}}
-                  />
-                  <QuestionLabel
-                    htmlFor={option}
-                    isIncorrect={quizIsSubmitted &&
-                      !questionIndexesAnsweredCorrectly[qIndex] &&
-                      q.answer === optionIndex
-                    }
-                  >
-                    {option}
-                  </QuestionLabel>
-                </div>
-              ))}
-            </SimpleGrid>
+            <AnswerContainer>
+              <SimpleGrid columns={2} spacingX={1}>
+                {q.options.map((option, optionIndex) => (
+                  <div key={option}>
+                    <input
+                      type="radio"
+                      id={option}
+                      name={qIndex.toString()}
+                      value={option}
+                      onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
+                      style={{margin: '5px'}}
+                    />
+                    <QuestionLabel
+                      htmlFor={option}
+                      isIncorrect={quizIsSubmitted &&
+                        !questionIndexesAnsweredCorrectly[qIndex] &&
+                        q.answer === optionIndex
+                      }
+                    >
+                      {option}
+                    </QuestionLabel>
+                  </div>
+                ))}
+              </SimpleGrid>
+            </AnswerContainer>
           </Box>
         ))}
       </SimpleGrid>
