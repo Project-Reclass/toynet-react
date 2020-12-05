@@ -24,3 +24,7 @@ export interface Action<TActions, TPayload> {
 
 export type ReducerFn<T> = (action: T) => void;
 export type GenericFunction = () => any;
+
+export interface StringMap {
+  [key: string]: boolean;
+}
