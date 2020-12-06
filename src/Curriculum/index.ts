@@ -1,4 +1,4 @@
 import withMockData from './withMockData';
-import ModuleList from './ModuleList';
+import ModuleList from './Curriculum';
 
 export default withMockData(ModuleList);

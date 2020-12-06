@@ -4,7 +4,7 @@ import { MemoryRouter, Route } from 'react-router-dom';
 import { render, waitFor } from '@testing-library/react';
 
 
-import Quiz from 'src/ModuleList/Quiz';
+import Quiz from 'src/Curriculum/Quiz';
 
 jest.mock('src/common/api/curriculum/quiz/requests');
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests';

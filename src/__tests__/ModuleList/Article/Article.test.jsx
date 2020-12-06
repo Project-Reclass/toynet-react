@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
 
-import Article from 'src/ModuleList/Article';
+import Article from 'src/Curriculum/Article';
 
 const RenderWithRouter = ({ children, moduleId, articleId }) => (
   <MemoryRouter initialEntries={[`/module/${moduleId}/article/${articleId}`]}>

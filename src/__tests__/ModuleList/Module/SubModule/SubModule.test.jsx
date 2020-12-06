@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { render } from '@testing-library/react'
 
-import SubModule from 'src/ModuleList/Module/SubModule';
+import SubModule from 'src/Curriculum/Module/SubModule/SubModule';
 
 const defaultProps = {
   title: 'Article',

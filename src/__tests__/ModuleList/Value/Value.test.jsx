@@ -3,7 +3,7 @@ import { render, waitFor, cleanup } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
 
-import Value from 'src/ModuleList/Value';
+import Value from 'src/Curriculum/Value';
 
 jest.mock('src/common/api/curriculum/value/requests.ts');
 import { getValueMeta } from 'src/common/api/curriculum/value/requests';

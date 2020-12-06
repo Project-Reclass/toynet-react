@@ -2,6 +2,9 @@
 import React from 'react';
 import { ModuleTypes, ModuleInterface } from './Module/Module';
 
+const mockDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque fermentum volutpat. Proin ut iaculis mauris. Aenean commodo mauris at justo faucibus, in vulputate arcu maximus. Maecenas bibendum nisl urna, nec pretium lacus dapibus et. Nullam a diam sollicitudin, dapibus ante nec, pulvinar diam. Pellentesque sit amet dignissim felis. Nulla interdum, lacus ac rhoncus posuere, tortor leo pharetra nulla, a pulvinar quam sapien sed mi. Fusce bibendum mauris massa, at molestie arcu venenatis at. Vivamus in tellus tempus, porttitor diam a, laoreet magna. Morbi pharetra justo risus, non auctor nisl interdum varius.';
+const mockUsername = 'Tay';
+
 const mockData = [
   {
     id: 1,
@@ -76,6 +79,15 @@ interface Data extends ModuleInterface {
   subModules: ModuleInterface[];
 }
 
-export default (Component: React.ComponentType<{moduleData: Data[]}>) => () => {
-  return <Component moduleData={mockData} />;
+interface Props {
+  username: string;
+  description: string;
+  moduleData: Data[];
+}
+export default (Component: React.ComponentType<Props>) => () => {
+  return <Component
+    moduleData={mockData}
+    username={mockUsername}
+    description={mockDescription}
+  />;
 };
