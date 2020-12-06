@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import React from 'react';
-import { ModuleTypes, ModuleInterface } from './Module/Module';
+import { ModuleTypes, ModuleInterface } from './Module';
 
 const mockDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque fermentum volutpat. Proin ut iaculis mauris. Aenean commodo mauris at justo faucibus, in vulputate arcu maximus. Maecenas bibendum nisl urna, nec pretium lacus dapibus et. Nullam a diam sollicitudin, dapibus ante nec, pulvinar diam. Pellentesque sit amet dignissim felis. Nulla interdum, lacus ac rhoncus posuere, tortor leo pharetra nulla, a pulvinar quam sapien sed mi. Fusce bibendum mauris massa, at molestie arcu venenatis at. Vivamus in tellus tempus, porttitor diam a, laoreet magna. Morbi pharetra justo risus, non auctor nisl interdum varius.';
 const mockUsername = 'Tay';
