@@ -3,23 +3,29 @@
 exports[`The Module should render and match snapshots 1`] = `
 <div>
   <div
-    className="css-f96x4x"
+    className="css-1xeo39u"
   >
-    <svg
-      className="css-11xbhqw"
-      focusable={false}
-      onClick={[Function]}
-      role="presentation"
-      viewBox="0 0 24 24"
+    <div
+      className="css-k008qs"
     >
-      <path
-        d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
-        fill="currentColor"
-      />
-    </svg>
-    <span>
-      First Module
-    </span>
+      <svg
+        className="css-1h2aavc"
+        focusable={false}
+        onClick={[Function]}
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
+          fill="currentColor"
+        />
+      </svg>
+      <p
+        className="css-198glwq"
+      >
+        First Module
+      </p>
+    </div>
   </div>
   <div
     aria-hidden={false}
@@ -43,19 +49,69 @@ exports[`The Module should render and match snapshots 1`] = `
         className="css-0"
       >
         <div
-          className="css-qfdd9t"
+          className="css-1opj1b2"
         >
           <div
-            className="css-4ngnmx"
+            className="css-k008qs"
           >
-            <span>
-              <a
-                href="/module/1/quiz/1"
+            <div
+              className="css-j7qwjs"
+            >
+              <div
+                className="css-1xc5jix"
+                type="lock"
               >
-                First Article
-              </a>
-            </span>
-            <span />
+                <svg
+                  className="css-1qqmyhf"
+                  focusable={false}
+                  role="presentation"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              className="css-gmscv5"
+            >
+              <div
+                className="css-gg4vpm"
+              >
+                <p
+                  className="css-c02fy7"
+                >
+                  <a
+                    className="css-u5zpo1"
+                    href="/module/1/quiz/1"
+                  >
+                    First Article
+                  </a>
+                </p>
+                <div
+                  className="css-1mhin3k"
+                >
+                  <p
+                    className="css-187iiq6"
+                  >
+                    Module progress
+                  </p>
+                  <div
+                    className="css-1qalnrl"
+                  >
+                    <div
+                      aria-valuemax={100}
+                      aria-valuemin={0}
+                      aria-valuenow={42}
+                      className="css-126xr31-Progress"
+                      role="progressbar"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

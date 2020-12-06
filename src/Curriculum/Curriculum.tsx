@@ -16,7 +16,7 @@ interface Props {
 
 export default function Curriculum({ moduleData, description, username }: Props) {
   return (
-    <Box width='90%' maxW='1080' minW='540' marginX='auto'>
+    <Box width='90%' maxW='1280px' minW='540' marginX='auto'>
       <CurriculumBox>
         <Flex justifyContent='center'>
           <Stack spacing={3} maxW={'60%'}>
@@ -28,7 +28,7 @@ export default function Curriculum({ moduleData, description, username }: Props)
             </Text>
           </Stack>
           <Stack spacing={3}>
-            <Text fontSize='2xl' color='white'>Course Completions</Text>
+            <Text fontSize='2xl' color='white' marginTop='0.5rem'>Course Completion</Text>
             <CircularProgress value={25} color="yellow" marginX='auto' size='10rem' margin='auto'>
               <CircularProgressLabel>25%</CircularProgressLabel>
             </CircularProgress>

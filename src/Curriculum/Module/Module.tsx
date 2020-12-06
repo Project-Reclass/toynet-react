@@ -12,21 +12,20 @@ interface Props {
 }
 
 const Module: FC<Props & ModuleInterface> = ({ title, subModules }) => {
-  const { isOpen, onToggle } = useDisclosure(true);
+  const { isOpen, onToggle } = useDisclosure(false);
 
   return (
     <div>
       <CurriculumBox>
-        <Flex>
+        <Flex onClick={onToggle} cursor='pointer'>
           <RotatableIcon
             name={'triangle-up'}
-            onClick={onToggle}
             rotated={isOpen}
             size='1.5rem'
             marginY='auto'
             marginX='1rem'
           />
-          <Text fontSize='2xl' color='white' userSelect='none' cursor='default'>
+          <Text fontSize='2xl' color='white' userSelect='none'>
             {title}
           </Text>
         </Flex>
