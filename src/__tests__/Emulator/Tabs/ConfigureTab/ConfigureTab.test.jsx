@@ -1,7 +1,5 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { DndProvider } from 'react-dnd';
-// import { HTML5Backend } from 'react-dnd-html5-backend';
 
 jest.mock('src/common/api/topology/requests')
 import ConfigureTab, { getNextDeviceName, getNextNumber } from 'src/Emulator/Tabs/ConfigureTab';

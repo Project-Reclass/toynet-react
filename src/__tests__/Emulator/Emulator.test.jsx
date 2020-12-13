@@ -7,7 +7,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { withEmulatorAndDialogueProvider } from 'src/Emulator/EmulatorProvider';
 
 import Emulator from 'src/Emulator/Emulator';
-// import { withEmulatorAndDialogueProvider } from 'src/Emulator/EmulatorProvider';
 
 describe('The emulator', () => {
   it('should render and match snapshots', () => {
@@ -16,14 +15,6 @@ describe('The emulator', () => {
   })
 
   it('should show an error sign if there are too many devices added', async () => {
-    // const EmulatedConfigureTab = withEmulatorAndDialogueProvider(ConfigureTab);
-    // const { getAllByTestId, getByText } = renderWithTheme(
-    //   <DndProvider backend={HTML5Backend}>
-    //     <EmulatedConfigureTab status={'show'} />
-    //   </DndProvider>
-    // );
-
-    // const { getAllByTestId, getByText, getAllByText } = renderWithTheme(<Emulator />);
 
     const EmulatedEmulator = withEmulatorAndDialogueProvider(Emulator);
     const { getAllByTestId, getByText, getAllByText } = renderWithTheme(
@@ -41,6 +32,6 @@ describe('The emulator', () => {
     }
 
     await waitFor(() => getAllByText(/Max number of devices/i));
-    // expect(getByText(/Max number of devices/i)).toBeInTheDocument();
+    expect(getByText(/Max number of devices/i)).toBeInTheDocument();
   });
 });
