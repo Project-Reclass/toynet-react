@@ -2,10 +2,9 @@ import React, { useRef, useCallback, useMemo } from 'react';
 
 import { DeviceType } from 'src/common/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulator } from 'src/Emulator/EmulatorProvider';
+import { useEmulator, useDialogue } from 'src/Emulator/EmulatorProvider';
 
 import DeviceContainer from './DeviceContainer';
-import ErrorBox, { useErrorBox } from './ErrorBox';
 import { Configure, NetworkDevices } from './styled';
 
 const MAX_DEVICES = 10;
@@ -32,15 +31,21 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
   // ref.current.scrollIntoView() on its own does not scroll down enough
   if (ref.current) {
     setTimeout(() => {
-      if (ref.current)
-        ref.current.scrollIntoView();
+      if (ref.current){
+        // Convert to HTMLDivElement, because TypeScript complains that
+        // .scrollTop and .scrollHeight does not exist.
+        // Convert to unknown first, because TypeScript complains that
+        // 'null' and 'HTMLDivElement' do not sufficiently overlap.
+        const element = ref.current as unknown as HTMLDivElement;
+        element.scrollTop = element.scrollHeight;
+      }
     }, 0);
   }
 };
 
 const ConfigureTab = () => {
   const { switches, hosts, routers, dispatch } = useEmulator();
-  const { setError } = useErrorBox();
+  const { appendDialogue } = useDialogue();
 
   const routerScrollRef = useRef(null);
   const switchScrollRef = useRef(null);
@@ -56,7 +61,7 @@ const ConfigureTab = () => {
 
     return (deviceLetter: string) => {
       if (device.length >= MAX_DEVICES) {
-        setError('Max number of devices is 10!');
+        appendDialogue(`Max number of devices is ${MAX_DEVICES}!`);
         return;
       }
 
@@ -70,7 +75,7 @@ const ConfigureTab = () => {
         },
       });
     };
-  }, [dispatch, hosts, routers, setError, switches]);
+  }, [dispatch, hosts, routers, appendDialogue, switches]);
 
   const addRouter = useMemo(() => addDevice('router'), [addDevice]);
   const addSwitch= useMemo(() => addDevice('switch'), [addDevice]);
@@ -98,7 +103,6 @@ const ConfigureTab = () => {
           ref={hostScrollRef}
         />
       </NetworkDevices>
-      <ErrorBox />
     </Configure>
   );
 };

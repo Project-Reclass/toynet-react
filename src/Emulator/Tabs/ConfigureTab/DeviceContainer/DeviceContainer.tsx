@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 
 import { ReactComponent as PlusIcon } from 'src/assets/add.svg';
@@ -85,6 +85,19 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
   ({ deviceName, devices, addDevice }, ref) => {
     const { dispatch } = useEmulator();
 
+    useEffect(() => {
+      if (DeviceContainerContentRef.current){
+        // Convert to HTMLDivElement, because TypeScript complains that
+        // .scrollTop and .scrollHeight does not exist.
+        // Convert to unknown first, because TypeScript complains that
+        // 'null' and 'HTMLDivElement' do not sufficiently overlap.
+        const element = DeviceContainerContentRef.current as unknown as HTMLDivElement;
+        element.scrollTop = element.scrollHeight;
+      }
+    }, [devices]);
+
+    const DeviceContainerContentRef = useRef(null);
+
     return (
       <div>
         <DeviceContainerName>
@@ -95,7 +108,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
           {deviceName}
         </DeviceContainerName>
         <DeviceContainerDiv>
-          <DeviceContainerContent>
+          <DeviceContainerContent ref={DeviceContainerContentRef}>
             {devices.map(device => (
               <Device
                 key={`${device.name}`}
