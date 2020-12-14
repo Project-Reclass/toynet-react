@@ -3,6 +3,7 @@ export enum ModuleTypes {
   ARTICLE = 'article',
   PARENT = 'parent',
   EMULATOR = 'emulator',
+  VALUE = 'value',
 }
 
 export interface ModuleInterface {

@@ -9,7 +9,7 @@ interface Data extends ModuleInterface {
 }
 
 interface Props {
-  username: string;
+  username?: string;
   description: string;
   moduleData: Data[];
 }
@@ -20,8 +20,11 @@ export default function Curriculum({ moduleData, description, username }: Props)
       <CurriculumBox>
         <Flex justifyContent='center'>
           <Stack spacing={3} maxW={'60%'}>
-            <Text fontSize='5xl' color='white' >
-              Welcome, {username}!
+            <Text fontSize='5xl' color='white'>
+              {username ?
+                `Welcome, ${username}!` :
+                'Welcome!'
+              }
             </Text>
             <Text fontSize='lg' color="gray.100">
               {description}
