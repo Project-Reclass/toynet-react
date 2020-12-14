@@ -6,12 +6,12 @@ exports[`The Module should render and match snapshots 1`] = `
     className="css-1xeo39u"
   >
     <div
-      className="css-k008qs"
+      className="css-11dqbsu"
+      onClick={[Function]}
     >
       <svg
-        className="css-1h2aavc"
+        className="css-1axzmpk"
         focusable={false}
-        onClick={[Function]}
         role="presentation"
         viewBox="0 0 24 24"
       >
@@ -21,19 +21,19 @@ exports[`The Module should render and match snapshots 1`] = `
         />
       </svg>
       <p
-        className="css-198glwq"
+        className="css-grke7g"
       >
         First Module
       </p>
     </div>
   </div>
   <div
-    aria-hidden={false}
-    className="rah-static rah-static--height-auto css-vppuuz"
+    aria-hidden={true}
+    className="rah-static rah-static--height-zero css-vppuuz"
     style={
       Object {
-        "height": "auto",
-        "overflow": "visible",
+        "height": 0,
+        "overflow": "hidden",
       }
     }
   >
@@ -41,6 +41,7 @@ exports[`The Module should render and match snapshots 1`] = `
       style={
         Object {
           "WebkitTransition": "opacity 250ms ease 0ms",
+          "opacity": 0,
           "transition": "opacity 250ms ease 0ms",
         }
       }
@@ -84,28 +85,28 @@ exports[`The Module should render and match snapshots 1`] = `
                   className="css-c02fy7"
                 >
                   <a
-                    className="css-u5zpo1"
-                    href="/module/1/quiz/1"
+                    className="css-q3xaa4"
+                    href="/module/0/quiz/1"
                   >
                     First Article
                   </a>
                 </p>
                 <div
-                  className="css-1mhin3k"
+                  className="css-xtemij"
                 >
                   <p
-                    className="css-187iiq6"
+                    className="css-5yrbsi"
                   >
                     Module progress
                   </p>
                   <div
-                    className="css-1qalnrl"
+                    className="css-52gy4w"
                   >
                     <div
                       aria-valuemax={100}
                       aria-valuemin={0}
                       aria-valuenow={42}
-                      className="css-126xr31-Progress"
+                      className="css-d5agxk-Progress"
                       role="progressbar"
                     />
                   </div>
