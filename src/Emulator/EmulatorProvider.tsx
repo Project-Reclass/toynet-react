@@ -14,8 +14,7 @@ const DialogueContext = createContext<DialogueInterface>({
 });
 
 const DialogueProvider: FC = ({ children }) => {
-  const emptyStringArray: string[] = [];  // So that [] doesn't resolve to never[]
-  const [dialogueMessages, setDialogueMessages] = useState(emptyStringArray);
+  const [dialogueMessages, setDialogueMessages] = useState<string[]>([]);
 
   // Not using useCallback so we can add the same error messages repeatedly
   const appendDialogue = (message: string) => {

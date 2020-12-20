@@ -32,11 +32,7 @@ const scrollDeviceContainer = (ref: React.MutableRefObject<HTMLDivElement | null
   if (ref.current) {
     setTimeout(() => {
       if (ref.current){
-        // Convert to HTMLDivElement, because TypeScript complains that
-        // .scrollTop and .scrollHeight does not exist.
-        // Convert to unknown first, because TypeScript complains that
-        // 'null' and 'HTMLDivElement' do not sufficiently overlap.
-        const element = ref.current as unknown as HTMLDivElement;
+        const element = ref.current;
         element.scrollTop = element.scrollHeight;
       }
     }, 0);

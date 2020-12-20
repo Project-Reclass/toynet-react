@@ -1,32 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Flex } from '@chakra-ui/core';
+import { Box, Flex } from '@chakra-ui/core';
 
 import Tabs from './Tabs/Tabs';
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
 
-const ContainerLeft = styled.div`
+const Container = styled.div`
   margin-left: 1.5vw;
-  margin-right: 1.5vw;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-height: 96vh;
-  max-width: 22vw;
-  overflow: hidden;
-`;
-
-const ContainerRight = styled.div`
   margin-top: 2vh;
-  margin-left: 1.5vw;
-  margin-right: 1.5vw;
   display: flex;
   flex-direction: column;
+  margin-right: 3.5rem;
   width: 100%;
   max-height: 96vh;
-  max-width: 78vw;
   overflow: hidden;
 `;
 
@@ -46,19 +34,16 @@ const data = {
 const Emulator = () => {
   return (
     <Flex margin='auto' maxWidth='1920px'>
-      <ContainerLeft>
-        <div>
-          <Instructions panelData={data} />
-        </div>
+      <Box marginLeft='3.5rem' marginTop='2vh' zIndex= {0} >
+        <Instructions panelData={data} />
         <DialogueBox />
-      </ContainerLeft>
-
-      <ContainerRight>
+      </Box>
+      <Container>
         <div>
           <Tabs />
         </div>
         <Visuals />
-      </ContainerRight>
+      </Container>
     </Flex>
   );
 };

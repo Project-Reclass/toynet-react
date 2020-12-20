@@ -5,110 +5,96 @@ exports[`The emulator should render and match snapshots 1`] = `
   className="css-1af67e0"
 >
   <div
-    className="css-es6cvh"
+    className="css-74aybn"
   >
-    <div>
+    <div
+      className="css-1nxzogq"
+    >
       <div
-        style={
-          Object {
-            "marginLeft": "3.5rem",
-            "marginTop": "2vh",
-            "zIndex": 0,
-          }
-        }
+        className="css-ebb1fz"
       >
-        <div
-          className="css-1nxzogq"
+        <a
+          className="css-r59rv1"
+          href="/"
         >
-          <div
-            className="css-ebb1fz"
+          <svg
+            className="css-112d3fm"
           >
-            <a
-              className="css-r59rv1"
-              href="/"
-            >
-              <svg
-                className="css-112d3fm"
-              >
-                backIcon.svg
-              </svg>
-              <p
-                className="css-fzcsno"
-              >
-                Back to site
-              </p>
-            </a>
-          </div>
-          <div
-            className="css-1f1lwn6"
+            backIcon.svg
+          </svg>
+          <p
+            className="css-fzcsno"
           >
-            <h2
-              className="css-nua0st"
-            >
-              Module 
-              1
-            </h2>
-            <p
-              className="css-fzcsno"
-            >
-              Modifying Topology
-            </p>
-          </div>
-          <div
-            className="css-1f1lwn6"
+            Back to site
+          </p>
+        </a>
+      </div>
+      <div
+        className="css-1f1lwn6"
+      >
+        <h2
+          className="css-nua0st"
+        >
+          Module 
+          1
+        </h2>
+        <p
+          className="css-fzcsno"
+        >
+          Modifying Topology
+        </p>
+      </div>
+      <div
+        className="css-1f1lwn6"
+      >
+        <h2
+          className="css-nua0st"
+        >
+          Objective
+        </h2>
+        <p
+          className="css-fzcsno"
+        >
+          Add and remove devices and their connections.
+        </p>
+      </div>
+      <div
+        className="css-1f1lwn6"
+      >
+        <h2
+          className="css-nua0st"
+        >
+          Tasks
+        </h2>
+        <div
+          className="css-16cm47t"
+        >
+          <li
+            className="css-p5me83"
           >
-            <h2
-              className="css-nua0st"
-            >
-              Objective
-            </h2>
-            <p
-              className="css-fzcsno"
-            >
-              Add and remove devices and their connections.
-            </p>
-          </div>
-          <div
-            className="css-1f1lwn6"
+            Add a Host (h3)
+          </li>
+          <li
+            className="css-p5me83"
           >
-            <h2
-              className="css-nua0st"
-            >
-              Tasks
-            </h2>
-            <div
-              className="css-16cm47t"
-            >
-              <li
-                className="css-p5me83"
-              >
-                Add a Host (h3)
-              </li>
-              <li
-                className="css-p5me83"
-              >
-                Attach h3 to s2
-              </li>
-              <li
-                className="css-p5me83"
-              >
-                Detach h3 from s2
-              </li>
-              <li
-                className="css-p5me83"
-              >
-                Remove h2
-              </li>
-            </div>
-          </div>
+            Attach h3 to s2
+          </li>
+          <li
+            className="css-p5me83"
+          >
+            Detach h3 from s2
+          </li>
+          <li
+            className="css-p5me83"
+          >
+            Remove h2
+          </li>
         </div>
       </div>
     </div>
     <div
       style={
         Object {
-          "marginLeft": "3.5rem",
-          "marginRight": "3.5rem",
           "marginTop": "2vh",
           "zIndex": 0,
         }
@@ -130,7 +116,7 @@ exports[`The emulator should render and match snapshots 1`] = `
     </div>
   </div>
   <div
-    className="css-yc6tca"
+    className="css-1xbpgl1"
   >
     <div>
       <div

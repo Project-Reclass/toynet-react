@@ -9,19 +9,15 @@ const DialogueBox = () => {
 
   useEffect(() => {
     if (containerScrollRef.current){
-      // Convert to HTMLDivElement, because TypeScript complains that
-      // .scrollTop and .scrollHeight does not exist.
-      // Convert to unknown first, because TypeScript complains that
-      // 'null' and 'HTMLDivElement' do not sufficiently overlap.
-      const element = containerScrollRef.current as unknown as HTMLDivElement;
+      const element = containerScrollRef.current;
       element.scrollTop = element.scrollHeight;
     }
   }, [dialogueMessages]);
 
-  const containerScrollRef = useRef(null);
+  const containerScrollRef = useRef< HTMLDivElement>(null);
 
   return (
-    <div style={{ marginLeft: '3.5rem', marginTop: '2vh', zIndex: 0, marginRight: '3.5rem'  }}>
+    <div style={{marginTop: '2vh', zIndex: 0}}>
       <DialogueBoxContainer>
         <InnerContainer ref={containerScrollRef}>
           {dialogueMessages.map( (dialogueMessage) => (

@@ -87,16 +87,12 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
 
     useEffect(() => {
       if (DeviceContainerContentRef.current){
-        // Convert to HTMLDivElement, because TypeScript complains that
-        // .scrollTop and .scrollHeight does not exist.
-        // Convert to unknown first, because TypeScript complains that
-        // 'null' and 'HTMLDivElement' do not sufficiently overlap.
-        const element = DeviceContainerContentRef.current as unknown as HTMLDivElement;
+        const element = DeviceContainerContentRef.current;
         element.scrollTop = element.scrollHeight;
       }
     }, [devices]);
 
-    const DeviceContainerContentRef = useRef(null);
+    const DeviceContainerContentRef = useRef< HTMLDivElement>(null);
 
     return (
       <div>
