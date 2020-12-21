@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 
 import { ReactComponent as PlusIcon } from 'src/assets/add.svg';
@@ -85,6 +85,15 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
   ({ deviceName, devices, addDevice }, ref) => {
     const { dispatch } = useEmulator();
 
+    useEffect(() => {
+      if (DeviceContainerContentRef.current){
+        const element = DeviceContainerContentRef.current;
+        element.scrollTop = element.scrollHeight;
+      }
+    }, [devices]);
+
+    const DeviceContainerContentRef = useRef< HTMLDivElement>(null);
+
     return (
       <div>
         <DeviceContainerName>
@@ -95,7 +104,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
           {deviceName}
         </DeviceContainerName>
         <DeviceContainerDiv>
-          <DeviceContainerContent>
+          <DeviceContainerContent ref={DeviceContainerContentRef}>
             {devices.map(device => (
               <Device
                 key={`${device.name}`}

@@ -24,7 +24,6 @@ interface Props {
 
 const Instructions: FC<Props> = ({ panelData }) => {
   return (
-    <div style={{ marginLeft: '3.5rem', marginTop: '2vh', zIndex: 0 }}>
       <InstructionsContainer>
         <BackArea>
             <LinkText href='/'>
@@ -51,7 +50,6 @@ const Instructions: FC<Props> = ({ panelData }) => {
           </TaskList>
         </Container>
       </InstructionsContainer>
-    </div>
   );
 };
 

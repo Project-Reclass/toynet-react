@@ -6,7 +6,7 @@ import { ReactComponent as Exit } from 'src/assets/buttons/backIcon.svg';
 export const InstructionsContainer = styled.div`
   color: white;
   background-color: #454950;
-  height: 96vh;
+  height: 55vh;
   width: 15vw;
   border-radius: 10px;
   word-wrap: break-word;
