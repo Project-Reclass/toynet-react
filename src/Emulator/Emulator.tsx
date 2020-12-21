@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Flex } from '@chakra-ui/core';
+import { Box, Flex } from '@chakra-ui/core';
 
 import Tabs from './Tabs/Tabs';
 import Visuals from './Visuals';
 import Instructions from './Instructions';
+import DialogueBox from './DialogueBox';
 
 const Container = styled.div`
   margin-left: 1.5vw;
@@ -33,7 +34,10 @@ const data = {
 const Emulator = () => {
   return (
     <Flex margin='auto' maxWidth='1920px'>
-      <Instructions panelData={data} />
+      <Box marginLeft='3.5rem' marginTop='2vh' zIndex= {0} >
+        <Instructions panelData={data} />
+        <DialogueBox />
+      </Box>
       <Container>
         <div>
           <Tabs />

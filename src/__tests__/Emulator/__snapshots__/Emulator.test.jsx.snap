@@ -5,16 +5,10 @@ exports[`The emulator should render and match snapshots 1`] = `
   className="css-1af67e0"
 >
   <div
-    style={
-      Object {
-        "marginLeft": "3.5rem",
-        "marginTop": "2vh",
-        "zIndex": 0,
-      }
-    }
+    className="css-74aybn"
   >
     <div
-      className="css-1s5qpfo"
+      className="css-1nxzogq"
     >
       <div
         className="css-ebb1fz"
@@ -96,6 +90,28 @@ exports[`The emulator should render and match snapshots 1`] = `
             Remove h2
           </li>
         </div>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "marginTop": "2vh",
+          "zIndex": 0,
+        }
+      }
+    >
+      <div
+        className="css-5d2y56"
+      >
+        <div
+          className="css-1c5a9no"
+        />
+        <button
+          className="css-x4n12y"
+          onClick={[Function]}
+        >
+          Clear
+        </button>
       </div>
     </div>
   </div>
