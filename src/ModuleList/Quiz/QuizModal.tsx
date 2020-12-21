@@ -59,7 +59,7 @@ const QuizModal = ({ total, numCorrect, isOpen, done, tryAgain}: Props) => {
         </ModalBody>
 
         <ModalFooter display='flex' justifyContent='space-evenly'>
-          {percentage > MIN_SCORE &&
+          {percentage >= MIN_SCORE &&
             <Button variantColor="blue" mr={3} onClick={done}>
               I'm Done
             </Button>
