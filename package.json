@@ -17,6 +17,7 @@
     "react-dom": "^16.13.1",
     "react-draggable": "^4.4.3",
     "react-helmet": "^6.1.0",
+    "react-markdown": "^5.0.2",
     "react-query": "^2.5.7-tsnext.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
