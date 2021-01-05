@@ -1,8 +1,9 @@
 import React from 'react';
-import { text } from './mockData';
 import ReactMarkdown from 'react-markdown';
-import { ArticleHeader, MarkdownWrapper, Div } from './ArticleStyles';
+import { Flex } from '@chakra-ui/core';
 
+import { text } from './mockData';
+import { ArticleHeader, MarkdownWrapper } from './ArticleStyles';
 
 const data = {
   'source': 'https://www.wired.co.uk/article/subsea-internet-cable-ship-boat',
@@ -19,17 +20,14 @@ const data = {
   ],
 };
 
-
-const Article = () => {
-
-
-  return (
-    <Div>
-      <ArticleHeader as='h1'size='2xl'>{data.title}</ArticleHeader>
-      <ArticleHeader as='h2'size='xl'>Author: {data.author}</ArticleHeader>
-      <MarkdownWrapper><ReactMarkdown escapeHtml={false} source={text}/></MarkdownWrapper>
-    </Div>
-  );
-};
+const Article = () => (
+  <Flex justifyContent='center' alignItems='center' flexDirection='column'>
+    <ArticleHeader as='h1' size='2xl'>{data.title}</ArticleHeader>
+    <ArticleHeader as='h2' size='lg'>Author: {data.author}</ArticleHeader>
+    <MarkdownWrapper>
+      <ReactMarkdown escapeHtml={false} source={text}/>
+    </MarkdownWrapper>
+  </Flex>
+);
 
 export default Article;
