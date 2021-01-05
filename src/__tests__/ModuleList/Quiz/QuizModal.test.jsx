@@ -25,13 +25,13 @@ describe('The quiz score modal', () => {
     expect(getByText(/100/i)).toBeInTheDocument();
   });
   it('should only show a try again button when score is under 70%', () => {
-    const { queryAllByText } = renderHelper({...defaultProps, numCorrect: 0});
-    expect(queryAllByText(/try again/i)).toHaveLength(2);
-    expect(queryAllByText(/done/i)).toHaveLength(0);
+    const { queryAllByText, getByText } = renderHelper({...defaultProps, numCorrect: 0});
+    expect(getByText('Try Again')); // Find "Try Again" button with exact text match
+    expect(queryAllByText(`I'm Done`)).toHaveLength(0); // There should be no "I'm Done" button
   });
-  it('should show a `done` button when score is 70% or over', () => {
-    const { queryAllByText, getByText } = renderHelper({...defaultProps, numCorrect: 7});
-    expect(queryAllByText(/try again/i)).toHaveLength(1);
-    expect(getByText(/done/i)).toBeInTheDocument();
+  it('should show a `done` button and try again when score is 70% or over', () => {
+    const { getByText , queryAllByText} = renderHelper({...defaultProps, numCorrect: 7});
+    expect(getByText('Try Again')).toBeInTheDocument(); // Try again should still be visible
+    expect(queryAllByText(`I'm Done`)).toHaveLength(1); // The done button should also now be visible
   })
 })

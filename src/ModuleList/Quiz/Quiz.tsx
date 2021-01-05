@@ -27,12 +27,12 @@ const Quiz = () => {
   const { isOpen, onClose, onOpen } = useDisclosure(false);
 
   const [isQuizSubmitted, setIsQuizSubmitted] = useState<boolean>(false);
-  const [questionIsCorrect, setQuestionIsCorrect] = useState<StringMap>({});
+  const [answerIsCorrect, setAnswerIsCorrect] = useState<StringMap>({});
 
   const handleAnsweredQuestion = (q: Question, qIndex: number, answerPicked: number) => {
     return () => {
-      questionIsCorrect[qIndex] = q.answer === answerPicked;
-      setQuestionIsCorrect(questionIsCorrect);
+      answerIsCorrect[qIndex] = q.answer === answerPicked;
+      setAnswerIsCorrect(answerIsCorrect);
     };
   };
 
@@ -53,7 +53,7 @@ const Quiz = () => {
   };
 
   const numCorrect = (
-    Object.values(questionIsCorrect || {})
+    Object.values(answerIsCorrect || {})
       .filter(Boolean).length
   );
 
@@ -64,7 +64,7 @@ const Quiz = () => {
           {Array.isArray(data) && data.map((q: Question, qIndex: number) => (
             <Box p={5} color="white" key={q.question}>
               <Flex>
-                {isQuizSubmitted && (questionIsCorrect[qIndex] ?
+                {isQuizSubmitted && (answerIsCorrect[qIndex] ?
                   <CheckIcon color="green.500"/> : <IncorrectIcon color="red.500" />)}
                 <Text fontSize='lg'>{ `${qIndex + 1}. ${q.question}`}</Text>
               </Flex>
@@ -84,7 +84,7 @@ const Quiz = () => {
                         as={'label'}
                         fontSize='lg'
                         isIncorrect={isQuizSubmitted &&
-                          !questionIsCorrect[qIndex] &&
+                          !answerIsCorrect[qIndex] &&
                           q.answer === optionIndex
                         }
                       >
