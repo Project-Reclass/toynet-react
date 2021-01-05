@@ -11,11 +11,11 @@ interface Props extends ModuleInterface {
   count: number;
 }
 
-const createLink = ({ type, id }: Pick<ModuleInterface, 'type' | 'id'>) => {
+const createLink = ({ type, id, moduleId }: Pick<ModuleInterface, 'type' | 'id' | 'moduleId'>) => {
   if (type === ModuleTypes.VALUE) {
     return `/value/${id}`;
   }
-  return `/module/${0}/${type.toString()}/${id}`;
+  return `/module/${moduleId}/${type.toString()}/${id}`;
 };
 
 const SubModule: FC<Props> = ({ title, progress, id, moduleId, type, index, count }) => (
@@ -25,7 +25,7 @@ const SubModule: FC<Props> = ({ title, progress, id, moduleId, type, index, coun
       <Flex justifyContent='space-between'>
         <ModuleName fontSize='lg' color='white'>
           <Link
-            href={createLink({ type, id })}
+            href={createLink({ type, id, moduleId })}
             maxW={250}
             display='block'
             isTruncated

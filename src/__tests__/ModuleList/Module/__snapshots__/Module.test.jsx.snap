@@ -86,7 +86,7 @@ exports[`The Module should render and match snapshots 1`] = `
                 >
                   <a
                     className="css-q3xaa4"
-                    href="/module/0/quiz/1"
+                    href="/module/1/quiz/1"
                   >
                     First Article
                   </a>

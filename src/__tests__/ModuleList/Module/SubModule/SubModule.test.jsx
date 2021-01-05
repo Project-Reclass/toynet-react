@@ -29,11 +29,11 @@ describe('The sub modules', () => {
     expect(tree).toMatchSnapshot();
   });
   it('should create a link to the submodule page', () => {
-    const { type, id, title } = defaultProps;
+    const { type, id, title, moduleId } = defaultProps;
     const { getByText } = renderWithTheme(<SubModule {...defaultProps} />);
     const link = getByText(title);
 
-    expect(link.getAttribute('href')).toBe(`/module/0/${type.toString()}/${id}`)
+    expect(link.getAttribute('href')).toBe(`/module/${moduleId}/${type.toString()}/${id}`)
   });
   it('should create a link to a values page', () => {
     const { type, id, title } = valuesProps;
