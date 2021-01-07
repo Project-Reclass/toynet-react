@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { renderTreeWithTheme } from 'src/common/test-utils/renderWithTheme';
-import ModuleList from 'src/ModuleList';
+import ModuleList from 'src/Curriculum';
 
 describe('The Module List', () => {
   it('should render and match snapshot', () => {

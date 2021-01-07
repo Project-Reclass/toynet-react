@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { renderTreeWithTheme } from 'src/common/test-utils/renderWithTheme';
-import Module from 'src/ModuleList/Module';
+import Module from 'src/Curriculum/Module';
 
 const defaultProps = {
   title: 'First Module',

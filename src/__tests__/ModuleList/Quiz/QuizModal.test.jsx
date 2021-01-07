@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { renderWithTheme } from "src/common/test-utils/renderWithTheme";
-import QuizModal from "src/ModuleList/Quiz/QuizModal";
+import QuizModal from "src/Curriculum/Quiz/QuizModal";
 
 const defaultProps = {
     isOpen: true,
