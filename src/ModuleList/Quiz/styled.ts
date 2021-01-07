@@ -1,18 +1,19 @@
+import { Button, Text } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 
-export const SubmitQuiz = styled('a')`
+export const QuizScore = styled(Text)`
+  color: ${({ percent, minScore }:{percent: number, minScore: number}) => (
+    percent >= minScore ? '#39a139' : '#ff5151'
+  )};
+  margin: 1.5rem auto;
+`;
+
+export const SubmitQuiz = styled(Button)`
   margin: 0 auto;
-  padding: 5px 17px;
-  border-radius: 3.5px;
-  background-color: #4195A5;
-  color: #FFFFFF;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.2;
-  }
 `;
 
 export const CheckIcon = styled('p')`
+  margin-right: 1rem;
   &:after {
     content: '✔';
     color: #90EE90;
@@ -20,14 +21,17 @@ export const CheckIcon = styled('p')`
 `;
 
 export const IncorrectIcon = styled('p')`
+  margin-right: 1rem;
   &:after {
     content: '✘';
     color: red;
   }
 `;
 
-export const QuestionLabel = styled.label`
-  color: ${(props:{isIncorrect: boolean}) => props.isIncorrect ? '#C5A3B4' : '#FFFFFF'};
+export const QuestionLabel = styled(Text)`
+  color: ${({ isIncorrect }:{isIncorrect: boolean}) => (
+    isIncorrect ? '#C5A3B4' : '#FFFFFF'
+  )};
 `;
 
 export const QuizContainer = styled('div')`
