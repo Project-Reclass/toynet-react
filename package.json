@@ -54,7 +54,8 @@
             -1,
             0,
             1,
-            2
+            2,
+            100
           ],
           "enforceConst": true,
           "detectObjects": true
