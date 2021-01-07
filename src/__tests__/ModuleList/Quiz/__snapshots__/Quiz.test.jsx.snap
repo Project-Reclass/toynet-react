@@ -3,19 +3,53 @@
 exports[`The Quiz page should render the same based on URL parameters 1`] = `
 <div
   className="css-1cxsl7j"
+  id="#"
 >
   <div
-    className="css-3pksgp"
-  />
-  <div
-    className="css-k008qs"
+    className="css-1ikdejk"
   >
-    <a
-      className="css-jiw0x4"
-      onClick={[Function]}
+    <div
+      style={
+        Object {
+          "height": "100%",
+          "position": "relative",
+        }
+      }
     >
-      Submit Quiz
-    </a>
+      <div
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={null}
+        className="css-tcs7sz"
+        role="progressbar"
+      >
+        <svg
+          className="css-c0o3jj"
+          viewBox="55.55555555555556 55.55555555555556 111.11111111111111 111.11111111111111"
+        >
+          <circle
+            className="css-9y0bww"
+            cx={111.11111111111111}
+            cy={111.11111111111111}
+            data-progress-track={true}
+            r={50}
+            strokeDasharray={314.159}
+            strokeDashoffset={0}
+            strokeWidth={11.111111111111112}
+          />
+          <circle
+            className="css-146rxdt"
+            cx={111.11111111111111}
+            cy={111.11111111111111}
+            data-progress-indicator={true}
+            r={50}
+            strokeDasharray="1 400"
+            strokeDashoffset="0"
+            strokeWidth={11.111111111111112}
+          />
+        </svg>
+      </div>
+    </div>
   </div>
 </div>
 `;

@@ -1,58 +1,33 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import { Flex } from '@chakra-ui/core';
 
-// import { Carousel } from 'react-bootstrap';
+import { text } from './mockData';
+import { ArticleHeader, MarkdownWrapper } from './ArticleStyles';
 
-interface ExpectedParams {
-  moduleId?: string;
-  articleId?: string;
-}
-
-const Article = () => {
-  const { moduleId, articleId } = useParams<ExpectedParams>();
-
-  return (
-    <div>
-      <h1>Module: {moduleId}</h1>
-      <h2>Article: {articleId}</h2>
-      {/* <Carousel>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.idgesg.net/images/article/2017/08/networking-100733179-large.jpg"
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.idgesg.net/images/article/2017/08/networking-100733179-large.jpg"
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.idgesg.net/images/article/2017/08/networking-100733179-large.jpg"
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel> */}
-    </div>
-  );
+const data = {
+  'source': 'https://www.wired.co.uk/article/subsea-internet-cable-ship-boat',
+  'title': 'Ever wondered how underwater cables are laid? We take a trip on the ship that keeps us online',
+  'author': 'Matt Burgess',
+  'images': [
+      { 'file': '1.jpeg' },
+      { 'file': '2.jpeg' },
+      { 'file': '3.jpeg' },
+      { 'file': '4.jpeg' },
+      { 'file': '5.jpeg' },
+      { 'file': '6.jpeg' },
+      { 'file': '7.jpeg' },
+  ],
 };
+
+const Article = () => (
+  <Flex justifyContent='center' alignItems='center' flexDirection='column'>
+    <ArticleHeader as='h1' size='2xl'>{data.title}</ArticleHeader>
+    <ArticleHeader as='h2' size='lg'>Author: {data.author}</ArticleHeader>
+    <MarkdownWrapper>
+      <ReactMarkdown escapeHtml={false} source={text}/>
+    </MarkdownWrapper>
+  </Flex>
+);
 
 export default Article;

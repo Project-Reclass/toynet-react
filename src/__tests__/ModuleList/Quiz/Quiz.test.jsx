@@ -1,13 +1,12 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
-import { render, waitFor } from '@testing-library/react';
-
+import { waitFor } from '@testing-library/react';
 
 import Quiz from 'src/Curriculum/Quiz';
 
 jest.mock('src/common/api/curriculum/quiz/requests');
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests';
+import { renderTreeWithTheme, renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 const RenderWithRouter = ({ children, moduleId, quizId }) => (
   <MemoryRouter initialEntries={[`/module/${moduleId}/quiz/${quizId}`]}>
@@ -17,7 +16,7 @@ const RenderWithRouter = ({ children, moduleId, quizId }) => (
 
 describe('The Quiz page', () => {
   it('should render the same based on URL parameters', () => {
-    const tree = renderer.create(
+    const tree = renderTreeWithTheme(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>
@@ -27,7 +26,7 @@ describe('The Quiz page', () => {
 
   it('should fetch quiz data', async () => {
     const data = [
-    {
+      {
         "question": "How many nodes share a single channel on a bus topology?",
         "options": [
             "One node",
@@ -36,8 +35,8 @@ describe('The Quiz page', () => {
             "All nodes"
         ],
         "answer": 3
-    },
-    {
+      },
+      {
         "question": "Which of the following is the most fault-tolerant WAN topology?",
         "options": [
             "Partial Mesh",
@@ -46,9 +45,10 @@ describe('The Quiz page', () => {
             "Full-mesh"
         ],
         "answer": 3
-    }];
+      }
+    ];
     getQuizMeta.mockResolvedValue(data);
-    const { getByText, getAllByText, getAllByTestId } = render(
+    const { getByText, getAllByText } = renderWithTheme(
       <RenderWithRouter quizId={64}>
         <Quiz />
       </RenderWithRouter>
