@@ -4,11 +4,11 @@ import styled from '@emotion/styled';
 
 import LoadingSpinner from './common/components/LoadingSpinner';
 import Header from './Header/Header';
-import ModuleList from './ModuleList';
-import Article from './ModuleList/Article';
-import Quiz from './ModuleList/Quiz';
-import Lesson from './ModuleList/Lesson';
-import Value from './ModuleList/Value';
+import ModuleList from './Curriculum';
+import Article from './Curriculum/Article';
+import Quiz from './Curriculum/Quiz';
+import Lesson from './Curriculum/Lesson';
+import Value from './Curriculum/Value';
 import { useFeatureFlags } from './FeatureFlags';
 import Layout from './layout';
 import ErrorBoundary from './common/components/ErrorBoundary';
@@ -34,8 +34,8 @@ function App() {
               </Suspense>
             </Layout>
           </Route>
-          <Route exact path="/module">
-            <Layout title={'Modules'}>
+          <Route exact path="/curriculum">
+            <Layout title={'Curriculum'}>
               <ModuleList />
             </Layout>
           </Route>

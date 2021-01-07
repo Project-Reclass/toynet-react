@@ -34,7 +34,6 @@ export const RotatableArrow = styled.span`
 `;
 
 export const RotatableIcon = styled(Icon)`
-  margin: auto;
   transition: 0.3s ease;
   cursor: pointer;
 
