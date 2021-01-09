@@ -32,6 +32,16 @@ describe('The Article page', () => {
     getArticleMeta.mockResolvedValue(mockArticle.meta);
     getArticleText.mockResolvedValue(mockArticle.text);
   });
+  it('should match snapshot', async () => {
+    const { getByText, container } = render(
+      <RenderWithRouter articleId={articleId}>
+        <Article />
+      </RenderWithRouter>
+    );
+
+    await waitFor(() => expect(getByText(mockArticle.text)).toBeInTheDocument());
+    expect(container).toMatchSnapshot();
+  })
   it('should get article text and meta for article id specified in the URL', async () => {
     render(
       <RenderWithRouter articleId={articleId}>
