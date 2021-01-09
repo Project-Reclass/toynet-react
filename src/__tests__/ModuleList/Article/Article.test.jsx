@@ -1,8 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
-import {act} from 'react-dom/test-utils';
-import { getByText, render, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import Article from 'src/Curriculum/Article';
 jest.mock('src/common/api/curriculum/article/requests');
