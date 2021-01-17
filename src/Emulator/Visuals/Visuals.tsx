@@ -1,4 +1,4 @@
-import React, { useRef, useState, FC } from 'react';
+import React, { useRef, useState, useEffect, FC } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
 
 import { useVisualizeToynetImage } from 'src/common/api/topology';
@@ -48,12 +48,27 @@ const HighlightButton: FC<BtnProps> = ({ children, hoverComponent, component, ..
 const Visuals = () => {
   const { sessionId } = useEmulator();
   const { data } = useVisualizeToynetImage(sessionId);
-  const [pos, setPos] = useState({x: 0, y: 0});
+
+  const imageRef = useRef< HTMLImageElement>(null);
+
+  const [pos, setPos] = useState({
+    x: 0,
+    y: 0
+  });
+
   const [hideImage, setHideImage] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(INITIAL_ZOOM_LEVEL);
 
-  const imageRef = useRef<HTMLImageElement>(null);
+  let isDataLoaded = Boolean(data && data.length > 0);
+
+  useEffect(() => {
+    recenterImage();
+  }, [
+    imageRef.current, // when there is no imageRef, there are no imageRef.current.offsetWidth and imageRef.current.offsetHeight values in recenterImage()
+    isDataLoaded,     // when there is no data, there are no realContainerWidth and realContainerHeight values in recenterImage()
+                      // we are using isDataLoaded instead of data, because if we use data then the image will recenter every time a device is added or removed
+  ]);
 
   const handleDrag = (_: any, {deltaX, deltaY}: DraggableData) => {
     const {x, y} = pos;
@@ -125,13 +140,15 @@ const Visuals = () => {
         </Icons>
         <Draggable
           handle=".handle"
+
           position={pos}
+
           onStart={() => setIsGrabbing(true)}
           onStop={() => setIsGrabbing(false)}
           onDrag={handleDrag}
         >
           <DraggableImage isGrabbing={isGrabbing} hideImage={hideImage} className='handle'>
-            {sessionId > 0 && data && data.length > 0 &&
+            {sessionId > 0 && isDataLoaded &&
               <Image
                 data-testid={'toynet-session-img'}
                 className="image"
