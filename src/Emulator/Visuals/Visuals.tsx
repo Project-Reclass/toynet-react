@@ -53,21 +53,23 @@ const Visuals = () => {
 
   const [pos, setPos] = useState({
     x: 0,
-    y: 0
+    y: 0,
   });
 
   const [hideImage, setHideImage] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(INITIAL_ZOOM_LEVEL);
 
-  let isDataLoaded = Boolean(data && data.length > 0);
+  const isDataLoaded = Boolean(data && data.length > 0);
+  const isImageLoaded = Boolean(imageRef.current);
 
   useEffect(() => {
     recenterImage();
   }, [
-    imageRef.current, // when there is no imageRef, there are no imageRef.current.offsetWidth and imageRef.current.offsetHeight values in recenterImage()
-    isDataLoaded,     // when there is no data, there are no realContainerWidth and realContainerHeight values in recenterImage()
-                      // we are using isDataLoaded instead of data, because if we use data then the image will recenter every time a device is added or removed
+    isImageLoaded, // When there is no imageRef, there are no imageRef.current.offsetWidth and imageRef.current.offsetHeight values in recenterImage()
+                   // We are using isImageLoaded instead of imageRef.current, because if we use imageRef.current the style check complains
+    isDataLoaded,  // When there is no data, there are no realContainerWidth and realContainerHeight values in recenterImage()
+                   // We are using isDataLoaded instead of data, because if we use data then the image will recenter every time a device is added or removed
   ]);
 
   const handleDrag = (_: any, {deltaX, deltaY}: DraggableData) => {
