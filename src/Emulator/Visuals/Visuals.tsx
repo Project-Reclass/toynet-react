@@ -49,16 +49,12 @@ const Visuals = () => {
   const { sessionId } = useEmulator();
   const { data } = useVisualizeToynetImage(sessionId);
 
-  const imageRef = useRef< HTMLImageElement>(null);
-
-  const [pos, setPos] = useState({
-    x: 0,
-    y: 0,
-  });
-
+  const [pos, setPos] = useState({x: 0, y: 0});
   const [hideImage, setHideImage] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(INITIAL_ZOOM_LEVEL);
+
+  const imageRef = useRef<HTMLImageElement>(null);
 
   const isDataLoaded = Boolean(data && data.length > 0);
   const isImageLoaded = Boolean(imageRef.current);
@@ -142,9 +138,7 @@ const Visuals = () => {
         </Icons>
         <Draggable
           handle=".handle"
-
           position={pos}
-
           onStart={() => setIsGrabbing(true)}
           onStop={() => setIsGrabbing(false)}
           onDrag={handleDrag}
