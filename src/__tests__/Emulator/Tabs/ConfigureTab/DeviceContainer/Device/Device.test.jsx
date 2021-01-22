@@ -1,11 +1,10 @@
 import React from 'react';
 import { DndProvider } from 'react-dnd';
-import renderer, { act } from 'react-test-renderer';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, act } from '@testing-library/react';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import Device from 'src/Emulator/Tabs/ConfigureTab/DeviceContainer/Device';
-import { renderTreeWithTheme, renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 function withDnDProvider(Component) {
   return (props) => (
@@ -91,26 +90,25 @@ describe('The Device', () => {
   });
 
   it('should match previous snapshots', () => {
-    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<TestComponent {...defaultProps} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should match previous snapshot with router connections', () => {
-    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} deviceData={routerConnectionsData} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<TestComponent {...defaultProps}
+                                            deviceData={routerConnectionsData} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should match previous snapshots with host connections', () => {
-    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} deviceData={hostConnections} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<TestComponent {...defaultProps}
+                                            deviceData={hostConnections} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should match previous snapshots with switch connections', () => {
-    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} deviceData={switchConnections} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<TestComponent {...defaultProps} deviceData={switchConnections} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should be able to delete connection', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import Value from 'src/Curriculum/Value';
 
 jest.mock('src/common/api/curriculum/value/requests.ts');
 import { getValueMeta } from 'src/common/api/curriculum/value/requests';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 const RenderWithRouter = ({ children, valueId }) => (
   <MemoryRouter initialEntries={[`/value/${valueId}`]}>
@@ -134,38 +135,38 @@ describe('The value page', () => {
   });
 
   it('should render the same based on URL parameters for integrity', () => {
-    const tree = renderer.create(
+    const { container } = renderWithTheme(
       <RenderWithRouter valueId={5001}>
         <Value />
       </RenderWithRouter>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render the same based on URL parameters for respect', () => {
-    const tree = renderer.create(
+    const { container } = renderWithTheme(
       <RenderWithRouter valueId={5002}>
         <Value />
       </RenderWithRouter>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render the same based on URL parameters for honor', () => {
-    const tree = renderer.create(
+    const { container } = renderWithTheme(
       <RenderWithRouter valueId={5003}>
         <Value />
       </RenderWithRouter>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render the same based on URL parameters for loyalty', () => {
-    const tree = renderer.create(
+    const { container } = renderWithTheme(
       <RenderWithRouter valueId={5004}>
         <Value />
       </RenderWithRouter>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 });

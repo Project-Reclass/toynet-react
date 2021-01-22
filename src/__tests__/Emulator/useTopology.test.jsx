@@ -1,4 +1,4 @@
-import { renderHook, act, cleanup } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react-hooks'
 
 jest.mock('src/common/api/topology/requests');
 import { TopologyActions, useTopology } from 'src/Emulator/useTopology';

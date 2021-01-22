@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { renderTreeWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { renderTreeWithTheme, renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import Module from 'src/Curriculum/Module';
 
 const defaultProps = {
@@ -20,7 +20,7 @@ const defaultProps = {
 
 describe('The Module', () => {
   it('should render and match snapshots', () => {
-    const tree = renderTreeWithTheme(<Module {...defaultProps} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<Module {...defaultProps} />);
+    expect(container).toMatchSnapshot();
   });
 });

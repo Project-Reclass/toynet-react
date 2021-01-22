@@ -1,8 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
 
 import Article from 'src/Curriculum/Article';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 const RenderWithRouter = ({ children, moduleId, articleId }) => (
   <MemoryRouter initialEntries={[`/module/${moduleId}/article/${articleId}`]}>
@@ -12,11 +12,11 @@ const RenderWithRouter = ({ children, moduleId, articleId }) => (
 
 describe('The Article page', () => {
   it('should render the same based on URL parameters', () => {
-    const tree = renderer.create(
+    const { container } = renderWithTheme(
       <RenderWithRouter moduleId={42} articleId={64}>
         <Article />
       </RenderWithRouter>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 });
