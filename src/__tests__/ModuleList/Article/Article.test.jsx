@@ -49,7 +49,7 @@ describe('The Article page', () => {
       </RenderWithRouter>
     );
 
-    await waitFor(() =>  expect(getArticleMeta.mock.calls[0][0]).toBe(articleId));
+    await waitFor(() => expect(getArticleMeta.mock.calls[0][0]).toBe(articleId));
     await waitFor(() => expect(getArticleText.mock.calls[0][0]).toBe(articleId));
   });
   it('should render the text of the article', async () => {
