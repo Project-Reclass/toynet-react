@@ -47,7 +47,7 @@ const HighlightButton: FC<BtnProps> = ({ children, hoverComponent, component, ..
 
 const Visuals = () => {
   const { sessionId } = useEmulator();
-  const { data } = useVisualizeToynetImage(sessionId);
+  const { data, isLoading } = useVisualizeToynetImage(sessionId);
 
   const [pos, setPos] = useState({x: 0, y: 0});
   const [hideImage, setHideImage] = useState(false);
@@ -56,17 +56,11 @@ const Visuals = () => {
 
   const imageRef = useRef<HTMLImageElement>(null);
 
-  const isDataLoaded = Boolean(data && data.length > 0);
-  const isImageLoaded = Boolean(imageRef.current);
-
   useEffect(() => {
-    recenterImage();
-  }, [
-    isImageLoaded, // When there is no imageRef, there are no imageRef.current.offsetWidth and imageRef.current.offsetHeight values in recenterImage()
-                   // We are using isImageLoaded instead of imageRef.current, because if we use imageRef.current the style check complains
-    isDataLoaded,  // When there is no data, there are no realContainerWidth and realContainerHeight values in recenterImage()
-                   // We are using isDataLoaded instead of data, because if we use data then the image will recenter every time a device is added or removed
-  ]);
+    if (!isLoading) {
+      setTimeout(recenterImage, 0);
+    }
+  }, [isLoading]);
 
   const handleDrag = (_: any, {deltaX, deltaY}: DraggableData) => {
     const {x, y} = pos;
@@ -144,7 +138,7 @@ const Visuals = () => {
           onDrag={handleDrag}
         >
           <DraggableImage isGrabbing={isGrabbing} hideImage={hideImage} className='handle'>
-            {sessionId > 0 && isDataLoaded &&
+            {sessionId > 0 && data && data.length > 0 &&
               <Image
                 data-testid={'toynet-session-img'}
                 className="image"
