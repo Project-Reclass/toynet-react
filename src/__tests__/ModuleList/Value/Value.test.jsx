@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
 
 import Value from 'src/Curriculum/Value';
