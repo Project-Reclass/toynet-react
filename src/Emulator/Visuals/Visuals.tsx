@@ -1,4 +1,4 @@
-import React, { useRef, useState, FC } from 'react';
+import React, { useRef, useState, useEffect, FC } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
 
 import { useVisualizeToynetImage } from 'src/common/api/topology';
@@ -47,13 +47,20 @@ const HighlightButton: FC<BtnProps> = ({ children, hoverComponent, component, ..
 
 const Visuals = () => {
   const { sessionId } = useEmulator();
-  const { data } = useVisualizeToynetImage(sessionId);
+  const { data, isLoading } = useVisualizeToynetImage(sessionId);
+
   const [pos, setPos] = useState({x: 0, y: 0});
   const [hideImage, setHideImage] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(INITIAL_ZOOM_LEVEL);
 
   const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setTimeout(recenterImage, 0);
+    }
+  }, [isLoading]);
 
   const handleDrag = (_: any, {deltaX, deltaY}: DraggableData) => {
     const {x, y} = pos;
