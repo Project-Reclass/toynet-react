@@ -1,322 +1,312 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Module List should render and match snapshot 1`] = `
-<div
-  className="css-1h7hrtx"
->
+<div>
   <div
-    className="css-1xeo39u"
+    class="css-1h7hrtx"
   >
     <div
-      className="css-1l4w6pd"
+      class="css-1xeo39u"
     >
       <div
-        className="css-qx149r"
+        class="css-1l4w6pd"
       >
-        <p
-          className="css-l8myuy"
-        >
-          Welcome!
-        </p>
-        <p
-          className="css-annqw3"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque fermentum volutpat. Proin ut iaculis mauris. Aenean commodo mauris at justo faucibus, in vulputate arcu maximus. Maecenas bibendum nisl urna, nec pretium lacus dapibus et. Nullam a diam sollicitudin, dapibus ante nec, pulvinar diam. Pellentesque sit amet dignissim felis. Nulla interdum, lacus ac rhoncus posuere, tortor leo pharetra nulla, a pulvinar quam sapien sed mi. Fusce bibendum mauris massa, at molestie arcu venenatis at. Vivamus in tellus tempus, porttitor diam a, laoreet magna. Morbi pharetra justo risus, non auctor nisl interdum varius.
-        </p>
-      </div>
-      <div
-        className="css-j7qwjs"
-      >
-        <p
-          className="css-bkdsaw"
-        >
-          Course Completion
-        </p>
         <div
-          aria-valuemax={100}
-          aria-valuemin={0}
-          aria-valuenow={25}
-          className="css-c15t6t"
-          role="progressbar"
+          class="css-qx149r"
         >
-          <svg
-            className="css-24ggqe"
-            viewBox="55.55555555555556 55.55555555555556 111.11111111111111 111.11111111111111"
+          <p
+            class="css-l8myuy"
           >
-            <circle
-              className="css-9y0bww"
-              cx={111.11111111111111}
-              cy={111.11111111111111}
-              data-progress-track={true}
-              r={50}
-              strokeDasharray={314.159}
-              strokeDashoffset={0}
-              strokeWidth={11.111111111111112}
-            />
-            <circle
-              className="css-h8bys5"
-              cx={111.11111111111111}
-              cy={111.11111111111111}
-              data-progress-indicator={true}
-              r={50}
-              strokeDasharray={314.159}
-              strokeDashoffset={235.61944901923448}
-              strokeWidth={11.111111111111112}
-            />
-          </svg>
+            Welcome!
+          </p>
+          <p
+            class="css-annqw3"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque fermentum volutpat. Proin ut iaculis mauris. Aenean commodo mauris at justo faucibus, in vulputate arcu maximus. Maecenas bibendum nisl urna, nec pretium lacus dapibus et. Nullam a diam sollicitudin, dapibus ante nec, pulvinar diam. Pellentesque sit amet dignissim felis. Nulla interdum, lacus ac rhoncus posuere, tortor leo pharetra nulla, a pulvinar quam sapien sed mi. Fusce bibendum mauris massa, at molestie arcu venenatis at. Vivamus in tellus tempus, porttitor diam a, laoreet magna. Morbi pharetra justo risus, non auctor nisl interdum varius.
+          </p>
+        </div>
+        <div
+          class="css-j7qwjs"
+        >
+          <p
+            class="css-bkdsaw"
+          >
+            Course Completion
+          </p>
           <div
-            className="css-13dwcxr-CircularProgressLabel"
+            aria-valuemax="100"
+            aria-valuemin="0"
+            aria-valuenow="25"
+            class="css-c15t6t"
+            role="progressbar"
           >
-            25%
+            <svg
+              class="css-24ggqe"
+              viewBox="55.55555555555556 55.55555555555556 111.11111111111111 111.11111111111111"
+            >
+              <circle
+                class="css-9y0bww"
+                cx="111.11111111111111"
+                cy="111.11111111111111"
+                data-progress-track="true"
+                r="50"
+                stroke-dasharray="314.159"
+                stroke-dashoffset="0"
+                stroke-width="11.111111111111112"
+              />
+              <circle
+                class="css-h8bys5"
+                cx="111.11111111111111"
+                cy="111.11111111111111"
+                data-progress-indicator="true"
+                r="50"
+                stroke-dasharray="314.159"
+                stroke-dashoffset="235.61944901923448"
+                stroke-width="11.111111111111112"
+              />
+            </svg>
+            <div
+              class="css-13dwcxr-CircularProgressLabel"
+            >
+              25%
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="css-gjrj21"
-  >
-    <div>
-      <div
-        className="css-1xeo39u"
-      >
+    <div
+      class="css-gjrj21"
+    >
+      <div>
         <div
-          className="css-11dqbsu"
-          onClick={[Function]}
-        >
-          <svg
-            className="css-1axzmpk"
-            focusable={false}
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
-              fill="currentColor"
-            />
-          </svg>
-          <p
-            className="css-grke7g"
-          >
-            Example Module
-          </p>
-        </div>
-      </div>
-      <div
-        aria-hidden={true}
-        className="rah-static rah-static--height-zero css-vppuuz"
-        style={
-          Object {
-            "height": 0,
-            "overflow": "hidden",
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "WebkitTransition": "opacity 250ms ease 0ms",
-              "opacity": 0,
-              "transition": "opacity 250ms ease 0ms",
-            }
-          }
+          class="css-1xeo39u"
         >
           <div
-            className="css-0"
+            class="css-11dqbsu"
+          >
+            <svg
+              class="css-1axzmpk"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
+                fill="currentColor"
+              />
+            </svg>
+            <p
+              class="css-grke7g"
+            >
+              Example Module
+            </p>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero css-vppuuz"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="transition: opacity 250ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              className="css-1opj1b2"
+              class="css-0"
             >
               <div
-                className="css-k008qs"
+                class="css-1opj1b2"
               >
                 <div
-                  className="css-j7qwjs"
+                  class="css-k008qs"
                 >
                   <div
-                    className="css-qt77o5"
-                    type="check"
+                    class="css-j7qwjs"
                   >
-                    <svg
-                      className="css-1sb13dz"
-                      focusable={false}
-                      role="presentation"
-                      viewBox="0 0 14 14"
-                    >
-                      <g
-                        fill="currentColor"
-                      >
-                        <polygon
-                          points="5.5 11.9993304 14 3.49933039 12.5 2 5.5 8.99933039 1.5 4.9968652 0 6.49933039"
-                        />
-                      </g>
-                    </svg>
-                  </div>
-                </div>
-                <div
-                  className="css-gmscv5"
-                >
-                  <div
-                    className="css-1wt6rk2"
-                  >
-                    <p
-                      className="css-c02fy7"
-                    >
-                      <a
-                        className="css-q3xaa4"
-                        href="/module/0/quiz/4001"
-                      >
-                        Quiz 1
-                      </a>
-                    </p>
                     <div
-                      className="css-xtemij"
+                      class="css-qt77o5"
+                      type="check"
                     >
-                      <p
-                        className="css-5yrbsi"
+                      <svg
+                        class="css-1sb13dz"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 14 14"
                       >
-                        Completed
-                      </p>
-                      <div
-                        className="css-52gy4w"
-                      >
-                        <div
-                          aria-valuemax={100}
-                          aria-valuemin={0}
-                          aria-valuenow={100}
-                          className="css-1tacofv-Progress"
-                          role="progressbar"
-                        />
-                      </div>
+                        <g
+                          fill="currentColor"
+                        >
+                          <polygon
+                            points="5.5 11.9993304 14 3.49933039 12.5 2 5.5 8.99933039 1.5 4.9968652 0 6.49933039"
+                          />
+                        </g>
+                      </svg>
                     </div>
                   </div>
-                  <hr
-                    className="css-1fic0ux"
-                  />
-                </div>
-              </div>
-              <div
-                className="css-k008qs"
-              >
-                <div
-                  className="css-j7qwjs"
-                >
                   <div
-                    className="css-1xc5jix"
-                    type="lock"
+                    class="css-gmscv5"
                   >
-                    <svg
-                      className="css-1qqmyhf"
-                      focusable={false}
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div
-                  className="css-gmscv5"
-                >
-                  <div
-                    className="css-1wt6rk2"
-                  >
-                    <p
-                      className="css-c02fy7"
-                    >
-                      <a
-                        className="css-q3xaa4"
-                        href="/module/0/article/2001"
-                      >
-                        Ever wondered how underwater cables are laid?
-                      </a>
-                    </p>
                     <div
-                      className="css-xtemij"
+                      class="css-1wt6rk2"
                     >
                       <p
-                        className="css-5yrbsi"
+                        class="css-c02fy7"
                       >
-                        Module progress
+                        <a
+                          class="css-q3xaa4"
+                          href="/module/0/quiz/4001"
+                        >
+                          Quiz 1
+                        </a>
                       </p>
                       <div
-                        className="css-52gy4w"
+                        class="css-xtemij"
                       >
+                        <p
+                          class="css-5yrbsi"
+                        >
+                          Completed
+                        </p>
                         <div
-                          aria-valuemax={100}
-                          aria-valuemin={0}
-                          aria-valuenow={10}
-                          className="css-r1648o-Progress"
-                          role="progressbar"
-                        />
+                          class="css-52gy4w"
+                        >
+                          <div
+                            aria-valuemax="100"
+                            aria-valuemin="0"
+                            aria-valuenow="100"
+                            class="css-1tacofv-Progress"
+                            role="progressbar"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <hr
-                    className="css-1fic0ux"
-                  />
-                </div>
-              </div>
-              <div
-                className="css-k008qs"
-              >
-                <div
-                  className="css-j7qwjs"
-                >
-                  <div
-                    className="css-1xc5jix"
-                    type="lock"
-                  >
-                    <svg
-                      className="css-1qqmyhf"
-                      focusable={false}
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
-                        fill="currentColor"
-                      />
-                    </svg>
+                    <hr
+                      class="css-1fic0ux"
+                    />
                   </div>
                 </div>
                 <div
-                  className="css-gmscv5"
+                  class="css-k008qs"
                 >
                   <div
-                    className="css-gg4vpm"
+                    class="css-j7qwjs"
                   >
-                    <p
-                      className="css-c02fy7"
-                    >
-                      <a
-                        className="css-q3xaa4"
-                        href="/value/5001"
-                      >
-                        Values - Integrity
-                      </a>
-                    </p>
                     <div
-                      className="css-xtemij"
+                      class="css-1xc5jix"
+                      type="lock"
+                    >
+                      <svg
+                        class="css-1qqmyhf"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="css-gmscv5"
+                  >
+                    <div
+                      class="css-1wt6rk2"
                     >
                       <p
-                        className="css-5yrbsi"
+                        class="css-c02fy7"
                       >
-                        Module progress
+                        <a
+                          class="css-q3xaa4"
+                          href="/module/0/article/2001"
+                        >
+                          Ever wondered how underwater cables are laid?
+                        </a>
                       </p>
                       <div
-                        className="css-52gy4w"
+                        class="css-xtemij"
                       >
+                        <p
+                          class="css-5yrbsi"
+                        >
+                          Module progress
+                        </p>
                         <div
-                          aria-valuemax={100}
-                          aria-valuemin={0}
-                          aria-valuenow={0}
-                          className="css-1u0whdh-Progress"
-                          role="progressbar"
+                          class="css-52gy4w"
+                        >
+                          <div
+                            aria-valuemax="100"
+                            aria-valuemin="0"
+                            aria-valuenow="10"
+                            class="css-r1648o-Progress"
+                            role="progressbar"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <hr
+                      class="css-1fic0ux"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="css-k008qs"
+                >
+                  <div
+                    class="css-j7qwjs"
+                  >
+                    <div
+                      class="css-1xc5jix"
+                      type="lock"
+                    >
+                      <svg
+                        class="css-1qqmyhf"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
+                          fill="currentColor"
                         />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="css-gmscv5"
+                  >
+                    <div
+                      class="css-gg4vpm"
+                    >
+                      <p
+                        class="css-c02fy7"
+                      >
+                        <a
+                          class="css-q3xaa4"
+                          href="/value/5001"
+                        >
+                          Values - Integrity
+                        </a>
+                      </p>
+                      <div
+                        class="css-xtemij"
+                      >
+                        <p
+                          class="css-5yrbsi"
+                        >
+                          Module progress
+                        </p>
+                        <div
+                          class="css-52gy4w"
+                        >
+                          <div
+                            aria-valuemax="100"
+                            aria-valuemin="0"
+                            aria-valuenow="0"
+                            class="css-1u0whdh-Progress"
+                            role="progressbar"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -326,245 +316,233 @@ exports[`The Module List should render and match snapshot 1`] = `
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        className="css-1xeo39u"
-      >
+      <div>
         <div
-          className="css-11dqbsu"
-          onClick={[Function]}
-        >
-          <svg
-            className="css-1axzmpk"
-            focusable={false}
-            role="presentation"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
-              fill="currentColor"
-            />
-          </svg>
-          <p
-            className="css-grke7g"
-          >
-            Second Module
-          </p>
-        </div>
-      </div>
-      <div
-        aria-hidden={true}
-        className="rah-static rah-static--height-zero css-vppuuz"
-        style={
-          Object {
-            "height": 0,
-            "overflow": "hidden",
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "WebkitTransition": "opacity 250ms ease 0ms",
-              "opacity": 0,
-              "transition": "opacity 250ms ease 0ms",
-            }
-          }
+          class="css-1xeo39u"
         >
           <div
-            className="css-0"
+            class="css-11dqbsu"
+          >
+            <svg
+              class="css-1axzmpk"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
+                fill="currentColor"
+              />
+            </svg>
+            <p
+              class="css-grke7g"
+            >
+              Second Module
+            </p>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero css-vppuuz"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="transition: opacity 250ms ease 0ms; opacity: 0; display: none;"
           >
             <div
-              className="css-1opj1b2"
+              class="css-0"
             >
               <div
-                className="css-k008qs"
+                class="css-1opj1b2"
               >
                 <div
-                  className="css-j7qwjs"
+                  class="css-k008qs"
                 >
                   <div
-                    className="css-1xc5jix"
-                    type="lock"
+                    class="css-j7qwjs"
                   >
-                    <svg
-                      className="css-1qqmyhf"
-                      focusable={false}
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div
-                  className="css-gmscv5"
-                >
-                  <div
-                    className="css-1wt6rk2"
-                  >
-                    <p
-                      className="css-c02fy7"
-                    >
-                      <a
-                        className="css-q3xaa4"
-                        href="/module/0/quiz/4002"
-                      >
-                        Quiz 2
-                      </a>
-                    </p>
                     <div
-                      className="css-xtemij"
+                      class="css-1xc5jix"
+                      type="lock"
                     >
-                      <p
-                        className="css-5yrbsi"
+                      <svg
+                        class="css-1qqmyhf"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
                       >
-                        Module progress
-                      </p>
-                      <div
-                        className="css-52gy4w"
-                      >
-                        <div
-                          aria-valuemax={100}
-                          aria-valuemin={0}
-                          aria-valuenow={0}
-                          className="css-1u0whdh-Progress"
-                          role="progressbar"
+                        <path
+                          d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
+                          fill="currentColor"
                         />
-                      </div>
+                      </svg>
                     </div>
                   </div>
-                  <hr
-                    className="css-1fic0ux"
-                  />
-                </div>
-              </div>
-              <div
-                className="css-k008qs"
-              >
-                <div
-                  className="css-j7qwjs"
-                >
                   <div
-                    className="css-1xc5jix"
-                    type="lock"
+                    class="css-gmscv5"
                   >
-                    <svg
-                      className="css-1qqmyhf"
-                      focusable={false}
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div
-                  className="css-gmscv5"
-                >
-                  <div
-                    className="css-1wt6rk2"
-                  >
-                    <p
-                      className="css-c02fy7"
-                    >
-                      <a
-                        className="css-q3xaa4"
-                        href="/module/0/article/2002"
-                      >
-                        Father of the internet, Vint Cerf, on creating the interplanetary internet
-                      </a>
-                    </p>
                     <div
-                      className="css-xtemij"
+                      class="css-1wt6rk2"
                     >
                       <p
-                        className="css-5yrbsi"
+                        class="css-c02fy7"
                       >
-                        Module progress
+                        <a
+                          class="css-q3xaa4"
+                          href="/module/0/quiz/4002"
+                        >
+                          Quiz 2
+                        </a>
                       </p>
                       <div
-                        className="css-52gy4w"
+                        class="css-xtemij"
                       >
+                        <p
+                          class="css-5yrbsi"
+                        >
+                          Module progress
+                        </p>
                         <div
-                          aria-valuemax={100}
-                          aria-valuemin={0}
-                          aria-valuenow={50}
-                          className="css-1o3mzkk-Progress"
-                          role="progressbar"
-                        />
+                          class="css-52gy4w"
+                        >
+                          <div
+                            aria-valuemax="100"
+                            aria-valuemin="0"
+                            aria-valuenow="0"
+                            class="css-1u0whdh-Progress"
+                            role="progressbar"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <hr
-                    className="css-1fic0ux"
-                  />
-                </div>
-              </div>
-              <div
-                className="css-k008qs"
-              >
-                <div
-                  className="css-j7qwjs"
-                >
-                  <div
-                    className="css-1xc5jix"
-                    type="lock"
-                  >
-                    <svg
-                      className="css-1qqmyhf"
-                      focusable={false}
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
-                        fill="currentColor"
-                      />
-                    </svg>
+                    <hr
+                      class="css-1fic0ux"
+                    />
                   </div>
                 </div>
                 <div
-                  className="css-gmscv5"
+                  class="css-k008qs"
                 >
                   <div
-                    className="css-gg4vpm"
+                    class="css-j7qwjs"
                   >
-                    <p
-                      className="css-c02fy7"
-                    >
-                      <a
-                        className="css-q3xaa4"
-                        href="/value/5002"
-                      >
-                        Values - Respect
-                      </a>
-                    </p>
                     <div
-                      className="css-xtemij"
+                      class="css-1xc5jix"
+                      type="lock"
+                    >
+                      <svg
+                        class="css-1qqmyhf"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="css-gmscv5"
+                  >
+                    <div
+                      class="css-1wt6rk2"
                     >
                       <p
-                        className="css-5yrbsi"
+                        class="css-c02fy7"
                       >
-                        Module progress
+                        <a
+                          class="css-q3xaa4"
+                          href="/module/0/article/2002"
+                        >
+                          Father of the internet, Vint Cerf, on creating the interplanetary internet
+                        </a>
                       </p>
                       <div
-                        className="css-52gy4w"
+                        class="css-xtemij"
                       >
+                        <p
+                          class="css-5yrbsi"
+                        >
+                          Module progress
+                        </p>
                         <div
-                          aria-valuemax={100}
-                          aria-valuemin={0}
-                          aria-valuenow={0}
-                          className="css-1u0whdh-Progress"
-                          role="progressbar"
+                          class="css-52gy4w"
+                        >
+                          <div
+                            aria-valuemax="100"
+                            aria-valuemin="0"
+                            aria-valuenow="50"
+                            class="css-1o3mzkk-Progress"
+                            role="progressbar"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <hr
+                      class="css-1fic0ux"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="css-k008qs"
+                >
+                  <div
+                    class="css-j7qwjs"
+                  >
+                    <div
+                      class="css-1xc5jix"
+                      type="lock"
+                    >
+                      <svg
+                        class="css-1qqmyhf"
+                        focusable="false"
+                        role="presentation"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19.5,9.5h-.75V6.75A6.751,6.751,0,0,0,5.533,4.811a1.25,1.25,0,1,0,2.395.717A4.251,4.251,0,0,1,16.25,6.75V9a.5.5,0,0,1-.5.5H4.5a2,2,0,0,0-2,2V22a2,2,0,0,0,2,2h15a2,2,0,0,0,2-2V11.5A2,2,0,0,0,19.5,9.5Zm-9.5,6a2,2,0,1,1,3,1.723V19.5a1,1,0,0,1-2,0V17.223A1.994,1.994,0,0,1,10,15.5Z"
+                          fill="currentColor"
                         />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="css-gmscv5"
+                  >
+                    <div
+                      class="css-gg4vpm"
+                    >
+                      <p
+                        class="css-c02fy7"
+                      >
+                        <a
+                          class="css-q3xaa4"
+                          href="/value/5002"
+                        >
+                          Values - Respect
+                        </a>
+                      </p>
+                      <div
+                        class="css-xtemij"
+                      >
+                        <p
+                          class="css-5yrbsi"
+                        >
+                          Module progress
+                        </p>
+                        <div
+                          class="css-52gy4w"
+                        >
+                          <div
+                            aria-valuemax="100"
+                            aria-valuemin="0"
+                            aria-valuenow="0"
+                            class="css-1u0whdh-Progress"
+                            role="progressbar"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>

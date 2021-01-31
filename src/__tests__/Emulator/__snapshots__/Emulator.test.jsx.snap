@@ -1,373 +1,325 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The emulator should render and match snapshots 1`] = `
-<div
-  className="css-1af67e0"
->
+<div>
   <div
-    className="css-74aybn"
+    class="css-1af67e0"
   >
     <div
-      className="css-1nxzogq"
+      class="css-74aybn"
     >
       <div
-        className="css-ebb1fz"
+        class="css-1nxzogq"
       >
-        <a
-          className="css-r59rv1"
-          href="/"
+        <div
+          class="css-ebb1fz"
         >
-          <svg
-            className="css-112d3fm"
+          <a
+            class="css-r59rv1"
+            href="/"
           >
-            backIcon.svg
-          </svg>
+            <svg
+              class="css-112d3fm"
+            >
+              backIcon.svg
+            </svg>
+            <p
+              class="css-fzcsno"
+            >
+              Back to site
+            </p>
+          </a>
+        </div>
+        <div
+          class="css-1f1lwn6"
+        >
+          <h2
+            class="css-nua0st"
+          >
+            Module 
+            1
+          </h2>
           <p
-            className="css-fzcsno"
+            class="css-fzcsno"
           >
-            Back to site
+            Modifying Topology
           </p>
-        </a>
-      </div>
-      <div
-        className="css-1f1lwn6"
-      >
-        <h2
-          className="css-nua0st"
-        >
-          Module 
-          1
-        </h2>
-        <p
-          className="css-fzcsno"
-        >
-          Modifying Topology
-        </p>
-      </div>
-      <div
-        className="css-1f1lwn6"
-      >
-        <h2
-          className="css-nua0st"
-        >
-          Objective
-        </h2>
-        <p
-          className="css-fzcsno"
-        >
-          Add and remove devices and their connections.
-        </p>
-      </div>
-      <div
-        className="css-1f1lwn6"
-      >
-        <h2
-          className="css-nua0st"
-        >
-          Tasks
-        </h2>
-        <div
-          className="css-16cm47t"
-        >
-          <li
-            className="css-p5me83"
-          >
-            Add a Host (h3)
-          </li>
-          <li
-            className="css-p5me83"
-          >
-            Attach h3 to s2
-          </li>
-          <li
-            className="css-p5me83"
-          >
-            Detach h3 from s2
-          </li>
-          <li
-            className="css-p5me83"
-          >
-            Remove h2
-          </li>
-        </div>
-      </div>
-    </div>
-    <div
-      style={
-        Object {
-          "marginTop": "2vh",
-          "zIndex": 0,
-        }
-      }
-    >
-      <div
-        className="css-5d2y56"
-      >
-        <div
-          className="css-1c5a9no"
-        />
-        <button
-          className="css-x4n12y"
-          onClick={[Function]}
-        >
-          Clear
-        </button>
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-1xbpgl1"
-  >
-    <div>
-      <div
-        className="css-0"
-      >
-        <div
-          aria-orientation="horizontal"
-          className="css-e2etbk"
-          onKeyDown={[Function]}
-          role="tablist"
-        >
-          <button
-            aria-controls="panel:1-0"
-            aria-selected={true}
-            className="css-16futwh"
-            id="tab:1-0"
-            onClick={[Function]}
-            role="tab"
-            tabIndex={0}
-            type="button"
-          >
-            Configure
-          </button>
-          <button
-            aria-controls="panel:1-1"
-            aria-selected={false}
-            className="css-16futwh"
-            id="tab:1-1"
-            onClick={[Function]}
-            role="tab"
-            tabIndex={-1}
-            type="button"
-          >
-            Console
-          </button>
-          <button
-            aria-controls="panel:1-2"
-            aria-selected={false}
-            className="css-16futwh"
-            id="tab:1-2"
-            onClick={[Function]}
-            role="tab"
-            tabIndex={-1}
-            type="button"
-          >
-            History
-          </button>
         </div>
         <div
-          className="css-1vsi4k8"
-          tabIndex="-1"
+          class="css-1f1lwn6"
+        >
+          <h2
+            class="css-nua0st"
+          >
+            Objective
+          </h2>
+          <p
+            class="css-fzcsno"
+          >
+            Add and remove devices and their connections.
+          </p>
+        </div>
+        <div
+          class="css-1f1lwn6"
+        >
+          <h2
+            class="css-nua0st"
+          >
+            Tasks
+          </h2>
+          <div
+            class="css-16cm47t"
+          >
+            <li
+              class="css-p5me83"
+            >
+              Add a Host (h3)
+            </li>
+            <li
+              class="css-p5me83"
+            >
+              Attach h3 to s2
+            </li>
+            <li
+              class="css-p5me83"
+            >
+              Detach h3 from s2
+            </li>
+            <li
+              class="css-p5me83"
+            >
+              Remove h2
+            </li>
+          </div>
+        </div>
+      </div>
+      <div
+        style="margin-top: 2vh; z-index: 0;"
+      >
+        <div
+          class="css-5d2y56"
         >
           <div
-            aria-labelledby="tab:1-0"
-            className="css-1jj07fx"
-            hidden={false}
-            id="panel:1-0"
-            role="tabpanel"
-            tabIndex={-1}
+            class="css-1c5a9no"
+          />
+          <button
+            class="css-x4n12y"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1xbpgl1"
+    >
+      <div>
+        <div
+          class="css-0"
+        >
+          <div
+            aria-orientation="horizontal"
+            class="css-e2etbk"
+            role="tablist"
+          >
+            <button
+              aria-controls="panel:1-0"
+              aria-selected="true"
+              class="css-16futwh"
+              id="tab:1-0"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              Configure
+            </button>
+            <button
+              aria-controls="panel:1-1"
+              aria-selected="false"
+              class="css-16futwh"
+              id="tab:1-1"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Console
+            </button>
+            <button
+              aria-controls="panel:1-2"
+              aria-selected="false"
+              class="css-16futwh"
+              id="tab:1-2"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              History
+            </button>
+          </div>
+          <div
+            class="css-1vsi4k8"
+            tabindex="-1"
           >
             <div
-              className="css-1j6w374"
+              aria-labelledby="tab:1-0"
+              class="css-1jj07fx"
+              id="panel:1-0"
+              role="tabpanel"
+              tabindex="-1"
             >
               <div
-                className="css-lmdmu1"
+                class="css-1j6w374"
               >
-                <div>
-                  <div
-                    className="css-vl1v3j"
-                  >
-                    <svg
-                      className="css-8s9z6t"
-                      data-testid="plus-icon"
-                      onClick={[Function]}
-                    >
-                      add.svg
-                    </svg>
-                    Router
-                  </div>
-                  <div
-                    className="css-zop8l2"
-                  >
+                <div
+                  class="css-lmdmu1"
+                >
+                  <div>
                     <div
-                      className="css-ixj81f"
+                      class="css-vl1v3j"
                     >
-                      <div />
+                      <svg
+                        class="css-8s9z6t"
+                        data-testid="plus-icon"
+                      >
+                        add.svg
+                      </svg>
+                      Router
+                    </div>
+                    <div
+                      class="css-zop8l2"
+                    >
+                      <div
+                        class="css-ixj81f"
+                      >
+                        <div />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <div
-                    className="css-vl1v3j"
-                  >
-                    <svg
-                      className="css-8s9z6t"
-                      data-testid="plus-icon"
-                      onClick={[Function]}
-                    >
-                      add.svg
-                    </svg>
-                    Switch
-                  </div>
-                  <div
-                    className="css-zop8l2"
-                  >
+                  <div>
                     <div
-                      className="css-ixj81f"
+                      class="css-vl1v3j"
                     >
-                      <div />
+                      <svg
+                        class="css-8s9z6t"
+                        data-testid="plus-icon"
+                      >
+                        add.svg
+                      </svg>
+                      Switch
+                    </div>
+                    <div
+                      class="css-zop8l2"
+                    >
+                      <div
+                        class="css-ixj81f"
+                      >
+                        <div />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <div
-                    className="css-vl1v3j"
-                  >
-                    <svg
-                      className="css-8s9z6t"
-                      data-testid="plus-icon"
-                      onClick={[Function]}
-                    >
-                      add.svg
-                    </svg>
-                    Host
-                  </div>
-                  <div
-                    className="css-zop8l2"
-                  >
+                  <div>
                     <div
-                      className="css-ixj81f"
+                      class="css-vl1v3j"
                     >
-                      <div />
+                      <svg
+                        class="css-8s9z6t"
+                        data-testid="plus-icon"
+                      >
+                        add.svg
+                      </svg>
+                      Host
+                    </div>
+                    <div
+                      class="css-zop8l2"
+                    >
+                      <div
+                        class="css-ixj81f"
+                      >
+                        <div />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            aria-labelledby="tab:1-1"
-            className="css-1jj07fx"
-            hidden={true}
-            id="panel:1-1"
-            role="tabpanel"
-            tabIndex={-1}
-          >
-            <h2
-              className="css-cumyq4"
+            <div
+              aria-labelledby="tab:1-1"
+              class="css-1jj07fx"
+              hidden=""
+              id="panel:1-1"
+              role="tabpanel"
+              tabindex="-1"
             >
-              Coming soon...
-            </h2>
-          </div>
-          <div
-            aria-labelledby="tab:1-2"
-            className="css-1jj07fx"
-            hidden={true}
-            id="panel:1-2"
-            role="tabpanel"
-            tabIndex={-1}
-          >
-            <h2
-              className="css-cumyq4"
+              <h2
+                class="css-cumyq4"
+              >
+                Coming soon...
+              </h2>
+            </div>
+            <div
+              aria-labelledby="tab:1-2"
+              class="css-1jj07fx"
+              hidden=""
+              id="panel:1-2"
+              role="tabpanel"
+              tabindex="-1"
             >
-              Coming soon...
-            </h2>
+              <h2
+                class="css-cumyq4"
+              >
+                Coming soon...
+              </h2>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="css-1w23y4q"
-    >
       <div
-        className="css-ljj55y"
+        class="css-1w23y4q"
       >
         <div
-          className="css-11pv0ql"
+          class="css-ljj55y"
         >
-          <button
-            className="pb-2vh"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
+          <div
+            class="css-11pv0ql"
           >
-            <svg>
-              plus-zoom.svg
-            </svg>
-          </button>
-          <button
-            className="pb-2vh"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-          >
-            <svg>
-              minus-zoom.svg
-            </svg>
-          </button>
-          <button
-            className="pb-2vh"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-          >
-            <svg>
-              eye-hide.svg
-            </svg>
-          </button>
-          <button
-            className="pb-2vh"
-            onClick={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-          >
-            <svg>
-              center-image.svg
-            </svg>
-          </button>
+            <button
+              class="pb-2vh"
+              style="cursor: pointer;"
+            >
+              <svg>
+                plus-zoom.svg
+              </svg>
+            </button>
+            <button
+              class="pb-2vh"
+              style="cursor: pointer;"
+            >
+              <svg>
+                minus-zoom.svg
+              </svg>
+            </button>
+            <button
+              class="pb-2vh"
+              style="cursor: pointer;"
+            >
+              <svg>
+                eye-hide.svg
+              </svg>
+            </button>
+            <button
+              class="pb-2vh"
+              style="cursor: pointer;"
+            >
+              <svg>
+                center-image.svg
+              </svg>
+            </button>
+          </div>
+          <div
+            class="handle react-draggable css-11ocl2r"
+            style="transform: translate(0px,0px);"
+          />
         </div>
-        <div
-          className="handle react-draggable css-11ocl2r"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          style={
-            Object {
-              "transform": "translate(0px,0px)",
-            }
-          }
-          transform={null}
-        />
       </div>
     </div>
   </div>

@@ -1,78 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ConfigureTab should match previous snapshots 1`] = `
-<div
-  className="css-1j6w374"
->
+<div>
   <div
-    className="css-lmdmu1"
+    class="css-1j6w374"
   >
-    <div>
-      <div
-        className="css-vl1v3j"
-      >
-        <svg
-          className="css-8s9z6t"
-          data-testid="plus-icon"
-          onClick={[Function]}
-        >
-          add.svg
-        </svg>
-        Router
-      </div>
-      <div
-        className="css-zop8l2"
-      >
+    <div
+      class="css-lmdmu1"
+    >
+      <div>
         <div
-          className="css-ixj81f"
+          class="css-vl1v3j"
         >
-          <div />
+          <svg
+            class="css-8s9z6t"
+            data-testid="plus-icon"
+          >
+            add.svg
+          </svg>
+          Router
+        </div>
+        <div
+          class="css-zop8l2"
+        >
+          <div
+            class="css-ixj81f"
+          >
+            <div />
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        className="css-vl1v3j"
-      >
-        <svg
-          className="css-8s9z6t"
-          data-testid="plus-icon"
-          onClick={[Function]}
-        >
-          add.svg
-        </svg>
-        Switch
-      </div>
-      <div
-        className="css-zop8l2"
-      >
+      <div>
         <div
-          className="css-ixj81f"
+          class="css-vl1v3j"
         >
-          <div />
+          <svg
+            class="css-8s9z6t"
+            data-testid="plus-icon"
+          >
+            add.svg
+          </svg>
+          Switch
+        </div>
+        <div
+          class="css-zop8l2"
+        >
+          <div
+            class="css-ixj81f"
+          >
+            <div />
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        className="css-vl1v3j"
-      >
-        <svg
-          className="css-8s9z6t"
-          data-testid="plus-icon"
-          onClick={[Function]}
-        >
-          add.svg
-        </svg>
-        Host
-      </div>
-      <div
-        className="css-zop8l2"
-      >
+      <div>
         <div
-          className="css-ixj81f"
+          class="css-vl1v3j"
         >
-          <div />
+          <svg
+            class="css-8s9z6t"
+            data-testid="plus-icon"
+          >
+            add.svg
+          </svg>
+          Host
+        </div>
+        <div
+          class="css-zop8l2"
+        >
+          <div
+            class="css-ixj81f"
+          >
+            <div />
+          </div>
         </div>
       </div>
     </div>

@@ -2,215 +2,186 @@
 
 exports[`The DeviceContainer should match previous snapshots 1`] = `
 <div>
-  <div
-    className="css-vl1v3j"
-  >
-    <svg
-      className="css-8s9z6t"
-      data-testid="plus-icon"
-      onClick={[Function]}
-    >
-      add.svg
-    </svg>
-    Router
-  </div>
-  <div
-    className="css-zop8l2"
-  >
+  <div>
     <div
-      className="css-ixj81f"
+      class="css-vl1v3j"
+    >
+      <svg
+        class="css-8s9z6t"
+        data-testid="plus-icon"
+      >
+        add.svg
+      </svg>
+      Router
+    </div>
+    <div
+      class="css-zop8l2"
     >
       <div
-        className="css-sdnyl6"
+        class="css-ixj81f"
       >
         <div
-          className="css-k008qs"
+          class="css-sdnyl6"
         >
           <div
-            className="css-1fpqswo"
-            size="large"
-            style={
-              Object {
-                "margin": "auto",
-              }
-            }
-            type="r"
+            class="css-k008qs"
           >
-            R1
-          </div>
-          <hr
-            aria-orientation="vertical"
-            className="css-1re51h6"
-          />
-        </div>
-        <div
-          className="css-44y88i"
-        >
-          <div>
-            Connections:
+            <div
+              class="css-1fpqswo"
+              style="margin: auto;"
+              type="r"
+            >
+              R1
+            </div>
+            <hr
+              aria-orientation="vertical"
+              class="css-1re51h6"
+            />
           </div>
           <div
-            className="css-7sa7d"
+            class="css-44y88i"
           >
-            <div
-              className="css-r63nom"
-              id="h1"
-              style={
-                Object {
-                  "transform": "rotateX(-180deg)",
-                }
-              }
-              type="h"
-            >
-              h1
+            <div>
+              Connections:
             </div>
             <div
-              className="css-r63nom"
-              id="h2"
-              style={
-                Object {
-                  "transform": "rotateX(-180deg)",
-                }
-              }
-              type="h"
+              class="css-7sa7d"
             >
-              h2
-            </div>
-            <div
-              className="css-qckvoc"
-              id="s1"
-              style={
-                Object {
-                  "transform": "rotateX(-180deg)",
-                }
-              }
-              type="s"
-            >
-              s1
-            </div>
-          </div>
-        </div>
-        <div
-          className="css-1y4kgfw"
-          data-testid="trash-icon"
-        >
-          <hr
-            aria-orientation="vertical"
-            className="css-1re51h6"
-          />
-          <div
-            className="css-1tp6xpy"
-          >
-            <svg
-              className="css-t0psiy"
-              focusable={true}
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <g
-                fill="currentColor"
+              <div
+                class="css-r63nom"
+                id="h1"
+                style="transform: rotateX(-180deg);"
+                type="h"
               >
-                <path
-                  d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
-                />
-                <path
-                  d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
-                />
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div
-        className="css-sdnyl6"
-      >
-        <div
-          className="css-k008qs"
-        >
-          <div
-            className="css-1fpqswo"
-            size="large"
-            style={
-              Object {
-                "margin": "auto",
-              }
-            }
-            type="r"
-          >
-            R2
-          </div>
-          <hr
-            aria-orientation="vertical"
-            className="css-1re51h6"
-          />
-        </div>
-        <div
-          className="css-44y88i"
-        >
-          <div>
-            Connections:
-          </div>
-          <div
-            className="css-7sa7d"
-          >
-            <div
-              className="css-r63nom"
-              id="h3"
-              style={
-                Object {
-                  "transform": "rotateX(-180deg)",
-                }
-              }
-              type="h"
-            >
-              h3
-            </div>
-            <div
-              className="css-qckvoc"
-              id="s1"
-              style={
-                Object {
-                  "transform": "rotateX(-180deg)",
-                }
-              }
-              type="s"
-            >
-              s1
-            </div>
-          </div>
-        </div>
-        <div
-          className="css-1y4kgfw"
-          data-testid="trash-icon"
-        >
-          <hr
-            aria-orientation="vertical"
-            className="css-1re51h6"
-          />
-          <div
-            className="css-1tp6xpy"
-          >
-            <svg
-              className="css-t0psiy"
-              focusable={true}
-              role="presentation"
-              viewBox="0 0 24 24"
-            >
-              <g
-                fill="currentColor"
+                h1
+              </div>
+              <div
+                class="css-r63nom"
+                id="h2"
+                style="transform: rotateX(-180deg);"
+                type="h"
               >
-                <path
-                  d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
-                />
-                <path
-                  d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
-                />
-              </g>
-            </svg>
+                h2
+              </div>
+              <div
+                class="css-qckvoc"
+                id="s1"
+                style="transform: rotateX(-180deg);"
+                type="s"
+              >
+                s1
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1y4kgfw"
+            data-testid="trash-icon"
+          >
+            <hr
+              aria-orientation="vertical"
+              class="css-1re51h6"
+            />
+            <div
+              class="css-1tp6xpy"
+            >
+              <svg
+                class="css-t0psiy"
+                focusable="true"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
+                  />
+                  <path
+                    d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
+                  />
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
+        <div
+          class="css-sdnyl6"
+        >
+          <div
+            class="css-k008qs"
+          >
+            <div
+              class="css-1fpqswo"
+              style="margin: auto;"
+              type="r"
+            >
+              R2
+            </div>
+            <hr
+              aria-orientation="vertical"
+              class="css-1re51h6"
+            />
+          </div>
+          <div
+            class="css-44y88i"
+          >
+            <div>
+              Connections:
+            </div>
+            <div
+              class="css-7sa7d"
+            >
+              <div
+                class="css-r63nom"
+                id="h3"
+                style="transform: rotateX(-180deg);"
+                type="h"
+              >
+                h3
+              </div>
+              <div
+                class="css-qckvoc"
+                id="s1"
+                style="transform: rotateX(-180deg);"
+                type="s"
+              >
+                s1
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1y4kgfw"
+            data-testid="trash-icon"
+          >
+            <hr
+              aria-orientation="vertical"
+              class="css-1re51h6"
+            />
+            <div
+              class="css-1tp6xpy"
+            >
+              <svg
+                class="css-t0psiy"
+                focusable="true"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
+                  />
+                  <path
+                    d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div />
       </div>
-      <div />
     </div>
   </div>
 </div>

@@ -1,10 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import DeviceContainer from 'src/Emulator/Tabs/ConfigureTab/DeviceContainer';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import { wrapInTestContext } from 'react-dnd-test-utils';
-import { renderTreeWithTheme, renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 const TestComponent = wrapInTestContext(DeviceContainer);
 
@@ -32,8 +31,8 @@ describe('The DeviceContainer', () => {
   });
 
   it('should match previous snapshots', () => {
-    const tree = renderTreeWithTheme(<TestComponent {...defaultProps} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<TestComponent {...defaultProps} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should add device when plus icon is clicked', () => {

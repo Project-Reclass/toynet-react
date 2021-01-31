@@ -6,7 +6,7 @@ import Quiz from 'src/Curriculum/Quiz';
 
 jest.mock('src/common/api/curriculum/quiz/requests');
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests';
-import { renderTreeWithTheme, renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 const RenderWithRouter = ({ children, moduleId, quizId }) => (
   <MemoryRouter initialEntries={[`/module/${moduleId}/quiz/${quizId}`]}>
@@ -16,12 +16,12 @@ const RenderWithRouter = ({ children, moduleId, quizId }) => (
 
 describe('The Quiz page', () => {
   it('should render the same based on URL parameters', () => {
-    const tree = renderTreeWithTheme(
+    const { container } = renderWithTheme(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should fetch quiz data', async () => {
