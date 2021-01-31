@@ -1,379 +1,344 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Device should match previous snapshot with router connections 1`] = `
-<div
-  className="css-sdnyl6"
->
+<div>
   <div
-    className="css-k008qs"
+    class="css-sdnyl6"
   >
     <div
-      className="css-1fpqswo"
-      size="large"
-      style={
-        Object {
-          "margin": "auto",
-        }
-      }
-      type="r"
+      class="css-k008qs"
     >
-      r1
-    </div>
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-  </div>
-  <div
-    className="css-44y88i"
-  >
-    <div>
-      Connections:
+      <div
+        class="css-1fpqswo"
+        draggable="true"
+        style="margin: auto;"
+        type="r"
+      >
+        r1
+      </div>
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
     </div>
     <div
-      className="css-7sa7d"
+      class="css-44y88i"
     >
-      <div
-        className="css-r63nom"
-        id="h1"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="h"
-      >
-        h1
+      <div>
+        Connections:
       </div>
       <div
-        className="css-r63nom"
-        id="h2"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="h"
+        class="css-7sa7d"
       >
-        h2
-      </div>
-      <div
-        className="css-r63nom"
-        id="h3"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="h"
-      >
-        h3
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-1y4kgfw"
-    data-testid="trash-icon"
-  >
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-    <div
-      className="css-1tp6xpy"
-    >
-      <svg
-        className="css-t0psiy"
-        focusable={true}
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <g
-          fill="currentColor"
+        <div
+          class="css-r63nom"
+          draggable="true"
+          id="h1"
+          style="transform: rotateX(-180deg);"
+          type="h"
         >
-          <path
-            d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
-          />
-          <path
-            d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
-          />
-        </g>
-      </svg>
+          h1
+        </div>
+        <div
+          class="css-r63nom"
+          draggable="true"
+          id="h2"
+          style="transform: rotateX(-180deg);"
+          type="h"
+        >
+          h2
+        </div>
+        <div
+          class="css-r63nom"
+          draggable="true"
+          id="h3"
+          style="transform: rotateX(-180deg);"
+          type="h"
+        >
+          h3
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1y4kgfw"
+      data-testid="trash-icon"
+    >
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
+      <div
+        class="css-1tp6xpy"
+      >
+        <svg
+          class="css-t0psiy"
+          focusable="true"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <g
+            fill="currentColor"
+          >
+            <path
+              d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
+            />
+            <path
+              d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
+            />
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`The Device should match previous snapshots 1`] = `
-<div
-  className="css-sdnyl6"
->
+<div>
   <div
-    className="css-k008qs"
+    class="css-sdnyl6"
   >
     <div
-      className="css-1eoqjxx"
-      size="large"
-      style={
-        Object {
-          "margin": "auto",
-        }
-      }
-      type="t"
+      class="css-k008qs"
     >
-      test
-    </div>
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-  </div>
-  <div
-    className="css-44y88i"
-  >
-    <div>
-      Connections:
-    </div>
-    <div
-      className="css-7sa7d"
-    />
-  </div>
-  <div
-    className="css-1y4kgfw"
-    data-testid="trash-icon"
-  >
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-    <div
-      className="css-1tp6xpy"
-    >
-      <svg
-        className="css-t0psiy"
-        focusable={true}
-        role="presentation"
-        viewBox="0 0 24 24"
+      <div
+        class="css-1eoqjxx"
+        draggable="true"
+        style="margin: auto;"
+        type="t"
       >
-        <g
-          fill="currentColor"
+        test
+      </div>
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
+    </div>
+    <div
+      class="css-44y88i"
+    >
+      <div>
+        Connections:
+      </div>
+      <div
+        class="css-7sa7d"
+      />
+    </div>
+    <div
+      class="css-1y4kgfw"
+      data-testid="trash-icon"
+    >
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
+      <div
+        class="css-1tp6xpy"
+      >
+        <svg
+          class="css-t0psiy"
+          focusable="true"
+          role="presentation"
+          viewBox="0 0 24 24"
         >
-          <path
-            d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
-          />
-          <path
-            d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
-          />
-        </g>
-      </svg>
+          <g
+            fill="currentColor"
+          >
+            <path
+              d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
+            />
+            <path
+              d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
+            />
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`The Device should match previous snapshots with host connections 1`] = `
-<div
-  className="css-sdnyl6"
->
+<div>
   <div
-    className="css-k008qs"
+    class="css-sdnyl6"
   >
     <div
-      className="css-1sntp9o"
-      size="large"
-      style={
-        Object {
-          "margin": "auto",
-        }
-      }
-      type="h"
+      class="css-k008qs"
     >
-      h1
-    </div>
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-  </div>
-  <div
-    className="css-44y88i"
-  >
-    <div>
-      Connections:
+      <div
+        class="css-1sntp9o"
+        draggable="true"
+        style="margin: auto;"
+        type="h"
+      >
+        h1
+      </div>
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
     </div>
     <div
-      className="css-7sa7d"
+      class="css-44y88i"
     >
-      <div
-        className="css-om4rml"
-        id="r1"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="r"
-      >
-        r1
+      <div>
+        Connections:
       </div>
       <div
-        className="css-om4rml"
-        id="r2"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="r"
+        class="css-7sa7d"
       >
-        r2
-      </div>
-      <div
-        className="css-om4rml"
-        id="r3"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="r"
-      >
-        r3
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-1y4kgfw"
-    data-testid="trash-icon"
-  >
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-    <div
-      className="css-1tp6xpy"
-    >
-      <svg
-        className="css-t0psiy"
-        focusable={true}
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <g
-          fill="currentColor"
+        <div
+          class="css-om4rml"
+          draggable="true"
+          id="r1"
+          style="transform: rotateX(-180deg);"
+          type="r"
         >
-          <path
-            d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
-          />
-          <path
-            d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
-          />
-        </g>
-      </svg>
+          r1
+        </div>
+        <div
+          class="css-om4rml"
+          draggable="true"
+          id="r2"
+          style="transform: rotateX(-180deg);"
+          type="r"
+        >
+          r2
+        </div>
+        <div
+          class="css-om4rml"
+          draggable="true"
+          id="r3"
+          style="transform: rotateX(-180deg);"
+          type="r"
+        >
+          r3
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1y4kgfw"
+      data-testid="trash-icon"
+    >
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
+      <div
+        class="css-1tp6xpy"
+      >
+        <svg
+          class="css-t0psiy"
+          focusable="true"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <g
+            fill="currentColor"
+          >
+            <path
+              d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
+            />
+            <path
+              d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
+            />
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`The Device should match previous snapshots with switch connections 1`] = `
-<div
-  className="css-sdnyl6"
->
+<div>
   <div
-    className="css-k008qs"
+    class="css-sdnyl6"
   >
     <div
-      className="css-1fw8lsd"
-      size="large"
-      style={
-        Object {
-          "margin": "auto",
-        }
-      }
-      type="s"
+      class="css-k008qs"
     >
-      s1
-    </div>
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-  </div>
-  <div
-    className="css-44y88i"
-  >
-    <div>
-      Connections:
+      <div
+        class="css-1fw8lsd"
+        draggable="true"
+        style="margin: auto;"
+        type="s"
+      >
+        s1
+      </div>
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
     </div>
     <div
-      className="css-7sa7d"
+      class="css-44y88i"
     >
-      <div
-        className="css-qckvoc"
-        id="s2"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="s"
-      >
-        s2
+      <div>
+        Connections:
       </div>
       <div
-        className="css-qckvoc"
-        id="s3"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="s"
+        class="css-7sa7d"
       >
-        s3
-      </div>
-      <div
-        className="css-qckvoc"
-        id="s4"
-        style={
-          Object {
-            "transform": "rotateX(-180deg)",
-          }
-        }
-        type="s"
-      >
-        s4
-      </div>
-    </div>
-  </div>
-  <div
-    className="css-1y4kgfw"
-    data-testid="trash-icon"
-  >
-    <hr
-      aria-orientation="vertical"
-      className="css-1re51h6"
-    />
-    <div
-      className="css-1tp6xpy"
-    >
-      <svg
-        className="css-t0psiy"
-        focusable={true}
-        role="presentation"
-        viewBox="0 0 24 24"
-      >
-        <g
-          fill="currentColor"
+        <div
+          class="css-qckvoc"
+          draggable="true"
+          id="s2"
+          style="transform: rotateX(-180deg);"
+          type="s"
         >
-          <path
-            d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
-          />
-          <path
-            d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
-          />
-        </g>
-      </svg>
+          s2
+        </div>
+        <div
+          class="css-qckvoc"
+          draggable="true"
+          id="s3"
+          style="transform: rotateX(-180deg);"
+          type="s"
+        >
+          s3
+        </div>
+        <div
+          class="css-qckvoc"
+          draggable="true"
+          id="s4"
+          style="transform: rotateX(-180deg);"
+          type="s"
+        >
+          s4
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1y4kgfw"
+      data-testid="trash-icon"
+    >
+      <hr
+        aria-orientation="vertical"
+        class="css-1re51h6"
+      />
+      <div
+        class="css-1tp6xpy"
+      >
+        <svg
+          class="css-t0psiy"
+          focusable="true"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <g
+            fill="currentColor"
+          >
+            <path
+              d="M19.452,7.5H4.547a.5.5,0,0,0-.5.545L5.334,22.181A2,2,0,0,0,7.326,24h9.347a2,2,0,0,0,1.992-1.819L19.95,8.045a.5.5,0,0,0-.129-.382A.5.5,0,0,0,19.452,7.5Zm-9.2,13a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Zm5,0a.75.75,0,0,1-1.5,0v-9a.75.75,0,0,1,1.5,0Z"
+            />
+            <path
+              d="M22,4H17.25A.25.25,0,0,1,17,3.75V2.5A2.5,2.5,0,0,0,14.5,0h-5A2.5,2.5,0,0,0,7,2.5V3.75A.25.25,0,0,1,6.75,4H2A1,1,0,0,0,2,6H22a1,1,0,0,0,0-2ZM9,3.75V2.5A.5.5,0,0,1,9.5,2h5a.5.5,0,0,1,.5.5V3.75a.25.25,0,0,1-.25.25H9.25A.25.25,0,0,1,9,3.75Z"
+            />
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </div>

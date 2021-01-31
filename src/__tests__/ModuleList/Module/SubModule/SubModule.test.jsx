@@ -23,10 +23,10 @@ const valuesProps = {
 
 describe('The sub modules', () => {
   it('should render and match previous snapshots', () => {
-    const tree = renderTreeWithTheme(
+    const { container } = renderWithTheme(
       <SubModule {...defaultProps} />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
   it('should create a link to the submodule page', () => {
     const { type, id, title, moduleId } = defaultProps;

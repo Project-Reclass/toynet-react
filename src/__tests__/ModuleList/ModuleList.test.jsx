@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { renderTreeWithTheme } from 'src/common/test-utils/renderWithTheme';
 import ModuleList from 'src/Curriculum';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 describe('The Module List', () => {
   it('should render and match snapshot', () => {
-    const tree = renderTreeWithTheme(<ModuleList />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<ModuleList />);
+    expect(container).toMatchSnapshot();
   });
 });

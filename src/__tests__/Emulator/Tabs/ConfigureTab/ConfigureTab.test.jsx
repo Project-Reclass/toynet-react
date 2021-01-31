@@ -1,11 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 jest.mock('src/common/api/topology/requests')
 import ConfigureTab, { getNextDeviceName, getNextNumber } from 'src/Emulator/Tabs/ConfigureTab';
 import { render, act, fireEvent } from '@testing-library/react';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
-
 
 describe('ConfigureTab helper functions', () => {
   it('should increment numbers correctly', () => {
@@ -37,7 +35,7 @@ describe('ConfigureTab helper functions', () => {
 
 describe('ConfigureTab', ()=> {
   it('should match previous snapshots', () => {
-    const tree = renderer.create(<ConfigureTab status={'online'} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = renderWithTheme(<ConfigureTab status={'online'} />);
+    expect(container).toMatchSnapshot();
   });
 });

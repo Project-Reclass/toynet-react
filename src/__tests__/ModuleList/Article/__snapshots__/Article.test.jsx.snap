@@ -1,28 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The Article page should match snapshot 1`] = `
+exports[`The Article page should render the same based on URL parameters 1`] = `
 <div>
   <div
     class="css-u6v8er"
   >
     <h1
-      class="css-1toumeq"
-    >
-      Return of the Sith
-    </h1>
+      class="css-1nxqz3s"
+    />
     <h2
-      class="css-1smupne"
+      class="css-14lu7sf"
     >
       Author: 
-      Obi-Wan Kenobi
     </h2>
     <h3
       class="css-tua7mj"
-    >
-      <p>
-        I have the high ground!
-      </p>
-    </h3>
+    />
   </div>
 </div>
 `;
