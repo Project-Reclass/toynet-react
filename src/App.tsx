@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from '@emotion/styled';
 
+import ErrorBoundary from './common/components/ErrorBoundary';
 import LoadingSpinner from './common/components/LoadingSpinner';
 import Header from './Header/Header';
 import ModuleList from './Curriculum';
@@ -10,8 +11,8 @@ import Quiz from './Curriculum/Quiz';
 import Lesson from './Curriculum/Lesson';
 import Value from './Curriculum/Value';
 import { useFeatureFlags } from './FeatureFlags';
+import Login from './Login';
 import Layout from './layout';
-import ErrorBoundary from './common/components/ErrorBoundary';
 
 const SplashScreen = React.lazy(() => import('./SplashScreen'));
 const Emulator = React.lazy(() => import('./Emulator'));
@@ -66,6 +67,12 @@ function App() {
           <Route exact path="/value/:valueId">
             <Layout title={'Value'}>
               <Value />
+            </Layout>
+          </Route>
+
+          <Route exact path="/login">
+            <Layout title={'Login'}>
+              <Login />
             </Layout>
           </Route>
 
