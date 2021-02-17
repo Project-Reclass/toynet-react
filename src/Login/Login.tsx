@@ -1,60 +1,15 @@
-import React, { useEffect, useState, FC } from 'react';
-import styled from '@emotion/styled';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
-  Button,
   Heading,
-  Input,
   Stack,
-  InputGroup,
-  InputRightElement,
-  InputProps,
   useToast,
 } from '@chakra-ui/core';
 
 import { useAuthContext, AuthActions } from './AuthProvider';
 import { useLogin } from 'src/common/api/login/hooks';
-
-const Center = styled(Box)`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const ToyNetInput = styled(Input)`
-  border: none;
-  background-color: #212529;
-`;
-
-const ToyNetButton = styled(Button)`
-  background-color: rgba(0,0,0,0);
-  border: 1pt solid white;
-
-  :hover {
-    color: #212529;
-  }
-`;
-
-const PasswordInput: FC<React.PropsWithChildren<InputProps<HTMLInputElement>>> = ({ ...rest }) => {
-  const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
-
-  return (
-    <InputGroup size="md">
-      <ToyNetInput
-        pr="4.5rem"
-        {...rest}
-        type={show ? 'text' : 'password'}
-      />
-      <InputRightElement width="4.5rem">
-        <ToyNetButton h="1.75rem" size="sm" onClick={handleClick}>
-          {show ? 'Hide' : 'Show'}
-        </ToyNetButton>
-      </InputRightElement>
-    </InputGroup>
-  );
-};
+import { Center, ToyNetInput, ToyNetButton } from './styled';
+import PasswordInput from './PasswordInput';
 
 const Login = () => {
   const toast = useToast();

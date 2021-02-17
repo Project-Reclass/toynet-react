@@ -27,18 +27,17 @@ function reducer(draft: User, action: ReducerAction) {
   switch (action.type) {
     case AuthActions.SET_USERNAME:
       draft.username = action.payload.username || '';
-      return;
+      return draft;
     case AuthActions.SET_ID:
       draft.id = action.payload.id || -1;
-      return;
+      return draft;
     case AuthActions.LOGIN:
       draft.isLoggedIn = true;
       draft.id = action.payload.id || -1;
       draft.username = action.payload.username || '';
-      return;
+      return draft;
     case AuthActions.LOGOUT:
-      draft = initialState;
-      return;
+      return initialState;
   }
 };
 
