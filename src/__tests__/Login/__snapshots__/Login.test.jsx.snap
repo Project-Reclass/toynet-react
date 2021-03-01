@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Module List should render and match snapshot 1`] = `
+<div>
+  <div
+    class="css-mikc7i"
+  >
+    <div
+      class="css-1nlyd02"
+    >
+      <form>
+        <div
+          class="css-j7qwjs"
+        >
+          <h2
+            class="css-1jwohdf"
+          >
+            Login to ToyNet!
+          </h2>
+          <input
+            autocomplete="username"
+            class="css-1kr1ry3"
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+          <div
+            class="css-kjafn5"
+          >
+            <input
+              autocomplete="current-password"
+              class="css-a66fqy"
+              data-testid="password-input"
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+            <div
+              class="css-8ueujo"
+            >
+              <button
+                class="css-13h65yf"
+                type="button"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+          <button
+            class="css-u1m2zc"
+            type="button"
+          >
+            Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
