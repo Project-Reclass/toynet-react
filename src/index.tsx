@@ -7,14 +7,17 @@ import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
+import AuthProvider, {} from './Login/AuthProvider/AuthProvider';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
       <DndProvider backend={HTML5Backend}>
-        <CSSReset />
-        <App />
+        <AuthProvider>
+          <CSSReset />
+          <App />
+        </AuthProvider>
       </DndProvider>
     </ThemeProvider>
   </React.StrictMode>,
