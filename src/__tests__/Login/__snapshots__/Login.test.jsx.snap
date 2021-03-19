@@ -1,5 +1,249 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`The Module List should have red border around password input when length <= 3 char && username > 3 1`] = `
+<div>
+  <div
+    class="css-mikc7i"
+  >
+    <div
+      class="css-1nlyd02"
+    >
+      <form>
+        <div
+          class="css-j7qwjs"
+        >
+          <h2
+            class="css-1jwohdf"
+          >
+            Login to ToyNet!
+          </h2>
+          <input
+            aria-invalid="false"
+            autocomplete="username"
+            class="css-1eig5xu"
+            placeholder="Username"
+            type="text"
+            value="abcd"
+          />
+          <div
+            class="css-kjafn5"
+          >
+            <input
+              aria-invalid="true"
+              autocomplete="current-password"
+              class="css-101wdcq"
+              data-testid="password-input"
+              placeholder="Password"
+              type="password"
+              value="abc"
+            />
+            <div
+              class="css-8ueujo"
+            >
+              <button
+                class="css-13h65yf"
+                type="button"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+          <button
+            class="css-u1m2zc"
+            type="button"
+          >
+            Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The Module List should have red border around username and password input when length <= 3 1`] = `
+<div>
+  <div
+    class="css-mikc7i"
+  >
+    <div
+      class="css-1nlyd02"
+    >
+      <form>
+        <div
+          class="css-j7qwjs"
+        >
+          <h2
+            class="css-1jwohdf"
+          >
+            Login to ToyNet!
+          </h2>
+          <input
+            aria-invalid="true"
+            autocomplete="username"
+            class="css-1eig5xu"
+            placeholder="Username"
+            type="text"
+            value="abc"
+          />
+          <div
+            class="css-kjafn5"
+          >
+            <input
+              aria-invalid="true"
+              autocomplete="current-password"
+              class="css-101wdcq"
+              data-testid="password-input"
+              placeholder="Password"
+              type="password"
+              value="abc"
+            />
+            <div
+              class="css-8ueujo"
+            >
+              <button
+                class="css-13h65yf"
+                type="button"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+          <button
+            class="css-u1m2zc"
+            type="button"
+          >
+            Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The Module List should have red border around username input when length <= 3 char && password > 3 1`] = `
+<div>
+  <div
+    class="css-mikc7i"
+  >
+    <div
+      class="css-1nlyd02"
+    >
+      <form>
+        <div
+          class="css-j7qwjs"
+        >
+          <h2
+            class="css-1jwohdf"
+          >
+            Login to ToyNet!
+          </h2>
+          <input
+            aria-invalid="true"
+            autocomplete="username"
+            class="css-1eig5xu"
+            placeholder="Username"
+            type="text"
+            value="abc"
+          />
+          <div
+            class="css-kjafn5"
+          >
+            <input
+              aria-invalid="false"
+              autocomplete="current-password"
+              class="css-101wdcq"
+              data-testid="password-input"
+              placeholder="Password"
+              type="password"
+              value="abcd"
+            />
+            <div
+              class="css-8ueujo"
+            >
+              <button
+                class="css-13h65yf"
+                type="button"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+          <button
+            class="css-u1m2zc"
+            type="button"
+          >
+            Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The Module List should not have red border around username and password input when length > 3 1`] = `
+<div>
+  <div
+    class="css-mikc7i"
+  >
+    <div
+      class="css-1nlyd02"
+    >
+      <form>
+        <div
+          class="css-j7qwjs"
+        >
+          <h2
+            class="css-1jwohdf"
+          >
+            Login to ToyNet!
+          </h2>
+          <input
+            aria-invalid="false"
+            autocomplete="username"
+            class="css-1eig5xu"
+            placeholder="Username"
+            type="text"
+            value="abcd"
+          />
+          <div
+            class="css-kjafn5"
+          >
+            <input
+              aria-invalid="false"
+              autocomplete="current-password"
+              class="css-101wdcq"
+              data-testid="password-input"
+              placeholder="Password"
+              type="password"
+              value="abcd"
+            />
+            <div
+              class="css-8ueujo"
+            >
+              <button
+                class="css-13h65yf"
+                type="button"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+          <button
+            class="css-u1m2zc"
+            type="button"
+          >
+            Sign In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`The Module List should render and match snapshot 1`] = `
 <div>
   <div
@@ -18,8 +262,9 @@ exports[`The Module List should render and match snapshot 1`] = `
             Login to ToyNet!
           </h2>
           <input
+            aria-invalid="false"
             autocomplete="username"
-            class="css-1kr1ry3"
+            class="css-1eig5xu"
             placeholder="Username"
             type="text"
             value=""
@@ -28,8 +273,9 @@ exports[`The Module List should render and match snapshot 1`] = `
             class="css-kjafn5"
           >
             <input
+              aria-invalid="false"
               autocomplete="current-password"
-              class="css-a66fqy"
+              class="css-101wdcq"
               data-testid="password-input"
               placeholder="Password"
               type="password"
