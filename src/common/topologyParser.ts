@@ -83,7 +83,7 @@ export function parseXMLTopology(xml: string): ParsedXML {
   const devices = {
     switches: getDevicesFromXMLDocument(parsedXML, 'switchList', 'switch'),
     routers: getDevicesFromXMLDocument(parsedXML, 'routerList', 'router'),
-    hosts: getDevicesFromXMLDocument(parsedXML, 'hostList', 'switch'),
+    hosts: getDevicesFromXMLDocument(parsedXML, 'hostList', 'host'),
   };
 
   createDeviceLinksFromXMLDocument(devices, parsedXML);
