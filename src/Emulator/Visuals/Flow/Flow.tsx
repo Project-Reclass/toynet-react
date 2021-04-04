@@ -1,6 +1,6 @@
-/* @jsx jsx */
-import React from 'react';
-import { css, jsx } from '@emotion/core';
+/* eslint-disable no-magic-numbers */
+import React, { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
 import ReactFlow, {
   Controls,
   Background,
@@ -9,20 +9,31 @@ import ReactFlow, {
   Elements,
 } from 'react-flow-renderer';
 
-import { useEmulator } from 'src/Emulator/EmulatorProvider';
-
 import { createElements, getLayoutedElements } from './utils';
+import { DeviceInterface } from 'src/common/types';
+
+interface Props {
+  hosts: DeviceInterface[],
+  routers: DeviceInterface[],
+  switches: DeviceInterface[],
+
+  isTesting?: boolean,
+}
 
 const DEFAULT_BG_GAP = 16;
 
-const Flow = () => {
-  const { switches, routers, hosts } = useEmulator();
-  const [elements, setElements] = React.useState<Elements>([]);
+const RightAlignedControls = styled(Controls)`
+  right: 10px;
+  left: unset !important;
+`;
 
-  React.useEffect(() => {
+const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
+  const [elements, setElements] = useState<Elements>([]);
+
+  useEffect(() => {
     const els = createElements([...routers, ...switches, ...hosts]);
-    setElements(getLayoutedElements(els));
-  }, [hosts, routers, switches]);
+    setElements(getLayoutedElements(els, 'LR', isTesting));
+  }, [hosts, routers, switches, isTesting]);
 
   const onConnect = (params: any) =>
     setElements((els: any) =>
@@ -34,16 +45,12 @@ const Flow = () => {
 
   return (
     <ReactFlow
-      elements={elements}
-      onConnect={onConnect}
+    elements={elements}
+    onConnect={onConnect}
+    nodesConnectable={false}
       onElementsRemove={onElementsRemove}
-      nodesConnectable={false}
     >
-      <Controls
-        css={css`
-          right: 10px;
-          left: unset !important;
-        `}
+      <RightAlignedControls
         showFitView={true}
       />
       <Background color="#aaa" gap={DEFAULT_BG_GAP} />

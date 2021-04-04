@@ -4,6 +4,8 @@ import { DeviceInterface } from 'src/common/types';
 
 import { deviceColorClasses } from 'src/Emulator/Tabs/ConfigureTab/DeviceContainer/Device/shared';
 
+type Direction = 'LR' | 'TB';
+
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
@@ -15,8 +17,16 @@ const NODE_HEIGHT = 36;
 /**
  * Takes a list of flow elements and updates the x and y of the `FlowElements`
  * to visually represent each node as a directed graph.
+ *
+ * `direction` is the orientation of the graph. `LR` is horizontal and `TB`
+ * is vertical.
+ *
+ * The `isTesting` parameter is used for when testing with snapshots. This is
+ * because `Math.random` will cause the snapshot to be different on each
+ * testing cycle.
  */
-export const getLayoutedElements = (elements: Elements, direction = 'LR') => {
+export const getLayoutedElements = (elements: Elements,
+    direction: Direction = 'LR', testing = false) => {
   const isHorizontal = direction === 'LR';
   dagreGraph.setGraph({ rankdir: direction });
 
@@ -40,7 +50,7 @@ export const getLayoutedElements = (elements: Elements, direction = 'LR') => {
       // to notify react flow about the change. More over we are shifting the dagre node position
       // (anchor=center center) to the top left so it matches the react flow node anchor point (top left).
       el.position = {
-        x: nodeWithPosition.x + NODE_WIDTH + Math.random() / BASE,
+        x: nodeWithPosition.x + NODE_WIDTH + (testing ? 0 : Math.random()) / BASE,
         y: nodeWithPosition.y + NODE_HEIGHT,
       };
     }
