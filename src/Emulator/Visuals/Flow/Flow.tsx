@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import ReactFlow, {
