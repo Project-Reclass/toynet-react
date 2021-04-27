@@ -1,0 +1,20 @@
+[
+    {
+        "name": "toynet-react-container",
+        "image": "909056806605.dkr.ecr.us-east-2.amazonaws.com/toynet-react-repo:514e1b20ad51c6189f09a902bee0c5929ccd62fc",
+        "cpu": 0,
+        "memoryReservation": 256,
+        "portMappings": [{
+            "hostPort": 0,
+            "containerPort": 80,
+            "protocol": "tcp"
+        }],
+        "essential": true,
+        "mountPoints": [],
+        "volumesFrom": [],
+        "environment": [{
+            "name": "SERVER_URI",
+            "value": "http://${DJANGO_SERVER_URI}:8000"
+        }]
+    }
+]
