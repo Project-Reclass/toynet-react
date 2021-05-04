@@ -39,10 +39,9 @@ frontend -> 3000
 
 ## Dependencies
 
-Docker and docker-compose are required to start developing with toynet.
-
-If you do not have **docker** installed see [this guide](https://docs.docker.com/engine/install/).  
-If you do not have **docker-compose** install see [this guide](https://docs.docker.com/compose/install/)
+- Docker [(Install Guide)](https://docs.docker.com/engine/install/)
+- Docker-Compose [(Install Guide)](https://docs.docker.com/compose/install/)
+- Node.js and NPM [(Install Guide)](https://nodejs.org/en/)
 
 ## Running in Development
 
@@ -61,7 +60,14 @@ The docker-compose file can then be run in the background using
 $ docker-compose -f docker-compose.dev.yml up -d --build
 ```
 
+Before starting the frontend of `toynet` you will need to install all the dependencies. This can be done using
+
+```bash
+$ npm i
+```
+
 After the docker-compose starts up you can start `toynet-react` for development using
+
 ```bash
 $ npm run dev
 ```
