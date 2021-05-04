@@ -39,6 +39,9 @@ frontend -> 3000
 
 ## Dependencies
 
+The below software is required in order to get setup to run `toynet-react`.
+
+- Git [(Install Guide)](https://git-scm.com/downloads)
 - Docker [(Install Guide)](https://docs.docker.com/engine/install/)
 - Docker-Compose [(Install Guide)](https://docs.docker.com/compose/install/)
 - Node.js and NPM [(Install Guide)](https://nodejs.org/en/)
