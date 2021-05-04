@@ -81,8 +81,18 @@ and navate to http://localhost:3000.
 
 Testing pull requests can be done without cloning down or checking out the pull request on the local machine. Because `toynet-react` uses docker-compose pull-requests can be previewed by just using the docker-compose file.
 
+For Linux run
+
 ```bash
 $ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml
+```
+
+On Windows (Powershell) run
+
+```powershell
+$ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml -Outfile docker-compose.yml
+# or
+$ Invoke-WebRequest https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml -Outfile docker-compose.yml
 ```
 
 Edit the `docker-compose.yml` file to include the GitHub PR id.
@@ -156,3 +166,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 - Sammy Tran
 - Yi Yang
+
+<body>
+
+</body>
