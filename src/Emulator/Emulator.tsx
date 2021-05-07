@@ -6,6 +6,7 @@ import Tabs from './Tabs/Tabs';
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
+import ConsoleTab from './Tabs/ConsoleTab';
 
 const Container = styled.div`
   margin-left: 1.5vw;
@@ -17,6 +18,7 @@ const Container = styled.div`
   max-height: 96vh;
   overflow: hidden;
 `;
+
 
 const data = {
   'id': 1,
@@ -36,13 +38,13 @@ const Emulator = () => {
     <Flex margin='auto' maxWidth='1920px'>
       <Box marginLeft='3.5rem' marginTop='2vh' zIndex= {0} >
         <Instructions panelData={data} />
-        <DialogueBox />
       </Box>
       <Container>
-        <div>
-          <Tabs />
-        </div>
         <Visuals />
+        <Flex>
+          <ConsoleTab />
+          <DialogueBox />
+        </Flex>
       </Container>
     </Flex>
   );
