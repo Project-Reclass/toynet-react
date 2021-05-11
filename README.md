@@ -72,7 +72,7 @@ $ npm i
 After the docker-compose starts up you can start `toynet-react` for development using
 
 ```bash
-$ npm run dev
+$ npm start
 ```
 
 and navate to http://localhost:3000.
