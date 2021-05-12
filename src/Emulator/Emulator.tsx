@@ -1,20 +1,10 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { Box, Flex, Grid } from '@chakra-ui/core';
+import { Grid } from '@chakra-ui/core';
 
-import Tabs from './Tabs/Tabs';
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
 import ConsoleTab from './Tabs/ConsoleTab';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow: hidden;
-`;
-
 
 const data = {
   'id': 1,

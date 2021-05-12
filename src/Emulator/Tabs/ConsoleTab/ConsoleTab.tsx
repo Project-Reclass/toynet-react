@@ -1,21 +1,16 @@
 import React from 'react';
 import { Heading } from '@chakra-ui/core';
-import styled from '@emotion/styled';
 
-const Container = styled.div`
-  background-color: #454950;
-  color: white;
-  border-radius: 10px;
-  padding-left: 2vh;
-  overflow: auto;
-`;
+import EmulatorSection from 'src/common/components/Emulator/EmulatorSection';
+import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
 
 const ConsoleTab = () => (
-  <Container>
-    <Heading size='lg' color='white' padding='20px'>
+  <EmulatorSection>
+    <Heading size='lg' color='white'>
       Console
     </Heading>
-  </Container>
+    <EmulatorInnerSection></EmulatorInnerSection>
+  </EmulatorSection>
 );
 
 export default ConsoleTab;

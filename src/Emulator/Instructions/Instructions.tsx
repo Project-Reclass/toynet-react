@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
 import { Heading, Text } from '@chakra-ui/core';
 
+import EmulatorSection from 'src/common/components/Emulator/EmulatorSection';
+import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
+
 import {
   BackArea,
   BackButton,
   Container,
-  InstructionsContainer,
   LinkText,
   TaskItem,
   TaskList,
 } from './styled';
-import { InnerContainer } from '../DialogueBox/styled';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -25,7 +26,11 @@ interface Props {
 
 const Instructions: FC<Props> = ({ panelData }) => {
   return (
-      <InstructionsContainer>
+      <EmulatorSection
+        width='15vw'
+        maxWidth='335px'
+        minWidth='250px'
+      >
         <BackArea>
             <LinkText href='/'>
               <BackButton />
@@ -50,15 +55,15 @@ const Instructions: FC<Props> = ({ panelData }) => {
           }}
         >
           <Heading size='lg'>Tasks</Heading>
-          <InnerContainer style={{ padding: '0.549rem' }}>
+          <EmulatorInnerSection style={{ padding: '0.549rem' }}>
             <TaskList>
               {panelData.tasks.map(task => (
                 <TaskItem key={`${task}`}>{task}</TaskItem>
               ))}
             </TaskList>
-          </InnerContainer>
+          </EmulatorInnerSection>
         </Container>
-      </InstructionsContainer>
+      </EmulatorSection>
   );
 };
 

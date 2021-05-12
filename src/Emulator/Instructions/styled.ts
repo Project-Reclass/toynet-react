@@ -79,7 +79,6 @@ export const BackButton = styled(Exit)`
 `;
 
 export const BackArea = styled.div`
-  padding-top: 3vh;
   padding-bottom: 10%;
   color: darkgray;
 `;
