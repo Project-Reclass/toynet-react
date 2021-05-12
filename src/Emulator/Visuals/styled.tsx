@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const OuterContainer = styled.div`
   background-color: #454950;
   padding: 0.4vw;
-  margin-top: 2.5vh;
   border-radius: 10px;
   height: 100%;
   overflow: hidden;

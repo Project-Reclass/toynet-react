@@ -13,7 +13,7 @@ const Container = styled.div`
 const ConsoleTab = () => (
   <Container>
     <Heading size='lg' color='white' padding='20px'>
-      Coming soon...
+      Console
     </Heading>
   </Container>
 );

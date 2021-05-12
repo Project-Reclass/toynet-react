@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import { Icon } from '@chakra-ui/core';
+import { Heading, Icon } from '@chakra-ui/core';
 import { useDialogue } from '../EmulatorProvider';
 
-import { DialogueBoxContainer, InnerContainer, StyledClearbutton } from './styled';
+import { DialogueBoxContainer, InnerContainer } from './styled';
 
 const DialogueBox = () => {
-  const { dialogueMessages, clearDialogue } = useDialogue();
+  const { dialogueMessages } = useDialogue();
 
   useEffect(() => {
     if (containerScrollRef.current){
@@ -17,8 +17,11 @@ const DialogueBox = () => {
   const containerScrollRef = useRef< HTMLDivElement>(null);
 
   return (
-    <div style={{marginTop: '2vh', zIndex: 0}}>
+    <div style={{zIndex: 0}}>
       <DialogueBoxContainer>
+        <Heading size='lg' color='white' paddingBottom={'0.559rem'}>
+          Actions
+        </Heading>
         <InnerContainer ref={containerScrollRef}>
           {dialogueMessages.map( (dialogueMessage) => (
             <>
@@ -28,7 +31,6 @@ const DialogueBox = () => {
             </>
           ))}
         </InnerContainer>
-        <StyledClearbutton onClick={clearDialogue}>Clear</StyledClearbutton>
       </DialogueBoxContainer>
     </div>
   );

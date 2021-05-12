@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Box, Flex } from '@chakra-ui/core';
+import { Box, Flex, Grid } from '@chakra-ui/core';
 
 import Tabs from './Tabs/Tabs';
 import Visuals from './Visuals';
@@ -9,13 +9,9 @@ import DialogueBox from './DialogueBox';
 import ConsoleTab from './Tabs/ConsoleTab';
 
 const Container = styled.div`
-  margin-left: 1.5vw;
-  margin-top: 2vh;
   display: flex;
   flex-direction: column;
-  margin-right: 3.5rem;
   width: 100%;
-  max-height: 96vh;
   overflow: hidden;
 `;
 
@@ -35,18 +31,30 @@ const data = {
 
 const Emulator = () => {
   return (
-    <Flex margin='auto' maxWidth='1920px'>
-      <Box marginLeft='3.5rem' marginTop='2vh' zIndex= {0} >
-        <Instructions panelData={data} />
-      </Box>
-      <Container>
+    <Grid
+      margin='auto'
+      maxWidth='1920px'
+      height='100vh'
+      padding={'0.789rem'}
+      gap={2}
+      gridTemplateColumns={'auto 1fr'}
+    >
+      <Instructions panelData={data} />
+      <Grid
+        gridTemplateRows={'1fr 1fr'}
+        width='100%'
+        gap={2}
+      >
         <Visuals />
-        <Flex>
+        <Grid
+          gap={2}
+          gridTemplateColumns={'2fr 1fr'}
+        >
           <ConsoleTab />
           <DialogueBox />
-        </Flex>
-      </Container>
-    </Flex>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

@@ -10,6 +10,7 @@ import {
   TaskItem,
   TaskList,
 } from './styled';
+import { InnerContainer } from '../DialogueBox/styled';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -41,13 +42,21 @@ const Instructions: FC<Props> = ({ panelData }) => {
           <Heading size='lg'>Objective</Heading>
           <Text>{panelData.objective}</Text>
         </Container>
-        <Container>
+        <Container
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+          }}
+        >
           <Heading size='lg'>Tasks</Heading>
-          <TaskList>
-            {panelData.tasks.map(task => (
-              <TaskItem key={`${task}`}>{task}</TaskItem>
-            ))}
-          </TaskList>
+          <InnerContainer style={{ padding: '0.549rem' }}>
+            <TaskList>
+              {panelData.tasks.map(task => (
+                <TaskItem key={`${task}`}>{task}</TaskItem>
+              ))}
+            </TaskList>
+          </InnerContainer>
         </Container>
       </InstructionsContainer>
   );
