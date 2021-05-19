@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EmulatorSection from 'src/common/components/Emulator/EmulatorSection';
+import EmulatorSection from 'src/common/components/Emulator/Section';
 
 import Flow from './Flow';
 import { InnerContainer } from './styled';

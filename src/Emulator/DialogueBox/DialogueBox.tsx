@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { Heading, Icon } from '@chakra-ui/core';
+import { Icon } from '@chakra-ui/core';
 import { useDialogue } from '../EmulatorProvider';
-import EmulatorSection from 'src/common/components/Emulator/EmulatorSection';
+import EmulatorSection from 'src/common/components/Emulator/Section';
 
 import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
+import { EmulatorTitle } from 'src/common/components/Emulator';
 
 const DialogueBox = () => {
   const { dialogueMessages } = useDialogue();
@@ -20,9 +21,9 @@ const DialogueBox = () => {
   return (
     <div style={{zIndex: 0}}>
       <EmulatorSection>
-        <Heading size='lg' color='white' paddingBottom={'0.559rem'}>
+        <EmulatorTitle size='lg' color='white'>
           Actions
-        </Heading>
+        </EmulatorTitle>
         <EmulatorInnerSection ref={containerScrollRef}>
           {dialogueMessages.map( (dialogueMessage) => (
             <>

@@ -1,14 +1,16 @@
 import React from 'react';
-import { Heading } from '@chakra-ui/core';
 
-import EmulatorSection from 'src/common/components/Emulator/EmulatorSection';
-import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
+import {
+  EmulatorInnerSection,
+  EmulatorSection,
+  EmulatorTitle,
+} from 'src/common/components/Emulator';
 
 const ConsoleTab = () => (
   <EmulatorSection>
-    <Heading size='lg' color='white'>
+    <EmulatorTitle size='lg' color='white'>
       Console
-    </Heading>
+    </EmulatorTitle>
     <EmulatorInnerSection></EmulatorInnerSection>
   </EmulatorSection>
 );
