@@ -4,7 +4,7 @@ import { Grid } from '@chakra-ui/core';
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
-import ConsoleTab from './Tabs/ConsoleTab';
+import ConsoleTab from './ConsoleTab';
 
 const data = {
   'id': 1,

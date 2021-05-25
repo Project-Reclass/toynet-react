@@ -2,7 +2,7 @@ import dagre from 'dagre';
 import { Elements, isNode, Position } from 'react-flow-renderer';
 import { DeviceInterface } from 'src/common/types';
 
-import { deviceColorClasses } from 'src/Emulator/Tabs/ConfigureTab/DeviceContainer/Device/shared';
+import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 type Direction = 'LR' | 'TB';
 
