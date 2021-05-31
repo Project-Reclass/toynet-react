@@ -90,7 +90,7 @@ const DeviceContainer = React.forwardRef<HTMLDivElement, Props>(
         const element = DeviceContainerContentRef.current;
         element.scrollTop = element.scrollHeight;
       }
-    }, [devices]);
+    }, [devices.length]);
 
     const DeviceContainerContentRef = useRef< HTMLDivElement>(null);
 
