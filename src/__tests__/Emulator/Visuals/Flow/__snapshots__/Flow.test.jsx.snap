@@ -84,6 +84,64 @@ exports[`Flow should be able to render only hosts 1`] = `
       />
     </div>
     <div
+      class="css-1qjvdnt"
+    >
+      <button
+        class="css-1ypc82u"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Host
+      </button>
+      <button
+        class="css-w42zvo"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Switch
+      </button>
+      <button
+        class="css-1470nqk"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Router
+      </button>
+    </div>
+    <div
       class="react-flow__controls css-1if3jds"
     >
       <div
@@ -267,6 +325,64 @@ exports[`Flow should be able to render only routers 1`] = `
       />
     </div>
     <div
+      class="css-1qjvdnt"
+    >
+      <button
+        class="css-1ypc82u"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Host
+      </button>
+      <button
+        class="css-w42zvo"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Switch
+      </button>
+      <button
+        class="css-1470nqk"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Router
+      </button>
+    </div>
+    <div
       class="react-flow__controls css-1if3jds"
     >
       <div
@@ -431,6 +547,64 @@ exports[`Flow should be able to render only switches 1`] = `
       <div
         class="react-flow__pane"
       />
+    </div>
+    <div
+      class="css-1qjvdnt"
+    >
+      <button
+        class="css-1ypc82u"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Host
+      </button>
+      <button
+        class="css-w42zvo"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Switch
+      </button>
+      <button
+        class="css-1470nqk"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Router
+      </button>
     </div>
     <div
       class="react-flow__controls css-1if3jds"
@@ -648,6 +822,64 @@ exports[`Flow should match the snapshot 1`] = `
       <div
         class="react-flow__pane"
       />
+    </div>
+    <div
+      class="css-1qjvdnt"
+    >
+      <button
+        class="css-1ypc82u"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Host
+      </button>
+      <button
+        class="css-w42zvo"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Switch
+      </button>
+      <button
+        class="css-1470nqk"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="css-yxiis9"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z"
+            fill="currentColor"
+          />
+        </svg>
+        Router
+      </button>
     </div>
     <div
       class="react-flow__controls css-1if3jds"
