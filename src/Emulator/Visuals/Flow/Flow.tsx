@@ -10,6 +10,10 @@ import ReactFlow, {
 
 import { createElements, getLayoutedElements } from './utils';
 import { DeviceInterface } from 'src/common/types';
+import { Button, ButtonGroup } from '@chakra-ui/core';
+import { useEmulator } from 'src/Emulator/EmulatorProvider';
+import { TopologyActions } from 'src/Emulator/useTopology';
+import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 interface Props {
   hosts: DeviceInterface[],
@@ -26,8 +30,32 @@ const RightAlignedControls = styled(Controls)`
   left: unset !important;
 `;
 
+const CustomControls = styled(ButtonGroup)`
+  z-index: 5;
+  position: relative;
+`;
+
+/**
+ * Determines the number of the newly added device
+ */
+ export const getNextNumber = (s: string) => Number(s.slice(1)) + 1;
+
+/**
+ * Determines the name of the newly added device
+ */
+ export const getNextDeviceName = (device: Array<{name: string}>, deviceLetter: string) => {
+   console.log({device, deviceLetter});
+  if (device.length < 1) {
+    return `${deviceLetter}1`;
+  } else {
+    const lastDeviceName = device[device.length - 1].name;
+    return `${deviceLetter}${getNextNumber(lastDeviceName)}`;
+  }
+};
+
 const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
   const [elements, setElements] = useState<Elements>([]);
+  const { dispatch } = useEmulator();
 
   useEffect(() => {
     const els = createElements([...routers, ...switches, ...hosts]);
@@ -49,6 +77,65 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
     nodesConnectable={false}
       onElementsRemove={onElementsRemove}
     >
+      <CustomControls
+        spacing={3}
+        padding={3}
+      >
+        <Button
+          size='sm'
+          leftIcon="add"
+          variantColor="pink"
+          variant="outline"
+          borderColor={deviceColorClasses.get('h')}
+          onClick={() => dispatch({
+             type: TopologyActions.ADD_HOST,
+             payload: {
+               name: getNextDeviceName(hosts, 'h'),
+               type: 'host',
+               connections: [],
+              },
+            })
+          }
+        >
+          Host
+        </Button>
+        <Button
+          size='sm'
+          leftIcon="add"
+          variantColor="blue"
+          borderColor={deviceColorClasses.get('s')}
+          variant="outline"
+          onClick={() => dispatch({
+            type: TopologyActions.ADD_SWITCH,
+            payload: {
+              name: getNextDeviceName(switches, 's'),
+              type: 'switch',
+              connections: [],
+             },
+           })
+         }
+        >
+          Switch
+        </Button>
+        <Button
+          size='sm'
+          leftIcon="add"
+          variantColor="yellow"
+          borderColor={deviceColorClasses.get('r')}
+          variant="outline"
+          onClick={() => dispatch({
+            type: TopologyActions.ADD_ROUTER,
+            payload: {
+              name: getNextDeviceName(routers, 'r'),
+              type: 'router',
+              connections: [],
+             },
+           })
+         }
+        >
+          Router
+        </Button>
+      </CustomControls>
       <RightAlignedControls
         showFitView={true}
       />
