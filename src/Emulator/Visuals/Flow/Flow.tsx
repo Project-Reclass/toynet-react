@@ -6,6 +6,7 @@ import ReactFlow, {
   addEdge,
   removeElements,
   Elements,
+  updateEdge,
 } from 'react-flow-renderer';
 
 import { createElements, getLayoutedElements } from './utils';
@@ -14,6 +15,7 @@ import { Button, ButtonGroup } from '@chakra-ui/core';
 import { useEmulator } from 'src/Emulator/EmulatorProvider';
 import { TopologyActions } from 'src/Emulator/useTopology';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
+import CustomEdge from './CustomEdge';
 
 interface Props {
   hosts: DeviceInterface[],
@@ -53,6 +55,10 @@ const CustomControls = styled(ButtonGroup)`
   }
 };
 
+const ContextMenu = styled.div`
+
+`;
+
 const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch } = useEmulator();
@@ -62,20 +68,27 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
     setElements(getLayoutedElements(els, 'LR', isTesting));
   }, [hosts, routers, switches, isTesting]);
 
-  const onConnect = (params: any) =>
+  const onConnect = (params: any) => {
+    dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: params.source, to: params.target }});
     setElements((els: any) =>
       addEdge({ ...params, type: 'smoothstep', animated: true }, els),
     );
+  };
 
   const onElementsRemove = (elementsToRemove: any) =>
     setElements((els: any) => removeElements(elementsToRemove, els));
 
+  const onEdgeUpdate = (oldEdge: any, newConnection: any) => {
+    setElements((els) => updateEdge(oldEdge, newConnection, els));
+  };
+
   return (
     <ReactFlow
-    elements={elements}
-    onConnect={onConnect}
-    nodesConnectable={false}
+      elements={elements}
+      onConnect={onConnect}
+      onEdgeUpdate={onEdgeUpdate}
       onElementsRemove={onElementsRemove}
+      edgeTypes={{custom: CustomEdge}}
     >
       <CustomControls
         spacing={3}

@@ -86,6 +86,7 @@ export const createElements = (devices: DeviceInterface[]) => {
             source: conn,
             target: name,
             animated: true,
+            type: 'custom',
             style: {
               strokeWidth: LINE_WIDTH,
             },
