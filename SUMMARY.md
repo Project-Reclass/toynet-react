@@ -3,3 +3,7 @@
 * [ToyNet - Virtual Network Emulator In Your Browser](README.md)
 * [I'm a New File!](im-a-new-file.md)
 
+## I'm a group!
+
+* [I'm in the new group!](im-a-group/im-in-the-new-group.md)
+
