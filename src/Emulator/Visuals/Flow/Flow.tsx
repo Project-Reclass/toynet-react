@@ -15,7 +15,8 @@ import { Button, ButtonGroup } from '@chakra-ui/core';
 import { useEmulator } from 'src/Emulator/EmulatorProvider';
 import { TopologyActions } from 'src/Emulator/useTopology';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
-import CustomEdge from './CustomEdge';
+
+import ClickableNode from './ClickableNode';
 
 interface Props {
   hosts: DeviceInterface[],
@@ -59,6 +60,10 @@ const ContextMenu = styled.div`
 
 `;
 
+const nodeTypes = {
+  clickableNode: ClickableNode,
+};
+
 const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch } = useEmulator();
@@ -88,7 +93,7 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
       onConnect={onConnect}
       onEdgeUpdate={onEdgeUpdate}
       onElementsRemove={onElementsRemove}
-      edgeTypes={{custom: CustomEdge}}
+      nodeTypes={nodeTypes}
     >
       <CustomControls
         spacing={3}
