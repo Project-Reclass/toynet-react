@@ -2,7 +2,7 @@
     "containerDefinitions": [
         {
             "name": "toynet-react-container",
-            "image": "909056806605.dkr.ecr.us-east-2.amazonaws.com/toynet-react",
+            "image": "243481923718.dkr.ecr.us-east-2.amazonaws.com/toynet-react",
             "cpu": 0,
             "memoryReservation": 256,
             "portMappings": [{
@@ -19,7 +19,7 @@
             }]
         }
     ],
-    "executionRoleArn": "arn:aws:iam::909056806605:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::243481923718:role/ecsTaskExecutionRole",
     "family": "toynet-react",
     "revision": 1,
     "volumes": [],
