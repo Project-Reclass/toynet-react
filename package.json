@@ -14,6 +14,7 @@
     "immer": "^8.0.1",
     "path": "^0.12.7",
     "react": "^16.13.1",
+    "react-contexify": "^5.0.0",
     "react-dnd": "^11.1.3",
     "react-dnd-html5-backend": "^11.1.3",
     "react-dom": "^16.13.1",

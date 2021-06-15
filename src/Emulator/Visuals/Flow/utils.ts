@@ -73,7 +73,6 @@ export const createElements = (devices: DeviceInterface[]) => {
       elements.push({
         id: name,
         position,
-        // type: 'clickableNode',
         data: { label: name.toUpperCase() },
         style: {
           color: 'white',

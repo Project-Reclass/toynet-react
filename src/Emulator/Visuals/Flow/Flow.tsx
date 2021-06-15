@@ -18,6 +18,8 @@ import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
 
+import './overrides.css';
+
 interface Props {
   hosts: DeviceInterface[],
   routers: DeviceInterface[],
@@ -47,7 +49,6 @@ const CustomControls = styled(ButtonGroup)`
  * Determines the name of the newly added device
  */
  export const getNextDeviceName = (device: Array<{name: string}>, deviceLetter: string) => {
-   console.log({device, deviceLetter});
   if (device.length < 1) {
     return `${deviceLetter}1`;
   } else {
@@ -56,12 +57,8 @@ const CustomControls = styled(ButtonGroup)`
   }
 };
 
-const ContextMenu = styled.div`
-
-`;
-
 const nodeTypes = {
-  clickableNode: ClickableNode,
+  default: ClickableNode,
 };
 
 const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
