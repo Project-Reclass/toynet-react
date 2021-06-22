@@ -22,15 +22,20 @@ const Menus = ({ devices }: Props) => {
   const { dispatch } = useEmulator();
 
   const handleDeleteConnections = useCallback((device: DeviceInterface) => {
+    const backoffStep = 5;
     return () => {
+      let backoff = 1;
       for (const conn of device.connections) {
-        dispatch({
-          type: TopologyActions.DELETE_CONNECTION,
-          payload: {
-            from: device.name,
-            to: conn,
-          },
-        });
+        setTimeout(() => {
+          dispatch({
+            type: TopologyActions.DELETE_CONNECTION,
+            payload: {
+              from: device.name,
+              to: conn,
+            },
+          });
+        }, backoff);
+        backoff *= backoffStep;
       }
     };
   }, [dispatch]);
@@ -41,22 +46,16 @@ const Menus = ({ devices }: Props) => {
                            device.name[0].toLocaleLowerCase() === 'h' ? TopologyActions.DELETE_HOST :
                            TopologyActions.FLUSH_QUEUE;
     return () => {
-      for (const conn of device.connections) {
+      handleDeleteConnections(device)();
+      dispatch({ type: deviceTypeAction, payload: device });
+      setTimeout(() => {
         dispatch({
           type: TopologyActions.DELETE_CONNECTION,
-          payload: {
-            from: device.name,
-            to: conn,
-          },
+          payload: { to: device.name, from: device.name },
         });
-      }
-      dispatch({ type: deviceTypeAction, payload: device });
-      dispatch({
-        type: TopologyActions.DELETE_CONNECTION,
-        payload: { to: device.name, from: device.name },
-      });
+      }, 100);
     };
-  }, [dispatch]);
+  }, [dispatch, handleDeleteConnections]);
 
   return (
     <>
