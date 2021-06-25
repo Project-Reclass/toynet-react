@@ -18,13 +18,21 @@ exports[`Flow should be able to render only hosts 1`] = `
           style="z-index: 3; transform: translate(258px,312px); pointer-events: all; opacity: 0; color: white; background-color: rgb(158, 16, 89);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="h1"
           />
-          H1
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              H1
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="h1"
           />
@@ -188,7 +196,7 @@ exports[`Flow should be able to render only hosts 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0 8 0 4.571 3.429 4.571 7.619v3.048H3.048A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047zm4.724-13.866H7.467V7.619c0-2.59 2.133-4.724 4.723-4.724 2.591 0 4.724 2.133 4.724 4.724v3.048z"
+            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0c-4.114 1.828-1.37 2.133.305 2.438 1.676.305 4.42 2.59 4.42 5.181v3.048H3.047A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047z"
           />
         </svg>
       </div>
@@ -242,13 +250,21 @@ exports[`Flow should be able to render only routers 1`] = `
           style="z-index: 3; transform: translate(258px,54px); pointer-events: all; opacity: 0; color: white; background-color: rgb(189, 169, 19);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="r1"
           />
-          R1
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              R1
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="r1"
           />
@@ -259,13 +275,21 @@ exports[`Flow should be able to render only routers 1`] = `
           style="z-index: 3; transform: translate(258px,140px); pointer-events: all; opacity: 0; color: white; background-color: rgb(189, 169, 19);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="r2"
           />
-          R2
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              R2
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="r2"
           />
@@ -429,7 +453,7 @@ exports[`Flow should be able to render only routers 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0 8 0 4.571 3.429 4.571 7.619v3.048H3.048A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047zm4.724-13.866H7.467V7.619c0-2.59 2.133-4.724 4.723-4.724 2.591 0 4.724 2.133 4.724 4.724v3.048z"
+            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0c-4.114 1.828-1.37 2.133.305 2.438 1.676.305 4.42 2.59 4.42 5.181v3.048H3.047A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047z"
           />
         </svg>
       </div>
@@ -483,13 +507,21 @@ exports[`Flow should be able to render only switches 1`] = `
           style="z-index: 3; transform: translate(258px,226px); pointer-events: all; opacity: 0; color: white; background-color: rgb(0, 138, 158);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="s1"
           />
-          S1
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              S1
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="s1"
           />
@@ -653,7 +685,7 @@ exports[`Flow should be able to render only switches 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0 8 0 4.571 3.429 4.571 7.619v3.048H3.048A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047zm4.724-13.866H7.467V7.619c0-2.59 2.133-4.724 4.723-4.724 2.591 0 4.724 2.133 4.724 4.724v3.048z"
+            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0c-4.114 1.828-1.37 2.133.305 2.438 1.676.305 4.42 2.59 4.42 5.181v3.048H3.047A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047z"
           />
         </svg>
       </div>
@@ -707,13 +739,21 @@ exports[`Flow should match the snapshot 1`] = `
           style="z-index: 3; transform: translate(258px,54px); pointer-events: all; opacity: 0; color: white; background-color: rgb(189, 169, 19);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="r1"
           />
-          R1
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              R1
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="r1"
           />
@@ -724,13 +764,21 @@ exports[`Flow should match the snapshot 1`] = `
           style="z-index: 3; transform: translate(258px,140px); pointer-events: all; opacity: 0; color: white; background-color: rgb(189, 169, 19);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="r2"
           />
-          R2
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              R2
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="r2"
           />
@@ -741,13 +789,21 @@ exports[`Flow should match the snapshot 1`] = `
           style="z-index: 3; transform: translate(258px,226px); pointer-events: all; opacity: 0; color: white; background-color: rgb(0, 138, 158);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="s1"
           />
-          S1
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              S1
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="s1"
           />
@@ -758,13 +814,21 @@ exports[`Flow should match the snapshot 1`] = `
           style="z-index: 3; transform: translate(258px,312px); pointer-events: all; opacity: 0; color: white; background-color: rgb(158, 16, 89);"
         >
           <div
-            class="react-flow__handle react-flow__handle-left nodrag target"
+            class="react-flow__handle react-flow__handle-left nodrag target connectable"
             data-handlepos="left"
             data-nodeid="h1"
           />
-          H1
           <div
-            class="react-flow__handle react-flow__handle-right nodrag source"
+            class="css-8pgesn"
+          >
+            <p
+              class="css-1i194x1"
+            >
+              H1
+            </p>
+          </div>
+          <div
+            class="react-flow__handle react-flow__handle-right nodrag source connectable"
             data-handlepos="right"
             data-nodeid="h1"
           />
@@ -928,7 +992,7 @@ exports[`Flow should match the snapshot 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0 8 0 4.571 3.429 4.571 7.619v3.048H3.048A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047zm4.724-13.866H7.467V7.619c0-2.59 2.133-4.724 4.723-4.724 2.591 0 4.724 2.133 4.724 4.724v3.048z"
+            d="M21.333 10.667H19.81V7.619C19.81 3.429 16.38 0 12.19 0c-4.114 1.828-1.37 2.133.305 2.438 1.676.305 4.42 2.59 4.42 5.181v3.048H3.047A3.056 3.056 0 000 13.714v15.238A3.056 3.056 0 003.048 32h18.285a3.056 3.056 0 003.048-3.048V13.714a3.056 3.056 0 00-3.048-3.047zM12.19 24.533a3.056 3.056 0 01-3.047-3.047 3.056 3.056 0 013.047-3.048 3.056 3.056 0 013.048 3.048 3.056 3.056 0 01-3.048 3.047z"
           />
         </svg>
       </div>
