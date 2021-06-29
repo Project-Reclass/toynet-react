@@ -4,24 +4,18 @@ Check out your new networking buddy [https://www.toynet.projectreclass.org](http
 
 ## Getting Started
 
-<!-- toc -->
-- [Running in Development](#running-in-development)
-- [Testing PRs](#testing-pull-requests-with-docker-compose)
-- [Testing Master](#testing-the-master-branch)
-- [Available Scripts](#available-scripts)
-- [Recommended IDE Plugins](#ide-plugins)
-- [Learn More](#learn-more)
-<!-- tocstop -->
+* [Running in Development](./#running-in-development)
+* [Testing PRs](./#testing-pull-requests-with-docker-compose)
+* [Testing Master](./#testing-the-master-branch)
+* [Available Scripts](./#available-scripts)
+* [Recommended IDE Plugins](./#ide-plugins)
+* [Learn More](./#learn-more)
 
--------------------------------------------
-
-Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines. Docker compose port maps each service running (e.g. frontend and backend).
-The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 8000
-in the container, because port 8000 is not a system port, the docker-compose just maps port 8000 to port 8000 on the local machine.
+Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines. Docker compose port maps each service running \(e.g. frontend and backend\). The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 8000 in the container, because port 8000 is not a system port, the docker-compose just maps port 8000 to port 8000 on the local machine.
 
 This port mapping is represented in the docker-compose as
 
-```yml
+```text
 services:
   backend:
     ...
@@ -34,15 +28,17 @@ services:
       - "3000:80"
 ```
 
-backend -> 8000  
-frontend -> 3000
+backend -&gt; 8000  
+frontend -&gt; 3000
 
 ## Dependencies
 
-Docker and docker-compose are required to start developing with toynet.
+The below software is required in order to get setup to run `toynet-react`.
 
-If you do not have **docker** installed see [this guide](https://docs.docker.com/engine/install/).  
-If you do not have **docker-compose** install see [this guide](https://docs.docker.com/compose/install/)
+* Git [\(Install Guide\)](https://git-scm.com/downloads)
+* Docker [\(Install Guide\)](https://docs.docker.com/engine/install/)
+* Docker-Compose [\(Install Guide\)](https://docs.docker.com/compose/install/)
+* Node.js and NPM [\(Install Guide\)](https://nodejs.org/en/)
 
 ## Running in Development
 
@@ -61,23 +57,41 @@ The docker-compose file can then be run in the background using
 $ docker-compose -f docker-compose.dev.yml up -d --build
 ```
 
-After the docker-compose starts up you can start `toynet-react` for development using
+Before starting the frontend of `toynet` you will need to install all the dependencies. This can be done using
+
 ```bash
-$ npm run dev
+$ npm i
 ```
 
-and navate to http://localhost:3000.
+After the docker-compose starts up you can start `toynet-react` for development using
+
+```bash
+$ npm start
+```
+
+and navate to [http://localhost:3000](http://localhost:3000).
 
 ## Testing Pull Requests with Docker Compose
 
 Testing pull requests can be done without cloning down or checking out the pull request on the local machine. Because `toynet-react` uses docker-compose pull-requests can be previewed by just using the docker-compose file.
 
+For Linux run
+
 ```bash
 $ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml
 ```
 
+On Windows \(Powershell\) run
+
+```text
+$ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml -Outfile docker-compose.yml
+# or
+$ Invoke-WebRequest https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml -Outfile docker-compose.yml
+```
+
 Edit the `docker-compose.yml` file to include the GitHub PR id.
-```yml
+
+```text
 services:
   ...
   frontend:
@@ -86,11 +100,12 @@ services:
 ```
 
 And then run
+
 ```bash
 $ docker-compose up --build
 ```
 
-The PR app can then be previewed at http://localhost:3000
+The PR app can then be previewed at [http://localhost:3000](http://localhost:3000)
 
 ## Testing the Master Branch
 
@@ -102,7 +117,7 @@ $ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/doc
 
 Edit the `docker-compose.yml` file use master or the default branch instead of a PR id.
 
-```yml
+```text
 services:
   ...
   frontend:
@@ -122,20 +137,20 @@ The app can then be accessed at [http://localhost:3000](http://localhost:3000).
 
 Some plugins that you might find helpful are
 
-- ESLint
-- React
-- VSCode Styled Components
+* ESLint
+* React
+* VSCode Styled Components
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-- `npm run start` - Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
-- `npm test` - Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-- `npm run style:fix` - Fixes any automatically fixable ESLint errors.
-- `npm run style:check` - Checks and displays any ESLint errors.
-- `npm run check-types` - Checks all typescript types to ensure correct typing.
-- `npm run build` - Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed!
+* `npm run start` - Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
+* `npm test` - Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* `npm run style:fix` - Fixes any automatically fixable ESLint errors.
+* `npm run style:check` - Checks and displays any ESLint errors.
+* `npm run check-types` - Checks all typescript types to ensure correct typing.
+* `npm run build` - Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
@@ -145,5 +160,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 ### Contributors
 
-- Sammy Tran
-- Yi Yang
+* Sammy Tran
+* Yi Yang
+* Scott Richardson
+

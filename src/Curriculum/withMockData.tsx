@@ -78,9 +78,12 @@ interface Props {
   description: string;
   moduleData: Data[];
 }
-export default (Component: React.ComponentType<Props>) => () => {
+
+export const withMockData = (Component: React.ComponentType<Props>) => () => {
   return <Component
     moduleData={mockData}
     description={mockDescription}
   />;
 };
+
+export default withMockData;
