@@ -8,14 +8,6 @@ interface Params {
   valueId: string;
 };
 
-interface Value {
-  value: string;
-  inspiration: {
-    organization: string;
-    definition: string;
-  }[];
-}
-
 const Value = () => {
   const { valueId } = useParams<Params>();
 

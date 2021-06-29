@@ -19,10 +19,10 @@
     "noEmit": true,
     "jsx": "react",
     "baseUrl": ".",
-    "types": ["cypress"]
+    "types": ["cypress"],
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
   ]
 }
-
