@@ -185,5 +185,5 @@
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:5000"
 }

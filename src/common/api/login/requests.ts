@@ -1,10 +1,10 @@
+import axios, { AxiosPromise, AxiosRequestConfig, Method } from 'axios';
 
-const MOCK_USERNAME = 'admin@reclass.org';
-const MOCK_PASSWORD = 'supersecret';
+export const TOKEN_KEY = 'toynet-token';
 
 interface User {
-  id: string | number;
   username: string;
+  token: string;
 }
 
 interface UsernameNPassword {
@@ -13,10 +13,29 @@ interface UsernameNPassword {
 }
 
 export const login = async ({ username, password }: UsernameNPassword): Promise<User | null> => {
-  return new Promise((resolve, reject) => {
-    if (username === MOCK_USERNAME && password === MOCK_PASSWORD)
-      resolve({ id: 0, username: MOCK_USERNAME });
-    else
-      reject(null);
-  });
+  const { data } = await axios.post<User>('/api/login', { username, password });
+  return {
+    username,
+    token: data.token,
+  };
 };
+
+function authorizedRequestConfig<TData>(config: AxiosRequestConfig) {
+  const token = localStorage.getItem(TOKEN_KEY);
+
+  return axios({
+    ...config,
+    headers: {
+      ...config.headers,
+      'Authorization': `Bearer ${token}`,
+    },
+  }) as AxiosPromise<TData> ;
+}
+
+export function authorizedRequest<TData>(url: string, method: Method, data?: any) {
+  return authorizedRequestConfig<TData>({
+    url,
+    data,
+    method,
+  });
+}
