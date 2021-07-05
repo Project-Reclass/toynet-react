@@ -2,6 +2,8 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from '@emotion/styled';
 
+import { ReactQueryDevtools } from 'react-query-devtools';
+
 import ErrorBoundary from './common/components/ErrorBoundary';
 import LoadingSpinner from './common/components/LoadingSpinner';
 import Header from './Header/Header';
@@ -17,6 +19,8 @@ import Layout from './layout';
 const SplashScreen = React.lazy(() => import('./SplashScreen'));
 const Emulator = React.lazy(() => import('./Emulator'));
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const LoadingWrapper = styled('div')`
   width: 100%;
   height: 100vh;
@@ -26,6 +30,7 @@ function App() {
   const { sideNav } = useFeatureFlags();
   return (
     <ErrorBoundary>
+      <ReactQueryDevtools initialIsOpen={isDev} />
       <Router>
         <Switch>
           <Route exact path='/'>

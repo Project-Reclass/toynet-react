@@ -20,9 +20,7 @@ export const login = async ({ username, password }: UsernameNPassword): Promise<
   };
 };
 
-function authorizedRequestConfig<TData>(config: AxiosRequestConfig) {
-  const token = localStorage.getItem(TOKEN_KEY);
-
+function authorizedRequestConfig<TData>(config: AxiosRequestConfig, token: string) {
   return axios({
     ...config,
     headers: {
@@ -32,10 +30,10 @@ function authorizedRequestConfig<TData>(config: AxiosRequestConfig) {
   }) as AxiosPromise<TData> ;
 }
 
-export function authorizedRequest<TData>(url: string, method: Method, data?: any) {
+export function authorizedRequest<TData>(url: string, method: Method, token: string, data?: any) {
   return authorizedRequestConfig<TData>({
     url,
     data,
     method,
-  });
+  }, token);
 }
