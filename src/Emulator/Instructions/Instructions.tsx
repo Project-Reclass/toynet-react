@@ -1,15 +1,18 @@
 import React, { FC } from 'react';
 import { Heading, Text } from '@chakra-ui/core';
 
+import EmulatorSection from 'src/common/components/Emulator/Section';
+import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
+
 import {
   BackArea,
   BackButton,
   Container,
-  InstructionsContainer,
   LinkText,
   TaskItem,
   TaskList,
 } from './styled';
+import { EmulatorTitle } from 'src/common/components/Emulator';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -24,14 +27,18 @@ interface Props {
 
 const Instructions: FC<Props> = ({ panelData }) => {
   return (
-      <InstructionsContainer>
+      <EmulatorSection
+        width='15vw'
+        maxWidth='335px'
+        minWidth='250px'
+      >
         <BackArea>
-            <LinkText href='/'>
-              <BackButton />
-              <Text>
-                Back to site
-              </Text>
-            </LinkText>
+          <LinkText href='/'>
+            <BackButton />
+            <Text>
+              Back to site
+            </Text>
+          </LinkText>
         </BackArea>
         <Container>
           <Heading size='lg'>Module {panelData.submoduleNumber}</Heading>
@@ -41,15 +48,23 @@ const Instructions: FC<Props> = ({ panelData }) => {
           <Heading size='lg'>Objective</Heading>
           <Text>{panelData.objective}</Text>
         </Container>
-        <Container>
-          <Heading size='lg'>Tasks</Heading>
-          <TaskList>
-            {panelData.tasks.map(task => (
-              <TaskItem key={`${task}`}>{task}</TaskItem>
-            ))}
-          </TaskList>
+        <Container
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+          }}
+        >
+          <EmulatorTitle size='lg'>Tasks</EmulatorTitle>
+          <EmulatorInnerSection style={{ padding: '0.549rem' }}>
+            <TaskList>
+              {panelData.tasks.map(task => (
+                <TaskItem key={`${task}`}>{task}</TaskItem>
+              ))}
+            </TaskList>
+          </EmulatorInnerSection>
         </Container>
-      </InstructionsContainer>
+      </EmulatorSection>
   );
 };
 

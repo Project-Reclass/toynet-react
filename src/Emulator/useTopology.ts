@@ -79,8 +79,9 @@ function reducer(state: ParsedXML, action: ReducerAction) {
     case TopologyActions.DELETE_HOST:
     case TopologyActions.DELETE_ROUTER:
     case TopologyActions.DELETE_SWITCH:
+      console.log(action.payload);
       const deleteKey = action.type === TopologyActions.DELETE_ROUTER ? 'routers' :
-      action.type === TopologyActions.DELETE_SWITCH ? 'switches' : 'hosts';
+        action.type === TopologyActions.DELETE_SWITCH ? 'switches' : 'hosts';
       const device = action.payload as DeviceInterface;
       const deviceIndex = state[deleteKey].findIndex(d => d.name === device.name);
       if (deviceIndex !== -1)

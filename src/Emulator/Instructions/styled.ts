@@ -6,11 +6,14 @@ import { ReactComponent as Exit } from 'src/assets/buttons/backIcon.svg';
 export const InstructionsContainer = styled.div`
   color: white;
   background-color: #454950;
-  height: 55vh;
+  height: 100%;
   width: 15vw;
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   word-wrap: break-word;
   padding-left: 2vh;
+  padding-bottom: 3vh;
   overflow: auto;
   max-width: 335px;
   min-width: 250px;
@@ -76,7 +79,6 @@ export const BackButton = styled(Exit)`
 `;
 
 export const BackArea = styled.div`
-  padding-top: 3vh;
   padding-bottom: 10%;
   color: darkgray;
 `;
