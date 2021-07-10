@@ -7,6 +7,8 @@ export enum DeviceColor {
   HOST = '#9E1059',
 }
 
+// type DeviceColorClass = 'Router' | 'r' | 'Switch' | 's' | 'Host' | 'h' |
+
 export const deviceColorClasses = new Map<string, DeviceColor>();
 deviceColorClasses.set('Router', DeviceColor.ROUTER);
 deviceColorClasses.set('r', DeviceColor.ROUTER);

@@ -61,7 +61,7 @@ const Quiz = () => {
     <QuizContainer id="#">
       <LoadingContainer isLoading={isLoading}>
         <SimpleGrid columns={1} spacing={10}>
-          {Array.isArray(data) && data.map((q: Question, qIndex: number) => (
+          {data?.items.map((q: Question, qIndex: number) => (
             <Box p={5} color="white" key={q.question}>
               <Flex>
                 {isQuizSubmitted && (answerIsCorrect[qIndex] ?
@@ -110,7 +110,7 @@ const Quiz = () => {
           isOpen={isOpen}
           tryAgain={resetQuiz}
           numCorrect={numCorrect}
-          total={data?.length || 0}
+          total={data?.items.length || 0}
         />
       </LoadingContainer>
     </QuizContainer>

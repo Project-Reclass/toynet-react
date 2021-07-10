@@ -9,6 +9,6 @@ export interface Meta {
 }
 
 export const getValueMeta = async (valueId: number): Promise<Meta> => {
-  const { data } = await axios.get(`/data/value/${valueId}/meta.json`);
+  const { data } = await axios.get(`/api/value/${valueId}/inspirations`);
   return data;
 };
