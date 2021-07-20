@@ -11,7 +11,7 @@ Check out your new networking buddy [https://www.toynet.projectreclass.org](http
 * [Recommended IDE Plugins](./#ide-plugins)
 * [Learn More](./#learn-more)
 
-Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines. Docker compose port maps each service running \(e.g. frontend and backend\). The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 8000 in the container, because port 8000 is not a system port, the docker-compose just maps port 8000 to port 8000 on the local machine.
+Because `toynet` uses multiple services, `docker-compose` was introduced to help start each services and connect them on local machines. Docker compose port maps each service running \(e.g. frontend and backend\). The frontend application when used in a docker container normally runs on port 80, however, docker-compose maps port 3000 of the local machine to port 80 on the container. For the backend, it normally exposes port 5000 in the container, because port 5000 is not a system port, the docker-compose just maps port 5000 to port 5000 on the local machine.
 
 This port mapping is represented in the docker-compose as
 
@@ -20,7 +20,7 @@ services:
   backend:
     ...
     ports:
-      - "8000:8000"
+      - "5000:5000"
 # or
   frontend:
     ...
@@ -69,7 +69,7 @@ After the docker-compose starts up you can start `toynet-react` for development 
 $ npm start
 ```
 
-and navate to [http://localhost:3000](http://localhost:3000).
+and navigate to [http://localhost:3000](http://localhost:3000).
 
 ## Testing Pull Requests with Docker Compose
 
