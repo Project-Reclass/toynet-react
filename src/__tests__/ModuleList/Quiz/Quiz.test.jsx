@@ -25,28 +25,30 @@ describe('The Quiz page', () => {
   });
 
   it('should fetch quiz data', async () => {
-    const data = [
-      {
-        "question": "How many nodes share a single channel on a bus topology?",
-        "options": [
-            "One node",
-            "Only ones communicating",
-            "Three nodes",
-            "All nodes"
-        ],
-        "answer": 3
-      },
-      {
-        "question": "Which of the following is the most fault-tolerant WAN topology?",
-        "options": [
-            "Partial Mesh",
-            "Ring",
-            "Star",
-            "Full-mesh"
-        ],
-        "answer": 3
-      }
-    ];
+    const data = {
+      items: [
+        {
+          "question": "How many nodes share a single channel on a bus topology?",
+          "options": [
+              "One node",
+              "Only ones communicating",
+              "Three nodes",
+              "All nodes"
+          ],
+          "answer": 3
+        },
+        {
+          "question": "Which of the following is the most fault-tolerant WAN topology?",
+          "options": [
+              "Partial Mesh",
+              "Ring",
+              "Star",
+              "Full-mesh"
+          ],
+          "answer": 3
+        }
+      ]
+    };
     getQuizMeta.mockResolvedValue(data);
     const { getByText, getAllByText } = renderWithTheme(
       <RenderWithRouter quizId={64}>
