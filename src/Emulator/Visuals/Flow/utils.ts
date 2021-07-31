@@ -76,7 +76,7 @@ export const createElements = (devices: DeviceInterface[]) => {
         data: { label: name.toUpperCase() },
         style: {
           color: 'white',
-          backgroundColor: deviceColorClasses.get(type.toString().charAt(0)),
+          backgroundColor: deviceColorClasses.get(type),
         },
       });
       connections.forEach(conn => {
