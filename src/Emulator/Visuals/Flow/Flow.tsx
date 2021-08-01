@@ -101,7 +101,7 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
           leftIcon="add"
           variantColor="pink"
           variant="outline"
-          borderColor={deviceColorClasses.get('h')}
+          borderColor={deviceColorClasses.get('host')}
           onClick={() => dispatch({
              type: TopologyActions.ADD_HOST,
              payload: {
@@ -118,7 +118,7 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
           size='sm'
           leftIcon="add"
           variantColor="blue"
-          borderColor={deviceColorClasses.get('s')}
+          borderColor={deviceColorClasses.get('switch')}
           variant="outline"
           onClick={() => dispatch({
             type: TopologyActions.ADD_SWITCH,
@@ -136,7 +136,7 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
           size='sm'
           leftIcon="add"
           variantColor="yellow"
-          borderColor={deviceColorClasses.get('r')}
+          borderColor={deviceColorClasses.get('router')}
           variant="outline"
           onClick={() => dispatch({
             type: TopologyActions.ADD_ROUTER,

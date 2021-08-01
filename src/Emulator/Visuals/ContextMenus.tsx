@@ -27,9 +27,9 @@ export const ContextMenus = ({ devices }: Props) => {
   }, [dispatch]);
 
   const handleDelete = useCallback((device: DeviceInterface) => {
-    let deviceTypeAction = device.name[0].toLocaleLowerCase() === 'r' ? TopologyActions.DELETE_ROUTER :
-      device.name[0].toLocaleLowerCase() === 's' ? TopologyActions.DELETE_SWITCH :
-        device.name[0].toLocaleLowerCase() === 'h' ? TopologyActions.DELETE_HOST :
+    let deviceTypeAction = device.type === 'router' ? TopologyActions.DELETE_ROUTER :
+      device.type === 'switch' ? TopologyActions.DELETE_SWITCH :
+        device.type === 'host' ? TopologyActions.DELETE_HOST :
           TopologyActions.FLUSH_QUEUE;
 
     if (deviceTypeAction === TopologyActions.FLUSH_QUEUE)

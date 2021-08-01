@@ -1,3 +1,5 @@
+import { DeviceType } from 'src/common/types';
+
 export type LinkFunc = (from: string, to: string) => any;
 
 export enum DeviceColor {
@@ -7,13 +9,8 @@ export enum DeviceColor {
   HOST = '#9E1059',
 }
 
-// type DeviceColorClass = 'Router' | 'r' | 'Switch' | 's' | 'Host' | 'h' |
-
-export const deviceColorClasses = new Map<string, DeviceColor>();
-deviceColorClasses.set('Router', DeviceColor.ROUTER);
-deviceColorClasses.set('r', DeviceColor.ROUTER);
-deviceColorClasses.set('Switch', DeviceColor.SWITCH);
-deviceColorClasses.set('s', DeviceColor.SWITCH);
-deviceColorClasses.set('Host', DeviceColor.HOST);
-deviceColorClasses.set('h', DeviceColor.HOST);
+export const deviceColorClasses = new Map<DeviceType | 'empty', DeviceColor>();
+deviceColorClasses.set('router', DeviceColor.ROUTER);
+deviceColorClasses.set('switch', DeviceColor.SWITCH);
+deviceColorClasses.set('host', DeviceColor.HOST);
 deviceColorClasses.set('empty', DeviceColor.EMPTY);
