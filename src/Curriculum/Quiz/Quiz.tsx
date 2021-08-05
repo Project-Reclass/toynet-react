@@ -16,6 +16,7 @@ import {
   AnswerContainer,
 } from './styled';
 import QuizModal from './QuizModal';
+import { useEffect } from 'react';
 
 interface Params {
   quizId: string;
@@ -25,6 +26,11 @@ const Quiz = () => {
   const { quizId } = useParams<Params>();
   const { data, isLoading } = useQuizMeta(Number(quizId));
   const { isOpen, onClose, onOpen } = useDisclosure(false);
+
+
+  useEffect(() => {
+    console.log({ data });
+  }, [data]);
 
   const [isQuizSubmitted, setIsQuizSubmitted] = useState<boolean>(false);
   const [answerIsCorrect, setAnswerIsCorrect] = useState<StringMap>({});
@@ -61,7 +67,7 @@ const Quiz = () => {
     <QuizContainer id="#">
       <LoadingContainer isLoading={isLoading}>
         <SimpleGrid columns={1} spacing={10}>
-          {Array.isArray(data) && data.map((q: Question, qIndex: number) => (
+          {data?.items && data.items.map((q: Question, qIndex: number) => (
             <Box p={5} color="white" key={q.question}>
               <Flex>
                 {isQuizSubmitted && (answerIsCorrect[qIndex] ?
@@ -110,7 +116,7 @@ const Quiz = () => {
           isOpen={isOpen}
           tryAgain={resetQuiz}
           numCorrect={numCorrect}
-          total={data?.length || 0}
+          total={data?.items.length || 0}
         />
       </LoadingContainer>
     </QuizContainer>
