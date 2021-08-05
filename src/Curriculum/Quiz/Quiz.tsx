@@ -27,11 +27,6 @@ const Quiz = () => {
   const { data, isLoading } = useQuizMeta(Number(quizId));
   const { isOpen, onClose, onOpen } = useDisclosure(false);
 
-
-  useEffect(() => {
-    console.log({ data });
-  }, [data]);
-
   const [isQuizSubmitted, setIsQuizSubmitted] = useState<boolean>(false);
   const [answerIsCorrect, setAnswerIsCorrect] = useState<StringMap>({});
 
