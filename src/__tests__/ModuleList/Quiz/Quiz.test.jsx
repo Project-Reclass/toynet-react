@@ -47,7 +47,7 @@ describe('The Quiz page', () => {
         "answer": 3
       }
     ];
-    getQuizMeta.mockResolvedValue(data);
+    getQuizMeta.mockResolvedValue({ items: data });
     const { getByText, getAllByText } = renderWithTheme(
       <RenderWithRouter quizId={64}>
         <Quiz />
