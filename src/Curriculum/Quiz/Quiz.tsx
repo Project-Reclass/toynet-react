@@ -16,7 +16,6 @@ import {
   AnswerContainer,
 } from './styled';
 import QuizModal from './QuizModal';
-import { useEffect } from 'react';
 
 interface Params {
   quizId: string;
