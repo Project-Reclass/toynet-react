@@ -21,6 +21,8 @@ interface Params {
   quizId: string;
 }
 
+const answeredIndices = new Set();
+
 const Quiz = () => {
   const { quizId } = useParams<Params>();
   const { data, isLoading } = useQuizMeta(Number(quizId));
@@ -29,16 +31,22 @@ const Quiz = () => {
   const [isQuizSubmitted, setIsQuizSubmitted] = useState<boolean>(false);
   const [answerIsCorrect, setAnswerIsCorrect] = useState<StringMap>({});
 
+
   const handleAnsweredQuestion = (q: Question, qIndex: number, answerPicked: number) => {
     return () => {
+      answeredIndices.add(qIndex);
       answerIsCorrect[qIndex] = q.answer === answerPicked;
       setAnswerIsCorrect(answerIsCorrect);
     };
   };
 
   const submitQuiz = () => {
-    onOpen();
-    setIsQuizSubmitted(true);
+    if (data?.items.length !== answeredIndices.size) {
+      alert('You answered ' + answeredIndices.size + ' out of ' + data?.items.length + ' questions!');
+    } else {
+      onOpen();
+      setIsQuizSubmitted(true);
+    };
   };
 
   // We refresh the page so that the radio boxes are cleared.
