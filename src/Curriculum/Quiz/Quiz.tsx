@@ -83,6 +83,7 @@ const Quiz = () => {
                       <input
                         type="radio"
                         id={option}
+                        data-testid={option}
                         name={qIndex.toString()}
                         value={option}
                         onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
