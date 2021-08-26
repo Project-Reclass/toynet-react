@@ -62,7 +62,7 @@ describe('The Quiz page', () => {
     expect(getByText(/Partial Mesh/i)).toBeInTheDocument();
   });
   
-  it('should err if not all answered',() => {
+  it('should err if none answered',() => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
     getQuizMeta.mockResolvedValue({ items: data });
     const { getByText, getAllByText } = renderWithTheme(
@@ -71,6 +71,21 @@ describe('The Quiz page', () => {
       </RenderWithRouter>
     );
     const submitBtn = getByText(/submit/i);
+    fireEvent.click(submitBtn);
+    expect(window.alert).toBeCalled();
+    
+  })
+  it('should err if not all answered',() => {
+    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    getQuizMeta.mockResolvedValue({ items: data });
+    const { getByText, getAllByText } = renderWithTheme(
+      <RenderWithRouter quizId={64}>
+        <Quiz />
+      </RenderWithRouter>
+    );
+    const choice1 = screen.getByTestId('Only ones communicating');
+    const submitBtn = getByText(/submit/i);
+    fireEvent.click(choice1);
     fireEvent.click(submitBtn);
     expect(window.alert).toBeCalled();
     
