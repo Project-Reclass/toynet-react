@@ -26,7 +26,7 @@ const SubModule: FC<Props> = ({ title, progress, id, moduleId, type, index, coun
         <ModuleName fontSize='lg' color='white'>
           <Link
             href={createLink({ type, id, moduleId })}
-            maxW={250}
+            width={250}
             display='block'
             isTruncated
           >

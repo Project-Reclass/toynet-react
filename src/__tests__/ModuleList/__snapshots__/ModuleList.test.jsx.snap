@@ -152,7 +152,7 @@ exports[`The Module List should render and match snapshot 1`] = `
                         class="css-c02fy7"
                       >
                         <a
-                          class="css-q3xaa4"
+                          class="css-1xx1v7d"
                           href="/module/0/quiz/4001"
                         >
                           Quiz 1
@@ -217,7 +217,7 @@ exports[`The Module List should render and match snapshot 1`] = `
                         class="css-c02fy7"
                       >
                         <a
-                          class="css-q3xaa4"
+                          class="css-1xx1v7d"
                           href="/module/0/article/2001"
                         >
                           Ever wondered how underwater cables are laid?
@@ -282,7 +282,7 @@ exports[`The Module List should render and match snapshot 1`] = `
                         class="css-c02fy7"
                       >
                         <a
-                          class="css-q3xaa4"
+                          class="css-1xx1v7d"
                           href="/value/5001"
                         >
                           Values - Integrity
@@ -388,7 +388,7 @@ exports[`The Module List should render and match snapshot 1`] = `
                         class="css-c02fy7"
                       >
                         <a
-                          class="css-q3xaa4"
+                          class="css-1xx1v7d"
                           href="/module/0/quiz/4002"
                         >
                           Quiz 2
@@ -453,7 +453,7 @@ exports[`The Module List should render and match snapshot 1`] = `
                         class="css-c02fy7"
                       >
                         <a
-                          class="css-q3xaa4"
+                          class="css-1xx1v7d"
                           href="/module/0/article/2002"
                         >
                           Father of the internet, Vint Cerf, on creating the interplanetary internet
@@ -518,7 +518,7 @@ exports[`The Module List should render and match snapshot 1`] = `
                         class="css-c02fy7"
                       >
                         <a
-                          class="css-q3xaa4"
+                          class="css-1xx1v7d"
                           href="/value/5002"
                         >
                           Values - Respect
