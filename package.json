@@ -153,7 +153,10 @@
       ],
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
-      "header/header": [2, "header.js"]
+      "header/header": [
+        2,
+        "header.js"
+      ]
     }
   },
   "browserslist": {

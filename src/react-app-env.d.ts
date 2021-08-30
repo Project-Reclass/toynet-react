@@ -18,3 +18,4 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+/// <reference types="react-scripts" />
