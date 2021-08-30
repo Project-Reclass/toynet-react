@@ -11,7 +11,7 @@ services:
       - SECRET_KEY="iamnotaverysecretkey"
 
   frontend:
-    build: https://github.com/Project-Reclass/toynet-react.git#pull/{pull-request-number}/head
+    build: https://github.com/Project-Reclass/toynet-react.git
     ports:
       - "3000:80"
     networks:
