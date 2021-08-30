@@ -42,6 +42,9 @@
       "serviceWorker.js",
       "*.test.js*"
     ],
+    "plugins": [
+      "header"
+    ],
     "rules": {
       "semi": [
         "error",
@@ -149,7 +152,8 @@
         "last"
       ],
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "error"
+      "react-hooks/exhaustive-deps": "error",
+      "header/header": [2, "header.js"]
     }
   },
   "browserslist": {
@@ -174,16 +178,17 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.0",
     "@types/react-router-dom": "^5.1.5",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "awesome-typescript-loader": "^5.2.1",
+    "eslint-plugin-header": "^3.1.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jsdoc": "^3.6.7",
     "react-dnd-test-backend": "^11.1.3",
     "react-dnd-test-utils": "^11.1.3",
     "react-test-renderer": "^16.13.1",
     "source-map-loader": "^1.0.1",
-    "typescript": "^3.9.7",
-    "@typescript-eslint/eslint-plugin": "^4.7.0",
-    "@typescript-eslint/parser": "^4.7.0"
+    "typescript": "^3.9.7"
   },
   "proxy": "http://localhost:8080"
 }
