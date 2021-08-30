@@ -15,7 +15,9 @@ for more details.
 
 You should have received a copy of the GNU General Public License
 along with ToyNet React; see the file LICENSE.  If not see
-<http://www.gnu.org/licenses/>.  */
+<http://www.gnu.org/licenses/>.
+
+*/
 import React, { createContext, useContext, FC, useState, useCallback } from 'react';
 import { useTopology, TopologyState } from 'src/Emulator/useTopology';
 
