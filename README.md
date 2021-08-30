@@ -9,7 +9,7 @@ Project Reclass is a multi-disciplinary nonprofit organization that teaches tech
 ## Get Involved
 
 * [Get Involved](https://www.projectreclass.org/get-involved/)
-* [Contribute Code](https://docs.projectreclass.org)
+* [Contribute Code](https://docs.projectreclass.org/toynet/contributing-code-to-toynet/contributing-code-to-toynet)
 * [See "Help Wanted" Tickets](https://github.com/Project-Reclass/toynet-react/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 * [Check out some of out other projects](https://github.com/orgs/Project-Reclass/repositories)
 
