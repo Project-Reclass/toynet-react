@@ -2,9 +2,13 @@ version: '3'
 
 services:
   backend:
-    build: https://github.com/Project-Reclass/toynet-flask.git#main
+    build: https://github.com/Project-Reclass/toynet-django.git#PRODUCTION
     networks:
       - reclass_network
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY="iamnotaverysecretkey"
 
   frontend:
     build: https://github.com/Project-Reclass/toynet-react.git
@@ -15,7 +19,7 @@ services:
     depends_on:
       - backend
     environment:
-      - SERVER_URI="http://backend:5000"
+      - SERVER_URI="http://backend:8000"
 
 networks:
   reclass_network:

@@ -6,11 +6,11 @@ export interface Question {
   answer: number;
 }
 
-export interface QuizResponse {
-  items: Question[];
+interface QuestionResponse {
+  items: Question[]
 }
 
-export const getQuizMeta = async (quizId: number): Promise<QuizResponse> => {
-	const { data } = await axios.get(`/api/quiz/${quizId}`);
+export const getQuizMeta = async (quizId: number): Promise<QuestionResponse> => {
+	const { data } = await axios.get(`/data/quiz/${quizId}/meta.json`);
 	return data;
 };

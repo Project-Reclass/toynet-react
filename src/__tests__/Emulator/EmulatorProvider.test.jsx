@@ -48,7 +48,7 @@ describe('The EmulatorProvider', () => {
   it('should provide switches, router, and hosts if a session key does not exits', async () => {
     createToynetSession.mockResolvedValue({
       message: '',
-      toynet_session_id: 2,
+      session_id: 2,
       topology: '',
     });
 
