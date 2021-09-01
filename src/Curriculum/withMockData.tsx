@@ -1,38 +1,52 @@
 /* eslint-disable no-magic-numbers */
 import React from 'react';
+import { Link, Text } from '@chakra-ui/core';
 import { ModuleTypes, ModuleInterface } from './Module';
 
 // const mockUsername = 'Tay';
-const mockDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque fermentum volutpat. Proin ut iaculis mauris. Aenean commodo mauris at justo faucibus, in vulputate arcu maximus. Maecenas bibendum nisl urna, nec pretium lacus dapibus et. Nullam a diam sollicitudin, dapibus ante nec, pulvinar diam. Pellentesque sit amet dignissim felis. Nulla interdum, lacus ac rhoncus posuere, tortor leo pharetra nulla, a pulvinar quam sapien sed mi. Fusce bibendum mauris massa, at molestie arcu venenatis at. Vivamus in tellus tempus, porttitor diam a, laoreet magna. Morbi pharetra justo risus, non auctor nisl interdum varius.';
-
+// const mockDescription = 'Welcome to the demo of our Networking Fundamentals course. You can click on each module’s chevron to see its submodules. You must go through the modules and their submodules in order. To start or revisit a submodule, click Go To Submodule >.';
+const MockDescription = () => (
+  <Text>
+    Welcome to the demo of our <Text as={'span'} fontWeight='bold'>Networking Fundamentals</Text> course.
+    You can click on each module's chevron to see its submodules.
+    You must go through the modules and their submodules in order.
+    To start or revisit a submodule, click {' '}
+    <Link fontWeight='bold' textDecoration='underline'>Go To Submodule {' >.'}</Link>
+  </Text>
+);
 
 const mockData = [
   {
     id: 1,
     moduleId: 0,
     title: 'Example Module',
-    progress: 80,
+    completed: false,
+    inProgress: false,
+    description: 'Computer need to move lots of information (e.g. emailed files, social media interactions, video streams) from one device to another. Whether it’s through WiFi or over some kind of cable, computers communicate with a series of bits (0s and 1s) in tiny chunks at a time. The most common way of sending these tiny chunks is with a packet. This module is all about packets! For details about the submodule, click on its star.',
     type: ModuleTypes.PARENT,
     subModules: [
       {
         id: 4001,
         moduleId: 0,
-        title: 'Quiz 1',
-        progress: 100,
+        title: 'Life of a Network Packet',
+        completed: true,
+        inProgress: false,
         type: ModuleTypes.QUIZ,
       },
       {
         id: 2001,
         moduleId: 0,
         title: 'Ever wondered how underwater cables are laid?',
-        progress: 10,
+        completed: true,
+        inProgress: false,
         type: ModuleTypes.ARTICLE,
       },
       {
         id: 5001,
         moduleId: 0,
-        title: 'Values - Integrity',
-        progress: 0,
+        title: 'Integrity',
+        completed: false,
+        inProgress: true,
         type: ModuleTypes.VALUE,
       },
     ],
@@ -41,28 +55,33 @@ const mockData = [
     id: 2,
     moduleId: 0,
     title: 'Second Module',
-    progress: 0,
+    description: '',
+    completed: false,
+    inProgress: false,
     type: ModuleTypes.PARENT,
     subModules: [
       {
         id: 4002,
         moduleId: 0,
         title: 'Quiz 2',
-        progress: 0,
+        completed: false,
+        inProgress: false,
         type: ModuleTypes.QUIZ,
       },
       {
         id: 2002,
         moduleId: 0,
         title: 'Father of the internet, Vint Cerf, on creating the interplanetary internet',
-        progress: 50,
+        completed: false,
+        inProgress: false,
         type: ModuleTypes.ARTICLE,
       },
       {
         id: 5002,
         moduleId: 0,
         title: 'Values - Respect',
-        progress: 0,
+        completed: false,
+        inProgress: false,
         type: ModuleTypes.VALUE,
       },
     ],
@@ -70,19 +89,20 @@ const mockData = [
 ];
 
 interface Data extends ModuleInterface {
+  description: string;
   subModules: ModuleInterface[];
 }
 
 interface Props {
   username?: string;
-  description: string;
+  description: JSX.Element | string;
   moduleData: Data[];
 }
 
 export const withMockData = (Component: React.ComponentType<Props>) => () => {
   return <Component
     moduleData={mockData}
-    description={mockDescription}
+    description={<MockDescription />}
   />;
 };
 

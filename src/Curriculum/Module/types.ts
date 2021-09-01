@@ -10,6 +10,7 @@ export interface ModuleInterface {
   id: number | string;
   moduleId: number | string;
   title: string;
-  progress: number;
+  completed: boolean;
+  inProgress:boolean;
   type: ModuleTypes;
 }

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SubModuleList: FC<Props> = ({ subModules }) => (
-  <Flex flexDirection='column' width='80%' marginLeft='auto'>
+  <Flex flexDirection='column' width='80%' marginLeft='auto' marginBottom='2rem'>
     {subModules.map((module, idx) => (
       <SubModule
         {...module}

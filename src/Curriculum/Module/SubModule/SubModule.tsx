@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
-import { Divider, Flex, Link, Stack, Text, Progress, Grid } from '@chakra-ui/core';
+import { Divider, Flex, Link, Stack, Text, Icon } from '@chakra-ui/core';
 
 import { ModuleInterface, ModuleTypes } from '../types';
 
 import { ModuleName } from './styled';
-import StatusIcon from './StatusIcon';
 
 interface Props extends ModuleInterface {
   index: number;
@@ -18,45 +17,25 @@ const createLink = ({ type, id, moduleId }: Pick<ModuleInterface, 'type' | 'id' 
   return `/module/${moduleId}/${type.toString()}/${id}`;
 };
 
-const SubModule: FC<Props> = ({ title, progress, id, moduleId, type, index, count }) => (
+const capitalize = (s: string): string =>
+  `${s[0].toUpperCase()}${s.slice(1)}`;
+
+const SubModule: FC<Props> = ({ title, completed, id, moduleId, type, index, count }) => (
   <Flex>
-    <StatusIcon status={progress === 100 ? 'done' : 'unlocked'} />
+    <Icon
+      name='star'
+      size='1.5rem'
+      color={completed ? 'green.500' : ''}
+    />
     <Stack spacing={2} width='100%' marginLeft='1.5rem'>
-      <Flex justifyContent='space-between'>
-        <ModuleName fontSize='lg' color='white'>
-          <Link
-            href={createLink({ type, id, moduleId })}
-            width={250}
-            display='block'
-            isTruncated
-          >
-            {title}
-          </Link>
-        </ModuleName>
-        <Grid
-          gap={4}
-          as='div'
-          width='80%'
-          marginY='auto'
-          justifyItems='end'
-          templateColumns='1fr 1fr'
-        >
-          <Text
-            color='white'
-            userSelect='none'
-            cursor='default'
-          >
-            {progress === 100 ? 'Completed' : 'Module progress'}
-          </Text>
-          <Progress
-            width='100%'
-            marginY='auto'
-            color={progress === 100 ? 'green' : 'yellow'}
-            value={progress}
-            borderRadius={3}
-          />
-        </Grid>
-      </Flex>
+      <ModuleName href={createLink({ type, id, moduleId })}>
+        <Text>
+          {`${capitalize(type.toString())}: ${title}`}
+        </Text>
+        <Link>
+          {'Go to Submodule >'}
+        </Link>
+      </ModuleName>
       {index !== count -1 && <Divider />}
     </Stack>
   </Flex>

@@ -31,15 +31,15 @@ describe('The sub modules', () => {
   it('should create a link to the submodule page', () => {
     const { type, id, title, moduleId } = defaultProps;
     const { getByText } = renderWithTheme(<SubModule {...defaultProps} />);
-    const link = getByText(title);
+    const link = getByText(new RegExp(title, 'i'));
 
-    expect(link.getAttribute('href')).toBe(`/module/${moduleId}/${type.toString()}/${id}`)
+    expect(link.closest('a').getAttribute('href')).toBe(`/module/${moduleId}/${type.toString()}/${id}`)
   });
   it('should create a link to a values page', () => {
     const { type, id, title } = valuesProps;
     const { getByText } = renderWithTheme(<SubModule {...valuesProps} />);
-    const link = getByText(title);
+    const link = getByText(new RegExp(title, 'i'));
 
-    expect(link.getAttribute('href')).toBe(`/${type.toString()}/${id}`)
+    expect(link.closest('a').getAttribute('href')).toBe(`/${type.toString()}/${id}`)
   })
 });

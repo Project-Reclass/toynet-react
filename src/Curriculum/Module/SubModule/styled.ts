@@ -1,9 +1,12 @@
 import styled from '@emotion/styled';
-import { Box, Text } from '@chakra-ui/core';
+import { Box, Link } from '@chakra-ui/core';
 
-export const ModuleName = styled(Text)`
+export const ModuleName = styled(Link)`
   color: grey;
   transition: color 0.2s ease;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
   a {
     -webkit-user-select: none;
     user-select: none;
