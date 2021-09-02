@@ -1,14 +1,16 @@
-import React, { FC } from 'react';
-import { Collapse, Flex, Text, useDisclosure } from '@chakra-ui/core';
+import React, { FC, useMemo, useState } from 'react';
+import { Box, Collapse, Flex, Text, Tooltip } from '@chakra-ui/core';
 
 import { RotatableIcon } from './styled';
 import SubModuleList from './SubModuleList';
 import { ModuleInterface } from './types';
-import { useMemo } from 'react';
 
 interface Props {
+  locked: boolean;
   description: string;
   subModules: ModuleInterface[];
+
+  paddingTop?: string;
 }
 
 const getCompletedSubModules = (subModules: ModuleInterface[]) =>
@@ -17,16 +19,41 @@ const getCompletedSubModules = (subModules: ModuleInterface[]) =>
 const getInProgressSubModules = (subModules: ModuleInterface[]) =>
   subModules.reduce<number>((prev, curr) => prev + (curr.completed ? 1 : 0), 0);
 
-const Module: FC<Props & ModuleInterface> = ({ description, title, subModules }) => {
-  const { isOpen, onToggle } = useDisclosure(false);
+const withToolTip = (Component: React.ReactNode) => (
+  <Tooltip
+    hasArrow
+    label='🔒 This module is currently locked.'
+    {...{'aria-label': 'This module is currently locked.'}}
+  >
+    {Component}
+  </Tooltip>
+);
+
+const CoolTooltip: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
+  if (isLocked)
+    return withToolTip(children);
+
+  return <>{children}</>;
+};
+
+const Module: FC<Props & ModuleInterface> = ({ description, title, subModules, locked, paddingTop }) => {
+  const [isOpen, setOpen] = useState(false);
 
   const numberCompleted = useMemo(() => getCompletedSubModules(subModules), [subModules]);
   const numberInProgress = useMemo(() => getInProgressSubModules(subModules), [subModules]);
 
+  const handleToggle = () =>
+    setOpen(!locked && !isOpen);
+
+
   return (
-    <div>
-      <Flex onClick={onToggle} cursor='pointer'>
-       <RotatableIcon
+    <Box
+    paddingTop={paddingTop}
+    color={locked ? 'grey' : 'white'}
+    borderLeft={`2pt solid ${locked ? 'grey' : 'white'}`}
+    >
+      <Flex onClick={handleToggle} cursor='pointer'>
+        <RotatableIcon
           name={'triangle-up'}
           rotated={isOpen}
           size='1.5rem'
@@ -34,21 +61,23 @@ const Module: FC<Props & ModuleInterface> = ({ description, title, subModules })
           marginX='1rem'
         />
         <Flex justifyContent='space-between' width='100%'>
-          <Text fontSize='2xl' color='white' userSelect='none'>
-            {title}
-          </Text>
-          <Text fontSize='1xl' color='white' userSelect='none' m='auto 0'>
+          <CoolTooltip isLocked={locked}>
+            <Text fontSize='2xl' userSelect='none'>
+              {title}
+            </Text>
+          </CoolTooltip>
+          <Text fontSize='1xl' userSelect='none' m='auto 0'>
             {`${numberCompleted} / ${subModules.length} completed, ${numberInProgress} in progress`}
           </Text>
         </Flex>
       </Flex>
       <Collapse isOpen={isOpen}>
-        <Text fontSize='1xl' color='white' userSelect='none' m='1rem'>
+        <Text fontSize='1xl' userSelect='none' m='1rem'>
           {description}
         </Text>
         <SubModuleList subModules={subModules} />
       </Collapse>
-    </div>
+    </Box>
   );
 };
 

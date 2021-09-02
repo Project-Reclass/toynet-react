@@ -33,18 +33,24 @@ export default function Dashboard({ moduleData, description, username }: Props) 
           </Stack>
         </Flex>
       </DashboardBox>
-      <Box
+      <Flex
         width='80%'
         minW='25rem'
         maxW='70rem'
-        margin='1rem auto'
+        margin='auto'
+        paddingTop='2rem'
+        flexDirection='column'
       >
         {
-          moduleData.map(module => (
-            <Module {...module} />
+          moduleData.map((module, i) => (
+            <Module
+              {...module}
+              paddingTop={i === 0 ? '2rem' : ''}
+              locked={i > 0 ? !moduleData[i-1].completed : false}
+            />
           ))
         }
-      </Box>
+      </Flex>
     </Box>
   );
 };

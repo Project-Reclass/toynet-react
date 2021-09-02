@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
 import { Box, Link } from '@chakra-ui/core';
 
+interface ModuleNameProps {
+  locked: boolean;
+}
+
 export const ModuleName = styled(Link)`
-  color: grey;
+  color: ${({ locked }: ModuleNameProps) => locked ? 'grey' : 'white'};
   transition: color 0.2s ease;
   display: flex;
   cursor: pointer;

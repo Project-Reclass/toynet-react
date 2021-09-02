@@ -28,7 +28,7 @@ const SubModule: FC<Props> = ({ title, completed, id, moduleId, type, index, cou
       color={completed ? 'green.500' : ''}
     />
     <Stack spacing={2} width='100%' marginLeft='1.5rem'>
-      <ModuleName href={createLink({ type, id, moduleId })}>
+      <ModuleName locked={!completed} href={createLink({ type, id, moduleId })}>
         <Text>
           {`${capitalize(type.toString())}: ${title}`}
         </Text>
