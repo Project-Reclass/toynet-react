@@ -7,8 +7,8 @@ export interface TopologyResponse {
 }
 
 export interface SessionRequest {
-  toynet_id: SessionId;
-  user_id: number;
+  toynet_topo_id: number;
+  toynet_user_id: string;
 }
 
 export interface CommandRequest {
@@ -17,9 +17,13 @@ export interface CommandRequest {
 }
 
 export interface SessionRequestResponse {
-  message: string;
-  session_id: number;
+  toynet_session_id: number;
+}
+
+export interface ToynetSession {
+  topo_id: number;
   topology: string;
+  user_id: string;
 }
 
 export interface ToynetSessionResponse {
