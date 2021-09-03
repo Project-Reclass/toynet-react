@@ -1,5 +1,9 @@
 import React, { useState, FC } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSurveyMeta } from 'src/common/api/curriculum/survey';
+import LoadingContainer from 'src/common/components/LoadingContainer';
+import { SurveyQuestion } from 'src/common/api/curriculum/survey/requests';
+
 import {
     SimpleGrid,
     InputGroup,
@@ -10,6 +14,7 @@ import {
     SliderTrack,
     SliderFilledTrack,
     SliderThumb,
+    Flex,
 } from '@chakra-ui/core';
 
 import {
@@ -22,77 +27,28 @@ interface Params {
     surveyId: string;
 }
 
-const data = ({
-    'items': [
-        {
-            'item_type': 'TEXT',
-            'question': 'What is your first name?',
-        },
-        {
-            'item_type': 'CHOICE',
-            'question': 'Are you interested in a career in the technology industry?',
-            'options': [
-                'As of now, I dont plan on it.',
-                'Not sure...',
-                'Im open to it. :)',
-                'Absolutely!',
-            ],
-        },
-        {
-            'item_type': 'LONGTEXT',
-            'question': 'What do you hope to get out of this course?',
-        },
-        {
-            'item_type': 'SCALE',
-            'question': 'How familiar would you say you are with computer networking concepts?',
-            'options': [
-                'Not at all',
-                'Some familiarity',
-                'Quite a bit',
-                'Very familiar',
-                'Professional Experience',
-            ],
-        },
-        {
-            'item_type': 'LONGTEXT',
-            'question': 'How did you get involved with our program?',
-        },
-        {
-            'item_type': 'CHOICE',
-            'question': 'Have you ever worked with computer networks during you time in service?',
-            'options': [
-                'Yes',
-                'No',
-            ],
-        },
-        {
-            'item_type': 'TEXT',
-            'question': 'How many months do you plan to dedicate to this program?',
-            'unit': 'months',
-        },
-    ],
-});
-
-
-// temporary, eventually want to move to api dir
-interface SurveyQuestion {
-    item_type: string;
-    question: string;
-    options?: string[];
-    unit?: string;
-}
-
-
-
 
 const Survey = () => {
 
     const { surveyId } = useParams<Params>();
+    const { data, isLoading } = useSurveyMeta(Number(surveyId));
+    const dataLength = data ? data.items.length : 0;
 
-    const RenderInput: FC<{question:SurveyQuestion}> = ({question}) => {
+    const [surveyAnswers, setSurveyAnswers] = useState<string[]>(new Array<string>(dataLength));
 
-        //Do I need this initialization?
-        let inputForm = <p>Nada</p>;
+    const UpdateSurveyFunc = (resp: string, id: number) => {
+        return () => {
+            surveyAnswers[id] = resp;
+            setSurveyAnswers(surveyAnswers);
+        };
+    };
+    const UpdateSurvey = (resp: string, id: number) => {
+        surveyAnswers[id] = resp;
+        setSurveyAnswers(surveyAnswers);
+    };
+
+    const RenderInput: FC<{question:SurveyQuestion, id:number}> = ({question, id}) => {
+        let inputForm;
         switch (question.item_type) {
             case 'CHOICE':
                 inputForm = (
@@ -103,7 +59,9 @@ const Survey = () => {
                         type="radio"
                         id={option}
                         data-testid={option}
+                        name={id.toString()}
                         value={option}
+                        onChange={UpdateSurveyFunc(option, id)}
                         style={{margin: '5px'}}
                         />
                         <QuestionLabel
@@ -115,53 +73,103 @@ const Survey = () => {
                         </QuestionLabel>
                     </div>
                     ))}
-                </SimpleGrid>
+                    </SimpleGrid>
                 );
                 break;
             case 'SCALE':
-                inputForm = (
-                    <Slider aria-label="slider1" defaultValue={10} max={10}>
-                        <SliderTrack>
-                            <SliderFilledTrack />
-                        </SliderTrack>
-                        <SliderThumb />
-                    </Slider>
-                );
+                if (question.options) {
+                    inputForm = (
+                        <SimpleGrid columns={question.options?.length} spacingX={1}>
+                        {question.options?.map((option) => (
+                        <div key={option}>
+                            <QuestionLabel
+                                as={'label'}
+                                fontSize='lg'
+                                isIncorrect={false}
+                            >
+                                {option}
+                            </QuestionLabel>
+                            <br/>
+                            <input
+                            type="radio"
+                            id={option}
+                            data-testid={option}
+                            name={id.toString()}
+                            value={option}
+                            onChange={UpdateSurveyFunc(option, id)}
+                            style={{margin: '5px'}}
+                            />
+                        </div>
+                        ))}
+                        </SimpleGrid>
+                    );
+                } else {
+                    inputForm = (
+                        <Slider
+                        aria-label="slider1"
+                        defaultValue={10}
+                        max={10}
+                        onChange={(val) => UpdateSurvey((val+1).toString(), id)}>
+                            <SliderTrack height="10px">
+                                <SliderFilledTrack height="10px" />
+                            </SliderTrack>
+                            <SliderThumb/>
+                        </Slider>
+                    );
+                };
                 break;
             case 'TEXT':
-                inputForm = (
-                    <InputGroup>
-                        <Input placeholder="Write Here" />
-                        <InputRightAddon children={question.unit} color="black"/>
-                    </InputGroup>
-                );
+                if (question.unit) {
+                    inputForm = (
+                        <InputGroup>
+                            <Input
+                            onChange={(val: React.ChangeEvent<HTMLInputElement>) => UpdateSurvey(val.target.value, id)}
+                            placeholder="Write Here"
+                            color="black"/>
+                            <InputRightAddon children={question.unit} color="black"/>
+                        </InputGroup>
+                    );
+                } else {
+                    inputForm = <Input
+                    onChange={(val: React.ChangeEvent<HTMLInputElement>) => UpdateSurvey(val.target.value, id)}
+                    placeholder="Write Here"
+                    color="black"/>;
+                }
                 break;
             case 'LONGTEXT':
-                inputForm = <Textarea placeholder="type here!"/>;
+                inputForm = <Textarea
+                onChange={(val: React.ChangeEvent<HTMLInputElement>) => UpdateSurvey(val.target.value, id)}
+                placeholder="type here!"
+                color="black"/>;
                 break;
             default:
                 inputForm = <p>default</p>;
-        }
-
+        };
         return inputForm;
     };
 
     return (
         <SurveyContainer id="#">
-            <section>
-            <p>Hello World!!!</p>
-            <p>{ surveyId}</p>
-            <SimpleGrid columns={1} spacing={10}>
-                {data?.items && data.items.map((q: SurveyQuestion, surveyId: number) => (
-                    <div>
-                        <p>{surveyId}</p>
-                        <p>{q.question}</p>
-                        <RenderInput question={q}/>
-                    </div>
-                ))}
-            </SimpleGrid>
-            </section>
-            <SubmitSurvey>Submit</SubmitSurvey>
+            <LoadingContainer isLoading={isLoading}>
+                <SimpleGrid columns={1} spacing={10}>
+                    <p>Feedback Survey</p>
+                    {data?.items && data.items.map((q: SurveyQuestion, surveyId: number) => (
+                        <div key={surveyId}>
+                            <p>{surveyId + 1}. {q.question}</p>
+                            <RenderInput question={q} id={surveyId}/>
+                        </div>
+                    ))}
+                    <SubmitSurvey onClick={() => (console.log(surveyAnswers))}>Submit</SubmitSurvey>
+                </SimpleGrid>
+                <Flex>
+                    <SubmitSurvey
+                        variantColor='blue'
+                        onClick={() => (console.log(surveyAnswers))}
+                    >
+                        Submit Survey
+                    </SubmitSurvey>
+                </Flex>
+            </LoadingContainer>
         </SurveyContainer>
     );
 };

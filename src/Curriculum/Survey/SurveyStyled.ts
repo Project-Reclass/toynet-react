@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 
 export const SubmitSurvey = styled(Button)`
     margin: 0 auto;
-    background-color: red;
 `;
 
 export const SurveyContainer = styled('div')`
