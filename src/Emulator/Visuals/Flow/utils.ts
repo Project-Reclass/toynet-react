@@ -1,5 +1,5 @@
 import dagre from 'dagre';
-import { Elements, isNode, Position } from 'react-flow-renderer';
+import { Elements, FlowElement, isNode, Node, Position } from 'react-flow-renderer';
 import { DeviceInterface } from 'src/common/types';
 
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
@@ -13,6 +13,27 @@ const BASE = 1000;
 const LINE_WIDTH = 3;
 const NODE_WIDTH = 172;
 const NODE_HEIGHT = 36;
+
+export const mergeElementLayouts = (sourceElements: Elements, targetElements: Elements) => {
+  const targets: Map<string, Node | null> = new Map(targetElements.map(el =>
+      ([el.id, isNode(el) ? el : null])));
+
+  return sourceElements.map(el => {
+    const nodeWithPosition = targets.get(el.id)?.position;
+    if (isNode(el) && nodeWithPosition) {
+
+      // unfortunately we need this little hack to pass a slightly different position
+      // to notify react flow about the change. More over we are shifting the dagre node position
+      // (anchor=center center) to the top left so it matches the react flow node anchor point (top left).
+      el.position = {
+        x: nodeWithPosition.x + NODE_WIDTH + Math.random() / BASE,
+        y: nodeWithPosition.y + NODE_HEIGHT,
+      };
+    }
+
+    return el;
+  });
+};
 
 /**
  * Takes a list of flow elements and updates the x and y of the `FlowElements`
