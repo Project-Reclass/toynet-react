@@ -26,6 +26,7 @@ interface Params {
     surveyId: string;
 }
 
+const answeredIndices = new Set();
 
 const Survey = () => {
 
@@ -37,13 +38,22 @@ const Survey = () => {
 
     const UpdateSurveyFunc = (resp: string, id: number) => {
         return () => {
+            answeredIndices.add(id);
             surveyAnswers[id] = resp;
             setSurveyAnswers(surveyAnswers);
         };
     };
     const UpdateSurvey = (resp: string, id: number) => {
+        answeredIndices.add(id);
         surveyAnswers[id] = resp;
         setSurveyAnswers(surveyAnswers);
+    };
+    const submitSurvey = () => {
+        if (data?.items.length !== answeredIndices.size) {
+          alert('You answered ' + answeredIndices.size + ' out of ' + data?.items.length + ' questions!');
+        } else {
+            console.log(surveyAnswers);
+        };
     };
 
     const RenderInput: FC<{question:SurveyQuestion, id:number}> = ({question, id}) => {
@@ -160,7 +170,7 @@ const Survey = () => {
                     ))}
                     <SubmitSurvey
                     variantColor='blue'
-                    onClick={() => (console.log(surveyAnswers))}
+                    onClick={submitSurvey}
                     >
                     Submit Survey
                     </SubmitSurvey>
