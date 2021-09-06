@@ -14,7 +14,6 @@ import {
     SliderTrack,
     SliderFilledTrack,
     SliderThumb,
-    Flex,
 } from '@chakra-ui/core';
 
 import {
@@ -159,16 +158,13 @@ const Survey = () => {
                             <RenderInput question={q} id={surveyId}/>
                         </div>
                     ))}
-                    <SubmitSurvey onClick={() => (console.log(surveyAnswers))}>Submit</SubmitSurvey>
-                </SimpleGrid>
-                <Flex>
                     <SubmitSurvey
-                        variantColor='blue'
-                        onClick={() => (console.log(surveyAnswers))}
+                    variantColor='blue'
+                    onClick={() => (console.log(surveyAnswers))}
                     >
-                        Submit Survey
+                    Submit Survey
                     </SubmitSurvey>
-                </Flex>
+                </SimpleGrid>
             </LoadingContainer>
         </SurveyContainer>
     );
