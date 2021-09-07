@@ -92,6 +92,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
             } else {
                 inputForm = (
                     <Slider
+                      data-testid={question.question}
                       aria-label="slider1"
                       defaultValue={10}
                       max={10}
@@ -109,6 +110,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                 inputForm = (
                     <InputGroup>
                         <Input
+                          data-testid={question.question}
                           onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
                           placeholder="Type Here"
                           color="black"/>
@@ -117,16 +119,18 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                 );
             } else {
                 inputForm = <Input
-                onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
-                placeholder="Type Here"
-                color="black"/>;
+                  data-testid={question.question}
+                  onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
+                  placeholder="Type Here"
+                  color="black"/>;
             }
             break;
         case 'LONGTEXT':
             inputForm = <Textarea
-            onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
-            placeholder="Type Here"
-            color="black"/>;
+              data-testid={question.question}
+              onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
+              placeholder="Type Here"
+              color="black"/>;
             break;
         default:
             inputForm = <p>default</p>;
@@ -147,6 +151,14 @@ const Survey = () => {
         setSurveyAnswers(surveyAnswers);
     };
 
+    const submitSurvey = () => {
+        if (data?.items.length !== answeredIndices.size) {
+          alert('You answered ' + answeredIndices.size + ' out of ' + data?.items.length + ' questions!');
+        } else {
+            console.log(surveyAnswers);
+        };
+    };
+
     return (
         <SurveyContainer id="#">
             <LoadingContainer isLoading={isLoading}>
@@ -160,7 +172,7 @@ const Survey = () => {
                     ))}
                     <SubmitSurvey
                       variantColor='blue'
-                      onClick={() => (console.log(surveyAnswers))}
+                      onClick={submitSurvey}
                     >
                     Submit Survey
                     </SubmitSurvey>
