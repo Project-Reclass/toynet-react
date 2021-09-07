@@ -29,7 +29,6 @@ interface Params {
 const answeredIndices = new Set();
 
 const Survey = () => {
-    //console.log('Survey function has started');
 
     const { surveyId } = useParams<Params>();
     const { data, isLoading } = useSurveyMeta(Number(surveyId));
