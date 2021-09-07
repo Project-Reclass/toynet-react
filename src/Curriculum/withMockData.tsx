@@ -15,148 +15,98 @@ const MockDescription = () => (
   </Text>
 );
 
-const mockData = [
-  {
+const mockData = {
     id: 1,
-    moduleId: 0,
-    title: 'Example Module',
-    completed: true,
-    inProgress: false,
-    description: 'Computer need to move lots of information (e.g. emailed files, social media interactions, video streams) from one device to another. Whether it’s through WiFi or over some kind of cable, computers communicate with a series of bits (0s and 1s) in tiny chunks at a time. The most common way of sending these tiny chunks is with a packet. This module is all about packets! For details about the submodule, click on its star.',
-    type: ModuleTypes.PARENT,
-    subModules: [
-      {
-        id: 4001,
-        moduleId: 0,
-        title: 'Life of a Network Packet',
-        completed: true,
-        inProgress: false,
-        type: ModuleTypes.QUIZ,
-      },
-      {
-        id: 2001,
-        moduleId: 0,
-        title: 'Ever wondered how underwater cables are laid?',
-        completed: true,
-        inProgress: false,
-        type: ModuleTypes.ARTICLE,
-      },
-      {
-        id: 5001,
-        moduleId: 0,
-        title: 'Integrity',
-        completed: true,
-        inProgress: true,
-        type: ModuleTypes.VALUE,
-      },
+    name: 'Introduction to Computer Networking',
+    introduction: 'Welcome to the demo of our Networking Fundamentals course.',
+    modules: [
+        {
+            id: 100001,
+            name: 'Life of a Network Packet',
+            introduction: 'Computer need to move lots of information (e.g. emailed files, social media interactions, video streams) from one device to another. Whether it’s through WiFi or over some kind of cable, computers communicate with a series of bits (0s and 1s) in tiny chunks at a time. The most common way of sending these tiny chunks is with a packet. This module is all about packets!',
+            submodules: [
+                {
+                    type: 'SURVEY',
+                    id: 6001,
+                    name: 'Who are you?',
+                    introduction: 'First we want to know a little about you so we can make this program even better for you and other other learns.',
+                },
+                {
+                    type: 'VALUE',
+                    id: 5001,
+                    name: 'Integrity',
+                    introduction: 'At Project Reclass, we are not just focused on what we build but also how we build it. We routinely reflect on values espoused by our military branches, and reflect on what these values mean to us. Throughout your course, we welcome you to do the same!',
+                },
+                {
+                    type: 'LESSON',
+                    id: 6001,
+                    name: 'Motivation',
+                    introduction: 'How does a file move from computer to computer? Let\'s revisit why we need computer networks in the first place.',
+                },
+                {
+                    type: 'ARTICLE',
+                    id: 2001,
+                    name: 'Fiber Optics in the Sea',
+                    introduction: 'Ever wondered how underwater cables are laid? We take a trip on the ship that keeps us online.',
+                },
+                {
+                    type: 'LAB',
+                    id: 1,
+                    name: 'Connecting Devices',
+                    introduction: 'So we now understand why and how we can connect devices through computer networks. Let\'s give it a try in our hands-on lab!',
+                },
+                {
+                    type: 'QUIZ',
+                    id: 4001,
+                    name: 'Life of a Network Packet',
+                    introduction: 'Great job on finishing Module 1! Before you move on, take this quick quiz to make sure you understood the material so we can set you up for success with the rest of this curriculum!',
+                },
+            ],
+        },
+        {
+            id: 100002,
+            name: 'History of the Internet',
+            introduction: 'To understand how it works today, it is helpful to understand how and why it was created as well as how it has evolved over the decades. This module takes you on a journey through half a century of innovations which went into our modern world-wide web.',
+            submodules: [],
+        },
+        {
+            id: 100003,
+            name: 'Routing',
+            introduction: 'Coming Soon!',
+            submodules: [],
+        },
+        {
+            id: 100003,
+            name: 'Routing',
+            introduction: 'Coming Soon!',
+            submodules: [],
+        },
+        {
+            id: 100004,
+            name: 'Domain Name Servers',
+            introduction: 'Coming Soon!',
+            submodules: [],
+        },
+        {
+            id: 100005,
+            name: 'Securing Networks',
+            introduction: 'Coming Soon!',
+            submodules: [],
+        },
+        {
+            id: 100006,
+            name: 'Modern Networks',
+            introduction: 'Coming Soon!',
+            submodules: [],
+        },
+        {
+            id: 100007,
+            name: 'Monitoring Networks',
+            introduction: 'Coming Soon!',
+            submodules: [],
+        },
     ],
-  },
-  {
-    id: 2,
-    moduleId: 0,
-    title: 'Second Module',
-    description: '',
-    completed: false,
-    inProgress: false,
-    type: ModuleTypes.PARENT,
-    subModules: [
-      {
-        id: 4002,
-        moduleId: 0,
-        title: 'Quiz 2',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.QUIZ,
-      },
-      {
-        id: 2002,
-        moduleId: 0,
-        title: 'Father of the internet, Vint Cerf, on creating the interplanetary internet',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.ARTICLE,
-      },
-      {
-        id: 5002,
-        moduleId: 0,
-        title: 'Values - Respect',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.VALUE,
-      },
-    ],
-  },
-  {
-    id: 2,
-    moduleId: 0,
-    title: 'Third Module',
-    description: '',
-    completed: false,
-    inProgress: false,
-    type: ModuleTypes.PARENT,
-    subModules: [
-      {
-        id: 4002,
-        moduleId: 0,
-        title: 'Quiz 2',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.QUIZ,
-      },
-      {
-        id: 2002,
-        moduleId: 0,
-        title: 'Father of the internet, Vint Cerf, on creating the interplanetary internet',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.ARTICLE,
-      },
-      {
-        id: 5002,
-        moduleId: 0,
-        title: 'Values - Respect',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.VALUE,
-      },
-    ],
-  },
-  {
-    id: 2,
-    moduleId: 0,
-    title: 'Fourth Module',
-    description: '',
-    completed: false,
-    inProgress: false,
-    type: ModuleTypes.PARENT,
-    subModules: [
-      {
-        id: 4002,
-        moduleId: 0,
-        title: 'Quiz 2',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.QUIZ,
-      },
-      {
-        id: 2002,
-        moduleId: 0,
-        title: 'Father of the internet, Vint Cerf, on creating the interplanetary internet',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.ARTICLE,
-      },
-      {
-        id: 5002,
-        moduleId: 0,
-        title: 'Values - Respect',
-        completed: false,
-        inProgress: false,
-        type: ModuleTypes.VALUE,
-      },
-    ],
-  },
-];
+};
 
 interface Data extends ModuleInterface {
   description: string;
