@@ -59,13 +59,13 @@ const Survey = () => {
                     {question.options?.map((option) => (
                     <div key={option}>
                         <input
-                        type="radio"
-                        id={option}
-                        data-testid={option}
-                        name={id.toString()}
-                        value={option}
-                        onChange={UpdateSurveyFunc(option, id)}
-                        style={{margin: '5px'}}
+                          type="radio"
+                          id={option}
+                          data-testid={option}
+                          name={id.toString()}
+                          value={option}
+                          onChange={UpdateSurveyFunc(option, id)}
+                          style={{margin: '5px'}}
                         />
                         <QuestionLabel
                             as={'label'}
