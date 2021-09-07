@@ -48,14 +48,6 @@ const Survey = () => {
         surveyAnswers[id] = resp;
         setSurveyAnswers(surveyAnswers);
     };/*
-    const submitSurvey = () => {
-        if (data?.items.length !== answeredIndices.size) {
-          alert('You answered ' + answeredIndices.size + ' out of ' + data?.items.length + ' questions!');
-        } else {
-            console.log(surveyAnswers);
-        };
-    };
-    */
 
     const RenderInput: FC<{question:SurveyQuestion, id:number}> = ({question, id}) => {
         //console.log('Rendering Input');
