@@ -6,7 +6,7 @@ exports[`The sub modules should render and match previous snapshots 1`] = `
     class="css-k008qs"
   >
     <svg
-      class="css-zlze97"
+      class="css-6i3b32"
       focusable="false"
       role="presentation"
       viewBox="0 0 24 24"
@@ -19,21 +19,44 @@ exports[`The sub modules should render and match previous snapshots 1`] = `
     <div
       class="css-gmscv5"
     >
-      <a
-        class="css-lfbim6"
-        href="/module/2/article/1"
+      <div
+        class="css-1wt6rk2"
       >
-        <p
-          class="css-fzcsno"
-        >
-          Article: Article
-        </p>
         <a
-          class="css-u5zpo1"
+          class="css-s0xszu"
         >
-          Go to Submodule &gt;
+          <p
+            class="css-fzcsno"
+          >
+            Article: undefined
+          </p>
         </a>
-      </a>
+        <a
+          class="css-fcssd9"
+        >
+          <a
+            class="css-u5zpo1"
+            href="/module/2/article/1"
+          >
+            Go to Submodule &gt;
+          </a>
+        </a>
+      </div>
+      <div
+        aria-hidden="true"
+        class="rah-static rah-static--height-zero css-vppuuz"
+        style="height: 0px; overflow: hidden;"
+      >
+        <div
+          style="transition: opacity 250ms ease 0ms; opacity: 0; display: none;"
+        >
+          <div
+            class="css-cet0rr"
+          >
+            this is an introduction
+          </div>
+        </div>
+      </div>
       <hr
         class="css-1fic0ux"
       />

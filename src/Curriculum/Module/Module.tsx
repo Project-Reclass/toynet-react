@@ -28,7 +28,17 @@ const CoolTooltip: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
   return <>{children}</>;
 };
 
-const Module: FC<ModuleIntf & Props> = ({ index, locked, introduction, name, submodules, paddingTop }) => {
+const Module: FC<ModuleIntf & Props> = (
+  {
+    id,
+    index,
+    locked,
+    introduction,
+    name,
+    submodules,
+    paddingTop,
+  },
+) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -59,7 +69,7 @@ const Module: FC<ModuleIntf & Props> = ({ index, locked, introduction, name, sub
         <Text fontSize='1xl' userSelect='none' m='1rem'>
           {introduction}
         </Text>
-        <SubModuleList submodules={submodules} />
+        <SubModuleList moduleId={id} submodules={submodules} />
       </Collapse>
     </Box>
   );

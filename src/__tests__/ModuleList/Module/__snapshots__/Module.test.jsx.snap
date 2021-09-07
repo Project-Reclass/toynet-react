@@ -2,7 +2,9 @@
 
 exports[`The Module should render and match snapshots 1`] = `
 <div>
-  <div>
+  <div
+    class="css-1vpj214"
+  >
     <div
       class="css-11dqbsu"
     >
@@ -21,14 +23,14 @@ exports[`The Module should render and match snapshots 1`] = `
         class="css-z7mtfw"
       >
         <p
-          class="css-grke7g"
+          class="css-1yqiz6e"
         >
-          First Module
+          Module 11: cool
         </p>
         <p
-          class="css-kiw8ad"
+          class="css-1xiazqm"
         >
-          0 / 1 completed, 0 in progress
+          1 / 1 completed, 1 in progress
         </p>
       </div>
     </div>
@@ -44,8 +46,10 @@ exports[`The Module should render and match snapshots 1`] = `
           class="css-0"
         >
           <p
-            class="css-yy7hv6"
-          />
+            class="css-95j7mt"
+          >
+            introduction
+          </p>
           <div
             class="css-e19uy1"
           >
@@ -53,7 +57,7 @@ exports[`The Module should render and match snapshots 1`] = `
               class="css-k008qs"
             >
               <svg
-                class="css-zlze97"
+                class="css-6i3b32"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -66,21 +70,42 @@ exports[`The Module should render and match snapshots 1`] = `
               <div
                 class="css-gmscv5"
               >
-                <a
-                  class="css-b1im7z"
-                  href="/module/1/quiz/1"
+                <div
+                  class="css-1wt6rk2"
                 >
-                  <p
-                    class="css-fzcsno"
-                  >
-                    Quiz: First Article
-                  </p>
                   <a
-                    class="css-u5zpo1"
+                    class="css-s0xszu"
                   >
-                    Go to Submodule &gt;
+                    <p
+                      class="css-fzcsno"
+                    >
+                      Quiz: undefined
+                    </p>
                   </a>
-                </a>
+                  <a
+                    class="css-fcssd9"
+                  >
+                    <a
+                      class="css-u5zpo1"
+                      href="/module/1/quiz/1"
+                    >
+                      Go to Submodule &gt;
+                    </a>
+                  </a>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="rah-static rah-static--height-zero css-vppuuz"
+                  style="height: 0px; overflow: hidden;"
+                >
+                  <div
+                    style="transition: opacity 250ms ease 0ms; opacity: 0; display: none;"
+                  >
+                    <div
+                      class="css-0"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
