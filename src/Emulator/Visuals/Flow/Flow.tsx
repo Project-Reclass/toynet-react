@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import localforage from 'localforage';
 import ReactFlow, {
-  ReactFlowProvider,
   Controls,
   Background,
   addEdge,
@@ -17,8 +16,9 @@ import ReactFlow, {
 import { createElements, getLayoutedElements, mergeElementLayouts } from './utils';
 import { DeviceInterface } from 'src/common/types';
 import { Button, ButtonGroup } from '@chakra-ui/core';
-import { useEmulator } from 'src/Emulator/EmulatorProvider';
+import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
+import { useEmulator } from 'src/Emulator/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
@@ -26,6 +26,7 @@ import ClickableNode from './ClickableNode';
 import './overrides.css';
 
 export interface Props {
+  sessionId: SessionId;
   hosts: DeviceInterface[],
   routers: DeviceInterface[],
   switches: DeviceInterface[],
@@ -72,34 +73,38 @@ const nodeTypes = {
   default: ClickableNode,
 };
 
-const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
+const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props) => {
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch } = useEmulator();
 
-  const { transform } = useZoomPanHelper();
+  const { transform, fitView } = useZoomPanHelper();
+
+  const flowSessionKey = useMemo(() => `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
 
   const handleRestore = useCallback((newElements: Elements) => {
     const restore = async () => {
-      const flow = await localforage.getItem<FlowExportObject>(FLOW_STORE_KEY);
+      const flow = await localforage.getItem<FlowExportObject>(flowSessionKey);
       const [x = 1, y = 1] = flow?.position || [];
       setElements(mergeElementLayouts(newElements, flow?.elements || []));
-      console.log({ x, y, zoom: flow?.zoom || 1 });
 
-      if (flow)
+      if (newElements.length !== flow?.elements.length) {
+        fitView();
+      } else {
         transform({ x, y, zoom: flow?.zoom || 1 });
+      }
     };
 
     restore();
-  }, [transform]);
+  }, [fitView, flowSessionKey, transform]);
 
   const handleSave = useCallback(() => {
     if (rfInstance) {
       const flow = rfInstance.toObject();
-      localforage.setItem(FLOW_STORE_KEY, flow);
+      localforage.setItem(flowSessionKey, flow);
     }
-  }, [rfInstance]);
+  }, [rfInstance, flowSessionKey]);
 
   useEffect(() => {
     const els = createElements([...routers, ...switches, ...hosts]);
@@ -126,6 +131,8 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
         onConnect={onConnect}
         onLoad={setRfInstance}
         onNodeDragStop={handleSave}
+        onDragEnd={handleSave}
+        onMouseLeave={handleSave}
         onEdgeUpdate={onEdgeUpdate}
         onElementsRemove={onElementsRemove}
         nodeTypes={nodeTypes}
@@ -187,12 +194,6 @@ const Flow = ({ switches, routers, hosts, isTesting = false }: Props) => {
           }
           >
             Router
-          </Button>
-          <Button onClick={handleSave}>
-            Save
-          </Button>
-          <Button onClick={() => handleRestore(elements)}>
-            Restore
           </Button>
         </CustomControls>
         <RightAlignedControls

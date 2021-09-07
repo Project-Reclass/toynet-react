@@ -1,5 +1,5 @@
 import dagre from 'dagre';
-import { Elements, FlowElement, isNode, Node, Position } from 'react-flow-renderer';
+import { Elements, isNode, Node, Position } from 'react-flow-renderer';
 import { DeviceInterface } from 'src/common/types';
 
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
