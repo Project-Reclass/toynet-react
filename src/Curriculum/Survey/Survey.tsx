@@ -25,10 +25,15 @@ import {
 interface Params {
     surveyId: string;
 }
+interface InputValues {
+    question: SurveyQuestion;
+    id: number;
+    updateResp: (resp: string, id: number) => any;
+}
 
 const answeredIndices = new Set();
 
-const RenderInput: FC<{question:SurveyQuestion, id:number, updateResp:Function}> = ({question, id, updateResp}) => {
+const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
     let inputForm;
     switch (question.item_type) {
         case 'CHOICE':
