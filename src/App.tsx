@@ -35,7 +35,7 @@ function App() {
               </Suspense>
             </Layout>
           </Route>
-          <Route exact path="/dashboard">
+          <Route exact path="/dashboard/:curriculumId">
             <Layout title={'Dashboard'}>
               <ModuleList />
             </Layout>

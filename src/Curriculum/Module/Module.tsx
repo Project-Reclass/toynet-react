@@ -1,23 +1,15 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Box, Collapse, Flex, Text, Tooltip } from '@chakra-ui/core';
+import { ModuleIntf } from 'src/common/types/curriculum';
 
 import { RotatableIcon } from './styled';
 import SubModuleList from './SubModuleList';
-import { ModuleInterface } from './types';
 
 interface Props {
+  index: number;
   locked: boolean;
-  description: string;
-  subModules: ModuleInterface[];
-
-  paddingTop?: string;
+  paddingTop: string;
 }
-
-const getCompletedSubModules = (subModules: ModuleInterface[]) =>
-  subModules.reduce<number>((prev, curr) => prev + (curr.completed ? 1 : 0), 0);
-
-const getInProgressSubModules = (subModules: ModuleInterface[]) =>
-  subModules.reduce<number>((prev, curr) => prev + (curr.completed ? 1 : 0), 0);
 
 const withToolTip = (Component: React.ReactNode) => (
   <Tooltip
@@ -36,23 +28,15 @@ const CoolTooltip: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
   return <>{children}</>;
 };
 
-const Module: FC<Props & ModuleInterface> = ({ description, title, subModules, locked, paddingTop }) => {
+const Module: FC<ModuleIntf & Props> = ({ index, locked, introduction, name, submodules, paddingTop }) => {
   const [isOpen, setOpen] = useState(false);
-
-  const numberCompleted = useMemo(() => getCompletedSubModules(subModules), [subModules]);
-  const numberInProgress = useMemo(() => getInProgressSubModules(subModules), [subModules]);
-
-  const handleToggle = () =>
-    setOpen(!locked && !isOpen);
-
 
   return (
     <Box
     paddingTop={paddingTop}
-    color={locked ? 'grey' : 'white'}
-    borderLeft={`2pt solid ${locked ? 'grey' : 'white'}`}
+    borderLeft={'2pt solid white'}
     >
-      <Flex onClick={handleToggle} cursor='pointer'>
+      <Flex onClick={() => setOpen(open => !open)} cursor='pointer'>
         <RotatableIcon
           name={'triangle-up'}
           rotated={isOpen}
@@ -63,19 +47,19 @@ const Module: FC<Props & ModuleInterface> = ({ description, title, subModules, l
         <Flex justifyContent='space-between' width='100%'>
           <CoolTooltip isLocked={locked}>
             <Text fontSize='2xl' userSelect='none'>
-              {title}
+              {`Module ${index + 1}: ${name}`}
             </Text>
           </CoolTooltip>
           <Text fontSize='1xl' userSelect='none' m='auto 0'>
-            {`${numberCompleted} / ${subModules.length} completed, ${numberInProgress} in progress`}
+            {`${submodules.length} / ${submodules.length} completed, ${submodules.length} in progress`}
           </Text>
         </Flex>
       </Flex>
       <Collapse isOpen={isOpen}>
         <Text fontSize='1xl' userSelect='none' m='1rem'>
-          {description}
+          {introduction}
         </Text>
-        <SubModuleList subModules={subModules} />
+        <SubModuleList submodules={submodules} />
       </Collapse>
     </Box>
   );

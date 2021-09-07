@@ -1,21 +1,21 @@
 import { Flex } from '@chakra-ui/core';
 import React, { FC } from 'react';
+import { SubModuleIntf } from 'src/common/types/curriculum';
 
-import { ModuleInterface } from './types';
 import SubModule from './SubModule/SubModule';
 
 interface Props {
-  subModules: ModuleInterface[];
+  submodules: SubModuleIntf[];
 }
 
-const SubModuleList: FC<Props> = ({ subModules }) => (
+const SubModuleList: FC<Props> = ({ submodules }) => (
   <Flex flexDirection='column' width='80%' marginLeft='auto' marginBottom='2rem'>
-    {subModules.map((module, idx) => (
+    {submodules.map((module, idx) => (
       <SubModule
         {...module}
         index={idx}
-        count={subModules.length}
-        key={`${module.id}-${module.title}-${module.moduleId}`}
+        count={submodules.length}
+        key={`${module.id}-${module.name}`}
       />
     ))}
   </Flex>

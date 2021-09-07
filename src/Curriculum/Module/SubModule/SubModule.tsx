@@ -1,44 +1,60 @@
 import React, { FC } from 'react';
-import { Divider, Flex, Link, Stack, Text, Icon } from '@chakra-ui/core';
-
-import { ModuleInterface, ModuleTypes } from '../types';
+import { Divider, Flex, Link, Stack, Text, Icon, Collapse, useDisclosure, Tooltip } from '@chakra-ui/core';
+import { SubModuleIntf } from 'src/common/types/curriculum';
 
 import { ModuleName } from './styled';
 
-interface Props extends ModuleInterface {
+interface Props extends SubModuleIntf {
   index: number;
   count: number;
 }
 
-const createLink = ({ type, id, moduleId }: Pick<ModuleInterface, 'type' | 'id' | 'moduleId'>) => {
-  if (type === ModuleTypes.VALUE) {
+const createLink = ({ type, id }: Pick<SubModuleIntf, 'type' | 'id'>) => {
+  if (type === 'VALUE') {
     return `/value/${id}`;
   }
-  return `/module/${moduleId}/${type.toString()}/${id}`;
+  return `/module/${0}/${type.toString().toLowerCase()}/${id}`;
 };
 
 const capitalize = (s: string): string =>
-  `${s[0].toUpperCase()}${s.slice(1)}`;
+  `${s[0].toUpperCase()}${s.toLowerCase().slice(1)}`;
 
-const SubModule: FC<Props> = ({ title, completed, id, moduleId, type, index, count }) => (
-  <Flex>
-    <Icon
-      name='star'
-      size='1.5rem'
-      color={completed ? 'green.500' : ''}
-    />
-    <Stack spacing={2} width='100%' marginLeft='1.5rem'>
-      <ModuleName locked={!completed} href={createLink({ type, id, moduleId })}>
-        <Text>
-          {`${capitalize(type.toString())}: ${title}`}
-        </Text>
-        <Link>
-          {'Go to Submodule >'}
-        </Link>
-      </ModuleName>
-      {index !== count -1 && <Divider />}
-    </Stack>
-  </Flex>
-);
+export const SubModule: FC<Props> = ({ name, id, type, index, count, introduction }) => {
+  const { isOpen, onToggle } = useDisclosure(false);
+  return (
+    <Flex>
+      <Icon
+        name='star'
+        size='1.5rem'
+        color='green.500'
+      />
+      <Stack spacing={2} width='100%' marginLeft='1.5rem'>
+        <Flex justifyContent='space-between'>
+          <ModuleName locked={false}>
+            <Tooltip
+              hasArrow
+              label={isOpen ? 'Show less' : 'Show more'}
+              {...{'aria-label': 'More information'}}
+            >
+              <Text onClick={onToggle}>
+                {`${capitalize(type.toString())}: ${name}`}
+              </Text>
+            </Tooltip>
+          </ModuleName>
+          <ModuleName locked={false} hoverColor='rgba(84,143,155)'>
+            <Link href={createLink({ type, id })}>
+              {'Go to Submodule >'}
+            </Link>
+          </ModuleName>
+        </Flex>
+        <Collapse isOpen={isOpen}>
+          {introduction}
+        </Collapse>
+        {index !== count -1 && <Divider />}
+      </Stack>
+    </Flex>
+  );
+};
+
 
 export default SubModule;

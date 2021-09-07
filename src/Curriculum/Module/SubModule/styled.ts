@@ -3,11 +3,11 @@ import { Box, Link } from '@chakra-ui/core';
 
 interface ModuleNameProps {
   locked: boolean;
+  hoverColor?: string;
 }
 
 export const ModuleName = styled(Link)`
   color: ${({ locked }: ModuleNameProps) => locked ? 'grey' : 'white'};
-  transition: color 0.2s ease;
   display: flex;
   cursor: pointer;
   justify-content: space-between;
@@ -16,7 +16,7 @@ export const ModuleName = styled(Link)`
     user-select: none;
   }
   :hover {
-    color: white;
+    color: ${({ hoverColor }: ModuleNameProps) => hoverColor || 'white'};
   }
 `;
 
