@@ -171,8 +171,8 @@ const Survey = () => {
                         </div>
                     ))}
                     <SubmitSurvey
-                    variantColor='blue'
-                    onClick={() => (console.log(surveyAnswers))}
+                      variantColor='blue'
+                      onClick={() => (console.log(surveyAnswers))}
                     >
                     Submit Survey
                     </SubmitSurvey>
