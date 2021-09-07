@@ -29,6 +29,7 @@ interface Params {
 const answeredIndices = new Set();
 
 const Survey = () => {
+    //console.log('Survey function has started');
 
     const { surveyId } = useParams<Params>();
     const { data, isLoading } = useSurveyMeta(Number(surveyId));
@@ -47,7 +48,7 @@ const Survey = () => {
         answeredIndices.add(id);
         surveyAnswers[id] = resp;
         setSurveyAnswers(surveyAnswers);
-    };
+    };/*
     const submitSurvey = () => {
         if (data?.items.length !== answeredIndices.size) {
           alert('You answered ' + answeredIndices.size + ' out of ' + data?.items.length + ' questions!');
@@ -55,8 +56,10 @@ const Survey = () => {
             console.log(surveyAnswers);
         };
     };
+    */
 
     const RenderInput: FC<{question:SurveyQuestion, id:number}> = ({question, id}) => {
+        //console.log('Rendering Input');
         let inputForm;
         switch (question.item_type) {
             case 'CHOICE':
@@ -170,7 +173,7 @@ const Survey = () => {
                     ))}
                     <SubmitSurvey
                     variantColor='blue'
-                    onClick={submitSurvey}
+                    onClick={() => (console.log(surveyAnswers))}
                     >
                     Submit Survey
                     </SubmitSurvey>
