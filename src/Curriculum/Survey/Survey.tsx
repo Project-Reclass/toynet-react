@@ -158,7 +158,6 @@ const Survey = () => {
             console.log(surveyAnswers);
         };
     };
-
     return (
         <SurveyContainer id="#">
             <LoadingContainer isLoading={isLoading}>
