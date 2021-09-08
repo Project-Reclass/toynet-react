@@ -10,9 +10,3 @@ export const SurveyContainer = styled('div')`
   width: 80vw;
   padding: 50px;
 `;
-
-export const QuestionLabel = styled(Text)`
-  color: ${({ isIncorrect }:{isIncorrect: boolean}) => (
-    isIncorrect ? '#C5A3B4' : '#FFFFFF'
-  )};
-`;

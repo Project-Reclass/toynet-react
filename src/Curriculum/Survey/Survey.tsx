@@ -19,7 +19,6 @@ import {
 import {
     SubmitSurvey,
     SurveyContainer,
-    QuestionLabel,
   } from './SurveyStyled';
 
 interface Params {
@@ -41,6 +40,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                 <SimpleGrid columns={2} spacingX={1}>
                 {question.options?.map((option) => (
                 <div key={option}>
+                    <label>
                     <input
                       type="radio"
                       id={option}
@@ -50,13 +50,8 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                       onChange={() => updateResp(option, id)}
                       style={{margin: '5px'}}
                     />
-                    <QuestionLabel
-                      as={'label'}
-                      fontSize='lg'
-                      isIncorrect={false}
-                    >
-                        {option}
-                    </QuestionLabel>
+                    {option}
+                    </label>
                 </div>
                 ))}
                 </SimpleGrid>
@@ -68,23 +63,19 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                     <SimpleGrid columns={question.options?.length} spacingX={1}>
                     {question.options?.map((option) => (
                     <div key={option}>
-                        <QuestionLabel
-                          as={'label'}
-                          fontSize='lg'
-                          isIncorrect={false}
-                        >
+                        <label>
                             {option}
-                        </QuestionLabel>
-                        <br/>
-                        <input
-                          type="radio"
-                          id={option}
-                          data-testid={option}
-                          name={id.toString()}
-                          value={option}
-                          onChange={() => updateResp(option, id)}
-                          style={{margin: '5px'}}
-                        />
+                            <br/>
+                            <input
+                            type="radio"
+                            id={option}
+                            data-testid={option}
+                            name={id.toString()}
+                            value={option}
+                            onChange={() => updateResp(option, id)}
+                            style={{margin: '5px'}}
+                            />
+                        </label>
                     </div>
                     ))}
                     </SimpleGrid>
