@@ -149,12 +149,11 @@ const Survey = () => {
 
     const submitSurvey = () => {
         if (data?.items.length !== answeredIndices.size) {
-          alert('You answered ' + answeredIndices.size + ' out of ' + data?.items.length + ' questions!');
+          alert(`You answered ${answeredIndices.size}  out of  ${data?.items.length} questions!`);
         } else {
             console.log(surveyAnswers);
         };
     };
-
     return (
         <SurveyContainer id="#">
             <LoadingContainer isLoading={isLoading}>
