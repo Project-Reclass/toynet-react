@@ -32,9 +32,6 @@ export const mergeElementLayouts = (sourceElements: Elements, targetElements: El
     const nodeWithPosition = targets.get(el.id)?.position;
     if (isNode(el) && nodeWithPosition) {
 
-      // unfortunately we need this little hack to pass a slightly different position
-      // to notify react flow about the change. More over we are shifting the dagre node position
-      // (anchor=center center) to the top left so it matches the react flow node anchor point (top left).
       el.position = {
         x: nodeWithPosition.x + NODE_WIDTH / BASE,
         y: nodeWithPosition.y + NODE_HEIGHT,
