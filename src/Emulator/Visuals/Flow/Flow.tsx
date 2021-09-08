@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Button, ButtonGroup } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 import localforage from 'localforage';
 import ReactFlow, {
@@ -13,15 +14,14 @@ import ReactFlow, {
   useZoomPanHelper,
 } from 'react-flow-renderer';
 
-import { createElements, getLayoutedElements, mergeElementLayouts } from './utils';
 import { DeviceInterface } from 'src/common/types';
-import { Button, ButtonGroup } from '@chakra-ui/core';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
 import { useEmulator } from 'src/Emulator/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
+import { createElements, getLayoutedElements, mergeElementLayouts } from './utils';
 
 import './overrides.css';
 
@@ -81,6 +81,10 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
 
   const { transform, fitView } = useZoomPanHelper();
 
+  /**
+   * We need to use the `sessionId` here since we do not want to use an old session's
+   * layout when the user creates a new toynet session.
+   */
   const flowSessionKey = useMemo(() => `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
 
   const handleRestore = useCallback((newElements: Elements) => {

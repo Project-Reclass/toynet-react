@@ -14,6 +14,16 @@ const LINE_WIDTH = 3;
 const NODE_WIDTH = 172;
 const NODE_HEIGHT = 36;
 
+
+/**
+ * Takes in a source elements array and a target elements array and matches the x and y from
+ * the target elements to the source elements. This is useful for matching positions from an
+ * old elements array to the new elements array.
+ *
+ * **Note**: if there are elements in the `targetElements` array that are not present in the
+ * `sourceElements` array then they will not be returned. Elements that are in `sourceElements`
+ * but not in `targetElements` will keep their x an y values.
+ */
 export const mergeElementLayouts = (sourceElements: Elements, targetElements: Elements) => {
   const targets: Map<string, Node | null> = new Map(targetElements.map(el =>
       ([el.id, isNode(el) ? el : null])));
@@ -26,7 +36,7 @@ export const mergeElementLayouts = (sourceElements: Elements, targetElements: El
       // to notify react flow about the change. More over we are shifting the dagre node position
       // (anchor=center center) to the top left so it matches the react flow node anchor point (top left).
       el.position = {
-        x: nodeWithPosition.x + NODE_WIDTH + Math.random() / BASE,
+        x: nodeWithPosition.x + NODE_WIDTH / BASE,
         y: nodeWithPosition.y + NODE_HEIGHT,
       };
     }
