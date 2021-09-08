@@ -80,6 +80,14 @@ const Quiz = () => {
                 <SimpleGrid columns={2} spacingX={1}>
                   {q.options.map((option, optionIndex) => (
                     <div key={option}>
+                      <QuestionLabel
+                        as={'label'}
+                        fontSize='lg'
+                        isIncorrect={isQuizSubmitted &&
+                          !answerIsCorrect[qIndex] &&
+                          q.answer === optionIndex
+                        }
+                      >
                       <input
                         type="radio"
                         id={option}
@@ -89,14 +97,6 @@ const Quiz = () => {
                         onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
                         style={{margin: '5px'}}
                       />
-                      <QuestionLabel
-                        as={'label'}
-                        fontSize='lg'
-                        isIncorrect={isQuizSubmitted &&
-                          !answerIsCorrect[qIndex] &&
-                          q.answer === optionIndex
-                        }
-                      >
                         {option}
                       </QuestionLabel>
                     </div>
