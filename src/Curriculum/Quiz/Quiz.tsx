@@ -108,7 +108,7 @@ const Quiz = () => {
         </SimpleGrid>
         <Flex>
           <SubmitQuiz
-            variantColor='blue'
+            variantColor='teal'
             onClick={!isQuizSubmitted ? submitQuiz : resetQuiz}
           >
             {!isQuizSubmitted ? 'Submit Quiz' : 'Try Again'}
