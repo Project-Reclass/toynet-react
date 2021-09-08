@@ -19,6 +19,7 @@ import {
 import {
     SubmitSurvey,
     SurveyContainer,
+    AnswerContainer,
   } from './SurveyStyled';
 
 interface Params {
@@ -37,6 +38,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
     switch (question.item_type) {
         case 'CHOICE':
             inputForm = (
+                <AnswerContainer>
                 <SimpleGrid columns={2} spacingX={1}>
                 {question.options?.map((option) => (
                 <div key={option}>
@@ -55,11 +57,13 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                 </div>
                 ))}
                 </SimpleGrid>
+                </AnswerContainer>
             );
             break;
         case 'SCALE':
             if (question.options) {
                 inputForm = (
+                    <AnswerContainer>
                     <SimpleGrid columns={question.options?.length} spacingX={1}>
                     {question.options?.map((option) => (
                     <div key={option}>
@@ -79,6 +83,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                     </div>
                     ))}
                     </SimpleGrid>
+                    </AnswerContainer>
                 );
             } else {
                 inputForm = (
@@ -105,7 +110,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                           onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
                           placeholder="Type Here"
                           color="black"/>
-                        <InputRightAddon children={question.unit} color="black"/>
+                        <InputRightAddon children={question.unit} background="teal"/>
                     </InputGroup>
                 );
             } else {
@@ -162,7 +167,7 @@ const Survey = () => {
                         </div>
                     ))}
                     <SubmitSurvey
-                      variantColor='blue'
+                      variantColor='teal'
                       onClick={submitSurvey}
                     >
                     Submit Survey

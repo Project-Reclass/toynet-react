@@ -10,3 +10,8 @@ export const SurveyContainer = styled('div')`
   width: 80vw;
   padding: 50px;
 `;
+
+export const AnswerContainer = styled('div')`
+  margin: 0 auto;
+  width: 70vw;
+`;
