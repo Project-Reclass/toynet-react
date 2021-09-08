@@ -167,6 +167,7 @@ const Survey = () => {
                         </div>
                     ))}
                     <SubmitSurvey
+                      type="submit"
                       variantColor='teal'
                       onClick={submitSurvey}
                     >
