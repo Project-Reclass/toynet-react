@@ -19,8 +19,8 @@ import {
 import {
     SubmitSurvey,
     SurveyContainer,
-    QuestionLabel,
-  } from './SurveyStyled';
+    AnswerContainer,
+} from './SurveyStyled';
 
 interface Params {
     surveyId: string;
@@ -38,56 +38,52 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
     switch (question.item_type) {
         case 'CHOICE':
             inputForm = (
-                <SimpleGrid columns={2} spacingX={1}>
-                {question.options?.map((option) => (
-                <div key={option}>
-                    <input
-                      type="radio"
-                      id={option}
-                      data-testid={option}
-                      name={id.toString()}
-                      value={option}
-                      onChange={() => updateResp(option, id)}
-                      style={{margin: '5px'}}
-                    />
-                    <QuestionLabel
-                      as={'label'}
-                      fontSize='lg'
-                      isIncorrect={false}
-                    >
-                        {option}
-                    </QuestionLabel>
-                </div>
-                ))}
-                </SimpleGrid>
+                <AnswerContainer>
+                    <SimpleGrid columns={2} spacingX={1}>
+                    {question.options?.map((option) => (
+                    <div key={option}>
+                        <label>
+                            <input
+                            type="radio"
+                            id={option}
+                            data-testid={option}
+                            name={id.toString()}
+                            value={option}
+                            onChange={() => updateResp(option, id)}
+                            style={{margin: '5px'}}
+                            />
+                            {option}
+                        </label>
+                    </div>
+                    ))}
+                    </SimpleGrid>
+                </AnswerContainer>
             );
             break;
         case 'SCALE':
             if (question.options) {
                 inputForm = (
-                    <SimpleGrid columns={question.options?.length} spacingX={1}>
-                    {question.options?.map((option) => (
-                    <div key={option}>
-                        <QuestionLabel
-                          as={'label'}
-                          fontSize='lg'
-                          isIncorrect={false}
-                        >
-                            {option}
-                        </QuestionLabel>
-                        <br/>
-                        <input
-                          type="radio"
-                          id={option}
-                          data-testid={option}
-                          name={id.toString()}
-                          value={option}
-                          onChange={() => updateResp(option, id)}
-                          style={{margin: '5px'}}
-                        />
-                    </div>
-                    ))}
-                    </SimpleGrid>
+                    <AnswerContainer>
+                        <SimpleGrid columns={question.options?.length} spacingX={1}>
+                        {question.options?.map((option) => (
+                        <div key={option}>
+                            <label>
+                                {option}
+                                <br/>
+                                <input
+                                type="radio"
+                                id={option}
+                                data-testid={option}
+                                name={id.toString()}
+                                value={option}
+                                onChange={() => updateResp(option, id)}
+                                style={{margin: '5px'}}
+                                />
+                            </label>
+                        </div>
+                        ))}
+                        </SimpleGrid>
+                    </AnswerContainer>
                 );
             } else {
                 inputForm = (
@@ -170,7 +166,7 @@ const Survey = () => {
                         </div>
                     ))}
                     <SubmitSurvey
-                      variantColor='blue'
+                      variantColor='teal'
                       onClick={submitSurvey}
                     >
                     Submit Survey

@@ -80,15 +80,6 @@ const Quiz = () => {
                 <SimpleGrid columns={2} spacingX={1}>
                   {q.options.map((option, optionIndex) => (
                     <div key={option}>
-                      <input
-                        type="radio"
-                        id={option}
-                        data-testid={option}
-                        name={qIndex.toString()}
-                        value={option}
-                        onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
-                        style={{margin: '5px'}}
-                      />
                       <QuestionLabel
                         as={'label'}
                         fontSize='lg'
@@ -97,6 +88,15 @@ const Quiz = () => {
                           q.answer === optionIndex
                         }
                       >
+                        <input
+                          type="radio"
+                          id={option}
+                          data-testid={option}
+                          name={qIndex.toString()}
+                          value={option}
+                          onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
+                          style={{margin: '5px'}}
+                        />
                         {option}
                       </QuestionLabel>
                     </div>
@@ -108,7 +108,7 @@ const Quiz = () => {
         </SimpleGrid>
         <Flex>
           <SubmitQuiz
-            variantColor='blue'
+            variantColor='teal'
             onClick={!isQuizSubmitted ? submitQuiz : resetQuiz}
           >
             {!isQuizSubmitted ? 'Submit Quiz' : 'Try Again'}
