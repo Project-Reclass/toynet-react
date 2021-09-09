@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import styled from '@emotion/styled';
-import { Flex } from '@chakra-ui/core';
+import { Flex, Text } from '@chakra-ui/core';
 
 import logo from 'src/assets/PR-Icon-Square-White.png';
 
@@ -86,10 +86,10 @@ function SplashFooter() {
                 <img src={logo} alt={'white pr logo'} />
               </a>
             </StyledLogo>
-            <p style={{ paddingBottom: 'calc(4vw - 10px)'}}>
+            <Text paddingBottom='calc(4vw - 10px)'>
               Copyright 2020 Project Reclass LTD <br />
               All Rights Reserved
-            </p>
+            </Text>
           </StyledSectionLogo>
           <StyledSectionInfo>
             <StyledSectionPart className='my-auto'>
