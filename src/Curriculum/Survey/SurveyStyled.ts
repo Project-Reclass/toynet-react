@@ -12,6 +12,5 @@ export const SurveyContainer = styled('div')`
 `;
 
 export const AnswerContainer = styled('div')`
-  margin: 0 auto;
   width: 70vw;
 `;
