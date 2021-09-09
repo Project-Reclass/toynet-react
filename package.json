@@ -47,6 +47,9 @@
       "serviceWorker.js",
       "*.test.js*"
     ],
+    "plugins": [
+      "header"
+    ],
     "rules": {
       "semi": [
         "error",
@@ -154,7 +157,11 @@
         "last"
       ],
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "error"
+      "react-hooks/exhaustive-deps": "error",
+      "header/header": [
+        2,
+        "header.js"
+      ]
     }
   },
   "browserslist": {
@@ -185,6 +192,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "concurrently": "^5.3.0",
     "cypress": "^5.5.0",
+    "eslint-plugin-header": "^3.1.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jsdoc": "^3.6.7",
     "react-dnd-test-backend": "^11.1.3",
