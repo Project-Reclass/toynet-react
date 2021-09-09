@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, Text } from '@chakra-ui/core';
+import { Button } from '@chakra-ui/core';
 
 export const AnswerContainer = styled('div')`
   width: 70vw;
