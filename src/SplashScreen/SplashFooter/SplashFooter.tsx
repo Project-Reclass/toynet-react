@@ -86,7 +86,7 @@ function SplashFooter() {
                 <img src={logo} alt={'white pr logo'} />
               </a>
             </StyledLogo>
-            <p>
+            <p style={{ paddingBottom: 'calc(4vw - 10px)'}}>
               Copyright 2020 Project Reclass LTD <br />
               All Rights Reserved
             </p>
