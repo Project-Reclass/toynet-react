@@ -138,8 +138,7 @@ const Sidebar = () => {
       <ul>
         <StyledLogo>
           <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
-            <img width='42px'/>
-            <StyledAvatar src={ReclassLogo}/>
+            <StyledAvatar alt='logo' src={ReclassLogo}/>
           </StyledNavIcon>
         </StyledLogo>
         <StyledNavItem onClick={() => goToPageOnEnableHref('/Curriculum')}>
