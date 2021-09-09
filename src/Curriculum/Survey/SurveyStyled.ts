@@ -11,8 +11,7 @@ export const SurveyContainer = styled('div')`
   padding: 50px;
 `;
 
-export const QuestionLabel = styled(Text)`
-  color: ${({ isIncorrect }:{isIncorrect: boolean}) => (
-    isIncorrect ? '#C5A3B4' : '#FFFFFF'
-  )};
+export const AnswerContainer = styled('div')`
+  margin: 0 auto;
+  width: 70vw;
 `;
