@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import dagre from 'dagre';
-import { Elements, isNode, Position } from 'react-flow-renderer';
+import { Elements, isNode, Node, Position } from 'react-flow-renderer';
 import { DeviceInterface } from 'src/common/types';
 
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
@@ -33,6 +33,34 @@ const BASE = 1000;
 const LINE_WIDTH = 3;
 const NODE_WIDTH = 172;
 const NODE_HEIGHT = 36;
+
+
+/**
+ * Takes in a source elements array and a target elements array and matches the x and y from
+ * the target elements to the source elements. This is useful for matching positions from an
+ * old elements array to the new elements array.
+ *
+ * **Note**: if there are elements in the `targetElements` array that are not present in the
+ * `sourceElements` array then they will not be returned. Elements that are in `sourceElements`
+ * but not in `targetElements` will keep their x an y values.
+ */
+export const mergeElementLayouts = (sourceElements: Elements, targetElements: Elements) => {
+  const targets: Map<string, Node | null> = new Map(targetElements.map(el =>
+      ([el.id, isNode(el) ? el : null])));
+
+  return sourceElements.map(el => {
+    const nodeWithPosition = targets.get(el.id)?.position;
+    if (isNode(el) && nodeWithPosition) {
+
+      el.position = {
+        x: nodeWithPosition.x + NODE_WIDTH / BASE,
+        y: nodeWithPosition.y + NODE_HEIGHT,
+      };
+    }
+
+    return el;
+  });
+};
 
 /**
  * Takes a list of flow elements and updates the x and y of the `FlowElements`

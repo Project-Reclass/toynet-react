@@ -29,6 +29,7 @@ import ModuleList from './Curriculum';
 import Article from './Curriculum/Article';
 import Quiz from './Curriculum/Quiz';
 import Lesson from './Curriculum/Lesson';
+import Survey from './Curriculum/Survey';
 import Value from './Curriculum/Value';
 import { useFeatureFlags } from './FeatureFlags';
 import Login from './Login';
@@ -83,7 +84,11 @@ function App() {
               <Lesson />
             </Layout>
           </Route>
-
+          <Route exact path="/module/:moduleId/survey/:surveyId">
+            <Layout title={'Survey'}>
+              <Survey />
+            </Layout>
+          </Route>
           <Route exact path="/value/:valueId">
             <Layout title={'Value'}>
               <Value />

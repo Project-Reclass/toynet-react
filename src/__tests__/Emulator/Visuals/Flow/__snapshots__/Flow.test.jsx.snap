@@ -10,7 +10,7 @@ exports[`Flow should be able to render only hosts 1`] = `
     >
       <div
         class="react-flow__nodes"
-        style="transform: translate(0px,0px) scale(1);"
+        style="transform: translate(-266px,-374px) scale(2);"
       >
         <div
           class="react-flow__node react-flow__node-default selectable"
@@ -84,7 +84,7 @@ exports[`Flow should be able to render only hosts 1`] = `
           </marker>
         </defs>
         <g
-          transform="translate(0,0) scale(1)"
+          transform="translate(-266,-374) scale(2)"
         />
       </svg>
       <div
@@ -206,12 +206,12 @@ exports[`Flow should be able to render only hosts 1`] = `
       style="width: 100%; height: 100%;"
     >
       <pattern
-        height="16"
+        height="32"
         id="pattern"
         patternUnits="userSpaceOnUse"
-        width="16"
-        x="0"
-        y="0"
+        width="32"
+        x="-10"
+        y="-22"
       >
         <circle
           cx="0.25"
@@ -242,7 +242,7 @@ exports[`Flow should be able to render only routers 1`] = `
     >
       <div
         class="react-flow__nodes"
-        style="transform: translate(0px,0px) scale(1);"
+        style="transform: translate(-266px,56px) scale(2);"
       >
         <div
           class="react-flow__node react-flow__node-default selectable"
@@ -341,7 +341,7 @@ exports[`Flow should be able to render only routers 1`] = `
           </marker>
         </defs>
         <g
-          transform="translate(0,0) scale(1)"
+          transform="translate(-266,56) scale(2)"
         />
       </svg>
       <div
@@ -463,12 +463,12 @@ exports[`Flow should be able to render only routers 1`] = `
       style="width: 100%; height: 100%;"
     >
       <pattern
-        height="16"
+        height="32"
         id="pattern"
         patternUnits="userSpaceOnUse"
-        width="16"
-        x="0"
-        y="0"
+        width="32"
+        x="-10"
+        y="24"
       >
         <circle
           cx="0.25"
@@ -499,7 +499,7 @@ exports[`Flow should be able to render only switches 1`] = `
     >
       <div
         class="react-flow__nodes"
-        style="transform: translate(0px,0px) scale(1);"
+        style="transform: translate(-266px,-202px) scale(2);"
       >
         <div
           class="react-flow__node react-flow__node-default selectable"
@@ -573,7 +573,7 @@ exports[`Flow should be able to render only switches 1`] = `
           </marker>
         </defs>
         <g
-          transform="translate(0,0) scale(1)"
+          transform="translate(-266,-202) scale(2)"
         />
       </svg>
       <div
@@ -695,12 +695,12 @@ exports[`Flow should be able to render only switches 1`] = `
       style="width: 100%; height: 100%;"
     >
       <pattern
-        height="16"
+        height="32"
         id="pattern"
         patternUnits="userSpaceOnUse"
-        width="16"
-        x="0"
-        y="0"
+        width="32"
+        x="-10"
+        y="-10"
       >
         <circle
           cx="0.25"
@@ -731,7 +731,7 @@ exports[`Flow should match the snapshot 1`] = `
     >
       <div
         class="react-flow__nodes"
-        style="transform: translate(0px,0px) scale(1);"
+        style="transform: translate(-204.5454545454545px,-72.41014799154328px) scale(1.7618040873854826);"
       >
         <div
           class="react-flow__node react-flow__node-default selectable"
@@ -880,7 +880,7 @@ exports[`Flow should match the snapshot 1`] = `
           </marker>
         </defs>
         <g
-          transform="translate(0,0) scale(1)"
+          transform="translate(-204.5454545454545,-72.41014799154328) scale(1.7618040873854826)"
         />
       </svg>
       <div
@@ -1002,12 +1002,12 @@ exports[`Flow should match the snapshot 1`] = `
       style="width: 100%; height: 100%;"
     >
       <pattern
-        height="16"
+        height="28.18886539816772"
         id="pattern"
         patternUnits="userSpaceOnUse"
-        width="16"
-        x="0"
-        y="0"
+        width="28.18886539816772"
+        x="-7.223396758280458"
+        y="-16.03241719520784"
       >
         <circle
           cx="0.25"

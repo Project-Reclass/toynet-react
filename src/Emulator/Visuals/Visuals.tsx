@@ -30,12 +30,13 @@ import { InnerContainer } from './styled';
 import ContextMenus from './ContextMenus';
 
 const Visuals = () => {
-  const { switches, routers, hosts } = useEmulator();
+  const { switches, routers, hosts, sessionId } = useEmulator();
   return (
     <>
     <EmulatorSection padding='0.4vh'>
       <InnerContainer>
         <Flow
+          sessionId={sessionId}
           hosts={hosts}
           routers={routers}
           switches={switches}

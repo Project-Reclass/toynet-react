@@ -23,7 +23,7 @@ describe('the useToynetSession custom hook', () => {
   it('should create a new session if no session exists', async () => {
     createToynetSession.mockResolvedValue({
       message: '',
-      session_id: 2,
+      toynet_session_id: 2,
       topology: '',
     });
 
