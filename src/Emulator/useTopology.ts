@@ -12,7 +12,7 @@ const existingDevices = new Set<string>();
 // This queue is used to queue up requests to the server for mininet commands. (currently not used)
 const queue: CommandRequest[] = [];
 
-interface Connection {
+export interface Connection {
   to: string;
   from: string;
 }

@@ -1,5 +1,7 @@
 import React, { createContext, useContext, FC, useState, useCallback } from 'react';
-import { useTopology, TopologyState } from 'src/Emulator/useTopology';
+
+import { DeviceInterface } from 'src/common/types';
+import { useTopology, TopologyState, TopologyActions, Connection } from 'src/Emulator/useTopology';
 
 interface DialogueInterface {
   dialogueMessages: string[];
@@ -55,7 +57,37 @@ const EmulatorProvider: FC = ({ children }) => {
   );
 };
 
-export const useEmulator = () => useContext(EmulatorContext);
+export const useEmulatorBasic = () => useContext(EmulatorContext);
+export const useEmulator = () => {
+  const emulator = useEmulatorBasic();
+  const messages = useDialogue();
+
+  const dispatch: typeof emulator.dispatch = (value) => {
+    switch (value.type) {
+      case TopologyActions.ADD_HOST:
+      case TopologyActions.ADD_ROUTER:
+      case TopologyActions.ADD_SWITCH:
+        messages.appendDialogue(`Added ${(value.payload as DeviceInterface).name}`);
+        break;
+      case TopologyActions.DELETE_ROUTER:
+      case TopologyActions.DELETE_HOST:
+      case TopologyActions.DELETE_SWITCH:
+        messages.appendDialogue(`Deleted ${(value.payload as DeviceInterface).name}`);
+        break;
+      case TopologyActions.ADD_CONNECTION:
+        const add = value.payload as Connection;
+        messages.appendDialogue(`Attached ${add.from} to ${add.to}`);
+        break;
+      case TopologyActions.DELETE_CONNECTION:
+        const remove = value.payload as Connection;
+        messages.appendDialogue(`Removed ${remove.from} to ${remove.to}`);
+        break;
+    }
+    emulator.dispatch(value);
+  };
+
+  return { ...emulator, dispatch };
+};
 
 export function withEmulatorAndDialogueProvider<T>(Component: React.ComponentType<T>) {
   return (props: T) => (
