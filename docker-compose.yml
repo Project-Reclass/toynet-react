@@ -7,7 +7,7 @@ services:
       - reclass_network
 
   frontend:
-    build: https://github.com/Project-Reclass/toynet-react.git#flask-integration
+    build: https://github.com/Project-Reclass/toynet-react.git
     ports:
       - "3000:80"
     networks:
