@@ -17,7 +17,7 @@ import ReactFlow, {
 import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulator } from 'src/Emulator/EmulatorProvider';
+import { useDialogue, useEmulator } from 'src/Emulator/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
@@ -78,6 +78,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch } = useEmulator();
+  const { appendDialogue } = useDialogue();
 
   const { transform, fitView } = useZoomPanHelper();
 
@@ -116,6 +117,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   }, [hosts, routers, switches, isTesting, handleRestore, handleSave]);
 
   const onConnect = (params: any) => {
+    appendDialogue(`Connect ${params.source} to ${params.target}`);
     dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: params.source, to: params.target }});
     setElements((els: any) =>
       addEdge({ ...params, type: 'smoothstep', animated: true }, els),
@@ -125,9 +127,8 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const onElementsRemove = (elementsToRemove: any) =>
     setElements((els: any) => removeElements(elementsToRemove, els));
 
-  const onEdgeUpdate = (oldEdge: any, newConnection: any) => {
+  const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
     setElements((els) => updateEdge(oldEdge, newConnection, els));
-  };
 
   return (
       <ReactFlow

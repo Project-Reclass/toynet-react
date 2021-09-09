@@ -28,7 +28,7 @@ const DialogueBox = () => {
           {dialogueMessages.map( (dialogueMessage) => (
             <>
               <Icon name='info-outline' margin='auto 0.2rem' />
-              <span style={{ fontWeight: 'bold' }}>Error:</span> {dialogueMessage}
+              <span style={{ fontWeight: 'bold' }}></span> {dialogueMessage}
               <br/>
             </>
           ))}
