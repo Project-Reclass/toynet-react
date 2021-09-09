@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ReclassLogo from '../assets/PR-Icon-Square-White.png';
