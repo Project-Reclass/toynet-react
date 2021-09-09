@@ -1,18 +1,17 @@
-import { Button, Text } from '@chakra-ui/core';
 import styled from '@emotion/styled';
+import { Button } from '@chakra-ui/core';
 
-export const SubmitSurvey = styled(Button)`
-    margin: 0 auto;
+export const AnswerContainer = styled('div')`
+  width: 70vw;
+  margin: 0;
 `;
 
-export const SurveyContainer = styled('div')`
-  margin: 0 auto;
-  width: 80vw;
+export const SurveyContainer = styled('div')` 
+  margin: 0 auto; 
+  width: 80vw; 
   padding: 50px;
 `;
 
-export const QuestionLabel = styled(Text)`
-  color: ${({ isIncorrect }:{isIncorrect: boolean}) => (
-    isIncorrect ? '#C5A3B4' : '#FFFFFF'
-  )};
+export const SubmitSurvey = styled(Button)`
+  margin: 0 auto;
 `;
