@@ -48,15 +48,6 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledLogo = styled.li`
-  font-weight: bold;
-  text-transform: uppercase;
-  position: relative;
-  top: 0;
-  margin-bottom: 4rem;
-  color: red;
-`;
-
 const StyledNavItem = styled.li`
   margin-top: auto;
   transition: .1s all linear;
