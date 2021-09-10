@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import React, { createContext, useContext, FC, useState, useCallback } from 'react';
 
 import { DeviceInterface } from 'src/common/types';
@@ -16,7 +17,7 @@ const DialogueContext = createContext<DialogueInterface>({
 });
 
 const DialogueProvider: FC = ({ children }) => {
-  const [dialogueMessages, setDialogueMessages] = useState<string[]>([]);
+  const [dialogueMessages, setDialogueMessages] = useState<string[]>('test,'.repeat(50).split(','));
 
   // Not using useCallback so we can add the same error messages repeatedly
   const appendDialogue = (message: string) => {
