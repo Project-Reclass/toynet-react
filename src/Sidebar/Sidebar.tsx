@@ -36,7 +36,7 @@ const StyledNav = styled.nav`
   left: 0;
   background: rgb(24, 21, 21);
   transition: width 200ms ease;
-  width: ${({ isMenuOpen }: StyledNavProps) => isMenuOpen ? '10rem' : '3rem'};
+  width: ${({ isMenuOpen }: StyledNavProps) => isMenuOpen ? '10rem' : '5rem'};
 
   ul {
     list-style: none;
@@ -53,8 +53,20 @@ const StyledLogo = styled.li`
   text-transform: uppercase;
   position: relative;
   top: 0;
-  margin-bottom: 15rem;
+  margin-bottom: 4rem;
   color: red;
+`;
+
+const StyledCurriculum = styled.li`
+  position: relative;
+  top: 0;
+  margin-bottom: 25rem;
+  transition: .1s all linear;
+
+  &:hover {
+    color: white;
+    border-left: solid 3px teal;
+  }
 `;
 
 const StyledNavItem = styled.li`
@@ -68,6 +80,7 @@ const StyledNavItem = styled.li`
 `;
 
 const StyledNavIcon = styled.div`
+  margin-left: 1rem;
   display: flex;
   align-items: center;
   height: 3rem;
@@ -112,9 +125,10 @@ const StyledLinkText = styled.span`
 const StyledAvatar = styled.img`
   position: absolute;
   left: 0;
-  width: 3rem;
-  border-radius: 50%;
+  width: 5rem;
+  border-radius: 0 0 50% 50%;
   background: teal;
+  border-top: 20px solid teal;
 `;
 
 const Sidebar = () => {
@@ -141,17 +155,17 @@ const Sidebar = () => {
             <StyledAvatar alt='logo' src={ReclassLogo}/>
           </StyledNavIcon>
         </StyledLogo>
-        <StyledNavItem onClick={() => goToPageOnEnableHref('/Curriculum')}>
+        <StyledCurriculum onClick={() => goToPageOnEnableHref('/Curriculum')}>
           <StyledNavIcon>
-            <StyledSvg> <Icon name='calendar' size='32px'/> </StyledSvg>
+            <StyledSvg> <Icon name='calendar' size='35px'/> </StyledSvg>
             <StyledLinkText isMenuOpen={isMenuOpen}>
               Curriculum
             </StyledLinkText>
           </StyledNavIcon>
-        </StyledNavItem>
+        </StyledCurriculum>
         <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
           <StyledNavIcon>
-            <StyledSvg> <Icon name='settings' size='32px'/> </StyledSvg>
+            <StyledSvg> <Icon name='settings' size='35px'/> </StyledSvg>
             <StyledLinkText isMenuOpen={isMenuOpen}>
               Profile
             </StyledLinkText>
@@ -159,7 +173,7 @@ const Sidebar = () => {
         </StyledNavItem>
         <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
           <StyledNavIcon>
-            <StyledSvg>  <Icon name='question' size='32px'/> </StyledSvg>
+            <StyledSvg>  <Icon name='question' size='35px'/> </StyledSvg>
             <StyledLinkText isMenuOpen={isMenuOpen}>
               FAQ
             </StyledLinkText>
@@ -167,7 +181,7 @@ const Sidebar = () => {
         </StyledNavItem>
         <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
           <StyledNavIcon>
-            <StyledSvg>  <Icon name='arrow-left' size='32px'/> </StyledSvg>
+            <StyledSvg>  <Icon name='arrow-left' size='35px'/> </StyledSvg>
             <StyledLinkText isMenuOpen={isMenuOpen}>
               Log Out
             </StyledLinkText>
