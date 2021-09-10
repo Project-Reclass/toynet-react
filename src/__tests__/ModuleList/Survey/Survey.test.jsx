@@ -47,9 +47,9 @@ const data = [
   }
 ];
 
-function setInputValue(input, value) {
+function setInputValue(input, newValue) {
   let lastValue = input.value;
-  input.value = value;
+  input.value = newValue;
   let event = new Event("input", { target: input, bubbles: true });
   // React 15
   event.simulated = true;
