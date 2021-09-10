@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import logo from 'src/assets/PR-Logo-Long-FullColor.png';
-import {Login, SignUp, NavLink, Logo, Container, Nav, Header, NavLinksContainer, NavItem} from './SplashNavStyles';
+import {NavLink, Logo, Container, Nav, Header, NavLinksContainer, NavItem} from './SplashNavStyles';
 
 
 
