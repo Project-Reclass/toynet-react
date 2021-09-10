@@ -19,29 +19,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-
-const styles = {
-  container: {
-    fontSize: '3.5rem',
-    marginTop: '10rem',
-    display: 'flex',
-    justifyContenr: 'center',
-    alignItems: 'center',
-    flexDirection: 'column' as 'column',
-  },
-  a: {
-    fontSize: '2.5rem',
-    textDecoration: 'underline',
-    marginTop: '2rem',
-  },
-};
+import { Heading, Link, Stack} from '@chakra-ui/core';
 
 const NotFound = () => {
-    return <div style={styles.container}>
-    <h1>Sorry the page you're lookin for</h1>
-    <h1>Cannot be found.</h1>
-    <a href="/" style={styles.a}>Return Home</a>
-  </div>;
+    return <Stack marginTop='10rem' alignItems='center'>
+            <Heading color='white' fontSize='3.5rem'>Sorry the page you're lookin for</Heading>
+            <Heading color='white' fontSize='3.5rem'>Cannot be found.</Heading>
+            <Link href="/" color='white' fontSize='2.5rem' textDecoration='underline'>Return Home</Link>
+        </Stack>;
 };
 
 export default NotFound;
