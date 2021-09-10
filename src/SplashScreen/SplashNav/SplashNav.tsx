@@ -48,9 +48,9 @@ function SplashNav() {
             <NavItem>
               <Login>Log in</Login>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <SignUp href='#signup'>Sign up</SignUp>
-            </NavItem>
+            </NavItem> */}
           </NavLinksContainer>
         </Nav>
       </Container>
