@@ -34,6 +34,7 @@ import Value from './Curriculum/Value';
 import { useFeatureFlags } from './FeatureFlags';
 import Login from './Login';
 import Layout from './layout';
+import NotFound from './common/NotFound';
 
 const SplashScreen = React.lazy(() => import('./SplashScreen'));
 const Emulator = React.lazy(() => import('./Emulator'));
@@ -103,7 +104,7 @@ function App() {
 
           <Route path="*">
             <Layout title={'404'}>
-              <h1>Page not found...</h1>
+                <NotFound />
             </Layout>
           </Route>
         </Switch>
