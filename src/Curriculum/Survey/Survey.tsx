@@ -39,7 +39,6 @@ import {
 import {
     SubmitSurvey,
     SurveyContainer,
-    AnswerContainer,
 } from './SurveyStyled';
 
 interface Params {
@@ -58,11 +57,35 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
     switch (question.item_type) {
         case 'CHOICE':
             inputForm = (
-                <AnswerContainer>
-                    <SimpleGrid columns={2} spacingX={1}>
+                <SimpleGrid columns={2} spacingX={1}>
+                {question.options?.map((option) => (
+                <div key={option}>
+                    <label>
+                        <input
+                        type="radio"
+                        id={option}
+                        data-testid={option}
+                        name={id.toString()}
+                        value={option}
+                        onChange={() => updateResp(option, id)}
+                        style={{margin: '5px'}}
+                        />
+                        {option}
+                    </label>
+                </div>
+                ))}
+                </SimpleGrid>
+            );
+            break;
+        case 'SCALE':
+            if (question.options) {
+                inputForm = (
+                    <SimpleGrid columns={question.options?.length} spacingX={1}>
                     {question.options?.map((option) => (
                     <div key={option}>
                         <label>
+                            {option}
+                            <br/>
                             <input
                             type="radio"
                             id={option}
@@ -72,38 +95,10 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                             onChange={() => updateResp(option, id)}
                             style={{margin: '5px'}}
                             />
-                            {option}
                         </label>
                     </div>
                     ))}
                     </SimpleGrid>
-                </AnswerContainer>
-            );
-            break;
-        case 'SCALE':
-            if (question.options) {
-                inputForm = (
-                    <AnswerContainer>
-                        <SimpleGrid columns={question.options?.length} spacingX={1}>
-                        {question.options?.map((option) => (
-                        <div key={option}>
-                            <label>
-                                {option}
-                                <br/>
-                                <input
-                                type="radio"
-                                id={option}
-                                data-testid={option}
-                                name={id.toString()}
-                                value={option}
-                                onChange={() => updateResp(option, id)}
-                                style={{margin: '5px'}}
-                                />
-                            </label>
-                        </div>
-                        ))}
-                        </SimpleGrid>
-                    </AnswerContainer>
                 );
             } else {
                 inputForm = (
