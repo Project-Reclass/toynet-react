@@ -22,7 +22,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ReclassLogo from '../assets/PR-Icon-Square-White.png';
-import { Icon } from '@chakra-ui/core';
+import { Icon, Avatar, Flex, Stack } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 
 interface StyledNavProps {
@@ -57,18 +57,6 @@ const StyledLogo = styled.li`
   color: red;
 `;
 
-const StyledCurriculum = styled.li`
-  position: relative;
-  top: 0;
-  margin-bottom: 25rem;
-  transition: .1s all linear;
-
-  &:hover {
-    color: white;
-    border-left: solid 3px teal;
-  }
-`;
-
 const StyledNavItem = styled.li`
   margin-top: auto;
   transition: .1s all linear;
@@ -98,7 +86,7 @@ const StyledNavIcon = styled.div`
 `;
 
 const StyledSvg = styled.span`
-  margin: 0 0.35rem;
+  margin: 0 0.30rem;
 
   &:hover {
    cursor: pointer;
@@ -122,15 +110,6 @@ const StyledLinkText = styled.span`
   }
 `;
 
-const StyledAvatar = styled.img`
-  position: absolute;
-  left: 0;
-  width: 5rem;
-  border-radius: 0 0 50% 50%;
-  background: teal;
-  border-top: 20px solid teal;
-`;
-
 const Sidebar = () => {
   const history = useHistory();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -149,45 +128,45 @@ const Sidebar = () => {
 
   return (
     <StyledNav isMenuOpen={isMenuOpen} onClick={toggleMenu} onMouseOver={toggleMenu} onMouseOut={toggleMenu}>
-      <ul>
-        <StyledLogo>
+      <Flex direction='column' justifyContent='space-between' height='100%' paddingY='1rem'>
+        <Stack spacing={3}>
           <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
-            <StyledAvatar alt='logo' src={ReclassLogo}/>
+            <Avatar src={ReclassLogo} marginBottom='1rem'/>
           </StyledNavIcon>
-        </StyledLogo>
-        <StyledCurriculum onClick={() => goToPageOnEnableHref('/Curriculum')}>
           <StyledNavIcon>
-            <StyledSvg> <Icon name='calendar' size='35px'/> </StyledSvg>
+            <StyledSvg> <Icon name='calendar' size='30px'/> </StyledSvg>
             <StyledLinkText isMenuOpen={isMenuOpen}>
               Curriculum
             </StyledLinkText>
           </StyledNavIcon>
-        </StyledCurriculum>
-        <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
-          <StyledNavIcon>
-            <StyledSvg> <Icon name='settings' size='35px'/> </StyledSvg>
-            <StyledLinkText isMenuOpen={isMenuOpen}>
-              Profile
-            </StyledLinkText>
-          </StyledNavIcon>
-        </StyledNavItem>
-        <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
-          <StyledNavIcon>
-            <StyledSvg>  <Icon name='question' size='35px'/> </StyledSvg>
-            <StyledLinkText isMenuOpen={isMenuOpen}>
-              FAQ
-            </StyledLinkText>
-          </StyledNavIcon>
-        </StyledNavItem>
-        <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
-          <StyledNavIcon>
-            <StyledSvg>  <Icon name='arrow-left' size='35px'/> </StyledSvg>
-            <StyledLinkText isMenuOpen={isMenuOpen}>
-              Log Out
-            </StyledLinkText>
-          </StyledNavIcon>
-        </StyledNavItem>
-      </ul>
+        </Stack>
+        <Stack spacing={3}>
+          <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+            <StyledNavIcon>
+              <StyledSvg> <Icon name='settings' size='30px'/> </StyledSvg>
+              <StyledLinkText isMenuOpen={isMenuOpen}>
+                Profile
+              </StyledLinkText>
+            </StyledNavIcon>
+          </StyledNavItem>
+          <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+            <StyledNavIcon>
+              <StyledSvg>  <Icon name='question' size='30px'/> </StyledSvg>
+              <StyledLinkText isMenuOpen={isMenuOpen}>
+                FAQ
+              </StyledLinkText>
+            </StyledNavIcon>
+          </StyledNavItem>
+          <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+            <StyledNavIcon>
+              <StyledSvg>  <Icon name='arrow-left' size='30px'/> </StyledSvg>
+              <StyledLinkText isMenuOpen={isMenuOpen}>
+                Log Out
+              </StyledLinkText>
+            </StyledNavIcon>
+          </StyledNavItem>
+        </Stack>
+      </Flex>
     </StyledNav>
   );
 };
