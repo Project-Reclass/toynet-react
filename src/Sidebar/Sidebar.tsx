@@ -48,7 +48,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledNavItem = styled.li`
+const StyledNavItem = styled.div`
   margin-top: auto;
   transition: .1s all linear;
 
