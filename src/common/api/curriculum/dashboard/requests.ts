@@ -1,10 +1,7 @@
+import axios from 'axios';
 import { DashboardIntf } from 'src/common/types/curriculum';
-import data from './mock.json';
 
-const mockData = [data];
-
-export const getCurriculum = (curriculumId: number): Promise<DashboardIntf | undefined> => {
-  const curriculumData = mockData.find(data => data.id === curriculumId);
-  // eslint-disable-next-line no-magic-numbers
-  return new Promise((resolve) => resolve(curriculumData as DashboardIntf));
+export const getCurriculum = async (curriculumId: number): Promise<DashboardIntf | undefined> => {
+  const { data } = await axios.get(`/data/curriculum/${curriculumId}.json`);
+  return data;
 };
