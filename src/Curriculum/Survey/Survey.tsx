@@ -1,3 +1,23 @@
+/*
+Copyright (C) 1992-2021 Free Software Foundation, Inc.
+
+This file is part of ToyNet React.
+
+ToyNet React is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 3, or (at your option) any later
+version.
+
+ToyNet React is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License
+along with ToyNet React; see the file LICENSE.  If not see
+<http://www.gnu.org/licenses/>.
+
+*/
 import React, { useState, FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSurveyMeta } from 'src/common/api/curriculum/survey';
@@ -19,8 +39,7 @@ import {
 import {
     SubmitSurvey,
     SurveyContainer,
-    QuestionLabel,
-  } from './SurveyStyled';
+} from './SurveyStyled';
 
 interface Params {
     surveyId: string;
@@ -41,22 +60,18 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                 <SimpleGrid columns={2} spacingX={1}>
                 {question.options?.map((option) => (
                 <div key={option}>
-                    <input
-                      type="radio"
-                      id={option}
-                      data-testid={option}
-                      name={id.toString()}
-                      value={option}
-                      onChange={() => updateResp(option, id)}
-                      style={{margin: '5px'}}
-                    />
-                    <QuestionLabel
-                      as={'label'}
-                      fontSize='lg'
-                      isIncorrect={false}
-                    >
+                    <label>
+                        <input
+                        type="radio"
+                        id={option}
+                        data-testid={option}
+                        name={id.toString()}
+                        value={option}
+                        onChange={() => updateResp(option, id)}
+                        style={{margin: '5px'}}
+                        />
                         {option}
-                    </QuestionLabel>
+                    </label>
                 </div>
                 ))}
                 </SimpleGrid>
@@ -68,23 +83,19 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
                     <SimpleGrid columns={question.options?.length} spacingX={1}>
                     {question.options?.map((option) => (
                     <div key={option}>
-                        <QuestionLabel
-                          as={'label'}
-                          fontSize='lg'
-                          isIncorrect={false}
-                        >
+                        <label>
                             {option}
-                        </QuestionLabel>
-                        <br/>
-                        <input
-                          type="radio"
-                          id={option}
-                          data-testid={option}
-                          name={id.toString()}
-                          value={option}
-                          onChange={() => updateResp(option, id)}
-                          style={{margin: '5px'}}
-                        />
+                            <br/>
+                            <input
+                            type="radio"
+                            id={option}
+                            data-testid={option}
+                            name={id.toString()}
+                            value={option}
+                            onChange={() => updateResp(option, id)}
+                            style={{margin: '5px'}}
+                            />
+                        </label>
                     </div>
                     ))}
                     </SimpleGrid>
@@ -170,7 +181,7 @@ const Survey = () => {
                         </div>
                     ))}
                     <SubmitSurvey
-                      variantColor='blue'
+                      variantColor='teal'
                       onClick={submitSurvey}
                     >
                     Submit Survey
