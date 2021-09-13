@@ -25,14 +25,14 @@ import { Button, Stack } from '@chakra-ui/core';
 import { DeviceInterface } from 'src/common/types';
 
 import { TopologyActions } from '../useTopology';
-import { useEmulator } from '../EmulatorProvider';
+import { useEmulatorWithDialogue } from '../EmulatorProvider';
 
 interface Props {
   devices: DeviceInterface[];
 }
 
 export const ContextMenus = ({ devices }: Props) => {
-  const { dispatch } = useEmulator();
+  const { dispatch } = useEmulatorWithDialogue();
 
   const handleDeleteConnections = useCallback((from: string, to: string) => {
     return () => {

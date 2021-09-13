@@ -3,7 +3,7 @@
 exports[`The emulator should render and match snapshots 1`] = `
 <div>
   <div
-    class="css-18rlxjv"
+    class="css-1eypkte"
   >
     <div
       class="css-8wnozy"
@@ -98,7 +98,7 @@ exports[`The emulator should render and match snapshots 1`] = `
       </div>
     </div>
     <div
-      class="css-7adqp4"
+      class="css-jj5y1g"
     >
       <div
         class="css-zy3qbz"
@@ -310,7 +310,7 @@ exports[`The emulator should render and match snapshots 1`] = `
         </div>
       </div>
       <div
-        class="css-1evsfum"
+        class="css-jhr2ok"
       >
         <div
           class="css-1fmka3o"
@@ -325,7 +325,7 @@ exports[`The emulator should render and match snapshots 1`] = `
           />
         </div>
         <div
-          style="z-index: 0;"
+          style="z-index: 0; overflow: hidden;"
         >
           <div
             class="css-1fmka3o"

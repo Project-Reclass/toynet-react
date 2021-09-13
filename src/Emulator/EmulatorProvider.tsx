@@ -36,8 +36,7 @@ const DialogueContext = createContext<DialogueInterface>({
 });
 
 const DialogueProvider: FC = ({ children }) => {
-  const testNumbers = 50; // TODO: Remove this
-  const [dialogueMessages, setDialogueMessages] = useState<string[]>('test,'.repeat(testNumbers).split(','));
+  const [dialogueMessages, setDialogueMessages] = useState<string[]>([]);
 
   // Not using useCallback so we can add the same error messages repeatedly
   const appendDialogue = (message: string) => {
@@ -78,9 +77,9 @@ const EmulatorProvider: FC = ({ children }) => {
   );
 };
 
-export const useEmulatorBasic = () => useContext(EmulatorContext);
-export const useEmulator = () => {
-  const emulator = useEmulatorBasic();
+export const useEmulator = () => useContext(EmulatorContext);
+export const useEmulatorWithDialogue = () => {
+  const emulator = useEmulator();
   const messages = useDialogue();
 
   const dispatch: typeof emulator.dispatch = (value) => {
@@ -88,26 +87,32 @@ export const useEmulator = () => {
       case TopologyActions.ADD_HOST:
       case TopologyActions.ADD_ROUTER:
       case TopologyActions.ADD_SWITCH:
-        messages.appendDialogue(`Added ${(value.payload as DeviceInterface).name}`);
+        const newDevice = value.payload as DeviceInterface;
+        messages.appendDialogue(`Added cool ${newDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.DELETE_ROUTER:
       case TopologyActions.DELETE_HOST:
       case TopologyActions.DELETE_SWITCH:
-        messages.appendDialogue(`Deleted ${(value.payload as DeviceInterface).name}`);
+        const deletedDevice = value.payload as DeviceInterface;
+        messages.appendDialogue(`Deleted ${deletedDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.ADD_CONNECTION:
         const add = value.payload as Connection;
-        messages.appendDialogue(`Attached ${add.from} to ${add.to}`);
+        messages.appendDialogue(`Attached ${add.from.toUpperCase()} to ${add.to.toUpperCase()}`);
         break;
       case TopologyActions.DELETE_CONNECTION:
         const remove = value.payload as Connection;
-        messages.appendDialogue(`Removed ${remove.from} to ${remove.to}`);
+        if (remove.to === remove.from) {
+          messages.appendDialogue(`Removed ${remove.from.toUpperCase()}`);
+          break;
+        }
+        messages.appendDialogue(`Removed ${remove.from.toUpperCase()} to ${remove.to.toUpperCase()}`);
         break;
     }
     emulator.dispatch(value);
   };
 
-  return { ...emulator, dispatch };
+  return { ...emulator, ...messages, dispatch };
 };
 
 export function withEmulatorAndDialogueProvider<T>(Component: React.ComponentType<T>) {
