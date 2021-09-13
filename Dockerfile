@@ -8,6 +8,7 @@ COPY ./src ./src
 COPY ./public ./public
 COPY ./tsconfig.json ./tsconfig.json
 COPY ./header.js ./header.js
+COPY ./.eslintrc.json ./.eslintrc.json
 
 RUN npm i
 
