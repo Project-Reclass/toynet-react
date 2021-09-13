@@ -84,6 +84,7 @@ export const ContextMenus = ({ devices }: Props) => {
                 variant='ghost'
                 variantColor='teal'
                 textAlign='left'
+                key={to}
                 onClick={handleDeleteConnections(device.name, to)}
               >
                 Delete {to.toLocaleUpperCase()} Connection

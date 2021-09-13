@@ -47,7 +47,7 @@ const DialogueBox = () => {
         <EmulatorInnerSection ref={containerScrollRef}>
           {dialogueMessages.map( (dialogueMessage) => (
             <>
-              <Stack direction='row' spacing={3}>
+              <Stack direction='row' spacing={3} key={dialogueMessage}>
                 <Icon name='info-outline' margin='auto 0.2rem' />
                 <Text>{dialogueMessage}</Text>
               </Stack>
