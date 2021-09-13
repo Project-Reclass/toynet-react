@@ -1,5 +1,8 @@
 {
-  "extends": "react-app",
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
   "ignorePatterns": [
     "serviceWorker.js",
     "*.test.js*"
@@ -119,5 +122,18 @@
     2,
     "header.js"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.+(ts|tsx)"],
+      "rules": {
+        "max-nested-callbacks": [
+            0,
+            {
+                "max": 5
+            }
+        ]
+      }
+    }
+  ]
 }
