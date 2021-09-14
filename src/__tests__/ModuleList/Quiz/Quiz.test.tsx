@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
-import { fireEvent, getByTestId, waitFor, screen } from '@testing-library/react';
+import { fireEvent, waitFor, screen } from '@testing-library/react';
 
 import Quiz from 'src/Curriculum/Quiz';
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests';
