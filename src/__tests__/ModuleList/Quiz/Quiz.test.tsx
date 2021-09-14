@@ -49,7 +49,7 @@ describe('The Quiz page', () => {
   });
 
   it('should fetch quiz data', async () => {
-    (getQuizMeta as jest.MockedFunction<typeof getQuizMeta>).mockResolvedValue({ items: data });
+    getQuizMetaMock.mockResolvedValue({ items: data });
 
     const { getByText, getAllByText } = renderWithTheme(
       <RenderWithRouter moduleId={42} quizId={64}>
@@ -66,7 +66,7 @@ describe('The Quiz page', () => {
   
   it('should err if none answered',() => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
-    (getQuizMeta as jest.MockedFunction<typeof getQuizMeta>).mockResolvedValue({ items: data });
+    getQuizMetaMock.mockResolvedValue({ items: data });
     const { getByText, getAllByText } = renderWithTheme(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
@@ -79,7 +79,7 @@ describe('The Quiz page', () => {
   })
   it('should err if not all answered',() => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
-    (getQuizMeta as jest.MockedFunction<typeof getQuizMeta>).mockResolvedValue({ items: data });
+    getQuizMetaMock.mockResolvedValue({ items: data });
     const { getByText, getAllByText } = renderWithTheme(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
@@ -94,7 +94,7 @@ describe('The Quiz page', () => {
   })
   it('should not err if all answered',() => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
-    (getQuizMeta as jest.MockedFunction<typeof getQuizMeta>).mockResolvedValue({ items: data });
+    getQuizMetaMock.mockResolvedValue({ items: data });
     const { getByText, getAllByText } = renderWithTheme(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
