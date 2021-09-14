@@ -7,7 +7,7 @@ services:
       - reclass_network
 
   frontend:
-    build: https://github.com/Project-Reclass/toynet-react.git
+    build: https://github.com/Project-Reclass/toynet-react.git#main
     ports:
       - "3000:80"
     networks:
