@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    build: https://github.com/Project-Reclass/toynet-flask.git#main
+    build: https://github.com/Project-Reclass/toynet-flask.git#e0a3d0295497f2e5a347c374a6d44ce431f940f3
     networks:
       - reclass_network
 
