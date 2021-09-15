@@ -63,7 +63,7 @@ describe('The useAuthState hook', () => {
 
     // now we check that we've logged out
     act(() => {
-      result.current[1]({ type: AuthActions.LOGOUT, payload: {} });
+      result.current[1]({ type: AuthActions.LOGOUT });
     });
 
     expect(result.current[0].id).toBe(-1);
