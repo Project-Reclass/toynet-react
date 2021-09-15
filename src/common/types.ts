@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-export type DeviceType = 'router' | 'switch' | 'host';
+export type DeviceType = "router" | "switch" | "host";
 
 export interface DeviceInterface {
   name: string;
@@ -32,7 +32,7 @@ export type AsyncStateHook<T> = [T, (value: T) => void, boolean];
 
 export interface Action<TActions, TPayload> {
   type: TActions;
-  payload?: TPayload;
+  payload: TPayload;
 }
 
 export type ReducerFn<T> = (action: T) => void;

@@ -18,27 +18,27 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from "@testing-library/react-hooks";
 import useAuthState, {
   AuthActions,
   User,
-} from 'src/Login/AuthProvider/useAuthState';
+} from "src/Login/AuthProvider/useAuthState";
 
 const defaultUser: User = {
   id: 1,
-  username: 'ProjectReclass',
+  username: "ProjectReclass",
   isLoggedIn: false,
 };
 
-describe('The useAuthState hook', () => {
-  it('should set defaults as not logged in', () => {
+describe("The useAuthState hook", () => {
+  it("should set defaults as not logged in", () => {
     const { result } = renderHook(() => useAuthState());
 
     expect(result.current[0].id).toBe(-1);
-    expect(result.current[0].username).toBe('');
+    expect(result.current[0].username).toBe("");
     expect(result.current[0].isLoggedIn).toBeFalsy();
   });
-  it('should set username, id, and set logged in to true on login', () => {
+  it("should set username, id, and set logged in to true on login", () => {
     const { result } = renderHook(() => useAuthState());
 
     act(() => {
@@ -49,7 +49,7 @@ describe('The useAuthState hook', () => {
     expect(result.current[0].username).toBe(defaultUser.username);
     expect(result.current[0].isLoggedIn).toBeTruthy();
   });
-  it('should unset all values back to default on logout', () => {
+  it("should unset all values back to default on logout", () => {
     const { result } = renderHook(() => useAuthState());
 
     act(() => {
@@ -63,14 +63,14 @@ describe('The useAuthState hook', () => {
 
     // now we check that we've logged out
     act(() => {
-      result.current[1]({ type: AuthActions.LOGOUT });
+      result.current[1]({ type: AuthActions.LOGOUT, payload: {} });
     });
 
     expect(result.current[0].id).toBe(-1);
-    expect(result.current[0].username).toBe('');
+    expect(result.current[0].username).toBe("");
     expect(result.current[0].isLoggedIn).toBeFalsy();
   });
-  it('should be able to set the username', () => {
+  it("should be able to set the username", () => {
     const { result } = renderHook(() => useAuthState());
     act(() => {
       result.current[1]({
@@ -81,7 +81,7 @@ describe('The useAuthState hook', () => {
 
     expect(result.current[0].username).toBe(defaultUser.username);
   });
-  it('should be able to set the id', () => {
+  it("should be able to set the id", () => {
     const { result } = renderHook(() => useAuthState());
     act(() => {
       result.current[1]({
