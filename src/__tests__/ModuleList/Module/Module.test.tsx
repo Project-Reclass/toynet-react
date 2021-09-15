@@ -18,26 +18,37 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-export type DeviceType = 'router' | 'switch' | 'host';
 
-export interface DeviceInterface {
-  name: string;
-  type: DeviceType;
-  connections: string[];
-}
+/* eslint-disable no-magic-numbers */
 
-export type StateHook<T> = [T, (value: T) => void];
 
-export type AsyncStateHook<T> = [T, (value: T) => void, boolean];
+import React from 'react';
 
-export interface Action<TActions, TPayload> {
-  type: TActions;
-  payload: TPayload;
-}
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import Module from 'src/Curriculum/Module';
+import { ModuleTypes } from 'src/Curriculum/Module';
 
-export type ReducerFn<T> = (action: T) => void;
-export type GenericFunction = () => any;
+const defaultProps = {
+  id: 0,
+  moduleId: 0,
+  title: 'First Module',
+  progress: 8,
+  type: ModuleTypes.PARENT,
 
-export interface StringMap {
-  [key: string]: boolean;
-}
+  subModules: [
+    {
+      id: 1,
+      moduleId: 1,
+      title: 'First Article',
+      progress: 42,
+      type: ModuleTypes.QUIZ,
+    },
+  ],
+};
+
+describe('The Module', () => {
+  it('should render and match snapshots', () => {
+    const { container } = renderWithTheme(<Module {...defaultProps} />);
+    expect(container).toMatchSnapshot();
+  });
+});

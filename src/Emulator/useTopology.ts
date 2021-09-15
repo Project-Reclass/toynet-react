@@ -32,7 +32,7 @@ const existingDevices = new Set<string>();
 // This queue is used to queue up requests to the server for mininet commands. (currently not used)
 const queue: CommandRequest[] = [];
 
-interface Connection {
+export interface Connection {
   to: string;
   from: string;
 }
@@ -99,7 +99,6 @@ function reducer(state: ParsedXML, action: ReducerAction) {
     case TopologyActions.DELETE_HOST:
     case TopologyActions.DELETE_ROUTER:
     case TopologyActions.DELETE_SWITCH:
-      console.log(action.payload);
       const deleteKey = action.type === TopologyActions.DELETE_ROUTER ? 'routers' :
         action.type === TopologyActions.DELETE_SWITCH ? 'switches' : 'hosts';
       const device = action.payload as DeviceInterface;
