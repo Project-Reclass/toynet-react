@@ -59,7 +59,7 @@ function reducer(draft: User, action: ReducerAction) {
     case AuthActions.LOGOUT:
       return initialState;
   }
-};
+}
 
 export default function useAuthState() {
   return useImmerReducer(reducer, initialState);
