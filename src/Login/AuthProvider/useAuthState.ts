@@ -18,9 +18,9 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { useImmerReducer } from "use-immer";
+import { useImmerReducer } from 'use-immer';
 
-import { Action } from "src/common/types";
+import { Action } from 'src/common/types';
 
 export interface User {
   id: number | string;
@@ -39,14 +39,14 @@ export type ReducerAction = Action<AuthActions, Partial<User>>;
 
 export const initialState: User = {
   id: -1,
-  username: "",
+  username: '',
   isLoggedIn: false,
 };
 
 function reducer(draft: User, action: ReducerAction) {
   switch (action.type) {
     case AuthActions.SET_USERNAME:
-      draft.username = action.payload.username || "";
+      draft.username = action.payload.username || '';
       return draft;
     case AuthActions.SET_ID:
       draft.id = action.payload.id || -1;
@@ -54,7 +54,7 @@ function reducer(draft: User, action: ReducerAction) {
     case AuthActions.LOGIN:
       draft.isLoggedIn = true;
       draft.id = action.payload.id || -1;
-      draft.username = action.payload.username || "";
+      draft.username = action.payload.username || '';
       return draft;
     case AuthActions.LOGOUT:
       return initialState;

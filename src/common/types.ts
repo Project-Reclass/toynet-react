@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-export type DeviceType = "router" | "switch" | "host";
+export type DeviceType = 'router' | 'switch' | 'host';
 
 export interface DeviceInterface {
   name: string;
