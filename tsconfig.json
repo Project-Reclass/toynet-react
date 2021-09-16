@@ -19,7 +19,7 @@
     "noEmit": true,
     "jsx": "react",
     "baseUrl": ".",
-    "types": ["cypress"],
+    "types": ["jest"],
     "noFallthroughCasesInSwitch": true
   },
   "include": [
