@@ -28,7 +28,7 @@ import SubModuleList from './SubModuleList';
 interface Props {
   index: number;
   locked: boolean;
-  paddingTop: string;
+  paddingTop?: string;
 }
 
 const withToolTip = (Component: React.ReactNode) => (
@@ -41,7 +41,10 @@ const withToolTip = (Component: React.ReactNode) => (
   </Tooltip>
 );
 
-const CoolTooltip: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
+/**
+ * Wraps a components with a tooltip that is only shown if `isLocked` is true
+ */
+const TooltipIslocked: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
   if (isLocked)
     return withToolTip(children);
 
@@ -75,11 +78,11 @@ const Module: FC<ModuleIntf & Props> = (
           marginX='1rem'
         />
         <Flex justifyContent='space-between' width='100%'>
-          <CoolTooltip isLocked={locked}>
+          <TooltipIslocked isLocked={locked}>
             <Text fontSize='2xl' userSelect='none'>
               {`Module ${index + 1}: ${name}`}
             </Text>
-          </CoolTooltip>
+          </TooltipIslocked>
           <Text fontSize='1xl' userSelect='none' m='auto 0'>
             {`${submodules.length} / ${submodules.length} completed, ${submodules.length} in progress`}
           </Text>

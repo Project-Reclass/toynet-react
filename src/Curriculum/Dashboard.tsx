@@ -70,6 +70,7 @@ export default function Dashboard({ username }: Props) {
             data?.modules.map((module, index) => (
               <Module
                 {...module}
+                key={module.id}
                 index={index}
                 locked={false}
                 paddingTop={index === 0 ? '2rem' : ''}

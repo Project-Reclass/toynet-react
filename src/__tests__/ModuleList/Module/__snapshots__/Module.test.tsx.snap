@@ -25,7 +25,7 @@ exports[`The Module should render and match snapshots 1`] = `
         <p
           class="css-1yqiz6e"
         >
-          Module 11: cool
+          Module 2: First Module
         </p>
         <p
           class="css-1xiazqm"
@@ -48,7 +48,7 @@ exports[`The Module should render and match snapshots 1`] = `
           <p
             class="css-95j7mt"
           >
-            introduction
+            This is the first module
           </p>
           <div
             class="css-e19uy1"
@@ -79,7 +79,7 @@ exports[`The Module should render and match snapshots 1`] = `
                     <p
                       class="css-fzcsno"
                     >
-                      Quiz: undefined
+                      Survey: First Article
                     </p>
                   </a>
                   <a
@@ -87,7 +87,7 @@ exports[`The Module should render and match snapshots 1`] = `
                   >
                     <a
                       class="css-u5zpo1"
-                      href="/module/1/quiz/1"
+                      href="/module/0/survey/1"
                     >
                       Go to Submodule &gt;
                     </a>
@@ -103,7 +103,9 @@ exports[`The Module should render and match snapshots 1`] = `
                   >
                     <div
                       class="css-0"
-                    />
+                    >
+                      coo
+                    </div>
                   </div>
                 </div>
               </div>
