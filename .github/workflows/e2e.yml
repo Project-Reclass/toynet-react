@@ -1,0 +1,19 @@
+name: Integration
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          headless: true
+          install-command: npm i
+          start: npm run start:dev
+          wait-on: http://localhost:3000
