@@ -19,17 +19,24 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import styled from '@emotion/styled';
-import { Box, Text } from '@chakra-ui/core';
+import { Box, Link } from '@chakra-ui/core';
 
-export const ModuleName = styled(Text)`
-  color: grey;
-  transition: color 0.2s ease;
+interface ModuleNameProps {
+  locked: boolean;
+  hoverColor?: string;
+}
+
+export const ModuleName = styled(Link)`
+  color: ${({ locked }: ModuleNameProps) => locked ? 'grey' : 'white'};
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
   a {
     -webkit-user-select: none;
     user-select: none;
   }
   :hover {
-    color: white;
+    color: ${({ hoverColor }: ModuleNameProps) => hoverColor || 'white'};
   }
 `;
 

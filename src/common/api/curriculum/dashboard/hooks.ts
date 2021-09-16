@@ -18,18 +18,10 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-export enum ModuleTypes {
-  QUIZ = 'quiz',
-  ARTICLE = 'article',
-  PARENT = 'parent',
-  EMULATOR = 'emulator',
-  VALUE = 'value',
-}
+import { useQuery } from 'react-query';
+import { getCurriculum } from './requests';
 
-export interface ModuleInterface {
-  id: number | string;
-  moduleId: number | string;
-  title: string;
-  progress: number;
-  type: ModuleTypes;
+export function useCurriculum(curriculumId: number) {
+  return useQuery(['curriculum-data', curriculumId], () =>
+    getCurriculum(curriculumId));
 }

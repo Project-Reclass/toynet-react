@@ -25,30 +25,33 @@ along with ToyNet React; see the file LICENSE.  If not see
 import React from 'react';
 
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { ModuleIntf } from 'src/common/types/curriculum';
 import Module from 'src/Curriculum/Module';
-import { ModuleTypes } from 'src/Curriculum/Module';
 
-const defaultProps = {
+const defaultModule: ModuleIntf = {
   id: 0,
-  moduleId: 0,
-  title: 'First Module',
-  progress: 8,
-  type: ModuleTypes.PARENT,
+  name: 'First Module',
+  introduction: 'This is the first module',
 
-  subModules: [
+  submodules: [
     {
       id: 1,
-      moduleId: 1,
-      title: 'First Article',
-      progress: 42,
-      type: ModuleTypes.QUIZ,
+      name: 'First Article',
+      introduction: 'coo',
+      type: 'SURVEY',
     },
   ],
 };
 
 describe('The Module', () => {
   it('should render and match snapshots', () => {
-    const { container } = renderWithTheme(<Module {...defaultProps} />);
+    const { container } = renderWithTheme(
+      <Module
+        index={1}
+        locked={false}
+        {...defaultModule}
+      />,
+    );
     expect(container).toMatchSnapshot();
   });
 });
