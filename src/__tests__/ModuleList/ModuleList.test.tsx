@@ -18,26 +18,16 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-export type DeviceType = 'router' | 'switch' | 'host';
 
-export interface DeviceInterface {
-  name: string;
-  type: DeviceType;
-  connections: string[];
-}
 
-export type StateHook<T> = [T, (value: T) => void];
+import React from 'react';
 
-export type AsyncStateHook<T> = [T, (value: T) => void, boolean];
+import ModuleList from 'src/Curriculum';
+import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
-export interface Action<TActions, TPayload> {
-  type: TActions;
-  payload?: TPayload;
-}
-
-export type ReducerFn<T> = (action: T) => void;
-export type GenericFunction = () => any;
-
-export interface StringMap {
-  [key: string]: boolean;
-}
+describe('The Module List', () => {
+  it('should render and match snapshot', () => {
+    const { container } = renderWithTheme(<ModuleList />);
+    expect(container).toMatchSnapshot();
+  });
+});

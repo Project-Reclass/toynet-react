@@ -45,6 +45,8 @@ const Emulator = () => {
       margin='auto'
       maxWidth='1920px'
       height='100vh'
+      maxH='100vh'
+      overflow='hidden'
       padding={'0.789rem'}
       gap={2}
       gridTemplateColumns={'auto 1fr'}
@@ -53,10 +55,14 @@ const Emulator = () => {
       <Grid
         gridTemplateRows={'1fr 1fr'}
         width='100%'
+        overflow='hidden'
         gap={2}
       >
         <Visuals />
         <Grid
+          height='100%'
+          maxH='100%'
+          overflow='hidden'
           gap={2}
           gridTemplateColumns={'2fr 1fr'}
         >

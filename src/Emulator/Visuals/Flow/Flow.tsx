@@ -37,7 +37,7 @@ import ReactFlow, {
 import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulator } from 'src/Emulator/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
@@ -97,7 +97,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
-  const { dispatch } = useEmulator();
+  const { dispatch } = useEmulatorWithDialogue();
 
   const { transform, fitView } = useZoomPanHelper();
 
@@ -145,9 +145,8 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const onElementsRemove = (elementsToRemove: any) =>
     setElements((els: any) => removeElements(elementsToRemove, els));
 
-  const onEdgeUpdate = (oldEdge: any, newConnection: any) => {
+  const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
     setElements((els) => updateEdge(oldEdge, newConnection, els));
-  };
 
   return (
       <ReactFlow
