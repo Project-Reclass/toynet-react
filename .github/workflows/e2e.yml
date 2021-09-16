@@ -1,0 +1,14 @@
+name: Integration tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          install-command: npm i
+          start: npm start, npm run start:docker:dev
+          wait-on: 'http://localhost:3000, http://localhost:8080'
