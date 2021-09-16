@@ -15,5 +15,5 @@ jobs:
         with:
           headless: true
           install-command: npm i
-          start: npm start:dev
+          start: npm run start:dev
           wait-on: http://localhost:3000
