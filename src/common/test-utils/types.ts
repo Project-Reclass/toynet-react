@@ -18,6 +18,15 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Module from './Module';
-export * from './Module';
-export default Module;
+
+export interface  MockInterface<TData> {
+  mockData: TData;
+  __resetMock: () => any;
+  __setMockData: (data: TData) => any;
+}
+
+export type MockedModule<TDAta, TModule> = MockInterface<TDAta> & TModule;
+
+export function asMockedModule<TData, TModule>(module: TModule): MockedModule<TData, TModule> {
+  return module as MockedModule<TData, TModule>;
+}

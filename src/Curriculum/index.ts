@@ -18,7 +18,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import withMockData from './withMockData';
-import ModuleList from './Curriculum';
+import ModuleList from './Dashboard';
 
-export default withMockData(ModuleList);
+export default ModuleList;

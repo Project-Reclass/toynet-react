@@ -18,6 +18,10 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Module from './Module';
-export * from './Module';
-export default Module;
+import axios from 'axios';
+import { DashboardIntf } from 'src/common/types/curriculum';
+
+export const getCurriculum = async (curriculumId: number): Promise<DashboardIntf | undefined> => {
+  const { data } = await axios.get(`/data/curriculum/${curriculumId}.json`);
+  return data;
+};

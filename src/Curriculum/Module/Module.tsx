@@ -18,42 +18,83 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { FC } from 'react';
-import { Collapse, Flex, Text, useDisclosure } from '@chakra-ui/core';
-
-import { CurriculumBox } from '../styled';
+import React, { FC, useState } from 'react';
+import { Box, Collapse, Flex, Text, Tooltip } from '@chakra-ui/core';
+import { ModuleIntf } from 'src/common/types/curriculum';
 
 import { RotatableIcon } from './styled';
 import SubModuleList from './SubModuleList';
-import { ModuleInterface } from './types';
 
 interface Props {
-  subModules: ModuleInterface[];
+  index: number;
+  locked: boolean;
+  paddingTop?: string;
 }
 
-const Module: FC<Props & ModuleInterface> = ({ title, subModules }) => {
-  const { isOpen, onToggle } = useDisclosure(false);
+const withToolTip = (Component: React.ReactNode) => (
+  <Tooltip
+    hasArrow
+    label='🔒 This module is currently locked.'
+    {...{'aria-label': 'This module is currently locked.'}}
+  >
+    {Component}
+  </Tooltip>
+);
+
+/**
+ * Wraps a components with a tooltip that is only shown if `isLocked` is true
+ */
+const TooltipIslocked: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
+  if (isLocked)
+    return withToolTip(children);
+
+  return <>{children}</>;
+};
+
+const Module: FC<ModuleIntf & Props> = (
+  {
+    id,
+    index,
+    locked,
+    introduction,
+    name,
+    submodules,
+    paddingTop,
+  },
+) => {
+  const [isOpen, setOpen] = useState(false);
 
   return (
-    <div>
-      <CurriculumBox>
-        <Flex onClick={onToggle} cursor='pointer'>
-          <RotatableIcon
-            name={'triangle-up'}
-            rotated={isOpen}
-            size='1.5rem'
-            marginY='auto'
-            marginX='1rem'
-          />
-          <Text fontSize='2xl' color='white' userSelect='none'>
-            {title}
+    <Box
+    paddingTop={paddingTop}
+    borderLeft={'2pt solid white'}
+    >
+      <Flex onClick={() => setOpen(open => !open)} cursor='pointer'>
+        <RotatableIcon
+          name={'triangle-up'}
+          rotated={isOpen}
+          size='1.5rem'
+          marginY='auto'
+          marginX='1rem'
+        />
+        <Flex justifyContent='space-between' width='100%'>
+          <TooltipIslocked isLocked={locked}>
+            <Text fontSize='2xl' userSelect='none'>
+              {`Module ${index + 1}: ${name}`}
+            </Text>
+          </TooltipIslocked>
+          <Text fontSize='1xl' userSelect='none' m='auto 0'>
+            {`${submodules.length} / ${submodules.length} completed, ${submodules.length} in progress`}
           </Text>
         </Flex>
-      </CurriculumBox>
+      </Flex>
       <Collapse isOpen={isOpen}>
-        <SubModuleList subModules={subModules} />
+        <Text fontSize='1xl' userSelect='none' m='1rem'>
+          {introduction}
+        </Text>
+        <SubModuleList moduleId={id} submodules={submodules} />
       </Collapse>
-    </div>
+    </Box>
   );
 };
 
