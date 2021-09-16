@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -15,5 +15,5 @@ jobs:
         with:
           headless: true
           install-command: npm i
-          start: npm start, npm run start:docker:dev
-          wait-on: 'http://localhost:3000, http://localhost:8080'
+          start: npm start:dev
+          wait-on: http://localhost:3000
