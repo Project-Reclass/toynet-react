@@ -34,7 +34,10 @@ const createLink = ({ type, id, moduleId }: Pick<Props, 'moduleId' | 'type' | 'i
   if (type === 'VALUE') {
     return `/value/${id}`;
   }
-  return `/module/${moduleId}/${type.toString().toLowerCase()}/${id}`;
+
+  const moduleType = type === 'LAB' ? 'emulator' : type.toString().toLowerCase();
+
+  return `/module/${moduleId}/${moduleType}/${id}`;
 };
 
 const capitalize = (s: string): string =>
