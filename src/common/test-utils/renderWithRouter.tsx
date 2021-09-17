@@ -18,6 +18,22 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Module from './Module';
-export * from './Module';
-export default Module;
+import React, { FC } from 'react';
+import { MemoryRouter, Route } from 'react-router-dom';
+
+export interface Props {
+  path: string;
+  initialEntries: string[];
+}
+
+const RenderWithRouter: FC<Props> = ({
+  path,
+  children,
+  initialEntries,
+}) => (
+  <MemoryRouter initialEntries={initialEntries}>
+    <Route path={path}>{children}</Route>
+  </MemoryRouter>
+);
+
+export default RenderWithRouter;

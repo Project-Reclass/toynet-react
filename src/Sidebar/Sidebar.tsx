@@ -118,13 +118,13 @@ const Sidebar = () => {
   };
 
   return (
-    <StyledNav isMenuOpen={isMenuOpen} onClick={toggleMenu} onMouseOver={toggleMenu} onMouseOut={toggleMenu}>
+    <StyledNav isMenuOpen={isMenuOpen} onMouseOver={toggleMenu} onMouseOut={toggleMenu}>
       <Flex direction='column' justifyContent='space-between' height='100%' paddingY='1rem'>
         <Stack spacing={3}>
           <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
             <Avatar src={ReclassLogo} marginBottom='1rem'/>
           </StyledNavIcon>
-          <StyledNavIcon>
+          <StyledNavIcon onClick={() => goToPageOnEnableHref('/curriculum')}>
             <StyledSvg> <Icon name='calendar' size='30px'/> </StyledSvg>
             <StyledLinkText isMenuOpen={isMenuOpen}>
               Curriculum

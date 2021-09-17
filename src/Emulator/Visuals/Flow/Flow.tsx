@@ -37,7 +37,7 @@ import ReactFlow, {
 import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulator } from 'src/Emulator/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
@@ -97,9 +97,9 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
-  const { dispatch } = useEmulator();
+  const { dispatch } = useEmulatorWithDialogue();
 
-  const { transform, fitView } = useZoomPanHelper();
+  const { transform } = useZoomPanHelper();
 
   /**
    * We need to use the `sessionId` here since we do not want to use an old session's
@@ -112,16 +112,13 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       const flow = await localforage.getItem<FlowExportObject>(flowSessionKey);
       const [x = 1, y = 1] = flow?.position || [];
       setElements(mergeElementLayouts(newElements, flow?.elements || []));
-
-      if (newElements.length !== flow?.elements.length) {
-        fitView();
-      } else {
+      if (newElements.length === flow?.elements.length) {
         transform({ x, y, zoom: flow?.zoom || 1 });
       }
     };
 
     restore();
-  }, [fitView, flowSessionKey, transform]);
+  }, [flowSessionKey, transform]);
 
   const handleSave = useCallback(() => {
     if (rfInstance) {
@@ -145,9 +142,8 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const onElementsRemove = (elementsToRemove: any) =>
     setElements((els: any) => removeElements(elementsToRemove, els));
 
-  const onEdgeUpdate = (oldEdge: any, newConnection: any) => {
+  const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
     setElements((els) => updateEdge(oldEdge, newConnection, els));
-  };
 
   return (
       <ReactFlow
@@ -170,6 +166,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             leftIcon="add"
             variantColor="pink"
             variant="outline"
+            data-testid="emulator-add-host"
             borderColor={deviceColorClasses.get('host')}
             onClick={() => dispatch({
               type: TopologyActions.ADD_HOST,
@@ -189,6 +186,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variantColor="blue"
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
+            data-testid="emulator-add-switch"
             onClick={() => dispatch({
               type: TopologyActions.ADD_SWITCH,
               payload: {
@@ -205,6 +203,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             size='sm'
             leftIcon="add"
             variantColor="yellow"
+            data-testid="emulator-add-router"
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
             onClick={() => dispatch({

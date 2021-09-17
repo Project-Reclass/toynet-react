@@ -18,6 +18,20 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Module from './Module';
-export * from './Module';
-export default Module;
+describe('The home splash screen', () => {
+  it('should have a "Try It" button that takes the user to the emulator', () => {
+    cy.visit('http://localhost:3000');
+    cy.contains(/try it/i).click();
+    cy.url().should('include', '/module/1/emulator/1');
+  });
+  it('should have a button "Learn More" which takes you to the org website', () => {
+    cy.visit('http://localhost:3000');
+    cy.contains(/learn more/i);
+  });
+  it('should have a button that takes you to the about section', () => {
+    cy.visit('http://localhost:3000');
+
+    cy.contains(/about/i).should('be.visible').click();
+    cy.contains(/about project reclass/i).should('be.visible');
+  });
+});

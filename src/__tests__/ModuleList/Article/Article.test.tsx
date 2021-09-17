@@ -18,39 +18,24 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-
-/* eslint-disable no-magic-numbers */
-
-
 import React from 'react';
+import { MemoryRouter, Route } from 'react-router-dom';
 
+import Article from 'src/Curriculum/Article';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
-import { ModuleIntf } from 'src/common/types/curriculum';
-import Module from 'src/Curriculum/Module';
 
-const defaultModule: ModuleIntf = {
-  id: 0,
-  name: 'First Module',
-  introduction: 'This is the first module',
+const RenderWithRouter = ({ children, moduleId, articleId }: {children: React.ReactChild, moduleId: number, articleId: number}) => (
+  <MemoryRouter initialEntries={[`/module/${moduleId}/article/${articleId}`]}>
+    <Route path="/module/:moduleId/article/:articleId">{children}</Route>
+  </MemoryRouter>
+);
 
-  submodules: [
-    {
-      id: 1,
-      name: 'First Article',
-      introduction: 'coo',
-      type: 'SURVEY',
-    },
-  ],
-};
-
-describe('The Module', () => {
-  it('should render and match snapshots', () => {
+describe('The Article page', () => {
+  it('should render the same based on URL parameters', () => {
     const { container } = renderWithTheme(
-      <Module
-        index={1}
-        locked={false}
-        {...defaultModule}
-      />,
+      <RenderWithRouter moduleId={42} articleId={64}>
+        <Article />
+      </RenderWithRouter>,
     );
     expect(container).toMatchSnapshot();
   });

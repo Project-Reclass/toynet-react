@@ -18,6 +18,5 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Module from './Module';
-export * from './Module';
-export default Module;
+import SubModule from './SubModule';
+export default SubModule;
