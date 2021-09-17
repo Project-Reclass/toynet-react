@@ -99,7 +99,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch } = useEmulatorWithDialogue();
 
-  const { transform, fitView } = useZoomPanHelper();
+  const { transform } = useZoomPanHelper();
 
   /**
    * We need to use the `sessionId` here since we do not want to use an old session's
@@ -112,16 +112,13 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       const flow = await localforage.getItem<FlowExportObject>(flowSessionKey);
       const [x = 1, y = 1] = flow?.position || [];
       setElements(mergeElementLayouts(newElements, flow?.elements || []));
-
-      if (newElements.length !== flow?.elements.length) {
-        fitView();
-      } else {
+      if (newElements.length === flow?.elements.length) {
         transform({ x, y, zoom: flow?.zoom || 1 });
       }
     };
 
     restore();
-  }, [fitView, flowSessionKey, transform]);
+  }, [flowSessionKey, transform]);
 
   const handleSave = useCallback(() => {
     if (rfInstance) {
