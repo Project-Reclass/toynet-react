@@ -18,28 +18,32 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Box } from '@chakra-ui/core';
-import styled from '@emotion/styled';
+import React, { memo } from 'react';
+import { Select, Flex, Text } from '@chakra-ui/core';
 
 interface Props {
-  width?: string;
-  height?: string;
-  minWidth?: string;
-  maxWidth?: string;
-  padding?: string
+  options: string[];
+  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
-const EmulatorSection = styled(Box)`
-  color: white;
-  background-color: #454950;
-  height: ${(props: Props) => props.height || '100%'};
-  width: ${(props: Props) => props.width || '100%'};
-  border-radius: 10px;
-  padding: ${(props: Props) => props.padding || '2vh'};
-  display: flex;
-  flex-direction: column;
-  min-width: ${(props: Props) => props.minWidth};
-  max-width: ${(props: Props) => props.maxWidth};
-`;
+const DeviceSelector = ({ onChange, options }: Props) => (
+  <Flex width='fit-content' height='fit-content'>
+    <Text my='auto' marginRight='1rem'>Device</Text>
+    <Select
+      size='sm'
+      color='white'
+      backgroundColor='#212529'
+      placeholder='Select device'
+      width='fit-content'
+      borderWidth='1'
+      borderRadius={3}
+      onChange={onChange}
+    >
+      {options.map(option => (
+        <option value={option}>{option}</option>
+      ))}
+    </Select>
+  </Flex>
+);
 
-export default EmulatorSection;
+export default memo(DeviceSelector);

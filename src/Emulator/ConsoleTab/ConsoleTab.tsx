@@ -18,13 +18,16 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Box, Flex, Heading, Select, Text, Textarea } from '@chakra-ui/core';
-import React, { useState } from 'react';
+import { Box, Flex, Heading, Text, Textarea } from '@chakra-ui/core';
+import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
   EmulatorInnerSection,
   EmulatorSection,
 } from 'src/common/components/Emulator';
+import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
+import { useEmulator } from '../EmulatorProvider';
+import DeviceSelector from './DeviceSelector';
 
 interface ToynetCommand {
   command: string;
@@ -39,38 +42,51 @@ const AppliedCommand = ({command, color, output}: ToynetCommand) => (
   </Box>
 );
 
+const CoolHeading = memo(() => (
+  <Heading size='lg'>
+    Console
+  </Heading>
+));
+
 const ConsoleTab = () => {
+  const { switches, hosts, routers } = useEmulator();
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [currInput, setCurrInput] = useState('>> ');
-  const [history, setHistory] = useState<ToynetCommand[]>([
+  const [history, setHistory] = useSessionStorage<ToynetCommand[]>('history', [
     {
       command: '>> ls',
       output: 'name',
       color: 'white',
     },
-  ]);
+  ], (value) => JSON.parse(value));
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      const element = scrollRef.current;
+      element.scrollTop = element.scrollHeight;
+    }
+  }, [history]);
+
+  const options = useMemo(() =>
+    [
+      ...routers.map(el => el.name),
+      ...switches.map(el => el.name),
+      ...hosts.map(el => el.name),
+    ],
+  [hosts, routers, switches]);
 
   return (
-    <EmulatorSection>
+    <EmulatorSection
+      overflow='hidden'
+    >
       <Flex paddingBottom='0.559rem' justifyContent='space-between'>
-        <Heading size='lg' color='white'>
-          Console
-        </Heading>
-        <Flex width='fit-content' height='fit-content'>
-          <Text my='auto' marginRight='1rem'>Device</Text>
-          <Select
-            size='sm'
-            color='white'
-            backgroundColor='#212529'
-            placeholder='Select device'
-            width='fit-content'
-            borderWidth='1'
-            borderRadius={3}
-          >
-            <option>H1</option>
-          </Select>
-        </Flex>
+        <CoolHeading />
+        <DeviceSelector options={options} />
       </Flex>
-      <EmulatorInnerSection padding='1rem'>
+      <EmulatorInnerSection
+        ref={scrollRef}
+        padding='1rem'
+      >
         {history.map(cmd => (
           <AppliedCommand {...cmd} />
         ))}
@@ -96,7 +112,12 @@ const ConsoleTab = () => {
               return;
             }
             if (e.key === 'Enter') {
-              setHistory(prev => [...prev, {
+              if (currInput.replace('>> ', '') === 'clear') {
+                setCurrInput('>> ');
+                setHistory([]);
+                return;
+              }
+              setHistory([...history, {
                 command: currInput,
                 output: 'ls',
                 color: 'tomato',
