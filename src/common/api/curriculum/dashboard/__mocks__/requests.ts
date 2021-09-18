@@ -19,15 +19,28 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
+import { DashboardIntf } from 'src/common/types/curriculum';
 
-import React from 'react';
+const defaultMockData = {
+  id: 1,
+  name: 'test',
+  introduction: 'intro',
+  modules: [],
+};
 
-import ModuleList from 'src/Curriculum';
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+export let mockData: DashboardIntf = {...defaultMockData};
 
-describe('The Module List', () => {
-  it('should render and match snapshot', () => {
-    const { container } = renderWithTheme(<ModuleList />);
-    expect(container).toMatchSnapshot();
-  });
-});
+export function __resetMock() {
+  mockData = {...defaultMockData};
+}
+
+export function __setMockData(data: DashboardIntf) {
+  mockData.id = data.id;
+  mockData.name = data.name;
+  mockData.introduction = data.introduction;
+  mockData.modules = data.modules;
+}
+
+export const getCurriculum = async (): Promise<DashboardIntf | undefined> => {
+  return Promise.resolve(mockData);
+};

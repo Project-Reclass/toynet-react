@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Module List should render and match snapshot 1`] = `
+<div>
+  <div
+    class="css-ojm4ju"
+  >
+    <div
+      class="css-1djaw1e"
+    >
+      <div
+        class="css-1w1vbxm"
+      >
+        <div
+          class="css-qx149r"
+        >
+          <h2
+            class="css-10ycv28"
+          >
+            Hi there!
+          </h2>
+          <p
+            class="css-1q2wm2p"
+          >
+            intro You can click on each module’s chevron to see its submodules. You must go through
+                the modules and their submodules in order. To start or revisit a submodule, click
+             
+             
+            <span
+              class="css-5zg4m9"
+            >
+              Go to submodule &gt;.
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-t5uauj"
+    />
+  </div>
+</div>
+`;
