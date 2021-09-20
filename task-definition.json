@@ -1,0 +1,68 @@
+{
+  "containerDefinitions": [
+    {
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "SECRET_KEY",
+          "value": "notasupersecretkey"
+        }
+      ],
+      "mountPoints": [],
+      "memoryReservation": 128,
+      "image": "docker.io/projectreclass/toynet-backend",
+      "name": "backend"
+    },
+    {
+      "portMappings": [
+        {
+          "hostPort": 3000,
+          "protocol": "tcp",
+          "containerPort": 80
+        }
+      ],
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "SERVER_URI",
+          "value": "http://backend:5000"
+        }
+      ],
+      "mountPoints": [],
+      "memoryReservation": 128,
+      "volumesFrom": [],
+      "image": "docker.io/projectreclass/toynet-frontend:521dc31e079b37a67836d0d7b39e095fffacc0ea",
+      "dependsOn": [
+        {
+          "containerName": "backend",
+          "condition": "START"
+        }
+      ],
+      "links": [
+        "backend:backend"
+      ],
+      "name": "frontend"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+    "EXTERNAL",
+    "EC2"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:243481923718:task-definition/ToyNet:7",
+  "family": "ToyNet",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "name": "ecs.capability.container-ordering"
+    }
+  ],
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "revision": 7,
+  "status": "ACTIVE",
+  "volumes": []
+}
