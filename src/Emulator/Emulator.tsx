@@ -25,6 +25,7 @@ import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
 import ConsoleTab from './ConsoleTab';
+import styled from '@emotion/styled-base';
 
 const data = {
   'id': 1,
@@ -39,18 +40,22 @@ const data = {
   ],
 };
 
+const EmulatorGrid = styled(Grid)`
+  margin: auto;
+  max-width: 1920px;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 0.789rem;
+  grid-template-columns: auto 1fr;
+  @media (max-width: 2050px) {
+    margin-left: 5rem;
+  }
+`;
+
 const Emulator = () => {
   return (
-    <Grid
-      margin='auto'
-      maxWidth='1920px'
-      height='100vh'
-      maxH='100vh'
-      overflow='hidden'
-      padding={'0.789rem'}
-      gap={2}
-      gridTemplateColumns={'auto 1fr'}
-    >
+    <EmulatorGrid gap={2}>
       <Instructions panelData={data} />
       <Grid
         gridTemplateRows={'1fr 1fr'}
@@ -70,7 +75,7 @@ const Emulator = () => {
           <DialogueBox />
         </Grid>
       </Grid>
-    </Grid>
+    </EmulatorGrid>
   );
 };
 
