@@ -2,11 +2,10 @@ name: Build Docker Image
 
 on:
   workflow_run:
-    workflows: ["Integration"]
+    workflows: ["CI"]
     branches: [main]
     types: 
       - completed
-      - requested
 
 jobs:
 
