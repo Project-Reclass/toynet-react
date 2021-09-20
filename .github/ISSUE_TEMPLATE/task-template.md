@@ -32,3 +32,7 @@ List any alternatives you considered to this approach. Explain why they weren't 
 # Related documents
 
 Include links to other pages as necessary (e.g. technical design doc, project proposal, etc.)
+
+**Notice**
+We recycle issues that have been stale for some time. Please refer to the [Contributing Documentation](https://docs.projectreclass.org/toynet/contributing-code-to-toynet/contributing-code-to-toynet) for more details as well as development best practices!
+

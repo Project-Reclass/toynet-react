@@ -36,3 +36,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
+
+**Notice**
+We recycle issues that have been stale for some time. Please refer to the [Contributing Documentation](https://docs.projectreclass.org/toynet/contributing-code-to-toynet/contributing-code-to-toynet) for more details as well as development best practices!
+
