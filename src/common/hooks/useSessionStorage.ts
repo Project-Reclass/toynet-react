@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { AsyncStateHook } from '../types';
 
@@ -45,11 +45,13 @@ export function useSessionStorage<T>(
   const [sessionValue, setSessionValue] = useState<T>(value);
   const {bool: hasInitialize, setTrue: setInitialized} = useBoolean(false);
 
+  const parserRef = useRef(parser);
+
   useEffect(() => {
     setInitialized();
     const loadedValue = sessionStorage.getItem(key);
     if (loadedValue) {
-      setSessionValue(parser ? parser(loadedValue) : loadedValue as any);
+      setSessionValue(parserRef.current ? parserRef.current(loadedValue) : loadedValue as any);
     }
   }, [key, parser, setInitialized]);
 
