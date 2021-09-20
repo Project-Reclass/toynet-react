@@ -32,6 +32,8 @@ import ReactFlow, {
   OnLoadParams,
   FlowExportObject,
   useZoomPanHelper,
+  Edge,
+  Connection,
 } from 'react-flow-renderer';
 
 import { DeviceInterface } from 'src/common/types';
@@ -44,6 +46,7 @@ import ClickableNode from './ClickableNode';
 import { createElements, getLayoutedElements, mergeElementLayouts } from './utils';
 
 import './overrides.css';
+import isValidLink from './isValidLink';
 
 export interface Props {
   sessionId: SessionId;
@@ -97,7 +100,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
-  const { dispatch } = useEmulatorWithDialogue();
+  const { dispatch, appendDialogue } = useEmulatorWithDialogue();
 
   const { transform } = useZoomPanHelper();
 
@@ -132,8 +135,19 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
     handleRestore(getLayoutedElements(els, 'LR', isTesting));
   }, [hosts, routers, switches, isTesting, handleRestore, handleSave]);
 
-  const onConnect = (params: any) => {
-    dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: params.source, to: params.target }});
+  const onConnect = (params: Edge | Connection) => {
+    const { source, target } = params;
+
+    const allDevices = [...routers, ...hosts, ...switches];
+    const sourceDevice = allDevices.find(device => device.name === source);
+    const targetDevice = allDevices.find(device => device.name === target);
+
+    if (!isValidLink(sourceDevice, targetDevice)) {
+      appendDialogue(`Cannot connect ${sourceDevice?.type.toString()} to ${targetDevice?.type.toString()}`);
+      return;
+    }
+
+    dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
     setElements((els: any) =>
       addEdge({ ...params, type: 'smoothstep', animated: true }, els),
     );
