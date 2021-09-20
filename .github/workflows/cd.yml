@@ -28,7 +28,7 @@ jobs:
       with:
         task-definition: task-definition.json
         container-name: frontend
-        image: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:$GITHUB_SHA
+        image: docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
 
     - name: Deploy Amazon ECS task definition
       if: ${{ github.event.workflow_run.conclusion == 'success' }}
