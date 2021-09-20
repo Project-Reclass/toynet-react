@@ -15,7 +15,8 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           headless: true
-          start: start:cypress:test
+          install-command: npm i
+          start: npm run start:cypress:test
           wait-on: http://localhost:3000
 
       - name: Archive cypress results
