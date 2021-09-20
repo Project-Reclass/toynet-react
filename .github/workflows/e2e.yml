@@ -15,8 +15,9 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           headless: true
-          start: docker-compose -f cypress/docker-compose.dev.yml up --build
-          wait-on: http://localhost:3000
+          install-command: npm i
+          start: npm run start:dev
+          wait-on: http://localhost:300
 
       - name: Archive cypress results
         uses: actions/upload-artifact@v2
