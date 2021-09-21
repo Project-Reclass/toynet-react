@@ -46,3 +46,11 @@ export function mergeRefs<T = any>(
   };
 }
 
+export const isRouter = (name: string) =>
+  name.length > 0 && name[0].toLowerCase() === 'r';
+
+export const isSwitch = (name: string) =>
+  name.length > 0 && name[0].toLowerCase() === 's';
+
+export const isHost = (name: string) =>
+  name.length > 0 && name[0].toLowerCase() === 'h';

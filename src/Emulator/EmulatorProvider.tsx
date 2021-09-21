@@ -88,13 +88,13 @@ export const useEmulatorWithDialogue = () => {
       case TopologyActions.ADD_ROUTER:
       case TopologyActions.ADD_SWITCH:
         const newDevice = value.payload as DeviceInterface;
-        messages.appendDialogue(`Added cool ${newDevice.name.toUpperCase()}`);
+        messages.appendDialogue(`Created device ${newDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.DELETE_ROUTER:
       case TopologyActions.DELETE_HOST:
       case TopologyActions.DELETE_SWITCH:
         const deletedDevice = value.payload as DeviceInterface;
-        messages.appendDialogue(`Deleted ${deletedDevice.name.toUpperCase()}`);
+        messages.appendDialogue(`Deleted device ${deletedDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.ADD_CONNECTION:
         const add = value.payload as Connection;
@@ -103,7 +103,7 @@ export const useEmulatorWithDialogue = () => {
       case TopologyActions.DELETE_CONNECTION:
         const remove = value.payload as Connection;
         if (remove.to === remove.from) {
-          messages.appendDialogue(`Removed ${remove.from.toUpperCase()}`);
+          messages.appendDialogue(`Removed device ${remove.from.toUpperCase()}`);
           break;
         }
         messages.appendDialogue(`Removed ${remove.from.toUpperCase()} to ${remove.to.toUpperCase()}`);
