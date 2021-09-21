@@ -3,7 +3,7 @@
     "target": "es5",
     "noEmit": true,
     "lib": ["es5", "dom"],
-    "types": ["cypress"]
+    "types": ["cypress", "@4tw/cypress-drag-drop"]
   },
   "include": [
     "**/*.ts"

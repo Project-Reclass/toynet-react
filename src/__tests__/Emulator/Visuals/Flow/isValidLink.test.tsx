@@ -40,8 +40,56 @@ const defaultSwitch: DeviceInterface = {
 };
 
 describe('the valid link function', () => {
-  it('should not allow a host to connect with a router', () => {
-    expect(isValidLink(defaultHost, defaultSwitch)).toBeTruthy();
-    expect(isValidLink(defaultSwitch, defaultHost)).toBeTruthy();
+  describe('switch validators', () => {
+    it('should not allow a switch to connect to another device it is already connected to', () => {
+      expect(isValidLink(defaultSwitch, {...defaultHost, connections: [defaultSwitch.name]})).toBeTruthy();
+      expect(isValidLink({...defaultSwitch, connections: [defaultRouter.name]}, defaultRouter)).toBeTruthy();
+    });
+    it('should allow a switch to connect to a host', () => {
+      expect(isValidLink(defaultSwitch, defaultHost)).toBeNull();
+      expect(isValidLink(defaultHost, defaultSwitch)).toBeNull();
+    });
+    it('should allow a switch to connect to another switch', () => {
+      expect(isValidLink(defaultSwitch, {...defaultSwitch, name: 'S2'})).toBeNull();
+    });
+    it('should allow a switch to connect to to a router', () => {
+      expect(isValidLink(defaultSwitch, defaultRouter)).toBeNull();
+      expect(isValidLink(defaultRouter, defaultSwitch)).toBeNull();
+    });
+  });
+  describe('router validators', () => {
+    it('should now allow a router to connect to another device it is already connected to', () => {
+      expect(isValidLink(defaultRouter, {...defaultSwitch, connections: [defaultRouter.name]})).toBeTruthy();
+      expect(isValidLink({...defaultRouter, connections: [defaultSwitch.name]}, defaultSwitch)).toBeTruthy();
+    });
+    it('should allow a router to connect to another router', () => {
+      expect(isValidLink(defaultRouter, {...defaultRouter, name: 'R2'})).toBeNull();
+    });
+    it('should allow a router to connect to a switch', () => {
+      expect(isValidLink(defaultRouter, defaultSwitch)).toBeNull();
+      expect(isValidLink(defaultSwitch, defaultRouter)).toBeNull();
+    });
+    it('should not allow a router to connect to a host', () => {
+      expect(isValidLink(defaultRouter, defaultHost)).toBeTruthy();
+      expect(isValidLink(defaultHost, defaultRouter)).toBeTruthy();
+    });
+  });
+  describe('host validators', () => {
+    it('should now allow a router to connect to another device it is already connected to', () => {
+      expect(isValidLink(defaultHost, {...defaultSwitch, connections: [defaultHost.name]})).toBeTruthy();
+      expect(isValidLink({...defaultSwitch, connections: [defaultHost.name]}, defaultHost)).toBeTruthy();
+    });
+    it('should not allow a host to connect to another host', () => {
+      expect(isValidLink(defaultHost, {...defaultHost, name: 'H2'})).toBeTruthy();
+    });
+    it('should allow a host to connect to a switch', () => {
+      expect(isValidLink(defaultHost, defaultSwitch)).toBeNull();
+      expect(isValidLink(defaultSwitch, defaultHost)).toBeNull();
+    });
+    it('should not allow a host to connect to another device if it already has a connection', () => {
+      const connectedHost = {...defaultHost, name: 'H2', connections: ['S1']};
+      expect(isValidLink(defaultHost, connectedHost)).toBeTruthy();
+      expect(isValidLink(connectedHost, defaultHost)).toBeTruthy();
+    });
   });
 });

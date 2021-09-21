@@ -18,30 +18,42 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+
 import { DeviceInterface } from 'src/common/types';
 import { isHost, isRouter, isSwitch } from 'src/common/utils';
 
-type LinkValidator = (from: DeviceInterface, to: DeviceInterface) => string | null;
+export type Reason = string;
+type LinkValidator = (from: DeviceInterface, to: DeviceInterface) => Reason | null;
 
 const linkValidators = new Map<string, LinkValidator>();
 linkValidators.set('s', validateSwitchLink);
 linkValidators.set('h', validateHostLink);
 linkValidators.set('r', validateRouterLink);
 
+const isAlreadyConnected = (from: DeviceInterface, to: DeviceInterface) =>
+  from.connections.findIndex(deviceName => deviceName === to.name) !== -1 ||
+  to.connections.findIndex(deviceName => deviceName === from.name) !== -1;
+
+const alreadyConnectedDescription = (from: DeviceInterface, to: DeviceInterface) =>
+  `${from.name.toUpperCase()} is already connected to ${to.name.toUpperCase()}`;
+
 function validateSwitchLink(from: DeviceInterface, to: DeviceInterface) {
-  if (to.name.startsWith('s') || to.name.startsWith('r') || (to.name.startsWith('h') && to.connections.length === 0))
-    if (to.connections.indexOf(from.name) === -1)
+  if (isAlreadyConnected(from, to))
+    return alreadyConnectedDescription(from, to);
+
+  if (isSwitch(to.name) || isRouter(to.name) || (isHost(to.name) && to.connections.length === 0))
       return null;
 
-  return to.connections.indexOf(from.name) !== -1 ? `${from.name.toUpperCase()} is already connected to ${to.name.toUpperCase()}` :
-         isHost(to.name) ? `Host ${to.name.toUpperCase()} already has connections` :
+  return isHost(to.name) ? `Host ${to.name.toUpperCase()} can only be connected to one device` :
          `Unable to connect ${from.name.toUpperCase()} to ${to.name.toUpperCase()}`;
 };
 
 function validateRouterLink(from: DeviceInterface, to: DeviceInterface) {
+  if (isAlreadyConnected(from, to))
+    return alreadyConnectedDescription(from, to);
+
   if (isRouter(to.name) || isSwitch(to.name))
-    if (to.connections.indexOf(from.name) === -1)
-      return null;
+    return null;
 
   return to.connections.indexOf(from.name) !== -1 ? `${from.name.toUpperCase()} is already connected to ${to.name.toUpperCase()}` :
          isHost(to.name) ? 'Router is unable to connect to a host' :
@@ -49,9 +61,11 @@ function validateRouterLink(from: DeviceInterface, to: DeviceInterface) {
 };
 
 function validateHostLink(from: DeviceInterface, to: DeviceInterface) {
+  if (isAlreadyConnected(from, to))
+    return alreadyConnectedDescription(from, to);
+
   if (isSwitch(to.name) && from.connections.length === 0)
-    if (to.connections.indexOf(from.name) === -1)
-      return null;
+    return null;
 
   return to.connections.indexOf(from.name) !== -1 ? `${from.name.toUpperCase()} is already connected to ${to.name.toUpperCase()}` :
          isHost(to.name) ? 'A host is unable to connect to another host' :
@@ -59,9 +73,9 @@ function validateHostLink(from: DeviceInterface, to: DeviceInterface) {
          `Unable to connect ${from.name.toUpperCase()} to ${to.name.toUpperCase()}`;
 };
 
-export function isValidLink(from?: DeviceInterface, to?: DeviceInterface) {
+export function isValidLink(from?: DeviceInterface, to?: DeviceInterface): Reason | null {
   if (!from || !to || from.name.length < 1 || to.name.length < 1 || from.name === to.name)
-    return 'One of the device names is invalid';
+    return 'One of the device names is invalid' as Reason;
 
   const validator = linkValidators.get(from.name[0].toLowerCase());
   return validator ? validator(from, to) : null;
