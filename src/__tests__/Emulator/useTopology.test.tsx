@@ -29,7 +29,7 @@ jest.mock('src/common/api/topology/requests');
 const base = { connections: [], parent: null };
 
 
-//the type variables are needed to stop TS from complaining
+//the hostType etc. variables are needed to stop TS from complaining
 
 const hostType = 'host' as DeviceType;
 const defaultHost = {
