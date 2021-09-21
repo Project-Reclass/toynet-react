@@ -124,12 +124,14 @@ const Sidebar = () => {
           <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
             <Avatar src={ReclassLogo} marginBottom='1rem'/>
           </StyledNavIcon>
-          <StyledNavIcon onClick={() => goToPageOnEnableHref('/curriculum')}>
-            <StyledSvg> <Icon name='calendar' size='30px'/> </StyledSvg>
-            <StyledLinkText isMenuOpen={isMenuOpen}>
-              Curriculum
-            </StyledLinkText>
-          </StyledNavIcon>
+          <StyledNavItem onClick={() => goToPageOnEnableHref('/curriculum')}>
+            <StyledNavIcon>
+              <StyledSvg> <Icon name='calendar' size='30px'/> </StyledSvg>
+              <StyledLinkText isMenuOpen={isMenuOpen}>
+                Curriculum
+              </StyledLinkText>
+            </StyledNavIcon>
+          </StyledNavItem>
         </Stack>
         <Stack spacing={3}>
           <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
