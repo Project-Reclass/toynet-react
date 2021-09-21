@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
@@ -17,3 +18,11 @@ jobs:
           install-command: npm i
           start: npm run start:dev
           wait-on: http://localhost:3000
+
+      - name: Archive cypress results
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-screenshots
+          path: |
+            cypress/screenshots
+            cypress/videos

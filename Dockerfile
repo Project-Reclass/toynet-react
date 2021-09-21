@@ -4,17 +4,15 @@ WORKDIR app
 
 COPY package.json package-lock.json ./
 
+RUN npm i
+
 COPY ./src ./src
 COPY ./public ./public
 COPY ./tsconfig.json ./tsconfig.json
 COPY ./header.js ./header.js
 COPY ./.eslintrc.json ./.eslintrc.json
 
-RUN npm i
-
 RUN npm run build
-RUN npm prune --production
-
 
 FROM nginx:alpine
 
