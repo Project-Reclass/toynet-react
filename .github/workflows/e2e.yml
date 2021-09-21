@@ -17,7 +17,7 @@ jobs:
           headless: true
           install-command: npm i
           start: npm run start:dev
-          wait-on: http://localhost:300
+          wait-on: http://localhost:3000
 
       - name: Archive cypress results
         uses: actions/upload-artifact@v2
