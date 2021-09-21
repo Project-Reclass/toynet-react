@@ -5,8 +5,10 @@ Follow this checklist for submitting a pull request (PR):
 - [ ] Your ticket is a "Help Wanted" issue on GitHub for the project that you're contributing to.
 - [ ] Your branch is up-to-date with the main branch.
 - [ ] Your code follows the established code style defined in the ESLint rules.
-- [ ] You have included any relevant test for the code that you're contributing.
+- [ ] You have included any relevant tests for the code that you're contributing.
 - [ ] You are submitting your PR against the main branch of the repository you are contributing to from your fork.
+- [ ] You have linked your GitHub issue at the **Resolves Issue** section if it exists.
+- [ ] You have provided a brief description of the issue.
 
 
 ## Description
