@@ -142,8 +142,9 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
     const sourceDevice = allDevices.find(device => device.name === source);
     const targetDevice = allDevices.find(device => device.name === target);
 
-    if (!isValidLink(sourceDevice, targetDevice)) {
-      appendDialogue(`Cannot connect ${sourceDevice?.type.toString()} to ${targetDevice?.type.toString()}`);
+    const isValidMessage = isValidLink(sourceDevice, targetDevice);
+    if (isValidMessage) {
+      appendDialogue(isValidMessage);
       return;
     }
 

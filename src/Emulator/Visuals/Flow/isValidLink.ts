@@ -19,8 +19,9 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import { DeviceInterface } from 'src/common/types';
+import { isHost, isRouter, isSwitch } from 'src/common/utils';
 
-type LinkValidator = (from: DeviceInterface, to: DeviceInterface) => boolean;
+type LinkValidator = (from: DeviceInterface, to: DeviceInterface) => string | null;
 
 const linkValidators = new Map<string, LinkValidator>();
 linkValidators.set('s', validateSwitchLink);
@@ -30,30 +31,40 @@ linkValidators.set('r', validateRouterLink);
 function validateSwitchLink(from: DeviceInterface, to: DeviceInterface) {
   if (to.name.startsWith('s') || to.name.startsWith('r') || (to.name.startsWith('h') && to.connections.length === 0))
     if (to.connections.indexOf(from.name) === -1)
-      return true;
+      return null;
 
-  return false;
+  return to.connections.indexOf(from.name) !== -1 ? `${from.name.toUpperCase()} is already connected to ${to.name.toUpperCase()}` :
+         isHost(to.name) ? `Host ${to.name.toUpperCase()} already has connections` :
+         `Unable to connect ${from.name.toUpperCase()} to ${to.name.toUpperCase()}`;
 };
 
 function validateRouterLink(from: DeviceInterface, to: DeviceInterface) {
-  if (to.name.startsWith('r') || to.name.startsWith('s'))
+  if (isRouter(to.name) || isSwitch(to.name))
     if (to.connections.indexOf(from.name) === -1)
-      return true;
-  return false;
+      return null;
+
+  return to.connections.indexOf(from.name) !== -1 ? `${from.name.toUpperCase()} is already connected to ${to.name.toUpperCase()}` :
+         isHost(to.name) ? 'Router is unable to connect to a host' :
+         `Unable to connect ${from.name.toUpperCase()} to ${to.name.toUpperCase()}`;
 };
 
 function validateHostLink(from: DeviceInterface, to: DeviceInterface) {
-  if (to.name.startsWith('s') && from.connections.length === 0)
+  if (isSwitch(to.name) && from.connections.length === 0)
     if (to.connections.indexOf(from.name) === -1)
-      return true;
-  return false;
+      return null;
+
+  return to.connections.indexOf(from.name) !== -1 ? `${from.name.toUpperCase()} is already connected to ${to.name.toUpperCase()}` :
+         isHost(to.name) ? 'A host is unable to connect to another host' :
+         isRouter(to.name) ? 'A host is unable to connect to a router' :
+         `Unable to connect ${from.name.toUpperCase()} to ${to.name.toUpperCase()}`;
 };
 
 export function isValidLink(from?: DeviceInterface, to?: DeviceInterface) {
   if (!from || !to || from.name.length < 1 || to.name.length < 1 || from.name === to.name)
-    return false;
-  const validator = linkValidators.get(from.name[0]);
-  return validator ? validator(from, to) : false;
+    return 'One of the device names is invalid';
+
+  const validator = linkValidators.get(from.name[0].toLowerCase());
+  return validator ? validator(from, to) : null;
 };
 
 export default isValidLink;
