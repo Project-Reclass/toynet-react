@@ -124,7 +124,7 @@ const Sidebar = () => {
           <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
             <Avatar src={ReclassLogo} marginBottom='1rem'/>
           </StyledNavIcon>
-          <StyledNavItem onClick={() => goToPageOnEnableHref('/curriculum')}>
+          <StyledNavItem onClick={() => goToPageOnEnableHref('/dashboard/1')}>
             <StyledNavIcon>
               <StyledSvg> <Icon name='calendar' size='30px'/> </StyledSvg>
               <StyledLinkText isMenuOpen={isMenuOpen}>
