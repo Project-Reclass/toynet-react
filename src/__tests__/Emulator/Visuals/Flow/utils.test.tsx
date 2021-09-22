@@ -1,27 +1,54 @@
-import { createElements } from "src/Emulator/Visuals/Flow/utils";
+/*
+Copyright (C) 1992-2021 Free Software Foundation, Inc.
+
+This file is part of ToyNet React.
+
+ToyNet React is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 3, or (at your option) any later
+version.
+
+ToyNet React is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License
+along with ToyNet React; see the file LICENSE.  If not see
+<http://www.gnu.org/licenses/>.
+
+*/
+
+import { DeviceType } from 'src/common/types';
+import { createElements } from 'src/Emulator/Visuals/Flow/utils';
+
+
+const hostType = 'host' as DeviceType;
+const switchType = 'switch' as DeviceType;
+const routerType = 'router' as DeviceType;
 
 const defaultDevices = [
   {
     name: 'h1',
-    type: 'host',
-    connections: ['s1']
+    type: hostType,
+    connections: ['s1'],
   },
   {
     name: 'h2',
-    type: 'switch',
-    connections: ['s1']
+    type: switchType,
+    connections: ['s1'],
   },
   {
     name: 's1',
-    type: 'switch',
-    connections: ['r1', 'h2', 'h1']
+    type: switchType,
+    connections: ['r1', 'h2', 'h1'],
   },
   {
     name: 'r1',
-    type: 'router',
-    connections: ['s1']
-  }
-]
+    type: routerType,
+    connections: ['s1'],
+  },
+];
 
 const expectedConns = [
   {
@@ -35,8 +62,8 @@ const expectedConns = [
   {
     source: 'h2',
     target: 's1',
-  }
-]
+  },
+];
 
 describe('createElements', () => {
   it('should create the same amount of flow elements plus links', () => {
@@ -49,11 +76,11 @@ describe('createElements', () => {
     const deviceIds = defaultDevices.map(el => el.name);
 
     for (let id of deviceIds) {
-      expect(flowIds).toContain(id)
+      expect(flowIds).toContain(id);
     }
   });
   it('should create links between flow elements', () => {
-    const flowElements = createElements(defaultDevices);
+    const flowElements: any[] = createElements(defaultDevices);
     for (let conn of expectedConns) {
       const link = flowElements.find(el => el.source === conn.source);
       expect(link).toBeDefined();
