@@ -50,7 +50,7 @@
     }
     ],
     "line-comment-position": 0,
-    "linebreak-style": 0,
+    "linebreak-style": 2,
     "lines-around-comment": [
     2,
     {
