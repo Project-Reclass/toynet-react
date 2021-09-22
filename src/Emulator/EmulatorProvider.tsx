@@ -24,8 +24,8 @@ import { DeviceInterface } from 'src/common/types';
 import { useTopology, TopologyState, TopologyActions, Connection } from 'src/Emulator/useTopology';
 
 interface DialogueInterface {
-  dialogueMessages: string[];
-  appendDialogue: (message: string) => any;
+  dialogueMessages: string[][];
+  appendDialogue: (message: string, color?: string) => any;
   clearDialogue: () => any;
 }
 
@@ -36,11 +36,11 @@ const DialogueContext = createContext<DialogueInterface>({
 });
 
 const DialogueProvider: FC = ({ children }) => {
-  const [dialogueMessages, setDialogueMessages] = useState<string[]>([]);
+  const [dialogueMessages, setDialogueMessages] = useState<string[][]>([]);
 
   // Not using useCallback so we can add the same error messages repeatedly
-  const appendDialogue = (message: string) => {
-    setDialogueMessages(dialogueMessages.concat([message]));
+  const appendDialogue = (message: string, color = 'white') => {
+    setDialogueMessages(dialogueMessages.concat([[message, color]]));
   };
 
   const clearDialogue = useCallback(() => {
