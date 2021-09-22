@@ -41,3 +41,8 @@ export type GenericFunction = () => any;
 export interface StringMap {
   [key: string]: boolean;
 }
+
+export interface DialogueMessage {
+  message: string,
+  color: string
+}
