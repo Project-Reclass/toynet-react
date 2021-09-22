@@ -144,7 +144,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
 
     const isValidMessage = isValidLink(sourceDevice, targetDevice);
     if (isValidMessage) {
-      appendDialogue(isValidMessage);
+      appendDialogue(isValidMessage, 'tomato');
       return;
     }
 
