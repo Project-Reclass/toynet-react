@@ -28,7 +28,7 @@ exports[`The sub modules should render and match previous snapshots 1`] = `
           <p
             class="css-fzcsno"
           >
-            Article: undefined
+            Article: article
           </p>
         </a>
         <a
