@@ -11,6 +11,7 @@
     "dagre": "^0.8.5",
     "emotion": "^10.0.27",
     "emotion-theming": "^10.0.27",
+    "framer-motion": "^4.1.17",
     "immer": "^9.0.6",
     "localforage": "^1.10.0",
     "path": "^0.12.7",
