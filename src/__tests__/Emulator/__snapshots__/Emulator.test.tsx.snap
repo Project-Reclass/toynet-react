@@ -67,8 +67,7 @@ exports[`The emulator should render and match snapshots 1`] = `
           Tasks
         </h2>
         <div
-          class="css-1y5xr9a"
-          style="padding: 0.549rem;"
+          class="css-1snafkv"
         >
           <div
             class="css-16cm47t"
@@ -324,7 +323,7 @@ exports[`The emulator should render and match snapshots 1`] = `
             Console
           </h2>
           <div
-            class="css-1y5xr9a"
+            class="css-1snafkv"
           />
         </div>
         <div
@@ -339,7 +338,7 @@ exports[`The emulator should render and match snapshots 1`] = `
               Actions
             </h2>
             <div
-              class="css-1y5xr9a"
+              class="css-1snafkv"
             />
           </div>
         </div>

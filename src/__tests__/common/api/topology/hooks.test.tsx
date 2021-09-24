@@ -55,9 +55,15 @@ describe('the useToynetSession custom hook', () => {
     expect(createToynetSession).toHaveBeenCalled();
     expect(getToynetSession).toHaveBeenCalled();
     expect(getToynetSession).toHaveBeenCalledWith(2);
-    act(() => {
+
+    // we need this because setting the value in session storage is done
+    // by adding the task to the callback queue. So by adding a task to the
+    // microtask queue we ensure that all tasks added before this in the callback
+    // queue are donelk
+    await new Promise<void>((resolve, _) => setTimeout(() => {
       expect(window.sessionStorage.getItem(toynetSessionKey)).toEqual('2');
-    });
+      resolve();
+    }, 0));
   });
 
   it('should not create a session if one already exists', async () => {

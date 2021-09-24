@@ -14,7 +14,7 @@ COPY ./.eslintrc.json ./.eslintrc.json
 
 RUN npm run build
 
-FROM nginx:alpine
+FROM nginx:1-alpine
 
 WORKDIR app
 
