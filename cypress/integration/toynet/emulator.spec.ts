@@ -23,6 +23,8 @@ const emulatorUrl = 'http://localhost:3000/module/1/emulator/1';
 
 describe('The emulator page', () => {
   beforeEach(() => {
+    // eslint-disable-next-line no-magic-numbers
+    Cypress.config('defaultCommandTimeout', 20000);
     window.sessionStorage.clear();
   });
   it('should allow the user to add a host', () => {
