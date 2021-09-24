@@ -83,4 +83,15 @@ describe('The emulator page', () => {
 
     cy.contains(/^s3$/i).should('be.visible');
   });
+  it('should allow history to persist after refresh', () => {
+    cy.visit(emulatorUrl);
+    cy.contains(/r1/i).should('be.visible');
+    cy.get('[data-testid^=emulator-add-switch]:first').click();
+    cy.contains(/^s3$/i).should('be.visible');
+    cy.contains(/created device s3/i).should('be.visible');
+    cy.reload(); // refresh the page
+
+    cy.contains(/^s3$/i).should('be.visible');
+    cy.contains(/created device s3/i).should('be.visible');
+  });
 });

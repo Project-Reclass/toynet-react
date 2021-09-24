@@ -18,7 +18,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { createContext, useContext, FC, useState, useCallback } from 'react';
+import React, { createContext, useContext, FC, useCallback } from 'react';
+import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 import { DeviceInterface, DialogueMessage } from 'src/common/types';
 import { useTopology, TopologyState, TopologyActions, Connection } from 'src/Emulator/useTopology';
@@ -36,16 +37,17 @@ const DialogueContext = createContext<DialogueInterface>({
 });
 
 const DialogueProvider: FC = ({ children }) => {
-  const [dialogueMessages, setDialogueMessages] = useState<DialogueMessage[]>([]);
+  const [dialogueMessages, setDialogueMessages] =
+    useSessionStorage<DialogueMessage[]>('history', [], value => JSON.parse(value));
 
   // Not using useCallback so we can add the same error messages repeatedly
-  const appendDialogue = (message: string, color = 'White') => {
+  const appendDialogue = useCallback((message: string, color = 'White') => {
     setDialogueMessages(dialogueMessages.concat([{message, color}]));
-  };
+  }, [dialogueMessages, setDialogueMessages]);
 
   const clearDialogue = useCallback(() => {
     setDialogueMessages([]);
-  }, []);
+  }, [setDialogueMessages]);
 
   return (
     <DialogueContext.Provider

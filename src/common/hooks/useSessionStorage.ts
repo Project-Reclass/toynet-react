@@ -53,7 +53,7 @@ export function useSessionStorage<T>(
     if (loadedValue) {
       setSessionValue(parserRef.current ? parserRef.current(loadedValue) : loadedValue as any);
     }
-  }, [key, parser, setInitialized]);
+  }, [key, setInitialized]);
 
   const setValueInStorage = useCallback((value: T) => {
     // Since sessionStorage blocks the main thread it's probably best to
