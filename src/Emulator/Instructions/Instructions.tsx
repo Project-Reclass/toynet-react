@@ -76,7 +76,7 @@ const Instructions: FC<Props> = ({ panelData }) => {
           }}
         >
           <EmulatorTitle size='lg'>Tasks</EmulatorTitle>
-          <EmulatorInnerSection style={{ padding: '0.549rem' }}>
+          <EmulatorInnerSection>
             <TaskList>
               {panelData.tasks.map(task => (
                 <TaskItem key={`${task}`}>{task}</TaskItem>
