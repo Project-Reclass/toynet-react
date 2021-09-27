@@ -2,14 +2,21 @@ version: '3'
 
 services:
   backend:
-    build: https://github.com/Project-Reclass/toynet-flask.git#e0a3d0295497f2e5a347c374a6d44ce431f940f3
+    image: toynet_backend
+    privileged: true
+    ports:
+      - "5000:5000"
+    environment:
+      - COMPOSE_NETWORK=toynet_mininet
     networks:
       - reclass_network
+      - toynet_mininet
+    volumes:
+      - /lib/modules:/lib/modules
+      - /var/run/docker.sock:/var/run/docker.sock
 
   frontend:
-    build:
-      context: ..
-      dockerfile: Dockerfile
+    image: toynet_frontend
     ports:
       - "3000:80"
     networks:
@@ -21,3 +28,5 @@ services:
 
 networks:
   reclass_network:
+  toynet_mininet:
+    name: toynet_mininet

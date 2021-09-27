@@ -23,24 +23,34 @@ import 'react-contexify/dist/ReactContexify.css';
 
 import EmulatorSection from 'src/common/components/Emulator/Section';
 
-import { useEmulator } from '../EmulatorProvider';
-
 import Flow from './Flow';
 import { InnerContainer } from './styled';
 import ContextMenus from './ContextMenus';
+import { useEmulator } from '../EmulatorProvider';
+import { Box, Heading, Text } from '@chakra-ui/core';
+import LoadingAnimation from 'src/common/components/LoadingAnimation';
 
 const Visuals = () => {
-  const { switches, routers, hosts, sessionId } = useEmulator();
+  const { switches, hosts, routers, sessionId, isLoading } = useEmulator();
+
   return (
     <>
     <EmulatorSection padding='0.4vh'>
       <InnerContainer>
-        <Flow
-          sessionId={sessionId}
-          hosts={hosts}
-          routers={routers}
-          switches={switches}
-        />
+        {isLoading ?
+          <Box position='relative' width='100%' height='100%'>
+            <LoadingAnimation>
+              <Heading size='xl' textAlign='center'>Creating Network</Heading>
+              <Text textAlign='center'>Please wait a moment while we create your new ToyNet.</Text>
+            </LoadingAnimation>
+          </Box > :
+          <Flow
+            sessionId={sessionId}
+            hosts={hosts}
+            routers={routers}
+            switches={switches}
+          />
+        }
       </InnerContainer>
     </EmulatorSection>
     <ContextMenus devices={hosts} />

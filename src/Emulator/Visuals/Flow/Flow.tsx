@@ -111,6 +111,13 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
   const flowSessionKey = useMemo(() => `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
 
   const handleRestore = useCallback((newElements: Elements) => {
+    // this is needed because when the component is first rendered it the
+    // devices will be empty. This causes an race issue when getting the flow
+    // elements from IndexDB. The empty array could resolve after the call with
+    // the actual elements to render.
+    if (newElements.length === 0)
+      return;
+
     const restore = async () => {
       const flow = await localforage.getItem<FlowExportObject>(flowSessionKey);
       const [x = 1, y = 1] = flow?.position || [];
@@ -128,12 +135,12 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       const flow = rfInstance.toObject();
       localforage.setItem(flowSessionKey, flow);
     }
-  }, [rfInstance, flowSessionKey]);
+  }, [flowSessionKey, rfInstance]);
 
   useEffect(() => {
     const els = createElements([...routers, ...switches, ...hosts]);
     handleRestore(getLayoutedElements(els, 'LR', isTesting));
-  }, [hosts, routers, switches, isTesting, handleRestore, handleSave]);
+  }, [hosts, routers, switches, isTesting, handleRestore]);
 
   const onConnect = (params: Edge | Connection) => {
     const { source, target } = params;
