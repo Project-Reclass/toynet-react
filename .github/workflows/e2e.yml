@@ -89,6 +89,8 @@ jobs:
 
       - name: Load images
         run: |
+          pwd
+          ls -al
           unzip *.zip
           docker load -i toynet_mininet.tar
           docker load -i toynet_backend.tar
