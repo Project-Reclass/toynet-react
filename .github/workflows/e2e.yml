@@ -100,7 +100,7 @@ jobs:
         with:
           headless: true
           install-command: npm i
-          start: npm run start:docker:dev
+          start: npm run start:cypress:test
           wait-on: http://localhost:3000
           wait-on-timeout: 360
 
