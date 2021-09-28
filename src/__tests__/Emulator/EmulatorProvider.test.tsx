@@ -22,6 +22,7 @@ import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
 import { withEmulatorAndDialogueProvider, useEmulator } from 'src/Emulator/EmulatorProvider';
 import { createToynetSession, getToynetSession } from 'src/common/api/topology/requests';
+import RenderWithRouter from 'src/common/test-utils/renderWithRouter';
 
 jest.mock('src/common/api/topology/requests.ts');
 const createToynetMock = createToynetSession as jest.MockedFunction<typeof createToynetSession>;
@@ -36,12 +37,12 @@ const xml = `
 const TestingComponent = withEmulatorAndDialogueProvider(() => {
   const { switches, routers, hosts, sessionId } = useEmulator();
   return (
-    <div>
-      {sessionId > 0 && <h1>SessionId: {sessionId}</h1>}
-      {switches.map(s => <div key={s.name}>{s.name}</div>)}
-      {routers.map(s => <div key={s.name}>{s.name}</div>)}
-      {hosts.map(s => <div key={s.name}>{s.name}</div>)}
-    </div>
+      <div>
+        {sessionId > 0 && <h1>SessionId: {sessionId}</h1>}
+        {switches.map(s => <div key={s.name}>{s.name}</div>)}
+        {routers.map(s => <div key={s.name}>{s.name}</div>)}
+        {hosts.map(s => <div key={s.name}>{s.name}</div>)}
+      </div>
   );
 });
 
@@ -58,7 +59,14 @@ describe('The EmulatorProvider', () => {
 
   it('should provide switches, router, and hosts if a session key exits', async () => {
     window.sessionStorage.setItem(toynetSessionKey, '42');
-    const { getByText } = render(<TestingComponent />);
+    const { getByText } = render(
+      <RenderWithRouter
+        path='/module/:moduleId/emulator/:emulatorId'
+        initialEntries={['/module/1/emulator/1']}
+      >
+        <TestingComponent />
+      </RenderWithRouter>,
+    );
 
     await waitFor(() => getByText(/SessionId: 42/i));
 
@@ -72,7 +80,14 @@ describe('The EmulatorProvider', () => {
       toynet_session_id: 2,
     });
 
-    const { getByText } = render(<TestingComponent />);
+    const { getByText } = render(
+      <RenderWithRouter
+        path='/module/1/emulator/1'
+        initialEntries={['/module/1/emulator/1']}
+      >
+        <TestingComponent />
+      </RenderWithRouter>,
+    );
 
     await waitFor(() => getByText(/SessionId: 2/i));
 
