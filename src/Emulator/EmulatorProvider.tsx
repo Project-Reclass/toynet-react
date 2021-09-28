@@ -19,6 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { createContext, useContext, FC, useCallback } from 'react';
+import { useParams } from 'react-router';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 import { DeviceInterface, DialogueMessage } from 'src/common/types';
@@ -69,8 +70,13 @@ const EmulatorContext = createContext<TopologyState>({
   dispatch: () => {},
 });
 
+interface Params {
+  emulatorId: string;
+}
+
 const EmulatorProvider: FC = ({ children }) => {
-  const topology = useTopology(1);
+  const { emulatorId } = useParams<Params>();
+  const topology = useTopology(Number(emulatorId));
 
   return (
     <EmulatorContext.Provider value={topology}>
