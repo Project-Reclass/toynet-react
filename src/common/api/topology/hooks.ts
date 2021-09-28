@@ -23,7 +23,7 @@ import { useQuery, useMutation, queryCache } from 'react-query';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 import { SessionId } from './types';
-import { createToynetSession, getToynetSession, updateToynetSession } from './requests';
+import { createToynetSession, getToynetSession, runToynetCommand, updateToynetSession } from './requests';
 
 export function useModifyTopology(sessionId: SessionId) {
   return useMutation(updateToynetSession, {
@@ -67,4 +67,8 @@ export function useToynetSession(id: number) {
       topology,
     };
   });
+}
+
+export function useToynetCommand(id: SessionId) {
+  return useMutation((command: string) => runToynetCommand(id, command));
 }

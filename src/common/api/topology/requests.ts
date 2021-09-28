@@ -18,9 +18,16 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
-import { SessionRequest, SessionRequestResponse, CommandRequest, ToynetSession } from './types';
+import {
+  SessionRequest,
+  SessionRequestResponse,
+  CommandRequest,
+  ToynetSession,
+  ToynetCommandResponse,
+  SessionId,
+} from './types';
 
 const BASE_PATH = '/api/toynet';
 
@@ -39,5 +46,10 @@ export const updateToynetSession = async ({id, command}: CommandRequest) => {
     `${BASE_PATH}/session/${id}`,
     { command },
   );
+  return data;
+};
+
+export const runToynetCommand = async(id: SessionId, command: string) => {
+  const { data } = await axios.post<ToynetCommandResponse>(`${BASE_PATH}/session/${id}`, { toynet_command: command });
   return data;
 };

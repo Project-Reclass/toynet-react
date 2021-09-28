@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { Grid } from '@chakra-ui/core';
+import { Grid, Skeleton } from '@chakra-ui/core';
 
 import Visuals from './Visuals';
 import Instructions from './Instructions';
