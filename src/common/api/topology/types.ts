@@ -55,3 +55,7 @@ export interface ToynetSessionResponse {
   last_update_time: string;
   toynetconfig: number;
 }
+
+export interface ToynetCommandResponse {
+  output: string;
+}

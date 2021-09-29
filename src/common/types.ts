@@ -28,8 +28,13 @@ export interface DeviceInterface {
 
 export type StateHook<T> = [T, (value: T) => void];
 
-export type AsyncStateHook<T> = [T, (value: T) => void, boolean];
+export type UpdateValFunc<TValue> = (value: TValue) => TValue;
 
+export type AsyncStateHook<T> = [T, (value: T | UpdateValFunc<T>) => void, boolean];
+
+export function isUpdateValueFunc<T>(arg: any): arg is UpdateValFunc<T> {
+  return arg !== undefined && typeof arg === 'function';
+}
 export interface Action<TActions, TPayload> {
   type: TActions;
   payload?: TPayload;

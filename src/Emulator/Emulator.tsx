@@ -24,7 +24,7 @@ import { Grid } from '@chakra-ui/core';
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
-import ConsoleTab from './ConsoleTab';
+import Console from './Console';
 import styled from '@emotion/styled-base';
 
 const data = {
@@ -71,7 +71,7 @@ const Emulator = () => {
           gap={2}
           gridTemplateColumns={'2fr 1fr'}
         >
-          <ConsoleTab />
+          <Console />
           <DialogueBox />
         </Grid>
       </Grid>

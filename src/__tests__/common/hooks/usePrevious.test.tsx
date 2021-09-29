@@ -18,21 +18,19 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
 
-import {
-  EmulatorInnerSection,
-  EmulatorSection,
-  EmulatorTitle,
-} from 'src/common/components/Emulator';
+import { renderHook, cleanup } from '@testing-library/react-hooks';
+import { useState } from 'react';
+import usePrevious from 'src/common/hooks/usePrevious';
 
-const ConsoleTab = () => (
-  <EmulatorSection>
-    <EmulatorTitle size='lg' color='white'>
-      Console
-    </EmulatorTitle>
-    <EmulatorInnerSection></EmulatorInnerSection>
-  </EmulatorSection>
-);
+afterEach(cleanup);
 
-export default ConsoleTab;
+describe('the use previous hook', () => {
+  it('should have the previous value', () => {
+    const { result: stateResult } = renderHook(() => useState('test'));
+    const { result: prevResult } = renderHook(() => usePrevious(stateResult.current[0]));
+
+    stateResult.current[1]('new value');
+    expect(prevResult.current).toBe('test');
+  });
+});

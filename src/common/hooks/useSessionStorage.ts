@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-import { AsyncStateHook } from '../types';
+import { AsyncStateHook, isUpdateValueFunc, UpdateValFunc } from '../types';
 
 import useBoolean from './useBoolean';
 
@@ -37,6 +37,7 @@ import useBoolean from './useBoolean';
  *
  * E.g. useSessionStorage('my-number', 1, (value) => parseInt(value)) => number
  */
+
 export function useSessionStorage<T>(
   key: string,
   value: T,
@@ -45,7 +46,9 @@ export function useSessionStorage<T>(
   const [sessionValue, setSessionValue] = useState<T>(value);
   const {bool: hasInitialize, setTrue: setInitialized} = useBoolean(false);
 
+  const keyRef = useRef(key);
   const parserRef = useRef(parser);
+  const valueRef = useRef(sessionValue);
 
   useEffect(() => {
     setInitialized();
@@ -55,16 +58,26 @@ export function useSessionStorage<T>(
     }
   }, [key, setInitialized]);
 
-  const setValueInStorage = useCallback((value: T) => {
-    // Since sessionStorage blocks the main thread it's probably best to
-    // throw it on the callback queue so that the runtime loop can decide
-    // when there is free time to run the callback.
-    setTimeout(() => {
-      const serializedValue = typeof value === 'string' ? value : JSON.stringify(value);
-      sessionStorage.setItem(key, serializedValue);
-    }, 0);
-    setSessionValue(value);
+  useEffect(() => {
+    keyRef.current = key;
   }, [key]);
 
-  return [sessionValue, setValueInStorage, hasInitialize];
+  useEffect(() => {
+    valueRef.current = sessionValue;
+  }, [sessionValue]);
+
+  const updateValueInStorage = useCallback((valueOrFunc: T | UpdateValFunc<T>) => {
+    const currVal = valueRef.current;
+    const updateValue = isUpdateValueFunc<T>(valueOrFunc) ? valueOrFunc(currVal) : valueOrFunc;
+
+    console.log({ updateValue, keyRef: keyRef.current });
+
+    setTimeout(() => {
+      const serializedValue = typeof updateValue === 'string' ? updateValue : JSON.stringify(updateValue);
+      sessionStorage.setItem(keyRef.current, serializedValue);
+    }, 0);
+    setSessionValue(updateValue);
+  }, []);
+
+  return [sessionValue, updateValueInStorage, hasInitialize];
 }

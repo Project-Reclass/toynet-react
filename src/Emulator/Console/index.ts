@@ -18,16 +18,5 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Box } from '@chakra-ui/core';
-import styled from '@emotion/styled';
-
-export const EmulatorInnerSection = styled(Box)`
-  background-color: #212529;
-  height: 100%;
-  position: relative;
-  flex: 1 1 auto;
-  overflow-y: auto;
-  padding: 0.549rem;
-`;
-
-export default EmulatorInnerSection;
+import Console from './Console';
+export default Console;

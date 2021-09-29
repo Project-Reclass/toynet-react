@@ -18,5 +18,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import ConsoleTab from './ConsoleTab';
-export default ConsoleTab;
+import { useEffect, useRef } from 'react';
+
+export default function usePrevious<TValue>(value: TValue) {
+  const valRef = useRef(value);
+  useEffect(() => {
+    valRef.current = value;
+  });
+
+  return valRef.current;
+}
