@@ -43,10 +43,15 @@ import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
-import { createElements, getLayoutedElements, mergeElementLayouts } from './utils';
+import {
+  createElements,
+  getLayoutedElements,
+  mergeElementLayouts,
+} from './utils';
 
 import './overrides.css';
 import isValidLink from './isValidLink';
+import { useDrawer } from 'src/Emulator/Drawer/DrawerProvider';
 
 export interface Props {
   sessionId: SessionId;
@@ -83,7 +88,10 @@ const CustomControls = styled(ButtonGroup)`
 /**
  * Determines the name of the newly added device
  */
- export const getNextDeviceName = (device: Array<{name: string}>, deviceLetter: string) => {
+ export const getNextDeviceName = (
+   device: Array<{name: string}>,
+   deviceLetter: string,
+) => {
   if (device.length < 1) {
     return `${deviceLetter}1`;
   } else {
@@ -96,19 +104,27 @@ const nodeTypes = {
   default: ClickableNode,
 };
 
-const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props) => {
+const Flow = ({
+  sessionId,
+  switches,
+  routers,
+  hosts,
+  isTesting = false,
+}: Props) => {
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch, appendDialogue } = useEmulatorWithDialogue();
+  const { openView } = useDrawer();
 
   const { transform } = useZoomPanHelper();
 
   /**
-   * We need to use the `sessionId` here since we do not want to use an old session's
-   * layout when the user creates a new toynet session.
+   * We need to use the `sessionId` here since we do not want
+   * lto use an old session's layout when the user creates a new toynet session.
    */
-  const flowSessionKey = useMemo(() => `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
+  const flowSessionKey = useMemo(() =>
+    `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
 
   const handleRestore = useCallback((newElements: Elements) => {
     // this is needed because when the component is first rendered it the
@@ -155,7 +171,10 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       return;
     }
 
-    dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
+    dispatch({
+      type: TopologyActions.ADD_CONNECTION,
+      payload: { from: source || '', to: target || '' },
+    });
     setElements((els: any) =>
       addEdge({ ...params, type: 'smoothstep', animated: true }, els),
     );
@@ -190,15 +209,18 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variant="outline"
             data-testid="emulator-add-host"
             borderColor={deviceColorClasses.get('host')}
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_HOST,
-              payload: {
-                name: getNextDeviceName(hosts, 'h'),
-                type: 'host',
-                connections: [],
-                },
-              })
-            }
+            onClick={() => {
+              openView('CREATE_HOST');
+
+              // dispatch({
+              // type: TopologyActions.ADD_HOST,
+              // payload: {
+              //   name: getNextDeviceName(hosts, 'h'),
+              //   type: 'host',
+              //   connections: [],
+              //   },
+              // });
+            }}
           >
             Host
           </Button>
@@ -209,15 +231,18 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
             data-testid="emulator-add-switch"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_SWITCH,
-              payload: {
-                name: getNextDeviceName(switches, 's'),
-                type: 'switch',
-                connections: [],
-              },
-            })
-          }
+            onClick={() => {
+              openView('CREATE_SWITCH');
+
+            //   dispatch({
+            //   type: TopologyActions.ADD_SWITCH,
+            //   payload: {
+            //     name: getNextDeviceName(switches, 's'),
+            //     type: 'switch',
+            //     connections: [],
+            //   },
+            // });
+          }}
           >
             Switch
           </Button>
@@ -228,15 +253,18 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             data-testid="emulator-add-router"
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_ROUTER,
-              payload: {
-                name: getNextDeviceName(routers, 'r'),
-                type: 'router',
-                connections: [],
-              },
-            })
-          }
+            onClick={() => {
+              openView('CREATE_ROUTER');
+
+            //   dispatch({
+            //   type: TopologyActions.ADD_ROUTER,
+            //   payload: {
+            //     name: getNextDeviceName(routers, 'r'),
+            //     type: 'router',
+            //     connections: [],
+            //   },
+            // });
+          }}
           >
             Router
           </Button>

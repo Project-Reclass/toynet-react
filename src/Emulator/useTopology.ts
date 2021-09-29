@@ -26,17 +26,20 @@ import { parseXMLTopology, ParsedXML } from '../common/topologyParser';
 import { SessionId, CommandRequest } from '../common/api/topology/types';
 import { useToynetSession, useModifyTopology } from '../common/api/topology';
 
-// This set is used to ensure that there are no duplicate names sent to the server to be created when there is latency
+// This set is used to ensure that there are no duplicate names sent
+// to the server to be created when there is latency
 const existingDevices = new Set<string>();
 
-// This queue is used to queue up requests to the server for mininet commands. (currently not used)
+// This queue is used to queue up requests to the server for mininet
+// commands. (currently not used)
 const queue: CommandRequest[] = [];
 
 export interface Connection {
   to: string;
   from: string;
 }
-type ReducerAction = Action<TopologyActions, DeviceInterface | DeviceInterface[] | ParsedXML | Connection>;
+type ReducerAction = Action<TopologyActions,
+  DeviceInterface | DeviceInterface[] | ParsedXML | Connection>;
 
 export interface TopologyState {
   hosts: DeviceInterface[];

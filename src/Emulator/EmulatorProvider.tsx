@@ -23,7 +23,12 @@ import { useParams } from 'react-router';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 import { DeviceInterface, DialogueMessage } from 'src/common/types';
-import { useTopology, TopologyState, TopologyActions, Connection } from 'src/Emulator/useTopology';
+import {
+  useTopology,
+  TopologyState,
+  TopologyActions,
+  Connection,
+} from 'src/Emulator/useTopology';
 
 interface DialogueInterface {
   dialogueMessages: DialogueMessage[];
@@ -39,7 +44,8 @@ const DialogueContext = createContext<DialogueInterface>({
 
 const DialogueProvider: FC = ({ children }) => {
   const [dialogueMessages, setDialogueMessages] =
-    useSessionStorage<DialogueMessage[]>('history', [], value => JSON.parse(value));
+    useSessionStorage<DialogueMessage[]>('history', [],
+      value => JSON.parse(value));
 
   // Not using useCallback so we can add the same error messages repeatedly
   const appendDialogue = useCallback((message: string, color = 'White') => {
@@ -96,25 +102,30 @@ export const useEmulatorWithDialogue = () => {
       case TopologyActions.ADD_ROUTER:
       case TopologyActions.ADD_SWITCH:
         const newDevice = value.payload as DeviceInterface;
-        messages.appendDialogue(`Created device ${newDevice.name.toUpperCase()}`);
+        messages.appendDialogue(
+          `Created device ${newDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.DELETE_ROUTER:
       case TopologyActions.DELETE_HOST:
       case TopologyActions.DELETE_SWITCH:
         const deletedDevice = value.payload as DeviceInterface;
-        messages.appendDialogue(`Deleted device ${deletedDevice.name.toUpperCase()}`);
+        messages.appendDialogue(
+          `Deleted device ${deletedDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.ADD_CONNECTION:
         const add = value.payload as Connection;
-        messages.appendDialogue(`Attached ${add.from.toUpperCase()} to ${add.to.toUpperCase()}`);
+        messages.appendDialogue(
+          `Attached ${add.from.toUpperCase()} to ${add.to.toUpperCase()}`);
         break;
       case TopologyActions.DELETE_CONNECTION:
         const remove = value.payload as Connection;
         if (remove.to === remove.from) {
-          messages.appendDialogue(`Removed device ${remove.from.toUpperCase()}`);
+          messages.appendDialogue(
+            `Removed device ${remove.from.toUpperCase()}`);
           break;
         }
-        messages.appendDialogue(`Removed ${remove.from.toUpperCase()} to ${remove.to.toUpperCase()}`);
+        messages.appendDialogue(
+          `Removed ${remove.from.toUpperCase()} to ${remove.to.toUpperCase()}`);
         break;
     }
     emulator.dispatch(value);
@@ -123,7 +134,9 @@ export const useEmulatorWithDialogue = () => {
   return { ...emulator, ...messages, dispatch };
 };
 
-export function withEmulatorAndDialogueProvider<T>(Component: React.ComponentType<T>) {
+export function withEmulatorAndDialogueProvider<T>(
+  Component: React.ComponentType<T>,
+) {
   return (props: T) => (
     <EmulatorProvider>
       <DialogueProvider>

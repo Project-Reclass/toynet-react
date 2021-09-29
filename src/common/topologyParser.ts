@@ -48,9 +48,14 @@ function removeXMLVersion(xml?: string): string {
 }
 
 /**
- * Parses the XML document and creates an array of default DeviceInterfaces from the document.
+ * Parses the XML document and creates an array of default
+ * DeviceInterfaces from the document.
  */
-function getDevicesFromXMLDocument(document: Document, tag: string, type: DeviceType): DeviceInterface[] {
+function getDevicesFromXMLDocument(
+  document: Document,
+  tag: string,
+  type: DeviceType,
+): DeviceInterface[] {
   const devices: DeviceInterface[] = [];
   const elements = document.getElementsByTagName(tag);
   if (elements.length < 1)
@@ -58,8 +63,10 @@ function getDevicesFromXMLDocument(document: Document, tag: string, type: Device
 
   const { childNodes } = elements[0];
   for (const child of childNodes) {
+    const possibleIp = (child as Element).attributes.getNamedItem('ip');
     devices.push({
       name: (child as Element).attributes.getNamedItem('name')!.value,
+      ip: possibleIp ? possibleIp.value : undefined,
       type: type,
       connections: [],
     });
@@ -68,11 +75,18 @@ function getDevicesFromXMLDocument(document: Document, tag: string, type: Device
   return devices;
 }
 
-function createDeviceLink(allDevices: DeviceInterface[], parentName: string, childName: string) {
+function createDeviceLink(
+  allDevices: DeviceInterface[],
+  parentName: string,
+  childName: string,
+) {
   const parent = allDevices.find(device => device.name === parentName);
   const child = allDevices.find(device => device.name === childName);
   if (!parent || !child)
-    throw new Error(`Invalid link for ${parentName}->${childName}. Parent or child does not exists`);
+    throw new Error(
+      `Invalid link for ${parentName}->${childName}.
+      Parent or child does not exists`,
+    );
 
   child.connections.push(parentName);
   parent.connections.push(childName);
@@ -114,6 +128,8 @@ export function parseXMLTopology(xml: string): ParsedXML {
     routers: getDevicesFromXMLDocument(parsedXML, 'routerList', 'router'),
     hosts: getDevicesFromXMLDocument(parsedXML, 'hostList', 'host'),
   };
+
+  console.log({ devices });
 
   createDeviceLinksFromXMLDocument(devices, parsedXML);
   return devices;

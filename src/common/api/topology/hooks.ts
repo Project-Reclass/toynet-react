@@ -22,8 +22,14 @@ import { useQuery, useMutation, queryCache } from 'react-query';
 
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
-import { SessionId } from './types';
-import { createToynetSession, getToynetSession, runToynetCommand, updateToynetSession } from './requests';
+import { SessionId, ToyNetCreateHostRequest } from './types';
+import {
+  createHost,
+  createToynetSession,
+  getToynetSession,
+  runToynetCommand,
+  updateToynetSession,
+} from './requests';
 
 export function useModifyTopology(sessionId: SessionId) {
   return useMutation(updateToynetSession, {
@@ -47,26 +53,41 @@ export function useToynetSession(id: number) {
     (value) => parseInt(value),
   );
 
-  return useQuery(['toynet-session', { sessionId, hasInitialized }], async (_, { sessionId }) => {
-    if (sessionId < 0) {
-      if (hasInitialized) {
-        const { toynet_session_id: session_id } = await createToynetSession({
-          toynet_user_id: 'bot@projectreclass.org', toynet_topo_id: id,
-        });
-        setSessionId(session_id);
+  return useQuery(['toynet-session',
+    { sessionId, hasInitialized }], async (_, { sessionId }) => {
+      if (sessionId < 0) {
+        if (hasInitialized) {
+          const { toynet_session_id: session_id } = await createToynetSession({
+            toynet_user_id: 'bot@projectreclass.org', toynet_topo_id: id,
+          });
+          setSessionId(session_id);
+        }
+        return {
+          sessionId,
+          topology: '',
+        };
       }
+
+      const { topology } = await getToynetSession(sessionId);
       return {
         sessionId,
-        topology: '',
+        topology,
       };
-    }
-
-    const { topology } = await getToynetSession(sessionId);
-    return {
-      sessionId,
-      topology,
-    };
   });
+}
+
+export function useCreateHost(sessionId: SessionId) {
+  return useMutation((request: ToyNetCreateHostRequest) =>
+    createHost(sessionId, request),
+    {
+      onSuccess: () => {
+        queryCache.invalidateQueries(['toynet-session', {
+          sessionId,
+          hasInitialized: true,
+        }]);
+      },
+    },
+  );
 }
 
 export function useToynetCommand(id: SessionId) {
