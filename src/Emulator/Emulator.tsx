@@ -19,12 +19,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { Grid, Skeleton } from '@chakra-ui/core';
+import { Grid } from '@chakra-ui/core';
 
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
-import ConsoleTab from './Console';
+import Console from './Console';
 import styled from '@emotion/styled-base';
 
 const data = {
@@ -71,7 +71,7 @@ const Emulator = () => {
           gap={2}
           gridTemplateColumns={'2fr 1fr'}
         >
-          <ConsoleTab />
+          <Console />
           <DialogueBox />
         </Grid>
       </Grid>

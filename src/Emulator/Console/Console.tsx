@@ -59,7 +59,7 @@ const ConsoleHeading = memo(() => (
   </Heading>
 ));
 
-const ConsoleTab = () => {
+const Console = () => {
   const { sessionId } = useEmulator();
   const [runCommand, { error }] = useToynetCommand(sessionId);
   const prevError = usePrevious(error);
@@ -170,4 +170,4 @@ const ConsoleTab = () => {
   );
 };
 
-export default ConsoleTab;
+export default Console;

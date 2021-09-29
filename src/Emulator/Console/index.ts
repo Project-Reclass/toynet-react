@@ -18,5 +18,5 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import ConsoleTab from './Console';
-export default ConsoleTab;
+import Console from './Console';
+export default Console;
