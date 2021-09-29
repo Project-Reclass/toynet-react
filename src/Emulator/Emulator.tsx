@@ -24,7 +24,7 @@ import { Grid, Skeleton } from '@chakra-ui/core';
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
-import ConsoleTab from './ConsoleTab';
+import ConsoleTab from './Console';
 import styled from '@emotion/styled-base';
 
 const data = {

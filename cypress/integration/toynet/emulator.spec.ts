@@ -96,4 +96,21 @@ describe('The emulator page', () => {
     cy.contains(/^s3$/i).should('be.visible');
     cy.contains(/created device s3/i).should('be.visible');
   });
+  it('should allow commands to be sent', () => {
+    cy.visit(emulatorUrl);
+    cy.contains(/h1/i).should('be.visible');
+    cy.contains(/h2/i).should('be.visible');
+    cy.get('[data-testid^="console-textarea"]').type('h1 ping h2{enter}');
+    cy.contains('bytes of data').should('be.visible');
+  });
+  it('should allow emulator history to persist after refresh', () => {
+    cy.visit(emulatorUrl);
+    cy.contains(/h1/i).should('be.visible');
+    cy.contains(/h2/i).should('be.visible');
+    cy.get('[data-testid^="console-textarea"]').type('h1 ping h2{enter}');
+    cy.contains('bytes of data').should('be.visible');
+    cy.reload(); // refresh the page
+
+    cy.contains(/h1 ping h2/i).should('be.visible');
+  });
 });

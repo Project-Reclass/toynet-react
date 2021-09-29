@@ -19,25 +19,34 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Flex, Heading, Text, Textarea } from '@chakra-ui/core';
 import { useToynetCommand } from 'src/common/api/topology';
-import { ToynetCommandResponse } from 'src/common/api/topology/types';
 import {
   EmulatorInnerSection,
   EmulatorSection,
 } from 'src/common/components/Emulator';
 
 import { useEmulator } from '../EmulatorProvider';
+import usePrevious from 'src/common/hooks/usePrevious';
+import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
-interface ToynetCommand {
+interface ToyNetCommand {
   command: string;
   output: string;
   color: string;
   created: string;
 }
 
-const AppliedCommand = memo(({command, color, output}: ToynetCommand) => (
+const HistoryList = memo(({ history }: {history: ToyNetCommand[]}) => (
+  <>
+    {history.map(cmd => (
+      <AppliedCommand key={cmd.created} {...cmd} />
+    ))}
+  </>
+));
+
+const AppliedCommand = memo(({command, color, output}: ToyNetCommand) => (
   <Box>
     <Text>{`${command}`}</Text>
     <Text color={color}>{output}</Text>
@@ -51,40 +60,38 @@ const ConsoleHeading = memo(() => (
 ));
 
 const ConsoleTab = () => {
-  const { sessionId, isLoading } = useEmulator();
-  const [runCommand, { isError, isIdle, error }] = useToynetCommand(sessionId);
-  const errorRef = useRef(error);
+  const { sessionId } = useEmulator();
+  const [runCommand, { error }] = useToynetCommand(sessionId);
+  const prevError = usePrevious(error);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currInput, setCurrInput] = useState('>> ');
-  const [history, setHistory] = useState<ToynetCommand[]>([]);
+  const [history, setHistory] = useSessionStorage<ToyNetCommand[]>(
+    `history-${sessionId}`, [],
+    (value) => JSON.parse(value),
+  );
 
   useEffect(() => {
-    if (!error || error === errorRef.current)
+    // We check the previous error to make sure that we don't
+    // accidentally add the same error to the history twice. Or if its null.
+    if (!error || error === prevError)
       return;
 
-    errorRef.current = error;
-    console.log('cool cool cool');
     const updateHistory = (command: string) => {
-      console.log('updateing history');
       setHistory(prev => [
         ...prev,
         {
           command,
-          output: 'Error',
+          output: `${(error as any).message}`, // error is a response returned from the server
           color: 'tomato',
-          created: `${new Date().toISOString()}${Math.random()}effect`,
+          created: new Date().toISOString(),
         },
       ]);
     };
 
-    setCurrInput(curr => {
-      if (curr !== '>> ')
-        updateHistory(curr);
-      return '>> ';
-    });
-
-  }, [error]);
+    updateHistory(currInput);
+    setCurrInput('>> ');
+  }, [currInput, error, prevError, setHistory]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -93,23 +100,47 @@ const ConsoleTab = () => {
     }
   }, [history]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     const res = await runCommand(currInput.replace('>> ', ''));
+
+    // res will be undefined if the request failed
     if (!res)
       return;
 
-    console.log('submit', {history});
     setHistory(prev => [
       ...prev,
       {
         ...res,
         command: currInput,
         color: 'grey',
-        created: `${new Date().toISOString()}${Math.random()}error`,
+        created: new Date().toISOString(),
       },
     ]);
     setCurrInput('>> ');
-  };
+  }, [currInput, runCommand, setHistory]);
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const { value } = e.currentTarget;
+    if (value.length > 2 && !value.endsWith('\n'))
+      setCurrInput(`${e.currentTarget.value}`);
+  }, []);
+
+  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
+    if (e.shiftKey && e.key === 'Enter') {
+      setCurrInput(curr => `${curr}\n`);
+      return;
+    }
+    if (e.key === 'Enter') {
+      if (currInput.replace('>> ', '') === 'clear') {
+        setCurrInput('>> ');
+        setHistory([]);
+        return;
+      }
+
+      handleSubmit();
+    }
+  }, [currInput, handleSubmit, setHistory]);
 
   return (
     <EmulatorSection overflow='hidden'>
@@ -120,11 +151,9 @@ const ConsoleTab = () => {
         ref={scrollRef}
         padding='1rem'
       >
-        {console.log({ history })}
-        {history.map(cmd => (
-          <AppliedCommand key={cmd.created} {...cmd} />
-        ))}
+        <HistoryList history={history} />
         <Textarea
+          data-testid='console-textarea'
           _hover={{ borderColor: 'rgba(0,0,0,0)' }}
           padding='0'
           focusBorderColor='rgba(0,0,0,0)'
@@ -133,28 +162,8 @@ const ConsoleTab = () => {
           resize='none'
           value={currInput}
           height='fit-content'
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              e.preventDefault();
-              const { value } = e.currentTarget;
-              if (value.length > 2 && !value.endsWith('\n'))
-                setCurrInput(`${e.currentTarget.value}`);
-            }
-          }
-          onKeyPress={(e: React.KeyboardEvent) => {
-            if (e.shiftKey && e.key === 'Enter') {
-              setCurrInput(curr => `${curr}\n`);
-              return;
-            }
-            if (e.key === 'Enter') {
-              if (currInput.replace('>> ', '') === 'clear') {
-                setCurrInput('>> ');
-                setHistory([]);
-                return;
-              }
-
-              handleSubmit();
-            }
-          }}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </EmulatorInnerSection>
     </EmulatorSection>

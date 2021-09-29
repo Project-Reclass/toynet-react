@@ -167,57 +167,16 @@ exports[`The emulator should render and match snapshots 1`] = `
             >
               Console
             </h2>
-            <div
-              class="css-ki9t1j"
-            >
-              <p
-                class="css-1ax0hnl"
-              >
-                Device
-              </p>
-              <div
-                class="css-3fim88"
-              >
-                <select
-                  class="css-v4upyu"
-                >
-                  <option
-                    value=""
-                  >
-                    Select device
-                  </option>
-                </select>
-                <div
-                  class="css-1s963hi"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="css-12c4avn"
-                    focusable="false"
-                    role="presentation"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
           </div>
           <div
-            class="css-57b6su-Skeleton"
+            class="css-1w1wy86"
           >
-            <div
-              class="css-1w1wy86"
+            <textarea
+              class="css-1ckzuis"
+              data-testid="console-textarea"
             >
-              <textarea
-                class="css-1ckzuis"
-              >
-                &gt;&gt; 
-              </textarea>
-            </div>
+              &gt;&gt; 
+            </textarea>
           </div>
         </div>
         <div

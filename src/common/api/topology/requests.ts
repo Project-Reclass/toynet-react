@@ -50,6 +50,10 @@ export const updateToynetSession = async ({id, command}: CommandRequest) => {
 };
 
 export const runToynetCommand = async(id: SessionId, command: string) => {
-  const { data } = await axios.post<ToynetCommandResponse>(`${BASE_PATH}/session/${id}`, { toynet_command: command });
-  return data;
+  try {
+    const { data } = await axios.post<ToynetCommandResponse>(`${BASE_PATH}/session/${id}`, { toynet_command: command });
+    return data;
+  } catch (error) {
+    throw new Error((error as AxiosError).response?.data.message || 'Server error');
+  }
 };
