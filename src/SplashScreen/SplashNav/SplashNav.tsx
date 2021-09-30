@@ -29,11 +29,9 @@ function SplashNav() {
   return (
     <Header>
       <Container>
-        <div style={{ maxWidth: '25%' }}>
-          <a href="https://www.projectreclass.org">
+          <a href="https://www.projectreclass.org" style={{maxWidth: '29%'}}>
             <Logo src={logo} alt='logo' />
           </a>
-        </div>
         <Nav>
           <NavLinksContainer>
             <NavItem>

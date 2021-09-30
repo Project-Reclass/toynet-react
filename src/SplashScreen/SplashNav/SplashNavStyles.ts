@@ -57,9 +57,9 @@ export const NavLink = styled('a')`
   }
 `;
 export const Logo = styled('img')`
-  float: left;
   padding: 20px 0;
-  width: 65%;
+  width: 100%;
+  max-width: 10rem;
   height: auto;
 `;
 
