@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import logo from 'src/assets/PR-Logo-Long-FullColor.png';
-import {NavLink, Logo, Container, Nav, Header, NavLinksContainer, NavItem} from './SplashNavStyles';
+import {NavLink, LogoLink, Logo, Container, Nav, Header, NavLinksContainer, NavItem} from './SplashNavStyles';
 
 
 
@@ -29,11 +29,9 @@ function SplashNav() {
   return (
     <Header>
       <Container>
-        <div style={{ maxWidth: '25%' }}>
-          <a href="https://www.projectreclass.org">
+          <LogoLink href="https://www.projectreclass.org">
             <Logo src={logo} alt='logo' />
-          </a>
-        </div>
+          </LogoLink>
         <Nav>
           <NavLinksContainer>
             <NavItem>
