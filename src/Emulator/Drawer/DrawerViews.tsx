@@ -21,10 +21,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 import React from 'react';
 
-import { DrawerView as IDrawerView } from './DrawerProvider';
+import { DrawerView as IDrawerView } from '../../common/providers/DrawerProvider';
 import CreateRouterView from './CreateRouterView';
 import CreateSwitchView from './CreateSwitchView';
 import CreateHostView from './CreateHostView';
+import InfoTable from './InfoTable/InfoTable';
 
 interface ViewProps {
   nameHint: string;
@@ -34,7 +35,6 @@ const drawerViews: Map<IDrawerView, (_: ViewProps) => JSX.Element> = new Map([
   ['CREATE_HOST', CreateHostView],
   ['CREATE_SWITCH', CreateSwitchView],
   ['CREATE_ROUTER', CreateRouterView],
-  ['INFO', CreateHostView],
 ]);
 
 interface Props extends ViewProps {
@@ -42,7 +42,7 @@ interface Props extends ViewProps {
 }
 
 export default function DrawerView({ view, ...rest }: Props) {
-  const Component = drawerViews.get(view) || CreateHostView;
+  const Component = drawerViews.get(view) || (() => <div />);
 
   return (
     <Component {...rest} />

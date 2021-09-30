@@ -19,29 +19,22 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React from 'react';
-import { Stack, FormControl, FormLabel } from '@chakra-ui/core';
-import { ToyNetInput } from 'src/Login/styled';
+import { Box } from '@chakra-ui/core';
+import styled from '@emotion/styled';
+import { DeviceType } from 'src/common/types';
 
-import ViewButtons from './ViewButtons';
-import { useDrawer } from '../../common/providers/DrawerProvider';
-
-interface Props {
-  nameHint: string;
+export interface DeviceNameProps {
+  device: DeviceType;
 }
 
-export default function CreateSwitchView({ nameHint }: Props) {
-  const { onClose } = useDrawer();
+export const DeviceName = styled(Box)`
+  background-color: ${({device}: DeviceNameProps) => device === 'host' ? 'rgb(158, 16, 89)' :
+                      device === 'switch' ? 'rgb(0, 138, 158)' : 'rgb(189, 169, 19)'};
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+`;
 
-  return (
-    <Stack spacing={3}>
-      <FormControl>
-        <FormLabel>Name</FormLabel>
-        <ToyNetInput value={nameHint} />
-      </FormControl>
-      <ViewButtons onCancel={onClose}>
-        Create Switch
-      </ViewButtons>
-    </Stack>
-  );
-}
+export const ActiveRow = styled.tr`
+  background-color: ${(props: {isActive: boolean}) => props.isActive && 'rgba(255,255,255,0.3)'};
+`;

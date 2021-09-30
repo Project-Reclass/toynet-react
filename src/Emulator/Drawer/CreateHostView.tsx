@@ -19,36 +19,51 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React, { useState } from 'react';
-import { Stack, FormControl, FormLabel } from '@chakra-ui/core';
-import { ToyNetInput } from 'src/Login/styled';
-import ViewButtons from './ViewButtons';
-import { useDrawer } from './DrawerProvider';
+import React, { useEffect, useState } from 'react';
+import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
+
+import { ToyNetInput } from 'src/common/components/ToyNetInput';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useCreateHost } from 'src/common/api/topology';
-import { useEmulator } from '../EmulatorProvider';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
+
+import ViewButtons from './ViewButtons';
 
 interface Props {
   nameHint: string;
 }
 
 export default function CreateHostView({ nameHint }: Props) {
+  const toast = useToast();
   const [ip, setIp] = useState('');
   const [name, setName] = useState(nameHint);
   const [defaultGateway, setDefaultGateway] = useState('');
 
   const { onClose } = useDrawer();
   const { sessionId } = useEmulator();
-  const [createHost] = useCreateHost(sessionId);
+  const [createHost, { isLoading, isSuccess, isError, error }] = useCreateHost(sessionId);
 
-  const handleSubmit = async () => {
-    await createHost({
-      name,
-      ip,
-      def_gateway: defaultGateway,
-    });
+  useEffect(() => {
+    if (isSuccess)
+      onClose();
+  }, [isSuccess, onClose]);
 
-    onClose();
-  };
+  useEffect(() => {
+    if (isError)
+      toast({
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+        title: 'Unable to creat host.',
+        description: (error as any).message,
+      });
+  }, [error, isError, toast]);
+
+  const handleSubmit = () => createHost({
+    name,
+    ip,
+    def_gateway: defaultGateway,
+  });
 
   return (
     <Stack spacing={3}>
@@ -62,6 +77,15 @@ export default function CreateHostView({ nameHint }: Props) {
       </FormControl>
 
       <FormControl>
+        <FormLabel>Default Gateway</FormLabel>
+        <ToyNetInput
+          name={defaultGateway}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setDefaultGateway(e.currentTarget.value)}
+        />
+      </FormControl>
+
+      <FormControl>
         <FormLabel>IP Address</FormLabel>
         <ToyNetInput
           name={ip}
@@ -70,19 +94,15 @@ export default function CreateHostView({ nameHint }: Props) {
         />
       </FormControl>
 
-      <FormControl>
-        <FormLabel>Default Gateway</FormLabel>
-        <ToyNetInput
-          name={defaultGateway}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setDefaultGateway(e.currentTarget.value)}
-        />
-      </FormControl>
       <ViewButtons
+        isDisabled={isLoading}
         onCancel={onClose}
         onCreate={handleSubmit}
       >
-        Create Host
+        {isLoading ?
+          'Creating host...' :
+          'Create Host'
+        }
       </ViewButtons>
     </Stack>
   );

@@ -54,3 +54,12 @@ export const isSwitch = (name: string) =>
 
 export const isHost = (name: string) =>
   name.length > 0 && name[0].toLowerCase() === 'h';
+
+/**
+ * Creates a unique ID in nearly all circumstances.
+ * It can be rare that it creates a duplicate id but
+ * it uses a combination of current time and random
+ * number generated using `Math.random`.
+ */
+export const genUniqueId = (): string =>
+`${new Date().toISOString()}${Math.random()}`;

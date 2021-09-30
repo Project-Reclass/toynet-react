@@ -23,6 +23,7 @@ import React from 'react';
 import { Button, Flex } from '@chakra-ui/core';
 
 interface Props {
+  isDisabled?: boolean;
   createName?: string;
   children?: React.ReactChild;
   onCreate?: () => any;
@@ -30,18 +31,29 @@ interface Props {
 }
 
 const ViewButtons = ({
+  isDisabled,
   children,
   createName,
   onCreate,
   onCancel,
 }: Props) => (
   <Flex justifyContent='space-between' marginY='1rem'>
-    <Button variantColor='teal' onClick={onCreate}>{
+    <Button
+      onClick={onCreate}
+      variantColor='teal'
+      isDisabled={isDisabled}
+    >{
       children ?
         children :
           createName ? `Create ${createName}` : 'Create'
     }</Button>
-    <Button variantColor='red' onClick={onCancel}>Cancel</Button>
+    <Button
+      onClick={onCancel}
+      variantColor='red'
+      isDisabled={isDisabled}
+    >
+      Cancel
+    </Button>
   </Flex>
 );
 

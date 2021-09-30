@@ -19,29 +19,22 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React from 'react';
-import { Stack, FormControl, FormLabel } from '@chakra-ui/core';
-import { ToyNetInput } from 'src/Login/styled';
+import React, { memo } from 'react';
+import { DeviceInterface } from 'src/common/types';
 
-import ViewButtons from './ViewButtons';
-import { useDrawer } from '../../common/providers/DrawerProvider';
+import SwitchRow from './SwitchRow';
 
 interface Props {
-  nameHint: string;
+  activeName?: string;
+  switches: DeviceInterface[];
 }
 
-export default function CreateSwitchView({ nameHint }: Props) {
-  const { onClose } = useDrawer();
+const SwitchRows = memo(({ switches, activeName }: Props) => (
+  <>
+    {switches.map(({ name }) => (
+      <SwitchRow name={name} activeName={activeName} />
+    ))}
+  </>
+));
 
-  return (
-    <Stack spacing={3}>
-      <FormControl>
-        <FormLabel>Name</FormLabel>
-        <ToyNetInput value={nameHint} />
-      </FormControl>
-      <ViewButtons onCancel={onClose}>
-        Create Switch
-      </ViewButtons>
-    </Stack>
-  );
-}
+export default SwitchRows;

@@ -39,7 +39,7 @@ import ReactFlow, {
 import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
@@ -51,7 +51,8 @@ import {
 
 import './overrides.css';
 import isValidLink from './isValidLink';
-import { useDrawer } from 'src/Emulator/Drawer/DrawerProvider';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
+import { useHistory } from 'react-router';
 
 export interface Props {
   sessionId: SessionId;
@@ -111,6 +112,7 @@ const Flow = ({
   hosts,
   isTesting = false,
 }: Props) => {
+  const history = useHistory();
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);

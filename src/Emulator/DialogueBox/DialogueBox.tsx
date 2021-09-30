@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React, { useRef, useEffect } from 'react';
 import { Icon, Stack, Text } from '@chakra-ui/core';
-import { useDialogue } from '../EmulatorProvider';
+import { useDialogue } from 'src/common/providers/EmulatorProvider';
 import EmulatorSection from 'src/common/components/Emulator/Section';
 
 import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';

@@ -4,14 +4,14 @@ services:
   miniflask:
     image: miniflask-prod
     build:
-      context: https://github.com/Project-Reclass/toynet-flask.git#blaze/topo-hosts
+      context: https://github.com/Project-Reclass/toynet-flask.git#main
       dockerfile: toynet_mininet/Dockerfile
 
   backend:
     depends_on:
       - miniflask
     build:
-      context: https://github.com/Project-Reclass/toynet-flask.git#blaze/topo-hosts
+      context: https://github.com/Project-Reclass/toynet-flask.git#main
       args:
         FLASK_APP: flasksrc
         FLASK_ENV: production

@@ -19,14 +19,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { Grid } from '@chakra-ui/core';
+import { Box, Grid } from '@chakra-ui/core';
 
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
 import Console from './Console';
 import styled from '@emotion/styled-base';
-import DrawerProvider from './Drawer/DrawerProvider';
+import DrawerProvider from '../common/providers/DrawerProvider';
 
 const data = {
   'id': 1,

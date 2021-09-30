@@ -24,74 +24,20 @@ import {
   Stack,
   FormControl,
   FormLabel,
-  IconButton,
-  Flex,
-  useToast,
 } from '@chakra-ui/core';
-
-import { useDrawer } from './DrawerProvider';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { ToyNetInput } from 'src/Login/styled';
+
 import ViewButtons from './ViewButtons';
-
-const MAX_INTERFACES = 10;
-
-interface Ip {
-  id: string;
-  ipAddr: string;
-}
-
-const genId = (): string =>
-  `${new Date().toISOString()}${Math.random()}`;
-
-const initialIp: Ip ={
-  id: genId(),
-  ipAddr: '',
-};
+import IpList from './RouterView/IpList';
 
 interface Props {
   nameHint: string;
 }
 
 export default function CreateRouterView({ nameHint }: Props) {
-  const toast = useToast();
   const [name, setName] = useState(nameHint);
-  const [ips, setIps] = useState([initialIp]);
   const { onClose } = useDrawer();
-
-  const createNewIp = () => {
-    if (ips.length === MAX_INTERFACES) {
-      toast({
-        status: 'warning',
-        title: 'Unable to add new interface.',
-        position: 'top-right',
-        isClosable: true,
-        description: `You can only have a max number of
-                      devices ${MAX_INTERFACES}.`,
-      });
-      return;
-    }
-
-    setIps([
-      ...ips,
-      {
-        id: genId(),
-        ipAddr: '',
-      },
-    ]);
-  };
-
-  const deleteIp = (idx: number) => {
-    ips.splice(idx, 1);
-    setIps([...ips]);
-  };
-
-  const handleInput = (idx: number) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { currentTarget: { value }} = e;
-
-      ips[idx].ipAddr = value;
-      setIps([...ips]);
-  };
 
   return (
     <Stack spacing={3}>
@@ -103,50 +49,7 @@ export default function CreateRouterView({ nameHint }: Props) {
             setName(e.currentTarget.value)}
         />
       </FormControl>
-      {ips.map((ip, i) => (
-        <Flex key={ip.id}>
-          <FormControl width='100%' flex='1 1 auto'>
-            <FormLabel>{`Interface ${i + 1} IP`}</FormLabel>
-            <ToyNetInput
-              value={ip.ipAddr}
-              onChange={handleInput(i)}
-            />
-          </FormControl>
-          <Stack direction='row' spacing={3} margin='auto 0 0.4rem 1rem'>
-            {
-              i === ips.length - 1 ?
-                <Stack direction='row' spacing={2}>
-                  {i !== 0 &&
-                    <IconButton
-                      width='fit-content'
-                      variantColor='red'
-                      aria-label='Call Segun'
-                      size='sm'
-                      icon='minus'
-                      onClick={() => deleteIp(i)}
-                    />
-                  }
-                  <IconButton
-                    width='fit-content'
-                    variantColor='green'
-                    aria-label='Call Segun'
-                    size='sm'
-                    icon='add'
-                    onClick={createNewIp}
-                  />
-                </Stack> :
-                <IconButton
-                  width='fit-content'
-                  variantColor='red'
-                  aria-label='Call Segun'
-                  size='sm'
-                  icon='minus'
-                  onClick={() => deleteIp(i)}
-                />
-            }
-          </Stack>
-        </Flex>
-      ))}
+      <IpList />
       <ViewButtons onCancel={onClose}>
         Create Router
       </ViewButtons>

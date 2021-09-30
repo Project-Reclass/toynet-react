@@ -27,7 +27,7 @@ import {
   EmulatorSection,
 } from 'src/common/components/Emulator';
 
-import { useEmulator } from '../EmulatorProvider';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 import usePrevious from 'src/common/hooks/usePrevious';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 

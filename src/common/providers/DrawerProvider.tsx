@@ -28,7 +28,7 @@ import {
   useState,
 } from 'react';
 import { useDisclosure } from '@chakra-ui/core';
-import Drawer from '.';
+import Drawer from '../../Emulator/Drawer';
 
 export type DrawerView = 'CREATE_HOST' | 'CREATE_ROUTER' |
                          'CREATE_SWITCH' | 'INFO';
@@ -36,6 +36,8 @@ export type DrawerView = 'CREATE_HOST' | 'CREATE_ROUTER' |
 interface DrawerState {
   isOpen: boolean;
   view: DrawerView;
+  activeName?: string;
+  setInfoView: (activeName: string) => any,
   setView: React.Dispatch<React.SetStateAction<DrawerView>>,
   onOpen: () => any,
   onClose: () => any,
@@ -46,6 +48,7 @@ interface DrawerState {
 const DrawerContext = createContext<DrawerState>({
   isOpen: false,
   view: 'INFO',
+  setInfoView: (_: string) => {},
   openView: (_: DrawerView) => {},
   setView: () => {},
   onOpen: () => {},
@@ -54,16 +57,24 @@ const DrawerContext = createContext<DrawerState>({
 });
 
 export const DrawerProvider: FC = ({ children }) => {
+  const [activeName, setActiveName] = useState('');
   const [view, setView] = useState<DrawerView>('INFO');
   const value = useDisclosure();
 
   const openView = useCallback((view: DrawerView) => {
+    setActiveName('');
     setView(view);
     value.onOpen();
   }, [value]);
 
+  const setInfoView = useCallback((activeName: string) => {
+    setView('INFO');
+    setActiveName(activeName);
+    value.onOpen();
+  }, [value]);
+
   return (
-    <DrawerContext.Provider value={{ ...value, view, setView, openView }}>
+    <DrawerContext.Provider value={{ ...value, view, activeName, setView, openView, setInfoView }}>
       <Drawer />
       {children}
     </DrawerContext.Provider>

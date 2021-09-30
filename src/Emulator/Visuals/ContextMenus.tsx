@@ -24,14 +24,17 @@ import { Button, Stack } from '@chakra-ui/core';
 
 import { DeviceInterface } from 'src/common/types';
 
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
+
 import { TopologyActions } from '../useTopology';
-import { useEmulatorWithDialogue } from '../EmulatorProvider';
 
 interface Props {
   devices: DeviceInterface[];
 }
 
 export const ContextMenus = ({ devices }: Props) => {
+  const { setInfoView } = useDrawer();
   const { dispatch } = useEmulatorWithDialogue();
 
   const handleDeleteConnections = useCallback((from: string, to: string) => {
@@ -90,6 +93,14 @@ export const ContextMenus = ({ devices }: Props) => {
                 Delete {to.toLocaleUpperCase()} Connection
               </Button>
             ))}
+            <Button
+                variant='ghost'
+                variantColor='teal'
+                textAlign='left'
+                onClick={() => setInfoView(device.name)}
+              >
+                View More Info
+              </Button>
           </Stack>
         </Menu>
       ))}

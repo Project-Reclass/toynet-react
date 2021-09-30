@@ -18,30 +18,34 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+import React, { useEffect, useRef } from 'react';
 
-import React from 'react';
-import { Stack, FormControl, FormLabel } from '@chakra-ui/core';
-import { ToyNetInput } from 'src/Login/styled';
+import { ActiveRow, DeviceName } from '../styled';
 
-import ViewButtons from './ViewButtons';
-import { useDrawer } from '../../common/providers/DrawerProvider';
-
-interface Props {
-  nameHint: string;
+interface RowProps {
+  name: string;
+  activeName?: string;
 }
 
-export default function CreateSwitchView({ nameHint }: Props) {
-  const { onClose } = useDrawer();
+const SwitchRow = ({ name, activeName }: RowProps) => {
+  const ref = useRef<HTMLTableRowElement>(null);
+
+  useEffect(() => {
+    if (activeName === name)
+      ref.current?.scrollIntoView();
+  }, [activeName, name]);
 
   return (
-    <Stack spacing={3}>
-      <FormControl>
-        <FormLabel>Name</FormLabel>
-        <ToyNetInput value={nameHint} />
-      </FormControl>
-      <ViewButtons onCancel={onClose}>
-        Create Switch
-      </ViewButtons>
-    </Stack>
+    <ActiveRow ref={ref} isActive={activeName === name}>
+      <td>
+        <DeviceName device='switch'>
+          {name.toUpperCase()}
+        </DeviceName>
+      </td>
+      <td>#.#.#.#</td>
+      <td>#.#.#.#</td>
+    </ActiveRow>
   );
-}
+};
+
+export default SwitchRow;

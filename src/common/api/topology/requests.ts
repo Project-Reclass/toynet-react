@@ -66,7 +66,12 @@ export const createHost = async (
   id: SessionId,
   request: ToyNetCreateHostRequest,
 ) => {
-  const res = await axios.put(
-    `${BASE_PATH}/session/${id}/create/host`, request);
-  return res;
+  try {
+    const res = await axios.put(
+      `${BASE_PATH}/session/${id}/create/host`, request);
+    return res;
+  } catch (error) {
+    throw new Error(
+      (error as AxiosError).response?.data.message || 'Server error');
+  }
 };

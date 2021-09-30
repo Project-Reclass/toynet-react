@@ -28,9 +28,11 @@ import {
   DrawerHeader,
   DrawerOverlay,
 } from '@chakra-ui/core';
-import { DrawerView as IDrawerView, useDrawer } from './DrawerProvider';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
+import { DrawerView as IDrawerView, useDrawer } from 'src/common/providers/DrawerProvider';
+
 import DrawerView from './DrawerViews';
-import { useEmulator } from '../EmulatorProvider';
+import InfoTable from './InfoTable';
 
 /**
  * Determines the number of the newly added device
@@ -54,9 +56,9 @@ import { useEmulator } from '../EmulatorProvider';
 
 const drawerNames: Map<IDrawerView, string> = new Map([
   ['INFO', 'Topology Info'],
-  ['CREATE_HOST', 'Create host'],
-  ['CREATE_ROUTER', 'Create router'],
-  ['CREATE_SWITCH', 'Create switch'],
+  ['CREATE_HOST', 'Create Host'],
+  ['CREATE_ROUTER', 'Create Router'],
+  ['CREATE_SWITCH', 'Create Switch'],
 ]);
 
 export const getNameForView = (view: IDrawerView): string =>
@@ -64,7 +66,7 @@ export const getNameForView = (view: IDrawerView): string =>
 
 export default function CreationDrawer() {
   const { switches, hosts, routers } = useEmulator();
-  const { isOpen, view, onClose } = useDrawer();
+  const { activeName, isOpen, view, onClose } = useDrawer();
 
   const viewName = useMemo(() => getNameForView(view), [view]);
 
@@ -91,11 +93,14 @@ export default function CreationDrawer() {
         <DrawerCloseButton />
         <DrawerHeader>{viewName}</DrawerHeader>
 
-        <DrawerBody>
-          <DrawerView
-            view={view}
-            nameHint={nameHint}
-          />
+        <DrawerBody overflowY='auto'>
+          {view !== 'INFO' &&
+            <DrawerView
+              view={view}
+              nameHint={nameHint}
+            />
+          }
+          <InfoTable activeName={activeName} />
         </DrawerBody>
       </DrawerContent>
     </Drawer>

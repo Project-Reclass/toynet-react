@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { DeviceInterface, DeviceType } from './types';
+import { DefaultGateway, DeviceInterface, DeviceType } from './types';
 
 export interface ParsedXML {
   hosts: DeviceInterface[];
@@ -47,6 +47,33 @@ function removeXMLVersion(xml?: string): string {
   return '';
 }
 
+function createInterfaces(child: ChildNode, devicesWithInterfaces = ['router']): string[] {
+  const interfaces: string[] = [];
+  if (!devicesWithInterfaces.includes(child.nodeName))
+    return interfaces;
+
+  for (const intf of child.childNodes) {
+    if (intf.textContent)
+      interfaces.push(intf.textContent);
+  }
+  return interfaces;
+}
+
+function createDefaultGateway(
+  child: ChildNode,
+  devicesWithDefaultGateway = ['host'],
+): DefaultGateway | undefined {
+  if (!devicesWithDefaultGateway.includes(child.nodeName))
+    return;
+
+  const device = (child as Element).getElementsByTagName('name')[0]!.innerHTML;
+  const intf = (child as Element).getElementsByTagName('intf')[0]!.innerHTML;
+  return {
+    device,
+    interface: Number(intf),
+  };
+}
+
 /**
  * Parses the XML document and creates an array of default
  * DeviceInterfaces from the document.
@@ -64,11 +91,18 @@ function getDevicesFromXMLDocument(
   const { childNodes } = elements[0];
   for (const child of childNodes) {
     const possibleIp = (child as Element).attributes.getNamedItem('ip');
+    const interfaces = createInterfaces(child);
+    const defaultGateway = createDefaultGateway(child);
+
+    console.log(child);
+
     devices.push({
       name: (child as Element).attributes.getNamedItem('name')!.value,
       ip: possibleIp ? possibleIp.value : undefined,
       type: type,
       connections: [],
+      defaultGateway,
+      interfaces,
     });
   }
 
