@@ -56,6 +56,11 @@ export const NavLink = styled('a')`
     border-color: #0C6474;
   }
 `;
+
+export const LogoLink = styled('a')`
+  max-width: 29%;
+`;
+
 export const Logo = styled('img')`
   padding: 20px 0;
   width: 100%;
