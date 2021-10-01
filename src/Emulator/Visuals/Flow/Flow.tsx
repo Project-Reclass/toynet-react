@@ -46,6 +46,8 @@ import { createElements, getLayoutedElements, mergeElementLayouts } from './util
 
 import './overrides.css';
 import isValidLink from './isValidLink';
+import { useModifyTopology } from 'src/common/api/topology';
+import usePrevious from 'src/common/hooks/usePrevious';
 
 export interface Props {
   sessionId: SessionId;
@@ -100,8 +102,17 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch, appendDialogue } = useEmulatorWithDialogue();
+  const { createLink, createDevice, error, isError } = useModifyTopology(sessionId);
 
   const { transform } = useZoomPanHelper();
+  const prevError = usePrevious(error);
+
+  useEffect(() => {
+    if (isError && error !== prevError) {
+      appendDialogue((error as any).message, 'tomato');
+    }
+  }, [appendDialogue, error, isError, prevError]);
+
 
   /**
    * We need to use the `sessionId` here since we do not want to use an old session's
@@ -141,7 +152,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
     handleRestore(getLayoutedElements(els, 'LR', isTesting));
   }, [hosts, routers, switches, isTesting, handleRestore]);
 
-  const onConnect = (params: Edge | Connection) => {
+  const onConnect = async (params: Edge | Connection) => {
     const { source, target } = params;
 
     const allDevices = [...routers, ...hosts, ...switches];
@@ -153,6 +164,9 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       appendDialogue(isValidMessage, 'tomato');
       return;
     }
+
+    if (!(await createLink(target || '', source || '')))
+      return;
 
     dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
     setElements((els: any) =>
@@ -185,14 +199,21 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variant="outline"
             data-testid="emulator-add-host"
             borderColor={deviceColorClasses.get('host')}
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_HOST,
-              payload: {
-                name: getNextDeviceName(hosts, 'h'),
-                type: 'host',
-                connections: [],
-                },
-              })
+            onClick={async () => {
+              if (!(await createDevice('host', getNextDeviceName(hosts, 'h')))) {
+                console.log('unable to create sutt');
+                return;
+              }
+
+              dispatch({
+                type: TopologyActions.ADD_HOST,
+                payload: {
+                  name: getNextDeviceName(hosts, 'h'),
+                  type: 'host',
+                  connections: [],
+                  },
+                });
+              }
             }
           >
             Host

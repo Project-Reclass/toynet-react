@@ -18,15 +18,26 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+import { useCallback } from 'react';
 import { useQuery, useMutation, queryCache } from 'react-query';
-
+import { DeviceType } from 'src/common/types';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 import { SessionId } from './types';
 import { createToynetSession, getToynetSession, runToynetCommand, updateToynetSession } from './requests';
 
+const getNameFromDevice = (key: string): string => {
+  if (key.length < 1) return '';
+  switch (key[0].toLocaleLowerCase()) {
+    case 'h': return 'host';
+    case 's': return 'switch';
+    case 'r': return 'router';
+    default: return '';
+  }
+};
+
 export function useModifyTopology(sessionId: SessionId) {
-  return useMutation(updateToynetSession, {
+  const [mutate, state] = useMutation(updateToynetSession, {
     onSuccess: () => {
       queryCache.invalidateQueries(['toynet-session', {
         sessionId,
@@ -34,6 +45,28 @@ export function useModifyTopology(sessionId: SessionId) {
       }]);
     },
   });
+
+  const createDevice = useCallback(async (type: DeviceType, name: string) => {
+    return mutate({ id: sessionId, command: `add ${type} ${name}` });
+  }, [mutate, sessionId]);
+
+  const createLink = useCallback(async (to: string, from: string) => {
+    return mutate({ id: sessionId, command: `add link ${to} ${from}` });
+  }, [mutate, sessionId]);
+
+  const deleteLink = useCallback(async (to: string, from: string) => {
+    if (to === from) {
+      return mutate({ id: sessionId, command: `remove ${getNameFromDevice(from)} ${from}` });
+    }
+    return mutate({ id: sessionId, command: `remove link ${from} ${to}` });
+  }, [mutate, sessionId]);
+
+  return {
+    createDevice,
+    createLink,
+    deleteLink,
+    ...state,
+  };
 }
 
 /**

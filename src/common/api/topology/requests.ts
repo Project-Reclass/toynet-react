@@ -42,11 +42,15 @@ export const getToynetSession = async (id: number) => {
 };
 
 export const updateToynetSession = async ({id, command}: CommandRequest) => {
-  const { data} = await axios.put(
-    `${BASE_PATH}/session/${id}`,
-    { command },
-  );
-  return data;
+  try {
+    const { data } = await axios.put(
+      `${BASE_PATH}/session/${id}`,
+      { command },
+    );
+    return data;
+  } catch (error) {
+    throw new Error((error as any).response.data.message);
+  }
 };
 
 export const runToynetCommand = async(id: SessionId, command: string) => {
