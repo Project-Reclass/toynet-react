@@ -26,7 +26,6 @@ import ReactFlow, {
   Controls,
   Background,
   addEdge,
-  removeElements,
   Elements,
   updateEdge,
   OnLoadParams,
@@ -182,9 +181,6 @@ const Flow = ({
     );
   };
 
-  const onElementsRemove = (elementsToRemove: any) =>
-    setElements((els: any) => removeElements(elementsToRemove, els));
-
   const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
     setElements((els) => updateEdge(oldEdge, newConnection, els));
 
@@ -197,7 +193,6 @@ const Flow = ({
         onDragEnd={handleSave}
         onMouseLeave={handleSave}
         onEdgeUpdate={onEdgeUpdate}
-        onElementsRemove={onElementsRemove}
         nodeTypes={nodeTypes}
       >
         <CustomControls
