@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Heading, Text } from '@chakra-ui/core';
+import { Heading, Text, Button } from '@chakra-ui/core';
 
 import EmulatorSection from 'src/common/components/Emulator/Section';
 import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
@@ -72,6 +72,7 @@ const Instructions: FC<Props> = ({ panelData }) => {
           style={{
             display: 'flex',
             flexDirection: 'column',
+            alignItems: 'end',
             height: '100%',
           }}
         >
@@ -83,6 +84,15 @@ const Instructions: FC<Props> = ({ panelData }) => {
               ))}
             </TaskList>
           </EmulatorInnerSection>
+          <Button
+            size='sm'
+            variant="solid"
+            variantColor="red"
+            width={100}
+            fontSize='sm'
+          >
+              Restart
+          </Button>
         </Container>
       </EmulatorSection>
   );

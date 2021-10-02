@@ -23,11 +23,13 @@ import styled from '@emotion/styled';
 
 export const EmulatorInnerSection = styled(Box)`
   background-color: #212529;
+  width: 100%;
   height: 100%;
   position: relative;
   flex: 1 1 auto;
   overflow-y: auto;
   padding: 0.549rem;
+  margin-bottom: 0.549rem;
 `;
 
 export default EmulatorInnerSection;
