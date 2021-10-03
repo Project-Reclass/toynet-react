@@ -19,10 +19,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Heading, Text, Button } from '@chakra-ui/core';
+import { Heading, Text, Button, useDisclosure } from '@chakra-ui/core';
 
 import EmulatorSection from 'src/common/components/Emulator/Section';
 import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
+import RestartModal from './RestartModal';
 
 import {
   BackArea,
@@ -46,6 +47,8 @@ interface Props {
 }
 
 const Instructions: FC<Props> = ({ panelData }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure(false);
+
   return (
       <EmulatorSection
         width='15vw'
@@ -90,9 +93,15 @@ const Instructions: FC<Props> = ({ panelData }) => {
             variantColor="red"
             width={100}
             fontSize='sm'
+            onClick={onOpen}
           >
               Restart
           </Button>
+          <RestartModal
+            close={onClose}
+            isOpen={isOpen}
+          />
+
         </Container>
       </EmulatorSection>
   );
