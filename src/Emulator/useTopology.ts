@@ -21,16 +21,10 @@ along with ToyNet React; see the file LICENSE.  If not see
 import { useEffect } from 'react';
 import { useImmerReducer } from 'use-immer';
 
-import { DeviceInterface, Action, ReducerFn } from '../common/types';
+import { DeviceInterface, Action } from '../common/types';
 import { parseXMLTopology, ParsedXML } from '../common/topologyParser';
-import { SessionId, CommandRequest } from '../common/api/topology/types';
-import { useToynetSession, useModifyTopology } from '../common/api/topology';
-
-// This set is used to ensure that there are no duplicate names sent to the server to be created when there is latency
-const existingDevices = new Set<string>();
-
-// This queue is used to queue up requests to the server for mininet commands. (currently not used)
-const queue: CommandRequest[] = [];
+import { SessionId } from '../common/api/topology/types';
+import { useToynetSession } from '../common/api/topology';
 
 export interface Connection {
   to: string;
@@ -128,69 +122,6 @@ function reducer(state: ParsedXML, action: ReducerAction) {
   }
 };
 
-// This is probably not the best way to do this, but it's the best way right now.
-// we should look at a better way to handle mutations after dispatch in the future.
-// type CommandFn = (cmd: CommandRequest) => any;
-// function mutationWrapper (id: SessionId, dispatch: ReducerFn<ReducerAction>, mutate: CommandFn) {
-//   return async (action: ReducerAction) => {
-//     let res: any;
-//     switch (action.type) {
-//       case TopologyActions.ADD_CONNECTION:
-//         const { to, from } = action.payload as Connection;
-//         queue.push({ id, command: `add link ${to} ${from}` });
-//         res = await mutate({ id, command: `add link ${to} ${from}` });
-//         console.log({ res });
-//         break;
-
-//       case TopologyActions.ADD_ROUTER:
-//       case TopologyActions.ADD_SWITCH:
-//       case TopologyActions.ADD_HOST:
-//         const addKey = action.type === TopologyActions.ADD_ROUTER ? 'router' :
-//           action.type === TopologyActions.ADD_SWITCH ? 'switch' : 'host';
-//         const { name } = action.payload as DeviceInterface;
-//         if (!existingDevices.has(name)) {
-//           existingDevices.add(name);
-//           queue.push({ id, command: `add ${addKey} ${name}` });
-//           res = await mutate({ id, command: `add ${addKey} ${name}` });
-//           console.log({ res });
-//         }
-//         break;
-
-//       case TopologyActions.FLUSH_QUEUE:
-//         queue.forEach(mutate);
-//         queue.splice(0, queue.length);
-//         break;
-
-//       // DELETE_CONNECTION handles removing devices from the server and also removing links
-//       case TopologyActions.DELETE_CONNECTION:
-//         const { to: toDelete, from: fromDelete } = action.payload as Connection;
-//         if (toDelete === fromDelete) {
-//             await mutate({ id, command: `remove ${getNameFromDevice(fromDelete)} ${fromDelete}` });
-//             existingDevices.delete(toDelete);
-//             return;
-//         } else {
-//           mutate({ id, command: `remove link ${fromDelete} ${toDelete}` });
-//         }
-//         break;
-
-//       default:
-//         break;
-//     }
-
-//     dispatch(action);
-//   };
-// };
-
-const getNameFromDevice = (key: string): string => {
-  if (key.length < 1) return '';
-  switch (key[0].toLocaleLowerCase()) {
-    case 'h': return 'host';
-    case 's': return 'switch';
-    case 'r': return 'router';
-    default: return '';
-  }
-};
-
 const initialState: ParsedXML = {
   switches: [],
   routers: [],
@@ -202,8 +133,6 @@ const initialState: ParsedXML = {
  */
 export function useTopology(id: number) {
   const { data, isLoading } = useToynetSession(id);
-
-  // const [mutate] = useModifyTopology(data?.sessionId || -1);
   const [state, dispatch] = useImmerReducer(reducer, initialState);
 
   useEffect(() => {

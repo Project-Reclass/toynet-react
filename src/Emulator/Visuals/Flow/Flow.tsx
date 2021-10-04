@@ -18,6 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonGroup } from '@chakra-ui/core';
 import styled from '@emotion/styled';
@@ -165,8 +166,10 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       return;
     }
 
-    if (!(await createLink(target || '', source || '')))
+    if (!(await createLink(target || '', source || ''))) {
+      appendDialogue(`Unable to create link ${source} to ${target}`, 'tomato');
       return;
+    }
 
     dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
     setElements((els: any) =>
@@ -200,10 +203,8 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             data-testid="emulator-add-host"
             borderColor={deviceColorClasses.get('host')}
             onClick={async () => {
-              if (!(await createDevice('host', getNextDeviceName(hosts, 'h')))) {
-                console.log('unable to create sutt');
+              if (!(await createDevice('host', getNextDeviceName(hosts, 'h'))))
                 return;
-              }
 
               dispatch({
                 type: TopologyActions.ADD_HOST,
@@ -211,8 +212,8 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
                   name: getNextDeviceName(hosts, 'h'),
                   type: 'host',
                   connections: [],
-                  },
-                });
+                },
+              });
               }
             }
           >
@@ -225,15 +226,21 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
             data-testid="emulator-add-switch"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_SWITCH,
-              payload: {
-                name: getNextDeviceName(switches, 's'),
-                type: 'switch',
-                connections: [],
-              },
-            })
-          }
+            onClick={async () => {
+              if (!(await createDevice('switch', getNextDeviceName(switches, 's')))) {
+                console.log('unable to create sutt');
+                return;
+              }
+
+              dispatch({
+                type: TopologyActions.ADD_SWITCH,
+                payload: {
+                  name: getNextDeviceName(switches, 's'),
+                  type: 'switch',
+                  connections: [],
+                },
+              });
+            }}
           >
             Switch
           </Button>
@@ -244,16 +251,20 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             data-testid="emulator-add-router"
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_ROUTER,
-              payload: {
-                name: getNextDeviceName(routers, 'r'),
-                type: 'router',
-                connections: [],
-              },
-            })
-          }
-          >
+            onClick={async () => {
+              if (!(await createDevice('router', getNextDeviceName(routers, 'r'))))
+                return;
+
+              dispatch({
+                type: TopologyActions.ADD_ROUTER,
+                payload: {
+                  name: getNextDeviceName(routers, 'r'),
+                  type: 'router',
+                  connections: [],
+                },
+              });
+            }}
+            >
             Router
           </Button>
         </CustomControls>

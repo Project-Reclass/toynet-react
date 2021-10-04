@@ -24,7 +24,14 @@ import { DeviceType } from 'src/common/types';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 import { SessionId } from './types';
-import { createToynetSession, getToynetSession, runToynetCommand, updateToynetSession } from './requests';
+import {
+  getToynetSession,
+  runToynetCommand,
+  createToynetSession,
+  updateToynetSession,
+} from './requests';
+
+const seenDevices = new Set();
 
 const getNameFromDevice = (key: string): string => {
   if (key.length < 1) return '';
@@ -36,6 +43,10 @@ const getNameFromDevice = (key: string): string => {
   }
 };
 
+/**
+ * Return several functions that can be used to modify a network
+ * topology.
+ */
 export function useModifyTopology(sessionId: SessionId) {
   const [mutate, state] = useMutation(updateToynetSession, {
     onSuccess: () => {
@@ -47,14 +58,25 @@ export function useModifyTopology(sessionId: SessionId) {
   });
 
   const createDevice = useCallback(async (type: DeviceType, name: string) => {
+    if (seenDevices.has(name))
+      return;
+
+    seenDevices.add(name);
     return mutate({ id: sessionId, command: `add ${type} ${name}` });
   }, [mutate, sessionId]);
 
   const createLink = useCallback(async (to: string, from: string) => {
+    if (seenDevices.has(`${to}-${from}`))
+      return;
+
+    seenDevices.add(`${to}-${from}`);
     return mutate({ id: sessionId, command: `add link ${to} ${from}` });
   }, [mutate, sessionId]);
 
   const deleteLink = useCallback(async (to: string, from: string) => {
+    if (seenDevices.has(`${to}-${from}`))
+      return;
+
     if (to === from) {
       return mutate({ id: sessionId, command: `remove ${getNameFromDevice(from)} ${from}` });
     }
