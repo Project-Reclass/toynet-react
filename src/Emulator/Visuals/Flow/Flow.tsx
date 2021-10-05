@@ -18,6 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonGroup } from '@chakra-ui/core';
 import styled from '@emotion/styled';
@@ -52,6 +53,8 @@ import './overrides.css';
 import isValidLink from './isValidLink';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useHistory } from 'react-router';
+import { useModifyTopology } from 'src/common/api/topology';
+import { devError } from 'src/common/utils';
 
 export interface Props {
   sessionId: SessionId;
@@ -117,6 +120,7 @@ const Flow = ({
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch, appendDialogue } = useEmulatorWithDialogue();
   const { openView } = useDrawer();
+  const { createLink, createDevice, isLoading } = useModifyTopology(sessionId);
 
   const { transform } = useZoomPanHelper();
 
@@ -159,7 +163,7 @@ const Flow = ({
     handleRestore(getLayoutedElements(els, 'LR', isTesting));
   }, [hosts, routers, switches, isTesting, handleRestore]);
 
-  const onConnect = (params: Edge | Connection) => {
+  const onConnect = async (params: Edge | Connection) => {
     const { source, target } = params;
 
     const allDevices = [...routers, ...hosts, ...switches];
@@ -172,13 +176,16 @@ const Flow = ({
       return;
     }
 
-    dispatch({
-      type: TopologyActions.ADD_CONNECTION,
-      payload: { from: source || '', to: target || '' },
-    });
-    setElements((els: any) =>
-      addEdge({ ...params, type: 'smoothstep', animated: true }, els),
-    );
+    try {
+      await createLink(target || '', source || '');
+      dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
+      setElements((els: any) =>
+        addEdge({ ...params, type: 'smoothstep', animated: true }, els),
+      );
+    } catch (error) {
+      devError(error);
+      appendDialogue(`Unable to create link ${source} to ${target}`, 'tomato');
+    }
   };
 
   const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
@@ -205,6 +212,7 @@ const Flow = ({
             variantColor="pink"
             variant="outline"
             data-testid="emulator-add-host"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('host')}
             onClick={() => {
               openView('CREATE_HOST');
@@ -227,6 +235,7 @@ const Flow = ({
             variantColor="blue"
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
+            isDisabled={isLoading}
             data-testid="emulator-add-switch"
             onClick={() => {
               openView('CREATE_SWITCH');
@@ -248,6 +257,7 @@ const Flow = ({
             leftIcon="add"
             variantColor="yellow"
             data-testid="emulator-add-router"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
             onClick={() => {
@@ -273,5 +283,4 @@ const Flow = ({
       </ReactFlow>
   );
 };
-
 export default Flow;

@@ -28,7 +28,7 @@ import LoadingAnimation from 'src/common/components/LoadingAnimation';
 
 import Flow from './Flow';
 import { InnerContainer } from './styled';
-import ContextMenus from './ContextMenus';
+import ContextMenus from './Flow/ContextMenus';
 
 const Visuals = () => {
   const { switches, hosts, routers, sessionId, isLoading } = useEmulator();
