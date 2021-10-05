@@ -41,7 +41,7 @@ export const getToynetSession = async (id: number) => {
   return data;
 };
 
-export const updateToynetSession = async ({id, command}: CommandRequest) => {
+export const updateToynetSession = async ({id, command}: CommandRequest): Promise<object> => {
   try {
     const { data } = await axios.put(
       `${BASE_PATH}/session/${id}`,

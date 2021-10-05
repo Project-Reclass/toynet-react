@@ -54,3 +54,9 @@ export const isSwitch = (name: string) =>
 
 export const isHost = (name: string) =>
   name.length > 0 && name[0].toLowerCase() === 'h';
+
+
+export const devError = (msg: any) =>
+  process.env.NODE_ENV === 'development' && console.error(
+    typeof msg === 'object' ? JSON.stringify(msg) : msg,
+  );

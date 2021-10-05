@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useQuery, useMutation, queryCache } from 'react-query';
 import { DeviceType } from 'src/common/types';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
@@ -30,6 +30,7 @@ import {
   createToynetSession,
   updateToynetSession,
 } from './requests';
+import { devError } from 'src/common/utils';
 
 const seenDevices = new Set();
 
@@ -43,9 +44,25 @@ const getNameFromDevice = (key: string): string => {
   }
 };
 
+async function makeRequest<T>(
+  key: string,
+  errMsg: string,
+  request: () => Promise<T | undefined>,
+) {
+  if (seenDevices.has(key))
+    return;
+
+  const res = await request();
+  if (!res)
+    throw new Error(errMsg);
+
+  seenDevices.add(key);
+  return res;
+}
+
 /**
  * Return several functions that can be used to modify a network
- * topology.
+ * topology. Throws an error if unsuccessful.
  */
 export function useModifyTopology(sessionId: SessionId) {
   const [mutate, state] = useMutation(updateToynetSession, {
@@ -57,31 +74,28 @@ export function useModifyTopology(sessionId: SessionId) {
     },
   });
 
-  const createDevice = useCallback(async (type: DeviceType, name: string) => {
-    if (seenDevices.has(name))
-      return;
-
-    seenDevices.add(name);
-    return mutate({ id: sessionId, command: `add ${type} ${name}` });
-  }, [mutate, sessionId]);
-
-  const createLink = useCallback(async (to: string, from: string) => {
-    if (seenDevices.has(`${to}-${from}`))
-      return;
-
-    seenDevices.add(`${to}-${from}`);
-    return mutate({ id: sessionId, command: `add link ${to} ${from}` });
-  }, [mutate, sessionId]);
-
-  const deleteLink = useCallback(async (to: string, from: string) => {
-    if (seenDevices.has(`${to}-${from}`))
-      return;
-
-    if (to === from) {
-      return mutate({ id: sessionId, command: `remove ${getNameFromDevice(from)} ${from}` });
+  useEffect(() => {
+    if (state.error) {
+      devError(state.error);
     }
-    return mutate({ id: sessionId, command: `remove link ${from} ${to}` });
-  }, [mutate, sessionId]);
+  }, [state.error]);
+
+  const createDevice = useCallback((type: DeviceType, name: string) =>
+    makeRequest(name, `Unable to create ${type} ${name}`, () =>
+      mutate({ id: sessionId, command: `add ${type} ${name}`})), [mutate, sessionId]);
+
+  const createLink = useCallback((to: string, from: string) =>
+    makeRequest(`${to}-${from}`, `Unable to create link ${from}-${to}`, () =>
+      mutate({ id: sessionId, command: `add link ${to} ${from}`})), [mutate, sessionId]);
+
+  const deleteLink = useCallback((to: string, from: string) =>
+    makeRequest(`${to}-${from}`, `Unable to create link ${from}-${to}`, () => {
+      if (to === from) {
+        return mutate({ id: sessionId, command: `remove ${getNameFromDevice(to)} ${to}` });
+      }
+      return mutate({ id: sessionId, command: `remove link ${from} ${to}`});
+    }),
+  [mutate, sessionId]);
 
   return {
     createDevice,
