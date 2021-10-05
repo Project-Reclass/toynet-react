@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { Box, Flex, Heading, Text, Textarea } from '@chakra-ui/core';
+import { Box, Flex, Heading, Spinner, Text, Textarea } from '@chakra-ui/core';
 import { useToynetCommand } from 'src/common/api/topology';
 import {
   EmulatorInnerSection,
@@ -30,6 +30,8 @@ import {
 import { useEmulator } from '../EmulatorProvider';
 import usePrevious from 'src/common/hooks/usePrevious';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
+
+const LOADING_DELAY = 500;
 
 interface ToyNetCommand {
   command: string;
@@ -61,15 +63,32 @@ const ConsoleHeading = memo(() => (
 
 const Console = () => {
   const { sessionId } = useEmulator();
-  const [runCommand, { error }] = useToynetCommand(sessionId);
+  const [runCommand, { error, isLoading }] = useToynetCommand(sessionId);
   const prevError = usePrevious(error);
 
+  const [showLoading, setShowLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currInput, setCurrInput] = useState('>> ');
   const [history, setHistory] = useSessionStorage<ToyNetCommand[]>(
     `history-${sessionId}`, [],
     (value) => JSON.parse(value),
   );
+
+  const loadingRef = useRef<NodeJS.Timeout | null>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    // We should display a loading indicator if the request is taking longer
+    // than our loading delay. If the request finishes before this then
+    // we should not show th loading indicator.
+    if (isLoading) {
+      loadingRef.current = setTimeout(() => setShowLoading(isLoading), LOADING_DELAY);
+      return;
+    }
+    clearTimeout(loadingRef.current!);
+    setShowLoading(false);
+    textAreaRef.current?.focus();
+  }, [isLoading]);
 
   useEffect(() => {
     // We check the previous error to make sure that we don't
@@ -147,25 +166,37 @@ const Console = () => {
       <Flex paddingBottom='0.559rem' justifyContent='space-between'>
         <ConsoleHeading />
       </Flex>
-      <EmulatorInnerSection
-        ref={scrollRef}
-        padding='1rem'
-      >
-        <HistoryList history={history} />
-        <Textarea
-          data-testid='console-textarea'
-          _hover={{ borderColor: 'rgba(0,0,0,0)' }}
-          padding='0'
-          focusBorderColor='rgba(0,0,0,0)'
-          borderColor='rgba(0,0,0,0)'
-          backgroundColor='rgba(0,0,0,0)'
-          resize='none'
-          value={currInput}
-          height='fit-content'
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
-        />
-      </EmulatorInnerSection>
+      <Box height='100%' position='relative' overflow='hidden'>
+        {showLoading &&
+          <Spinner
+            top='2'
+            right='2'
+            zIndex={2}
+            position='absolute'
+          />
+        }
+        <EmulatorInnerSection
+          ref={scrollRef}
+          padding='1rem'
+        >
+          <HistoryList history={history} />
+          <Textarea
+            ref={textAreaRef}
+            isDisabled={isLoading}
+            data-testid='console-textarea'
+            _hover={{ borderColor: 'rgba(0,0,0,0)' }}
+            padding='0'
+            focusBorderColor='rgba(0,0,0,0)'
+            borderColor='rgba(0,0,0,0)'
+            backgroundColor='rgba(0,0,0,0)'
+            resize='none'
+            value={currInput}
+            height='fit-content'
+            onChange={handleChange}
+            onKeyPress={handleKeyPress}
+          />
+        </EmulatorInnerSection>
+      </Box>
     </EmulatorSection>
   );
 };
