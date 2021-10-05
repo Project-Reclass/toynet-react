@@ -103,7 +103,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch, appendDialogue } = useEmulatorWithDialogue();
-  const { createLink, createDevice } = useModifyTopology(sessionId);
+  const { createLink, createDevice, isLoading } = useModifyTopology(sessionId);
 
   const { transform } = useZoomPanHelper();
 
@@ -194,11 +194,12 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variantColor="pink"
             variant="outline"
             data-testid="emulator-add-host"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('host')}
             onClick={async () => {
               const name = getNextDeviceName(hosts, 'h');
               try {
-                await createDevice('switch', name);
+                await createDevice('host', name);
                 dispatch({
                   type: TopologyActions.ADD_HOST,
                   payload: {
@@ -220,6 +221,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variantColor="blue"
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
+            isDisabled={isLoading}
             data-testid="emulator-add-switch"
             onClick={async () => {
               const name = getNextDeviceName(switches, 's');
@@ -245,6 +247,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             leftIcon="add"
             variantColor="yellow"
             data-testid="emulator-add-router"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
             onClick={async () => {

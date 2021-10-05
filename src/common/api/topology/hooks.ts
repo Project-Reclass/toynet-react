@@ -81,8 +81,12 @@ export function useModifyTopology(sessionId: SessionId) {
   }, [state.error]);
 
   const createDevice = useCallback((type: DeviceType, name: string) =>
-    makeRequest(name, `Unable to create ${type} ${name}`, () =>
+    makeRequest(`add-${name}`, `Unable to create ${type} ${name}`, () =>
       mutate({ id: sessionId, command: `add ${type} ${name}`})), [mutate, sessionId]);
+
+  const deleteDevice = useCallback((type: DeviceType, name: string) =>
+    makeRequest(`delete-${name}`, `Unable to delete ${type} ${name}`, () =>
+      mutate({ id: sessionId, command: `remove ${type} ${name}`})), [mutate, sessionId]);
 
   const createLink = useCallback((to: string, from: string) =>
     makeRequest(`${to}-${from}`, `Unable to create link ${from}-${to}`, () =>
@@ -99,6 +103,7 @@ export function useModifyTopology(sessionId: SessionId) {
 
   return {
     createDevice,
+    deleteDevice,
     createLink,
     deleteLink,
     ...state,
