@@ -25,7 +25,7 @@ import EmulatorSection from 'src/common/components/Emulator/Section';
 
 import Flow from './Flow';
 import { InnerContainer } from './styled';
-import ContextMenus from './ContextMenus';
+import ContextMenus from './Flow/ContextMenus';
 import { useEmulator } from '../EmulatorProvider';
 import { Box, Heading, Text } from '@chakra-ui/core';
 import LoadingAnimation from 'src/common/components/LoadingAnimation';

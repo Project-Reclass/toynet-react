@@ -18,6 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonGroup } from '@chakra-ui/core';
 import styled from '@emotion/styled';
@@ -46,6 +47,8 @@ import { createElements, getLayoutedElements, mergeElementLayouts } from './util
 
 import './overrides.css';
 import isValidLink from './isValidLink';
+import { useModifyTopology } from 'src/common/api/topology';
+import { devError } from 'src/common/utils';
 
 export interface Props {
   sessionId: SessionId;
@@ -100,6 +103,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch, appendDialogue } = useEmulatorWithDialogue();
+  const { createLink, createDevice, isLoading } = useModifyTopology(sessionId);
 
   const { transform } = useZoomPanHelper();
 
@@ -141,7 +145,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
     handleRestore(getLayoutedElements(els, 'LR', isTesting));
   }, [hosts, routers, switches, isTesting, handleRestore]);
 
-  const onConnect = (params: Edge | Connection) => {
+  const onConnect = async (params: Edge | Connection) => {
     const { source, target } = params;
 
     const allDevices = [...routers, ...hosts, ...switches];
@@ -154,10 +158,16 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       return;
     }
 
-    dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
-    setElements((els: any) =>
-      addEdge({ ...params, type: 'smoothstep', animated: true }, els),
-    );
+    try {
+      await createLink(target || '', source || '');
+      dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
+      setElements((els: any) =>
+        addEdge({ ...params, type: 'smoothstep', animated: true }, els),
+      );
+    } catch (error) {
+      devError(error);
+      appendDialogue(`Unable to create link ${source} to ${target}`, 'tomato');
+    }
   };
 
   const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
@@ -184,16 +194,24 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variantColor="pink"
             variant="outline"
             data-testid="emulator-add-host"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('host')}
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_HOST,
-              payload: {
-                name: getNextDeviceName(hosts, 'h'),
-                type: 'host',
-                connections: [],
-                },
-              })
-            }
+            onClick={async () => {
+              const name = getNextDeviceName(hosts, 'h');
+              try {
+                await createDevice('host', name);
+                dispatch({
+                  type: TopologyActions.ADD_HOST,
+                  payload: {
+                    name,
+                    type: 'host',
+                    connections: [],
+                  },
+                });
+              } catch (error) {
+                appendDialogue(`Unable to create host ${name.toUpperCase()}`, 'tomato');
+              }
+            }}
           >
             Host
           </Button>
@@ -203,16 +221,24 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variantColor="blue"
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
+            isDisabled={isLoading}
             data-testid="emulator-add-switch"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_SWITCH,
-              payload: {
-                name: getNextDeviceName(switches, 's'),
-                type: 'switch',
-                connections: [],
-              },
-            })
-          }
+            onClick={async () => {
+              const name = getNextDeviceName(switches, 's');
+              try {
+                await createDevice('switch', name);
+                dispatch({
+                  type: TopologyActions.ADD_SWITCH,
+                  payload: {
+                    name,
+                    type: 'switch',
+                    connections: [],
+                  },
+                });
+              } catch (error) {
+                appendDialogue(`Unable to create switch ${name.toUpperCase()}`, 'tomato');
+              }
+            }}
           >
             Switch
           </Button>
@@ -221,17 +247,25 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             leftIcon="add"
             variantColor="yellow"
             data-testid="emulator-add-router"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_ROUTER,
-              payload: {
-                name: getNextDeviceName(routers, 'r'),
-                type: 'router',
-                connections: [],
-              },
-            })
-          }
+            onClick={async () => {
+              const name = getNextDeviceName(routers, 'r');
+              try {
+                await createDevice('router', name);
+                dispatch({
+                  type: TopologyActions.ADD_ROUTER,
+                  payload: {
+                    name,
+                    type: 'host',
+                    connections: [],
+                  },
+                });
+              } catch (error) {
+                appendDialogue(`Unable to create router ${name.toUpperCase()}`, 'tomato');
+              }
+            }}
           >
             Router
           </Button>
@@ -243,5 +277,4 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       </ReactFlow>
   );
 };
-
 export default Flow;

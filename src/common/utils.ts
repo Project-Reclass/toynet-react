@@ -54,3 +54,27 @@ export const isSwitch = (name: string) =>
 
 export const isHost = (name: string) =>
   name.length > 0 && name[0].toLowerCase() === 'h';
+
+
+/**
+ * Prints message to console.error if `NODE_ENV` is set to
+ * `development`. Accepts anything as an arguments.
+ */
+export const devError = (msg: any) =>
+  process.env.NODE_ENV === 'development' && console.error(
+    typeof msg === 'object' ? JSON.stringify(msg) : msg,
+  );
+
+
+/**
+ * Generates a unique string ID based on the current time
+ * in milliseconds and a random number that is added to
+ * the end of the string.
+ *
+ * **Note**: Collisions are still possible but is highly unlikely and
+ * could only happen if two calls are made to ths within
+ * the same millisecond and the same random number is generated
+ * twice.
+ */
+export const genUniqueId = () =>
+    `${Date.now()}${Math.random()}`;
