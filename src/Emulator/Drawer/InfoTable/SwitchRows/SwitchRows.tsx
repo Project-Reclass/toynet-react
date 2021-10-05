@@ -19,6 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
+import { Heading } from '@chakra-ui/core';
 import React, { memo } from 'react';
 import { DeviceInterface } from 'src/common/types';
 
@@ -31,6 +32,11 @@ interface Props {
 
 const SwitchRows = memo(({ switches, activeName }: Props) => (
   <>
+    <tr>
+      <td>
+        <Heading size='sm'>Switch</Heading>
+      </td>
+    </tr>
     {switches.map(({ name }) => (
       <SwitchRow name={name} activeName={activeName} />
     ))}

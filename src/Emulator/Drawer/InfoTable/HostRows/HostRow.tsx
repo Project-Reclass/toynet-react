@@ -62,8 +62,8 @@ export default function HostRow({
           {name.toUpperCase()}
         </DeviceName>
       </td>
-      <td>{intf}</td>
       <td>{ip}</td>
+      <td>{intf}</td>
     </ActiveRow>
   );
 };

@@ -18,34 +18,28 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { useEffect, useRef } from 'react';
 
-import { ActiveRow, DeviceName } from '../styled';
+import { Button, ButtonProps } from '@chakra-ui/core';
+import styled from '@emotion/styled-base';
+import React, { FC } from 'react';
 
-interface RowProps {
-  name: string;
-  activeName?: string;
-}
+const GreyButton = styled(Button)`
+  background-color: grey;
 
-const SwitchRow = ({ name, activeName }: RowProps) => {
-  const ref = useRef<HTMLTableRowElement>(null);
+  :hover {
+    background-color: #b32929;
+  }
+`;
 
-  useEffect(() => {
-    if (activeName === name)
-      ref.current?.scrollIntoView();
-  }, [activeName, name]);
+const DangerButton: FC<
+  Omit<ButtonProps, 'variantColor'>
+> = ({ children, ...rest }) => (
+  <GreyButton
+    {...rest}
+    variantColor='red'
+  >
+    {children}
+  </GreyButton>
+);
 
-  return (
-    <ActiveRow ref={ref} isActive={activeName === name}>
-      <td>
-        <DeviceName device='switch'>
-          {name.toUpperCase()}
-        </DeviceName>
-      </td>
-      <td></td>
-      <td></td>
-    </ActiveRow>
-  );
-};
-
-export default SwitchRow;
+export default DangerButton;

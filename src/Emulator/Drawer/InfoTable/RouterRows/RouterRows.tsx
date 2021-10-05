@@ -19,6 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
+import { Heading } from '@chakra-ui/core';
 import React, { memo } from 'react';
 import { DeviceInterface } from 'src/common/types';
 import InterfaceList from './InterfaceList';
@@ -30,6 +31,17 @@ interface Props {
 
 const RouterRows = memo(({ activeName, routers }: Props) => (
   <>
+    <tr>
+      <td>
+        <Heading size='sm'>Router</Heading>
+      </td>
+      <td>
+        <Heading size='sm'>IP Address</Heading>
+      </td>
+      <td>
+        <Heading size='sm'>Interface</Heading>
+      </td>
+    </tr>
     {routers.map(({ name, ip, interfaces }) => (
       <InterfaceList ip={ip || ''} deviceName={name} interfaces={interfaces} activeName={activeName} />
     ))}

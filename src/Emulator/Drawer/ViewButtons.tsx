@@ -20,7 +20,9 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { Button, Flex } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/core';
+import DangerButton from 'src/common/components/buttons/DangerButton';
+import PrimaryButton from 'src/common/components/buttons/PrimaryButton';
 
 interface Props {
   isDisabled?: boolean;
@@ -38,22 +40,20 @@ const ViewButtons = ({
   onCancel,
 }: Props) => (
   <Flex justifyContent='space-between' marginY='1rem'>
-    <Button
+    <PrimaryButton
       onClick={onCreate}
-      variantColor='teal'
       isDisabled={isDisabled}
     >{
       children ?
         children :
           createName ? `Create ${createName}` : 'Create'
-    }</Button>
-    <Button
+    }</PrimaryButton>
+    <DangerButton
       onClick={onCancel}
-      variantColor='red'
       isDisabled={isDisabled}
     >
       Cancel
-    </Button>
+    </DangerButton>
   </Flex>
 );
 

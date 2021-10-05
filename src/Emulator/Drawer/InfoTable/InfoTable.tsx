@@ -49,7 +49,7 @@ export default function InfoTable({ activeName }: Props) {
     <Box>
       <Heading size='md' my={3}>Topology Information</Heading>
       <Table>
-        <thead>
+        {/* <thead>
           <th>
             <Heading size='sm'>Name</Heading>
           </th>
@@ -59,11 +59,11 @@ export default function InfoTable({ activeName }: Props) {
           <th>
             <Heading size='sm'>IP Address</Heading>
           </th>
-        </thead>
+        </thead> */}
         <tbody>
           <HostRows routers={routers} hosts={hosts} activeName={activeName} />
-          <RouterRows routers={routers} activeName={activeName} />
           <SwitchRows switches={switches} activeName={activeName} />
+          <RouterRows routers={routers} activeName={activeName} />
         </tbody>
       </Table>
     </Box>

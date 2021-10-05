@@ -52,10 +52,10 @@ const InterfaceRow = memo(({
         </DeviceName> :
         ''
       }</td>
-      <td>{intf}</td>
       <td>
         {index === 0 ? ip : ''}
       </td>
+      <td>{intf}</td>
     </ActiveRow>
   );
 });

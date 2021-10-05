@@ -43,6 +43,7 @@ const CreateIpBtns = ({
             <IconButton
               width='fit-content'
               variantColor='red'
+              variant='outline'
               aria-label='Call Segun'
               size='sm'
               icon='minus'
@@ -51,7 +52,8 @@ const CreateIpBtns = ({
           }
           <IconButton
             width='fit-content'
-            variantColor='green'
+            variantColor='teal'
+            variant='outline'
             aria-label='Call Segun'
             size='sm'
             icon='add'
@@ -61,6 +63,7 @@ const CreateIpBtns = ({
         <IconButton
           width='fit-content'
           variantColor='red'
+          variant='outline'
           aria-label='Call Segun'
           size='sm'
           icon='minus'
