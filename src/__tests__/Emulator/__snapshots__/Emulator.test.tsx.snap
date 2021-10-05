@@ -6,7 +6,7 @@ exports[`The emulator should render and match snapshots 1`] = `
     class="css-15mlykw"
   >
     <div
-      class="css-4rmbj"
+      class="css-1p9h997"
     >
       <div
         class="css-1gskj9r"
@@ -99,7 +99,7 @@ exports[`The emulator should render and match snapshots 1`] = `
       class="css-jj5y1g"
     >
       <div
-        class="css-gvlyi5"
+        class="css-tkj973"
       >
         <div
           class="css-ljj55y"
@@ -157,7 +157,7 @@ exports[`The emulator should render and match snapshots 1`] = `
         class="css-jhr2ok"
       >
         <div
-          class="css-1ckwdaf"
+          class="css-1ywxh3e"
         >
           <div
             class="css-1iiig6z"
@@ -169,21 +169,26 @@ exports[`The emulator should render and match snapshots 1`] = `
             </h2>
           </div>
           <div
-            class="css-1w1wy86"
+            class="css-esnmos"
           >
-            <textarea
-              class="css-1ckzuis"
-              data-testid="console-textarea"
+            <div
+              class="css-1w1wy86"
             >
-              &gt;&gt; 
-            </textarea>
+              <textarea
+                aria-disabled="false"
+                class="css-1ckzuis"
+                data-testid="console-textarea"
+              >
+                &gt;&gt; 
+              </textarea>
+            </div>
           </div>
         </div>
         <div
           style="z-index: 0; overflow: hidden;"
         >
           <div
-            class="css-1fmka3o"
+            class="css-4s6pz3"
           >
             <h2
               class="css-ix0oza"
