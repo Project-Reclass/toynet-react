@@ -18,12 +18,23 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Flex } from '@chakra-ui/core';
-import styled from '@emotion/styled';
+import React, { memo } from 'react';
+import { Box, Text } from '@chakra-ui/core';
+import { ToyNetCommand } from './types';
 
-const EmulatorTitle = styled(Flex)`
-    padding-bottom: 0.559rem;
-    height: 2.5rem;
-`;
+const AppliedCommand = memo(({command, color, output}: ToyNetCommand) => (
+  <Box>
+    <Text>{`${command}`}</Text>
+    <Text color={color}>{output}</Text>
+  </Box>
+));
 
-export default EmulatorTitle;
+const HistoryList = memo(({ history }: {history: ToyNetCommand[]}) => (
+  <>
+    {history.map(cmd => (
+      <AppliedCommand key={cmd.created} {...cmd} />
+    ))}
+  </>
+));
+
+export default HistoryList;
