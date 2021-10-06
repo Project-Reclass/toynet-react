@@ -19,8 +19,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { Box, Flex, Heading, Spinner, Text, Textarea } from '@chakra-ui/core';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Box, Flex, Heading, Select, Spinner, Stack, Text, Textarea } from '@chakra-ui/core';
 import { useToynetCommand } from 'src/common/api/topology';
 import {
   EmulatorInnerSection,
@@ -62,7 +62,7 @@ const ConsoleHeading = memo(() => (
 ));
 
 const Console = () => {
-  const { sessionId } = useEmulator();
+  const { sessionId, routers, switches, hosts } = useEmulator();
   const [runCommand, { error, isLoading }] = useToynetCommand(sessionId);
   const prevError = usePrevious(error);
 
@@ -76,6 +76,8 @@ const Console = () => {
 
   const loadingRef = useRef<NodeJS.Timeout | null>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const devices = useMemo(() => [...routers, ...switches, ...hosts], [routers, switches, hosts]);
 
   useEffect(() => {
     // We should display a loading indicator if the request is taking longer
@@ -165,6 +167,17 @@ const Console = () => {
     <EmulatorSection overflow='hidden'>
       <Flex paddingBottom='0.559rem' justifyContent='space-between'>
         <ConsoleHeading />
+        <Stack direction='row'>
+          <Heading size='sm' my='auto'>Device</Heading>
+          <Select
+            size='sm'
+            backgroundColor='#212529'
+          >
+            {devices.map(({ name }) => (
+              <option key={name} value={name}>{name.toLocaleUpperCase()}</option>
+            ))}
+          </Select>
+        </Stack>
       </Flex>
       <Box height='100%' position='relative' overflow='hidden'>
         {showLoading &&
