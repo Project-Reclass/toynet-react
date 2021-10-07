@@ -35,7 +35,7 @@ const Visuals = () => {
 
   return (
     <>
-    <EmulatorSection padding='0.4vh'>
+    <EmulatorSection padding='0.4vh' data-testid='emulator-visual'>
       <InnerContainer>
         {isLoading ?
           <Box position='relative' width='100%' height='100%'>
