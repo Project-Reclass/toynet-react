@@ -100,6 +100,7 @@ exports[`The emulator should render and match snapshots 1`] = `
     >
       <div
         class="css-tkj973"
+        data-testid="emulator-visual"
       >
         <div
           class="css-ljj55y"
