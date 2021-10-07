@@ -25,7 +25,7 @@ import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
 import { ToyNetInput } from 'src/common/components/ToyNetInput';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useCreateHost } from 'src/common/api/topology';
-import { useEmulator } from 'src/common/providers/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 
 import ViewButtons from './ViewButtons';
 
@@ -40,13 +40,15 @@ export default function CreateHostView({ nameHint }: Props) {
   const [defaultGateway, setDefaultGateway] = useState('');
 
   const { onClose } = useDrawer();
-  const { sessionId } = useEmulator();
+  const { sessionId, appendDialogue } = useEmulatorWithDialogue();
   const [createHost, { isLoading, isSuccess, isError, error }] = useCreateHost(sessionId);
 
   useEffect(() => {
-    if (isSuccess)
+    if (isSuccess) {
       onClose();
-  }, [isSuccess, onClose]);
+      appendDialogue(`Created host ${name.toUpperCase()}`);
+    }
+  }, [isSuccess, onClose, appendDialogue, name]);
 
   useEffect(() => {
     if (isError)
@@ -71,6 +73,8 @@ export default function CreateHostView({ nameHint }: Props) {
         <FormLabel>Name</FormLabel>
         <ToyNetInput
           value={name}
+          isDisabled={isLoading}
+          data-testid='drawer-host-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
@@ -80,6 +84,9 @@ export default function CreateHostView({ nameHint }: Props) {
         <FormLabel>Default Gateway</FormLabel>
         <ToyNetInput
           name={defaultGateway}
+          isDisabled={isLoading}
+          placeholder='192.168.1.1'
+          data-testid='drawer-host-default_gateway-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setDefaultGateway(e.currentTarget.value)}
         />
@@ -89,6 +96,8 @@ export default function CreateHostView({ nameHint }: Props) {
         <FormLabel>IP Address</FormLabel>
         <ToyNetInput
           name={ip}
+          placeholder='192.168.1.2/24'
+          data-testid='drawer-host-ip-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setIp(e.currentTarget.value)}
         />

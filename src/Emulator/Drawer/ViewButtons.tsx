@@ -42,6 +42,7 @@ const ViewButtons = ({
   <Flex justifyContent='space-between' marginY='1rem'>
     <PrimaryButton
       onClick={onCreate}
+      data-testid='viewbtn-create'
       isDisabled={isDisabled}
     >{
       children ?
@@ -50,6 +51,7 @@ const ViewButtons = ({
     }</PrimaryButton>
     <DangerButton
       onClick={onCancel}
+      data-testid='viewbtn-cancel'
       isDisabled={isDisabled}
     >
       Cancel

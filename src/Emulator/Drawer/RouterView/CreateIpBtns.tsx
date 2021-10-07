@@ -41,6 +41,7 @@ const CreateIpBtns = ({
         <Stack direction='row' spacing={2}>
           {index !== 0 &&
             <IconButton
+              data-testid={`remove_ip-idx_${index}`}
               width='fit-content'
               variantColor='red'
               variant='outline'
@@ -51,6 +52,7 @@ const CreateIpBtns = ({
             />
           }
           <IconButton
+            data-testid={`add_ip-notone-idx_${index}`}
             width='fit-content'
             variantColor='teal'
             variant='outline'
@@ -61,6 +63,7 @@ const CreateIpBtns = ({
           />
         </Stack> :
         <IconButton
+          data-testid={`add_ip-idx_${index}`}
           width='fit-content'
           variantColor='red'
           variant='outline'

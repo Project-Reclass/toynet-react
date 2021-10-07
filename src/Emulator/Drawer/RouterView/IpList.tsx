@@ -100,6 +100,7 @@ export default function IpList({
           <ToyNetInput
             value={ip.ipAddr}
             onChange={handleInput(i)}
+            data-testid={`ip_input-idx_${i}`}
           />
         </FormControl>
         <CreateIpBtns

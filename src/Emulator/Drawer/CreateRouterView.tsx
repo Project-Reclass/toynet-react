@@ -33,7 +33,7 @@ import ViewButtons from './ViewButtons';
 import IpList from './RouterView/IpList';
 import { genUniqueId } from 'src/common/utils';
 import { useCreateRouter } from 'src/common/api/topology';
-import { useEmulator } from 'src/common/providers/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 
 export interface Ip {
   id: string;
@@ -56,14 +56,16 @@ export default function CreateRouterView({ nameHint }: Props) {
 
   const toast = useToast();
   const { onClose } = useDrawer();
-  const { sessionId } = useEmulator();
+  const { sessionId, appendDialogue } = useEmulatorWithDialogue();
   const [createRouter, { isLoading, isError, error, isSuccess }] =
     useCreateRouter(sessionId);
 
   useEffect(() => {
-    if (isSuccess)
+    if (isSuccess) {
       onClose();
-  }, [isSuccess, onClose]);
+      appendDialogue(`Created router ${name}`);
+    }
+  }, [appendDialogue, isSuccess, onClose, name]);
 
   useEffect(() => {
     if (isError)
@@ -88,6 +90,8 @@ export default function CreateRouterView({ nameHint }: Props) {
         <FormLabel>Name</FormLabel>
         <ToyNetInput
           value={name}
+          isDisabled={isLoading}
+          data-testid='drawer-router-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
@@ -96,6 +100,9 @@ export default function CreateRouterView({ nameHint }: Props) {
         <FormLabel>IP Address</FormLabel>
         <ToyNetInput
           value={ip}
+          placeholder='172.16.1.10/24'
+          isDisabled={isLoading}
+          data-testid='drawer-router-ip-name'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setIp(e.currentTarget.value)}
         />

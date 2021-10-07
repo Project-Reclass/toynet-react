@@ -26,7 +26,7 @@ import { ToyNetInput } from 'src/Login/styled';
 import ViewButtons from './ViewButtons';
 import { useDrawer } from '../../common/providers/DrawerProvider';
 import { useCreateSwitch } from 'src/common/api/topology';
-import { useEmulator } from 'src/common/providers/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 
 interface Props {
   nameHint: string;
@@ -35,16 +35,18 @@ interface Props {
 export default function CreateSwitchView({ nameHint }: Props) {
   const toast = useToast();
   const { onClose } = useDrawer();
-  const { sessionId } = useEmulator();
+  const { sessionId, appendDialogue } = useEmulatorWithDialogue();
 
   const [createSwitch, { isLoading, isError, isSuccess, error }] =
     useCreateSwitch(sessionId);
   const [name, setName] = useState(nameHint);
 
   useEffect(() => {
-    if (isSuccess)
+    if (isSuccess) {
       onClose();
-  }, [isSuccess, onClose]);
+      appendDialogue(`Created switch ${name}`);
+    }
+  }, [appendDialogue, isSuccess, name, onClose]);
 
   useEffect(() => {
     if (isError)
@@ -67,6 +69,7 @@ export default function CreateSwitchView({ nameHint }: Props) {
         <FormLabel>Name</FormLabel>
         <ToyNetInput
           value={name}
+          isDisabled={isLoading}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />

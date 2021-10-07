@@ -49,8 +49,8 @@ const DialogueProvider: FC = ({ children }) => {
 
   // Not using useCallback so we can add the same error messages repeatedly
   const appendDialogue = useCallback((message: string, color = 'White') => {
-    setDialogueMessages(dialogueMessages.concat([{message, color}]));
-  }, [dialogueMessages, setDialogueMessages]);
+    setDialogueMessages(prev => [...prev, {message, color}]);
+  }, [setDialogueMessages]);
 
   const clearDialogue = useCallback(() => {
     setDialogueMessages([]);
