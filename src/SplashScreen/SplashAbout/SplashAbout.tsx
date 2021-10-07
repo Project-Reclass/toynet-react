@@ -20,6 +20,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 
+import {Box, Link} from '@chakra-ui/core';
+
 import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/illustration3.svg';
 
 import {Body, Content, Title, About, Button, SplashAboutImageContainer} from './SplashAboutStyles';
@@ -28,7 +30,7 @@ import {Body, Content, Title, About, Button, SplashAboutImageContainer} from './
 
 function SplashAbout() {
   return (
-    <div style={{ backgroundColor: 'white' }} id="about">
+    <Box backgroundColor="white" id="about">
       <Body>
         <Content>
           <Title>
@@ -39,17 +41,17 @@ function SplashAbout() {
               Our team of researchers, technologists, and educators has built this learning platform to deliver
               a computer networking curriculum that will prepare users for the CompTIA Network+ Certification.
           </About>
-          <a href="https://www.projectreclass.org" style={{ marginTop: '1.5rem', display: 'block' }}>
+          <Link href="https://www.projectreclass.org" marginTop={6} display="block">
             <Button>
               <h3>Learn more</h3>
             </Button>
-          </a>
+          </Link>
         </Content>
         <SplashAboutImageContainer>
           <Illustration />
         </SplashAboutImageContainer>
       </Body>
-    </div>
+    </Box>
   );
 }
 
