@@ -28,11 +28,52 @@ import { ToyNetCommand } from './types';
 import ConsoleTextarea from './ConsoleTextarea';
 import HistoryList from './ConsoleHistoryList';
 
+
+const getCommandFromResponse = async (
+  device: string,
+  command: string,
+  runCommand: (command: string) =>
+    Promise<ToynetCommandResponse | undefined>,
+  prefix: string = '>> ',
+): Promise<ToyNetCommand> => {
+  const partialResponse: Pick<ToyNetCommand, 'command' | 'created'> = {
+    command,
+    created: new Date().toISOString(),
+  };
+
+  try {
+    const res = await runCommand(
+      `${device} ${command.replace(prefix, '')}`);
+    if (!res) {
+      return  {
+        ...partialResponse,
+        color: 'red',
+        output: 'Internal server error',
+        status: 'error',
+    };
+    }
+    return {
+      ...partialResponse,
+      ...res,
+      status: 'success',
+      color: 'grey',
+    };
+  } catch (error) {
+    return {
+      ...partialResponse,
+      output: `${(error as any).message}`, // error is a response returned from the server
+      color: 'tomato',
+      status: 'error',
+    };
+  }
+};
+
 interface Props {
   isLoading: boolean;
   sessionId: SessionId,
   selectedDevice: string;
-  runCommand: (command: string) => Promise<ToynetCommandResponse | undefined>;
+  runCommand: (command: string) =>
+    Promise<ToynetCommandResponse | undefined>;
 }
 
 export default function ConsoleTerminal({
@@ -72,52 +113,20 @@ export default function ConsoleTerminal({
           output: `No device selected. Please select a device from
                    the dropdown to run a command.`,
           created: new Date().toISOString(),
+          status: 'error',
         },
       ]);
       return false;
     }
 
-    try {
-      const res = await runCommand(
-        `${selectedDevice} ${input.replace('>> ', '')}`,
-      );
+    const toynetCommand = await getCommandFromResponse(
+      selectedDevice, input, runCommand);
+    setHistory(prev => [
+      ...prev,
+      toynetCommand,
+    ]);
 
-      if (!res) {
-        setHistory(prev => [
-          ...prev,
-          {
-            command: input,
-            output: 'Internal server error',
-            color: 'tomato',
-            created: new Date().toISOString(),
-          },
-        ]);
-        return false;
-      }
-
-      setHistory(prev => [
-        ...prev,
-        {
-          ...res,
-          command: input,
-          color: 'grey',
-          created: new Date().toISOString(),
-        },
-      ]);
-      return true;
-    } catch (error) {
-      setHistory(prev => [
-        ...prev,
-        {
-          command: input,
-          output: `${(error as any).message}`, // error is a response returned from the server
-          color: 'tomato',
-          created: new Date().toISOString(),
-        },
-      ]);
-      return false;
-    }
-
+    return toynetCommand.status === 'success';
   }, [runCommand, selectedDevice, setHistory]);
 
   return (

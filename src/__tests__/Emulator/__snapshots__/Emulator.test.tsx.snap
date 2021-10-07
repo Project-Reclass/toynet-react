@@ -180,6 +180,7 @@ exports[`The emulator should render and match snapshots 1`] = `
               >
                 <select
                   class="css-v4upyu"
+                  data-testid="console-device-selector"
                 >
                   <option
                     value=""

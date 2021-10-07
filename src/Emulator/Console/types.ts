@@ -24,4 +24,5 @@ export interface ToyNetCommand {
   output: string;
   color: string;
   created: string;
+  status: 'error' | 'success';
 }

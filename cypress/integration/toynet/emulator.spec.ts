@@ -96,21 +96,34 @@ describe('The emulator page', () => {
     cy.contains(/^s3$/i).should('be.visible');
     cy.contains(/created device s3/i).should('be.visible');
   });
-  it('should allow commands to be sent', () => {
+  it('should show error when device is not selected', () => {
     cy.visit(emulatorUrl);
     cy.contains(/h1/i).should('be.visible');
     cy.contains(/h2/i).should('be.visible');
-    cy.get('[data-testid^="console-textarea"]').type('h1 ping h2{enter}');
-    cy.contains('bytes of data').should('be.visible');
+    cy.get('[data-testid^="console-textarea"]').type('ping h2{enter}');
+    cy.contains(/please select a device/i).should('be.visible');
   });
+  it('should be able to run a command', () => {
+    cy.visit(emulatorUrl);
+    cy.contains(/h1/i).should('be.visible');
+    cy.contains(/h2/i).should('be.visible');
+    cy.get('[data-testid^="console-device-selector"]').
+      select('h1');
+    cy.get('[data-testid^="console-textarea"]').type('ping h2{enter}');
+    cy.contains(/bytes of data/i).should('be.visible');
+  });
+
   it('should allow emulator history to persist after refresh', () => {
     cy.visit(emulatorUrl);
     cy.contains(/h1/i).should('be.visible');
     cy.contains(/h2/i).should('be.visible');
-    cy.get('[data-testid^="console-textarea"]').type('h1 ping h2{enter}');
-    cy.contains('bytes of data').should('be.visible');
+    cy.get('[data-testid^="console-device-selector"]').
+      select('h1');
+    cy.get('[data-testid^="console-textarea"]').type('ping h2{enter}');
+    cy.contains(/bytes of data/i).should('be.visible');
     cy.reload(); // refresh the page
 
-    cy.contains(/h1 ping h2/i).should('be.visible');
+    cy.contains(/ping h2/i).should('be.visible');
+    cy.contains(/bytes of data/i).should('be.visible');
   });
 });

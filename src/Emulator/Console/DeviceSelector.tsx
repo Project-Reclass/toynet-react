@@ -27,7 +27,10 @@ interface Props {
 }
 
 const DeviceSelector = ({ onChange, options }: Props) => (
-  <Flex width='fit-content' height='fit-content'>
+  <Flex
+    width='fit-content'
+    height='fit-content'
+    >
     <Text my='auto' marginRight={2}>Device</Text>
     <Select
       size='sm'
@@ -38,6 +41,7 @@ const DeviceSelector = ({ onChange, options }: Props) => (
       borderWidth='1'
       borderRadius={3}
       onChange={onChange}
+      data-testid='console-device-selector'
     >
       {options.map(option => (
         <option value={option}>{option.toUpperCase()}</option>
