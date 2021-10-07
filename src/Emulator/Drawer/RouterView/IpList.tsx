@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef } from 'react';
 import { FormControl, FormLabel, useToast, Box } from '@chakra-ui/core';
 import { Flex } from 'src/common/components';
 import { genUniqueId } from 'src/common/utils';
@@ -33,14 +33,18 @@ export interface Ip {
   ipAddr: string;
 }
 
-const initialIp: Ip ={
-  id: genUniqueId(),
-  ipAddr: '',
-};
+interface Props {
+  ips: Ip[];
+  setIps: Dispatch<SetStateAction<Ip[]>>;
+}
 
-export default function IpList() {
+export default function IpList({
+  ips,
+  setIps,
+}: Props) {
   const toast = useToast();
-  const [ips, setIps] = useState([initialIp]);
+
+  // const [ips, setIps] = useState([initialIp]);
 
   const ipLengthRef = useRef(ips.length);
 
@@ -68,7 +72,7 @@ export default function IpList() {
         ipAddr: '',
       },
     ]);
-  }, [toast]);
+  }, [setIps, toast]);
 
   const deleteIp = useCallback((idx: number) => {
     setIps(prevIps => {
@@ -77,8 +81,7 @@ export default function IpList() {
       copy.splice(idx, 1);
       return [...copy];
     });
-  }, []);
-
+  }, [setIps]);
 
   const handleInput = (idx: number) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {

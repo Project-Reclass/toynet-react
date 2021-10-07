@@ -19,25 +19,68 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Stack,
   FormControl,
   FormLabel,
+  useToast,
 } from '@chakra-ui/core';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { ToyNetInput } from 'src/Login/styled';
 
 import ViewButtons from './ViewButtons';
 import IpList from './RouterView/IpList';
+import { genUniqueId } from 'src/common/utils';
+import { useCreateRouter } from 'src/common/api/topology';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
+
+export interface Ip {
+  id: string;
+  ipAddr: string;
+}
+
+const initialIp: Ip ={
+  id: genUniqueId(),
+  ipAddr: '',
+};
 
 interface Props {
   nameHint: string;
 }
 
 export default function CreateRouterView({ nameHint }: Props) {
+  const [ip, setIp] = useState('');
   const [name, setName] = useState(nameHint);
+  const [interfaces, setInterfaces] = useState([initialIp]);
+
+  const toast = useToast();
   const { onClose } = useDrawer();
+  const { sessionId } = useEmulator();
+  const [createRouter, { isLoading, isError, error, isSuccess }] =
+    useCreateRouter(sessionId);
+
+  useEffect(() => {
+    if (isSuccess)
+      onClose();
+  }, [isSuccess, onClose]);
+
+  useEffect(() => {
+    if (isError)
+      toast({
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+        title: 'Unable to creat host.',
+        description: (error as any).message,
+      });
+  }, [error, isError, toast]);
+
+  const handleCreate = () => createRouter({
+    name,
+    ip,
+    intfs: interfaces.map(({ ipAddr }) => ipAddr),
+  });
 
   return (
     <Stack spacing={3}>
@@ -49,9 +92,27 @@ export default function CreateRouterView({ nameHint }: Props) {
             setName(e.currentTarget.value)}
         />
       </FormControl>
-      <IpList />
-      <ViewButtons onCancel={onClose}>
-        Create Router
+      <FormControl>
+        <FormLabel>IP Address</FormLabel>
+        <ToyNetInput
+          value={ip}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setIp(e.currentTarget.value)}
+        />
+      </FormControl>
+      <IpList
+        ips={interfaces}
+        setIps={setInterfaces}
+      />
+      <ViewButtons
+        onCancel={onClose}
+        onCreate={handleCreate}
+        isDisabled={isLoading}
+      >
+        {isLoading ?
+          'Creating Router...' :
+          'Create Router'
+        }
       </ViewButtons>
     </Stack>
   );

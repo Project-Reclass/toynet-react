@@ -20,30 +20,33 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
+import { Button } from '@chakra-ui/core';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
+import { DeviceInterface } from 'src/common/types';
 
-import { DrawerView as IDrawerView } from '../../common/providers/DrawerProvider';
-import CreateRouterView from './CreateRouterView';
-import CreateSwitchView from './CreateSwitchView';
-import CreateHostView from './CreateHostView';
-
-interface ViewProps {
-  nameHint: string;
+interface Props {
+  device: DeviceInterface;
 }
 
-const drawerViews: Map<IDrawerView, (_: ViewProps) => JSX.Element> = new Map([
-  ['CREATE_HOST', CreateHostView],
-  ['CREATE_SWITCH', CreateSwitchView],
-  ['CREATE_ROUTER', CreateRouterView],
-]);
+export default function InfoBtn({
+  device: {
+    name,
+  },
+}: Props) {
+  const { setInfoView } = useDrawer();
 
-interface Props extends ViewProps {
-  view: IDrawerView;
-}
-
-export default function DrawerView({ view, ...rest }: Props) {
-  const Component = drawerViews.get(view) || (() => <div />);
+  const handleClick = () =>
+    setInfoView(name);
 
   return (
-    <Component {...rest} />
+    <Button
+      onClick={handleClick}
+      variant='ghost'
+      variantColor='teal'
+      alignContent='center'
+      textAlign='left'
+    >
+      More Info
+    </Button>
   );
 }

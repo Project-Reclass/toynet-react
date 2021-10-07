@@ -19,28 +19,67 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React from 'react';
-import { Stack, FormControl, FormLabel } from '@chakra-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
 import { ToyNetInput } from 'src/Login/styled';
 
 import ViewButtons from './ViewButtons';
 import { useDrawer } from '../../common/providers/DrawerProvider';
+import { useCreateSwitch } from 'src/common/api/topology';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 
 interface Props {
   nameHint: string;
 }
 
 export default function CreateSwitchView({ nameHint }: Props) {
+  const toast = useToast();
   const { onClose } = useDrawer();
+  const { sessionId } = useEmulator();
+
+  const [createSwitch, { isLoading, isError, isSuccess, error }] =
+    useCreateSwitch(sessionId);
+  const [name, setName] = useState(nameHint);
+
+  useEffect(() => {
+    if (isSuccess)
+      onClose();
+  }, [isSuccess, onClose]);
+
+  useEffect(() => {
+    if (isError)
+      toast({
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+        title: 'Unable to creat host.',
+        description: (error as any).message,
+      });
+  }, [error, isError, toast]);
+
+  const handleCreate = () => createSwitch({
+    name,
+  });
 
   return (
     <Stack spacing={3}>
       <FormControl>
         <FormLabel>Name</FormLabel>
-        <ToyNetInput value={nameHint} />
+        <ToyNetInput
+          value={name}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setName(e.currentTarget.value)}
+        />
       </FormControl>
-      <ViewButtons onCancel={onClose}>
-        Create Switch
+      <ViewButtons
+        onCancel={onClose}
+        onCreate={handleCreate}
+        isDisabled={isLoading}
+      >
+        {isLoading ?
+          'Creating Switch...' :
+          'Create Switch'
+        }
       </ViewButtons>
     </Stack>
   );

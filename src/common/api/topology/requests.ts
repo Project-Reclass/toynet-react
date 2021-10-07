@@ -28,6 +28,8 @@ import {
   ToynetCommandResponse,
   SessionId,
   ToyNetCreateHostRequest,
+  ToyNetCreateRouterRequest,
+  ToyNetCreateSwitchRequest,
 } from './types';
 
 const BASE_PATH = '/api/toynet';
@@ -73,6 +75,34 @@ export const createHost = async (
   try {
     const res = await axios.put(
       `${BASE_PATH}/session/${id}/create/host`, request);
+    return res;
+  } catch (error) {
+    throw new Error(
+      (error as AxiosError).response?.data.message || 'Server error');
+  }
+};
+
+export const createRouter = async (
+  id: SessionId,
+  request: ToyNetCreateRouterRequest,
+) => {
+  try {
+    const res = await axios.put(
+      `${BASE_PATH}/session/${id}/create/router`, request);
+    return res;
+  } catch (error) {
+    throw new Error(
+      (error as AxiosError).response?.data.message || 'Server error');
+  }
+};
+
+export const createSwitch = async (
+  id: SessionId,
+  request: ToyNetCreateSwitchRequest,
+) => {
+  try {
+    const res = await axios.put(
+      `${BASE_PATH}/session/${id}/create/switch`, request);
     return res;
   } catch (error) {
     throw new Error(

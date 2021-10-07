@@ -23,9 +23,11 @@ import { useQuery, useMutation, queryCache } from 'react-query';
 import { DeviceType } from 'src/common/types';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
-import { SessionId, ToyNetCreateHostRequest } from './types';
+import { SessionId, ToyNetCreateHostRequest, ToyNetCreateRouterRequest, ToyNetCreateSwitchRequest } from './types';
 import {
   createHost,
+  createRouter,
+  createSwitch,
   createToynetSession,
   getToynetSession,
   runToynetCommand,
@@ -149,6 +151,32 @@ export function useCreateHost(sessionId: SessionId) {
   return useMutation((request: ToyNetCreateHostRequest) =>
     createHost(sessionId, request),
     {
+      onSuccess: () => {
+        queryCache.invalidateQueries(['toynet-session', {
+          sessionId,
+          hasInitialized: true,
+        }]);
+      },
+    },
+  );
+}
+
+export function useCreateRouter(sessionId: SessionId) {
+  return useMutation((request: ToyNetCreateRouterRequest) =>
+    createRouter(sessionId, request), {
+      onSuccess: () => {
+        queryCache.invalidateQueries(['toynet-session', {
+          sessionId,
+          hasInitialized: true,
+        }]);
+      },
+    },
+  );
+}
+
+export function useCreateSwitch(sessionId: SessionId) {
+  return useMutation((request: ToyNetCreateSwitchRequest) =>
+    createSwitch(sessionId, request), {
       onSuccess: () => {
         queryCache.invalidateQueries(['toynet-session', {
           sessionId,

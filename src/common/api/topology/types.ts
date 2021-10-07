@@ -65,3 +65,13 @@ export interface ToyNetCreateHostRequest {
   name: string;
   def_gateway: string;
 }
+
+export interface ToyNetCreateRouterRequest {
+  ip: string;
+  name: string;
+  intfs: string[];
+}
+
+export interface ToyNetCreateSwitchRequest {
+  name: string;
+}

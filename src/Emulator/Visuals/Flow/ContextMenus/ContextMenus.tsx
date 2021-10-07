@@ -25,6 +25,7 @@ import { DeviceInterface } from 'src/common/types';
 
 import DeleteConnectionBtn from './DeleteConnectionBtn';
 import DeleteNodeBtn from './DeleteNodeButton';
+import InfoBtn from './InfoBtn';
 
 interface Props {
   devices: DeviceInterface[];
@@ -39,6 +40,7 @@ export const ContextMenus = ({ devices }: Props) => (
           {device.connections.map((to: string) => (
             <DeleteConnectionBtn to={to} from={device.name} key={`${to}-delete`} />
           ))}
+          <InfoBtn device={device} />
         </Stack>
       </Menu>
     ))}

@@ -52,7 +52,6 @@ import {
 import './overrides.css';
 import isValidLink from './isValidLink';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
-import { useHistory } from 'react-router';
 import { useModifyTopology } from 'src/common/api/topology';
 import { devError } from 'src/common/utils';
 
@@ -114,13 +113,12 @@ const Flow = ({
   hosts,
   isTesting = false,
 }: Props) => {
-  const history = useHistory();
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch, appendDialogue } = useEmulatorWithDialogue();
   const { openView } = useDrawer();
-  const { createLink, createDevice, isLoading } = useModifyTopology(sessionId);
+  const { createLink, isLoading } = useModifyTopology(sessionId);
 
   const { transform } = useZoomPanHelper();
 
@@ -214,18 +212,7 @@ const Flow = ({
             data-testid="emulator-add-host"
             isDisabled={isLoading}
             borderColor={deviceColorClasses.get('host')}
-            onClick={() => {
-              openView('CREATE_HOST');
-
-              // dispatch({
-              // type: TopologyActions.ADD_HOST,
-              // payload: {
-              //   name: getNextDeviceName(hosts, 'h'),
-              //   type: 'host',
-              //   connections: [],
-              //   },
-              // });
-            }}
+            onClick={() => openView('CREATE_HOST')}
           >
             Host
           </Button>
@@ -237,18 +224,7 @@ const Flow = ({
             variant="outline"
             isDisabled={isLoading}
             data-testid="emulator-add-switch"
-            onClick={() => {
-              openView('CREATE_SWITCH');
-
-            //   dispatch({
-            //   type: TopologyActions.ADD_SWITCH,
-            //   payload: {
-            //     name: getNextDeviceName(switches, 's'),
-            //     type: 'switch',
-            //     connections: [],
-            //   },
-            // });
-          }}
+            onClick={() => openView('CREATE_SWITCH')}
           >
             Switch
           </Button>
@@ -260,18 +236,7 @@ const Flow = ({
             isDisabled={isLoading}
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
-            onClick={() => {
-              openView('CREATE_ROUTER');
-
-            //   dispatch({
-            //   type: TopologyActions.ADD_ROUTER,
-            //   payload: {
-            //     name: getNextDeviceName(routers, 'r'),
-            //     type: 'router',
-            //     connections: [],
-            //   },
-            // });
-          }}
+            onClick={() => openView('CREATE_ROUTER')}
           >
             Router
           </Button>
