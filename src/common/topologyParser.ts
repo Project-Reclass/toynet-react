@@ -43,7 +43,7 @@ function sanitizeXML(xml?: string): string {
  */
 function removeXMLVersion(xml?: string): string {
   if (xml)
-    return xml.replace(xmlVersionMatcher, '').replace(/[<script].+\?>/g, '');
+    return xml.replace(xmlVersionMatcher, '').replace(/<script/g, '');
   return '';
 }
 
