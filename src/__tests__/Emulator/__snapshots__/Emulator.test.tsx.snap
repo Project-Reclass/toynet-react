@@ -225,7 +225,7 @@ exports[`The emulator should render and match snapshots 1`] = `
           </div>
         </div>
         <div
-          style="z-index: 0; overflow: hidden;"
+          class="css-1fwbold"
         >
           <div
             class="css-4s6pz3"
