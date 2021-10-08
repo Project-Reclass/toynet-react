@@ -102,7 +102,7 @@ export default function CreateRouterView({ nameHint }: Props) {
           value={ip}
           placeholder='172.16.1.10/24'
           isDisabled={isLoading}
-          data-testid='drawer-router-ip-name'
+          data-testid='drawer-router-ip-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setIp(e.currentTarget.value)}
         />

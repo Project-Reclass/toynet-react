@@ -70,6 +70,7 @@ export default function CreateSwitchView({ nameHint }: Props) {
         <ToyNetInput
           value={name}
           isDisabled={isLoading}
+          data-testid='drawer-switch-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
