@@ -26,16 +26,7 @@ export interface ParsedXML {
   switches: DeviceInterface[];
 }
 
-const scriptMatcher = /[<script].+\?>/g;
 const xmlVersionMatcher = /[<?xml version].+\?>/;
-
-/**
- * Removes any potential `<script` tags in the xml that
- * could be used maliciously on the client's browser.
- */
-function sanitizeXML(xml?: string): string {
-  return (xml || '').replace(scriptMatcher, '');
-}
 
 /**
  * Removes the XML Version from the xml string.
