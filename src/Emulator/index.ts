@@ -19,6 +19,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from './EmulatorProvider';
+import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
 
 export default withEmulatorAndDialogueProvider(Emulator);

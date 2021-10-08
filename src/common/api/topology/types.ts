@@ -59,3 +59,19 @@ export interface ToynetSessionResponse {
 export interface ToynetCommandResponse {
   output: string;
 }
+
+export interface ToyNetCreateHostRequest {
+  ip: string;
+  name: string;
+  def_gateway: string;
+}
+
+export interface ToyNetCreateRouterRequest {
+  ip: string;
+  name: string;
+  intfs: string[];
+}
+
+export interface ToyNetCreateSwitchRequest {
+  name: string;
+}

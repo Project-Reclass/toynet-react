@@ -19,23 +19,23 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
+import { Box, Heading, Text } from '@chakra-ui/core';
 import 'react-contexify/dist/ReactContexify.css';
 
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 import EmulatorSection from 'src/common/components/Emulator/Section';
+import LoadingAnimation from 'src/common/components/LoadingAnimation';
 
 import Flow from './Flow';
 import { InnerContainer } from './styled';
 import ContextMenus from './Flow/ContextMenus';
-import { useEmulator } from '../EmulatorProvider';
-import { Box, Heading, Text } from '@chakra-ui/core';
-import LoadingAnimation from 'src/common/components/LoadingAnimation';
 
 const Visuals = () => {
   const { switches, hosts, routers, sessionId, isLoading } = useEmulator();
 
   return (
     <>
-    <EmulatorSection padding='0.4vh'>
+    <EmulatorSection padding='0.4vh' data-testid='emulator-visual'>
       <InnerContainer>
         {isLoading ?
           <Box position='relative' width='100%' height='100%'>

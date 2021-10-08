@@ -20,7 +20,18 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 export type DeviceType = 'router' | 'switch' | 'host';
 
+export interface DefaultGateway {
+  device: string;
+  interface: number;
+}
+
 export interface DeviceInterface {
+  ip?: string;
+  defaultGateway?: {
+    device: string;
+    interface: number;
+  };
+  interfaces: string[];
   name: string;
   type: DeviceType;
   connections: string[];
@@ -30,7 +41,8 @@ export type StateHook<T> = [T, (value: T) => void];
 
 export type UpdateValFunc<TValue> = (value: TValue) => TValue;
 
-export type AsyncStateHook<T> = [T, (value: T | UpdateValFunc<T>) => void, boolean];
+export type AsyncStateHook<T> =
+  [T, (value: T | UpdateValFunc<T>) => void, boolean];
 
 export function isUpdateValueFunc<T>(arg: any): arg is UpdateValFunc<T> {
   return arg !== undefined && typeof arg === 'function';

@@ -23,7 +23,7 @@ import { Button } from '@chakra-ui/core';
 import { useModifyTopology } from 'src/common/api/topology';
 import { DeviceInterface } from 'src/common/types';
 import { devError } from 'src/common/utils';
-import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { TopologyActions } from 'src/Emulator/useTopology';
 
 interface Props {

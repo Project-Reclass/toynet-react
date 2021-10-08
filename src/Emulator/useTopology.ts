@@ -30,7 +30,8 @@ export interface Connection {
   to: string;
   from: string;
 }
-type ReducerAction = Action<TopologyActions, DeviceInterface | DeviceInterface[] | ParsedXML | Connection>;
+type ReducerAction = Action<TopologyActions,
+  DeviceInterface | DeviceInterface[] | ParsedXML | Connection>;
 
 export interface TopologyState {
   hosts: DeviceInterface[];

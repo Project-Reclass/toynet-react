@@ -54,4 +54,27 @@ describe('The topology parser', () => {
   it('should throw an error if there is an invalid link', () => {
     expect(() => parseXMLTopology(xmlInvalidLink)).toThrowError();
   });
+  it('should create interfaces for routers', () => {
+    const numInterfaces = 3;
+    const res = parseXMLTopology(xml);
+    expect(res.routers).toHaveLength(1);
+    expect(res.routers[0].interfaces).toHaveLength(numInterfaces);
+    expect(res.routers[0].interfaces[0]).toBe('10.0.0.1/30');
+    expect(res.routers[0].interfaces[1]).toBe('172.16.0.1/24');
+    expect(res.routers[0].interfaces[2]).toBe('172.16.1.1/24');
+  });
+  it('should create default gateways for routers', () => {
+    const res = parseXMLTopology(xml);
+    expect(res.hosts).toHaveLength(2);
+    expect(res.hosts[0].defaultGateway?.device).toBe('r0');
+    expect(res.hosts[0].defaultGateway?.interface).toBe(1);
+    expect(res.hosts[1].defaultGateway?.device).toBe('r0');
+    expect(res.hosts[1].defaultGateway?.interface).toBe(2);
+  });
+  it('should create an ip for a host', () => {
+    const res = parseXMLTopology(xml);
+    expect(res.hosts).toHaveLength(2);
+    expect(res.hosts[0].ip).toBe('172.16.0.2/24');
+    expect(res.hosts[1].ip).toBe('172.16.1.2/24');
+  });
 });
