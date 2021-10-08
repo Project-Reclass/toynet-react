@@ -30,11 +30,13 @@ const routers: DeviceInterface[] = [
     name: 'r1',
     type: 'router',
     connections: [],
+    interfaces: [],
   },
   {
     name: 'r2',
     type: 'router',
     connections: [],
+    interfaces: [],
   },
 ];
 
@@ -43,6 +45,7 @@ const switches: DeviceInterface[] = [
     name: 's1',
     type: 'switch',
     connections: [],
+    interfaces: [],
   },
 ];
 
@@ -51,6 +54,7 @@ const hosts: DeviceInterface[] = [
     name: 'h1',
     type: 'host',
     connections: [],
+    interfaces: [],
   },
 ];
 

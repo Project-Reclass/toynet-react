@@ -18,33 +18,38 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
-import { Stack } from '@chakra-ui/core';
-import { Menu } from 'react-contexify';
+
+import { Heading } from '@chakra-ui/core';
+import React, { memo } from 'react';
 import { DeviceInterface } from 'src/common/types';
 
-import DeleteConnectionBtn from './DeleteConnectionBtn';
-import DeleteNodeBtn from './DeleteNodeButton';
-import InfoBtn from './InfoBtn';
+import HostRow from './HostRow';
 
 interface Props {
-  devices: DeviceInterface[];
+  activeName?: string;
+  hosts: DeviceInterface[];
+  routers: DeviceInterface[];
 }
 
-export const ContextMenus = ({ devices }: Props) => (
-  <>
-    {devices.map(device => (
-      <Menu id={`${device.name.toLocaleUpperCase()}-menu`} theme='dark' key={`${device.name}-menu`}>
-        <Stack>
-          <DeleteNodeBtn device={device} />
-          {device.connections.map((to: string) => (
-            <DeleteConnectionBtn to={to} from={device.name} key={`${to}-delete`} />
-          ))}
-          <InfoBtn device={device} />
-        </Stack>
-      </Menu>
-    ))}
-  </>
-);
+const HostRows = memo(({ hosts, routers, activeName }: Props) => {
+  return (
+    <>
+      <tr>
+        <td>
+          <Heading size='sm'>Name</Heading>
+        </td>
+        <td>
+          <Heading size='sm'>IP Address</Heading>
+        </td>
+        <td>
+          <Heading size='sm'>Default Gateway</Heading>
+        </td>
+      </tr>
+      {hosts.map(host => (
+        <HostRow key={host.name} host={host} routers={routers} activeName={activeName} />
+      ))}
+    </>
+  );
+});
 
-export default ContextMenus;
+export default HostRows;

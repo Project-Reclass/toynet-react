@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { DeviceInterface, DeviceType } from './types';
+import { DefaultGateway, DeviceInterface, DeviceType } from './types';
 
 export interface ParsedXML {
   hosts: DeviceInterface[];
@@ -26,16 +26,7 @@ export interface ParsedXML {
   switches: DeviceInterface[];
 }
 
-const scriptMatcher = /[<script].+\?>/g;
 const xmlVersionMatcher = /[<?xml version].+\?>/;
-
-/**
- * Removes any potential `<script` tags in the xml that
- * could be used maliciously on the client's browser.
- */
-function sanitizeXML(xml?: string): string {
-  return (xml || '').replace(scriptMatcher, '');
-}
 
 /**
  * Removes the XML Version from the xml string.
@@ -43,14 +34,46 @@ function sanitizeXML(xml?: string): string {
  */
 function removeXMLVersion(xml?: string): string {
   if (xml)
-    return sanitizeXML(xml).replace(xmlVersionMatcher, '');
+    return xml.replace(xmlVersionMatcher, '').replace(/<script/g, '');
   return '';
 }
 
+function createInterfaces(child: ChildNode, devicesWithInterfaces = ['router']): string[] {
+  const interfaces: string[] = [];
+  if (!devicesWithInterfaces.includes(child.nodeName))
+    return interfaces;
+
+  for (const intf of child.childNodes) {
+    if (intf.textContent)
+      interfaces.push(intf.textContent);
+  }
+  return interfaces;
+}
+
+function createDefaultGateway(
+  child: ChildNode,
+  devicesWithDefaultGateway = ['host'],
+): DefaultGateway | undefined {
+  if (!devicesWithDefaultGateway.includes(child.nodeName))
+    return;
+
+  const device = (child as Element).getElementsByTagName('name')[0]!.innerHTML;
+  const intf = (child as Element).getElementsByTagName('intf')[0]!.innerHTML;
+  return {
+    device,
+    interface: Number(intf),
+  };
+}
+
 /**
- * Parses the XML document and creates an array of default DeviceInterfaces from the document.
+ * Parses the XML document and creates an array of default
+ * DeviceInterfaces from the document.
  */
-function getDevicesFromXMLDocument(document: Document, tag: string, type: DeviceType): DeviceInterface[] {
+function getDevicesFromXMLDocument(
+  document: Document,
+  tag: string,
+  type: DeviceType,
+): DeviceInterface[] {
   const devices: DeviceInterface[] = [];
   const elements = document.getElementsByTagName(tag);
   if (elements.length < 1)
@@ -58,21 +81,37 @@ function getDevicesFromXMLDocument(document: Document, tag: string, type: Device
 
   const { childNodes } = elements[0];
   for (const child of childNodes) {
+    const possibleIp = (child as Element).attributes.getNamedItem('ip');
+    const interfaces = createInterfaces(child);
+    const defaultGateway = createDefaultGateway(child);
+
+    console.log(child);
+
     devices.push({
       name: (child as Element).attributes.getNamedItem('name')!.value,
+      ip: possibleIp ? possibleIp.value : undefined,
       type: type,
       connections: [],
+      defaultGateway,
+      interfaces,
     });
   }
 
   return devices;
 }
 
-function createDeviceLink(allDevices: DeviceInterface[], parentName: string, childName: string) {
+function createDeviceLink(
+  allDevices: DeviceInterface[],
+  parentName: string,
+  childName: string,
+) {
   const parent = allDevices.find(device => device.name === parentName);
   const child = allDevices.find(device => device.name === childName);
   if (!parent || !child)
-    throw new Error(`Invalid link for ${parentName}->${childName}. Parent or child does not exists`);
+    throw new Error(
+      `Invalid link for ${parentName}->${childName}.
+      Parent or child does not exists`,
+    );
 
   child.connections.push(parentName);
   parent.connections.push(childName);
@@ -114,6 +153,8 @@ export function parseXMLTopology(xml: string): ParsedXML {
     routers: getDevicesFromXMLDocument(parsedXML, 'routerList', 'router'),
     hosts: getDevicesFromXMLDocument(parsedXML, 'hostList', 'host'),
   };
+
+  console.log({ devices });
 
   createDeviceLinksFromXMLDocument(devices, parsedXML);
   return devices;

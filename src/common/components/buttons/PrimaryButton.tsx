@@ -18,7 +18,19 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
 
-export default withEmulatorAndDialogueProvider(Emulator);
+import React from 'react';
+import { Button, ButtonProps } from '@chakra-ui/core';
+
+const PrimaryButton: React.FC<
+  Omit<ButtonProps, 'variantColor'>
+> = ({ children, ...rest }) => (
+  <Button
+    {...rest}
+    variantColor='teal'
+  >
+    {children}
+  </Button>
+);
+
+export default PrimaryButton;

@@ -18,7 +18,34 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
+import React from 'react';
+import InterfaceRow from './InterfaceRow';
 
-export default withEmulatorAndDialogueProvider(Emulator);
+interface Props {
+  activeName?: string;
+  ip: string;
+  deviceName: string;
+  interfaces: string[];
+}
+
+const InterfaceList = ({
+  ip,
+  deviceName,
+  interfaces,
+  activeName,
+}: Props) => (
+  <>
+    {interfaces?.map((intf, i) => (
+      <InterfaceRow
+        key={intf}
+        index={i}
+        intf={intf}
+        ip={ip}
+        deviceName={deviceName}
+        activeName={activeName}
+      />
+    ))}
+  </>
+);
+
+export default InterfaceList;

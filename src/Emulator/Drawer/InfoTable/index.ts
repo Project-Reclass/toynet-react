@@ -18,7 +18,5 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
-
-export default withEmulatorAndDialogueProvider(Emulator);
+import InfoTable from './InfoTable';
+export default InfoTable;

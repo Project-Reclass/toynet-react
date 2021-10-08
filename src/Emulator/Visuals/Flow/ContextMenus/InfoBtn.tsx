@@ -18,7 +18,35 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
 
-export default withEmulatorAndDialogueProvider(Emulator);
+import React from 'react';
+import { Button } from '@chakra-ui/core';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
+import { DeviceInterface } from 'src/common/types';
+
+interface Props {
+  device: DeviceInterface;
+}
+
+export default function InfoBtn({
+  device: {
+    name,
+  },
+}: Props) {
+  const { setInfoView } = useDrawer();
+
+  const handleClick = () =>
+    setInfoView(name);
+
+  return (
+    <Button
+      onClick={handleClick}
+      variant='ghost'
+      variantColor='teal'
+      alignContent='center'
+      textAlign='left'
+    >
+      More Info
+    </Button>
+  );
+}

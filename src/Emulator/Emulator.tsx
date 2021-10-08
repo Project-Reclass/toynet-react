@@ -26,6 +26,7 @@ import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
 import Console from './Console';
 import styled from '@emotion/styled-base';
+import DrawerProvider from '../common/providers/DrawerProvider';
 
 const data = {
   'id': 1,
@@ -55,27 +56,29 @@ const EmulatorGrid = styled(Grid)`
 
 const Emulator = () => {
   return (
-    <EmulatorGrid gap={2}>
-      <Instructions panelData={data} />
-      <Grid
-        gridTemplateRows={'1fr 1fr'}
-        width='100%'
-        overflow='hidden'
-        gap={2}
-      >
-        <Visuals />
+    <DrawerProvider>
+      <EmulatorGrid gap={2}>
+        <Instructions panelData={data} />
         <Grid
-          height='100%'
-          maxH='100%'
+          gridTemplateRows={'1fr 1fr'}
+          width='100%'
           overflow='hidden'
           gap={2}
-          gridTemplateColumns={'2fr 1fr'}
         >
-          <Console />
-          <DialogueBox />
+          <Visuals />
+          <Grid
+            height='100%'
+            maxH='100%'
+            overflow='hidden'
+            gap={2}
+            gridTemplateColumns={'2fr 1fr'}
+          >
+            <Console />
+            <DialogueBox />
+          </Grid>
         </Grid>
-      </Grid>
-    </EmulatorGrid>
+      </EmulatorGrid>
+    </DrawerProvider>
   );
 };
 

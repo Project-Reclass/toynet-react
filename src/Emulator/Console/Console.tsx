@@ -26,8 +26,8 @@ import {
   EmulatorSection,
   EmulatorTitle,
 } from 'src/common/components/Emulator';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 
-import { useEmulator } from '../EmulatorProvider';
 import DeviceSelector from './DeviceSelector';
 import ConsoleTerminal from './ConsoleTerminal';
 

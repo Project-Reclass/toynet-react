@@ -25,18 +25,21 @@ const defaultHost: DeviceInterface = {
   name: 'H1',
   type: 'host',
   connections: [],
+  interfaces: [],
 };
 
 const defaultRouter: DeviceInterface = {
   name: 'R1',
   type: 'router',
   connections: [],
+  interfaces: ['172.1.1.1/24'],
 };
 
 const defaultSwitch: DeviceInterface = {
   name: 'S1',
   type: 'switch',
   connections: [],
+  interfaces: [],
 };
 
 describe('the valid link function', () => {
