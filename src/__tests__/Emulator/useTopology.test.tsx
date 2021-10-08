@@ -36,6 +36,7 @@ const defaultHost = {
   ...base,
   name: 'h1',
   type: hostType,
+  interfaces: [],
 };
 
 const switchType = 'switch' as DeviceType;
@@ -43,6 +44,7 @@ const defaultSwitch = {
   ...base,
   name: 's1',
   type: switchType,
+  interfaces: [],
 };
 
 const routerType = 'router' as DeviceType;
@@ -50,6 +52,7 @@ const defaultRouter = {
   ...base,
   name: 'r0',
   type: routerType,
+    interfaces: [],
 };
 
 describe('The useTopology custom hook', () => {
