@@ -72,16 +72,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: Download mininet
-        uses: actions/download-artifact@v2
-        with:
-          name: toynet-mininet
-      
-      - name: Download backend
-        uses: actions/download-artifact@v2
-        with:
-          name: toynet-backend
-
       - name: Download frontend
         uses: actions/download-artifact@v2
         with:
