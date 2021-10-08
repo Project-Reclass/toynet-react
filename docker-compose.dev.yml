@@ -4,14 +4,14 @@ services:
   miniflask:
     image: miniflask-prod
     build:
-      context: https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384
+      context: https://github.com/Project-Reclass/toynet-flask.git#5c4c539ffa0bcaba086f0650393263e61c14fedc
       dockerfile: toynet_mininet/Dockerfile
 
   backend:
     depends_on:
       - miniflask
     build:
-      context: https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384
+      context: https://github.com/Project-Reclass/toynet-flask.git#5c4c539ffa0bcaba086f0650393263e61c14fedc
       args:
         FLASK_APP: flasksrc
         FLASK_ENV: production

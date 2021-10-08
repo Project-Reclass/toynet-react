@@ -18,7 +18,29 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
 
-export default withEmulatorAndDialogueProvider(Emulator);
+import { Heading } from '@chakra-ui/core';
+import React, { memo } from 'react';
+import { DeviceInterface } from 'src/common/types';
+
+import SwitchRow from './SwitchRow';
+
+interface Props {
+  activeName?: string;
+  switches: DeviceInterface[];
+}
+
+const SwitchRows = memo(({ switches, activeName }: Props) => (
+  <>
+    <tr>
+      <td>
+        <Heading size='sm'>Switch</Heading>
+      </td>
+    </tr>
+    {switches.map(({ name }) => (
+      <SwitchRow name={name} activeName={activeName} />
+    ))}
+  </>
+));
+
+export default SwitchRows;

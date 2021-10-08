@@ -39,14 +39,19 @@ import ReactFlow, {
 import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
 
 import ClickableNode from './ClickableNode';
-import { createElements, getLayoutedElements, mergeElementLayouts } from './utils';
+import {
+  createElements,
+  getLayoutedElements,
+  mergeElementLayouts,
+} from './utils';
 
 import './overrides.css';
 import isValidLink from './isValidLink';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useModifyTopology } from 'src/common/api/topology';
 import { devError } from 'src/common/utils';
 
@@ -85,7 +90,10 @@ const CustomControls = styled(ButtonGroup)`
 /**
  * Determines the name of the newly added device
  */
- export const getNextDeviceName = (device: Array<{name: string}>, deviceLetter: string) => {
+ export const getNextDeviceName = (
+   device: Array<{name: string}>,
+   deviceLetter: string,
+) => {
   if (device.length < 1) {
     return `${deviceLetter}1`;
   } else {
@@ -98,20 +106,28 @@ const nodeTypes = {
   default: ClickableNode,
 };
 
-const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props) => {
+const Flow = ({
+  sessionId,
+  switches,
+  routers,
+  hosts,
+  isTesting = false,
+}: Props) => {
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
   const { dispatch, appendDialogue } = useEmulatorWithDialogue();
-  const { createLink, createDevice, isLoading } = useModifyTopology(sessionId);
+  const { openView } = useDrawer();
+  const { createLink, isLoading } = useModifyTopology(sessionId);
 
   const { transform } = useZoomPanHelper();
 
   /**
-   * We need to use the `sessionId` here since we do not want to use an old session's
-   * layout when the user creates a new toynet session.
+   * We need to use the `sessionId` here since we do not want
+   * lto use an old session's layout when the user creates a new toynet session.
    */
-  const flowSessionKey = useMemo(() => `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
+  const flowSessionKey = useMemo(() =>
+    `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
 
   const handleRestore = useCallback((newElements: Elements) => {
     // this is needed because when the component is first rendered it the
@@ -196,22 +212,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             data-testid="emulator-add-host"
             isDisabled={isLoading}
             borderColor={deviceColorClasses.get('host')}
-            onClick={async () => {
-              const name = getNextDeviceName(hosts, 'h');
-              try {
-                await createDevice('host', name);
-                dispatch({
-                  type: TopologyActions.ADD_HOST,
-                  payload: {
-                    name,
-                    type: 'host',
-                    connections: [],
-                  },
-                });
-              } catch (error) {
-                appendDialogue(`Unable to create host ${name.toUpperCase()}`, 'tomato');
-              }
-            }}
+            onClick={() => openView('CREATE_HOST')}
           >
             Host
           </Button>
@@ -223,22 +224,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variant="outline"
             isDisabled={isLoading}
             data-testid="emulator-add-switch"
-            onClick={async () => {
-              const name = getNextDeviceName(switches, 's');
-              try {
-                await createDevice('switch', name);
-                dispatch({
-                  type: TopologyActions.ADD_SWITCH,
-                  payload: {
-                    name,
-                    type: 'switch',
-                    connections: [],
-                  },
-                });
-              } catch (error) {
-                appendDialogue(`Unable to create switch ${name.toUpperCase()}`, 'tomato');
-              }
-            }}
+            onClick={() => openView('CREATE_SWITCH')}
           >
             Switch
           </Button>
@@ -250,22 +236,7 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             isDisabled={isLoading}
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
-            onClick={async () => {
-              const name = getNextDeviceName(routers, 'r');
-              try {
-                await createDevice('router', name);
-                dispatch({
-                  type: TopologyActions.ADD_ROUTER,
-                  payload: {
-                    name,
-                    type: 'host',
-                    connections: [],
-                  },
-                });
-              } catch (error) {
-                appendDialogue(`Unable to create router ${name.toUpperCase()}`, 'tomato');
-              }
-            }}
+            onClick={() => openView('CREATE_ROUTER')}
           >
             Router
           </Button>
@@ -277,4 +248,5 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
       </ReactFlow>
   );
 };
+
 export default Flow;

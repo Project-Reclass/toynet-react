@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
-import { withEmulatorAndDialogueProvider, useEmulator } from 'src/Emulator/EmulatorProvider';
+import { withEmulatorAndDialogueProvider, useEmulator } from 'src/common/providers/EmulatorProvider';
 import { createToynetSession, getToynetSession } from 'src/common/api/topology/requests';
 import RenderWithRouter from 'src/common/test-utils/renderWithRouter';
 

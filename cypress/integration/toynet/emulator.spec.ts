@@ -29,68 +29,100 @@ describe('The emulator page', () => {
   });
   it('should allow the user to add a host', () => {
     cy.visit(emulatorUrl);
-    cy.contains(/h1/i);
-    cy.contains(/h2/i);
-    cy.get('[data-testid^="emulator-visual"]')
-     .get('[data-testid^=emulator-add-host]:first').click();
+    cy.get('[data-testid=emulator-add-host]').click();
+    cy.get('[data-testid=drawer-host-default_gateway-input]').clear();
+    cy.get('[data-testid=drawer-host-default_gateway-input]').type('172.16.0.1');
+    cy.get('[data-testid=drawer-host-ip-input]').clear();
+    cy.get('[data-testid=drawer-host-ip-input]').type('172.16.0.3/24');
+    cy.get('[data-testid=viewbtn-create]').click();
     cy.get('[data-testid^="emulator-visual"]')
      .contains(/^h3$/i).should('exist');
-    cy.contains(/Created device H3/i).should('exist');
+    cy.contains(/Created host H3/i).should('be.visible');
   });
   it('should allow the user to create a switch', () => {
     cy.visit(emulatorUrl);
-    cy.contains(/s1/i);
-    cy.contains(/s2/i);
-    cy.get('[data-testid^=emulator-add-switch]:first').click();
+    cy.get('[data-testid=emulator-add-switch]').click();
+    cy.get('[data-testid=drawer-switch-name-input]').clear();
+    cy.get('[data-testid=drawer-switch-name-input]').type('S3');
+    cy.get('[data-testid=viewbtn-create]').click();
     cy.get('[data-testid^="emulator-visual"]')
       .contains(/^s3$/i).should('exist');
-    cy.contains(/created device s3/i).should('exist');
+    cy.contains(/created switch s3/i).should('exist');
   });
   it('should allow the user to create a router', () => {
     cy.visit(emulatorUrl);
-    cy.contains(/r1/i);
-    cy.get('[data-testid^=emulator-add-router]:first').click();
+    cy.get('[data-testid=emulator-add-router]').click();
+    cy.get('[data-testid=drawer-router-name-input]').clear();
+    cy.get('[data-testid=drawer-router-name-input]').type('R3');
+    cy.get('[data-testid=drawer-router-ip-input]').clear();
+    cy.get('[data-testid=drawer-router-ip-input]').type('172.16.1.10/24');
+    cy.get('[data-testid=ip_input-idx_0]').clear();
+    cy.get('[data-testid=ip_input-idx_0]').type('172.16.1.1/24');
+    cy.get('[data-testid=add_ip-notone-idx_0]').click();
+    cy.get('[data-testid=ip_input-idx_1]').clear();
+    cy.get('[data-testid=ip_input-idx_1]').type('192.168.1.1/24');
+    cy.get('[data-testid=add_ip-notone-idx_1]').click();
+    cy.get('[data-testid=ip_input-idx_2]').clear();
+    cy.get('[data-testid=ip_input-idx_2]').type('192.168.2.1/24');
+    cy.get('[data-testid=viewbtn-create]').click();
     cy.get('[data-testid^="emulator-visual"]')
-      .contains(/^r2$/i).should('exist');
+      .contains(/^r3$/i).should('exist');
   });
   it('should have a link to take the user back to the splash screen', () => {
     cy.visit(emulatorUrl);
     cy.contains(/back to site/i).click();
     cy.url().should('equal', 'http://localhost:3000/');
   });
-  it('should be able to remove a node', () => {
-    cy.visit(emulatorUrl);
-    cy.contains(/r1/i).should('be.visible');
-    cy.get('[data-testid^=emulator-add-switch]:first').click();
-    cy.get('[data-testid^="emulator-visual"]')
-      .contains(/^s3$/i).should('exist');
-    cy.get('[data-testid^="emulator-visual"]')
-      .contains(/^s3$/i).rightclick();
-    cy.contains(/delete node/i).click();
-    cy.get('[data-testid^="emulator-visual"]')
-      .contains(/^s3$/i).should('not.exist');
-    cy.contains(/Removed device s3/i).should('be.visible');
-  });
-  it('should be able to delete a connection', () => {
-    cy.visit(emulatorUrl);
-    cy.get('[data-testid^="emulator-visual"]')
-      .contains(/r1/i).should('exist');
-    cy.get('[data-testid^="emulator-visual"]')
-      .contains(/r1/i).rightclick();
-    cy.contains(/delete s1 connection/i).click();
-    cy.contains(/Removed R1 to S1/i).should('be.visible');
-  });
+
+  /**
+   * Deleting a node currently does not work. Waiting on that functionality
+   * to be re-added in to the backend.
+   */
+
+  // it('should be able to remove a node', () => {
+  //   cy.visit(emulatorUrl);
+  //   cy.contains(/r1/i).should('be.visible');
+  //   cy.get('[data-testid=emulator-add-switch]').click();
+  //   cy.get('[data-testid=drawer-switch-name-input]').clear();
+  //   cy.get('[data-testid=drawer-switch-name-input]').type('S3');
+  //   cy.get('[data-testid=viewbtn-create]').click();
+  //   cy.get('[data-testid^="emulator-visual"]')
+  //     .contains(/^s3$/i).should('exist');
+  //   cy.contains(/created switch s3/i).should('exist');
+
+  //   cy.get('[data-testid^="emulator-visual"]')
+  //     .contains(/^s3$/i).rightclick();
+  //   cy.contains(/delete node/i).click();
+  //   cy.get('[data-testid^="emulator-visual"]')
+  //     .contains(/^s3$/i).should('not.exist');
+  //   cy.contains(/Removed device s3/i).should('be.visible');
+  // });
+  // it('should be able to delete a connection', () => {
+  //   cy.visit(emulatorUrl);
+  //   cy.get('[data-testid^="emulator-visual"]')
+  //     .contains(/r1/i).should('exist');
+  //   cy.get('[data-testid^="emulator-visual"]')
+  //     .contains(/r1/i).rightclick();
+  //   cy.contains(/delete s1 connection/i).click();
+  //   cy.contains(/Removed R1 to S1/i).should('be.visible');
+  // });
 
   // it('should be able to drag nodes', () => {
   //   cy.visit(emulatorUrl);
   //   cy.contains(/r1/i).should('be.visible');
   //   cy.contains(/r1/i).move({ deltaX: 100, deltaY: 100});
   // });
+
   it('should allow elements to still be visible after reload', () => {
     cy.visit(emulatorUrl);
     cy.contains(/r1/i).should('be.visible');
-    cy.get('[data-testid^=emulator-add-switch]:first').click();
-    cy.contains(/^s3$/i).should('be.visible');
+    cy.get('[data-testid=emulator-add-switch]').click();
+    cy.get('[data-testid=drawer-switch-name-input]').clear();
+    cy.get('[data-testid=drawer-switch-name-input]').type('S3');
+    cy.get('[data-testid=viewbtn-create]').click();
+    cy.get('[data-testid^="emulator-visual"]')
+      .contains(/^s3$/i).should('exist');
+    cy.contains(/created switch s3/i).should('exist');
     cy.reload();
 
     cy.contains(/^s3$/i).should('be.visible');
@@ -98,13 +130,17 @@ describe('The emulator page', () => {
   it('should allow history to persist after refresh', () => {
     cy.visit(emulatorUrl);
     cy.contains(/r1/i).should('be.visible');
-    cy.get('[data-testid^=emulator-add-switch]:first').click();
-    cy.contains(/^s3$/i).should('be.visible');
-    cy.contains(/created device s3/i).should('be.visible');
+    cy.get('[data-testid=emulator-add-switch]').click();
+    cy.get('[data-testid=drawer-switch-name-input]').clear();
+    cy.get('[data-testid=drawer-switch-name-input]').type('S3');
+    cy.get('[data-testid=viewbtn-create]').click();
+    cy.get('[data-testid^="emulator-visual"]')
+      .contains(/^s3$/i).should('exist');
+    cy.contains(/created switch s3/i).should('exist');;
     cy.reload(); // refresh the page
 
     cy.contains(/^s3$/i).should('be.visible');
-    cy.contains(/created device s3/i).should('be.visible');
+    cy.contains(/created switch s3/i).should('be.visible');
   });
   it('should show error when device is not selected', () => {
     cy.visit(emulatorUrl);

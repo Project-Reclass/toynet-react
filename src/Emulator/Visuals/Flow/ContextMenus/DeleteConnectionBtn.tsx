@@ -22,7 +22,7 @@ import React, { SyntheticEvent } from 'react';
 import { Button } from '@chakra-ui/core';
 import { devError } from 'src/common/utils';
 import { useModifyTopology } from 'src/common/api/topology';
-import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
+import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { TopologyActions } from 'src/Emulator/useTopology';
 
 interface Props {

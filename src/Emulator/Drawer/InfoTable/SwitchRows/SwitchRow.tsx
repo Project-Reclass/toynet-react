@@ -18,7 +18,34 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
+import React, { useEffect, useRef } from 'react';
 
-export default withEmulatorAndDialogueProvider(Emulator);
+import { ActiveRow, DeviceName } from '../styled';
+
+interface RowProps {
+  name: string;
+  activeName?: string;
+}
+
+const SwitchRow = ({ name, activeName }: RowProps) => {
+  const ref = useRef<HTMLTableRowElement>(null);
+
+  useEffect(() => {
+    if (activeName === name)
+      ref.current?.scrollIntoView();
+  }, [activeName, name]);
+
+  return (
+    <ActiveRow ref={ref} isActive={activeName === name}>
+      <td>
+        <DeviceName device='switch'>
+          {name.toUpperCase()}
+        </DeviceName>
+      </td>
+      <td></td>
+      <td></td>
+    </ActiveRow>
+  );
+};
+
+export default SwitchRow;

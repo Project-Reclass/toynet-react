@@ -18,7 +18,28 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Emulator from './Emulator';
-import { withEmulatorAndDialogueProvider } from 'src/common/providers/EmulatorProvider';
 
-export default withEmulatorAndDialogueProvider(Emulator);
+import { Button, ButtonProps } from '@chakra-ui/core';
+import styled from '@emotion/styled-base';
+import React, { FC } from 'react';
+
+const GreyButton = styled(Button)`
+  background-color: grey;
+
+  :hover {
+    background-color: #b32929;
+  }
+`;
+
+const DangerButton: FC<
+  Omit<ButtonProps, 'variantColor'>
+> = ({ children, ...rest }) => (
+  <GreyButton
+    {...rest}
+    variantColor='red'
+  >
+    {children}
+  </GreyButton>
+);
+
+export default DangerButton;
