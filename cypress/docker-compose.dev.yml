@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: toynet_backend
+    image: projectreclass/toynet-backend:5e5b68a5c5581e98458539831cf6666489c07479
     privileged: true
     ports:
       - "5000:5000"
