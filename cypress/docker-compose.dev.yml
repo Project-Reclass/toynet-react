@@ -1,13 +1,22 @@
 version: '3'
 
 services:
+  miniflask:
+    image: projectreclass/toynet-mininet:1244078732e748f381d3e9779c426705589a1ca3
+
   backend:
+    depends_on:
+      - miniflask
     image: projectreclass/toynet-backend:5e5b68a5c5581e98458539831cf6666489c07479
     privileged: true
     ports:
       - "5000:5000"
     environment:
       - COMPOSE_NETWORK=toynet_mininet
+      - TOYNET_IMAGE_TAG=projectreclass/toynet-mininet:1244078732e748f381d3e9779c426705589a1ca3
+      - FLASK_APP=flasksrc
+      - MINI_FLASK_PORT=5000
+
     networks:
       - reclass_network
       - toynet_mininet
