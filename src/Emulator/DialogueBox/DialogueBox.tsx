@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { useRef, useEffect } from 'react';
-import { Icon, Stack, Text, Heading } from '@chakra-ui/core';
+import { Box, Heading, Icon, Stack, Text } from '@chakra-ui/core';
 import { useDialogue } from 'src/common/providers/EmulatorProvider';
 import EmulatorSection from 'src/common/components/Emulator/Section';
 
@@ -39,7 +39,7 @@ const DialogueBox = () => {
   const containerScrollRef = useRef< HTMLDivElement>(null);
 
   return (
-    <div style={{zIndex: 0, overflow: 'hidden'}}>
+    <Box zIndex={0} overflow='hidden'>
       <EmulatorSection>
         <EmulatorTitle>
           <Heading size='lg'>Actions</Heading>
@@ -55,7 +55,7 @@ const DialogueBox = () => {
           ))}
         </EmulatorInnerSection>
       </EmulatorSection>
-    </div>
+    </Box>
   );
 };
 
