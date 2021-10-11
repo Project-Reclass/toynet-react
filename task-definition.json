@@ -2,21 +2,54 @@
   "containerDefinitions": [
     {
       "cpu": 0,
-      "environment": [
+      "image": "docker.io/projectreclass/toynet-mininet:87967ffaf08ab010e59d300687155ebd839d47b7",
+      "name": "mininet"
+    },
+    {
+      "portMappings": [
         {
-          "name": "SECRET_KEY",
-          "value": "notasupersecretkey"
+          "hostPort": 5555,
+          "protocol": "tcp",
+          "containerPort": 5000
         }
       ],
-      "mountPoints": [],
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "COMPOSE_NETWORK",
+          "value": "bridge"
+        },
+        {
+          "name": "FLASK_APP",
+          "value": "flasksrc"
+        },
+        {
+          "name": "MINI_FLASK_PORT",
+          "value": "5000"
+        },
+        {
+          "name": "TOYNET_IMAGE_TAG",
+          "value": "docker.io/projectreclass/toynet-mininet:87967ffaf08ab010e59d300687155ebd839d47b7"
+        }
+      ],
+      "mountPoints": [
+        {
+          "containerPath": "/var/run/docker.sock",
+          "sourceVolume": "docker-socket"
+        },
+        {
+          "containerPath": "/lib/modules",
+          "sourceVolume": "lib-modules"
+        }
+      ],
       "memoryReservation": 128,
-      "image": "docker.io/projectreclass/toynet-backend",
+      "image": "docker.io/projectreclass/toynet-backend:87967ffaf08ab010e59d300687155ebd839d47b7",
       "name": "backend"
     },
     {
       "portMappings": [
         {
-          "hostPort": 80,
+          "hostPort": 8888,
           "protocol": "tcp",
           "containerPort": 80
         }
@@ -28,10 +61,7 @@
           "value": "http://backend:5000"
         }
       ],
-      "mountPoints": [],
-      "memoryReservation": 128,
-      "volumesFrom": [],
-      "image": "docker.io/projectreclass/toynet-frontend:521dc31e079b37a67836d0d7b39e095fffacc0ea",
+      "image": "docker.io/projectreclass/toynet-frontend:d13d781955396eb82854f87a436ac79b4d3f5cba",
       "dependsOn": [
         {
           "containerName": "backend",
@@ -45,6 +75,8 @@
     }
   ],
   "placementConstraints": [],
+  "memory": null,
+  "taskRoleArn": null,
   "compatibilities": [
     "EXTERNAL",
     "EC2"
@@ -52,6 +84,9 @@
   "taskDefinitionArn": "arn:aws:ecs:us-east-2:243481923718:task-definition/ToyNet:7",
   "family": "ToyNet",
   "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.privileged-container"
+    },
     {
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     },
@@ -62,7 +97,20 @@
   "requiresCompatibilities": [
     "EC2"
   ],
-  "revision": 7,
+  "revision": 2,
   "status": "ACTIVE",
-  "volumes": []
+  "volumes": [
+    {
+      "name": "lib-modules",
+      "host": {
+        "sourcePath": "/lib/modules"
+      }
+    },
+    {
+      "name": "docker-socket",
+      "host": {
+        "sourcePath": "/var/run/docker.sock"
+      }
+    }
+  ]
 }
