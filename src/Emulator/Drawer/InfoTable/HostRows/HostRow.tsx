@@ -41,7 +41,6 @@ export default function HostRow({
   const ref = useRef<HTMLTableRowElement>(null);
 
   useEffect(() => {
-    console.log({ name, activeName });
     if (name === activeName) {
       ref.current?.scrollIntoView();
     }

@@ -22,24 +22,27 @@ import React, { createContext, useContext, FC, useCallback } from 'react';
 import { useParams } from 'react-router';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
-import { DeviceInterface, DialogueMessage } from 'src/common/types';
+import { DeviceInterface, DialogueMessage, DialogueMessageId } from 'src/common/types';
 import {
   useTopology,
   TopologyState,
   TopologyActions,
   Connection,
 } from 'src/Emulator/useTopology';
+import { genUniqueId } from '../utils';
 
 interface DialogueInterface {
   dialogueMessages: DialogueMessage[];
-  appendDialogue: (message: string, color?: string) => any;
+  appendDialogue: (message: string, color?: string) => DialogueMessageId;
   clearDialogue: () => any;
+  updateDialogueMessage: (id: DialogueMessageId, updates: Partial<DialogueMessage>) => any;
 }
 
 const DialogueContext = createContext<DialogueInterface>({
   dialogueMessages: [],
-  appendDialogue: () => null,
+  appendDialogue: () => '',
   clearDialogue: () => null,
+  updateDialogueMessage: () => null,
 });
 
 const DialogueProvider: FC = ({ children }) => {
@@ -48,17 +51,35 @@ const DialogueProvider: FC = ({ children }) => {
       value => JSON.parse(value));
 
   // Not using useCallback so we can add the same error messages repeatedly
-  const appendDialogue = useCallback((message: string, color = 'White') => {
-    setDialogueMessages(prev => [...prev, {message, color}]);
+  const appendDialogue = useCallback((message: string, color = 'White'): DialogueMessageId => {
+    const id = genUniqueId();
+    setDialogueMessages(prev => [...prev, {id, message, color}]);
+    return id;
   }, [setDialogueMessages]);
 
   const clearDialogue = useCallback(() => {
     setDialogueMessages([]);
   }, [setDialogueMessages]);
 
+  const updateDialogueMessage = useCallback((
+    id: DialogueMessageId,
+    updates: Partial<DialogueMessage>,
+  ) => {
+    const updateMessage = (messages: DialogueMessage[]) => {
+      const messageToUpdate = messages.findIndex(message => message.id === id);
+      if (messageToUpdate === -1)
+        return messages;
+
+      messages[messageToUpdate] = { ...messages[messageToUpdate], ...updates };
+      return [...messages];
+    };
+
+    setDialogueMessages(updateMessage);
+  }, [setDialogueMessages]);
+
   return (
     <DialogueContext.Provider
-      value={{dialogueMessages, appendDialogue, clearDialogue}}
+      value={{dialogueMessages, appendDialogue, clearDialogue, updateDialogueMessage}}
     >
       {children}
     </DialogueContext.Provider>

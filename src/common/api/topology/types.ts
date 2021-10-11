@@ -75,3 +75,12 @@ export interface ToyNetCreateRouterRequest {
 export interface ToyNetCreateSwitchRequest {
   name: string;
 }
+
+export interface ToyNetLinkRequest {
+  dev_1: string;
+  dev_2: string;
+}
+
+export interface ToyNetDeleteDeviceRequest {
+  name: string;
+}

@@ -110,6 +110,7 @@ export default function CreateRouterView({ nameHint }: Props) {
       <IpList
         ips={interfaces}
         setIps={setInterfaces}
+        isDisabled={isLoading}
       />
       <ViewButtons
         onCancel={onClose}

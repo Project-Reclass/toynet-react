@@ -25,6 +25,7 @@ import { Stack, IconButton } from '@chakra-ui/core';
 interface Props {
   index: number;
   isLast: boolean;
+  isDisabled?: boolean;
   deleteIp: (index: number) => any;
   createNewIp: () => any;
 }
@@ -32,6 +33,7 @@ interface Props {
 const CreateIpBtns = ({
   index,
   isLast,
+  isDisabled,
   deleteIp,
   createNewIp,
 }: Props) => (
@@ -43,6 +45,7 @@ const CreateIpBtns = ({
             <IconButton
               data-testid={`remove_ip-idx_${index}`}
               width='fit-content'
+              isDisabled={isDisabled}
               variantColor='red'
               variant='outline'
               aria-label='Call Segun'
@@ -54,6 +57,7 @@ const CreateIpBtns = ({
           <IconButton
             data-testid={`add_ip-notone-idx_${index}`}
             width='fit-content'
+            isDisabled={isDisabled}
             variantColor='teal'
             variant='outline'
             aria-label='Call Segun'
@@ -65,6 +69,7 @@ const CreateIpBtns = ({
         <IconButton
           data-testid={`add_ip-idx_${index}`}
           width='fit-content'
+          isDisabled={isDisabled}
           variantColor='red'
           variant='outline'
           aria-label='Call Segun'

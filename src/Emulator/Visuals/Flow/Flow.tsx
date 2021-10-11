@@ -26,7 +26,6 @@ import localforage from 'localforage';
 import ReactFlow, {
   Controls,
   Background,
-  addEdge,
   Elements,
   updateEdge,
   OnLoadParams,
@@ -39,21 +38,21 @@ import ReactFlow, {
 import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
+import { useDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
+import { useCreateDeviceLink } from 'src/common/api/topology';
 
-import ClickableNode from './ClickableNode';
 import {
   createElements,
   getLayoutedElements,
   mergeElementLayouts,
 } from './utils';
 
-import './overrides.css';
-import isValidLink from './isValidLink';
-import { useDrawer } from 'src/common/providers/DrawerProvider';
-import { useModifyTopology } from 'src/common/api/topology';
+import ClickableNode from './ClickableNode';
+import isInValidLink from './isInValidLink';
 import { devError } from 'src/common/utils';
+import './overrides.css';
 
 export interface Props {
   sessionId: SessionId;
@@ -116,9 +115,10 @@ const Flow = ({
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
-  const { dispatch, appendDialogue } = useEmulatorWithDialogue();
+  const { appendDialogue, updateDialogueMessage } = useDialogue();
+  const { dispatch } = useEmulator();
   const { openView } = useDrawer();
-  const { createLink, isLoading } = useModifyTopology(sessionId);
+  const [createLink, { isLoading }] = useCreateDeviceLink(sessionId);
 
   const { transform } = useZoomPanHelper();
 
@@ -168,21 +168,31 @@ const Flow = ({
     const sourceDevice = allDevices.find(device => device.name === source);
     const targetDevice = allDevices.find(device => device.name === target);
 
-    const isValidMessage = isValidLink(sourceDevice, targetDevice);
-    if (isValidMessage) {
-      appendDialogue(isValidMessage, 'tomato');
+    const isInValidMessage = isInValidLink(sourceDevice, targetDevice);
+    if (isInValidMessage) {
+      appendDialogue(isInValidMessage, 'tomato');
       return;
     }
 
+    dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
+    const messageId = appendDialogue(
+      `Attempting to create link ${source} to ${target}...`, 'grey');
     try {
-      await createLink(target || '', source || '');
-      dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
-      setElements((els: any) =>
-        addEdge({ ...params, type: 'smoothstep', animated: true }, els),
-      );
+      await createLink({ dev_1: source || '', dev_2: target || ''});
+      updateDialogueMessage(messageId, {
+        message: `Created link ${source} to ${target}`,
+        color: 'White',
+      });
     } catch (error) {
       devError(error);
-      appendDialogue(`Unable to create link ${source} to ${target}`, 'tomato');
+      updateDialogueMessage(messageId, {
+        message: `Unable to create link ${source} to ${target}`,
+        color: 'tomato',
+      });
+
+      // Because we eagerly make the connection, if there was an error, we need to
+      // delete the connection.
+      dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: { from: source || '', to: target || '' }});
     }
   };
 

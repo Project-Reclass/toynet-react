@@ -37,12 +37,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
-    "start:docker:dev": "docker-compose -f docker-compose.dev.yml up",
+    "start:docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
     "start:cypress:test": "docker-compose -f cypress/docker-compose.dev.yml up",
     "cy:run": "cypress run",
     "start:cy": "start-server-and-test start http://localhost:3000 cy:run",
     "test:cy": "start-server-and-test start:cypress:test http://localhost:3000/ start:cy",
-    "start:dev": "start-server-and-test start:docker:dev http://localhost:8080/ start"
+    "start:dev": "start-server-and-test start:docker:dev http://localhost:8080/ start",
+    "dev": "npm run start:dev"
   },
   "browserslist": {
     "production": [

@@ -44,7 +44,7 @@ const DeviceSelector = ({ onChange, options }: Props) => (
       data-testid='console-device-selector'
     >
       {options.map(option => (
-        <option value={option}>{option.toUpperCase()}</option>
+        <option value={option} key={option}>{option.toUpperCase()}</option>
       ))}
     </Select>
   </Flex>
