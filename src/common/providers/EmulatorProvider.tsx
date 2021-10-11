@@ -22,37 +22,64 @@ import React, { createContext, useContext, FC, useCallback } from 'react';
 import { useParams } from 'react-router';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
-import { DeviceInterface, DialogueMessage } from 'src/common/types';
-import { useTopology, TopologyState, TopologyActions, Connection } from 'src/Emulator/useTopology';
+import { DeviceInterface, DialogueMessage, DialogueMessageId } from 'src/common/types';
+import {
+  useTopology,
+  TopologyState,
+  TopologyActions,
+  Connection,
+} from 'src/Emulator/useTopology';
+import { genUniqueId } from '../utils';
 
 interface DialogueInterface {
   dialogueMessages: DialogueMessage[];
-  appendDialogue: (message: string, color?: string) => any;
+  appendDialogue: (message: string, color?: string) => DialogueMessageId;
   clearDialogue: () => any;
+  updateDialogueMessage: (id: DialogueMessageId, updates: Partial<DialogueMessage>) => any;
 }
 
 const DialogueContext = createContext<DialogueInterface>({
   dialogueMessages: [],
-  appendDialogue: () => null,
+  appendDialogue: () => '',
   clearDialogue: () => null,
+  updateDialogueMessage: () => null,
 });
 
 const DialogueProvider: FC = ({ children }) => {
   const [dialogueMessages, setDialogueMessages] =
-    useSessionStorage<DialogueMessage[]>('history', [], value => JSON.parse(value));
+    useSessionStorage<DialogueMessage[]>('history', [],
+      value => JSON.parse(value));
 
   // Not using useCallback so we can add the same error messages repeatedly
-  const appendDialogue = useCallback((message: string, color = 'White') => {
-    setDialogueMessages(dialogueMessages.concat([{message, color}]));
-  }, [dialogueMessages, setDialogueMessages]);
+  const appendDialogue = useCallback((message: string, color = 'White'): DialogueMessageId => {
+    const id = genUniqueId();
+    setDialogueMessages(prev => [...prev, {id, message, color}]);
+    return id;
+  }, [setDialogueMessages]);
 
   const clearDialogue = useCallback(() => {
     setDialogueMessages([]);
   }, [setDialogueMessages]);
 
+  const updateDialogueMessage = useCallback((
+    id: DialogueMessageId,
+    updates: Partial<DialogueMessage>,
+  ) => {
+    const updateMessage = (messages: DialogueMessage[]) => {
+      const messageToUpdate = messages.findIndex(message => message.id === id);
+      if (messageToUpdate === -1)
+        return messages;
+
+      messages[messageToUpdate] = { ...messages[messageToUpdate], ...updates };
+      return [...messages];
+    };
+
+    setDialogueMessages(updateMessage);
+  }, [setDialogueMessages]);
+
   return (
     <DialogueContext.Provider
-      value={{dialogueMessages, appendDialogue, clearDialogue}}
+      value={{dialogueMessages, appendDialogue, clearDialogue, updateDialogueMessage}}
     >
       {children}
     </DialogueContext.Provider>
@@ -96,25 +123,30 @@ export const useEmulatorWithDialogue = () => {
       case TopologyActions.ADD_ROUTER:
       case TopologyActions.ADD_SWITCH:
         const newDevice = value.payload as DeviceInterface;
-        messages.appendDialogue(`Created device ${newDevice.name.toUpperCase()}`);
+        messages.appendDialogue(
+          `Created device ${newDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.DELETE_ROUTER:
       case TopologyActions.DELETE_HOST:
       case TopologyActions.DELETE_SWITCH:
         const deletedDevice = value.payload as DeviceInterface;
-        messages.appendDialogue(`Deleted device ${deletedDevice.name.toUpperCase()}`);
+        messages.appendDialogue(
+          `Deleted device ${deletedDevice.name.toUpperCase()}`);
         break;
       case TopologyActions.ADD_CONNECTION:
         const add = value.payload as Connection;
-        messages.appendDialogue(`Attached ${add.from.toUpperCase()} to ${add.to.toUpperCase()}`);
+        messages.appendDialogue(
+          `Attached ${add.from.toUpperCase()} to ${add.to.toUpperCase()}`);
         break;
       case TopologyActions.DELETE_CONNECTION:
         const remove = value.payload as Connection;
         if (remove.to === remove.from) {
-          messages.appendDialogue(`Removed device ${remove.from.toUpperCase()}`);
+          messages.appendDialogue(
+            `Removed device ${remove.from.toUpperCase()}`);
           break;
         }
-        messages.appendDialogue(`Removed ${remove.from.toUpperCase()} to ${remove.to.toUpperCase()}`);
+        messages.appendDialogue(
+          `Removed ${remove.from.toUpperCase()} to ${remove.to.toUpperCase()}`);
         break;
     }
     emulator.dispatch(value);
@@ -123,7 +155,9 @@ export const useEmulatorWithDialogue = () => {
   return { ...emulator, ...messages, dispatch };
 };
 
-export function withEmulatorAndDialogueProvider<T>(Component: React.ComponentType<T>) {
+export function withEmulatorAndDialogueProvider<T>(
+  Component: React.ComponentType<T>,
+) {
   return (props: T) => (
     <EmulatorProvider>
       <DialogueProvider>

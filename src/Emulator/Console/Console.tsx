@@ -19,39 +19,19 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { Box, Flex, Heading, Text, Textarea } from '@chakra-ui/core';
+import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
+import { Box, Heading, Spinner } from '@chakra-ui/core';
 import { useToynetCommand } from 'src/common/api/topology';
 import {
-  EmulatorInnerSection,
   EmulatorSection,
+  EmulatorTitle,
 } from 'src/common/components/Emulator';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 
-import { useEmulator } from '../EmulatorProvider';
-import usePrevious from 'src/common/hooks/usePrevious';
-import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
+import DeviceSelector from './DeviceSelector';
+import ConsoleTerminal from './ConsoleTerminal';
 
-interface ToyNetCommand {
-  command: string;
-  output: string;
-  color: string;
-  created: string;
-}
-
-const HistoryList = memo(({ history }: {history: ToyNetCommand[]}) => (
-  <>
-    {history.map(cmd => (
-      <AppliedCommand key={cmd.created} {...cmd} />
-    ))}
-  </>
-));
-
-const AppliedCommand = memo(({command, color, output}: ToyNetCommand) => (
-  <Box>
-    <Text>{`${command}`}</Text>
-    <Text color={color}>{output}</Text>
-  </Box>
-));
+const LOADING_DELAY = 500;
 
 const ConsoleHeading = memo(() => (
   <Heading size='lg'>
@@ -60,112 +40,56 @@ const ConsoleHeading = memo(() => (
 ));
 
 const Console = () => {
-  const { sessionId } = useEmulator();
-  const [runCommand, { error }] = useToynetCommand(sessionId);
-  const prevError = usePrevious(error);
+  const { sessionId, routers, switches, hosts } = useEmulator();
 
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [currInput, setCurrInput] = useState('>> ');
-  const [history, setHistory] = useSessionStorage<ToyNetCommand[]>(
-    `history-${sessionId}`, [],
-    (value) => JSON.parse(value),
-  );
+  const [selectedDevice, setSelectedDevice] = useState('');
+  const [showLoading, setShowLoading] = useState(false);
 
-  useEffect(() => {
-    // We check the previous error to make sure that we don't
-    // accidentally add the same error to the history twice. Or if its null.
-    if (!error || error === prevError)
-      return;
+  const [runCommand, { isLoading }] = useToynetCommand(sessionId);
 
-    const updateHistory = (command: string) => {
-      setHistory(prev => [
-        ...prev,
-        {
-          command,
-          output: `${(error as any).message}`, // error is a response returned from the server
-          color: 'tomato',
-          created: new Date().toISOString(),
-        },
-      ]);
-    };
+  const loadingRef = useRef<NodeJS.Timeout | null>(null);
 
-    updateHistory(currInput);
-    setCurrInput('>> ');
-  }, [currInput, error, prevError, setHistory]);
+  const deviceNames = useMemo(() =>
+    [...routers, ...switches, ...hosts].map(({ name }) => name),
+  [routers, switches, hosts]);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      const element = scrollRef.current;
-      element.scrollTop = element.scrollHeight;
-    }
-  }, [history]);
-
-  const handleSubmit = useCallback(async () => {
-    const res = await runCommand(currInput.replace('>> ', ''));
-
-    // res will be undefined if the request failed
-    if (!res)
-      return;
-
-    setHistory(prev => [
-      ...prev,
-      {
-        ...res,
-        command: currInput,
-        color: 'grey',
-        created: new Date().toISOString(),
-      },
-    ]);
-    setCurrInput('>> ');
-  }, [currInput, runCommand, setHistory]);
-
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const { value } = e.currentTarget;
-    if (value.length > 2 && !value.endsWith('\n'))
-      setCurrInput(`${e.currentTarget.value}`);
-  }, []);
-
-  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
-    if (e.shiftKey && e.key === 'Enter') {
-      setCurrInput(curr => `${curr}\n`);
+    // We should display a loading indicator if the request is taking longer
+    // than our loading delay. If the request finishes before this then
+    // we should not show th loading indicator.
+    if (isLoading) {
+      loadingRef.current = setTimeout(() => setShowLoading(isLoading), LOADING_DELAY);
       return;
     }
-    if (e.key === 'Enter') {
-      if (currInput.replace('>> ', '') === 'clear') {
-        setCurrInput('>> ');
-        setHistory([]);
-        return;
-      }
-
-      handleSubmit();
-    }
-  }, [currInput, handleSubmit, setHistory]);
+    clearTimeout(loadingRef.current!);
+    setShowLoading(false);
+  }, [isLoading]);
 
   return (
     <EmulatorSection overflow='hidden'>
-      <Flex paddingBottom='0.559rem' justifyContent='space-between'>
+      <EmulatorTitle justifyContent='space-between'>
         <ConsoleHeading />
-      </Flex>
-      <EmulatorInnerSection
-        ref={scrollRef}
-        padding='1rem'
-      >
-        <HistoryList history={history} />
-        <Textarea
-          data-testid='console-textarea'
-          _hover={{ borderColor: 'rgba(0,0,0,0)' }}
-          padding='0'
-          focusBorderColor='rgba(0,0,0,0)'
-          borderColor='rgba(0,0,0,0)'
-          backgroundColor='rgba(0,0,0,0)'
-          resize='none'
-          value={currInput}
-          height='fit-content'
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
+        <DeviceSelector
+          options={deviceNames}
+          onChange={e => setSelectedDevice(e.currentTarget.value)}
         />
-      </EmulatorInnerSection>
+      </EmulatorTitle>
+      <Box height='100%' position='relative' overflow='hidden'>
+        {showLoading &&
+          <Spinner
+            top='2'
+            right='2'
+            zIndex={2}
+            position='absolute'
+          />
+        }
+        <ConsoleTerminal
+          sessionId={sessionId}
+          isLoading={isLoading}
+          selectedDevice={selectedDevice}
+          runCommand={runCommand}
+        />
+      </Box>
     </EmulatorSection>
   );
 };

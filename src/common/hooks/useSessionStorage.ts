@@ -70,8 +70,6 @@ export function useSessionStorage<T>(
     const currVal = valueRef.current;
     const updateValue = isUpdateValueFunc<T>(valueOrFunc) ? valueOrFunc(currVal) : valueOrFunc;
 
-    console.log({ updateValue, keyRef: keyRef.current });
-
     setTimeout(() => {
       const serializedValue = typeof updateValue === 'string' ? updateValue : JSON.stringify(updateValue);
       sessionStorage.setItem(keyRef.current, serializedValue);

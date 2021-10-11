@@ -31,6 +31,7 @@ interface Props {
 
 const EmulatorSection = styled(Box)`
   color: white;
+  position: relative;
   background-color: #454950;
   height: ${(props: Props) => props.height || '100%'};
   width: ${(props: Props) => props.width || '100%'};

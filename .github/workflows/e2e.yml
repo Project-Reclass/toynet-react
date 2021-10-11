@@ -5,47 +5,47 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build-mininet:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # build-mininet:
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
       
-      - name: Build
-        run: |
-          docker build https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384 -f toynet_mininet/Dockerfile -t toynet_mininet
-          docker save toynet_mininet -o toynet_mininet.tar
+  #     - name: Build
+  #       run: |
+  #         docker build https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384 -f toynet_mininet/Dockerfile -t toynet_mininet
+  #         docker save toynet_mininet -o toynet_mininet.tar
 
-      - name: Store Image
-        uses: actions/upload-artifact@v2
-        with:
-          name: toynet-mininet
-          path: toynet_mininet.tar
-          retention-days: 1
+  #     - name: Store Image
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: toynet-mininet
+  #         path: toynet_mininet.tar
+  #         retention-days: 1
 
-  build-backend:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # build-backend:
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
       
-      - name: Build
-        run: |
-          docker build https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384 \
-          --build-arg FLASK_APP=flasksrc \
-          --build-arg FLASK_ENV=production \
-          --build-arg TOYNET_IMAGE_TAG=toynet_mininet \
-          --build-arg MINI_FLASK_PORT=5000 \
-          --build-arg COMPOSE_NETWORK=toynet_mininet \
-          -t toynet_backend
-          docker save toynet_backend -o toynet_backend.tar
+  #     - name: Build
+  #       run: |
+  #         docker build https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384 \
+  #         --build-arg FLASK_APP=flasksrc \
+  #         --build-arg FLASK_ENV=production \
+  #         --build-arg TOYNET_IMAGE_TAG=toynet_mininet \
+  #         --build-arg MINI_FLASK_PORT=5000 \
+  #         --build-arg COMPOSE_NETWORK=toynet_mininet \
+  #         -t toynet_backend
+  #         docker save toynet_backend -o toynet_backend.tar
 
-      - name: Store Image
-        uses: actions/upload-artifact@v2
-        with:
-          name: toynet-backend
-          path: toynet_backend.tar
-          retention-days: 1
+  #     - name: Store Image
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: toynet-backend
+  #         path: toynet_backend.tar
+  #         retention-days: 1
 
   build-frontend:
     runs-on: ubuntu-18.04
@@ -67,21 +67,11 @@ jobs:
 
   cypress-run:
     runs-on: ubuntu-18.04
-    needs: [build-mininet, build-backend, build-frontend]
+    needs: [build-frontend]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: Download mininet
-        uses: actions/download-artifact@v2
-        with:
-          name: toynet-mininet
-      
-      - name: Download backend
-        uses: actions/download-artifact@v2
-        with:
-          name: toynet-backend
-
       - name: Download frontend
         uses: actions/download-artifact@v2
         with:
@@ -91,8 +81,6 @@ jobs:
         run: |
           pwd
           ls -al
-          docker load -i toynet_mininet.tar
-          docker load -i toynet_backend.tar
           docker load -i toynet_frontend.tar
 
       - name: Cypress run
@@ -106,8 +94,16 @@ jobs:
 
       - name: Archive cypress results
         uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: cypress-videos
+          path: |
+            cypress/videos
+
+      - name: Archive cypress results
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
         with:
           name: cypress-screenshots
           path: |
             cypress/screenshots
-            cypress/videos

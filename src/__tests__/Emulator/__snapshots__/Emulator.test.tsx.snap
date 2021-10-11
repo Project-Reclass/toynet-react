@@ -6,7 +6,7 @@ exports[`The emulator should render and match snapshots 1`] = `
     class="css-15mlykw"
   >
     <div
-      class="css-4rmbj"
+      class="css-1p9h997"
     >
       <div
         class="css-1gskj9r"
@@ -60,11 +60,11 @@ exports[`The emulator should render and match snapshots 1`] = `
         class="css-1f1lwn6"
         style="display: flex; flex-direction: column; height: 100%;"
       >
-        <h2
-          class="css-1sdjv6a"
+        <div
+          class="css-1w77u0h"
         >
           Tasks
-        </h2>
+        </div>
         <div
           class="css-1snafkv"
         >
@@ -99,7 +99,8 @@ exports[`The emulator should render and match snapshots 1`] = `
       class="css-jj5y1g"
     >
       <div
-        class="css-gvlyi5"
+        class="css-tkj973"
+        data-testid="emulator-visual"
       >
         <div
           class="css-ljj55y"
@@ -157,39 +158,87 @@ exports[`The emulator should render and match snapshots 1`] = `
         class="css-jhr2ok"
       >
         <div
-          class="css-1ckwdaf"
+          class="css-1ywxh3e"
         >
           <div
-            class="css-1iiig6z"
+            class="css-lp54d1"
           >
             <h2
               class="css-nua0st"
             >
               Console
             </h2>
+            <div
+              class="css-ki9t1j"
+            >
+              <p
+                class="css-ku3qws"
+              >
+                Device
+              </p>
+              <div
+                class="css-3fim88"
+              >
+                <select
+                  class="css-v4upyu"
+                  data-testid="console-device-selector"
+                >
+                  <option
+                    value=""
+                  >
+                    Select device
+                  </option>
+                </select>
+                <div
+                  class="css-1s963hi"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="css-12c4avn"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
           <div
-            class="css-1w1wy86"
+            class="css-esnmos"
           >
-            <textarea
-              class="css-1ckzuis"
-              data-testid="console-textarea"
+            <div
+              class="css-1w1wy86"
             >
-              &gt;&gt; 
-            </textarea>
+              <textarea
+                aria-disabled="false"
+                class="css-1ckzuis"
+                data-testid="console-textarea"
+              >
+                &gt;&gt; 
+              </textarea>
+            </div>
           </div>
         </div>
         <div
-          style="z-index: 0; overflow: hidden;"
+          class="css-1fwbold"
         >
           <div
-            class="css-1fmka3o"
+            class="css-4s6pz3"
           >
-            <h2
-              class="css-ix0oza"
+            <div
+              class="css-fjp8dd"
             >
-              Actions
-            </h2>
+              <h2
+                class="css-nua0st"
+              >
+                Actions
+              </h2>
+            </div>
             <div
               class="css-1snafkv"
             />

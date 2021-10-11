@@ -73,7 +73,7 @@ function validateHostLink(from: DeviceInterface, to: DeviceInterface) {
          `Unable to connect ${from.name.toUpperCase()} to ${to.name.toUpperCase()}`;
 };
 
-export function isValidLink(from?: DeviceInterface, to?: DeviceInterface): Reason | null {
+export function isInValidLink(from?: DeviceInterface, to?: DeviceInterface): Reason | null {
   if (!from || !to || from.name.length < 1 || to.name.length < 1 || from.name === to.name)
     return 'One of the device names is invalid' as Reason;
 
@@ -81,4 +81,4 @@ export function isValidLink(from?: DeviceInterface, to?: DeviceInterface): Reaso
   return validator ? validator(from, to) : null;
 };
 
-export default isValidLink;
+export default isInValidLink;

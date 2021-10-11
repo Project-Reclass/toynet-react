@@ -18,6 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, ButtonGroup } from '@chakra-ui/core';
 import styled from '@emotion/styled';
@@ -25,7 +26,6 @@ import localforage from 'localforage';
 import ReactFlow, {
   Controls,
   Background,
-  addEdge,
   Elements,
   updateEdge,
   OnLoadParams,
@@ -38,14 +38,21 @@ import ReactFlow, {
 import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
-import { useEmulatorWithDialogue } from 'src/Emulator/EmulatorProvider';
+import { useDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
 import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
+import { useCreateDeviceLink } from 'src/common/api/topology';
+
+import {
+  createElements,
+  getLayoutedElements,
+  mergeElementLayouts,
+} from './utils';
 
 import ClickableNode from './ClickableNode';
-import { createElements, getLayoutedElements, mergeElementLayouts } from './utils';
-
+import isInValidLink from './isInValidLink';
+import { devError } from 'src/common/utils';
 import './overrides.css';
-import isValidLink from './isValidLink';
 
 export interface Props {
   sessionId: SessionId;
@@ -82,7 +89,10 @@ const CustomControls = styled(ButtonGroup)`
 /**
  * Determines the name of the newly added device
  */
- export const getNextDeviceName = (device: Array<{name: string}>, deviceLetter: string) => {
+ export const getNextDeviceName = (
+   device: Array<{name: string}>,
+   deviceLetter: string,
+) => {
   if (device.length < 1) {
     return `${deviceLetter}1`;
   } else {
@@ -95,19 +105,29 @@ const nodeTypes = {
   default: ClickableNode,
 };
 
-const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props) => {
+const Flow = ({
+  sessionId,
+  switches,
+  routers,
+  hosts,
+  isTesting = false,
+}: Props) => {
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
-  const { dispatch, appendDialogue } = useEmulatorWithDialogue();
+  const { appendDialogue, updateDialogueMessage } = useDialogue();
+  const { dispatch } = useEmulator();
+  const { openView } = useDrawer();
+  const [createLink, { isLoading }] = useCreateDeviceLink(sessionId);
 
   const { transform } = useZoomPanHelper();
 
   /**
-   * We need to use the `sessionId` here since we do not want to use an old session's
-   * layout when the user creates a new toynet session.
+   * We need to use the `sessionId` here since we do not want
+   * lto use an old session's layout when the user creates a new toynet session.
    */
-  const flowSessionKey = useMemo(() => `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
+  const flowSessionKey = useMemo(() =>
+    `${FLOW_STORE_KEY}-${sessionId}`, [sessionId]);
 
   const handleRestore = useCallback((newElements: Elements) => {
     // this is needed because when the component is first rendered it the
@@ -141,23 +161,39 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
     handleRestore(getLayoutedElements(els, 'LR', isTesting));
   }, [hosts, routers, switches, isTesting, handleRestore]);
 
-  const onConnect = (params: Edge | Connection) => {
+  const onConnect = async (params: Edge | Connection) => {
     const { source, target } = params;
 
     const allDevices = [...routers, ...hosts, ...switches];
     const sourceDevice = allDevices.find(device => device.name === source);
     const targetDevice = allDevices.find(device => device.name === target);
 
-    const isValidMessage = isValidLink(sourceDevice, targetDevice);
-    if (isValidMessage) {
-      appendDialogue(isValidMessage, 'tomato');
+    const isInValidMessage = isInValidLink(sourceDevice, targetDevice);
+    if (isInValidMessage) {
+      appendDialogue(isInValidMessage, 'tomato');
       return;
     }
 
     dispatch({ type: TopologyActions.ADD_CONNECTION, payload: { from: source || '', to: target || '' }});
-    setElements((els: any) =>
-      addEdge({ ...params, type: 'smoothstep', animated: true }, els),
-    );
+    const messageId = appendDialogue(
+      `Attempting to create link ${source} to ${target}...`, 'grey');
+    try {
+      await createLink({ dev_1: source || '', dev_2: target || ''});
+      updateDialogueMessage(messageId, {
+        message: `Created link ${source} to ${target}`,
+        color: 'White',
+      });
+    } catch (error) {
+      devError(error);
+      updateDialogueMessage(messageId, {
+        message: `Unable to create link ${source} to ${target}`,
+        color: 'tomato',
+      });
+
+      // Because we eagerly make the connection, if there was an error, we need to
+      // delete the connection.
+      dispatch({ type: TopologyActions.DELETE_CONNECTION, payload: { from: source || '', to: target || '' }});
+    }
   };
 
   const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
@@ -184,16 +220,9 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variantColor="pink"
             variant="outline"
             data-testid="emulator-add-host"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('host')}
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_HOST,
-              payload: {
-                name: getNextDeviceName(hosts, 'h'),
-                type: 'host',
-                connections: [],
-                },
-              })
-            }
+            onClick={() => openView('CREATE_HOST')}
           >
             Host
           </Button>
@@ -203,16 +232,9 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             variantColor="blue"
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
+            isDisabled={isLoading}
             data-testid="emulator-add-switch"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_SWITCH,
-              payload: {
-                name: getNextDeviceName(switches, 's'),
-                type: 'switch',
-                connections: [],
-              },
-            })
-          }
+            onClick={() => openView('CREATE_SWITCH')}
           >
             Switch
           </Button>
@@ -221,17 +243,10 @@ const Flow = ({ sessionId, switches, routers, hosts, isTesting = false }: Props)
             leftIcon="add"
             variantColor="yellow"
             data-testid="emulator-add-router"
+            isDisabled={isLoading}
             borderColor={deviceColorClasses.get('router')}
             variant="outline"
-            onClick={() => dispatch({
-              type: TopologyActions.ADD_ROUTER,
-              payload: {
-                name: getNextDeviceName(routers, 'r'),
-                type: 'router',
-                connections: [],
-              },
-            })
-          }
+            onClick={() => openView('CREATE_ROUTER')}
           >
             Router
           </Button>

@@ -32,21 +32,25 @@ const defaultDevices = [
     name: 'h1',
     type: hostType,
     connections: ['s1'],
+    interfaces: [],
   },
   {
     name: 'h2',
     type: switchType,
     connections: ['s1'],
+    interfaces: [],
   },
   {
     name: 's1',
     type: switchType,
     connections: ['r1', 'h2', 'h1'],
+    interfaces: [],
   },
   {
     name: 'r1',
     type: routerType,
     connections: ['s1'],
+    interfaces: [],
   },
 ];
 

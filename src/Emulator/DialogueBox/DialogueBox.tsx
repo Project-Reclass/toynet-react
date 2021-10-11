@@ -19,8 +19,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { useRef, useEffect } from 'react';
-import { Icon, Stack, Text } from '@chakra-ui/core';
-import { useDialogue } from '../EmulatorProvider';
+import { Box, Heading, Icon, Stack, Text } from '@chakra-ui/core';
+import { useDialogue } from 'src/common/providers/EmulatorProvider';
 import EmulatorSection from 'src/common/components/Emulator/Section';
 
 import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
@@ -39,23 +39,21 @@ const DialogueBox = () => {
   const containerScrollRef = useRef< HTMLDivElement>(null);
 
   return (
-    <div style={{zIndex: 0, overflow: 'hidden'}}>
+    <Box zIndex={0} overflow='hidden'>
       <EmulatorSection>
-        <EmulatorTitle size='lg' color='white'>
-          Actions
+        <EmulatorTitle>
+          <Heading size='lg'>Actions</Heading>
         </EmulatorTitle>
         <EmulatorInnerSection ref={containerScrollRef}>
           {dialogueMessages.map( (dialogueMessage) => (
-            <>
-              <Stack direction='row' spacing={3} key={dialogueMessage.message}>
-                <Icon name='info-outline' margin='auto 0.2rem' />
-                <Text color={dialogueMessage.color}>{dialogueMessage.message}</Text>
-              </Stack>
-            </>
+            <Stack direction='row' spacing={3} key={dialogueMessage.id}>
+              <Icon name='info-outline' margin='auto 0.2rem' />
+              <Text color={dialogueMessage.color}>{dialogueMessage.message}</Text>
+            </Stack>
           ))}
         </EmulatorInnerSection>
       </EmulatorSection>
-    </div>
+    </Box>
   );
 };
 
