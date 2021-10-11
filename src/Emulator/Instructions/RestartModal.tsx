@@ -29,6 +29,8 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/core';
+import { useEmulator } from '../../common/providers/EmulatorProvider';
+import { TopologyActions } from '../../Emulator/useTopology';
 
 interface Props {
   isOpen: boolean;
@@ -37,6 +39,8 @@ interface Props {
 }
 
 const RestartModal = ({ isOpen, close }: Props) => {
+  const { dispatch } = useEmulator();
+
   return (
     <Modal isOpen={isOpen} onClose={close} isCentered>
       <ModalOverlay />
@@ -53,6 +57,7 @@ const RestartModal = ({ isOpen, close }: Props) => {
             variantColor="red"
             width={80}
             fontSize='sm'
+            onClick={() => dispatch({type: TopologyActions.CLEAR})}
           >
             I'm Sure
           </Button>

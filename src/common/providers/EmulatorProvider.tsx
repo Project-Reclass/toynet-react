@@ -93,6 +93,7 @@ const EmulatorContext = createContext<TopologyState>({
   routers: [],
   switches: [],
   hosts: [],
+  isRestart: false,
   sessionId: -1,
   dispatch: () => {},
 });
@@ -116,6 +117,7 @@ export const useEmulator = () => useContext(EmulatorContext);
 export const useEmulatorWithDialogue = () => {
   const emulator = useEmulator();
   const messages = useDialogue();
+  console.log('emulator + messages', emulator, messages);
 
   const dispatch: typeof emulator.dispatch = (value) => {
     switch (value.type) {

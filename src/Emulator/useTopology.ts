@@ -38,6 +38,7 @@ export interface TopologyState {
   routers: DeviceInterface[];
   switches: DeviceInterface[];
   dispatch: React.Dispatch<ReducerAction>;
+  isRestart: boolean;
   isLoading: boolean;
   sessionId: SessionId;
 }
@@ -120,6 +121,9 @@ function reducer(state: ParsedXML, action: ReducerAction) {
       state.switches = (action.payload as ParsedXML).switches;
       state.hosts = (action.payload as ParsedXML).hosts;
       return;
+
+    case TopologyActions.CLEAR:
+      console.log('dispatch CLEAR');
   }
 };
 
@@ -148,5 +152,6 @@ export function useTopology(id: number) {
     isLoading,
     dispatch: dispatch,
     sessionId: data?.sessionId || -1,
+    isRestart: false,
   };
 }
