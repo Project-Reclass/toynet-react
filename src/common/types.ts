@@ -59,7 +59,9 @@ export interface StringMap {
   [key: string]: boolean;
 }
 
+export type DialogueMessageId = string;
 export interface DialogueMessage {
+  id: DialogueMessageId;
   message: string,
   color: string
 }

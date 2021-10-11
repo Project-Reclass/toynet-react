@@ -97,6 +97,7 @@ export default function CreateHostView({ nameHint }: Props) {
         <ToyNetInput
           name={ip}
           placeholder='192.168.1.2/24'
+          isDisabled={isLoading}
           data-testid='drawer-host-ip-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setIp(e.currentTarget.value)}

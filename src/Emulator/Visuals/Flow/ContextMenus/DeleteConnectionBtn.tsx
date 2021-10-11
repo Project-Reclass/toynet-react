@@ -21,8 +21,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 import React, { SyntheticEvent } from 'react';
 import { Button } from '@chakra-ui/core';
 import { devError } from 'src/common/utils';
-import { useModifyTopology } from 'src/common/api/topology';
-import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
+import { useDeleteDeviceLink } from 'src/common/api/topology';
+import { useDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
 import { TopologyActions } from 'src/Emulator/useTopology';
 
 interface Props {
@@ -31,19 +31,39 @@ interface Props {
 }
 
 export default function DeleteConnectionBtn({ to, from }: Props) {
-  const { sessionId, dispatch, appendDialogue } = useEmulatorWithDialogue();
-  const { deleteLink } = useModifyTopology(sessionId);
+  const { appendDialogue, updateDialogueMessage } = useDialogue();
+  const { sessionId, dispatch } = useEmulator();
+  const [deleteLink] = useDeleteDeviceLink(sessionId);
+
   const handleClick = async (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    dispatch({
+      type: TopologyActions.DELETE_CONNECTION,
+      payload: { to, from },
+    });
+
+    const messageId = appendDialogue(
+      `Attempting to delete link between ${to} and ${from}...`, 'grey');
     try {
-      await deleteLink(to, from);
-      dispatch({
-        type: TopologyActions.DELETE_CONNECTION,
-        payload: { to, from },
+      await deleteLink({ dev_1: from, dev_2: to });
+      updateDialogueMessage(messageId, {
+        message: `Deleted link between ${to} and ${from}`,
+        color: 'White',
       });
     } catch (error) {
       devError(error);
-      appendDialogue(`Unable to delete link ${to} - ${from}`, 'tomato');
+      updateDialogueMessage(messageId, {
+        message: `Unable to delete link between ${to} and ${from}`,
+        color: 'tomato',
+      });
+
+      // Since we eagerly remove the connection, we need to add it back
+      // in when there is an error. This prevents there being any perceived
+      // lag to the user.
+      dispatch({
+        type: TopologyActions.ADD_CONNECTION,
+        payload: { to, from },
+      });
     }
   };
 

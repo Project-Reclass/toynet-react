@@ -19,6 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import axios, { AxiosError } from 'axios';
+import { DeviceType } from 'src/common/types';
 
 import {
   SessionRequest,
@@ -30,9 +31,30 @@ import {
   ToyNetCreateHostRequest,
   ToyNetCreateRouterRequest,
   ToyNetCreateSwitchRequest,
+  ToyNetLinkRequest,
+  ToyNetDeleteDeviceRequest,
 } from './types';
 
 const BASE_PATH = '/api/toynet';
+
+interface StringMap {
+  [key: string]: any;
+}
+
+/**
+ * Recursively makes each string on an object to lower case.
+ */
+function makeToLowerCase(value: string | StringMap): string | StringMap {
+  if (typeof value === 'string') {
+    return value.toLowerCase();
+  }
+
+  const copy = JSON.parse(JSON.stringify(value));
+  for (const key of Object.keys(copy)) {
+    copy[key] = makeToLowerCase(copy[key]);
+  }
+  return copy;
+}
 
 export const createToynetSession = async (request: SessionRequest) => {
   const { data } = await axios.post<SessionRequestResponse>(
@@ -60,8 +82,23 @@ export const updateToynetSession = async ({id, command}: CommandRequest): Promis
 export const runToynetCommand = async(id: SessionId, command: string) => {
   try {
     const { data } = await axios.post<ToynetCommandResponse>(
-      `${BASE_PATH}/session/${id}`, { toynet_command: command });
+      `${BASE_PATH}/session/${id}`, { toynet_command: makeToLowerCase(command) });
     return data;
+  } catch (error) {
+    throw new Error(
+      (error as AxiosError).response?.data.message || 'Server error');
+  }
+};
+
+export const deleteDevice = async (
+  id: SessionId,
+  deviceType: DeviceType,
+  request: ToyNetDeleteDeviceRequest,
+) => {
+  try {
+    const res = axios.put(
+      `${BASE_PATH}/session/${id}/delete/${deviceType}`, makeToLowerCase(request));
+    return res;
   } catch (error) {
     throw new Error(
       (error as AxiosError).response?.data.message || 'Server error');
@@ -74,7 +111,7 @@ export const createHost = async (
 ) => {
   try {
     const res = await axios.put(
-      `${BASE_PATH}/session/${id}/create/host`, request);
+      `${BASE_PATH}/session/${id}/create/host`, makeToLowerCase(request));
     return res;
   } catch (error) {
     throw new Error(
@@ -88,7 +125,7 @@ export const createRouter = async (
 ) => {
   try {
     const res = await axios.put(
-      `${BASE_PATH}/session/${id}/create/router`, request);
+      `${BASE_PATH}/session/${id}/create/router`, makeToLowerCase(request));
     return res;
   } catch (error) {
     throw new Error(
@@ -102,10 +139,38 @@ export const createSwitch = async (
 ) => {
   try {
     const res = await axios.put(
-      `${BASE_PATH}/session/${id}/create/switch`, request);
+      `${BASE_PATH}/session/${id}/create/switch`, makeToLowerCase(request));
     return res;
   } catch (error) {
     throw new Error(
       (error as AxiosError).response?.data.message || 'Server error');
+  }
+};
+
+export const createLink = async (
+  id: SessionId,
+  request: ToyNetLinkRequest,
+) => {
+  try {
+    const res = await axios.put(
+      `${BASE_PATH}/session/${id}/create/link`, makeToLowerCase(request));
+    return res;
+  } catch (error) {
+    throw new Error(
+      (error as AxiosError).response?.data.messages || 'Server error');
+  }
+};
+
+export const deleteLink = async (
+  id: SessionId,
+  request: ToyNetLinkRequest,
+) => {
+  try {
+    const res = await axios.put(
+      `${BASE_PATH}/session/${id}/delete/link`, makeToLowerCase(request));
+    return res;
+  } catch (error) {
+    throw new Error(
+      (error as AxiosError).response?.data.messages || 'Server error');
   }
 };

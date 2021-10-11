@@ -35,16 +35,16 @@ export interface Ip {
 
 interface Props {
   ips: Ip[];
+  isDisabled: boolean;
   setIps: Dispatch<SetStateAction<Ip[]>>;
 }
 
 export default function IpList({
   ips,
+  isDisabled,
   setIps,
 }: Props) {
   const toast = useToast();
-
-  // const [ips, setIps] = useState([initialIp]);
 
   const ipLengthRef = useRef(ips.length);
 
@@ -77,7 +77,6 @@ export default function IpList({
   const deleteIp = useCallback((idx: number) => {
     setIps(prevIps => {
       const copy = prevIps.slice();
-      console.log({ copy });
       copy.splice(idx, 1);
       return [...copy];
     });
@@ -99,11 +98,14 @@ export default function IpList({
           <FormLabel>{`Interface ${i + 1} IP`}</FormLabel>
           <ToyNetInput
             value={ip.ipAddr}
+            placeholder='172.16.2.10/24'
+            isDisabled={isDisabled}
             onChange={handleInput(i)}
             data-testid={`ip_input-idx_${i}`}
           />
         </FormControl>
         <CreateIpBtns
+          isDisabled={isDisabled}
           index={i}
           isLast={i === ips.length - 1}
           deleteIp={deleteIp}
