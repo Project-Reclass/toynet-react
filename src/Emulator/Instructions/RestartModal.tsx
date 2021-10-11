@@ -38,7 +38,7 @@ interface Props {
 
 const RestartModal = ({ isOpen, close }: Props) => {
   return (
-    <Modal isOpen={isOpen} onClose={close}>
+    <Modal isOpen={isOpen} onClose={close} isCentered>
       <ModalOverlay />
       <ModalContent backgroundColor='#33373b'>
         <ModalBody>
