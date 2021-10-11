@@ -20,42 +20,46 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React, { SyntheticEvent } from 'react';
 import { Button } from '@chakra-ui/core';
-import { useModifyTopology } from 'src/common/api/topology';
+import { useDeleteDevice } from 'src/common/api/topology';
 import { DeviceInterface } from 'src/common/types';
 import { devError } from 'src/common/utils';
-import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
-import { TopologyActions } from 'src/Emulator/useTopology';
+import { useDialogue, useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 
 interface Props {
   device: DeviceInterface;
 }
 
-export default function DeleteNodeBtn({ device }: Props) {
-  const { sessionId, dispatch, appendDialogue } = useEmulatorWithDialogue();
-  const { deleteDevice } = useModifyTopology(sessionId);
+export default function DeleteNodeBtn({ device: {
+  name,
+  connections,
+  type: deviceType,
+}}: Props) {
+  const { appendDialogue, updateDialogueMessage } = useDialogue();
+  const { sessionId } = useEmulatorWithDialogue();
+  const [deleteDevice] = useDeleteDevice(sessionId, deviceType);
 
   const handleClick = async (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    let deviceTypeAction = device.type === 'router' ? TopologyActions.DELETE_ROUTER :
-      device.type === 'switch' ? TopologyActions.DELETE_SWITCH :
-        device.type === 'host' ? TopologyActions.DELETE_HOST :
-          TopologyActions.FLUSH_QUEUE;
+    const messageId = appendDialogue(
+      `Attempting to delete ${deviceType} ${name}...`, 'grey');
     try {
-      await deleteDevice(device.type, device.name);
-      dispatch({ type: deviceTypeAction, payload: device });
-      dispatch({
-        type: TopologyActions.DELETE_CONNECTION,
-        payload: { to: device.name, from: device.name },
+      await deleteDevice({ name });
+      updateDialogueMessage(messageId, {
+        message: `Deleted ${deviceType} ${name}`,
+        color: 'White',
       });
     } catch (error) {
       devError(error);
-      appendDialogue(`Unable to delete ${device.type} ${device.name}`, 'tomato');
+      updateDialogueMessage(messageId, {
+        message: `Unable to delete ${deviceType} ${name}`,
+        color: 'tomato',
+      });
     }
   };
 
   return (
     <Button onClick={handleClick}
-      isDisabled={device.connections.length !== 0}
+      isDisabled={connections.length !== 0}
       variant='ghost'
       variantColor='teal'
       alignContent='center'

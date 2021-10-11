@@ -20,20 +20,30 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import { useCallback, useEffect } from 'react';
 import { useQuery, useMutation, queryCache } from 'react-query';
+import { devError } from 'src/common/utils';
 import { DeviceType } from 'src/common/types';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
-import { SessionId, ToyNetCreateHostRequest, ToyNetCreateRouterRequest, ToyNetCreateSwitchRequest } from './types';
+import {
+  SessionId,
+  ToyNetCreateHostRequest,
+  ToyNetLinkRequest,
+  ToyNetCreateRouterRequest,
+  ToyNetCreateSwitchRequest,
+  ToyNetDeleteDeviceRequest,
+} from './types';
 import {
   createHost,
+  createLink,
   createRouter,
   createSwitch,
   createToynetSession,
+  deleteDevice,
+  deleteLink,
   getToynetSession,
   runToynetCommand,
   updateToynetSession,
 } from './requests';
-import { devError } from 'src/common/utils';
 
 const seenDevices = new Set();
 
@@ -186,6 +196,49 @@ export function useCreateSwitch(sessionId: SessionId) {
     },
   );
 }
+
+export function useDeleteDevice(sessionId: SessionId, deviceType: DeviceType) {
+  return useMutation((request: ToyNetDeleteDeviceRequest) =>
+    deleteDevice(sessionId, deviceType, request), {
+      throwOnError: true,
+      onSuccess: () => {
+        queryCache.invalidateQueries(['toynet-session', {
+          sessionId,
+          hasInitialized: true,
+        }]);
+      },
+    },
+  );
+}
+
+export function useCreateDeviceLink(sessionId: SessionId) {
+  return useMutation((request: ToyNetLinkRequest) =>
+    createLink(sessionId, request), {
+      throwOnError: true,
+      onSuccess: () => {
+        queryCache.invalidateQueries(['toynet-session', {
+          sessionId,
+          hasInitialized: true,
+        }]);
+      },
+    },
+  );
+}
+
+export function useDeleteDeviceLink(sessionId: SessionId) {
+  return useMutation((request: ToyNetLinkRequest) =>
+    deleteLink(sessionId, request), {
+      throwOnError: true,
+      onSuccess: () => {
+        queryCache.invalidateQueries(['toynet-session', {
+          sessionId,
+          hasInitialized: true,
+        }]);
+      },
+    },
+  );
+}
+
 
 export function useToynetCommand(id: SessionId) {
   return useMutation((command: string) => runToynetCommand(id, command));

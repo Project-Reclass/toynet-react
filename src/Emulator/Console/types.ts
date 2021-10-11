@@ -21,7 +21,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 export interface ToyNetCommand {
   command: string;
-  output: string;
+  output: string[];
   color: string;
   created: string;
   status: 'error' | 'success';

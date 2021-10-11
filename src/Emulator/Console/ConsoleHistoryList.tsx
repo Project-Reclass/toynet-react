@@ -25,7 +25,12 @@ import { ToyNetCommand } from './types';
 const AppliedCommand = memo(({command, color, output}: ToyNetCommand) => (
   <Box>
     <Text>{`${command}`}</Text>
-    <Text color={color}>{output}</Text>
+    {output.map((text, i) => (
+
+      // This rendered list is never updated to using a index
+      // here won't cause any issues.
+      <Text key={`${text}-${i}`} color={color}>{text}</Text>
+    ))}
   </Box>
 ));
 

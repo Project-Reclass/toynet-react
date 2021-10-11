@@ -48,20 +48,21 @@ const getCommandFromResponse = async (
       return  {
         ...partialResponse,
         color: 'red',
-        output: 'Internal server error',
+        output: ['Internal server error'],
         status: 'error',
-    };
+      };
     }
+    const formattedRes = res.output.split('\r\n');
     return {
       ...partialResponse,
-      ...res,
+      output: formattedRes,
       status: 'success',
       color: 'grey',
     };
   } catch (error) {
     return {
       ...partialResponse,
-      output: `${(error as any).message}`, // error is a response returned from the server
+      output: [`${(error as any).message}`], // error is a response returned from the server
       color: 'tomato',
       status: 'error',
     };
@@ -110,8 +111,8 @@ export default function ConsoleTerminal({
         {
           command: input,
           color: 'tomato',
-          output: `No device selected. Please select a device from
-                   the dropdown to run a command.`,
+          output: [`No device selected. Please select a device from
+                   the dropdown to run a command.`],
           created: new Date().toISOString(),
           status: 'error',
         },
