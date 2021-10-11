@@ -117,7 +117,6 @@ export const useEmulator = () => useContext(EmulatorContext);
 export const useEmulatorWithDialogue = () => {
   const emulator = useEmulator();
   const messages = useDialogue();
-  console.log('emulator + messages', emulator, messages);
 
   const dispatch: typeof emulator.dispatch = (value) => {
     switch (value.type) {

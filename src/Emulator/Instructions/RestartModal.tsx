@@ -29,8 +29,7 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/core';
-import { useEmulator } from '../../common/providers/EmulatorProvider';
-import { TopologyActions } from '../../Emulator/useTopology';
+import { useDialogue } from '../../common/providers/EmulatorProvider';
 
 interface Props {
   isOpen: boolean;
@@ -39,7 +38,13 @@ interface Props {
 }
 
 const RestartModal = ({ isOpen, close }: Props) => {
-  const { dispatch } = useEmulator();
+  const { clearDialogue } = useDialogue();
+
+  // Clear action log and close modal
+  const handleRestart = () => {
+    clearDialogue();
+    close();
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={close} isCentered>
@@ -57,7 +62,7 @@ const RestartModal = ({ isOpen, close }: Props) => {
             variantColor="red"
             width={80}
             fontSize='sm'
-            onClick={() => dispatch({type: TopologyActions.CLEAR})}
+            onClick={handleRestart}
           >
             I'm Sure
           </Button>

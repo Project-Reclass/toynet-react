@@ -121,9 +121,6 @@ function reducer(state: ParsedXML, action: ReducerAction) {
       state.switches = (action.payload as ParsedXML).switches;
       state.hosts = (action.payload as ParsedXML).hosts;
       return;
-
-    case TopologyActions.CLEAR:
-      console.log('dispatch CLEAR');
   }
 };
 
