@@ -58,7 +58,7 @@ exports[`The emulator should render and match snapshots 1`] = `
       </div>
       <div
         class="css-1f1lwn6"
-        style="display: flex; flex-direction: column; height: 100%;"
+        style="display: flex; flex-direction: column; align-items: end; height: 100%;"
       >
         <div
           class="css-1w77u0h"
@@ -66,7 +66,7 @@ exports[`The emulator should render and match snapshots 1`] = `
           Tasks
         </div>
         <div
-          class="css-1snafkv"
+          class="css-12f487v"
         >
           <div
             class="css-16cm47t"
@@ -93,6 +93,12 @@ exports[`The emulator should render and match snapshots 1`] = `
             </li>
           </div>
         </div>
+        <button
+          class="css-16suylj"
+          type="button"
+        >
+          Restart
+        </button>
       </div>
     </div>
     <div
@@ -212,7 +218,7 @@ exports[`The emulator should render and match snapshots 1`] = `
             class="css-esnmos"
           >
             <div
-              class="css-1w1wy86"
+              class="css-bzltz5"
             >
               <textarea
                 aria-disabled="false"
@@ -240,7 +246,7 @@ exports[`The emulator should render and match snapshots 1`] = `
               </h2>
             </div>
             <div
-              class="css-1snafkv"
+              class="css-12f487v"
             />
           </div>
         </div>

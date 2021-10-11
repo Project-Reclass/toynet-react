@@ -85,7 +85,7 @@ function getDevicesFromXMLDocument(
     const interfaces = createInterfaces(child);
     const defaultGateway = createDefaultGateway(child);
 
-    console.log(child);
+    // console.log(child);
 
     devices.push({
       name: (child as Element).attributes.getNamedItem('name')!.value,
@@ -154,7 +154,7 @@ export function parseXMLTopology(xml: string): ParsedXML {
     hosts: getDevicesFromXMLDocument(parsedXML, 'hostList', 'host'),
   };
 
-  console.log({ devices });
+  // console.log({ devices });
 
   createDeviceLinksFromXMLDocument(devices, parsedXML);
   return devices;
