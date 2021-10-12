@@ -55,6 +55,7 @@
           "value": "http://backend:5000"
         }
       ],
+      "memoryReservation": 128,
       "image": "docker.io/projectreclass/toynet-frontend:d13d781955396eb82854f87a436ac79b4d3f5cba",
       "dependsOn": [
         {
