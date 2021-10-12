@@ -19,10 +19,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Divider, Flex, Link, Stack, Text, Icon, Collapse, useDisclosure, Tooltip } from '@chakra-ui/core';
+import { Divider, Flex, Link, Stack, Text, Icon, Collapse, Tooltip } from '@chakra-ui/core';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 
 import { ModuleName } from './styled';
+import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 interface Props extends SubModuleIntf {
   moduleId: number;
@@ -54,7 +55,10 @@ export const SubModule: FC<Props> = (
     introduction,
   },
 ) => {
-  const { isOpen, onToggle } = useDisclosure(false);
+  const [isOpen, setOpen] =
+    useSessionStorage<boolean>(`submodule-${moduleId}-${id}-${index}`, false,
+      value => JSON.parse(value));
+
   return (
     <Flex>
       <Icon
@@ -70,7 +74,7 @@ export const SubModule: FC<Props> = (
               label={isOpen ? 'Show less' : 'Show more'}
               {...{'aria-label': 'More information'}}
             >
-              <Text onClick={onToggle}>
+              <Text onClick={() => setOpen(open => !open)}>
                 {`${capitalize(type.toString())}: ${name}`}
               </Text>
             </Tooltip>
