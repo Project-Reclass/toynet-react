@@ -174,3 +174,11 @@ export const deleteLink = async (
       (error as AxiosError).response?.data.messages || 'Server error');
   }
 };
+
+export const terminateToyNetSession = (
+  id: SessionId,
+) => {
+  // We have to use a beacon here so that the requests get queued
+  // doesn't get canceled when the user closes the browser.
+  return navigator.sendBeacon(`/api/toynet/session/${id}/terminate`);
+};
