@@ -2,6 +2,7 @@
   "containerDefinitions": [
     {
       "cpu": 0,
+      "memoryReservation": 128,
       "image": "docker.io/projectreclass/toynet-mininet:87967ffaf08ab010e59d300687155ebd839d47b7",
       "name": "mininet"
     },
@@ -70,11 +71,6 @@
   "placementConstraints": [],
   "memory": null,
   "taskRoleArn": null,
-  "compatibilities": [
-    "EXTERNAL",
-    "EC2"
-  ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-2:243481923718:task-definition/ToyNet:7",
   "family": "ToyNet",
   "requiresAttributes": [
     {
@@ -90,8 +86,6 @@
   "requiresCompatibilities": [
     "EC2"
   ],
-  "revision": 7,
-  "status": "ACTIVE",
   "volumes": [
     {
       "name": "lib-modules",
