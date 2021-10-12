@@ -6,13 +6,6 @@
       "name": "mininet"
     },
     {
-      "portMappings": [
-        {
-          "hostPort": 5555,
-          "protocol": "tcp",
-          "containerPort": 5000
-        }
-      ],
       "cpu": 0,
       "environment": [
         {
@@ -49,7 +42,7 @@
     {
       "portMappings": [
         {
-          "hostPort": 8888,
+          "hostPort": 80,
           "protocol": "tcp",
           "containerPort": 80
         }
@@ -97,7 +90,7 @@
   "requiresCompatibilities": [
     "EC2"
   ],
-  "revision": 2,
+  "revision": 7,
   "status": "ACTIVE",
   "volumes": [
     {
