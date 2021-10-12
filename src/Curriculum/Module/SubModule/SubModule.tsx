@@ -18,11 +18,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { FC } from 'react';
-import { Divider, Flex, Link, Stack, Text, Icon, Collapse, useDisclosure, Tooltip } from '@chakra-ui/core';
+import React, { FC, useEffect, useState } from 'react';
+import { Divider, Flex, Link, Stack, Text, Icon, Collapse, Tooltip } from '@chakra-ui/core';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 
 import { ModuleName } from './styled';
+import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 interface Props extends SubModuleIntf {
   moduleId: number;
@@ -54,7 +55,19 @@ export const SubModule: FC<Props> = (
     introduction,
   },
 ) => {
-  const { isOpen, onToggle } = useDisclosure(false);
+  const [isOpen, setOpen] = useState(false);
+  const [isOpenStored, setOpenStored] =
+    useSessionStorage<boolean>(`submodule-${moduleId}-${id}-${index}`, false,
+      value => JSON.parse(value));
+
+  useEffect(() => {
+    setOpen(isOpenStored);
+  }, [isOpenStored]);
+
+  const onClickHandler = () => {
+    setOpenStored(open => !open);
+  };
+
   return (
     <Flex>
       <Icon
@@ -70,7 +83,7 @@ export const SubModule: FC<Props> = (
               label={isOpen ? 'Show less' : 'Show more'}
               {...{'aria-label': 'More information'}}
             >
-              <Text onClick={onToggle}>
+              <Text onClick={onClickHandler}>
                 {`${capitalize(type.toString())}: ${name}`}
               </Text>
             </Tooltip>
