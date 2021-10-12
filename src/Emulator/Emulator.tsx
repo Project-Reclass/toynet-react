@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid } from '@chakra-ui/core';
 
 import Visuals from './Visuals';
@@ -27,6 +27,8 @@ import DialogueBox from './DialogueBox';
 import Console from './Console';
 import styled from '@emotion/styled-base';
 import DrawerProvider from '../common/providers/DrawerProvider';
+import { terminateToyNetSession } from 'src/common/api/topology/requests';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 
 const data = {
   'id': 1,
@@ -55,6 +57,16 @@ const EmulatorGrid = styled(Grid)`
 `;
 
 const Emulator = () => {
+  const { sessionId } = useEmulator();
+
+  useEffect(() => {
+    const terminateSession = () =>
+      terminateToyNetSession(sessionId);
+
+    window.addEventListener('unload', terminateSession);
+    return () => window.removeEventListener('unload', terminateSession);
+  }, [sessionId]);
+
   return (
     <DrawerProvider>
       <EmulatorGrid gap={2}>
