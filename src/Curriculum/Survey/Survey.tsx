@@ -23,13 +23,13 @@ import { useParams } from 'react-router-dom';
 import { useSurveyMeta } from 'src/common/api/curriculum/survey';
 import LoadingContainer from 'src/common/components/LoadingContainer';
 import { SurveyQuestion } from 'src/common/api/curriculum/survey/requests';
+import ToyNetInput from 'src/common/components/ToyNetInput';
+import ToyNetTextarea from 'src/common/components/ToyNetTextarea';
 
 import {
     SimpleGrid,
     InputGroup,
-    Input,
     InputRightAddon,
-    Textarea,
     Slider,
     SliderTrack,
     SliderFilledTrack,
@@ -120,28 +120,25 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
             if (question.unit) {
                 inputForm = (
                     <InputGroup>
-                        <Input
+                        <ToyNetInput
                           data-testid={question.question}
                           onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
-                          placeholder="Type Here"
-                          color="black"/>
+                          placeholder="Type Here"/>
                         <InputRightAddon children={question.unit} color="black"/>
                     </InputGroup>
                 );
             } else {
-                inputForm = <Input
+                inputForm = <ToyNetInput
                   data-testid={question.question}
                   onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
-                  placeholder="Type Here"
-                  color="black"/>;
+                  placeholder="Type Here"/>;
             }
             break;
         case 'LONGTEXT':
-            inputForm = <Textarea
+            inputForm = <ToyNetTextarea
               data-testid={question.question}
               onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
-              placeholder="Type Here"
-              color="black"/>;
+              placeholder="Type Here"/>;
             break;
         default:
             inputForm = <p>default</p>;
@@ -150,7 +147,6 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
 };
 
 const Survey = () => {
-
     const { surveyId } = useParams<Params>();
     const { data, isLoading } = useSurveyMeta(Number(surveyId));
     const dataLength = data ? data.items.length : 0;
@@ -169,6 +165,7 @@ const Survey = () => {
             console.log(surveyAnswers);
         };
     };
+
     return (
         <SurveyContainer id="#">
             <LoadingContainer isLoading={isLoading}>
