@@ -58,7 +58,9 @@ export default function DeleteNodeBtn({ device: {
   };
 
   return (
-    <Button onClick={handleClick}
+    <Button
+      data-testid='delete_node-btn'
+      onClick={handleClick}
       isDisabled={connections.length !== 0}
       variant='ghost'
       variantColor='teal'

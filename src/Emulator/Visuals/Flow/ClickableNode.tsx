@@ -29,7 +29,7 @@ const ColorSelectorNode: FC<NodeProps> = ({ data }) => {
     id: `${data.label}-menu`,
   });
 
-  const handleStuff = (e: any) => {
+  const handleClick = (e: any) => {
     e.preventDefault();
     show(e);
   };
@@ -38,8 +38,9 @@ const ColorSelectorNode: FC<NodeProps> = ({ data }) => {
     <>
       <Handle type="target" position={Position.Left} />
       <Flex
+        data-testid='clickable_node'
         margin='auto'
-        onContextMenu={handleStuff}
+        onContextMenu={handleClick}
         flex='1 1 auto'
         height='100%'
       >

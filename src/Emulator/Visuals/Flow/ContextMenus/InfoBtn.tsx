@@ -25,7 +25,7 @@ import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { DeviceInterface } from 'src/common/types';
 
 interface Props {
-  device: DeviceInterface;
+  device: Pick<DeviceInterface, 'name'>;
 }
 
 export default function InfoBtn({
@@ -40,6 +40,7 @@ export default function InfoBtn({
 
   return (
     <Button
+      data-testid='info-btn'
       onClick={handleClick}
       variant='ghost'
       variantColor='teal'
