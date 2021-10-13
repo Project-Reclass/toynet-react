@@ -24,6 +24,7 @@ exports[`Flow should be able to render only hosts 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"
@@ -259,6 +260,7 @@ exports[`Flow should be able to render only routers 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"
@@ -284,6 +286,7 @@ exports[`Flow should be able to render only routers 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"
@@ -519,6 +522,7 @@ exports[`Flow should be able to render only switches 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"
@@ -754,6 +758,7 @@ exports[`Flow should match the snapshot 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"
@@ -779,6 +784,7 @@ exports[`Flow should match the snapshot 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"
@@ -804,6 +810,7 @@ exports[`Flow should match the snapshot 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"
@@ -829,6 +836,7 @@ exports[`Flow should match the snapshot 1`] = `
           />
           <div
             class="css-8pgesn"
+            data-testid="clickable_node"
           >
             <p
               class="css-1i194x1"

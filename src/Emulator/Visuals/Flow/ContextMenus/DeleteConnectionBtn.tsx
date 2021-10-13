@@ -69,6 +69,7 @@ export default function DeleteConnectionBtn({ to, from }: Props) {
 
   return (
     <Button
+      data-testid='delete_conn-btn'
       variant='ghost'
       variantColor='teal'
       textAlign='left'

@@ -34,7 +34,12 @@ interface Props {
 export const ContextMenus = ({ devices }: Props) => (
   <>
     {devices.map(device => (
-      <Menu id={`${device.name.toLocaleUpperCase()}-menu`} theme='dark' key={`${device.name}-menu`}>
+      <Menu
+        theme='dark'
+        key={`${device.name}-menu`}
+        id={`${device.name.toLocaleUpperCase()}-menu`}
+        data-testid={`${device.name.toLocaleUpperCase()}-menu`}
+      >
         <Stack>
           <DeleteNodeBtn device={device} />
           {device.connections.map((to: string) => (
