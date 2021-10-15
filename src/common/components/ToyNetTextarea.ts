@@ -18,36 +18,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+import { Textarea } from '@chakra-ui/core';
+import styled from '@emotion/styled';
 
-import React from 'react';
-import { Button } from '@chakra-ui/core';
-import { useDrawer } from 'src/common/providers/DrawerProvider';
-import { DeviceInterface } from 'src/common/types';
+export const ToyNetTextarea = styled(Textarea)`
+  border: none;
+  background-color: #212529;
+`;
 
-interface Props {
-  device: Pick<DeviceInterface, 'name'>;
-}
-
-export default function InfoBtn({
-  device: {
-    name,
-  },
-}: Props) {
-  const { setInfoView } = useDrawer();
-
-  const handleClick = () =>
-    setInfoView(name);
-
-  return (
-    <Button
-      data-testid='info-btn'
-      onClick={handleClick}
-      variant='ghost'
-      variantColor='teal'
-      alignContent='center'
-      textAlign='left'
-    >
-      More Info
-    </Button>
-  );
-}
+export default ToyNetTextarea;

@@ -19,35 +19,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React from 'react';
-import { Button } from '@chakra-ui/core';
-import { useDrawer } from 'src/common/providers/DrawerProvider';
-import { DeviceInterface } from 'src/common/types';
-
-interface Props {
-  device: Pick<DeviceInterface, 'name'>;
-}
-
-export default function InfoBtn({
-  device: {
-    name,
-  },
-}: Props) {
-  const { setInfoView } = useDrawer();
-
-  const handleClick = () =>
-    setInfoView(name);
-
-  return (
-    <Button
-      data-testid='info-btn'
-      onClick={handleClick}
-      variant='ghost'
-      variantColor='teal'
-      alignContent='center'
-      textAlign='left'
-    >
-      More Info
-    </Button>
-  );
-}
+describe('The value page', () => {
+  it('should value 5001', () => {
+    cy.visit('http://localhost:3000/value/5001');
+    cy.contains(/integrity/i).should('be.visible');
+    cy.contains('U.S. Air Force').should('be.visible');
+    cy.contains('U.S. Army').should('be.visible');
+    cy.contains(/save/i).scrollIntoView().should('be.visible');
+  });
+});

@@ -25,7 +25,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   frontend:
-    image: toynet_frontend
+    build:
+      context: ..
+      dockerfile: Dockerfile
     ports:
       - "3000:80"
     networks:

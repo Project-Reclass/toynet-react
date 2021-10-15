@@ -53,8 +53,8 @@ export const mergeElementLayouts = (sourceElements: Elements, targetElements: El
     if (isNode(el) && nodeWithPosition) {
 
       el.position = {
-        x: nodeWithPosition.x + NODE_WIDTH / BASE,
-        y: nodeWithPosition.y + NODE_HEIGHT,
+        x: nodeWithPosition.x,
+        y: nodeWithPosition.y,
       };
     }
 

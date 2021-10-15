@@ -18,12 +18,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Box, Collapse, Flex, Text, Tooltip } from '@chakra-ui/core';
 import { ModuleIntf } from 'src/common/types/curriculum';
 
 import { RotatableIcon } from './styled';
 import SubModuleList from './SubModuleList';
+import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 interface Props {
   index: number;
@@ -62,7 +63,9 @@ const Module: FC<ModuleIntf & Props> = (
     paddingTop,
   },
 ) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] =
+    useSessionStorage<boolean>(`module-${id}-${index}`, false,
+      value => JSON.parse(value));
 
   return (
     <Box

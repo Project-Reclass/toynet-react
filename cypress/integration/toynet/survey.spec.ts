@@ -19,35 +19,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React from 'react';
-import { Button } from '@chakra-ui/core';
-import { useDrawer } from 'src/common/providers/DrawerProvider';
-import { DeviceInterface } from 'src/common/types';
+const surveyUrl = 'http://localhost:3000/module/100001/survey/6001';
 
-interface Props {
-  device: Pick<DeviceInterface, 'name'>;
-}
-
-export default function InfoBtn({
-  device: {
-    name,
-  },
-}: Props) {
-  const { setInfoView } = useDrawer();
-
-  const handleClick = () =>
-    setInfoView(name);
-
-  return (
-    <Button
-      data-testid='info-btn'
-      onClick={handleClick}
-      variant='ghost'
-      variantColor='teal'
-      alignContent='center'
-      textAlign='left'
-    >
-      More Info
-    </Button>
-  );
-}
+describe('The survey page', () => {
+  it('should render the survey for module 100001 survey 6001', () => {
+    cy.visit(surveyUrl);
+    cy.contains('What is your first name').should('be.visible');
+    cy.contains(/submit survey/i).scrollIntoView().should('be.visible');
+  });
+});
