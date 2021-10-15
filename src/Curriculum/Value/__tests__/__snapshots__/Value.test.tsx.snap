@@ -3,8 +3,7 @@
 exports[`The value page should render the same based on URL parameters for honor 1`] = `
 <div>
   <div
-    class="container-1920 mx-auto"
-    style="padding: 1rem;"
+    class="css-1vog6cq"
   >
     <h1
       class="css-1t3tbq3"
@@ -50,8 +49,7 @@ exports[`The value page should render the same based on URL parameters for honor
 exports[`The value page should render the same based on URL parameters for integrity 1`] = `
 <div>
   <div
-    class="container-1920 mx-auto"
-    style="padding: 1rem;"
+    class="css-1vog6cq"
   >
     <h1
       class="css-1t3tbq3"
@@ -108,8 +106,7 @@ exports[`The value page should render the same based on URL parameters for integ
 exports[`The value page should render the same based on URL parameters for loyalty 1`] = `
 <div>
   <div
-    class="container-1920 mx-auto"
-    style="padding: 1rem;"
+    class="css-1vog6cq"
   >
     <h1
       class="css-1t3tbq3"
@@ -144,8 +141,7 @@ exports[`The value page should render the same based on URL parameters for loyal
 exports[`The value page should render the same based on URL parameters for respect 1`] = `
 <div>
   <div
-    class="container-1920 mx-auto"
-    style="padding: 1rem;"
+    class="css-1vog6cq"
   >
     <h1
       class="css-1t3tbq3"
