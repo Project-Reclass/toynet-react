@@ -93,12 +93,6 @@ exports[`The emulator should render and match snapshots 1`] = `
             </li>
           </div>
         </div>
-        <button
-          class="css-16suylj"
-          type="button"
-        >
-          Restart
-        </button>
       </div>
     </div>
     <div
