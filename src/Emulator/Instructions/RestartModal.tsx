@@ -45,9 +45,9 @@ const RestartModal = ({ isOpen, close }: Props) => {
   It will clear action logs and updates of emulators from session storage. Then reload the page.
   */
   const handleRestart = () => {
-    clearDialogue();
-    sessionStorage.clear();
-    window.location.reload();
+      clearDialogue();
+      window.sessionStorage.clear();
+      window.location.reload();
   };
 
   return (

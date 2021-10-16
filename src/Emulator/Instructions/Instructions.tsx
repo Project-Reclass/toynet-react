@@ -34,6 +34,7 @@ import {
   TaskList,
 } from './styled';
 import { EmulatorTitle } from 'src/common/components/Emulator';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -48,6 +49,7 @@ interface Props {
 
 const Instructions: FC<Props> = ({ panelData }) => {
   const { isOpen, onOpen, onClose } = useDisclosure(false);
+  const { isLoading } = useEmulator();
 
   return (
       <EmulatorSection
@@ -87,16 +89,18 @@ const Instructions: FC<Props> = ({ panelData }) => {
               ))}
             </TaskList>
           </EmulatorInnerSection>
-          <Button
-            size='sm'
-            variant="solid"
-            variantColor="red"
-            width={100}
-            fontSize='sm'
-            onClick={onOpen}
-          >
-              Restart
-          </Button>
+          {!isLoading &&
+            <Button
+              size='sm'
+              variant="solid"
+              variantColor="red"
+              width={100}
+              fontSize='sm'
+              onClick={onOpen}
+            >
+                Restart
+            </Button>
+          }
           <RestartModal
             close={onClose}
             isOpen={isOpen}
