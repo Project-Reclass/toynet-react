@@ -93,7 +93,6 @@ const EmulatorContext = createContext<TopologyState>({
   routers: [],
   switches: [],
   hosts: [],
-  isRestart: false,
   sessionId: -1,
   dispatch: () => {},
 });

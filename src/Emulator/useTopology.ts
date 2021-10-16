@@ -38,7 +38,6 @@ export interface TopologyState {
   routers: DeviceInterface[];
   switches: DeviceInterface[];
   dispatch: React.Dispatch<ReducerAction>;
-  isRestart: boolean;
   isLoading: boolean;
   sessionId: SessionId;
 }
@@ -149,6 +148,5 @@ export function useTopology(id: number) {
     isLoading,
     dispatch: dispatch,
     sessionId: data?.sessionId || -1,
-    isRestart: false,
   };
 }
