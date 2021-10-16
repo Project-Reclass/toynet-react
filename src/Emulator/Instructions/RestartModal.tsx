@@ -40,10 +40,14 @@ interface Props {
 const RestartModal = ({ isOpen, close }: Props) => {
   const { clearDialogue } = useDialogue();
 
-  // Clear action log and close modal
+  /*
+  Triggered by onClick of I'm sure button on the modal.
+  It will clear action logs and updates of emulators from session storage. Then reload the page.
+  */
   const handleRestart = () => {
     clearDialogue();
-    close();
+    sessionStorage.clear();
+    window.location.reload();
   };
 
   return (
