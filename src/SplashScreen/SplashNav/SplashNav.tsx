@@ -43,12 +43,9 @@ function SplashNav() {
             <NavItem>
               <NavLink href='#contact'>Contact</NavLink>
             </NavItem>
-            {/* <NavItem>
-              <Login>Log in</Login>
+            <NavItem>
+              <NavLink href='https://projectreclass.org/digest'>Blog</NavLink>
             </NavItem>
-             <NavItem>
-              <SignUp href='#signup'>Sign up</SignUp>
-            </NavItem>  */}
           </NavLinksContainer>
         </Nav>
       </Container>
