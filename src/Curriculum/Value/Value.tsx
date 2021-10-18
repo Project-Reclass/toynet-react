@@ -23,6 +23,7 @@ import { useParams } from 'react-router-dom';
 
 import { useValueMeta } from '../../common/api/curriculum/value';
 import { StyledReflection, StyledBox, StyledTextArea, StyledSavebutton } from './styled';
+import { Box } from '@chakra-ui/core';
 
 interface Params {
   valueId: string;
@@ -36,7 +37,7 @@ const Value = () => {
   const placeholderText = `What does ${data?.value.toLowerCase()} mean to you?`;
 
   return (
-    <div className='container-1920 mx-auto' style={{ padding: '1rem' }}>
+    <Box p='1rem 10rem' maxW='1920px' m='0 auto' width='100%' height='100%'>
       <StyledReflection>Reflection: {data?.value}</StyledReflection>
 
       {data?.inspiration.map((org) => (
@@ -49,7 +50,7 @@ const Value = () => {
       <StyledTextArea placeholder={placeholderText}></StyledTextArea>
 
       <StyledSavebutton>Save</StyledSavebutton>
-    </div>
+    </Box>
   );
 };
 
