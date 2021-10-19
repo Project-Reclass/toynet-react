@@ -37,4 +37,4 @@ declare global {
   }
 }
 
-global.ResizeObserver = ResizeObserver;
+(global as any).ResizeObserver = ResizeObserver;
