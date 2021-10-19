@@ -5,84 +5,11 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  # build-mininet:
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-      
-  #     - name: Build
-  #       run: |
-  #         docker build https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384 -f toynet_mininet/Dockerfile -t toynet_mininet
-  #         docker save toynet_mininet -o toynet_mininet.tar
-
-  #     - name: Store Image
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: toynet-mininet
-  #         path: toynet_mininet.tar
-  #         retention-days: 1
-
-  # build-backend:
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-      
-  #     - name: Build
-  #       run: |
-  #         docker build https://github.com/Project-Reclass/toynet-flask.git#714f516f982f3e4dd8195813cbdde20a7689a384 \
-  #         --build-arg FLASK_APP=flasksrc \
-  #         --build-arg FLASK_ENV=production \
-  #         --build-arg TOYNET_IMAGE_TAG=toynet_mininet \
-  #         --build-arg MINI_FLASK_PORT=5000 \
-  #         --build-arg COMPOSE_NETWORK=toynet_mininet \
-  #         -t toynet_backend
-  #         docker save toynet_backend -o toynet_backend.tar
-
-  #     - name: Store Image
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: toynet-backend
-  #         path: toynet_backend.tar
-  #         retention-days: 1
-
-  build-frontend:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      
-      - name: Build
-        run: |
-          docker build . -t toynet_frontend
-          docker save toynet_frontend -o toynet_frontend.tar
-
-      - name: Store Image
-        uses: actions/upload-artifact@v2
-        with:
-          name: toynet-frontend
-          path: toynet_frontend.tar
-          retention-days: 1
-
   cypress-run:
     runs-on: ubuntu-18.04
-    needs: [build-frontend]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      
-      - name: Download frontend
-        uses: actions/download-artifact@v2
-        with:
-          name: toynet-frontend
-
-      - name: Load images
-        run: |
-          pwd
-          ls -al
-          docker load -i toynet_frontend.tar
-
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:

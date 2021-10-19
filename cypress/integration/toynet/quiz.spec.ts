@@ -22,7 +22,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 const visitUrl = 'http://localhost:3000/module/100001/quiz/4001';
 
 describe('The quiz page', () => {
-  it.only('can submit and show error', function () {
+  it('can submit and show error', () => {
     cy.visit(visitUrl);
     cy.contains('Which type of fiber is best suited for long distance transmission?')
       .get('[data-testid="Multi-Mode Fiber"]').check();
