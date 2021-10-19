@@ -36,7 +36,7 @@ exports[`The Module should render and match snapshots 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="rah-static rah-static--height-zero css-vppuuz"
+      class="rah-static rah-static--height-zero css-1asjk0u-Collapse"
       style="height: 0px; overflow: hidden;"
     >
       <div
@@ -95,7 +95,7 @@ exports[`The Module should render and match snapshots 1`] = `
                 </div>
                 <div
                   aria-hidden="true"
-                  class="rah-static rah-static--height-zero css-vppuuz"
+                  class="rah-static rah-static--height-zero css-1asjk0u-Collapse"
                   style="height: 0px; overflow: hidden;"
                 >
                   <div
