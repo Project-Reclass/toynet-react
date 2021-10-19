@@ -19,10 +19,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Heading, Text } from '@chakra-ui/core';
+import { Heading, Text, Button, useDisclosure } from '@chakra-ui/core';
 
 import EmulatorSection from 'src/common/components/Emulator/Section';
 import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
+import RestartModal from './RestartModal';
 
 import {
   BackArea,
@@ -33,6 +34,7 @@ import {
   TaskList,
 } from './styled';
 import { EmulatorTitle } from 'src/common/components/Emulator';
+import { useEmulator } from 'src/common/providers/EmulatorProvider';
 
 export interface PanelData {
   submoduleNumber: number;
@@ -46,6 +48,9 @@ interface Props {
 }
 
 const Instructions: FC<Props> = ({ panelData }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure(false);
+  const { isLoading } = useEmulator();
+
   return (
       <EmulatorSection
         width='15vw'
@@ -72,6 +77,7 @@ const Instructions: FC<Props> = ({ panelData }) => {
           style={{
             display: 'flex',
             flexDirection: 'column',
+            alignItems: 'end',
             height: '100%',
           }}
         >
@@ -83,6 +89,23 @@ const Instructions: FC<Props> = ({ panelData }) => {
               ))}
             </TaskList>
           </EmulatorInnerSection>
+          {!isLoading &&
+            <Button
+              size='sm'
+              variant="solid"
+              variantColor="red"
+              width={100}
+              fontSize='sm'
+              onClick={onOpen}
+            >
+                Restart
+            </Button>
+          }
+          <RestartModal
+            close={onClose}
+            isOpen={isOpen}
+          />
+
         </Container>
       </EmulatorSection>
   );
