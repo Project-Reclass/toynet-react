@@ -29,7 +29,6 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/core';
-import { useDialogue } from '../../common/providers/EmulatorProvider';
 
 interface Props {
   isOpen: boolean;
@@ -38,14 +37,12 @@ interface Props {
 }
 
 const RestartModal = ({ isOpen, close }: Props) => {
-  const { clearDialogue } = useDialogue();
 
   /*
   Triggered by onClick of I'm sure button on the modal.
-  It will clear action logs and updates of emulators from session storage. Then reload the page.
+  It will clear the session storage then reload the page.
   */
   const handleRestart = () => {
-      clearDialogue();
       window.sessionStorage.clear();
       window.location.reload();
   };
