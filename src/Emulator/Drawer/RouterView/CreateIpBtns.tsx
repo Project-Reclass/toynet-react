@@ -37,7 +37,7 @@ const CreateIpBtns = ({
   deleteIp,
   createNewIp,
 }: Props) => (
-  <Stack direction='row' spacing={3} margin='auto 0 0.4rem 1rem'>
+  <Stack direction='row' spacing={3} margin='2rem 0 auto 1rem'>
     {
       isLast ?
         <Stack direction='row' spacing={2}>
