@@ -19,12 +19,26 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef } from 'react';
-import { FormControl, FormLabel, useToast, Box } from '@chakra-ui/core';
-import { Flex } from 'src/common/components';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
+import {
+  FormControl,
+  FormLabel,
+  useToast,
+  Stack,
+  Flex,
+} from '@chakra-ui/core';
+
 import { genUniqueId } from 'src/common/utils';
 import { ToyNetInput } from 'src/Login/styled';
+
 import CreateIpBtns from './CreateIpBtns';
+import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
 
 const MAX_INTERFACES = 10;
 
@@ -36,12 +50,14 @@ export interface Ip {
 interface Props {
   ips: Ip[];
   isDisabled: boolean;
+  shouldShowError: boolean;
   setIps: Dispatch<SetStateAction<Ip[]>>;
 }
 
 export default function IpList({
   ips,
   isDisabled,
+  shouldShowError,
   setIps,
 }: Props) {
   const toast = useToast();
@@ -91,28 +107,36 @@ export default function IpList({
   };
 
   return (
-  <Box>
-    {ips.map((ip, i) => (
-      <Flex key={ip.id}>
-        <FormControl width='100%' flex='1 1 auto'>
-          <FormLabel>{`Interface ${i + 1} IP`}</FormLabel>
-          <ToyNetInput
-            value={ip.ipAddr}
-            placeholder='172.16.2.10/24'
+    <Stack spacing={3}>
+      {ips.map((ip, i) => (
+        <Flex key={ip.id}>
+          <FormControl width='100%'>
+            <FormLabel>{`Interface ${i + 1} IP`}</FormLabel>
+            <ToyNetInput
+              value={ip.ipAddr}
+              placeholder='172.16.2.10/24'
+              isDisabled={isDisabled}
+              onChange={handleInput(i)}
+              data-testid={`ip_input-idx_${i}`}
+              isInvalid={
+                shouldShowError && ip.ipAddr.length < 1
+              }
+            />
+            {shouldShowError && ip.ipAddr.length < 1 &&
+              <ToyNetFormHelperText>
+                Interface requires an IP.
+              </ToyNetFormHelperText>
+            }
+          </FormControl>
+          <CreateIpBtns
             isDisabled={isDisabled}
-            onChange={handleInput(i)}
-            data-testid={`ip_input-idx_${i}`}
+            index={i}
+            isLast={i === ips.length - 1}
+            deleteIp={deleteIp}
+            createNewIp={createNewIp}
           />
-        </FormControl>
-        <CreateIpBtns
-          isDisabled={isDisabled}
-          index={i}
-          isLast={i === ips.length - 1}
-          deleteIp={deleteIp}
-          createNewIp={createNewIp}
-        />
-      </Flex>
-    ))}
-  </Box>
+        </Flex>
+      ))}
+    </Stack>
   );
 }

@@ -34,11 +34,26 @@ import IpList from './RouterView/IpList';
 import { genUniqueId } from 'src/common/utils';
 import { useCreateRouter } from 'src/common/api/topology';
 import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
+import { ToyNetCreateRouterRequest } from 'src/common/api/topology/types';
+import useBoolean from 'src/common/hooks/useBoolean';
+import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
 
 export interface Ip {
   id: string;
   ipAddr: string;
 }
+
+const isValidRouterRequest = (
+  request: ToyNetCreateRouterRequest,
+) => {
+  const { ip, name, intfs } = request;
+
+  return [
+    ip.length > 1,
+    name.length > 1,
+    !intfs.some(intf => intf.length < 1),
+  ].every(val => val);
+};
 
 const initialIp: Ip ={
   id: genUniqueId(),
@@ -53,6 +68,11 @@ export default function CreateRouterView({ nameHint }: Props) {
   const [ip, setIp] = useState('');
   const [name, setName] = useState(nameHint);
   const [interfaces, setInterfaces] = useState([initialIp]);
+  const {
+    bool: shouldShowError,
+    setTrue: showError,
+    setFalse: hideError,
+  } = useBoolean(false);
 
   const toast = useToast();
   const { onClose } = useDrawer();
@@ -78,11 +98,18 @@ export default function CreateRouterView({ nameHint }: Props) {
       });
   }, [error, isError, toast]);
 
-  const handleCreate = () => createRouter({
-    name,
-    ip,
-    intfs: interfaces.map(({ ipAddr }) => ipAddr),
-  });
+  const handleCreate = () => {
+    const intfs = interfaces.map(({ ipAddr }) => ipAddr);
+    const routerRequest = { ip, name, intfs };
+
+    if (!isValidRouterRequest(routerRequest)) {
+      showError();
+      return;
+    }
+
+    hideError();
+    createRouter(routerRequest);
+  };
 
   return (
     <Stack spacing={3}>
@@ -91,10 +118,16 @@ export default function CreateRouterView({ nameHint }: Props) {
         <ToyNetInput
           value={name}
           isDisabled={isLoading}
+          isInvalid={shouldShowError && name.length < 1}
           data-testid='drawer-router-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
+        {shouldShowError && name.length < 1 &&
+          <ToyNetFormHelperText>
+            Name is required.
+          </ToyNetFormHelperText>
+        }
       </FormControl>
       <FormControl>
         <FormLabel>IP Address</FormLabel>
@@ -102,15 +135,22 @@ export default function CreateRouterView({ nameHint }: Props) {
           value={ip}
           placeholder='172.16.1.10/24'
           isDisabled={isLoading}
+          isInvalid={shouldShowError && ip.length < 1}
           data-testid='drawer-router-ip-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setIp(e.currentTarget.value)}
         />
+        {shouldShowError && ip.length < 1 &&
+          <ToyNetFormHelperText>
+            IP Address is required.
+          </ToyNetFormHelperText>
+        }
       </FormControl>
       <IpList
         ips={interfaces}
         setIps={setInterfaces}
         isDisabled={isLoading}
+        shouldShowError={shouldShowError}
       />
       <ViewButtons
         onCancel={onClose}
