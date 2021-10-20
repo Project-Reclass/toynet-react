@@ -20,10 +20,9 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { useToast } from '@chakra-ui/core';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
-import IpList from './IpList';
+import IpList from '../IpList';
 
 jest.mock('@chakra-ui/core', () => {
   const actual = jest.requireActual('@chakra-ui/core');
@@ -55,5 +54,21 @@ describe('the ip list component', () => {
     const { getByDisplayValue } = renderWithTheme(<IpList {...defaultProps} />);
     expect(getByDisplayValue(/localhost/i)).toBeInTheDocument();
     expect(getByDisplayValue('10.0.0.1/30')).toBeInTheDocument();
+  });
+  it('should show an error whenever the the ip is invalid', () => {
+    const { getByText } = renderWithTheme(
+      <IpList
+        {...defaultProps}
+        ips={[
+          {
+            id: '1',
+            ipAddr: '',
+          },
+        ]}
+        shouldShowError={true}
+      />,
+    );
+
+    expect(getByText(/interface requires an ip/i)).toBeInTheDocument();
   });
 });
