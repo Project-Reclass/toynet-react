@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { createContext, useContext, FC, useCallback } from 'react';
+import React, { createContext, useContext, FC, useCallback, useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
@@ -46,16 +46,30 @@ const DialogueContext = createContext<DialogueInterface>({
 });
 
 const DialogueProvider: FC = ({ children }) => {
-  const [dialogueMessages, setDialogueMessages] =
+  const [queue, setQueue] = useState<DialogueMessage[]>([]);
+  const [dialogueMessages, setDialogueMessages, isInitialized] =
     useSessionStorage<DialogueMessage[]>('history', [],
       value => JSON.parse(value));
+
+  useEffect(() => {
+    if (isInitialized) {
+      setDialogueMessages(msgs => [...msgs, ...queue]);
+      setQueue([]);
+    }
+  }, [isInitialized, queue, setDialogueMessages]);
+
 
   // Not using useCallback so we can add the same error messages repeatedly
   const appendDialogue = useCallback((message: string, color = 'White'): DialogueMessageId => {
     const id = genUniqueId();
+    if (!isInitialized) {
+      setQueue(prev => [...prev, { id, message, color }]);
+      return id;
+    }
+
     setDialogueMessages(prev => [...prev, {id, message, color}]);
     return id;
-  }, [setDialogueMessages]);
+  }, [isInitialized, setDialogueMessages]);
 
   const clearDialogue = useCallback(() => {
     setDialogueMessages([]);

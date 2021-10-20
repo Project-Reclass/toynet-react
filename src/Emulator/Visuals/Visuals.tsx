@@ -18,11 +18,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Heading, Text } from '@chakra-ui/core';
 import 'react-contexify/dist/ReactContexify.css';
 
-import { useEmulator } from 'src/common/providers/EmulatorProvider';
+import { useDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
 import EmulatorSection from 'src/common/components/Emulator/Section';
 import LoadingAnimation from 'src/common/components/LoadingAnimation';
 
@@ -31,7 +31,25 @@ import { InnerContainer } from './styled';
 import ContextMenus from './Flow/ContextMenus';
 
 const Visuals = () => {
+  const { appendDialogue, updateDialogueMessage } = useDialogue();
   const { switches, hosts, routers, sessionId, isLoading } = useEmulator();
+
+  const firstRender = useRef(true);
+  const messageId = useRef('');
+
+  useEffect(() => {
+    if (isLoading && sessionStorage.getItem('toynet-session-1')) {
+      messageId.current = appendDialogue('Loading topology...');
+    }
+  }, [isLoading, appendDialogue]);
+
+  useEffect(() => {
+    if (!isLoading && messageId.current !== '') {
+      updateDialogueMessage(messageId.current, {
+        message: 'Loaded saved topology',
+      });
+    }
+  });
 
   return (
     <>
