@@ -46,8 +46,9 @@ const DialogueContext = createContext<DialogueInterface>({
 });
 
 const DialogueProvider: FC = ({ children }) => {
+  const { emulatorId } = useParams<Params>();
   const [dialogueMessages, setDialogueMessages, isInitialized] =
-    useSessionStorage<DialogueMessage[]>('history', [],
+    useSessionStorage<DialogueMessage[]>(`history-${emulatorId}`, [],
       value => JSON.parse(value));
 
   // We need this queue because there could be instances where a message
