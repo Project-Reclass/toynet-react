@@ -22,8 +22,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { AsyncStateHook, isUpdateValueFunc, UpdateValFunc } from '../types';
 
-import useBoolean from './useBoolean';
-
 /**
  * Stores the value in session storage. When component is initially loaded
  * from either cold load for from a refresh, it checks session storage for
@@ -37,34 +35,34 @@ import useBoolean from './useBoolean';
  *
  * E.g. useSessionStorage('my-number', 1, (value) => parseInt(value)) => number
  */
-
 export function useSessionStorage<T>(
   key: string,
   value: T,
   parser?: (value: string) => T,
 ): AsyncStateHook<T> {
   const [sessionValue, setSessionValue] = useState<T>(value);
-  const {bool: hasInitialize, setTrue: setInitialized} = useBoolean(false);
+  const [hasInitialize, setHasInitialized] = useState(false);
 
   const keyRef = useRef(key);
   const parserRef = useRef(parser);
   const valueRef = useRef(sessionValue);
 
   useEffect(() => {
-    setInitialized();
-    const loadedValue = sessionStorage.getItem(key);
-    if (loadedValue) {
-      setSessionValue(parserRef.current ? parserRef.current(loadedValue) : loadedValue as any);
-    }
-  }, [key, setInitialized]);
-
-  useEffect(() => {
     keyRef.current = key;
   }, [key]);
 
+  const setValueWithRef = useCallback((value: T) => {
+    valueRef.current = value;
+    setSessionValue(value);
+  }, []);
+
   useEffect(() => {
-    valueRef.current = sessionValue;
-  }, [sessionValue]);
+    const loadedValue = sessionStorage.getItem(key);
+    if (loadedValue) {
+      setValueWithRef(parserRef.current ? parserRef.current(loadedValue) : loadedValue as any);
+    }
+    setHasInitialized(true);
+  }, [key, setValueWithRef]);
 
   const updateValueInStorage = useCallback((valueOrFunc: T | UpdateValFunc<T>) => {
     const currVal = valueRef.current;
@@ -74,8 +72,8 @@ export function useSessionStorage<T>(
       const serializedValue = typeof updateValue === 'string' ? updateValue : JSON.stringify(updateValue);
       sessionStorage.setItem(keyRef.current, serializedValue);
     }, 0);
-    setSessionValue(updateValue);
-  }, []);
+    setValueWithRef(updateValue);
+  }, [setValueWithRef]);
 
   return [sessionValue, updateValueInStorage, hasInitialize];
 }
