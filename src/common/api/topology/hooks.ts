@@ -22,7 +22,6 @@ import { useCallback, useEffect } from 'react';
 import { useQuery, useMutation, queryCache } from 'react-query';
 import { devError } from 'src/common/utils';
 import { DeviceType } from 'src/common/types';
-import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
 import {
   SessionId,
@@ -44,6 +43,7 @@ import {
   runToynetCommand,
   updateToynetSession,
 } from './requests';
+import useStoredSessionId from 'src/common/hooks/useStoredSessionId';
 
 const seenDevices = new Set();
 
@@ -129,10 +129,7 @@ export function useModifyTopology(sessionId: SessionId) {
  * session id that is stored in session storage.
  */
 export function useToynetSession(id: number) {
-  const [sessionId, setSessionId, hasInitialized] = useSessionStorage(
-    `toynet-session-${id}`, -1,
-    (value) => parseInt(value),
-  );
+  const [sessionId, setSessionId, hasInitialized] = useStoredSessionId(id);
 
   return useQuery(['toynet-session',
     { sessionId, hasInitialized }], async (_, { sessionId }) => {
