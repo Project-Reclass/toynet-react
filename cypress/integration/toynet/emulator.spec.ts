@@ -186,6 +186,8 @@ describe('The emulator page', () => {
   });
 
   it('should allow for different histories for different topologies', () => {
+    const longTimeout = 200000;
+    Cypress.config('defaultCommandTimeout', longTimeout);
     cy.visit(emulatorUrl);
     createSwitch();
 
