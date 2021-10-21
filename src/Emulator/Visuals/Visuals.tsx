@@ -29,27 +29,34 @@ import LoadingAnimation from 'src/common/components/LoadingAnimation';
 import Flow from './Flow';
 import { InnerContainer } from './styled';
 import ContextMenus from './Flow/ContextMenus';
+import useStoredSessionId from 'src/common/hooks/useStoredSessionId';
+import { useParams } from 'react-router';
+
+interface Params {
+  emulatorId: string;
+}
 
 const Visuals = () => {
+  const { emulatorId } = useParams<Params>();
+  const [toynetSessionId] = useStoredSessionId(Number(emulatorId));
   const { appendDialogue, updateDialogueMessage } = useDialogue();
   const { switches, hosts, routers, sessionId, isLoading } = useEmulator();
 
-  const firstRender = useRef(true);
   const messageId = useRef('');
 
   useEffect(() => {
-    if (isLoading && sessionStorage.getItem('toynet-session-1')) {
-      messageId.current = appendDialogue('Loading topology...');
+    if (isLoading && toynetSessionId !== -1 && messageId.current === '') {
+      messageId.current = appendDialogue('Loading your saved topology...', 'grey');
     }
-  }, [isLoading, appendDialogue]);
+  }, [isLoading, appendDialogue, toynetSessionId]);
 
   useEffect(() => {
     if (!isLoading && messageId.current !== '') {
       updateDialogueMessage(messageId.current, {
-        message: 'Loaded saved topology',
+        message: 'Loaded your saved topology', color: 'yellow.300',
       });
     }
-  });
+  }, [isLoading, updateDialogueMessage]);
 
   return (
     <>
