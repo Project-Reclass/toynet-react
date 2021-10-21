@@ -19,16 +19,23 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
+import RenderWithRouter from 'src/common/test-utils/renderWithRouter';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 import Emulator from 'src/Emulator/Emulator';
 
 jest.mock('src/common/api/topology/requests');
 
-
 describe('The emulator', () => {
   it('should render and match snapshots', () => {
-    const { container } = renderWithTheme(<Emulator />);
+    const { container } = renderWithTheme(
+      <RenderWithRouter
+        path='/module/:moduleId/emulator/:emulatorId'
+        initialEntries={['/module/1/emulator/1']}
+      >
+        <Emulator />
+      </RenderWithRouter>,
+    );
     expect(container).toMatchSnapshot();
   });
 });

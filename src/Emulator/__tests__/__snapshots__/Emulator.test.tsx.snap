@@ -118,21 +118,21 @@ exports[`The emulator should render and match snapshots 1`] = `
                   class="css-1893sq3"
                 >
                   <div
-                    style="background-color: rgb(158, 16, 89);"
+                    style="background-color: rgb(158, 16, 89); transform: none;"
                   />
                 </div>
                 <div
                   class="css-1893sq3"
                 >
                   <div
-                    style="background-color: rgb(0, 138, 158);"
+                    style="background-color: rgb(0, 138, 158); transform: none;"
                   />
                 </div>
                 <div
                   class="css-7fvxp"
                 >
                   <div
-                    style="background-color: rgb(189, 169, 19);"
+                    style="background-color: rgb(189, 169, 19); transform: none;"
                   />
                 </div>
               </div>
