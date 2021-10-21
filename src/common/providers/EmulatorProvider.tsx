@@ -89,7 +89,6 @@ const DialogueProvider: FC = ({ children }) => {
   ) => {
     const updateMessage = (messages: DialogueMessage[]) => {
       const messageToUpdate = messages.findIndex(message => message.id === id);
-      console.log({ messageToUpdate, messages });
       if (messageToUpdate === -1)
         return messages;
 
