@@ -26,11 +26,13 @@ import { ToyNetInput } from 'src/Login/styled';
 import ViewButtons from './ViewButtons';
 import { useDrawer } from '../../common/providers/DrawerProvider';
 import { useCreateSwitch } from 'src/common/api/topology';
-import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
+import { useEmulatorWithDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
 
 interface Props {
   nameHint: string;
 }
+
+const maxSwitch = 10;
 
 export default function CreateSwitchView({ nameHint }: Props) {
   const toast = useToast();
@@ -39,7 +41,9 @@ export default function CreateSwitchView({ nameHint }: Props) {
 
   const [createSwitch, { isLoading, isError, isSuccess, error }] =
     useCreateSwitch(sessionId);
+  const { switches } = useEmulator();
   const [name, setName] = useState(nameHint);
+  const [switchCount, setSwitchCount] = useState(switches.length);
 
   useEffect(() => {
     if (isSuccess) {
@@ -54,14 +58,27 @@ export default function CreateSwitchView({ nameHint }: Props) {
         status: 'error',
         position: 'top-right',
         isClosable: true,
-        title: 'Unable to creat host.',
+        title: 'Unable to create switch.',
         description: (error as any).message,
       });
   }, [error, isError, toast]);
 
-  const handleCreate = () => createSwitch({
-    name,
-  });
+  const handleCreate = () => {
+    if (switchCount < maxSwitch){
+      createSwitch({
+        name,
+      });
+      setSwitchCount(switchCount + 1);
+    } else {
+      toast({
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+        title: 'Unable to create switch.',
+        description: 'You can only create up to 10 switches.',
+      });
+    }
+  };
 
   return (
     <Stack spacing={3}>
