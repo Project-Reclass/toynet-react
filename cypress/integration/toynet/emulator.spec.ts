@@ -20,6 +20,18 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 const emulatorUrl = 'http://localhost:3000/module/1/emulator/1';
+const emulatorUrlTopoTwo = 'http://localhost:3000/module/1/emulator/2';
+
+const createSwitch = () => {
+  cy.get('[data-testid=emulator-add-switch]').click();
+  cy.get('[data-testid=drawer-switch-name-input]').clear();
+  cy.get('[data-testid=drawer-switch-name-input]').type('S3');
+  cy.get('[data-testid=viewbtn-create]').click();
+};
+
+const waitUntilLoaded = () => {
+  cy.get('[data-testid=emulator-add-switch]').should('exist');
+};
 
 describe('The emulator page', () => {
   beforeEach(() => {
@@ -171,5 +183,28 @@ describe('The emulator page', () => {
 
     cy.contains(/ping h2/i).should('be.visible');
     cy.contains(/bytes of data/i).should('be.visible');
+  });
+
+  it('should allow for different histories for different topologies', () => {
+    cy.visit(emulatorUrl);
+    createSwitch();
+
+    cy.get('[data-testid^="emulator-visual"]')
+    .contains(/^s3$/i).should('exist');
+    cy.contains(/created switch s3/i).should('exist');
+
+    cy.visit(emulatorUrlTopoTwo);
+    waitUntilLoaded();
+
+    cy.get('[data-testid^="emulator-visual"]')
+      .contains(/^s3$/i).should('not.exist');
+    cy.contains(/created switch s3/i).should('not.exist');
+
+    cy.visit(emulatorUrl);
+    waitUntilLoaded();
+
+    cy.get('[data-testid^="emulator-visual"]')
+      .contains(/^s3$/i).should('exist');
+    cy.contains(/created switch s3/i).should('exist');
   });
 });
