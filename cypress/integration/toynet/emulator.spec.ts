@@ -36,7 +36,7 @@ const waitUntilLoaded = () => {
 describe('The emulator page', () => {
   beforeEach(() => {
     // eslint-disable-next-line no-magic-numbers
-    Cypress.config('defaultCommandTimeout', 20000);
+    Cypress.config('defaultCommandTimeout', 200000);
     window.sessionStorage.clear();
   });
   it('should allow the user to add a host', () => {
@@ -186,8 +186,6 @@ describe('The emulator page', () => {
   });
 
   it('should allow for different histories for different topologies', () => {
-    const longTimeout = 200000;
-    Cypress.config('defaultCommandTimeout', longTimeout);
     cy.visit(emulatorUrl);
     createSwitch();
 
