@@ -165,8 +165,8 @@ describe('The emulator page', () => {
     cy.visit(emulatorUrl);
     cy.contains(/h1/i).should('be.visible');
     cy.contains(/h2/i).should('be.visible');
-    cy.get('[data-testid^="console-device-selector"]').
-      select('h1');
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
     cy.get('[data-testid^="console-textarea"]').type('ping h2{enter}');
     cy.contains(/bytes of data/i).should('be.visible');
   });
