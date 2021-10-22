@@ -29,6 +29,8 @@ import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 
 import ViewButtons from './ViewButtons';
 
+const MAX_HOSTS = 10;
+
 interface Props {
   nameHint: string;
 }
@@ -40,7 +42,7 @@ export default function CreateHostView({ nameHint }: Props) {
   const [defaultGateway, setDefaultGateway] = useState('');
 
   const { onClose } = useDrawer();
-  const { sessionId, appendDialogue } = useEmulatorWithDialogue();
+  const { sessionId, hosts, appendDialogue } = useEmulatorWithDialogue();
   const [createHost, { isLoading, isSuccess, isError, error }] = useCreateHost(sessionId);
 
   useEffect(() => {
@@ -61,11 +63,24 @@ export default function CreateHostView({ nameHint }: Props) {
       });
   }, [error, isError, toast]);
 
-  const handleSubmit = () => createHost({
-    name,
-    ip,
-    def_gateway: defaultGateway,
-  });
+  const handleSubmit = () => {
+    if (hosts.length === MAX_HOSTS) {
+      toast({
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+        title: 'Unable to create host',
+        description: `You can only create ${MAX_HOSTS}`,
+      });
+      return;
+    }
+
+    createHost({
+      name,
+      ip,
+      def_gateway: defaultGateway,
+    });
+  };
 
   return (
     <Stack spacing={3}>
@@ -73,8 +88,7 @@ export default function CreateHostView({ nameHint }: Props) {
         <FormLabel>Name</FormLabel>
         <ToyNetInput
           value={name}
-          isDisabled={isLoading}
-          data-testid='drawer-host-name-input'
+          isDisabled={isLoading} data-testid='drawer-host-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
