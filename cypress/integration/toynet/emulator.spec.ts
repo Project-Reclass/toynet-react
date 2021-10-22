@@ -208,7 +208,7 @@ describe('The emulator page', () => {
     cy.contains(/created switch s3/i).should('exist');
   });
 
-  it.only('should allow for different histories for different devices', () => {
+  it('should allow for different histories for different devices', () => {
     cy.visit(emulatorUrl);
 
     cy.get('[data-testid^="console-device-selector"]')
