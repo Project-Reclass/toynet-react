@@ -35,10 +35,10 @@ import {
 } from '@chakra-ui/core';
 
 import { genUniqueId } from 'src/common/utils';
-import { ToyNetInput } from 'src/Login/styled';
 
 import CreateIpBtns from './CreateIpBtns';
 import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
+import IPAddressInput from 'src/common/components/IPAddressInput';
 
 const MAX_INTERFACES = 10;
 
@@ -112,7 +112,7 @@ export default function IpList({
         <Flex key={ip.id}>
           <FormControl width='100%'>
             <FormLabel>{`Interface ${i + 1} IP`}</FormLabel>
-            <ToyNetInput
+            <IPAddressInput
               value={ip.ipAddr}
               placeholder='172.16.2.10/24'
               isDisabled={isDisabled}
