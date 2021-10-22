@@ -207,4 +207,23 @@ describe('The emulator page', () => {
       .contains(/^s3$/i).should('exist');
     cy.contains(/created switch s3/i).should('exist');
   });
+
+  it.only('should allow for different histories for different devices', () => {
+    cy.visit(emulatorUrl);
+
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
+
+    cy.get('[data-testid^="console-textarea"]').type('ping h2{enter}');
+    cy.contains(/bytes of data/i).should('be.visible');
+
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h2');
+
+    cy.contains(/bytes of data/i).should('not.exist');
+
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
+    cy.contains(/bytes of data/i).should('be.visible');
+  });
 });
