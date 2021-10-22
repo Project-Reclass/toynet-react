@@ -46,6 +46,7 @@ export function useSessionStorage<T>(
   const keyRef = useRef(key);
   const parserRef = useRef(parser);
   const valueRef = useRef(sessionValue);
+  const defaultValueRef = useRef(value);
 
   useEffect(() => {
     keyRef.current = key;
@@ -60,6 +61,8 @@ export function useSessionStorage<T>(
     const loadedValue = sessionStorage.getItem(key);
     if (loadedValue) {
       setValueWithRef(parserRef.current ? parserRef.current(loadedValue) : loadedValue as any);
+    } else {
+      setValueWithRef(defaultValueRef.current);
     }
     setHasInitialized(true);
   }, [key, setValueWithRef]);

@@ -84,7 +84,7 @@ export default function ConsoleTerminal({
   runCommand,
 }: Props) {
   const [history, setHistory] = useSessionStorage<ToyNetCommand[]>(
-    `history-${sessionId}`, [],
+    `console-history-${sessionId}-${selectedDevice}`, [],
     (value) => JSON.parse(value),
   );
 

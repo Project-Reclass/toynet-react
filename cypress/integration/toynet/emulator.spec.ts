@@ -165,8 +165,8 @@ describe('The emulator page', () => {
     cy.visit(emulatorUrl);
     cy.contains(/h1/i).should('be.visible');
     cy.contains(/h2/i).should('be.visible');
-    cy.get('[data-testid^="console-device-selector"]').
-      select('h1');
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
     cy.get('[data-testid^="console-textarea"]').type('ping h2{enter}');
     cy.contains(/bytes of data/i).should('be.visible');
   });
@@ -181,6 +181,8 @@ describe('The emulator page', () => {
     cy.contains(/bytes of data/i).should('be.visible');
     cy.reload(); // refresh the page
 
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
     cy.contains(/ping h2/i).should('be.visible');
     cy.contains(/bytes of data/i).should('be.visible');
   });
@@ -206,5 +208,24 @@ describe('The emulator page', () => {
     cy.get('[data-testid^="emulator-visual"]')
       .contains(/^s3$/i).should('exist');
     cy.contains(/created switch s3/i).should('exist');
+  });
+
+  it('should allow for different histories for different devices', () => {
+    cy.visit(emulatorUrl);
+
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
+
+    cy.get('[data-testid^="console-textarea"]').type('ping h2{enter}');
+    cy.contains(/bytes of data/i).should('be.visible');
+
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h2');
+
+    cy.contains(/bytes of data/i).should('not.exist');
+
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
+    cy.contains(/bytes of data/i).should('be.visible');
   });
 });
