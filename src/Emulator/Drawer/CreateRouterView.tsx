@@ -37,6 +37,7 @@ import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { ToyNetCreateRouterRequest } from 'src/common/api/topology/types';
 import useBoolean from 'src/common/hooks/useBoolean';
 import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
+import IPAddressInput from 'src/common/components/IPAddressInput';
 
 export interface Ip {
   id: string;
@@ -131,7 +132,7 @@ export default function CreateRouterView({ nameHint }: Props) {
       </FormControl>
       <FormControl>
         <FormLabel>IP Address</FormLabel>
-        <ToyNetInput
+        <IPAddressInput
           value={ip}
           placeholder='172.16.1.10/24'
           isDisabled={isLoading}
