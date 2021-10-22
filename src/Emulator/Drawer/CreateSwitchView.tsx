@@ -38,7 +38,6 @@ export default function CreateSwitchView({ nameHint }: Props) {
   const toast = useToast();
   const { onClose } = useDrawer();
   const { sessionId, appendDialogue } = useEmulatorWithDialogue();
-  const maxSwitch = 10;
 
   const [createSwitch, { isLoading, isError, isSuccess, error }] =
     useCreateSwitch(sessionId);
