@@ -181,6 +181,8 @@ describe('The emulator page', () => {
     cy.contains(/bytes of data/i).should('be.visible');
     cy.reload(); // refresh the page
 
+    cy.get('[data-testid^="console-device-selector"]')
+      .select('h1');
     cy.contains(/ping h2/i).should('be.visible');
     cy.contains(/bytes of data/i).should('be.visible');
   });
