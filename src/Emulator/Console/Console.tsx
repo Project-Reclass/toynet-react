@@ -50,7 +50,7 @@ const Console = () => {
   const loadingRef = useRef<NodeJS.Timeout | null>(null);
 
   const deviceNames = useMemo(() =>
-    [...routers, ...switches, ...hosts].map(({ name }) => name),
+    [...hosts, ...switches, ...routers].map(({ name }) => name),
   [routers, switches, hosts]);
 
   useEffect(() => {
