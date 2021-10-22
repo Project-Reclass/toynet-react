@@ -22,11 +22,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 import React, { useEffect, useState } from 'react';
 import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
 import { ToyNetInput } from 'src/Login/styled';
+import { useCreateSwitch } from 'src/common/api/topology';
+import { useEmulator, useDialogue } from 'src/common/providers/EmulatorProvider';
+import { useDrawer } from 'src/common/providers/DrawerProvider';
 
 import ViewButtons from './ViewButtons';
-import { useDrawer } from '../../common/providers/DrawerProvider';
-import { useCreateSwitch } from 'src/common/api/topology';
-import { useEmulatorWithDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
+import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
 
 interface Props {
   nameHint: string;
@@ -37,12 +38,13 @@ const maxSwitch = 10;
 export default function CreateSwitchView({ nameHint }: Props) {
   const toast = useToast();
   const { onClose } = useDrawer();
-  const { sessionId, appendDialogue } = useEmulatorWithDialogue();
+  const { appendDialogue } = useDialogue();
+  const { switches, sessionId } = useEmulator();
 
   const [createSwitch, { isLoading, isError, isSuccess, error }] =
     useCreateSwitch(sessionId);
-  const { switches } = useEmulator();
   const [name, setName] = useState(nameHint);
+  const [showError, setShowError] = useState(false);
   const [switchCount, setSwitchCount] = useState(switches.length);
 
   useEffect(() => {
@@ -64,6 +66,11 @@ export default function CreateSwitchView({ nameHint }: Props) {
   }, [error, isError, toast]);
 
   const handleCreate = () => {
+    if (name.length === 0) {
+      setShowError(true);
+      return;
+    }
+
     if (switchCount < maxSwitch){
       createSwitch({
         name,
@@ -87,10 +94,16 @@ export default function CreateSwitchView({ nameHint }: Props) {
         <ToyNetInput
           value={name}
           isDisabled={isLoading}
+          isInvalid={showError && name.length === 0}
           data-testid='drawer-switch-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
+        {showError && name.length === 0 &&
+          <ToyNetFormHelperText>
+            Name is required.
+          </ToyNetFormHelperText>
+        }
       </FormControl>
       <ViewButtons
         onCancel={onClose}
