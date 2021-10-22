@@ -28,6 +28,7 @@ import { useCreateHost } from 'src/common/api/topology';
 import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 
 import ViewButtons from './ViewButtons';
+import IPAddressInput from 'src/common/components/IPAddressInput';
 
 const MAX_HOSTS = 10;
 
@@ -96,7 +97,7 @@ export default function CreateHostView({ nameHint }: Props) {
 
       <FormControl>
         <FormLabel>Default Gateway</FormLabel>
-        <ToyNetInput
+        <IPAddressInput
           name={defaultGateway}
           isDisabled={isLoading}
           placeholder='192.168.1.1'
@@ -108,7 +109,7 @@ export default function CreateHostView({ nameHint }: Props) {
 
       <FormControl>
         <FormLabel>IP Address</FormLabel>
-        <ToyNetInput
+        <IPAddressInput
           name={ip}
           placeholder='192.168.1.2/24'
           isDisabled={isLoading}
