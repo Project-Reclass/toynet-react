@@ -9,88 +9,91 @@ exports[`The emulator should render and match snapshots 1`] = `
       class="css-1p9h997"
     >
       <div
-        class="css-1gskj9r"
+        class="css-1g4yje1"
       >
-        <a
-          class="css-r59rv1"
-          href="/"
+        <div
+          class="css-s1g8bg"
         >
-          <svg
-            class="css-112d3fm"
+          <a
+            class="css-r59rv1"
+            href="/"
           >
-            backIcon.svg
-          </svg>
+            <svg
+              class="css-112d3fm"
+            >
+              backIcon.svg
+            </svg>
+            <p
+              class="css-fzcsno"
+            >
+              Back to site
+            </p>
+          </a>
+        </div>
+        <div
+          class="css-autjxo"
+        >
+          <h2
+            class="css-iazwtf"
+          >
+            Module 
+            1
+          </h2>
           <p
             class="css-fzcsno"
           >
-            Back to site
+            Modifying Topology
           </p>
-        </a>
-      </div>
-      <div
-        class="css-1f1lwn6"
-      >
-        <h2
-          class="css-nua0st"
-        >
-          Module 
-          1
-        </h2>
-        <p
-          class="css-fzcsno"
-        >
-          Modifying Topology
-        </p>
-      </div>
-      <div
-        class="css-1f1lwn6"
-      >
-        <h2
-          class="css-nua0st"
-        >
-          Objective
-        </h2>
-        <p
-          class="css-fzcsno"
-        >
-          Add and remove devices and their connections.
-        </p>
-      </div>
-      <div
-        class="css-1f1lwn6"
-        style="display: flex; flex-direction: column; align-items: end; height: 100%;"
-      >
-        <div
-          class="css-1w77u0h"
-        >
-          Tasks
         </div>
         <div
-          class="css-12f487v"
+          class="css-autjxo"
         >
-          <div
-            class="css-16cm47t"
+          <h2
+            class="css-iazwtf"
           >
-            <li
-              class="css-p5me83"
+            Objective
+          </h2>
+          <p
+            class="css-fzcsno"
+          >
+            Add and remove devices and their connections.
+          </p>
+        </div>
+        <div
+          class="css-1g4yje1"
+        >
+          <h2
+            class="css-aufhr0"
+          >
+            Tasks
+          </h2>
+          <div
+            class="css-jg8k8b"
+          >
+            <div
+              class="css-16cm47t"
             >
-              Add a Host (h3)
-            </li>
-            <li
-              class="css-p5me83"
-            >
-              Attach h3 to s2
-            </li>
-            <li
-              class="css-p5me83"
-            >
-              Detach h3 from s2
-            </li>
-            <li
-              class="css-p5me83"
-            >
-              Remove h2
-            </li>
+              <li
+                class="css-p5me83"
+              >
+                Add a Host (h3)
+              </li>
+              <li
+                class="css-p5me83"
+              >
+                Attach h3 to s2
+              </li>
+              <li
+                class="css-p5me83"
+              >
+                Detach h3 from s2
+              </li>
+              <li
+                class="css-p5me83"
+              >
+                Remove h2
+              </li>
+            </div>
           </div>
         </div>
       </div>

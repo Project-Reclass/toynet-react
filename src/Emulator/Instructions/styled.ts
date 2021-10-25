@@ -97,8 +97,3 @@ export const BackButton = styled(Exit)`
   display: block;
   margin: auto 0.5rem auto 0;
 `;
-
-export const BackArea = styled.div`
-  padding-bottom: 10%;
-  color: darkgray;
-`;
