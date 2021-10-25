@@ -27,7 +27,6 @@ import {
   useToast,
 } from '@chakra-ui/core';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
-import { ToyNetInput } from 'src/Login/styled';
 
 import ViewButtons from './ViewButtons';
 import IpList from './RouterView/IpList';
@@ -37,7 +36,7 @@ import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { ToyNetCreateRouterRequest } from 'src/common/api/topology/types';
 import useBoolean from 'src/common/hooks/useBoolean';
 import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
-import IPAddressInput from 'src/common/components/IPAddressInput';
+import SpaceSanitizedInput from 'src/common/components/SpaceSanitizedInput';
 
 export interface Ip {
   id: string;
@@ -116,7 +115,7 @@ export default function CreateRouterView({ nameHint }: Props) {
     <Stack spacing={3}>
       <FormControl>
         <FormLabel>Name</FormLabel>
-        <ToyNetInput
+        <SpaceSanitizedInput
           value={name}
           isDisabled={isLoading}
           isInvalid={shouldShowError && name.length < 1}
@@ -132,7 +131,7 @@ export default function CreateRouterView({ nameHint }: Props) {
       </FormControl>
       <FormControl>
         <FormLabel>IP Address</FormLabel>
-        <IPAddressInput
+        <SpaceSanitizedInput
           value={ip}
           placeholder='172.16.1.10/24'
           isDisabled={isLoading}

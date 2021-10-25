@@ -23,7 +23,7 @@ import React, { SyntheticEvent } from 'react';
 
 import ToyNetInput from './ToyNetInput';
 
-const IPAddressInput = React.forwardRef<
+const SpaceSanitizedInput = React.forwardRef<
   HTMLInputElement,
   Parameters<typeof ToyNetInput>[0]
 >((props, ref) => {
@@ -35,7 +35,7 @@ const IPAddressInput = React.forwardRef<
 
   return (
     <ToyNetInput
-      data-testid='ipaddress-input'
+      data-testid='space_sanitized-input'
       {...props}
       ref={ref}
       onChange={handleChange}
@@ -43,4 +43,4 @@ const IPAddressInput = React.forwardRef<
   );
 });
 
-export default IPAddressInput;
+export default SpaceSanitizedInput;
