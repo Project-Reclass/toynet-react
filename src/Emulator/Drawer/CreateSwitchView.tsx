@@ -21,7 +21,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 import React, { useEffect, useState } from 'react';
 import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
-import { ToyNetInput } from 'src/Login/styled';
+import SpaceSanitizedInput from 'src/common/components/SpaceSanitizedInput';
 import { useCreateSwitch } from 'src/common/api/topology';
 import { useEmulator, useDialogue } from 'src/common/providers/EmulatorProvider';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
@@ -91,7 +91,7 @@ export default function CreateSwitchView({ nameHint }: Props) {
     <Stack spacing={3}>
       <FormControl>
         <FormLabel>Name</FormLabel>
-        <ToyNetInput
+        <SpaceSanitizedInput
           value={name}
           isDisabled={isLoading}
           isInvalid={showError && name.length === 0}

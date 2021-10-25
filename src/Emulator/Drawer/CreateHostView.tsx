@@ -22,13 +22,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 import React, { useEffect, useState } from 'react';
 import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
 
-import { ToyNetInput } from 'src/common/components/ToyNetInput';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useCreateHost } from 'src/common/api/topology';
 import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 
 import ViewButtons from './ViewButtons';
-import IPAddressInput from 'src/common/components/IPAddressInput';
+import SpaceSanitizedInput from 'src/common/components/SpaceSanitizedInput';
 
 const MAX_HOSTS = 10;
 
@@ -87,9 +86,10 @@ export default function CreateHostView({ nameHint }: Props) {
     <Stack spacing={3}>
       <FormControl>
         <FormLabel>Name</FormLabel>
-        <ToyNetInput
+        <SpaceSanitizedInput
           value={name}
-          isDisabled={isLoading} data-testid='drawer-host-name-input'
+          isDisabled={isLoading}
+          data-testid='drawer-host-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
@@ -97,7 +97,7 @@ export default function CreateHostView({ nameHint }: Props) {
 
       <FormControl>
         <FormLabel>Default Gateway</FormLabel>
-        <IPAddressInput
+        <SpaceSanitizedInput
           name={defaultGateway}
           isDisabled={isLoading}
           placeholder='192.168.1.1'
@@ -109,7 +109,7 @@ export default function CreateHostView({ nameHint }: Props) {
 
       <FormControl>
         <FormLabel>IP Address</FormLabel>
-        <IPAddressInput
+        <SpaceSanitizedInput
           name={ip}
           placeholder='192.168.1.2/24'
           isDisabled={isLoading}

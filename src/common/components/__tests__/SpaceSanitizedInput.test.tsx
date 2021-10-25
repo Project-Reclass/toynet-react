@@ -21,13 +21,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
-import IPAddressInput from '../IPAddressInput';
+import SpaceSanitizedInput from '../SpaceSanitizedInput';
 
 const onChangeMock = jest.fn();
-describe('the ip address input', () => {
+describe('the space sanitized input', () => {
   it('should not allow spaces to be input', () => {
-    const { getByTestId } = renderWithTheme(<IPAddressInput onChange={onChangeMock} />);
-    const ipInput = getByTestId('ipaddress-input');
+    const { getByTestId } = renderWithTheme(<SpaceSanitizedInput onChange={onChangeMock} />);
+    const ipInput = getByTestId('space_sanitized-input');
 
     fireEvent.change(ipInput, { target: { value: 'test  ' }});
 

@@ -38,7 +38,7 @@ import { genUniqueId } from 'src/common/utils';
 
 import CreateIpBtns from './CreateIpBtns';
 import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
-import IPAddressInput from 'src/common/components/IPAddressInput';
+import SpaceSanitizedInput from 'src/common/components/SpaceSanitizedInput';
 
 const MAX_INTERFACES = 10;
 
@@ -112,7 +112,7 @@ export default function IpList({
         <Flex key={ip.id}>
           <FormControl width='100%'>
             <FormLabel>{`Interface ${i + 1} IP`}</FormLabel>
-            <IPAddressInput
+            <SpaceSanitizedInput
               value={ip.ipAddr}
               placeholder='172.16.2.10/24'
               isDisabled={isDisabled}
