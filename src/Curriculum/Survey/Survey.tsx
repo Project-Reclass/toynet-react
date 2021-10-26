@@ -35,7 +35,7 @@ import {
     SliderFilledTrack,
     SliderThumb,
     Heading,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import {
     SubmitSurvey,
@@ -179,7 +179,7 @@ const Survey = () => {
                         </div>
                     ))}
                     <SubmitSurvey
-                      variantColor='teal'
+                      colorScheme='teal'
                       onClick={submitSurvey}
                     >
                     Submit Survey

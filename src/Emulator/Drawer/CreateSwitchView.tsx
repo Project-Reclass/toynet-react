@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { useEffect, useState } from 'react';
-import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
+import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/react';
 import SpaceSanitizedInput from 'src/common/components/SpaceSanitizedInput';
 import { useCreateSwitch } from 'src/common/api/topology';
 import { useEmulator, useDialogue } from 'src/common/providers/EmulatorProvider';

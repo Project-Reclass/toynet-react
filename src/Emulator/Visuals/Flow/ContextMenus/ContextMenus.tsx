@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { Stack } from '@chakra-ui/core';
+import { Stack } from '@chakra-ui/react';
 import { Menu } from 'react-contexify';
 import { DeviceInterface } from 'src/common/types';
 

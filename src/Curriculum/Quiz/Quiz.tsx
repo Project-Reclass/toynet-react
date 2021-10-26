@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { SimpleGrid, Box, Flex, Text, useDisclosure } from '@chakra-ui/core';
+import { SimpleGrid, Box, Flex, Text, useDisclosure } from '@chakra-ui/react';
 
 import { StringMap } from 'src/common/types';
 import { useQuizMeta } from 'src/common/api/curriculum/quiz';
@@ -46,7 +46,7 @@ const answeredIndices = new Set();
 const Quiz = () => {
   const { quizId } = useParams<Params>();
   const { data, isLoading } = useQuizMeta(Number(quizId));
-  const { isOpen, onClose, onOpen } = useDisclosure(false);
+  const { isOpen, onClose, onOpen } = useDisclosure({ defaultIsOpen: false });
 
   const [isQuizSubmitted, setIsQuizSubmitted] = useState<boolean>(false);
   const [answerIsCorrect, setAnswerIsCorrect] = useState<StringMap>({});
@@ -128,7 +128,7 @@ const Quiz = () => {
         </SimpleGrid>
         <Flex>
           <SubmitQuiz
-            variantColor='teal'
+            colorScheme='teal'
             onClick={!isQuizSubmitted ? submitQuiz : resetQuiz}
           >
             {!isQuizSubmitted ? 'Submit Quiz' : 'Try Again'}

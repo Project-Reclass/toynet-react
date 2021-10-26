@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
-import { Box, Heading, Spinner } from '@chakra-ui/core';
+import { Box, Heading, Spinner } from '@chakra-ui/react';
 import { useToynetCommand } from 'src/common/api/topology';
 import {
   EmulatorSection,

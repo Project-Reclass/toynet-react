@@ -18,8 +18,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { FormHelperText } from '@chakra-ui/core';
-import styled from '@emotion/styled-base';
+import { FormHelperText } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 
 export const ToyNetFormHelperText = styled(FormHelperText)`
   color: rgb(195, 195, 195);

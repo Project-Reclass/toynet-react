@@ -27,7 +27,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { useEmulator } from 'src/common/providers/EmulatorProvider';
 import { DrawerView as IDrawerView, useDrawer } from 'src/common/providers/DrawerProvider';
 
@@ -91,7 +91,7 @@ export default function CreationDrawer() {
       <DrawerOverlay />
       <DrawerContent backgroundColor='#454950'>
         <DrawerCloseButton />
-        <DrawerHeader>{viewName}</DrawerHeader>
+        <DrawerHeader color='white'>{viewName}</DrawerHeader>
 
         <DrawerBody overflowY='auto'>
           {view !== 'INFO' &&

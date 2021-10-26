@@ -32,7 +32,7 @@ import {
   useToast,
   Stack,
   Flex,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import { genUniqueId } from 'src/common/utils';
 

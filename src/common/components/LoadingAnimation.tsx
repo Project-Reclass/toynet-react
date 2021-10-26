@@ -18,8 +18,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Box, Stack } from '@chakra-ui/core';
-import styled from '@emotion/styled-base';
+import { Box, Stack } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { FC } from 'react';
 

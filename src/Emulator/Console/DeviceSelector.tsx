@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { memo } from 'react';
-import { Select, Flex, Text } from '@chakra-ui/core';
+import { Select, Flex, Text } from '@chakra-ui/react';
 
 interface Props {
   options: string[];

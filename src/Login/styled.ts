@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Box, Input, Button } from '@chakra-ui/core';
+import { Box, Input, Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const Center = styled(Box)`

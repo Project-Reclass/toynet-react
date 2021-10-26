@@ -19,7 +19,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Divider, Flex, Link, Stack, Text, Icon, Collapse, Tooltip } from '@chakra-ui/core';
+import { Divider, Flex, Link, Stack, Text, Icon, Collapse, Tooltip } from '@chakra-ui/react';
+import { StarIcon } from '@chakra-ui/icons';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 
 import { ModuleName } from './styled';
@@ -61,9 +62,9 @@ export const SubModule: FC<Props> = (
 
   return (
     <Flex>
-      <Icon
-        name='star'
-        size='1.5rem'
+      <StarIcon
+        w='1.5rem'
+        h='1.5rem'
         color='green.500'
       />
       <Stack spacing={2} width='100%' marginLeft='1.5rem'>
@@ -85,8 +86,10 @@ export const SubModule: FC<Props> = (
             </Link>
           </ModuleName>
         </Flex>
-        <Collapse isOpen={isOpen}>
-          {introduction}
+        <Collapse in={isOpen} color='white'>
+          <Text>
+            {introduction}
+          </Text>
         </Collapse>
         {index !== count -1 && <Divider />}
       </Stack>

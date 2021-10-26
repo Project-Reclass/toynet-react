@@ -23,7 +23,7 @@ import React from 'react';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { fireEvent } from '@testing-library/react';
-import { useToast } from '@chakra-ui/core';
+import { useToast } from '@chakra-ui/react';
 
 import { useCreateRouter } from 'src/common/api/topology';
 
@@ -32,8 +32,8 @@ import { DeviceInterface } from 'src/common/types';
 
 jest.mock('src/common/api/topology');
 jest.mock('src/common/providers/EmulatorProvider');
-jest.mock('@chakra-ui/core', () => {
-  const actual = jest.requireActual('@chakra-ui/core');
+jest.mock('@chakra-ui/react', () => {
+  const actual = jest.requireActual('@chakra-ui/react');
   return {
     ...actual,
     useToast: jest.fn(),

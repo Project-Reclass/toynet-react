@@ -18,12 +18,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Input } from '@chakra-ui/core';
+import { Input } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const ToyNetInput = styled(Input)`
   border: none;
   background-color: #212529;
+  color: white;
 `;
 
 export default ToyNetInput;

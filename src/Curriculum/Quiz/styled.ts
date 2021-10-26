@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Button, Text } from '@chakra-ui/core';
+import { Button, Text } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const QuizScore = styled(Text)`

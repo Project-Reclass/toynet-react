@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { memo } from 'react';
-import { Box, Text } from '@chakra-ui/core';
+import { Box, Text } from '@chakra-ui/react';
 import { ToyNetCommand } from './types';
 
 const AppliedCommand = memo(({command, color, output}: ToyNetCommand) => (

@@ -24,8 +24,8 @@ import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 
 import IpList from '../IpList';
 
-jest.mock('@chakra-ui/core', () => {
-  const actual = jest.requireActual('@chakra-ui/core');
+jest.mock('@chakra-ui/react', () => {
+  const actual = jest.requireActual('@chakra-ui/react');
   return {
     ...actual,
     useToast: jest.fn(),

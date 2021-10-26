@@ -10,38 +10,37 @@ exports[`The Module List should have red border around password input when lengt
     >
       <form>
         <div
-          class="css-j7qwjs"
+          class="chakra-stack css-egoftb"
         >
           <h2
-            class="css-1jwohdf"
+            class="chakra-heading css-xrxou1"
           >
             Login to ToyNet!
           </h2>
           <input
-            aria-invalid="false"
             autocomplete="username"
-            class="css-1eig5xu"
+            class="chakra-input css-cr9ig0"
             placeholder="Username"
             type="text"
             value="abcd"
           />
           <div
-            class="css-kjafn5"
+            class="chakra-input__group css-4302v8"
           >
             <input
               aria-invalid="true"
               autocomplete="current-password"
-              class="css-101wdcq"
+              class="chakra-input css-j7kdny"
               data-testid="password-input"
               placeholder="Password"
               type="password"
               value="abc"
             />
             <div
-              class="css-8ueujo"
+              class="chakra-input__right-element css-ohd79a"
             >
               <button
-                class="css-13h65yf"
+                class="chakra-button css-bzoy97"
                 type="button"
               >
                 Show
@@ -49,7 +48,7 @@ exports[`The Module List should have red border around password input when lengt
             </div>
           </div>
           <button
-            class="css-u1m2zc"
+            class="chakra-button css-1bqgmxk"
             type="button"
           >
             Sign In
@@ -71,38 +70,38 @@ exports[`The Module List should have red border around username and password inp
     >
       <form>
         <div
-          class="css-j7qwjs"
+          class="chakra-stack css-egoftb"
         >
           <h2
-            class="css-1jwohdf"
+            class="chakra-heading css-xrxou1"
           >
             Login to ToyNet!
           </h2>
           <input
             aria-invalid="true"
             autocomplete="username"
-            class="css-1eig5xu"
+            class="chakra-input css-cr9ig0"
             placeholder="Username"
             type="text"
             value="abc"
           />
           <div
-            class="css-kjafn5"
+            class="chakra-input__group css-4302v8"
           >
             <input
               aria-invalid="true"
               autocomplete="current-password"
-              class="css-101wdcq"
+              class="chakra-input css-j7kdny"
               data-testid="password-input"
               placeholder="Password"
               type="password"
               value="abc"
             />
             <div
-              class="css-8ueujo"
+              class="chakra-input__right-element css-ohd79a"
             >
               <button
-                class="css-13h65yf"
+                class="chakra-button css-bzoy97"
                 type="button"
               >
                 Show
@@ -110,7 +109,7 @@ exports[`The Module List should have red border around username and password inp
             </div>
           </div>
           <button
-            class="css-u1m2zc"
+            class="chakra-button css-1bqgmxk"
             type="button"
           >
             Sign In
@@ -132,38 +131,37 @@ exports[`The Module List should have red border around username input when lengt
     >
       <form>
         <div
-          class="css-j7qwjs"
+          class="chakra-stack css-egoftb"
         >
           <h2
-            class="css-1jwohdf"
+            class="chakra-heading css-xrxou1"
           >
             Login to ToyNet!
           </h2>
           <input
             aria-invalid="true"
             autocomplete="username"
-            class="css-1eig5xu"
+            class="chakra-input css-cr9ig0"
             placeholder="Username"
             type="text"
             value="abc"
           />
           <div
-            class="css-kjafn5"
+            class="chakra-input__group css-4302v8"
           >
             <input
-              aria-invalid="false"
               autocomplete="current-password"
-              class="css-101wdcq"
+              class="chakra-input css-j7kdny"
               data-testid="password-input"
               placeholder="Password"
               type="password"
               value="abcd"
             />
             <div
-              class="css-8ueujo"
+              class="chakra-input__right-element css-ohd79a"
             >
               <button
-                class="css-13h65yf"
+                class="chakra-button css-bzoy97"
                 type="button"
               >
                 Show
@@ -171,7 +169,7 @@ exports[`The Module List should have red border around username input when lengt
             </div>
           </div>
           <button
-            class="css-u1m2zc"
+            class="chakra-button css-1bqgmxk"
             type="button"
           >
             Sign In
@@ -193,38 +191,36 @@ exports[`The Module List should not have red border around username and password
     >
       <form>
         <div
-          class="css-j7qwjs"
+          class="chakra-stack css-egoftb"
         >
           <h2
-            class="css-1jwohdf"
+            class="chakra-heading css-xrxou1"
           >
             Login to ToyNet!
           </h2>
           <input
-            aria-invalid="false"
             autocomplete="username"
-            class="css-1eig5xu"
+            class="chakra-input css-cr9ig0"
             placeholder="Username"
             type="text"
             value="abcd"
           />
           <div
-            class="css-kjafn5"
+            class="chakra-input__group css-4302v8"
           >
             <input
-              aria-invalid="false"
               autocomplete="current-password"
-              class="css-101wdcq"
+              class="chakra-input css-j7kdny"
               data-testid="password-input"
               placeholder="Password"
               type="password"
               value="abcd"
             />
             <div
-              class="css-8ueujo"
+              class="chakra-input__right-element css-ohd79a"
             >
               <button
-                class="css-13h65yf"
+                class="chakra-button css-bzoy97"
                 type="button"
               >
                 Show
@@ -232,7 +228,7 @@ exports[`The Module List should not have red border around username and password
             </div>
           </div>
           <button
-            class="css-u1m2zc"
+            class="chakra-button css-1bqgmxk"
             type="button"
           >
             Sign In
@@ -254,38 +250,36 @@ exports[`The Module List should render and match snapshot 1`] = `
     >
       <form>
         <div
-          class="css-j7qwjs"
+          class="chakra-stack css-egoftb"
         >
           <h2
-            class="css-1jwohdf"
+            class="chakra-heading css-xrxou1"
           >
             Login to ToyNet!
           </h2>
           <input
-            aria-invalid="false"
             autocomplete="username"
-            class="css-1eig5xu"
+            class="chakra-input css-cr9ig0"
             placeholder="Username"
             type="text"
             value=""
           />
           <div
-            class="css-kjafn5"
+            class="chakra-input__group css-4302v8"
           >
             <input
-              aria-invalid="false"
               autocomplete="current-password"
-              class="css-101wdcq"
+              class="chakra-input css-j7kdny"
               data-testid="password-input"
               placeholder="Password"
               type="password"
               value=""
             />
             <div
-              class="css-8ueujo"
+              class="chakra-input__right-element css-ohd79a"
             >
               <button
-                class="css-13h65yf"
+                class="chakra-button css-bzoy97"
                 type="button"
               >
                 Show
@@ -293,7 +287,7 @@ exports[`The Module List should render and match snapshot 1`] = `
             </div>
           </div>
           <button
-            class="css-u1m2zc"
+            class="chakra-button css-1bqgmxk"
             type="button"
           >
             Sign In

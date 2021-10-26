@@ -15,32 +15,27 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
         <div
           aria-valuemax="100"
           aria-valuemin="0"
-          class="css-tcs7sz"
+          class="css-1xkmjny"
+          data-indeterminate=""
           role="progressbar"
         >
           <svg
-            class="css-c0o3jj"
-            viewBox="55.55555555555556 55.55555555555556 111.11111111111111 111.11111111111111"
+            class="css-jf70f3"
+            viewBox="0 0 100 100"
           >
             <circle
-              class="css-9y0bww"
-              cx="111.11111111111111"
-              cy="111.11111111111111"
-              data-progress-track="true"
-              r="50"
-              stroke-dasharray="314.159"
-              stroke-dashoffset="0"
-              stroke-width="11.111111111111112"
+              class="chakra-progress__track css-ol3i12"
+              cx="50"
+              cy="50"
+              r="42"
+              stroke-width="10px"
             />
             <circle
-              class="css-146rxdt"
-              cx="111.11111111111111"
-              cy="111.11111111111111"
-              data-progress-indicator="true"
-              r="50"
-              stroke-dasharray="1 400"
-              stroke-dashoffset="0"
-              stroke-width="11.111111111111112"
+              class="chakra-progress__indicator css-wj25ge"
+              cx="50"
+              cy="50"
+              r="42"
+              stroke-width="10px"
             />
           </svg>
         </div>

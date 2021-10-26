@@ -6,9 +6,8 @@ exports[`The sub modules should render and match previous snapshots 1`] = `
     class="css-k008qs"
   >
     <svg
-      class="css-6i3b32"
+      class="chakra-icon css-6sndh7"
       focusable="false"
-      role="presentation"
       viewBox="0 0 24 24"
     >
       <path
@@ -17,25 +16,26 @@ exports[`The sub modules should render and match previous snapshots 1`] = `
       />
     </svg>
     <div
-      class="css-gmscv5"
+      class="chakra-stack css-2y5ch"
     >
       <div
-        class="css-1wt6rk2"
+        class="css-gg4vpm"
       >
         <a
-          class="css-s0xszu"
+          class="chakra-link css-1cf79mm"
         >
           <p
-            class="css-fzcsno"
+            class="chakra-text css-0"
           >
             Article: article
           </p>
         </a>
         <a
-          class="css-fcssd9"
+          class="chakra-link css-1x04cht"
+          hovercolor="rgba(84,143,155)"
         >
           <a
-            class="css-u5zpo1"
+            class="chakra-link css-f4h6uy"
             href="/module/2/article/1"
           >
             Go to Submodule &gt;
@@ -43,22 +43,19 @@ exports[`The sub modules should render and match previous snapshots 1`] = `
         </a>
       </div>
       <div
-        aria-hidden="true"
-        class="rah-static rah-static--height-zero css-1asjk0u-Collapse"
-        style="height: 0px; overflow: hidden;"
+        class="chakra-collapse"
+        color="white"
+        style="overflow: hidden; display: none; opacity: 0; height: 0px;"
       >
-        <div
-          style="transition: opacity 250ms ease 0ms; opacity: 0; display: none;"
+        <p
+          class="chakra-text css-0"
         >
-          <div
-            class="css-cet0rr"
-          >
-            this is an introduction
-          </div>
-        </div>
+          this is an introduction
+        </p>
       </div>
       <hr
-        class="css-1fic0ux"
+        aria-orientation="horizontal"
+        class="chakra-divider css-svjswr"
       />
     </div>
   </div>

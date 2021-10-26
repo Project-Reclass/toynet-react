@@ -20,11 +20,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React, { FC } from 'react';
 import { render } from '@testing-library/react';
-import { ThemeProvider } from '@chakra-ui/core/dist';
+import { ChakraProvider } from '@chakra-ui/react';
 import renderer from 'react-test-renderer';
 
 const Wrapper: FC = ({ children }) => (
-  <ThemeProvider>{children}</ThemeProvider>
+  <ChakraProvider>{children}</ChakraProvider>
 );
 
 export const renderWithTheme = (ui: any) => {

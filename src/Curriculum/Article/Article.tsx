@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Flex } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/react';
 
 import { ArticleHeader, MarkdownWrapper } from './ArticleStyles';
 import { useArticleMeta, useArticleText } from 'src/common/api/curriculum/article';

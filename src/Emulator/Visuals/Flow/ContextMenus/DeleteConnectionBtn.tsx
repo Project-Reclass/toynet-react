@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { SyntheticEvent } from 'react';
-import { Button } from '@chakra-ui/core';
+import { Button } from '@chakra-ui/react';
 import { devError } from 'src/common/utils';
 import { useDeleteDeviceLink } from 'src/common/api/topology';
 import { useDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
@@ -71,7 +71,7 @@ export default function DeleteConnectionBtn({ to, from }: Props) {
     <Button
       data-testid='delete_conn-btn'
       variant='ghost'
-      variantColor='teal'
+      colorScheme='teal'
       textAlign='left'
       key={to}
       onClick={handleClick}

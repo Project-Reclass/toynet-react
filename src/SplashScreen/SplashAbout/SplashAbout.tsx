@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 
-import {Box, Link} from '@chakra-ui/core';
+import {Box, Link} from '@chakra-ui/react';
 
 import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/illustration3.svg';
 

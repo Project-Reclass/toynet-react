@@ -19,7 +19,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Heading, Text, Button, useDisclosure, Stack, Box } from '@chakra-ui/core';
+import {
+  Heading,
+  Text,
+  Button,
+  Stack,
+  Box,
+  useDisclosure,
+} from '@chakra-ui/react';
 
 import EmulatorSection from 'src/common/components/Emulator/Section';
 import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
@@ -45,7 +52,7 @@ interface Props {
 }
 
 const Instructions: FC<Props> = ({ panelData }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure(false);
+  const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: false });
   const { isLoading } = useEmulator();
 
   return (

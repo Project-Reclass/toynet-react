@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { Heading, Link, Stack} from '@chakra-ui/core';
+import { Heading, Link, Stack} from '@chakra-ui/react';
 
 const NotFound = () => {
     return <Stack marginTop='10rem' alignItems='center'>

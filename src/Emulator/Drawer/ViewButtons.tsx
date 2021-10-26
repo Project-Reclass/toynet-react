@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { Flex } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/react';
 import DangerButton from 'src/common/components/buttons/DangerButton';
 import PrimaryButton from 'src/common/components/buttons/PrimaryButton';
 

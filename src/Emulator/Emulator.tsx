@@ -19,13 +19,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { useEffect } from 'react';
-import { Grid } from '@chakra-ui/core';
+import { Grid } from '@chakra-ui/react';
 
 import Visuals from './Visuals';
 import Instructions from './Instructions';
 import DialogueBox from './DialogueBox';
 import Console from './Console';
-import styled from '@emotion/styled-base';
+import styled from '@emotion/styled';
 import DrawerProvider from '../common/providers/DrawerProvider';
 import { terminateToyNetSession } from 'src/common/api/topology/requests';
 import { useEmulator } from 'src/common/providers/EmulatorProvider';

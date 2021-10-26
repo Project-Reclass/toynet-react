@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { forwardRef, useCallback, useState } from 'react';
-import { Textarea } from '@chakra-ui/core';
+import { Textarea } from '@chakra-ui/react';
 
 interface Props {
   isLoading: boolean;

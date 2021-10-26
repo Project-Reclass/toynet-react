@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import styled from '@emotion/styled';
 import React from 'react';
-import { CircularProgress } from '@chakra-ui/core';
+import { CircularProgress } from '@chakra-ui/react';
 
 export const CenteredProgress = styled(CircularProgress)`
     position: absolute;

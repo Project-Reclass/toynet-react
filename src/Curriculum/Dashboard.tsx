@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { Box, Stack, Heading, Flex, Text } from '@chakra-ui/core';
+import { Box, Stack, Heading, Flex, Text } from '@chakra-ui/react';
 import { useCurriculum } from 'src/common/api/curriculum/dashboard';
 import LoadingContainer from 'src/common/components/LoadingContainer';
 
@@ -54,7 +54,9 @@ export default function Dashboard({ username }: Props) {
               <Text fontSize='lg' color="black.500">
                 {`${data?.introduction} You can click on each module’s chevron to see its submodules. You must go through
                 the modules and their submodules in order. To start or revisit a submodule, click`} {' '}
-                <Text as='span' textDecoration='underline' fontWeight='bold'>{'Go to submodule >.'}</Text>
+                <Text color='black.500' as='span' textDecoration='underline' fontWeight='bold'>
+                  {'Go to submodule >.'}
+                </Text>
               </Text>
             </Stack>
           </Flex>

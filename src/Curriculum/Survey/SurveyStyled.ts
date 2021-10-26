@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import styled from '@emotion/styled';
-import { Button } from '@chakra-ui/core';
+import { Button } from '@chakra-ui/react';
 
 export const SurveyContainer = styled('div')` 
   margin: 0 auto; 

@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { Button } from '@chakra-ui/core';
+import { Button } from '@chakra-ui/react';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { DeviceInterface } from 'src/common/types';
 
@@ -43,7 +43,7 @@ export default function InfoBtn({
       data-testid='info-btn'
       onClick={handleClick}
       variant='ghost'
-      variantColor='teal'
+      colorScheme='teal'
       alignContent='center'
       textAlign='left'
     >

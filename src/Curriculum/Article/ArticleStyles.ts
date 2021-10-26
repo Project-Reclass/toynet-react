@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import styled from '@emotion/styled';
-import { Heading } from '@chakra-ui/core';
+import { Heading } from '@chakra-ui/react';
 
 export const MarkdownWrapper = styled('h3')`
   color: white;

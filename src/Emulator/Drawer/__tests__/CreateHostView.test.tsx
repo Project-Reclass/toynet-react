@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { useToast } from '@chakra-ui/core';
+import { useToast } from '@chakra-ui/react';
 import { fireEvent } from '@testing-library/react';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import { useCreateHost } from 'src/common/api/topology';
@@ -32,8 +32,8 @@ import { DeviceInterface } from 'src/common/types';
 
 jest.mock('src/common/api/topology');
 jest.mock('src/common/providers/EmulatorProvider');
-jest.mock('@chakra-ui/core', () => {
-  const actual = jest.requireActual('@chakra-ui/core');
+jest.mock('@chakra-ui/react', () => {
+  const actual = jest.requireActual('@chakra-ui/react');
   return {
     ...actual,
     useToast: jest.fn(),

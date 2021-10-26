@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Flex, Text } from '@chakra-ui/core';
+import { Flex, Text } from '@chakra-ui/react';
 import React, { memo, FC } from 'react';
 import { useContextMenu } from 'react-contexify';
 import { Handle, Position, NodeProps } from 'react-flow-renderer';
