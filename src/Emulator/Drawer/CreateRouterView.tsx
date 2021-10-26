@@ -38,6 +38,8 @@ import useBoolean from 'src/common/hooks/useBoolean';
 import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
 import SpaceSanitizedInput from 'src/common/components/SpaceSanitizedInput';
 
+const MAX_ROUTERS = 10;
+
 export interface Ip {
   id: string;
   ipAddr: string;
@@ -76,7 +78,7 @@ export default function CreateRouterView({ nameHint }: Props) {
 
   const toast = useToast();
   const { onClose } = useDrawer();
-  const { sessionId, appendDialogue } = useEmulatorWithDialogue();
+  const { sessionId, appendDialogue, switches } = useEmulatorWithDialogue();
   const [createRouter, { isLoading, isError, error, isSuccess }] =
     useCreateRouter(sessionId);
 
@@ -93,7 +95,7 @@ export default function CreateRouterView({ nameHint }: Props) {
         status: 'error',
         position: 'top-right',
         isClosable: true,
-        title: 'Unable to creat host.',
+        title: 'Unable to creat router',
         description: (error as any).message,
       });
   }, [error, isError, toast]);
@@ -104,6 +106,17 @@ export default function CreateRouterView({ nameHint }: Props) {
 
     if (!isValidRouterRequest(routerRequest)) {
       showError();
+      return;
+    }
+
+    if (switches.length === MAX_ROUTERS) {
+      toast({
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+        title: 'Unable to create router',
+        description: `You can only create ${MAX_ROUTERS} routers.`,
+      });
       return;
     }
 

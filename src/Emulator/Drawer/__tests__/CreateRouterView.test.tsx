@@ -23,10 +23,12 @@ import React from 'react';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
 import { fireEvent } from '@testing-library/react';
+import { useToast } from '@chakra-ui/core';
 
 import { useCreateRouter } from 'src/common/api/topology';
 
 import CreateRouterView from '../CreateRouterView';
+import { DeviceInterface } from 'src/common/types';
 
 jest.mock('src/common/api/topology');
 jest.mock('src/common/providers/EmulatorProvider');
@@ -38,12 +40,38 @@ jest.mock('@chakra-ui/core', () => {
   };
 });
 
+const toastMock = jest.fn();
 const createRouterMock = jest.fn();
+const useToastMock = useToast as jest.MockedFunction<typeof useToast>;
 const useCreateRouterMock = useCreateRouter as jest.MockedFunction<any>;
 const useEmulatorWithDialogueMock = useEmulatorWithDialogue as jest.MockedFunction<any>;
 
+const defaultRouter: DeviceInterface = {
+  interfaces: [],
+  name: 'R1',
+  type: 'router',
+  connections: [],
+};
+
+const setup = () => {
+  const utils = renderWithTheme(<CreateRouterView nameHint='' />);
+  const nameInput = utils.getByTestId('drawer-router-name-input');
+  const ipInput = utils.getByTestId('drawer-router-ip-input');
+  const interfaceInput = utils.getByTestId('ip_input-idx_0');
+  const createBtn = utils.getByTestId('viewbtn-create');
+
+  return {
+    ...utils,
+    nameInput,
+    ipInput,
+    interfaceInput,
+    createBtn,
+  };
+};
+
 describe('the create router view component', () => {
   beforeEach(() => {
+    useToastMock.mockReturnValue(toastMock);
     createRouterMock.mockClear();
     useCreateRouterMock.mockReturnValue([
       createRouterMock,
@@ -57,12 +85,11 @@ describe('the create router view component', () => {
     useEmulatorWithDialogueMock.mockReturnValue({
       sessionId: 1,
       appendDialogue: jest.fn(),
+      switches: [],
     });
   });
   it('should show an error when the name is not provided', () => {
-    const { getByTestId, getByText } = renderWithTheme(<CreateRouterView nameHint='' />);
-    const nameInput = getByTestId('drawer-router-name-input');
-    const createBtn = getByTestId('viewbtn-create');
+    const { getByText, nameInput, createBtn } = setup();
     fireEvent.change(nameInput, { target: { value: '' }});
 
     fireEvent.click(createBtn);
@@ -70,9 +97,7 @@ describe('the create router view component', () => {
     expect(createRouterMock).not.toHaveBeenCalled();
   });
   it('should show an error when the ip is not provided', () => {
-    const { getByTestId, getByText } = renderWithTheme(<CreateRouterView nameHint='' />);
-    const ipInput = getByTestId('drawer-router-ip-input');
-    const createBtn = getByTestId('viewbtn-create');
+    const { getByText, ipInput, createBtn } = setup();
     fireEvent.change(ipInput, { target: { value: '' }});
 
     fireEvent.click(createBtn);
@@ -80,11 +105,7 @@ describe('the create router view component', () => {
     expect(createRouterMock).not.toHaveBeenCalled();
   });
   it('should call the create router function if the router request is valid', () => {
-    const { getByTestId } = renderWithTheme(<CreateRouterView nameHint='' />);
-    const nameInput = getByTestId('drawer-router-name-input');
-    const ipInput = getByTestId('drawer-router-ip-input');
-    const interfaceInput = getByTestId('ip_input-idx_0');
-    const createBtn = getByTestId('viewbtn-create');
+    const { nameInput, ipInput, interfaceInput, createBtn } = setup();
 
     fireEvent.change(nameInput, { target: { value: 'H3' }});
     fireEvent.change(ipInput, { target: { value: '192.168.0.1' }});
@@ -93,5 +114,29 @@ describe('the create router view component', () => {
     fireEvent.click(createBtn);
 
     expect(createRouterMock).toHaveBeenCalled();
+  });
+  it('should show an error when there are already 10 router', () => {
+    const maxDevices = 10;
+    useEmulatorWithDialogueMock.mockReturnValue({
+      sessionId: 1,
+      appendDialogue: jest.fn(),
+      switches: new Array(maxDevices).fill({...defaultRouter}, 0, maxDevices),
+    });
+    const { nameInput, ipInput, interfaceInput, createBtn } = setup();
+
+    fireEvent.change(nameInput, { target: { value: 'H3' }});
+    fireEvent.change(ipInput, { target: { value: '192.168.0.1' }});
+    fireEvent.change(interfaceInput, { target: { value: '192.168.0.1' }});
+
+    fireEvent.click(createBtn);
+
+    expect(toastMock).toHaveBeenCalled();
+    expect(toastMock).toHaveBeenCalledWith({
+      status: 'error',
+      position: 'top-right',
+      isClosable: true,
+      title: 'Unable to create router',
+      description: 'You can only create 10 routers.',
+    });
   });
 });
