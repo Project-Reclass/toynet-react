@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import { Box } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { DeviceType } from 'src/common/types';
 

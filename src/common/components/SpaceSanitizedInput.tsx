@@ -30,7 +30,7 @@ const SpaceSanitizedInput = React.forwardRef<
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
     e.persist();
     (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.replace(/ /g, '');
-    props.onChange && props.onChange(e);
+    props.onChange && props.onChange(e as any);
   };
 
   return (

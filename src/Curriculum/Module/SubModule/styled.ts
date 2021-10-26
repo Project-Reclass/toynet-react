@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import styled from '@emotion/styled';
-import { Box, Link } from '@chakra-ui/core';
+import { Box, Link } from '@chakra-ui/react';
 
 interface ModuleNameProps {
   locked: boolean;

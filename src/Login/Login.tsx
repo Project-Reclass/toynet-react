@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Stack, useToast } from '@chakra-ui/core';
+import { Box, Heading, Stack, useToast } from '@chakra-ui/react';
 
 import { useAuthContext, AuthActions } from './AuthProvider';
 import { useLogin } from 'src/common/api/login/hooks';

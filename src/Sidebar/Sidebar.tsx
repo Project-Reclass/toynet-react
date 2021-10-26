@@ -22,8 +22,14 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ReclassLogo from '../assets/PR-Icon-Square-White.png';
-import { Icon, Avatar, Flex, Stack } from '@chakra-ui/core';
+import { Avatar, Flex, Stack } from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import {
+  SettingsIcon,
+  CalendarIcon,
+  QuestionIcon,
+  ArrowLeftIcon,
+} from '@chakra-ui/icons';
 
 interface StyledNavProps {
   isMenuOpen: boolean;
@@ -126,7 +132,9 @@ const Sidebar = () => {
           </StyledNavIcon>
           <StyledNavItem onClick={() => goToPageOnEnableHref('/dashboard/1')}>
             <StyledNavIcon>
-              <StyledSvg> <Icon name='calendar' size='30px'/> </StyledSvg>
+              <StyledSvg>
+                <CalendarIcon w='30px' h='30px' color='white' />
+              </StyledSvg>
               <StyledLinkText isMenuOpen={isMenuOpen}>
                 Curriculum
               </StyledLinkText>
@@ -136,7 +144,9 @@ const Sidebar = () => {
         <Stack spacing={3}>
           <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
             <StyledNavIcon>
-              <StyledSvg> <Icon name='settings' size='30px'/> </StyledSvg>
+              <StyledSvg>
+                <SettingsIcon w='28px' h='28px' color='white'/>
+              </StyledSvg>
               <StyledLinkText isMenuOpen={isMenuOpen}>
                 Profile
               </StyledLinkText>
@@ -144,7 +154,9 @@ const Sidebar = () => {
           </StyledNavItem>
           <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
             <StyledNavIcon>
-              <StyledSvg>  <Icon name='question' size='30px'/> </StyledSvg>
+              <StyledSvg>
+                <QuestionIcon w='28px' h='28px' color='white'/>
+              </StyledSvg>
               <StyledLinkText isMenuOpen={isMenuOpen}>
                 FAQ
               </StyledLinkText>
@@ -152,7 +164,9 @@ const Sidebar = () => {
           </StyledNavItem>
           <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
             <StyledNavIcon>
-              <StyledSvg>  <Icon name='arrow-left' size='30px'/> </StyledSvg>
+              <StyledSvg>
+                <ArrowLeftIcon w='28px' h='28px' color='white'/>
+              </StyledSvg>
               <StyledLinkText isMenuOpen={isMenuOpen}>
                 Log Out
               </StyledLinkText>

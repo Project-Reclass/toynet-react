@@ -20,7 +20,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { memo } from 'react';
-import { Stack, IconButton } from '@chakra-ui/core';
+import { Stack, IconButton } from '@chakra-ui/react';
+import { MinusIcon, AddIcon } from '@chakra-ui/icons';
 
 interface Props {
   index: number;
@@ -46,11 +47,11 @@ const CreateIpBtns = ({
               data-testid={`remove_ip-idx_${index}`}
               width='fit-content'
               isDisabled={isDisabled}
-              variantColor='red'
+              colorScheme='red'
               variant='outline'
               aria-label='Call Segun'
               size='sm'
-              icon='minus'
+              icon={<MinusIcon />}
               onClick={() => deleteIp(index)}
             />
           }
@@ -58,11 +59,11 @@ const CreateIpBtns = ({
             data-testid={`add_ip-notone-idx_${index}`}
             width='fit-content'
             isDisabled={isDisabled}
-            variantColor='teal'
+            colorScheme='teal'
             variant='outline'
             aria-label='Call Segun'
             size='sm'
-            icon='add'
+            icon={<AddIcon />}
             onClick={createNewIp}
           />
         </Stack> :
@@ -70,11 +71,11 @@ const CreateIpBtns = ({
           data-testid={`add_ip-idx_${index}`}
           width='fit-content'
           isDisabled={isDisabled}
-          variantColor='red'
+          colorScheme='red'
           variant='outline'
           aria-label='Call Segun'
           size='sm'
-          icon='minus'
+          icon={<AddIcon />}
           onClick={() => deleteIp(index)}
         />
     }

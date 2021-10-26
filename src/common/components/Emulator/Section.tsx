@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Box } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 interface Props {

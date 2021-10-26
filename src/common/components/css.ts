@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 interface DynamicPosProps {
   left?: number | string;

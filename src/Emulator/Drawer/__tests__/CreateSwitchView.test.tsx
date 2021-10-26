@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { useToast } from '@chakra-ui/core';
+import { useToast } from '@chakra-ui/react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import { useCreateSwitch } from 'src/common/api/topology';
@@ -30,15 +30,15 @@ import CreateSwitchView from '../CreateSwitchView';
 
 jest.mock('src/common/api/topology');
 jest.mock('src/common/providers/EmulatorProvider');
-jest.mock('@chakra-ui/core', () => {
-  const actual = jest.requireActual('@chakra-ui/core');
+jest.mock('@chakra-ui/react', () => {
+  const actual = jest.requireActual('@chakra-ui/react');
   return {
     ...actual,
     useToast: jest.fn(),
   };
 });
 
-const useToastMock = useToast as jest.MockedFunction<typeof useToast>;
+const useToastMock = useToast as jest.MockedFunction<any>;
 const useCreateSwitchMock = useCreateSwitch as jest.MockedFunction<any>;
 const useEmulatorMock = useEmulator as jest.MockedFunction<any>;
 const useDialogueMock = useDialogue as jest.MockedFunction<any>;

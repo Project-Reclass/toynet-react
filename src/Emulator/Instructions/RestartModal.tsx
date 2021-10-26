@@ -28,7 +28,7 @@ import {
   Button,
   Heading,
   Text,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 interface Props {
   isOpen: boolean;
@@ -60,7 +60,7 @@ const RestartModal = ({ isOpen, close }: Props) => {
           <Button
             size='sm'
             variant="solid"
-            variantColor="red"
+            colorScheme="red"
             width={80}
             fontSize='sm'
             onClick={handleRestart}
@@ -70,7 +70,7 @@ const RestartModal = ({ isOpen, close }: Props) => {
           <Button
             size='sm'
             variant="outline"
-            variantColor="black"
+            colorScheme="black"
             width={80}
             fontSize='sm'
             onClick={close}

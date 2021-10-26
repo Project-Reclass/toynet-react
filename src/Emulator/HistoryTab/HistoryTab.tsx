@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { Heading } from '@chakra-ui/core';
+import { Heading } from '@chakra-ui/react';
 
 const HistoryTab = () => (
   <Heading size='lg' color='white' padding='20px'>

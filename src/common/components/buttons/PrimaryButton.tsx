@@ -20,14 +20,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { Button, ButtonProps } from '@chakra-ui/core';
+import { Button, ButtonProps } from '@chakra-ui/react';
 
 const PrimaryButton: React.FC<
-  Omit<ButtonProps, 'variantColor'>
+  Omit<ButtonProps, 'colorScheme'>
 > = ({ children, ...rest }) => (
   <Button
     {...rest}
-    variantColor='teal'
+    colorScheme='teal'
   >
     {children}
   </Button>

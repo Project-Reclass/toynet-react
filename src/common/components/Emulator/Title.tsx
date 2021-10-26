@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Flex } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 const EmulatorTitle = styled(Flex)`

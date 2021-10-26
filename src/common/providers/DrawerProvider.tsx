@@ -27,7 +27,7 @@ import {
   useContext,
   useState,
 } from 'react';
-import { useDisclosure } from '@chakra-ui/core';
+import { useDisclosure } from '@chakra-ui/react';
 import Drawer from '../../Emulator/Drawer';
 
 export type DrawerView = 'CREATE_HOST' | 'CREATE_ROUTER' |

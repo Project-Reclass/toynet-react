@@ -20,7 +20,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Button, ButtonGroup } from '@chakra-ui/core';
+import { Button, ButtonGroup } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
 import styled from '@emotion/styled';
 import localforage from 'localforage';
 import ReactFlow, {
@@ -216,8 +217,8 @@ const Flow = ({
         >
           <Button
             size='sm'
-            leftIcon="add"
-            variantColor="pink"
+            leftIcon={<AddIcon />}
+            colorScheme="pink"
             variant="outline"
             data-testid="emulator-add-host"
             isDisabled={isLoading}
@@ -228,8 +229,8 @@ const Flow = ({
           </Button>
           <Button
             size='sm'
-            leftIcon="add"
-            variantColor="blue"
+            leftIcon={<AddIcon />}
+            colorScheme="blue"
             borderColor={deviceColorClasses.get('switch')}
             variant="outline"
             isDisabled={isLoading}
@@ -240,8 +241,8 @@ const Flow = ({
           </Button>
           <Button
             size='sm'
-            leftIcon="add"
-            variantColor="yellow"
+            leftIcon={<AddIcon />}
+            colorScheme="yellow"
             data-testid="emulator-add-router"
             isDisabled={isLoading}
             borderColor={deviceColorClasses.get('router')}

@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import styled from '@emotion/styled';
-import { Flex, Text } from '@chakra-ui/core';
+import { Flex, Text } from '@chakra-ui/react';
 
 import logo from 'src/assets/PR-Icon-Square-White.png';
 

@@ -18,30 +18,44 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
-import { Stack, Icon } from '@chakra-ui/react';
+import { extendTheme, ThemeConfig } from '@chakra-ui/react';
 
-import { StatusIconBox } from './styled';
+const FormLabel = {
+  baseStyle: {
+    color: 'white',
+  },
+};
 
-interface SIProps {
-  status: 'locked' | 'unlocked' | 'done'
-}
+const Heading = {
+  baseStyle: {
+    color: 'white',
+  },
+};
 
-const StatusIcon = ({ status }: SIProps) => (
-  <Stack>
-    <StatusIconBox type={status !== 'done' ? 'lock' : 'check'}>
-      <Icon
-        name={status === 'done' ? 'check' :
-          status === 'locked' ? 'lock' : 'unlock'
-        }
-        margin='auto'
-        marginTop='0.2rem'
-        display='block'
-        color={status !== 'done' ? 'grey' : 'white'}
-      />
-    </StatusIconBox>
-  </Stack>
-);
+const Text = {
+  baseStyle: {
+    color: 'white',
+  },
+};
 
+// 2. Add your color mode config
+const config : ThemeConfig = {
+  initialColorMode: 'light',
+  useSystemColorMode: false,
+};
 
-export default StatusIcon;
+// 3. extend the theme
+const theme = extendTheme({
+  config,
+  components: {
+    FormLabel,
+    Heading,
+    Text,
+  },
+  styles: {
+    global: {
+      color: 'white',
+    },
+  },
+});
+export default theme;

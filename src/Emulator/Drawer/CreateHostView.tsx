@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { useEffect, useState } from 'react';
-import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
+import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/react';
 
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useCreateHost } from 'src/common/api/topology';
@@ -113,7 +113,7 @@ export default function CreateHostView({ nameHint }: Props) {
   return (
     <Stack spacing={3}>
       <FormControl>
-        <FormLabel>Name</FormLabel>
+        <FormLabel color='white'>Name</FormLabel>
         <SpaceSanitizedInput
           value={name}
           isDisabled={isLoading}

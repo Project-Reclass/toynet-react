@@ -6,10 +6,10 @@ exports[`The Article page should render the same based on URL parameters 1`] = `
     class="css-u6v8er"
   >
     <h1
-      class="css-1nxqz3s"
+      class="chakra-heading css-w1dyhc"
     />
     <h2
-      class="css-14lu7sf"
+      class="chakra-heading css-1f59nk9"
     >
       Author: 
     </h2>

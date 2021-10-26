@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { useToast } from '@chakra-ui/core';
+import { useToast } from '@chakra-ui/react';
 import React, { FC, useContext, useEffect } from 'react';
 import useAuthState, { initialState, ReducerAction, User } from './useAuthState';
 

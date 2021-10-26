@@ -19,10 +19,10 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Box, Collapse, Flex, Text, Tooltip } from '@chakra-ui/core';
+import { Box, Collapse, Flex, Text, Tooltip } from '@chakra-ui/react';
 import { ModuleIntf } from 'src/common/types/curriculum';
 
-import { RotatableIcon } from './styled';
+import { RotatableTriangle } from './styled';
 import SubModuleList from './SubModuleList';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 
@@ -73,9 +73,9 @@ const Module: FC<ModuleIntf & Props> = (
     borderLeft={'2pt solid white'}
     >
       <Flex onClick={() => setOpen(open => !open)} cursor='pointer'>
-        <RotatableIcon
-          name={'triangle-up'}
+        <RotatableTriangle
           rotated={isOpen}
+          color='white'
           size='1.5rem'
           marginY='auto'
           marginX='1rem'
@@ -91,7 +91,7 @@ const Module: FC<ModuleIntf & Props> = (
           </Text>
         </Flex>
       </Flex>
-      <Collapse isOpen={isOpen}>
+      <Collapse in={isOpen}>
         <Text fontSize='1xl' userSelect='none' m='1rem'>
           {introduction}
         </Text>

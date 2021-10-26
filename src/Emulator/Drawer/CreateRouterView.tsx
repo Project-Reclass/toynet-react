@@ -25,7 +25,7 @@ import {
   FormControl,
   FormLabel,
   useToast,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 
 import ViewButtons from './ViewButtons';

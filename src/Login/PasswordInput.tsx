@@ -19,11 +19,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC, useState } from 'react';
-import { InputGroup, InputProps, InputRightElement } from '@chakra-ui/core';
+import { InputGroup, InputProps, InputRightElement } from '@chakra-ui/react';
 
 import { ToyNetButton, ToyNetInput } from './styled';
 
-const PasswordInput: FC<React.PropsWithChildren<InputProps<HTMLInputElement>>> = ({ ...rest }) => {
+const PasswordInput: FC<React.PropsWithChildren<InputProps>> = ({ ...rest }) => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 

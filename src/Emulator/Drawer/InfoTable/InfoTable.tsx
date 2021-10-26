@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { Box, Heading } from '@chakra-ui/core';
+import { Box, Heading } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 import { useEmulator } from 'src/common/providers/EmulatorProvider';
@@ -49,17 +49,6 @@ export default function InfoTable({ activeName }: Props) {
     <Box>
       <Heading size='md' my={3}>Topology Information</Heading>
       <Table>
-        {/* <thead>
-          <th>
-            <Heading size='sm'>Name</Heading>
-          </th>
-          <th>
-            <Heading size='sm'>Default Gateway</Heading>
-          </th>
-          <th>
-            <Heading size='sm'>IP Address</Heading>
-          </th>
-        </thead> */}
         <tbody>
           <HostRows routers={routers} hosts={hosts} activeName={activeName} />
           <SwitchRows switches={switches} activeName={activeName} />

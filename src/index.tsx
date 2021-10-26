@@ -22,24 +22,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { ThemeProvider, CSSReset } from '@chakra-ui/core';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
-import AuthProvider, {} from './Login/AuthProvider/AuthProvider';
+import AuthProvider from './Login/AuthProvider/AuthProvider';
+import theme from './theme';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
+    <ChakraProvider resetCSS={true} theme={theme}>
       <DndProvider backend={HTML5Backend}>
         <AuthProvider>
-          <CSSReset />
           <App />
         </AuthProvider>
       </DndProvider>
-    </ThemeProvider>
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

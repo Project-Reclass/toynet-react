@@ -638,6 +638,7 @@ th {
   padding-right: 0.96667rem;
   padding-top: 0.725rem;
   padding-bottom: calc(0.725rem - 1px);
+  color: white;
 }
 th:first-child,
 td:first-child {

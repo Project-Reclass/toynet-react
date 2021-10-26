@@ -30,7 +30,7 @@ import {
   Heading,
   Text,
   Flex,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { CheckIcon, IncorrectIcon, QuizScore } from './styled';
 
 const MIN_SCORE = 0.7;
@@ -80,11 +80,11 @@ const QuizModal = ({ total, numCorrect, isOpen, done, tryAgain}: Props) => {
 
         <ModalFooter display='flex' justifyContent='space-evenly'>
           {percentage >= MIN_SCORE &&
-            <Button variantColor="blue" mr={3} onClick={done}>
+            <Button colorScheme="blue" mr={3} onClick={done}>
               I'm Done
             </Button>
           }
-          <Button variantColor="blue" mr={3} onClick={tryAgain}>
+          <Button colorScheme="blue" mr={3} onClick={tryAgain}>
             Try Again
           </Button>
         </ModalFooter>

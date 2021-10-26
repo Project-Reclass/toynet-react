@@ -3,16 +3,16 @@
 exports[`The emulator should render and match snapshots 1`] = `
 <div>
   <div
-    class="css-15mlykw"
+    class="css-pr2avt"
   >
     <div
       class="css-1p9h997"
     >
       <div
-        class="css-1g4yje1"
+        class="chakra-stack css-1eoe9w1"
       >
         <div
-          class="css-s1g8bg"
+          class="css-1kch9dj"
         >
           <a
             class="css-r59rv1"
@@ -24,51 +24,51 @@ exports[`The emulator should render and match snapshots 1`] = `
               backIcon.svg
             </svg>
             <p
-              class="css-fzcsno"
+              class="chakra-text css-0"
             >
               Back to site
             </p>
           </a>
         </div>
         <div
-          class="css-autjxo"
+          class="chakra-stack css-n21gh5"
         >
           <h2
-            class="css-iazwtf"
+            class="chakra-heading css-1jb3vzl"
           >
             Module 
             1
           </h2>
           <p
-            class="css-fzcsno"
+            class="chakra-text css-0"
           >
             Modifying Topology
           </p>
         </div>
         <div
-          class="css-autjxo"
+          class="chakra-stack css-n21gh5"
         >
           <h2
-            class="css-iazwtf"
+            class="chakra-heading css-1jb3vzl"
           >
             Objective
           </h2>
           <p
-            class="css-fzcsno"
+            class="chakra-text css-0"
           >
             Add and remove devices and their connections.
           </p>
         </div>
         <div
-          class="css-1g4yje1"
+          class="chakra-stack css-zmvmzg"
         >
           <h2
-            class="css-aufhr0"
+            class="chakra-heading css-1jb3vzl"
           >
             Tasks
           </h2>
           <div
-            class="css-jg8k8b"
+            class="css-12f487v"
           >
             <div
               class="css-16cm47t"
@@ -99,7 +99,7 @@ exports[`The emulator should render and match snapshots 1`] = `
       </div>
     </div>
     <div
-      class="css-jj5y1g"
+      class="css-x9oea1"
     >
       <div
         class="css-tkj973"
@@ -115,17 +115,17 @@ exports[`The emulator should render and match snapshots 1`] = `
               class="css-3hcm5q"
             >
               <div
-                class="css-1vp8jwk"
+                class="chakra-stack css-1mkri2h"
               >
                 <div
-                  class="css-1893sq3"
+                  class="css-7fvxp"
                 >
                   <div
                     style="background-color: rgb(158, 16, 89); transform: none;"
                   />
                 </div>
                 <div
-                  class="css-1893sq3"
+                  class="css-7fvxp"
                 >
                   <div
                     style="background-color: rgb(0, 138, 158); transform: none;"
@@ -140,15 +140,15 @@ exports[`The emulator should render and match snapshots 1`] = `
                 </div>
               </div>
               <div
-                class="css-1kic1uf"
+                class="chakra-stack css-8e7w4m"
               >
                 <h2
-                  class="css-1njbwjg"
+                  class="chakra-heading css-xrxou1"
                 >
                   Creating Network
                 </h2>
                 <p
-                  class="css-1f0va8n"
+                  class="chakra-text css-xi606m"
                 >
                   Please wait a moment while we create your new ToyNet.
                 </p>
@@ -158,16 +158,16 @@ exports[`The emulator should render and match snapshots 1`] = `
         </div>
       </div>
       <div
-        class="css-jhr2ok"
+        class="css-awfnxv"
       >
         <div
           class="css-1ywxh3e"
         >
           <div
-            class="css-lp54d1"
+            class="css-17hehh2"
           >
             <h2
-              class="css-nua0st"
+              class="chakra-heading css-1jb3vzl"
             >
               Console
             </h2>
@@ -175,15 +175,15 @@ exports[`The emulator should render and match snapshots 1`] = `
               class="css-ki9t1j"
             >
               <p
-                class="css-ku3qws"
+                class="chakra-text css-19em3gu"
               >
                 Device
               </p>
               <div
-                class="css-3fim88"
+                class="chakra-select__wrapper css-5chdsz"
               >
                 <select
-                  class="css-v4upyu"
+                  class="chakra-select css-6qn13d"
                   data-testid="console-device-selector"
                 >
                   <option
@@ -193,13 +193,14 @@ exports[`The emulator should render and match snapshots 1`] = `
                   </option>
                 </select>
                 <div
-                  class="css-1s963hi"
+                  class="chakra-select__icon-wrapper css-150m6y0"
                 >
                   <svg
                     aria-hidden="true"
-                    class="css-12c4avn"
+                    class="chakra-select__icon"
                     focusable="false"
                     role="presentation"
+                    style="width: 1em; height: 1em; color: currentColor;"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -218,8 +219,7 @@ exports[`The emulator should render and match snapshots 1`] = `
               class="css-bzltz5"
             >
               <textarea
-                aria-disabled="false"
-                class="css-1ckzuis"
+                class="chakra-textarea css-1n8mez3"
                 data-testid="console-textarea"
               >
                 &gt;&gt; 
@@ -234,10 +234,10 @@ exports[`The emulator should render and match snapshots 1`] = `
             class="css-4s6pz3"
           >
             <div
-              class="css-fjp8dd"
+              class="css-1not91g"
             >
               <h2
-                class="css-nua0st"
+                class="chakra-heading css-1jb3vzl"
               >
                 Actions
               </h2>

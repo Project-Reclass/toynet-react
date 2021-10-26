@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { forwardRef, useCallback, useState } from 'react';
-import { Textarea } from '@chakra-ui/core';
+import { Textarea } from '@chakra-ui/react';
 
 interface Props {
   isLoading: boolean;
@@ -35,7 +35,7 @@ const ConsoleTextarea = forwardRef<HTMLTextAreaElement, Props>(({
 }, ref) => {
   const [currInput, setCurrInput] = useState('>> ');
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
     const { value } = e.currentTarget;
     if (value.length > 2 && !value.endsWith('\n'))

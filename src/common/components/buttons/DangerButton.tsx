@@ -19,8 +19,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import { Button, ButtonProps } from '@chakra-ui/core';
-import styled from '@emotion/styled-base';
+import { Button, ButtonProps } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import React, { FC } from 'react';
 
 const GreyButton = styled(Button)`
@@ -32,11 +32,11 @@ const GreyButton = styled(Button)`
 `;
 
 const DangerButton: FC<
-  Omit<ButtonProps, 'variantColor'>
+  Omit<ButtonProps, 'colorScheme'>
 > = ({ children, ...rest }) => (
   <GreyButton
     {...rest}
-    variantColor='red'
+    colorScheme='red'
   >
     {children}
   </GreyButton>

@@ -35,7 +35,7 @@ import {
     SliderFilledTrack,
     SliderThumb,
     Heading,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import {
     SubmitSurvey,
@@ -138,7 +138,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
         case 'LONGTEXT':
             inputForm = <ToyNetTextarea
               data-testid={question.question}
-              onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
+              onChange={val => updateResp(val.target.value, id)}
               placeholder="Type Here"/>;
             break;
         default:
@@ -179,7 +179,7 @@ const Survey = () => {
                         </div>
                     ))}
                     <SubmitSurvey
-                      variantColor='teal'
+                      colorScheme='teal'
                       onClick={submitSurvey}
                     >
                     Submit Survey

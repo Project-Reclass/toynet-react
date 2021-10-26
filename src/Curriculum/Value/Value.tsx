@@ -23,7 +23,7 @@ import { useParams } from 'react-router-dom';
 
 import { useValueMeta } from '../../common/api/curriculum/value';
 import { StyledReflection, StyledBox, StyledTextArea, StyledSavebutton } from './styled';
-import { Box } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/react';
 
 interface Params {
   valueId: string;

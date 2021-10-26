@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Flex } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 
