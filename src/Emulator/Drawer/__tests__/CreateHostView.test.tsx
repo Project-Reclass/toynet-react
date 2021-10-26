@@ -127,4 +127,28 @@ describe('the create host view', () => {
       def_gateway: '192.168.1.1',
     });
   });
+  it('should show an error when the name is not provided', () => {
+    const { nameInput, createBtn, getByText } = setup();
+    fireEvent.change(nameInput, { target: { value: '' }});
+
+    fireEvent.click(createBtn);
+    expect(getByText(/name is required/i)).toBeInTheDocument();
+    expect(createHostMock).not.toHaveBeenCalled();
+  });
+  it('should show an error when the gateway is not provided', () => {
+    const { gatewayInput, createBtn, getByText } = setup();
+    fireEvent.change(gatewayInput, { target: { value: '' }});
+
+    fireEvent.click(createBtn);
+    expect(getByText(/default gateway is required/i)).toBeInTheDocument();
+    expect(createHostMock).not.toHaveBeenCalled();
+    });
+  it('should show an error when the ip is not provided', () => {
+    const {  ipInput, createBtn, getByText } = setup();
+    fireEvent.change(ipInput, { target: { value: '' }});
+
+    fireEvent.click(createBtn);
+    expect(getByText(/ip address is required/i)).toBeInTheDocument();
+    expect(createHostMock).not.toHaveBeenCalled();
+  });
 });

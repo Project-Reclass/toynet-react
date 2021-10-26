@@ -25,11 +25,31 @@ import { Stack, FormControl, FormLabel, useToast } from '@chakra-ui/core';
 import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useCreateHost } from 'src/common/api/topology';
 import { useEmulatorWithDialogue } from 'src/common/providers/EmulatorProvider';
+import { ToyNetCreateHostRequest } from 'src/common/api/topology/types';
+import useBoolean from 'src/common/hooks/useBoolean';
+import { ToyNetFormHelperText } from 'src/common/components/ToyNetFormHelperText';
 
 import ViewButtons from './ViewButtons';
 import SpaceSanitizedInput from 'src/common/components/SpaceSanitizedInput';
 
 const MAX_HOSTS = 10;
+
+export interface Ip {
+  id: string;
+  ipAddr: string;
+}
+
+const isValidHostRequest = (
+  request: ToyNetCreateHostRequest,
+) => {
+  const { ip, name, def_gateway } = request;
+
+  return [
+    ip.length > 1,
+    name.length > 1,
+    def_gateway.length > 1,
+  ].every(val => val);
+};
 
 interface Props {
   nameHint: string;
@@ -40,6 +60,11 @@ export default function CreateHostView({ nameHint }: Props) {
   const [ip, setIp] = useState('');
   const [name, setName] = useState(nameHint);
   const [defaultGateway, setDefaultGateway] = useState('');
+  const {
+    bool: shouldShowError,
+    setTrue: showError,
+    setFalse: hideError,
+  } = useBoolean(false);
 
   const { onClose } = useDrawer();
   const { sessionId, hosts, appendDialogue } = useEmulatorWithDialogue();
@@ -74,12 +99,15 @@ export default function CreateHostView({ nameHint }: Props) {
       });
       return;
     }
+    const hostRequest = { ip, name, def_gateway: defaultGateway };
 
-    createHost({
-      name,
-      ip,
-      def_gateway: defaultGateway,
-    });
+    if (!isValidHostRequest(hostRequest)) {
+      showError();
+      return;
+    }
+
+    hideError();
+    createHost(hostRequest);
   };
 
   return (
@@ -89,10 +117,16 @@ export default function CreateHostView({ nameHint }: Props) {
         <SpaceSanitizedInput
           value={name}
           isDisabled={isLoading}
+          isInvalid={shouldShowError && name.length < 1}
           data-testid='drawer-host-name-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.currentTarget.value)}
         />
+        {shouldShowError && name.length < 1 &&
+          <ToyNetFormHelperText>
+            Name is required.
+          </ToyNetFormHelperText>
+        }
       </FormControl>
 
       <FormControl>
@@ -100,11 +134,17 @@ export default function CreateHostView({ nameHint }: Props) {
         <SpaceSanitizedInput
           name={defaultGateway}
           isDisabled={isLoading}
+          isInvalid={shouldShowError && defaultGateway.length < 1}
           placeholder='192.168.1.1'
           data-testid='drawer-host-default_gateway-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setDefaultGateway(e.currentTarget.value)}
         />
+        {shouldShowError && defaultGateway.length < 1 &&
+          <ToyNetFormHelperText>
+            Default Gateway is required.
+          </ToyNetFormHelperText>
+        }
       </FormControl>
 
       <FormControl>
@@ -113,10 +153,16 @@ export default function CreateHostView({ nameHint }: Props) {
           name={ip}
           placeholder='192.168.1.2/24'
           isDisabled={isLoading}
+          isInvalid={shouldShowError && ip.length < 1}
           data-testid='drawer-host-ip-input'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setIp(e.currentTarget.value)}
         />
+        {shouldShowError && ip.length < 1 &&
+          <ToyNetFormHelperText>
+            IP Address is required.
+          </ToyNetFormHelperText>
+        }
       </FormControl>
 
       <ViewButtons
