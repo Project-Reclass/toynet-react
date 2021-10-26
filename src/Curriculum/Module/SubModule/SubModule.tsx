@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React, { FC } from 'react';
-import { Divider, Flex, Link, Stack, Text, Icon, Collapse, Tooltip } from '@chakra-ui/react';
+import { Divider, Flex, Link, Stack, Text, Collapse, Tooltip } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 

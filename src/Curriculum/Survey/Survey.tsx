@@ -138,7 +138,7 @@ const RenderInput: FC<InputValues> = ({question, id, updateResp}) => {
         case 'LONGTEXT':
             inputForm = <ToyNetTextarea
               data-testid={question.question}
-              onChange={(val: React.ChangeEvent<HTMLInputElement>) => updateResp(val.target.value, id)}
+              onChange={val => updateResp(val.target.value, id)}
               placeholder="Type Here"/>;
             break;
         default:

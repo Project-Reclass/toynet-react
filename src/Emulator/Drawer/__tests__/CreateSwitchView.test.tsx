@@ -38,7 +38,7 @@ jest.mock('@chakra-ui/react', () => {
   };
 });
 
-const useToastMock = useToast as jest.MockedFunction<typeof useToast>;
+const useToastMock = useToast as jest.MockedFunction<any>;
 const useCreateSwitchMock = useCreateSwitch as jest.MockedFunction<any>;
 const useEmulatorMock = useEmulator as jest.MockedFunction<any>;
 const useDialogueMock = useDialogue as jest.MockedFunction<any>;

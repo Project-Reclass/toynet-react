@@ -35,7 +35,7 @@ const ConsoleTextarea = forwardRef<HTMLTextAreaElement, Props>(({
 }, ref) => {
   const [currInput, setCurrInput] = useState('>> ');
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
     const { value } = e.currentTarget;
     if (value.length > 2 && !value.endsWith('\n'))
