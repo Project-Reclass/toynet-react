@@ -27,7 +27,7 @@ wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docke
 
 For Windows with Powershell
 
-```powershell
+```
 wget https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml -Outfile docker-compose.yml
 # or
 Invoke-WebRequest https://raw.githubusercontent.com/Project-Reclass/toynet-react/master/docker-compose.yml -Outfile docker-compose.yml
