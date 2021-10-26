@@ -34,6 +34,7 @@ import {
     SliderTrack,
     SliderFilledTrack,
     SliderThumb,
+    Heading,
 } from '@chakra-ui/core';
 
 import {
@@ -170,7 +171,7 @@ const Survey = () => {
         <SurveyContainer id="#">
             <LoadingContainer isLoading={isLoading}>
                 <SimpleGrid columns={1} spacing={10}>
-                    <p>Feedback Survey</p>
+                    <Heading size="lg">Feedback Survey</Heading>
                     {data?.items && data.items.map((q: SurveyQuestion, surveyId: number) => (
                         <div key={surveyId}>
                             <p>{surveyId + 1}. {q.question}</p>
