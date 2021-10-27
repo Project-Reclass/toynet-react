@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 const flags = {
-  sideNav: false,
+  sideNav: true,
 };
 
 export default flags;

@@ -18,16 +18,21 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+import { Box, Flex } from '@chakra-ui/layout';
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
+import { useFeatureFlags } from './FeatureFlags';
+import Sidebar from './Sidebar/Sidebar';
 
 const description = 'A network emulator to help teach incarcerated veterans networking concepts';
 
 interface Props {
+  hideSideNav?: boolean;
   title: string;
 }
 
-const Layout: FC<Props> = ({ children, title }) => {
+const Layout: FC<Props> = ({ children, title, hideSideNav = false }) => {
+  const { sideNav } = useFeatureFlags();
   return (
     <>
       <Helmet
@@ -73,7 +78,12 @@ const Layout: FC<Props> = ({ children, title }) => {
       >
         <link rel="canonical" href="https://projectreclass.org" />
       </Helmet>
-      {children}
+      <Flex>
+        {(!hideSideNav && sideNav) && <Sidebar />}
+        <Box minW='calc(100% - 5rem)' flex='1 1 auto'>
+          {children}
+        </Box>
+      </Flex>
     </>
   );
 };

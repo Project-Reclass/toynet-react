@@ -24,14 +24,12 @@ import styled from '@emotion/styled';
 
 import ErrorBoundary from './common/components/ErrorBoundary';
 import LoadingSpinner from './common/components/LoadingSpinner';
-import Sidebar from './Sidebar/Sidebar';
 import ModuleList from './Curriculum';
 import Article from './Curriculum/Article';
 import Quiz from './Curriculum/Quiz';
 import Lesson from './Curriculum/Lesson';
 import Survey from './Curriculum/Survey';
 import Value from './Curriculum/Value';
-import { useFeatureFlags } from './FeatureFlags';
 import Login from './Login';
 import Layout from './layout';
 import NotFound from './common/NotFound';
@@ -45,58 +43,50 @@ const LoadingWrapper = styled('div')`
 `;
 
 function App() {
-  const { sideNav } = useFeatureFlags();
   return (
     <ErrorBoundary>
       <Router>
         <Switch>
           <Route exact path='/'>
-            <Layout title={'Home'}>
-              <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
-                <SplashScreen/>
+            <Layout title={'Home'} hideSideNav={true}>
+              <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
+                <SplashScreen />
               </Suspense>
             </Layout>
           </Route>
           <Route exact path="/dashboard/:curriculumId">
-            <Layout title={'Dashboard'}>
+            <Layout title={'Dashboard'} hideSideNav={true}>
               <ModuleList />
             </Layout>
           </Route>
           <Route exact path="/module/:moduleId/quiz/:quizId">
-            <Sidebar/>
             <Layout title={'Quiz'}>
               <Quiz />
             </Layout>
           </Route>
           <Route exact path="/module/:moduleId/article/:articleId">
-            <Sidebar/>
             <Layout title={'Article'}>
               <Article />
             </Layout>
           </Route>
           <Route path="/module/:moduleId/emulator/:emulatorId">
-            <Sidebar/>
             <Layout title={'Emulator'}>
-              {sideNav && <Sidebar /> }
-              <Suspense fallback={<LoadingWrapper><LoadingSpinner/></LoadingWrapper>}>
-                  <Emulator />
+              <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
+                <Emulator />
               </Suspense>
             </Layout>
           </Route>
           <Route exact path="/module/:moduleId/lesson/:lessonId">
-            <Sidebar/>
             <Layout title={'Lesson'}>
               <Lesson />
             </Layout>
           </Route>
           <Route exact path="/module/:moduleId/survey/:surveyId">
-            <Sidebar/>
             <Layout title={'Survey'}>
               <Survey />
             </Layout>
           </Route>
           <Route exact path="/value/:valueId">
-            <Sidebar/>
             <Layout title={'Value'}>
               <Value />
             </Layout>
@@ -110,7 +100,7 @@ function App() {
 
           <Route path="*">
             <Layout title={'404'}>
-                <NotFound />
+              <NotFound />
             </Layout>
           </Route>
         </Switch>

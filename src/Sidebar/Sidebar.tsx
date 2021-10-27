@@ -22,7 +22,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ReclassLogo from '../assets/PR-Icon-Square-White.png';
-import { Avatar, Flex, Stack } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Stack } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import {
   SettingsIcon,
@@ -124,57 +124,59 @@ const Sidebar = () => {
   };
 
   return (
-    <StyledNav isMenuOpen={isMenuOpen} onMouseOver={toggleMenu} onMouseOut={toggleMenu}>
-      <Flex direction='column' justifyContent='space-between' height='100%' paddingY='1rem'>
-        <Stack spacing={3}>
-          <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
-            <Avatar src={ReclassLogo} marginBottom='1rem'/>
-          </StyledNavIcon>
-          <StyledNavItem onClick={() => goToPageOnEnableHref('/dashboard/1')}>
-            <StyledNavIcon>
-              <StyledSvg>
-                <CalendarIcon w='30px' h='30px' color='white' />
-              </StyledSvg>
-              <StyledLinkText isMenuOpen={isMenuOpen}>
-                Curriculum
-              </StyledLinkText>
+    <Box minWidth='5rem' height='100vh'>
+      <StyledNav isMenuOpen={isMenuOpen} onMouseOver={toggleMenu} onMouseOut={toggleMenu}>
+        <Flex direction='column' justifyContent='space-between' height='100%' paddingY='1rem'>
+          <Stack spacing={3}>
+            <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
+              <Avatar src={ReclassLogo} marginBottom='1rem'/>
             </StyledNavIcon>
-          </StyledNavItem>
-        </Stack>
-        <Stack spacing={3}>
-          <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
-            <StyledNavIcon>
-              <StyledSvg>
-                <SettingsIcon w='28px' h='28px' color='white'/>
-              </StyledSvg>
-              <StyledLinkText isMenuOpen={isMenuOpen}>
-                Profile
-              </StyledLinkText>
-            </StyledNavIcon>
-          </StyledNavItem>
-          <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
-            <StyledNavIcon>
-              <StyledSvg>
-                <QuestionIcon w='28px' h='28px' color='white'/>
-              </StyledSvg>
-              <StyledLinkText isMenuOpen={isMenuOpen}>
-                FAQ
-              </StyledLinkText>
-            </StyledNavIcon>
-          </StyledNavItem>
-          <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
-            <StyledNavIcon>
-              <StyledSvg>
-                <ArrowLeftIcon w='28px' h='28px' color='white'/>
-              </StyledSvg>
-              <StyledLinkText isMenuOpen={isMenuOpen}>
-                Log Out
-              </StyledLinkText>
-            </StyledNavIcon>
-          </StyledNavItem>
-        </Stack>
-      </Flex>
-    </StyledNav>
+            <StyledNavItem onClick={() => goToPageOnEnableHref('/dashboard/1')}>
+              <StyledNavIcon>
+                <StyledSvg>
+                  <CalendarIcon w='30px' h='30px' color='white' />
+                </StyledSvg>
+                <StyledLinkText isMenuOpen={isMenuOpen}>
+                  Curriculum
+                </StyledLinkText>
+              </StyledNavIcon>
+            </StyledNavItem>
+          </Stack>
+          <Stack spacing={3}>
+            <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+              <StyledNavIcon>
+                <StyledSvg>
+                  <SettingsIcon w='28px' h='28px' color='white'/>
+                </StyledSvg>
+                <StyledLinkText isMenuOpen={isMenuOpen}>
+                  Profile
+                </StyledLinkText>
+              </StyledNavIcon>
+            </StyledNavItem>
+            <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+              <StyledNavIcon>
+                <StyledSvg>
+                  <QuestionIcon w='28px' h='28px' color='white'/>
+                </StyledSvg>
+                <StyledLinkText isMenuOpen={isMenuOpen}>
+                  FAQ
+                </StyledLinkText>
+              </StyledNavIcon>
+            </StyledNavItem>
+            <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+              <StyledNavIcon>
+                <StyledSvg>
+                  <ArrowLeftIcon w='28px' h='28px' color='white'/>
+                </StyledSvg>
+                <StyledLinkText isMenuOpen={isMenuOpen}>
+                  Log Out
+                </StyledLinkText>
+              </StyledNavIcon>
+            </StyledNavItem>
+          </Stack>
+        </Flex>
+      </StyledNav>
+    </Box>
   );
 };
 
