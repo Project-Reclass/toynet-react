@@ -17,7 +17,7 @@ jobs:
           install-command: npm i
           start: npm run start:cypress:test
           wait-on: http://localhost:3000
-          wait-on-timeout: 360
+          wait-on-timeout: 960
 
       - name: Archive cypress results
         uses: actions/upload-artifact@v2
