@@ -20,6 +20,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React, { memo } from 'react';
 import { Select, Flex, Text } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+
+const DarkModeSelect = styled(Select)`
+  option {
+    background-color: #212529;
+  }
+`;
 
 interface Props {
   options: string[];
@@ -32,10 +39,10 @@ const DeviceSelector = ({ onChange, options }: Props) => (
     height='fit-content'
     >
     <Text my='auto' marginRight={2}>Device</Text>
-    <Select
+    <DarkModeSelect
       size='sm'
       color='white'
-      backgroundColor='#212529'
+      bg='#212529'
       placeholder='Select device'
       width='fit-content'
       borderWidth='1'
@@ -44,9 +51,10 @@ const DeviceSelector = ({ onChange, options }: Props) => (
       data-testid='console-device-selector'
     >
       {options.map(option => (
-        <option value={option} key={option}>{option.toUpperCase()}</option>
+        <option
+          value={option} key={option}>{option.toUpperCase()}</option>
       ))}
-    </Select>
+    </DarkModeSelect>
   </Flex>
 );
 
