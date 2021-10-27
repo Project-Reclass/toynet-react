@@ -36,6 +36,7 @@ import NotFound from './common/NotFound';
 
 const SplashScreen = React.lazy(() => import('./SplashScreen'));
 const Emulator = React.lazy(() => import('./Emulator'));
+const Video = React.lazy(() => import('./Curriculum/Video'));
 
 const LoadingWrapper = styled('div')`
   width: 100%;
@@ -95,6 +96,14 @@ function App() {
           <Route exact path="/login">
             <Layout title={'Login'}>
               <Login />
+            </Layout>
+          </Route>
+
+          <Route path='/module/:moduleId/video/:videoId'>
+            <Layout title={'Video'}>
+              <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
+                <Video />
+              </Suspense>
             </Layout>
           </Route>
 
