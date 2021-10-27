@@ -27,5 +27,7 @@ export default function useVideo(submoduleId: number, videoId: number) {
   return useQuery(['video-meta', { submoduleId, videoId }], async (_, { submoduleId, videoId }) => {
     const { data } = await axios.get<Video>(`/data/video/${submoduleId}/${videoId}.json`);
     return data;
+  }, {
+    retry: false,
   });
 }

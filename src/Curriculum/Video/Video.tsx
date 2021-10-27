@@ -35,14 +35,14 @@ interface Params {
 
 const Video = () => {
   const { moduleId, videoId } = useParams<Params>();
-  const { data, isLoading, isError } = useVideo(Number(moduleId), Number(videoId));
+  const { data, isLoading, isSuccess, isFetched } = useVideo(Number(moduleId), Number(videoId));
+
+  if (!isSuccess && isFetched) {
+    return <NotFound />;
+  }
 
   if (isLoading || !data) {
     return <LoadingSpinner />;
-  }
-
-  if (isError) {
-    return <NotFound />;
   }
 
   return (
