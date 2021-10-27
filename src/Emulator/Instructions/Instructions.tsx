@@ -97,7 +97,7 @@ const Instructions: FC<Props> = ({ panelData }) => {
               <Button
                 size='sm'
                 variant="solid"
-                variantColor="red"
+                colorScheme="red"
                 width={100}
                 fontSize='sm'
                 onClick={onOpen}

@@ -183,7 +183,7 @@ exports[`The emulator should render and match snapshots 1`] = `
                 class="chakra-select__wrapper css-5chdsz"
               >
                 <select
-                  class="chakra-select css-6qn13d"
+                  class="chakra-select css-ftvjbt"
                   data-testid="console-device-selector"
                 >
                   <option
