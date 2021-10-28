@@ -22,21 +22,21 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from '@emotion/styled';
 
+import Layout from './layout';
 import ErrorBoundary from './common/components/ErrorBoundary';
 import LoadingSpinner from './common/components/LoadingSpinner';
-import ModuleList from './Curriculum';
-import Article from './Curriculum/Article';
-import Quiz from './Curriculum/Quiz';
-import Lesson from './Curriculum/Lesson';
-import Survey from './Curriculum/Survey';
-import Value from './Curriculum/Value';
-import Login from './Login';
-import Layout from './layout';
-import NotFound from './common/NotFound';
 
-const SplashScreen = React.lazy(() => import('./SplashScreen'));
+const Login = React.lazy(() => import('./Login'));
 const Emulator = React.lazy(() => import('./Emulator'));
+const Quiz = React.lazy(() => import('./Curriculum/Quiz'));
+const ModuleList = React.lazy(() => import('./Curriculum'));
 const Video = React.lazy(() => import('./Curriculum/Video'));
+const Lesson = React.lazy(() => import('./Curriculum/Lesson'));
+const Survey = React.lazy(() => import('./Curriculum/Survey'));
+const Value = React.lazy(() => import('./Curriculum/Value'));
+const NotFound = React.lazy(() => import('./common/NotFound'));
+const SplashScreen = React.lazy(() => import('./SplashScreen'));
+const Article = React.lazy(() => import('./Curriculum/Article'));
 
 const LoadingWrapper = styled('div')`
   width: 100%;
@@ -47,72 +47,76 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <Switch>
-          <Route exact path='/'>
-            <Layout title={'Home'} hideSideNav={true}>
-              <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
+        <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
+          <Switch>
+            <Route exact path='/'>
+              <Layout title={'Home'} hideSideNav={true}>
                 <SplashScreen />
-              </Suspense>
-            </Layout>
-          </Route>
-          <Route exact path="/dashboard/:curriculumId">
-            <Layout title={'Dashboard'} hideSideNav={true}>
-              <ModuleList />
-            </Layout>
-          </Route>
-          <Route exact path="/module/:moduleId/quiz/:quizId">
-            <Layout title={'Quiz'}>
-              <Quiz />
-            </Layout>
-          </Route>
-          <Route exact path="/module/:moduleId/article/:articleId">
-            <Layout title={'Article'}>
-              <Article />
-            </Layout>
-          </Route>
-          <Route path="/module/:moduleId/emulator/:emulatorId">
-            <Layout title={'Emulator'}>
-              <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
+              </Layout>
+            </Route>
+
+            <Route exact path="/dashboard/:curriculumId">
+              <Layout title={'Dashboard'} hideSideNav={true}>
+                <ModuleList />
+              </Layout>
+            </Route>
+
+            <Route exact path="/module/:moduleId/quiz/:quizId">
+              <Layout title={'Quiz'}>
+                <Quiz />
+              </Layout>
+            </Route>
+
+            <Route exact path="/module/:moduleId/article/:articleId">
+              <Layout title={'Article'}>
+                <Article />
+              </Layout>
+            </Route>
+
+            <Route path="/module/:moduleId/emulator/:emulatorId">
+              <Layout title={'Emulator'}>
                 <Emulator />
-              </Suspense>
-            </Layout>
-          </Route>
-          <Route exact path="/module/:moduleId/lesson/:lessonId">
-            <Layout title={'Lesson'}>
-              <Lesson />
-            </Layout>
-          </Route>
-          <Route exact path="/module/:moduleId/survey/:surveyId">
-            <Layout title={'Survey'}>
-              <Survey />
-            </Layout>
-          </Route>
-          <Route exact path="/value/:valueId">
-            <Layout title={'Value'}>
-              <Value />
-            </Layout>
-          </Route>
+              </Layout>
+            </Route>
 
-          <Route exact path="/login">
-            <Layout title={'Login'}>
-              <Login />
-            </Layout>
-          </Route>
+            <Route exact path="/module/:moduleId/lesson/:lessonId">
+              <Layout title={'Lesson'}>
+                <Lesson />
+              </Layout>
+            </Route>
 
-          <Route path='/module/:moduleId/video/:videoId'>
-            <Layout title={'Video'}>
-              <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
+            <Route exact path="/module/:moduleId/survey/:surveyId">
+              <Layout title={'Survey'}>
+                <Survey />
+              </Layout>
+            </Route>
+
+            <Route exact path="/value/:valueId">
+              <Layout title={'Value'}>
+                <Value />
+              </Layout>
+            </Route>
+
+            <Route exact path="/login">
+              <Layout title={'Login'}>
+                <Login />
+              </Layout>
+            </Route>
+
+            <Route path='/module/:moduleId/video/:videoId'>
+              <Layout title={'Video'}>
                 <Video />
-              </Suspense>
-            </Layout>
-          </Route>
+              </Layout>
+            </Route>
 
-          <Route path="*">
-            <Layout title={'404'}>
-              <NotFound />
-            </Layout>
-          </Route>
-        </Switch>
+            <Route path="*">
+              <Layout title={'404'}>
+                <NotFound />
+              </Layout>
+            </Route>
+
+          </Switch>
+        </Suspense>
       </Router>
     </ErrorBoundary>
   );

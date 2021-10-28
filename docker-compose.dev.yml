@@ -10,7 +10,7 @@ services:
     image: projectreclass/toynet-backend:87967ffaf08ab010e59d300687155ebd839d47b7
     privileged: true
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       - COMPOSE_NETWORK=toynet_mininet
       - TOYNET_IMAGE_TAG=projectreclass/toynet-mininet:87967ffaf08ab010e59d300687155ebd839d47b7
