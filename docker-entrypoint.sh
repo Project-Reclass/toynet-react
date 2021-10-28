@@ -1,6 +1,6 @@
 #!/bin/sh
 
-defaultCurrURI=https://raw.githubusercontent.com/Project-Reclass/toynet-content/add-video
+defaultCurrURI=https://raw.githubusercontent.com/Project-Reclass/toynet-content/main
 
 if [ -z ${SERVER_URI+x} ]; then echo "SERVER_URI needs to be set"; exit 1 ; else echo "SERVER_URI is set to '$SERVER_URI'"; fi
 
