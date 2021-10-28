@@ -61,7 +61,7 @@ export const SubModule: FC<Props> = (
       value => JSON.parse(value));
 
   return (
-    <Flex>
+    <Flex my='1'>
       <StarIcon
         w='1.5rem'
         h='1.5rem'
@@ -72,8 +72,7 @@ export const SubModule: FC<Props> = (
           <ModuleName locked={false}>
             <Tooltip
               hasArrow
-              label={isOpen ? 'Show less' : 'Show more'}
-              {...{'aria-label': 'More information'}}
+              label={isOpen ? 'Show less' : 'Expand submodule'}
             >
               <Text onClick={() => setOpen(open => !open)}>
                 {`${capitalize(type.toString())}: ${name}`}

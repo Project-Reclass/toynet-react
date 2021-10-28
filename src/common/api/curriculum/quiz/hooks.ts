@@ -19,9 +19,55 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import { useQuery } from 'react-query';
+import { DashboardIntf } from 'src/common/types/curriculum';
+import { useCurriculum } from '../dashboard';
 
-import { getQuizMeta } from './requests';
+import { getQuizMeta, QuizResponse } from './requests';
+
+export interface QuizInfo {
+  name: string;
+  description: string;
+}
+
+export type QuizWithInfo = QuizInfo & QuizResponse;
+
+const getQuizInfo = (
+  moduleId: number,
+  quizId: number,
+  curriculum?: DashboardIntf,
+): QuizInfo | null => {
+  const quizInfo = curriculum?.modules
+    .find(({ id }) => id === moduleId)?.submodules
+    .find(({ id, type }) => id === quizId && type === 'QUIZ');
+
+  if (!quizInfo) {
+    return null;
+  }
+
+  return {
+    name: quizInfo.name,
+    description: quizInfo.introduction,
+  };
+};
 
 export function useQuizMeta(quizId: number) {
   return useQuery(['quiz-meta', { quizId }], () => getQuizMeta(quizId));
+}
+
+export function useQuiz(moduleId: number, quizId: number): {
+  isLoading: boolean,
+  data: QuizWithInfo | null,
+} {
+  const { data: quizData, isLoading: isQuizLoading } = useQuizMeta(quizId);
+  const { data: currData, isLoading: isCurrLoading } = useCurriculum(1);
+
+  const isLoading = isQuizLoading || isCurrLoading;
+  const quizInfo = getQuizInfo(moduleId, quizId, currData);
+  const data: QuizWithInfo | null = isLoading ? null :
+    (quizData && quizInfo) ? { ...quizData, ...quizInfo} : null;
+
+  return {
+    data,
+    isLoading,
+  };
 }

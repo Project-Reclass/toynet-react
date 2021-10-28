@@ -19,17 +19,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import axios from 'axios';
+import { SurveyResponse } from 'src/common/types';
 
-export interface SurveyQuestion {
-  item_type: string;
-  question: string;
-  options?: string[];
-  unit?: string;
-}
-
-interface SurveyResponse {
-  items: SurveyQuestion[]
-}
 
 export const getSurveyMeta = async (surveyId: number): Promise<SurveyResponse> => {
 	const { data } = await axios.get(`/api/survey/${surveyId}`);

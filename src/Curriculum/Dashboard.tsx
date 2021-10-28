@@ -43,15 +43,21 @@ export default function Dashboard({ username }: Props) {
     <Box width='100%' minW='540' marginX='auto'>
       <LoadingContainer isLoading={isLoading}>
         <DashboardBox>
-          <Flex justifyContent='flex-start'>
+          <Flex
+            width='80%'
+            minW='25rem'
+            maxW='75rem'
+            margin='auto'
+            flexDirection='column'
+          >
             <Stack spacing={3} maxW={'60%'}>
-              <Heading fontSize='4xl' color='grey.500'>
+              <Heading fontSize='3xl' color='blackAlpha.800'>
                 {username ?
                   `Hi, ${username}!` :
                   'Hi there!'
                 }
               </Heading>
-              <Text fontSize='lg' color="black.500">
+              <Text fontSize='lg' color="blackAlpha.800">
                 {`${data?.introduction} You can click on each module’s chevron to see its submodules. You must go through
                 the modules and their submodules in order. To start or revisit a submodule, click`} {' '}
                 <Text color='black.500' as='span' textDecoration='underline' fontWeight='bold'>

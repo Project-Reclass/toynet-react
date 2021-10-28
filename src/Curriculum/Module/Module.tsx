@@ -69,8 +69,8 @@ const Module: FC<ModuleIntf & Props> = (
 
   return (
     <Box
-    paddingTop={paddingTop}
-    borderLeft={'2pt solid white'}
+      paddingTop={paddingTop}
+      borderLeft={'2pt solid white'}
     >
       <Flex onClick={() => setOpen(open => !open)} cursor='pointer'>
         <RotatableTriangle

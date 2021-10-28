@@ -56,7 +56,7 @@ function App() {
             </Route>
 
             <Route exact path="/dashboard/:curriculumId">
-              <Layout title={'Dashboard'} hideSideNav={true}>
+              <Layout title={'Dashboard'}>
                 <ModuleList />
               </Layout>
             </Route>

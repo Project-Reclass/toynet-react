@@ -19,9 +19,56 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import { useQuery } from 'react-query';
+import { SurveyResponse } from 'src/common/types';
+import { DashboardIntf } from 'src/common/types/curriculum';
+import { useCurriculum } from '../dashboard';
 
 import { getSurveyMeta } from './requests';
 
+export interface SurveyInfo {
+  name: string;
+  description: string;
+}
+
+export type SurveyWithInfo = SurveyInfo & SurveyResponse;
+
+const getSurveyInfo = (
+  moduleId: number,
+  surveyId: number,
+  curriculum?: DashboardIntf,
+): SurveyInfo | null => {
+  const surveyInfo = curriculum?.modules
+    .find(({ id }) => id === moduleId)?.submodules
+    .find(({ id, type }) => id === surveyId && type === 'SURVEY');
+
+  if (!surveyInfo) {
+    return null;
+  }
+
+  return {
+    name: surveyInfo.name,
+    description: surveyInfo.introduction,
+  };
+};
+
 export function useSurveyMeta(surveyId: number) {
   return useQuery(['survey-meta', { surveyId }], () => getSurveyMeta(surveyId));
+}
+
+export function useSurvey(moduleId: number, surveyId: number): {
+  isLoading: boolean,
+  data: SurveyWithInfo | null,
+} {
+  const { data: surveyMeta, isLoading: isLoadingMeta } = useSurveyMeta(surveyId);
+  const { data: curriculum, isLoading: isLoadingCurr } = useCurriculum(1);
+
+  const isLoading = isLoadingCurr || isLoadingMeta;
+  const surveyInfo = getSurveyInfo(moduleId, surveyId, curriculum);
+  const data: SurveyWithInfo | null = isLoading ? null :
+    (surveyInfo && surveyMeta) ? { ...surveyMeta, ...surveyInfo } : null;
+
+  return {
+    data,
+    isLoading,
+  };
 }
