@@ -51,9 +51,6 @@ const EmulatorGrid = styled(Grid)`
   overflow: hidden;
   padding: 0.789rem;
   grid-template-columns: auto 1fr;
-  @media (max-width: 2050px) {
-    margin-left: 5rem;
-  }
 `;
 
 const Emulator = () => {

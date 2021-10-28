@@ -18,8 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-const flags = {
-  sideNav: true,
-};
 
-export default flags;
+import Video from './Video';
+
+export default Video;

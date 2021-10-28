@@ -65,3 +65,9 @@ export interface DialogueMessage {
   message: string,
   color: string
 }
+
+export interface Video {
+  title: string;
+  url: string;
+  description: string;
+}
