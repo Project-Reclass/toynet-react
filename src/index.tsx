@@ -30,16 +30,21 @@ import App from './App';
 import AuthProvider from './Login/AuthProvider/AuthProvider';
 import theme from './theme';
 import './index.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider resetCSS={true} theme={theme}>
-      <DndProvider backend={HTML5Backend}>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </DndProvider>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider resetCSS={true} theme={theme}>
+        <DndProvider backend={HTML5Backend}>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </DndProvider>
+      </ChakraProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

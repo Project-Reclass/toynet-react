@@ -20,7 +20,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 
-import { renderHook, act } from '@testing-library/react-hooks';
+import { act } from '@testing-library/react-hooks';
+import { renderHookWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 import { DeviceType } from 'src/common/types';
 import { TopologyActions, useTopology } from 'src/Emulator/useTopology';
 
@@ -57,7 +58,7 @@ const defaultRouter = {
 
 describe('The useTopology custom hook', () => {
   it('should be able to add new hosts', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useTopology(1));
+    const { result, waitForNextUpdate } = renderHookWithWrappers(() => useTopology(1));
 
     await waitForNextUpdate();
 
@@ -72,7 +73,7 @@ describe('The useTopology custom hook', () => {
   });
 
   it('should be able to add switches', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useTopology(1));
+    const { result, waitForNextUpdate } = renderHookWithWrappers(() => useTopology(1));
 
     await waitForNextUpdate();
 
@@ -87,7 +88,7 @@ describe('The useTopology custom hook', () => {
   });
 
   it('should be able to add routers', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useTopology(1));
+    const { result, waitForNextUpdate } = renderHookWithWrappers(() => useTopology(1));
 
     await waitForNextUpdate();
 

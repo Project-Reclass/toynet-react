@@ -18,11 +18,16 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { useQuery } from 'react-query';
 
-import { getValueMeta } from './requests';
+import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 
+import Wrapper from './Wrappers';
 
-export function useValueMeta(valueId: number) {
-  return useQuery(['value-meta', { valueId }], () => getValueMeta(valueId));
+export const renderWithWrappers = (ui: any) => {
+  return render(ui, { wrapper: Wrapper });
+};
+
+export function renderHookWithWrappers<P, R>(callback: (props: P) => R) {
+  return renderHook(callback, { wrapper: Wrapper });
 }

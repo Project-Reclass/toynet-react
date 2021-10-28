@@ -33,7 +33,7 @@ interface Props {
 export default function DeleteConnectionBtn({ to, from }: Props) {
   const { appendDialogue, updateDialogueMessage } = useDialogue();
   const { sessionId, dispatch } = useEmulator();
-  const [deleteLink] = useDeleteDeviceLink(sessionId);
+  const { mutateAsync: deleteLink } = useDeleteDeviceLink(sessionId);
 
   const handleClick = async (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();

@@ -73,15 +73,13 @@ describe('the create router view component', () => {
   beforeEach(() => {
     useToastMock.mockReturnValue(toastMock);
     createRouterMock.mockClear();
-    useCreateRouterMock.mockReturnValue([
-      createRouterMock,
-      {
-        isLoading: false,
-        isError: false,
-        error: null,
-        isSuccess: true,
-      },
-    ]);
+    useCreateRouterMock.mockReturnValue({
+      mutateAsync: createRouterMock,
+      isLoading: false,
+      isError: false,
+      error: null,
+      isSuccess: true,
+    });
     useEmulatorWithDialogueMock.mockReturnValue({
       sessionId: 1,
       appendDialogue: jest.fn(),

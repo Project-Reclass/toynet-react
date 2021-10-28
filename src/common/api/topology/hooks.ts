@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import { useCallback, useEffect } from 'react';
-import { useQuery, useMutation, queryCache } from 'react-query';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { devError } from 'src/common/utils';
 import { DeviceType } from 'src/common/types';
 
@@ -78,9 +78,10 @@ async function makeRequest<T>(
  * topology. Throws an error if unsuccessful.
  */
 export function useModifyTopology(sessionId: SessionId) {
-  const [mutate, state] = useMutation(updateToynetSession, {
+  const queryClient = useQueryClient();
+  const mutation = useMutation(updateToynetSession, {
     onSuccess: () => {
-      queryCache.invalidateQueries(['toynet-session', {
+      queryClient.invalidateQueries(['toynet-session', {
         sessionId,
         hasInitialized: true,
       }]);
@@ -88,40 +89,41 @@ export function useModifyTopology(sessionId: SessionId) {
   });
 
   useEffect(() => {
-    if (state.error) {
-      devError(state.error);
+    if (mutation.error) {
+      devError(mutation.error);
     }
-  }, [state.error]);
+  }, [mutation.error]);
 
   const createDevice = useCallback((type: DeviceType, name: string) =>
     makeRequest(`add-${name}`, `Unable to create ${type} ${name}`, () =>
-      mutate({ id: sessionId, command: `add ${type} ${name}`})), [mutate, sessionId]);
+      mutation.mutateAsync({ id: sessionId, command: `add ${type} ${name}`})), [mutation, sessionId]);
 
   const deleteDevice = useCallback((type: DeviceType, name: string) =>
     makeRequest(`delete-${name}`, `Unable to delete ${type} ${name}`, () =>
-      mutate({ id: sessionId, command: `remove ${type} ${name}`})), [mutate, sessionId]);
+      mutation.mutateAsync({ id: sessionId, command: `remove ${type} ${name}`})), [mutation, sessionId]);
 
   const createLink = useCallback((to: string, from: string) =>
     makeRequest(`${to}-${from}`, `Unable to create link ${from}-${to}`, () =>
-      mutate({ id: sessionId, command: `add link ${to} ${from}`})), [mutate, sessionId]);
+      mutation.mutateAsync({ id: sessionId, command: `add link ${to} ${from}`})), [mutation, sessionId]);
 
   const deleteLink = useCallback((to: string, from: string) =>
     makeRequest(`${to}-${from}`, `Unable to create link ${from}-${to}`, () => {
       if (to === from) {
-        return mutate({ id: sessionId, command: `remove ${getNameFromDevice(to)} ${to}` });
+        return mutation.mutateAsync({ id: sessionId, command: `remove ${getNameFromDevice(to)} ${to}` });
       }
-      return mutate({ id: sessionId, command: `remove link ${from} ${to}`});
+      return mutation.mutateAsync({ id: sessionId, command: `remove link ${from} ${to}`});
     }),
-  [mutate, sessionId]);
+  [mutation, sessionId]);
 
   return {
     createDevice,
     deleteDevice,
     createLink,
     deleteLink,
-    ...state,
+    ...mutation,
   };
 }
+
 
 /**
  * Fetches the base topology if there is not a session that is saved.
@@ -132,7 +134,7 @@ export function useToynetSession(id: number) {
   const [sessionId, setSessionId, hasInitialized] = useStoredSessionId(id);
 
   return useQuery(['toynet-session',
-    { sessionId, hasInitialized }], async (_, { sessionId }) => {
+    { sessionId, hasInitialized }], async () => {
       if (sessionId < 0) {
         if (hasInitialized) {
           const { toynet_session_id: session_id } = await createToynetSession({
@@ -155,11 +157,12 @@ export function useToynetSession(id: number) {
 }
 
 export function useCreateHost(sessionId: SessionId) {
+  const queryClient = useQueryClient();
   return useMutation((request: ToyNetCreateHostRequest) =>
     createHost(sessionId, request),
     {
       onSuccess: () => {
-        queryCache.invalidateQueries(['toynet-session', {
+        queryClient.invalidateQueries(['toynet-session', {
           sessionId,
           hasInitialized: true,
         }]);
@@ -169,10 +172,11 @@ export function useCreateHost(sessionId: SessionId) {
 }
 
 export function useCreateRouter(sessionId: SessionId) {
+  const queryClient = useQueryClient();
   return useMutation((request: ToyNetCreateRouterRequest) =>
     createRouter(sessionId, request), {
       onSuccess: () => {
-        queryCache.invalidateQueries(['toynet-session', {
+        queryClient.invalidateQueries(['toynet-session', {
           sessionId,
           hasInitialized: true,
         }]);
@@ -182,10 +186,12 @@ export function useCreateRouter(sessionId: SessionId) {
 }
 
 export function useCreateSwitch(sessionId: SessionId) {
+  const queryClient = useQueryClient();
+
   return useMutation((request: ToyNetCreateSwitchRequest) =>
     createSwitch(sessionId, request), {
       onSuccess: () => {
-        queryCache.invalidateQueries(['toynet-session', {
+        queryClient.invalidateQueries(['toynet-session', {
           sessionId,
           hasInitialized: true,
         }]);
@@ -195,25 +201,25 @@ export function useCreateSwitch(sessionId: SessionId) {
 }
 
 export function useDeleteDevice(sessionId: SessionId, deviceType: DeviceType) {
+  const queryClient = useQueryClient();
   return useMutation((request: ToyNetDeleteDeviceRequest) =>
     deleteDevice(sessionId, deviceType, request), {
-      throwOnError: true,
       onSuccess: () => {
-        queryCache.invalidateQueries(['toynet-session', {
+        queryClient.invalidateQueries(['toynet-session', {
           sessionId,
           hasInitialized: true,
         }]);
       },
-    },
-  );
+  });
 }
 
+
 export function useCreateDeviceLink(sessionId: SessionId) {
+  const queryClient = useQueryClient();
   return useMutation((request: ToyNetLinkRequest) =>
     createLink(sessionId, request), {
-      throwOnError: true,
       onSuccess: () => {
-        queryCache.invalidateQueries(['toynet-session', {
+        queryClient.invalidateQueries(['toynet-session', {
           sessionId,
           hasInitialized: true,
         }]);
@@ -223,11 +229,12 @@ export function useCreateDeviceLink(sessionId: SessionId) {
 }
 
 export function useDeleteDeviceLink(sessionId: SessionId) {
+  const queryClient = useQueryClient();
+
   return useMutation((request: ToyNetLinkRequest) =>
     deleteLink(sessionId, request), {
-      throwOnError: true,
       onSuccess: () => {
-        queryCache.invalidateQueries(['toynet-session', {
+        queryClient.invalidateQueries(['toynet-session', {
           sessionId,
           hasInitialized: true,
         }]);

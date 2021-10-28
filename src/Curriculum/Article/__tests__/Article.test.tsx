@@ -22,7 +22,7 @@ import React from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
 
 import Article from 'src/Curriculum/Article';
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 const RenderWithRouter = ({ children, moduleId, articleId }: {children: React.ReactChild, moduleId: number, articleId: number}) => (
   <MemoryRouter initialEntries={[`/module/${moduleId}/article/${articleId}`]}>
@@ -32,7 +32,7 @@ const RenderWithRouter = ({ children, moduleId, articleId }: {children: React.Re
 
 describe('The Article page', () => {
   it('should render the same based on URL parameters', () => {
-    const { container } = renderWithTheme(
+    const { container } = renderWithWrappers(
       <RenderWithRouter moduleId={42} articleId={64}>
         <Article />
       </RenderWithRouter>,

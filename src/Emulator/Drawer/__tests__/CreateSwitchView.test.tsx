@@ -68,15 +68,13 @@ describe('the create switch view component', () => {
     toastMock.mockClear();
     createHostMock.mockClear();
     useToastMock.mockReturnValue(toastMock);
-    useCreateSwitchMock.mockReturnValue([
-      createSwitchMock,
-      {
-        isLoading: false,
-        isError: false,
-        isSuccess: false,
-        error: null,
-      },
-    ]);
+    useCreateSwitchMock.mockReturnValue({
+      mutateAsync: createSwitchMock,
+      isLoading: false,
+      isError: false,
+      isSuccess: false,
+      error: null,
+    });
     useDialogueMock.mockReturnValue({
       appendDialogue: jest.fn(),
     });

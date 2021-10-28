@@ -119,7 +119,7 @@ const Flow = ({
   const { appendDialogue, updateDialogueMessage } = useDialogue();
   const { dispatch } = useEmulator();
   const { openView } = useDrawer();
-  const [createLink, { isLoading }] = useCreateDeviceLink(sessionId);
+  const { isLoading, mutateAsync: createLink } = useCreateDeviceLink(sessionId);
 
   const { transform } = useZoomPanHelper();
 

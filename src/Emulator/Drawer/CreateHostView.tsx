@@ -68,7 +68,7 @@ export default function CreateHostView({ nameHint }: Props) {
 
   const { onClose } = useDrawer();
   const { sessionId, hosts, appendDialogue } = useEmulatorWithDialogue();
-  const [createHost, { isLoading, isSuccess, isError, error }] = useCreateHost(sessionId);
+  const { mutateAsync: createHost, isLoading, isSuccess, isError, error } = useCreateHost(sessionId);
 
   useEffect(() => {
     if (isSuccess) {

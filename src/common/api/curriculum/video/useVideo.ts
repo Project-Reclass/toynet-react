@@ -24,7 +24,7 @@ import { useQuery } from 'react-query';
 import { Video } from 'src/common/types';
 
 export default function useVideo(submoduleId: number, videoId: number) {
-  return useQuery(['video-meta', { submoduleId, videoId }], async (_, { submoduleId, videoId }) => {
+  return useQuery(['video-meta', { submoduleId, videoId }], async () => {
     const { data } = await axios.get<Video>(`/data/video/${submoduleId}/${videoId}.json`);
     return data;
   }, {
