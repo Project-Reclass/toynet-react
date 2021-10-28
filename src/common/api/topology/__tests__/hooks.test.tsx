@@ -21,8 +21,9 @@ along with ToyNet React; see the file LICENSE.  If not see
 import { renderHook, cleanup } from '@testing-library/react-hooks';
 import { createToynetSession, getToynetSession } from 'src/common/api/topology/requests';
 import { useToynetSession } from 'src/common/api/topology';
+import { renderHookWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
-jest.mock('src/common/api/topology/requests.ts');
+jest.mock('src/common/api/topology/requests');
 const createToynetMock = createToynetSession as jest.MockedFunction<typeof createToynetSession>;
 const getToynetMock = getToynetSession as jest.MockedFunction<typeof getToynetSession>;
 
@@ -48,7 +49,7 @@ describe('the useToynetSession custom hook', () => {
       toynet_session_id: 2,
     });
 
-    const { waitForNextUpdate } = renderHook(() => useToynetSession(1));
+    const { waitForNextUpdate } = renderHookWithWrappers(() => useToynetSession(1));
 
     await waitForNextUpdate();
 
@@ -59,7 +60,7 @@ describe('the useToynetSession custom hook', () => {
     // we need this because setting the value in session storage is done
     // by adding the task to the callback queue. So by adding a task to the
     // microtask queue we ensure that all tasks added before this in the callback
-    // queue are donelk
+    // queue are done
     await new Promise<void>((resolve, _) => setTimeout(() => {
       expect(window.sessionStorage.getItem(toynetSessionKey)).toEqual('2');
       resolve();
@@ -68,7 +69,7 @@ describe('the useToynetSession custom hook', () => {
 
   it('should not create a session if one already exists', async () => {
     window.sessionStorage.setItem(toynetSessionKey, '42');
-    const { waitForNextUpdate } = renderHook(() => useToynetSession(1));
+    const { waitForNextUpdate } = renderHookWithWrappers(() => useToynetSession(1));
 
     await waitForNextUpdate();
 
@@ -79,7 +80,7 @@ describe('the useToynetSession custom hook', () => {
 
   it('should return a session id and a topology string', async () => {
     window.sessionStorage.setItem(toynetSessionKey, '42');
-    const { result, waitForNextUpdate } = renderHook(() => useToynetSession(1));
+    const { result, waitForNextUpdate } = renderHookWithWrappers(() => useToynetSession(1));
 
     await waitForNextUpdate();
 

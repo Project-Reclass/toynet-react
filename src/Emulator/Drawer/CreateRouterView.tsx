@@ -79,7 +79,7 @@ export default function CreateRouterView({ nameHint }: Props) {
   const toast = useToast();
   const { onClose } = useDrawer();
   const { sessionId, appendDialogue, switches } = useEmulatorWithDialogue();
-  const [createRouter, { isLoading, isError, error, isSuccess }] =
+  const { mutateAsync: createRouter, isLoading, isError, error, isSuccess } =
     useCreateRouter(sessionId);
 
   useEffect(() => {

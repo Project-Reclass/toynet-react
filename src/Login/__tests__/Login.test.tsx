@@ -19,19 +19,33 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import React from 'react';
-
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import Login from 'src/Login';
 import { fireEvent, act } from '@testing-library/react';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
+import { useLogin } from 'src/common/api/login/hooks';
+
+jest.mock('src/common/api/login/hooks');
+
+const useLoginMock = useLogin as jest.MockedFunction<any>;
+
+const loginMock = jest.fn();
 
 describe('The Module List', () => {
+  beforeEach(() => {
+    useLoginMock.mockReturnValue({
+      data: null,
+      isLoading: false,
+      isSuccess: true,
+      isError: false,
+      mutateAsync: loginMock,
+    });
+  });
   it('should render and match snapshot', () => {
-    const { container } = renderWithTheme(<Login />);
+    const { container } = renderWithWrappers(<Login />);
     expect(container).toMatchSnapshot();
   });
   it('should have red border around username input when length <= 3 char && password > 3', () => {
-    const { getByPlaceholderText, getByText, container } = renderWithTheme(
+    const { getByPlaceholderText, getByText, container } = renderWithWrappers(
       <Login />,
     );
     const username = getByPlaceholderText('Username');
@@ -50,7 +64,7 @@ describe('The Module List', () => {
     expect(container).toMatchSnapshot();
   });
   it('should have red border around password input when length <= 3 char && username > 3', () => {
-    const { getByPlaceholderText, getByText, container } = renderWithTheme(
+    const { getByPlaceholderText, getByText, container } = renderWithWrappers(
       <Login />,
     );
     const username = getByPlaceholderText('Username');
@@ -69,7 +83,7 @@ describe('The Module List', () => {
     expect(container).toMatchSnapshot();
   });
   it('should have red border around username and password input when length <= 3', () => {
-    const { getByPlaceholderText, getByText, container } = renderWithTheme(
+    const { getByPlaceholderText, getByText, container } = renderWithWrappers(
       <Login />,
     );
     const username = getByPlaceholderText('Username');
@@ -88,7 +102,7 @@ describe('The Module List', () => {
     expect(container).toMatchSnapshot();
   });
   it('should not have red border around username and password input when length > 3', () => {
-    const { getByPlaceholderText, getByText, container } = renderWithTheme(
+    const { getByPlaceholderText, getByText, container } = renderWithWrappers(
       <Login />,
     );
     const username = getByPlaceholderText('Username');

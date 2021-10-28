@@ -36,7 +36,7 @@ export default function DeleteNodeBtn({ device: {
 }}: Props) {
   const { appendDialogue, updateDialogueMessage } = useDialogue();
   const { sessionId } = useEmulatorWithDialogue();
-  const [deleteDevice] = useDeleteDevice(sessionId, deviceType);
+  const { mutateAsync: deleteDevice } = useDeleteDevice(sessionId, deviceType);
 
   const handleClick = async (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();

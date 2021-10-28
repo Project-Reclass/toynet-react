@@ -19,12 +19,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
 
 import Value from 'src/Curriculum/Value';
 import { getValueMeta } from 'src/common/api/curriculum/value/requests';
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 jest.mock('src/common/api/curriculum/value/requests.ts');
 const getValueMetaMock = getValueMeta as jest.MockedFunction<typeof getValueMeta>;
@@ -56,7 +56,7 @@ describe('The value page', () => {
     };
 
     (getValueMeta as jest.MockedFunction<typeof getValueMeta>).mockResolvedValue(data);
-    const { getByText, getAllByText, getAllByTestId } = render(
+    const { getByText, getAllByText, getAllByTestId } = renderWithWrappers(
       <RenderWithRouter valueId={5001}>
         <Value />
       </RenderWithRouter>,
@@ -86,7 +86,7 @@ describe('The value page', () => {
     };
 
     getValueMetaMock.mockResolvedValue(data);
-    const { getByText, getAllByText, getAllByTestId } = render(
+    const { getByText, getAllByText, getAllByTestId } = renderWithWrappers(
       <RenderWithRouter valueId={5002}>
         <Value />
       </RenderWithRouter>,
@@ -115,7 +115,7 @@ describe('The value page', () => {
         ],
     };
     getValueMetaMock.mockResolvedValue(data);
-    const { getByText, getAllByText, getAllByTestId } = render(
+    const { getByText, getAllByText, getAllByTestId } = renderWithWrappers(
       <RenderWithRouter valueId={5003}>
         <Value />
       </RenderWithRouter>,
@@ -142,7 +142,7 @@ describe('The value page', () => {
         ],
     };
     getValueMetaMock.mockResolvedValue(data);
-    const { getByText, getAllByText, getAllByTestId } = render(
+    const { getByText, getAllByText, getAllByTestId } = renderWithWrappers(
       <RenderWithRouter valueId={5004}>
         <Value />
       </RenderWithRouter>,
@@ -157,7 +157,7 @@ describe('The value page', () => {
   });
 
   it('should render the same based on URL parameters for integrity', () => {
-    const { container } = renderWithTheme(
+    const { container } = renderWithWrappers(
       <RenderWithRouter valueId={5001}>
         <Value />
       </RenderWithRouter>,
@@ -166,7 +166,7 @@ describe('The value page', () => {
   });
 
   it('should render the same based on URL parameters for respect', () => {
-    const { container } = renderWithTheme(
+    const { container } = renderWithWrappers(
       <RenderWithRouter valueId={5002}>
         <Value />
       </RenderWithRouter>,
@@ -175,7 +175,7 @@ describe('The value page', () => {
   });
 
   it('should render the same based on URL parameters for honor', () => {
-    const { container } = renderWithTheme(
+    const { container } = renderWithWrappers(
       <RenderWithRouter valueId={5003}>
         <Value />
       </RenderWithRouter>,
@@ -184,7 +184,7 @@ describe('The value page', () => {
   });
 
   it('should render the same based on URL parameters for loyalty', () => {
-    const { container } = renderWithTheme(
+    const { container } = renderWithWrappers(
       <RenderWithRouter valueId={5004}>
         <Value />
       </RenderWithRouter>,

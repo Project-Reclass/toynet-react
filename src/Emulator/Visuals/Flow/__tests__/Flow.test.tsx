@@ -20,10 +20,10 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import React from 'react';
 import { waitFor } from '@testing-library/react';
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import Flow from 'src/Emulator/Visuals/Flow';
 
 import { DeviceInterface } from 'src/common/types';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 const routers: DeviceInterface[] = [
   {
@@ -62,7 +62,7 @@ const testSessionId = '123abc';
 
 describe('Flow', () => {
   it('should match the snapshot', async () => {
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <Flow
         sessionId={testSessionId}
         switches={switches}
@@ -80,7 +80,7 @@ describe('Flow', () => {
     expect(getByText(/h1/gi)).toBeInTheDocument();
   });
   it('should be able to render only hosts', async () => {
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <Flow
         sessionId={testSessionId}
         switches={[]}
@@ -94,7 +94,7 @@ describe('Flow', () => {
     expect(getByText(/h1/gi)).toBeInTheDocument();
   });
   it('should be able to render only switches', async () => {
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <Flow
         sessionId={testSessionId}
         switches={switches}
@@ -109,7 +109,7 @@ describe('Flow', () => {
     expect(getByText(/s1/gi)).toBeInTheDocument();
   });
   it('should be able to render only routers', async () => {
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <Flow
         sessionId={testSessionId}
         switches={[]}

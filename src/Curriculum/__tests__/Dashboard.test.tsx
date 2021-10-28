@@ -23,12 +23,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 import React from 'react';
 
 import ModuleList from 'src/Curriculum';
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import RenderWithRouter from 'src/common/test-utils/renderWithRouter';
 import { waitFor } from '@testing-library/react';
 import * as requests from 'src/common/api/curriculum/dashboard/requests';
 import { DashboardIntf } from 'src/common/types/curriculum';
 import { asMockedModule } from 'src/common/test-utils/types';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 jest.mock('src/common/api/curriculum/dashboard/requests');
 
@@ -43,7 +43,7 @@ describe('The Module List', () => {
     mockRequest.__resetMock();
   });
   it('should render and match snapshot', async () => {
-    const { container, getByText } = renderWithTheme(
+    const { container, getByText } = renderWithWrappers(
       <RenderWithRouter
         path='/dashboard/:curriculumId'
         initialEntries={[`/dashboard/${1}`]}
@@ -63,7 +63,7 @@ describe('The Module List', () => {
       ...mockRequest.mockData,
       introduction: mockedName,
     });
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <RenderWithRouter
         path={path}
         initialEntries={initialEntries}
@@ -89,7 +89,7 @@ describe('The Module List', () => {
         },
       ],
     });
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <RenderWithRouter
         path={path}
         initialEntries={initialEntries}

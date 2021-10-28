@@ -21,11 +21,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 
 import React from 'react';
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import { getSurveyMeta } from 'src/common/api/curriculum/survey/requests';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { waitFor, fireEvent, screen } from '@testing-library/react';
 import Survey from 'src/Curriculum/Survey';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 jest.mock('src/common/api/curriculum/survey/requests');
 
 const getSurveyMetaMock = getSurveyMeta as jest.MockedFunction<typeof getSurveyMeta>;
@@ -91,7 +91,7 @@ function setInputValue(input:any, newValue:string) {
 
 describe('The Survey page', () => {
     it('should render the same based on URL parameters', () => {
-        const { container } = renderWithTheme(
+        const { container } = renderWithWrappers(
           <RenderWithRouter moduleId={0} surveyId={6001}>
             <Survey />
           </RenderWithRouter>,
@@ -100,7 +100,7 @@ describe('The Survey page', () => {
     });
     it('should fetch quiz data', async () => {
         getSurveyMetaMock.mockResolvedValue({ items: data });
-        const { getByText, getAllByText } = renderWithTheme(
+        const { getByText, getAllByText } = renderWithWrappers(
           <RenderWithRouter surveyId={64} moduleId={42}>
             <Survey />
           </RenderWithRouter>,
@@ -115,7 +115,7 @@ describe('The Survey page', () => {
     it('should err if none answered', () => {
       jest.spyOn(window, 'alert').mockImplementation(() => {});
       getSurveyMetaMock.mockResolvedValue({ items: data });
-      const { getByText } = renderWithTheme(
+      const { getByText } = renderWithWrappers(
         <RenderWithRouter surveyId={64} moduleId={42}>
           <Survey />
         </RenderWithRouter>,
@@ -128,7 +128,7 @@ describe('The Survey page', () => {
     it('should err if not all answered', () => {
       jest.spyOn(window, 'alert').mockImplementation(() => {});
       getSurveyMetaMock.mockResolvedValue({ items: data });
-      const { getByText } = renderWithTheme(
+      const { getByText } = renderWithWrappers(
         <RenderWithRouter surveyId={64} moduleId={42}>
           <Survey />
         </RenderWithRouter>,
@@ -143,7 +143,7 @@ describe('The Survey page', () => {
     it('should not err if all answered', () => {
       jest.spyOn(window, 'alert').mockImplementation(() => {});
       getSurveyMetaMock.mockResolvedValue({ items: data });
-      const { getByText } = renderWithTheme(
+      const { getByText } = renderWithWrappers(
         <RenderWithRouter surveyId={64} moduleId={42}>
           <Survey />
         </RenderWithRouter>,

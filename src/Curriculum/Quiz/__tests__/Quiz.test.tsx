@@ -25,6 +25,7 @@ import { fireEvent, waitFor, screen } from '@testing-library/react';
 import Quiz from 'src/Curriculum/Quiz';
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 jest.mock('src/common/api/curriculum/quiz/requests.ts');
 const getQuizMetaMock = getQuizMeta as jest.MockedFunction<typeof getQuizMeta>;
@@ -61,7 +62,7 @@ const data = [
 describe('The Quiz page', () => {
 
   it('should render the same based on URL parameters', () => {
-    const { container } = renderWithTheme(
+    const { container } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>,
@@ -72,7 +73,7 @@ describe('The Quiz page', () => {
   it('should fetch quiz data', async () => {
     getQuizMetaMock.mockResolvedValue({ items: data });
 
-    const { getByText, getAllByText } = renderWithTheme(
+    const { getByText, getAllByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>,
@@ -88,7 +89,7 @@ describe('The Quiz page', () => {
   it('should err if none answered', () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
     getQuizMetaMock.mockResolvedValue({ items: data });
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>,
@@ -101,7 +102,7 @@ describe('The Quiz page', () => {
   it('should err if not all answered', () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
     getQuizMetaMock.mockResolvedValue({ items: data });
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>,
@@ -116,7 +117,7 @@ describe('The Quiz page', () => {
   it('should not err if all answered', () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
     getQuizMetaMock.mockResolvedValue({ items: data });
-    const { getByText } = renderWithTheme(
+    const { getByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>,

@@ -76,15 +76,13 @@ describe('the create host view', () => {
     toastMock.mockClear();
     createHostMock.mockClear();
     useToastMock.mockReturnValue(toastMock);
-    useCreateHostMock.mockReturnValue([
-      createHostMock,
-      {
-        isLoading: false,
-        isError: false,
-        isSuccess: false,
-        error: null,
-      },
-    ]);
+    useCreateHostMock.mockReturnValue({
+      mutateAsync: createHostMock,
+      isLoading: false,
+      isError: false,
+      isSuccess: false,
+      error: null,
+    });
     useEmulatorWithDialogueMock.mockReturnValue({
       sessionId: 1,
       hosts: [defaultHost],

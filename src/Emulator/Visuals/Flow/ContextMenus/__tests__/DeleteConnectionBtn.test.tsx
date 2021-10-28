@@ -20,12 +20,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React from 'react';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { act, fireEvent, waitFor } from '@testing-library/react';
 import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import { useDeleteDeviceLink } from 'src/common/api/topology';
 import { useDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
 
 import DeleteConnectionBtn from '../DeleteConnectionBtn';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 jest.mock('src/common/providers/EmulatorProvider');
 jest.mock('src/common/api/topology');
@@ -48,7 +49,7 @@ const dispatch = jest.fn();
 
 describe('The delete connection button', () => {
   beforeEach(() => {
-    mockedUseDeleteDeviceLink.mockReturnValue([mockDeleteDeviceLink]);
+    mockedUseDeleteDeviceLink.mockReturnValue({ mutateAsync: mockDeleteDeviceLink });
     mockedUseDialogue.mockReturnValue({ appendDialogue, updateDialogueMessage });
     mockedUseEmulator.mockReturnValue({ dispatch, sessionId: 1 });
     appendDialogue.mockReturnValue(mockedMessageId);
@@ -58,14 +59,16 @@ describe('The delete connection button', () => {
     appendDialogue.mockClear();
     updateDialogueMessage.mockClear();
   });
-  it('should call the delete device', () => {
+  it('should call the delete device', async () => {
     const { to, from } = defaultProps;
-    const { getByTestId } = renderWithTheme(<DeleteConnectionBtn {...defaultProps} />);
+    const { getByTestId } = renderWithWrappers(<DeleteConnectionBtn {...defaultProps} />);
     const btn = getByTestId('delete_conn-btn');
 
-    fireEvent.click(btn);
+    act(() => {
+      fireEvent.click(btn);
+    });
 
-    expect(mockDeleteDeviceLink).toHaveBeenCalled();
+    await waitFor(() => expect(mockDeleteDeviceLink).toHaveBeenCalled());
     expect(mockDeleteDeviceLink).toBeCalledWith({ dev_1: from, dev_2: to });
   });
   it('should append dialogue on click', () => {
@@ -79,7 +82,7 @@ describe('The delete connection button', () => {
     expect(appendDialogue).toHaveBeenCalledWith(`Attempting to delete link between ${to} and ${from}...`, 'grey');
   });
   it('should update the message on success', async () => {
-    const { getByTestId } = renderWithTheme(<DeleteConnectionBtn {...defaultProps} />);
+    const { getByTestId } = renderWithWrappers(<DeleteConnectionBtn {...defaultProps} />);
     const { to, from } = defaultProps;
     const btn = getByTestId('delete_conn-btn');
 

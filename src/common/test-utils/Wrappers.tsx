@@ -18,11 +18,19 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { useQuery } from 'react-query';
 
-import { getValueMeta } from './requests';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ChakraProvider } from '@chakra-ui/react';
+import { FC } from 'react';
 
+const queryClient = new QueryClient();
 
-export function useValueMeta(valueId: number) {
-  return useQuery(['value-meta', { valueId }], () => getValueMeta(valueId));
-}
+const Wrapper: FC = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    <ChakraProvider>
+      {children}
+    </ChakraProvider>
+  </QueryClientProvider>
+);
+
+export default Wrapper;

@@ -19,10 +19,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { waitFor, cleanup } from '@testing-library/react';
 import { withEmulatorAndDialogueProvider, useEmulator } from 'src/common/providers/EmulatorProvider';
 import { createToynetSession, getToynetSession } from 'src/common/api/topology/requests';
 import RenderWithRouter from 'src/common/test-utils/renderWithRouter';
+import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 jest.mock('src/common/api/topology/requests.ts');
 const createToynetMock = createToynetSession as jest.MockedFunction<typeof createToynetSession>;
@@ -59,7 +60,7 @@ describe('The EmulatorProvider', () => {
 
   it('should provide switches, router, and hosts if a session key exits', async () => {
     window.sessionStorage.setItem(toynetSessionKey, '42');
-    const { getByText } = render(
+    const { getByText } = renderWithWrappers(
       <RenderWithRouter
         path='/module/:moduleId/emulator/:emulatorId'
         initialEntries={['/module/1/emulator/1']}
@@ -80,7 +81,7 @@ describe('The EmulatorProvider', () => {
       toynet_session_id: 2,
     });
 
-    const { getByText } = render(
+    const { getByText } = renderWithWrappers(
       <RenderWithRouter
         path='/module/1/emulator/1'
         initialEntries={['/module/1/emulator/1']}

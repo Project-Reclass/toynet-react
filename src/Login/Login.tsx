@@ -31,7 +31,7 @@ const minimumInputLength = 3;
 const Login = () => {
   const toast = useToast();
   const { dispatch } = useAuthContext();
-  const [login, { data, isLoading, isSuccess, isError }] = useLogin();
+  const { data, isLoading, isSuccess, isError, mutateAsync: login } = useLogin();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

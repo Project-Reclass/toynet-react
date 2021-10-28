@@ -52,7 +52,7 @@ const updateDialogueMessage = jest.fn();
 
 describe('The delete node button', () => {
   beforeEach(() => {
-    mockedUseDeleteDevice.mockReturnValue([mockDeleteDevice]);
+    mockedUseDeleteDevice.mockReturnValue({ mutateAsync: mockDeleteDevice });
     mockedUseDialogue.mockReturnValue({ appendDialogue, updateDialogueMessage });
     mockedUseEmulatorWithDialogue.mockReturnValue({ sessionId: 1 });
     appendDialogue.mockReturnValue(mockedMessageId);

@@ -41,7 +41,7 @@ export default function CreateSwitchView({ nameHint }: Props) {
   const { appendDialogue } = useDialogue();
   const { switches, sessionId } = useEmulator();
 
-  const [createSwitch, { isLoading, isError, isSuccess, error }] =
+  const {mutateAsync: createSwitch, isLoading, isError, isSuccess, error } =
     useCreateSwitch(sessionId);
   const [name, setName] = useState(nameHint);
   const [showError, setShowError] = useState(false);

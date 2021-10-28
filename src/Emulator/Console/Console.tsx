@@ -45,7 +45,7 @@ const Console = () => {
   const [selectedDevice, setSelectedDevice] = useState('');
   const [showLoading, setShowLoading] = useState(false);
 
-  const [runCommand, { isLoading }] = useToynetCommand(sessionId);
+  const { isLoading, mutateAsync: runCommand } = useToynetCommand(sessionId);
 
   const loadingRef = useRef<NodeJS.Timeout | null>(null);
 
