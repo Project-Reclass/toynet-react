@@ -18,7 +18,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -26,8 +25,9 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Heading,
   Text,
+  ModalHeader,
+  ModalCloseButton,
 } from '@chakra-ui/react';
 
 interface Props {
@@ -51,27 +51,27 @@ const RestartModal = ({ isOpen, close }: Props) => {
     <Modal isOpen={isOpen} onClose={close} isCentered>
       <ModalOverlay />
       <ModalContent backgroundColor='#33373b'>
+        <ModalHeader color='white'>Confirm Restart</ModalHeader>
+        <ModalCloseButton color='white' />
         <ModalBody>
-          <Heading marginBottom="1.45rem">Confirm Restart</Heading>
           <Text marginBottom="1.45rem">Clicking "I'm Sure" will restart your progress and reset your topology.</Text>
           <Text> Are you sure? This cannot be undone.</Text>
         </ModalBody>
-        <ModalFooter justifyContent='space-evenly'>
+        <ModalFooter justifyContent='space-between'>
           <Button
             size='sm'
             variant="solid"
-            colorScheme="red"
-            width={80}
             fontSize='sm'
+            colorScheme='red'
             onClick={handleRestart}
           >
             I'm Sure
           </Button>
           <Button
             size='sm'
-            variant="outline"
-            colorScheme="black"
-            width={80}
+            color='white'
+            variant='ghost'
+            colorScheme='whiteAlpha'
             fontSize='sm'
             onClick={close}
           >
