@@ -29,12 +29,16 @@ export const CenteredProgress = styled(CircularProgress)`
     transform: translate(-50%,-50%);
 `;
 
-const LoadingSpinner = () => {
-    return (
-        <div style={{position: 'relative', height: '100%'}}>
-            <CenteredProgress isIndeterminate color="green"/>
-        </div>
-    );
+interface Props {
+  color?: string;
+}
+
+const LoadingSpinner = ({ color = 'green' }: Props) => {
+  return (
+    <div style={{ position: 'relative', height: '100%' }}>
+      <CenteredProgress isIndeterminate color={color} />
+    </div>
+  );
 };
 
 export default LoadingSpinner;
