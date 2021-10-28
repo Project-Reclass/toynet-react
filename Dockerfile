@@ -14,10 +14,6 @@ COPY ./.eslintrc.json ./.eslintrc.json
 
 RUN npm run build
 
-WORKDIR /content
-
-RUN git clone https://github.com/Project-Reclass/toynet-content.git
-
 FROM nginx:1-alpine
 
 WORKDIR /app
