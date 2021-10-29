@@ -47,6 +47,7 @@ describe('The Module', () => {
   it('should render and match snapshots', () => {
     const { container } = renderWithTheme(
       <Module
+        isLast={false}
         index={1}
         locked={false}
         {...defaultModule}
