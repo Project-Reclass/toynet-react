@@ -79,6 +79,7 @@ export default function Dashboard({ username }: Props) {
               <Module
                 {...module}
                 key={module.id}
+                isLast={index === data?.modules.length - 1}
                 index={index}
                 locked={false}
                 paddingTop={index === 0 ? '2rem' : ''}

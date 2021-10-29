@@ -24,11 +24,13 @@ import { fireEvent, waitFor, screen } from '@testing-library/react';
 
 import Quiz from 'src/Curriculum/Quiz';
 import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests';
-import { renderWithTheme } from 'src/common/test-utils/renderWithTheme';
+import { useQuiz } from 'src/common/api/curriculum/quiz/hooks';
 import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
-jest.mock('src/common/api/curriculum/quiz/requests.ts');
+jest.mock('src/common/api/curriculum/quiz/requests');
+jest.mock('src/common/api/curriculum/quiz/hooks');
 const getQuizMetaMock = getQuizMeta as jest.MockedFunction<typeof getQuizMeta>;
+const useQuizMock = useQuiz as jest.MockedFunction<typeof useQuiz>;
 
 const RenderWithRouter = ({ children, moduleId, quizId }: {children: React.ReactChild, moduleId: number, quizId: number}) => (
   <MemoryRouter initialEntries={[`/module/${moduleId}/quiz/${quizId}`]}>
@@ -62,6 +64,14 @@ const data = [
 describe('The Quiz page', () => {
 
   it('should render the same based on URL parameters', () => {
+    useQuizMock.mockReturnValue({
+      isLoading: false,
+      data: {
+        name: 'Quiz',
+        description: 'Mock description',
+        items: data,
+      },
+    });
     const { container } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
@@ -71,7 +81,14 @@ describe('The Quiz page', () => {
   });
 
   it('should fetch quiz data', async () => {
-    getQuizMetaMock.mockResolvedValue({ items: data });
+    useQuizMock.mockReturnValueOnce({
+      isLoading: false,
+      data: {
+        name: 'Quiz',
+        description: 'Mock description',
+        items: data,
+      },
+    });
 
     const { getByText, getAllByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
@@ -88,7 +105,15 @@ describe('The Quiz page', () => {
 
   it('should err if none answered', () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
-    getQuizMetaMock.mockResolvedValue({ items: data });
+    useQuizMock.mockReturnValueOnce({
+      isLoading: false,
+      data: {
+        name: 'Quiz',
+        description: 'Mock description',
+        items: data,
+      },
+    });
+
     const { getByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
@@ -101,32 +126,46 @@ describe('The Quiz page', () => {
   });
   it('should err if not all answered', () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
-    getQuizMetaMock.mockResolvedValue({ items: data });
+    useQuizMock.mockReturnValueOnce({
+      isLoading: false,
+      data: {
+        name: 'Quiz',
+        description: 'Mock description',
+        items: data,
+      },
+    });
+
     const { getByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>,
     );
-    const choice1 = screen.getByTestId('Only ones communicating');
     const submitBtn = getByText(/submit/i);
-    fireEvent.click(choice1);
     fireEvent.click(submitBtn);
     expect(window.alert).toBeCalled();
 
   });
-  it('should not err if all answered', () => {
+  it('should not err if all answered', async () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
-    getQuizMetaMock.mockResolvedValue({ items: data });
+    useQuizMock.mockReturnValue({
+      isLoading: false,
+      data: {
+        name: 'Quiz',
+        description: 'Mock description',
+        items: data,
+      },
+    });
+
     const { getByText } = renderWithWrappers(
       <RenderWithRouter moduleId={42} quizId={64}>
         <Quiz />
       </RenderWithRouter>,
     );
-    const choice1 = screen.getByTestId('Only ones communicating');
-    const choice2 = screen.getByTestId('Partial Mesh');
+    const choice1 = await screen.findAllByTestId('Only ones communicating');
+    const choice2 = await screen.findAllByTestId('Partial Mesh');
     const submitBtn = getByText(/submit/i);
-    fireEvent.click(choice1);
-    fireEvent.click(choice2);
+    fireEvent.click(choice1[0]);
+    fireEvent.click(choice2[0]);
     fireEvent.click(submitBtn);
     expect(window.alert).not.toBeCalled();
 

@@ -7,38 +7,347 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
     id="#"
   >
     <div
-      class="css-1ikdejk"
+      class="chakra-container css-jf7n8r"
     >
       <div
-        style="position: relative; height: 100%;"
+        class="css-1yjzl2e"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          class="css-1xkmjny"
-          data-indeterminate=""
-          role="progressbar"
+          class="chakra-stack css-btweb"
         >
-          <svg
-            class="css-jf70f3"
-            viewBox="0 0 100 100"
+          <h2
+            class="chakra-heading css-1jb3vzl"
           >
-            <circle
-              class="chakra-progress__track css-ol3i12"
-              cx="50"
-              cy="50"
-              r="42"
-              stroke-width="10px"
-            />
-            <circle
-              class="chakra-progress__indicator css-wj25ge"
-              cx="50"
-              cy="50"
-              r="42"
-              stroke-width="10px"
-            />
-          </svg>
+            Survey: Quiz
+          </h2>
+          <p
+            class="chakra-text css-1tccf60"
+          >
+            Mock description
+          </p>
+          <hr
+            aria-orientation="horizontal"
+            class="chakra-divider css-svjswr"
+          />
         </div>
+        <div
+          class="css-d5qpui"
+        >
+          <div
+            class="css-k008qs"
+          >
+            <p
+              class="chakra-text css-i3jkqk"
+            >
+              1. How many nodes share a single channel on a bus topology?
+            </p>
+          </div>
+          <div
+            class="css-1ij3qf3"
+          >
+            <div
+              class="chakra-radio-group css-0"
+              role="radiogroup"
+            >
+              <div
+                class="css-rhcq65"
+              >
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="One node"
+                  id="One node"
+                  name="0"
+                  style="margin: 5px;"
+                  value="One node"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="One node"
+                    name="0"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="One node"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="One node"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      One node
+                    </label>
+                  </span>
+                </label>
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="Only ones communicating"
+                  id="Only ones communicating"
+                  name="0"
+                  style="margin: 5px;"
+                  value="Only ones communicating"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="Only ones communicating"
+                    name="0"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="Only ones communicating"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="Only ones communicating"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      Only ones communicating
+                    </label>
+                  </span>
+                </label>
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="Three nodes"
+                  id="Three nodes"
+                  name="0"
+                  style="margin: 5px;"
+                  value="Three nodes"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="Three nodes"
+                    name="0"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="Three nodes"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="Three nodes"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      Three nodes
+                    </label>
+                  </span>
+                </label>
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="All nodes"
+                  id="All nodes"
+                  name="0"
+                  style="margin: 5px;"
+                  value="All nodes"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="All nodes"
+                    name="0"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="All nodes"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="All nodes"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      All nodes
+                    </label>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-d5qpui"
+        >
+          <div
+            class="css-k008qs"
+          >
+            <p
+              class="chakra-text css-i3jkqk"
+            >
+              2. Which of the following is the most fault-tolerant WAN topology?
+            </p>
+          </div>
+          <div
+            class="css-1ij3qf3"
+          >
+            <div
+              class="chakra-radio-group css-0"
+              role="radiogroup"
+            >
+              <div
+                class="css-rhcq65"
+              >
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="Partial Mesh"
+                  id="Partial Mesh"
+                  name="1"
+                  style="margin: 5px;"
+                  value="Partial Mesh"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="Partial Mesh"
+                    name="1"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="Partial Mesh"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="Partial Mesh"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      Partial Mesh
+                    </label>
+                  </span>
+                </label>
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="Ring"
+                  id="Ring"
+                  name="1"
+                  style="margin: 5px;"
+                  value="Ring"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="Ring"
+                    name="1"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="Ring"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="Ring"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      Ring
+                    </label>
+                  </span>
+                </label>
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="Star"
+                  id="Star"
+                  name="1"
+                  style="margin: 5px;"
+                  value="Star"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="Star"
+                    name="1"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="Star"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="Star"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      Star
+                    </label>
+                  </span>
+                </label>
+                <label
+                  class="chakra-radio css-1081i7r"
+                  data-testid="Full-mesh"
+                  id="Full-mesh"
+                  name="1"
+                  style="margin: 5px;"
+                  value="Full-mesh"
+                >
+                  <input
+                    class="chakra-radio__input"
+                    id="Full-mesh"
+                    name="1"
+                    style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                    type="radio"
+                    value="Full-mesh"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="chakra-radio__control css-1rggdzb"
+                    data-testid="Full-mesh"
+                    style="margin: 5px;"
+                  />
+                  <span
+                    class="chakra-radio__label css-1i66d7g"
+                  >
+                    <label
+                      class="chakra-text css-c6hj5f"
+                    >
+                      Full-mesh
+                    </label>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-zl0uqj"
+      >
+        <button
+          class="chakra-button css-f6n2t5"
+          type="button"
+        >
+          Submit Quiz
+        </button>
       </div>
     </div>
   </div>
