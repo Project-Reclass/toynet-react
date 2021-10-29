@@ -25,22 +25,22 @@ describe('The quiz page', () => {
   it('can submit and show error', () => {
     cy.visit(visitUrl);
     cy.contains('Which type of fiber is best suited for long distance transmission?')
-      .get('[data-testid="Multi-Mode Fiber"]').check();
+      .get('[data-testid="Multi-Mode Fiber"]').click({ multiple: true });
 
     cy.contains('2. What level of the 7 Layer OSI model are Routers in?')
-      .get('[data-testid=Physical]').check();
+      .get('[data-testid=Physical]').click({ multiple: true });
     cy.contains('3. What part of IP packet determines destination?')
-      .get('[data-testid="MAC Address"]').check();
+      .get('[data-testid="MAC Address"]').click({ multiple: true });
     cy.contains('4. What part of IP packet determines what we seek?')
-      .get('[data-testid="MAC Address"]').check();
+      .get('[data-testid="MAC Address"]').click({ multiple: true });
     cy.contains('5. What is the name of a network spanning a small area?')
-      .get('[data-testid="Local Area Network (LAN)"]').check();
+      .get('[data-testid="Local Area Network (LAN)"]').click({ multiple: true });
     cy.contains('6. In order to send an IP Packet, what is the first step before it can get sent?')
-      .get('[data-testid=Deencapsulation]').check();
+      .get('[data-testid=Deencapsulation]').click({ multiple: true });
     cy.contains('7. Which Small Factor Pluggable is capable of speeds over 40 Gbps?')
-      .get('[data-testid="Small Factor Pluggable (SFP)"]').check();
+      .get('[data-testid="Small Factor Pluggable (SFP)"]').click({ multiple: true });
     cy.contains('8. Which Cable type is divided into categories abbreviated CAT?')
-      .get('[data-testid="Multi-mode Fiber"]').check();
+      .get('[data-testid="Multi-mode Fiber"]').click({ multiple: true });
 
     cy.contains(/submit quiz/i).click();
     cy.contains('25').should('be.visible');
