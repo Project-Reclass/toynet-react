@@ -20,6 +20,15 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import { extendTheme, ThemeConfig } from '@chakra-ui/react';
 
+const Radio = {
+  fields: ['span'],
+  baseStyle: {
+    span: {
+      color: 'white',
+    },
+  },
+};
+
 const FormLabel = {
   baseStyle: {
     color: 'white',
@@ -51,6 +60,7 @@ const theme = extendTheme({
     FormLabel,
     Heading,
     Text,
+    Radio,
   },
   styles: {
     global: {

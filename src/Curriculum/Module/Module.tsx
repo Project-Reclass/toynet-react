@@ -25,10 +25,12 @@ import { ModuleIntf } from 'src/common/types/curriculum';
 import { RotatableTriangle } from './styled';
 import SubModuleList from './SubModuleList';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
+import Corner from 'src/common/components/Corner';
 
 interface Props {
   index: number;
   locked: boolean;
+  isLast: boolean;
   paddingTop?: string;
 }
 
@@ -61,6 +63,7 @@ const Module: FC<ModuleIntf & Props> = (
     name,
     submodules,
     paddingTop,
+    isLast,
   },
 ) => {
   const [isOpen, setOpen] =
@@ -69,16 +72,18 @@ const Module: FC<ModuleIntf & Props> = (
 
   return (
     <Box
-    paddingTop={paddingTop}
-    borderLeft={'2pt solid white'}
+      paddingTop={paddingTop}
+      borderLeft={!isLast ? '2pt solid white' : ''}
     >
       <Flex onClick={() => setOpen(open => !open)} cursor='pointer'>
+        <Corner isLast={isLast} />
         <RotatableTriangle
           rotated={isOpen}
           color='white'
           size='1.5rem'
           marginY='auto'
           marginX='1rem'
+          marginLeft='0.459rem'
         />
         <Flex justifyContent='space-between' width='100%'>
           <TooltipIslocked isLocked={locked}>

@@ -71,3 +71,14 @@ export interface Video {
   url: string;
   description: string;
 }
+
+export interface SurveyQuestion {
+  item_type: string;
+  question: string;
+  options?: string[];
+  unit?: string;
+}
+
+export interface SurveyResponse {
+  items: SurveyQuestion[]
+}

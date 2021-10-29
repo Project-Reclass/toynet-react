@@ -8,8 +8,11 @@ exports[`The Module should render and match snapshots 1`] = `
     <div
       class="css-11dqbsu"
     >
+      <div
+        class="css-3v8oav"
+      />
       <svg
-        class="chakra-icon css-1lb11iy"
+        class="chakra-icon css-1qp4mqw"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -46,7 +49,7 @@ exports[`The Module should render and match snapshots 1`] = `
         class="css-e19uy1"
       >
         <div
-          class="css-k008qs"
+          class="css-1l0pjoz"
         >
           <svg
             class="chakra-icon css-6sndh7"

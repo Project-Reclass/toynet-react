@@ -7,37 +7,362 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
     id="#"
   >
     <div
-      class="css-1ikdejk"
+      class="chakra-container css-jf7n8r"
     >
       <div
-        style="position: relative; height: 100%;"
+        class="chakra-radio-group css-0"
+        role="radiogroup"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          class="css-1xkmjny"
-          data-indeterminate=""
-          role="progressbar"
+          class="css-1yjzl2e"
         >
-          <svg
-            class="css-jf70f3"
-            viewBox="0 0 100 100"
+          <div
+            class="chakra-stack css-btweb"
           >
-            <circle
-              class="chakra-progress__track css-ol3i12"
-              cx="50"
-              cy="50"
-              r="42"
-              stroke-width="10px"
+            <h2
+              class="chakra-heading css-1jb3vzl"
+            >
+              Survey: Survey
+            </h2>
+            <p
+              class="chakra-text css-1tccf60"
+            >
+              A mock survey
+            </p>
+            <hr
+              aria-orientation="horizontal"
+              class="chakra-divider css-svjswr"
             />
-            <circle
-              class="chakra-progress__indicator css-wj25ge"
-              cx="50"
-              cy="50"
-              r="42"
-              stroke-width="10px"
+          </div>
+          <div
+            class="chakra-form-control css-1kxonj9"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-2gx1h6"
+              for="field-1"
+              id="field-1-label"
+            >
+              1
+              . 
+              What is your first name?
+            </label>
+            <input
+              class="chakra-input css-h96k1c"
+              data-testid="What is your first name?"
+              id="field-1"
+              placeholder="Type Here"
             />
-          </svg>
+          </div>
+          <div
+            class="chakra-form-control css-1kxonj9"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-2gx1h6"
+              for="field-2"
+              id="field-2-label"
+            >
+              2
+              . 
+              Are you interested in a career in the technology industry?
+            </label>
+            <div
+              class="css-rhcq65"
+            >
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="As of now, I do not plan on it."
+                  name="1"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="As of now, I do not plan on it."
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="As of now, I do not plan on it."
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    As of now, I do not plan on it.
+                  </p>
+                </span>
+              </label>
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="Not sure..."
+                  name="1"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="Not sure..."
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="Not sure..."
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    Not sure...
+                  </p>
+                </span>
+              </label>
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="I am open to it. :)"
+                  name="1"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="I am open to it. :)"
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="I am open to it. :)"
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    I am open to it. :)
+                  </p>
+                </span>
+              </label>
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="Absolutely!"
+                  name="1"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="Absolutely!"
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="Absolutely!"
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    Absolutely!
+                  </p>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div
+            class="chakra-form-control css-1kxonj9"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-2gx1h6"
+              for="field-3"
+              id="field-3-label"
+            >
+              3
+              . 
+              What do you hope to get out of this course?
+            </label>
+            <textarea
+              class="chakra-textarea css-1nhrht7"
+              data-testid="What do you hope to get out of this course?"
+              id="field-3"
+              placeholder="Type Here"
+            />
+          </div>
+          <div
+            class="chakra-form-control css-1kxonj9"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-2gx1h6"
+              for="field-4"
+              id="field-4-label"
+            >
+              4
+              . 
+              How familiar would you say you are with computer networking concepts?
+            </label>
+            <div
+              class="css-lz2f5c"
+            >
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="Not at all"
+                  name="3"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="Not at all"
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="Not at all"
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    Not at all
+                  </p>
+                </span>
+              </label>
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="Some familiarity"
+                  name="3"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="Some familiarity"
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="Some familiarity"
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    Some familiarity
+                  </p>
+                </span>
+              </label>
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="Quite a bit"
+                  name="3"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="Quite a bit"
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="Quite a bit"
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    Quite a bit
+                  </p>
+                </span>
+              </label>
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="Very familiar"
+                  name="3"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="Very familiar"
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="Very familiar"
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    Very familiar
+                  </p>
+                </span>
+              </label>
+              <label
+                class="chakra-radio css-78joka"
+              >
+                <input
+                  class="chakra-radio__input"
+                  id="Professional Experience"
+                  name="3"
+                  style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                  type="radio"
+                  value="Professional Experience"
+                />
+                <span
+                  aria-hidden="true"
+                  class="chakra-radio__control css-1rggdzb"
+                  data-testid="Professional Experience"
+                  style="margin: 5px;"
+                />
+                <span
+                  class="chakra-radio__label css-1i66d7g"
+                >
+                  <p
+                    class="chakra-text css-79wky"
+                  >
+                    Professional Experience
+                  </p>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div
+            class="css-0"
+          >
+            <button
+              class="chakra-button css-f6n2t5"
+              type="button"
+            >
+              Submit Survey
+            </button>
+          </div>
         </div>
       </div>
     </div>

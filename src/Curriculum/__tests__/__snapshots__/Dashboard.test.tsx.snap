@@ -9,18 +9,18 @@ exports[`The Module List should render and match snapshot 1`] = `
       class="css-1djaw1e"
     >
       <div
-        class="css-1w1vbxm"
+        class="css-mo2z4l"
       >
         <div
           class="chakra-stack css-zihvxp"
         >
           <h2
-            class="chakra-heading css-16sp5ne"
+            class="chakra-heading css-r0uwm9"
           >
             Hi there!
           </h2>
           <p
-            class="chakra-text css-zpj1i3"
+            class="chakra-text css-1c395im"
           >
             intro You can click on each module’s chevron to see its submodules. You must go through
                 the modules and their submodules in order. To start or revisit a submodule, click

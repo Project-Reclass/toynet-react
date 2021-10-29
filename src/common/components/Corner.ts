@@ -18,13 +18,19 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import axios from 'axios';
-import { SurveyResponse } from 'src/common/types';
+import styled from '@emotion/styled';
 
+export const Corner = styled.div`
+  height: 19px;
+  width: 30px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-left-radius: 10px;
+  border-color: white;
 
-export const getSurveyMeta = async (surveyId: number): Promise<SurveyResponse> => {
-	const { data } = await axios.get(`/api/survey/${surveyId}`);
-	return data;
-};
+  // used to offset the border so that there is overlap between the left border and the border for hte modules
+  transform: ${({ isLast: showLeft }: {isLast: boolean}) => !showLeft ? 'translateX(-2px);' : ''};
+`;
 
-
+export default Corner;
