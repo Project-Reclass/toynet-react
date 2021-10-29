@@ -35,7 +35,6 @@ import {
   SliderThumb,
   Heading,
   FormLabel,
-  Radio,
   FormControl,
   Container,
   Button,
@@ -43,8 +42,13 @@ import {
   Text,
   Divider,
   Stack,
-  RadioGroup,
 } from '@chakra-ui/react';
+
+// TODO: Change this back on the next version of chakra
+import {
+  Radio,
+  RadioGroup,
+} from '@chakra-ui/radio';
 
 import {
   SurveyContainer,
@@ -73,14 +77,13 @@ const RenderInput: FC<InputValues> = ({ question, id, updateResp }) => {
             <Radio
               key={option}
               id={option}
-              color='white'
               data-testid={option}
               name={id.toString()}
               value={option}
               onChange={() => updateResp(option, id)}
               style={{ margin: '5px' }}
             >
-              {option}
+              <Text color='white'>{option}</Text>
             </Radio>
           ))}
         </SimpleGrid>
@@ -94,14 +97,14 @@ const RenderInput: FC<InputValues> = ({ question, id, updateResp }) => {
               <Radio
                 key={option}
                 id={option}
-                color='white'
+                textColor='white'
                 data-testid={option}
                 name={id.toString()}
                 value={option}
                 onChange={() => updateResp(option, id)}
                 style={{ margin: '5px' }}
               >
-                {option}
+                <Text color='white'>{option}</Text>
               </Radio>
             ))}
           </SimpleGrid>
@@ -112,10 +115,12 @@ const RenderInput: FC<InputValues> = ({ question, id, updateResp }) => {
             data-testid={question.question}
             aria-label="slider1"
             defaultValue={10}
+            textColor='white'
             max={10}
-            onChange={(val) => updateResp((val + 1).toString(), id)}>
-            <SliderTrack height="10px">
-              <SliderFilledTrack height="10px" />
+            onChange={(val) => updateResp((val + 1).toString(), id)}
+          >
+            <SliderTrack height="10px" textColor='white'>
+              <SliderFilledTrack height="10px" textColor='white' />
             </SliderTrack>
             <SliderThumb />
           </Slider>
