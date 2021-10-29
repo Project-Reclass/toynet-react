@@ -21,7 +21,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import ReclassLogo from '../assets/PR-Icon-Square-White.png';
+import ReclassLogo from '../assets/PR-Icon-Square-FullColor.png';
 import { Avatar, Box, Flex, Stack } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import {
@@ -127,9 +127,9 @@ const Sidebar = () => {
     <Box minWidth='5rem' height='100vh'>
       <StyledNav isMenuOpen={isMenuOpen} onMouseOver={toggleMenu} onMouseOut={toggleMenu}>
         <Flex direction='column' justifyContent='space-between' height='100%' paddingY='1rem'>
-          <Stack spacing={3}>
-            <StyledNavIcon onClick={() => goToPageOnEnableHref('/blank')}>
-              <Avatar src={ReclassLogo} marginBottom='1rem'/>
+          <Stack spacing={1}>
+            <StyledNavIcon onClick={() => goToPageOnEnableHref('/')}>
+              <Avatar src={ReclassLogo} marginBottom='1rem' backgroundColor='white'/>
             </StyledNavIcon>
             <StyledNavItem onClick={() => goToPageOnEnableHref('/dashboard/1')}>
               <StyledNavIcon>
@@ -143,7 +143,7 @@ const Sidebar = () => {
             </StyledNavItem>
           </Stack>
           <Stack spacing={3}>
-            <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+            {/* <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
               <StyledNavIcon>
                 <StyledSvg>
                   <SettingsIcon w='28px' h='28px' color='white'/>
@@ -162,14 +162,14 @@ const Sidebar = () => {
                   FAQ
                 </StyledLinkText>
               </StyledNavIcon>
-            </StyledNavItem>
-            <StyledNavItem onClick={() => goToPageOnEnableHref('/blank')}>
+            </StyledNavItem> */}
+            <StyledNavItem onClick={() => goToPageOnEnableHref('/')}>
               <StyledNavIcon>
                 <StyledSvg>
                   <ArrowLeftIcon w='28px' h='28px' color='white'/>
                 </StyledSvg>
                 <StyledLinkText isMenuOpen={isMenuOpen}>
-                  Log Out
+                  Home
                 </StyledLinkText>
               </StyledNavIcon>
             </StyledNavItem>

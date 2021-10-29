@@ -65,7 +65,7 @@ export const SubModule: FC<Props> = (
       <StarIcon
         w='1.5rem'
         h='1.5rem'
-        color='green.500'
+        color='yellow.400'
       />
       <Stack spacing={2} width='100%' marginLeft='1.5rem'>
         <Flex justifyContent='space-between'>

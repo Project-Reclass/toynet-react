@@ -3,101 +3,112 @@
 exports[`The Module should render and match snapshots 1`] = `
 <div>
   <div
-    class="css-1vpj214"
+    class="css-79elbk"
   >
     <div
       class="css-11dqbsu"
     >
       <div
-        class="css-3v8oav"
+        class="css-vpz1un"
       />
-      <svg
-        class="chakra-icon css-1qp4mqw"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
-          fill="currentColor"
-        />
-      </svg>
       <div
-        class="css-z7mtfw"
+        class="css-32vpza"
       >
-        <p
-          class="chakra-text css-q3jx8g"
+        <div
+          class="css-1pvuw8w"
+        />
+        <svg
+          class="chakra-icon css-1qp4mqw"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          Module 2: First Module
-        </p>
-        <p
-          class="chakra-text css-127h41h"
+          <path
+            d="M12.8,5.4c-0.377-0.504-1.223-0.504-1.6,0l-9,12c-0.228,0.303-0.264,0.708-0.095,1.047 C2.275,18.786,2.621,19,3,19h18c0.379,0,0.725-0.214,0.895-0.553c0.169-0.339,0.133-0.744-0.095-1.047L12.8,5.4z"
+            fill="currentColor"
+          />
+        </svg>
+        <div
+          class="css-z7mtfw"
         >
-          1 / 1 completed, 1 in progress
-        </p>
+          <p
+            class="chakra-text css-q3jx8g"
+          >
+            Module 2: First Module
+          </p>
+          <p
+            class="chakra-text css-127h41h"
+          >
+            1 / 1 completed, 0 in progress
+          </p>
+        </div>
       </div>
     </div>
     <div
-      class="chakra-collapse"
-      style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+      class="css-1mejl19"
     >
-      <p
-        class="chakra-text css-1i4lql9"
-      >
-        This is the first module
-      </p>
       <div
-        class="css-e19uy1"
+        class="chakra-collapse"
+        style="overflow: hidden; display: none; opacity: 0; height: 0px;"
       >
-        <div
-          class="css-1l0pjoz"
+        <p
+          class="chakra-text css-1i4lql9"
         >
-          <svg
-            class="chakra-icon css-6sndh7"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M23.555,8.729a1.505,1.505,0,0,0-1.406-.98H16.062a.5.5,0,0,1-.472-.334L13.405,1.222a1.5,1.5,0,0,0-2.81,0l-.005.016L8.41,7.415a.5.5,0,0,1-.471.334H1.85A1.5,1.5,0,0,0,.887,10.4l5.184,4.3a.5.5,0,0,1,.155.543L4.048,21.774a1.5,1.5,0,0,0,2.31,1.684l5.346-3.92a.5.5,0,0,1,.591,0l5.344,3.919a1.5,1.5,0,0,0,2.312-1.683l-2.178-6.535a.5.5,0,0,1,.155-.543l5.194-4.306A1.5,1.5,0,0,0,23.555,8.729Z"
-              fill="currentColor"
-            />
-          </svg>
+          This is the first module
+        </p>
+        <div
+          class="css-y37nu2"
+        >
           <div
-            class="chakra-stack css-2y5ch"
+            class="css-1l0pjoz"
           >
-            <div
-              class="css-gg4vpm"
+            <svg
+              class="chakra-icon css-1anit53"
+              focusable="false"
+              viewBox="0 0 24 24"
             >
-              <a
-                class="chakra-link css-1cf79mm"
+              <path
+                d="M23.555,8.729a1.505,1.505,0,0,0-1.406-.98H16.062a.5.5,0,0,1-.472-.334L13.405,1.222a1.5,1.5,0,0,0-2.81,0l-.005.016L8.41,7.415a.5.5,0,0,1-.471.334H1.85A1.5,1.5,0,0,0,.887,10.4l5.184,4.3a.5.5,0,0,1,.155.543L4.048,21.774a1.5,1.5,0,0,0,2.31,1.684l5.346-3.92a.5.5,0,0,1,.591,0l5.344,3.919a1.5,1.5,0,0,0,2.312-1.683l-2.178-6.535a.5.5,0,0,1,.155-.543l5.194-4.306A1.5,1.5,0,0,0,23.555,8.729Z"
+                fill="currentColor"
+              />
+            </svg>
+            <div
+              class="chakra-stack css-2y5ch"
+            >
+              <div
+                class="css-gg4vpm"
+              >
+                <a
+                  class="chakra-link css-1cf79mm"
+                >
+                  <p
+                    class="chakra-text css-0"
+                  >
+                    Survey: First Article
+                  </p>
+                </a>
+                <a
+                  class="chakra-link css-1x04cht"
+                  hovercolor="rgba(84,143,155)"
+                >
+                  <a
+                    class="chakra-link css-f4h6uy"
+                    href="/module/0/survey/1"
+                  >
+                    Go to Submodule &gt;
+                  </a>
+                </a>
+              </div>
+              <div
+                class="chakra-collapse"
+                color="white"
+                style="overflow: hidden; display: none; opacity: 0; height: 0px;"
               >
                 <p
                   class="chakra-text css-0"
                 >
-                  Survey: First Article
+                  coo
                 </p>
-              </a>
-              <a
-                class="chakra-link css-1x04cht"
-                hovercolor="rgba(84,143,155)"
-              >
-                <a
-                  class="chakra-link css-f4h6uy"
-                  href="/module/0/survey/1"
-                >
-                  Go to Submodule &gt;
-                </a>
-              </a>
-            </div>
-            <div
-              class="chakra-collapse"
-              color="white"
-              style="overflow: hidden; display: none; opacity: 0; height: 0px;"
-            >
-              <p
-                class="chakra-text css-0"
-              >
-                coo
-              </p>
+              </div>
             </div>
           </div>
         </div>
