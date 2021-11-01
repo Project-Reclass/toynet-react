@@ -18,10 +18,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
-import { useParams } from 'react-router-dom';
 
-import { useLessonMeta } from '../../common/api/curriculum/lesson';
+import { Box, Center, Container, Divider, Heading, SimpleGrid, Stack } from '@chakra-ui/layout';
+import { Text, Image, Button } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
+import LoadingContainer from 'src/common/components/LoadingContainer';
+import { useLesson, useLessonSlides } from 'src/common/api/curriculum/lesson';
+
 
 interface Params {
   moduleId: string;
@@ -30,18 +33,54 @@ interface Params {
 
 const Lesson = () => {
   const { moduleId, lessonId } = useParams<Params>();
-  const { data } = useLessonMeta(Number(lessonId));
+  const { data, isLoading } = useLesson(Number(moduleId), Number(lessonId));
+  const {
+    currSrc,
+    nextSlide,
+    prevSlide,
+    isNextSlide,
+    isPrevSlide,
+  } = useLessonSlides(Number(lessonId), data || undefined);
 
   return (
-    <div>
-      <h1>
-        Module: {moduleId}
-      </h1>
-      <h2>
-        Lesson: {lessonId}
-      </h2>
-      <p>Num Slides: {data?.numSlides || 0} </p>
-    </div>
+    <Box id="#">
+      <LoadingContainer isLoading={isLoading}>
+        <Container maxW='container.xl' my='3'>
+          <SimpleGrid columns={1} spacing={5}>
+            <Stack spacing={2}>
+              <Heading size="lg">{`Lesson: ${data?.name}`}</Heading>
+              <Text size='sm' color='whiteAlpha.800'>{data?.description}</Text>
+              <Divider />
+            </Stack>
+            <Center>
+              <Stack spacing={3}>
+                <Image src={currSrc} />
+                <Stack
+                  spacing={3}
+                  direction='row'
+                  justifyContent='space-between'
+                >
+                  <Button
+                    size='md'
+                    onClick={prevSlide}
+                    isDisabled={!isPrevSlide}
+                  >
+                    Previous Slide
+                  </Button>
+                  <Button
+                    size='md'
+                    onClick={nextSlide}
+                    isDisabled={!isNextSlide}
+                  >
+                    Next Slide
+                  </Button>
+                </Stack>
+              </Stack>
+            </Center>
+          </SimpleGrid>
+        </Container>
+      </LoadingContainer>
+    </Box>
   );
 };
 
