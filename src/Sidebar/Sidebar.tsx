@@ -18,16 +18,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ReclassLogo from '../assets/PR-Icon-Square-FullColor.png';
 import { Avatar, Box, Flex, Stack } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import {
-  SettingsIcon,
   CalendarIcon,
-  QuestionIcon,
   ArrowLeftIcon,
 } from '@chakra-ui/icons';
 
