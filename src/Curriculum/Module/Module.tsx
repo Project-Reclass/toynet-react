@@ -25,7 +25,7 @@ import { ModuleIntf } from 'src/common/types/curriculum';
 import { RotatableTriangle } from './styled';
 import SubModuleList from './SubModuleList';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
-import Corner from 'src/common/components/Corner';
+import Corner, { Line } from 'src/common/components/Corner';
 
 interface Props {
   index: number;
@@ -71,37 +71,39 @@ const Module: FC<ModuleIntf & Props> = (
       value => JSON.parse(value));
 
   return (
-    <Box
-      paddingTop={paddingTop}
-      borderLeft={!isLast ? '2pt solid white' : ''}
-    >
+    <Box position='relative'>
       <Flex onClick={() => setOpen(open => !open)} cursor='pointer'>
-        <Corner isLast={isLast} />
-        <RotatableTriangle
-          rotated={isOpen}
-          color='white'
-          size='1.5rem'
-          marginY='auto'
-          marginX='1rem'
-          marginLeft='0.459rem'
-        />
-        <Flex justifyContent='space-between' width='100%'>
-          <TooltipIslocked isLocked={locked}>
-            <Text fontSize='2xl' userSelect='none'>
-              {`Module ${index + 1}: ${name}`}
+        {!isLast && <Line height='100%' position='absolute' />}
+        <Flex justifyContent='space-between' width='100%' pt={`${index === 0 ? '1.5rem' : ''}`}>
+          <Corner isLast={true} />
+          <RotatableTriangle
+            rotated={isOpen}
+            color='white'
+            size='1.5rem'
+            marginY='auto'
+            marginX='1rem'
+            marginLeft='0.459rem'
+          />
+          <Flex justifyContent='space-between' width='100%'>
+            <TooltipIslocked isLocked={locked}>
+              <Text fontSize='2xl' userSelect='none'>
+                {`Module ${index + 1}: ${name}`}
+              </Text>
+            </TooltipIslocked>
+            <Text fontSize='1xl' userSelect='none' m='auto 0'>
+              {`${submodules.length} / ${submodules.length} completed, ${0} in progress`}
             </Text>
-          </TooltipIslocked>
-          <Text fontSize='1xl' userSelect='none' m='auto 0'>
-            {`${submodules.length} / ${submodules.length} completed, ${submodules.length} in progress`}
-          </Text>
+          </Flex>
         </Flex>
       </Flex>
-      <Collapse in={isOpen}>
-        <Text fontSize='1xl' userSelect='none' m='1rem'>
-          {introduction}
-        </Text>
-        <SubModuleList moduleId={id} submodules={submodules} />
-      </Collapse>
+      <Box ml='calc(30px + 1rem + 0.459rem)'>
+        <Collapse in={isOpen}>
+          <Text fontSize='1xl' userSelect='none' m='1rem'>
+            {introduction}
+          </Text>
+          <SubModuleList moduleId={id} submodules={submodules} />
+        </Collapse>
+      </Box>
     </Box>
   );
 };

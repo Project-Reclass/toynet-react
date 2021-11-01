@@ -18,6 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+import { Box } from '@chakra-ui/layout';
 import styled from '@emotion/styled';
 
 export const Corner = styled.div`
@@ -31,6 +32,11 @@ export const Corner = styled.div`
 
   // used to offset the border so that there is overlap between the left border and the border for hte modules
   transform: ${({ isLast: showLeft }: {isLast: boolean}) => !showLeft ? 'translateX(-2px);' : ''};
+`;
+
+export const Line = styled(Box)`
+background-color: white;
+  width: 2px;
 `;
 
 export default Corner;
