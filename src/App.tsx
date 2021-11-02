@@ -91,7 +91,7 @@ function App() {
               </Layout>
             </Route>
 
-            <Route exact path="/value/:valueId">
+            <Route exact path="/module/:moduleId/value/:valueId">
               <Layout title={'Value'}>
                 <Value />
               </Layout>
