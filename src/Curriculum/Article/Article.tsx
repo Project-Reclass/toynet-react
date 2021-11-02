@@ -25,13 +25,15 @@ import { Flex } from '@chakra-ui/react';
 import { ArticleHeader, MarkdownWrapper } from './ArticleStyles';
 import { useArticleMeta, useArticleText } from 'src/common/api/curriculum/article';
 import { useParams } from 'react-router-dom';
+import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
 interface Params {
+  moduleId: string;
   articleId: string;
 }
 
 const Article = () => {
-  const { articleId } = useParams<Params>();
+  const { moduleId, articleId } = useParams<Params>();
   const { data: articleText } = useArticleText(Number(articleId));
   const { data: meta } = useArticleMeta(Number(articleId));
 
@@ -43,6 +45,12 @@ const Article = () => {
         <ReactMarkdown escapeHtml={false} source={articleText || ''}/>
       </MarkdownWrapper>
     </Flex>
+      <NavigationWithDivider
+        moduleId={Number(moduleId)}
+        submoduleId={Number(articleId)}
+        submoduleType='ARTICLE'
+      />
+    </Container>
   );
 };
 
