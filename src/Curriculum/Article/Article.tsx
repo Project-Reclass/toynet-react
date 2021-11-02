@@ -18,9 +18,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Flex } from '@chakra-ui/react';
+import { Box, Container, Divider, Flex } from '@chakra-ui/react';
 
 import { ArticleHeader, MarkdownWrapper } from './ArticleStyles';
 import { useArticleMeta, useArticleText } from 'src/common/api/curriculum/article';
@@ -38,13 +37,17 @@ const Article = () => {
   const { data: meta } = useArticleMeta(Number(articleId));
 
   return (
-    <Flex justifyContent='center' alignItems='center' flexDirection='column'>
-      <ArticleHeader as='h1' size='2xl'>{meta?.title}</ArticleHeader>
-      <ArticleHeader as='h2' size='lg'>Author: {meta?.author}</ArticleHeader>
-      <MarkdownWrapper>
-        <ReactMarkdown escapeHtml={false} source={articleText || ''}/>
-      </MarkdownWrapper>
-    </Flex>
+    <Container maxW='container.lg' my='3'>
+      <Flex justifyContent='center' alignItems='center' flexDirection='column'>
+        <Box my='3'>
+          <ArticleHeader as='h1' size='xl'>{meta?.title}</ArticleHeader>
+          <ArticleHeader as='h2' size='md'>Written By: {meta?.author}</ArticleHeader>
+          <Divider />
+        </Box>
+        <MarkdownWrapper>
+          <ReactMarkdown escapeHtml={false} source={articleText || ''}/>
+        </MarkdownWrapper>
+      </Flex>
       <NavigationWithDivider
         moduleId={Number(moduleId)}
         submoduleId={Number(articleId)}

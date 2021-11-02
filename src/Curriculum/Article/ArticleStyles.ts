@@ -23,7 +23,7 @@ import { Heading } from '@chakra-ui/react';
 
 export const MarkdownWrapper = styled('h3')`
   color: white;
-  width: 80%;
+
   line-height: 1.5rem;
   p {
     font-size: 1.2rem;
