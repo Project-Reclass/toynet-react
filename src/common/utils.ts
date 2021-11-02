@@ -19,6 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
+import { SubModuleType } from './types/curriculum';
 
 /**
  * A utility function to merge multiple refs together to use
@@ -78,3 +79,16 @@ export const devError = (msg: any) =>
  */
 export const genUniqueId = () =>
     `${Date.now()}${Math.random()}`;
+
+
+interface CreateLink {
+  moduleId: number;
+  id: number;
+  type: SubModuleType;
+}
+
+export const createLink = ({ type, id, moduleId }: CreateLink) => {
+  const moduleType = type === 'LAB' ? 'emulator' : type.toString().toLowerCase();
+
+  return `/module/${moduleId}/${moduleType}/${id}`;
+};

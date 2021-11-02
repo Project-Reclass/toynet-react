@@ -32,15 +32,6 @@ interface Props extends SubModuleIntf {
   count: number;
 }
 
-const createLink = ({ type, id, moduleId }: Pick<Props, 'moduleId' | 'type' | 'id'>) => {
-  if (type === 'VALUE') {
-    return `/value/${id}`;
-  }
-
-  const moduleType = type === 'LAB' ? 'emulator' : type.toString().toLowerCase();
-
-  return `/module/${moduleId}/${moduleType}/${id}`;
-};
 
 const capitalize = (s: string): string =>
   `${s[0].toUpperCase()}${s.toLowerCase().slice(1)}`;
