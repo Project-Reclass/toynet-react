@@ -21,7 +21,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 describe('The value page', () => {
   it('should value 5001', () => {
-    cy.visit('http://localhost:3000/value/5001');
+    cy.visit('http://localhost:3000/module/100001/value/5001');
     cy.contains(/integrity/i).should('be.visible');
     cy.contains('U.S. Air Force').should('be.visible');
     cy.contains('U.S. Army').should('be.visible');
