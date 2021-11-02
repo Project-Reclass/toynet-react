@@ -21,8 +21,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 /* eslint-disable no-magic-numbers */
 
-import React from 'react';
-
 import SubModule from 'src/Curriculum/Module/SubModule/SubModule';
 import {  renderWithTheme } from 'src/common/test-utils/renderWithTheme';
 import { SubModuleType } from 'src/common/types/curriculum';
@@ -41,19 +39,6 @@ const defaultProps = {
   count: 5,
 };
 
-const valueType = 'VALUE' as SubModuleType;
-const valuesProps = {
-  name: 'article',
-  title: 'Article',
-  progress: 99,
-  id: 1,
-  moduleId: 2,
-  type: valueType,
-  introduction: 'this is an introduction too',
-  index: 0,
-  count: 5,
-};
-
 describe('The sub modules', () => {
   it('should render and match previous snapshots', () => {
     const { container } = renderWithTheme(
@@ -67,12 +52,5 @@ describe('The sub modules', () => {
     const { getByText } = renderWithTheme(<SubModule {...defaultProps} />);
     const link = getByText(new RegExp('go to submodule', 'i'));
     expect(link.closest('a')?.getAttribute('href')).toBe(`/module/${moduleId}/${type.toString()}/${id}`);
-  });
-  it('should create a link to a values page', () => {
-    const { type, id } = valuesProps;
-    const { getByText } = renderWithTheme(<SubModule {...valuesProps} />);
-    const link = getByText(new RegExp('go to submodule', 'i'));
-
-    expect(link.closest('a')?.getAttribute('href')).toBe(`/${type.toLowerCase().toString()}/${id}`);
   });
 });

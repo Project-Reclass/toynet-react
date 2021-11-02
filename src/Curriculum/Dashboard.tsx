@@ -18,7 +18,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
 import { Box, Stack, Heading, Flex, Text } from '@chakra-ui/react';
 import { useCurriculum } from 'src/common/api/curriculum/dashboard';
 import LoadingContainer from 'src/common/components/LoadingContainer';
@@ -26,6 +25,7 @@ import LoadingContainer from 'src/common/components/LoadingContainer';
 import Module from './Module';
 import { DashboardBox } from './styled';
 import { useParams } from 'react-router';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 
 interface Props {
   username?: string;
@@ -61,7 +61,7 @@ export default function Dashboard({ username }: Props) {
                 {`${data?.introduction} You can click on each module’s chevron to see its submodules. You must go through
                 the modules and their submodules in order. To start or revisit a submodule, click`} {' '}
                 <Text color='black.500' as='span' textDecoration='underline' fontWeight='bold'>
-                  {'Go to submodule >.'}
+                  Go to submodule <ChevronRightIcon />
                 </Text>
               </Text>
             </Stack>
