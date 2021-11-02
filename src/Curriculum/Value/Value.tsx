@@ -18,19 +18,21 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useValueMeta } from '../../common/api/curriculum/value';
-import { StyledReflection, StyledBox, StyledTextArea, StyledSavebutton } from './styled';
+import { StyledReflection, StyledBox, StyledTextArea } from './styled';
 import { Box } from '@chakra-ui/react';
+import PrimaryButton from 'src/common/components/buttons/PrimaryButton';
+import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
 interface Params {
+  moduleId: string;
   valueId: string;
 };
 
 const Value = () => {
-  const { valueId } = useParams<Params>();
+  const { moduleId, valueId } = useParams<Params>();
 
   const { data } = useValueMeta(Number(valueId));
 
@@ -49,7 +51,12 @@ const Value = () => {
 
       <StyledTextArea placeholder={placeholderText}></StyledTextArea>
 
-      <StyledSavebutton>Save</StyledSavebutton>
+      <PrimaryButton>Save</PrimaryButton>
+      <NavigationWithDivider
+        moduleId={Number(moduleId)}
+        submoduleId={Number(valueId)}
+        submoduleType={'VALUE'}
+      />
     </Box>
   );
 };
