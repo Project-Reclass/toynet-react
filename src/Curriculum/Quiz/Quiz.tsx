@@ -20,12 +20,26 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { SimpleGrid, Box, Flex, Text, useDisclosure, Divider, Heading, Stack, Container, Button, Radio, RadioGroup } from '@chakra-ui/react';
+import {
+  SimpleGrid,
+  Box,
+  Flex,
+  Text,
+  useDisclosure,
+  Divider,
+  Heading,
+  Stack,
+  Container,
+  Button,
+  Radio,
+  RadioGroup,
+} from '@chakra-ui/react';
 
 import { StringMap } from 'src/common/types';
 import { useQuiz } from 'src/common/api/curriculum/quiz';
 import { Question } from 'src/common/api/curriculum/quiz/requests';
 import LoadingContainer from 'src/common/components/LoadingContainer';
+import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
 import {
   CheckIcon,
@@ -143,6 +157,11 @@ const Quiz = () => {
               {!isQuizSubmitted ? 'Submit Quiz' : 'Try Again'}
             </Button>
           </Flex>
+          <NavigationWithDivider
+            moduleId={Number(moduleId)}
+            submoduleId={Number(quizId)}
+            submoduleType='QUIZ'
+          />
           <QuizModal
             done={onClose}
             isOpen={isOpen}
