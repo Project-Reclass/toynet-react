@@ -18,30 +18,26 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import styled from '@emotion/styled';
-import { Heading } from '@chakra-ui/react';
+import { Stack, Divider, Center } from '@chakra-ui/layout';
+import NavigationButtons, { NavigationButtonsProps } from './NavigationButtons';
 
-export const MarkdownWrapper = styled('h3')`
-  color: white;
+export interface NavigationWithDividerProps
+    extends NavigationButtonsProps {
+  my?: string;
+  spacing?: number;
+}
 
-  line-height: 1.5rem;
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  b {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-  hr {
-    width: 100%;
-    border-bottom: 2pt solid rgba(255, 255, 255, 0.5);
-    margin: 1rem;
-  }
-`;
+const NavigationWithDivider = ({
+  spacing,
+  my = '3',
+  ...btnProps
+}: NavigationWithDividerProps) => (
+  <Stack spacing={spacing} my={my}>
+    <Divider />
+    <Center width='100%'>
+      <NavigationButtons variant='ghost' {...btnProps} />
+    </Center>
+  </Stack>
+);
 
-export const ArticleHeader = styled(Heading)`
-  color: white;
-  width: 80%;
-  margin-bottom: 1rem;
-`;
+export default NavigationWithDivider;

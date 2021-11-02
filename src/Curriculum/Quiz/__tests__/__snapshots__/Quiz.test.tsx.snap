@@ -349,6 +349,80 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
           Submit Quiz
         </button>
       </div>
+      <div
+        class="chakra-stack css-1w6iwr8"
+      >
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-svjswr"
+        />
+        <div
+          class="css-1lads1q"
+        >
+          <div
+            class="chakra-stack css-jqjin"
+          >
+            <button
+              aria-label="previous"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
+            >
+              <span
+                class="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
+                    />
+                    <path
+                      d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+              Previous Module
+            </button>
+            <button
+              aria-label="next"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
+            >
+              Next Module
+              <span
+                class="chakra-button__icon css-1hzyiq5"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
+                    />
+                    <path
+                      d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

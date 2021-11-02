@@ -54,6 +54,7 @@ import {
   SurveyContainer,
 } from './SurveyStyled';
 import { SurveyQuestion } from 'src/common/types';
+import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
 interface Params {
   moduleId: string;
@@ -207,6 +208,11 @@ const Survey = () => {
               </Box>
             </SimpleGrid>
           </RadioGroup>
+          <NavigationWithDivider
+            moduleId={Number(moduleId)}
+            submoduleId={Number(surveyId)}
+            submoduleType='SURVEY'
+          />
         </Container>
       </LoadingContainer>
     </SurveyContainer>

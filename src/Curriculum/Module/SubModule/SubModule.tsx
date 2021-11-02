@@ -18,13 +18,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Divider, Flex, Link, Stack, Text, Collapse, Tooltip } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon, StarIcon } from '@chakra-ui/icons';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 
 import { ModuleName } from './styled';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
+import { createLink } from 'src/common/utils';
 
 interface Props extends SubModuleIntf {
   moduleId: number;
@@ -32,15 +33,6 @@ interface Props extends SubModuleIntf {
   count: number;
 }
 
-const createLink = ({ type, id, moduleId }: Pick<Props, 'moduleId' | 'type' | 'id'>) => {
-  if (type === 'VALUE') {
-    return `/value/${id}`;
-  }
-
-  const moduleType = type === 'LAB' ? 'emulator' : type.toString().toLowerCase();
-
-  return `/module/${moduleId}/${moduleType}/${id}`;
-};
 
 const capitalize = (s: string): string =>
   `${s[0].toUpperCase()}${s.toLowerCase().slice(1)}`;
@@ -81,7 +73,8 @@ export const SubModule: FC<Props> = (
           </ModuleName>
           <ModuleName locked={false} hoverColor='rgba(84,143,155)'>
             <Link href={createLink({ moduleId, type, id })}>
-              {'Go to Submodule >'}
+              Go to Submodule
+              <ChevronRightIcon />
             </Link>
           </ModuleName>
         </Flex>

@@ -24,6 +24,7 @@ import { Text, Image, Button } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import LoadingContainer from 'src/common/components/LoadingContainer';
 import { useLesson, useLessonSlides } from 'src/common/api/curriculum/lesson';
+import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
 
 interface Params {
@@ -78,6 +79,11 @@ const Lesson = () => {
               </Stack>
             </Center>
           </SimpleGrid>
+          <NavigationWithDivider
+            moduleId={Number(moduleId)}
+            submoduleId={Number(lessonId)}
+            submoduleType='LESSON'
+          />
         </Container>
       </LoadingContainer>
     </Box>

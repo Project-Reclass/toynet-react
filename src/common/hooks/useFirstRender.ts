@@ -18,30 +18,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import styled from '@emotion/styled';
-import { Heading } from '@chakra-ui/react';
+import { useRef, useEffect } from 'react';
 
-export const MarkdownWrapper = styled('h3')`
-  color: white;
+export default function useFirstRender() {
+  const isFirstRender = useRef(true);
 
-  line-height: 1.5rem;
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  b {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-  hr {
-    width: 100%;
-    border-bottom: 2pt solid rgba(255, 255, 255, 0.5);
-    margin: 1rem;
-  }
-`;
+  useEffect(() => {
+    isFirstRender.current = false;
+  }, []);
 
-export const ArticleHeader = styled(Heading)`
-  color: white;
-  width: 80%;
-  margin-bottom: 1rem;
-`;
+  return isFirstRender.current;
+}
