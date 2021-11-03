@@ -26,6 +26,7 @@ import { RotatableTriangle } from './styled';
 import SubModuleList from './SubModuleList';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 import Corner, { Line } from 'src/common/components/Corner';
+import TooltipIslocked from './TooltopIsLocked';
 
 interface Props {
   index: number;
@@ -33,26 +34,6 @@ interface Props {
   isLast: boolean;
   paddingTop?: string;
 }
-
-const withToolTip = (Component: React.ReactNode) => (
-  <Tooltip
-    hasArrow
-    label='🔒 This module is currently locked.'
-    {...{'aria-label': 'This module is currently locked.'}}
-  >
-    {Component}
-  </Tooltip>
-);
-
-/**
- * Wraps a components with a tooltip that is only shown if `isLocked` is true
- */
-const TooltipIslocked: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
-  if (isLocked)
-    return withToolTip(children);
-
-  return <>{children}</>;
-};
 
 const Module: FC<ModuleIntf & Props> = (
   {
