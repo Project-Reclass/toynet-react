@@ -92,3 +92,23 @@ export const createLink = ({ type, id, moduleId }: CreateLink) => {
 
   return `/module/${moduleId}/${moduleType}/${id}`;
 };
+
+
+/**
+ * Updates the query search without refreshing the page
+ *
+ * Example:
+ * ```jsx
+ * // location -> https://example.com/user?filter=name
+ * setQueryStringWithoutPageReload('filter=age') // -> https://example.com/user?filter=age
+ * ```
+ */
+
+export const setQueryStringWithoutPageReload = (qsValue: string) => {
+  const newurl = window.location.protocol + '//' +
+                 window.location.host +
+                 window.location.pathname +
+                 qsValue;
+
+  window.history.pushState({ path: newurl }, '', newurl);
+};
