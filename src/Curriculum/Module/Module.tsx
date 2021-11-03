@@ -87,7 +87,7 @@ const Module: FC<ModuleIntf & Props> = (
           <Flex justifyContent='space-between' width='100%'>
             <TooltipIslocked isLocked={locked}>
               <Text fontSize='2xl' userSelect='none'>
-                {`Module ${index + 1}: ${name}`}
+                {`Module ${index}: ${name}`}
               </Text>
             </TooltipIslocked>
             <Text fontSize='1xl' userSelect='none' m='auto 0'>
