@@ -33,7 +33,7 @@ exports[`The Module should render and match snapshots 1`] = `
           <p
             class="chakra-text css-q3jx8g"
           >
-            Module 2: First Module
+            Module 1: First Module
           </p>
           <p
             class="chakra-text css-127h41h"
