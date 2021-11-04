@@ -60,7 +60,6 @@ describe('The dashboard page', () => {
     cy.contains(/module 1/i).click();
     cy.contains(/who are you/i).click();
     cy.contains(/first we want to know/i).should('be.visible');
-    cy.visit(dashboardUrl);
     cy.contains(/first we want to know/i).should('be.visible');
     cy.reload();
     cy.contains(/first we want to know/i).should('be.visible');
