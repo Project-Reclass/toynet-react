@@ -50,6 +50,8 @@ describe('The Module', () => {
         isLast={false}
         index={1}
         locked={false}
+        isOpen={false}
+        onClick={jest.fn()}
         {...defaultModule}
       />,
     );

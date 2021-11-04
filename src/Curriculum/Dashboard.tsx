@@ -22,10 +22,10 @@ import { Box, Stack, Heading, Flex, Text } from '@chakra-ui/react';
 import { useCurriculum } from 'src/common/api/curriculum/dashboard';
 import LoadingContainer from 'src/common/components/LoadingContainer';
 
-import Module from './Module';
 import { DashboardBox } from './styled';
 import { useParams } from 'react-router';
 import { ChevronRightIcon } from '@chakra-ui/icons';
+import ModuleList from './Module/ModuleList';
 
 interface Props {
   username?: string;
@@ -67,26 +67,7 @@ export default function Dashboard({ username }: Props) {
             </Stack>
           </Flex>
         </DashboardBox>
-        <Flex
-          width='80%'
-          minW='25rem'
-          maxW='70rem'
-          margin='auto'
-          flexDirection='column'
-        >
-          {
-            data?.modules.map((module, index) => (
-              <Module
-                {...module}
-                key={module.id}
-                isLast={index === data?.modules.length - 1}
-                index={index}
-                locked={false}
-                paddingTop={index === 0 ? '2rem' : ''}
-              />
-            ))
-          }
-        </Flex>
+        <ModuleList modules={data?.modules || []} />
       </LoadingContainer>
     </Box>
   );

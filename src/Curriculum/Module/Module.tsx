@@ -18,41 +18,23 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { FC } from 'react';
-import { Box, Collapse, Flex, Text, Tooltip } from '@chakra-ui/react';
+import { FC, memo } from 'react';
+import { Box, Collapse, Flex, Text } from '@chakra-ui/react';
 import { ModuleIntf } from 'src/common/types/curriculum';
 
 import { RotatableTriangle } from './styled';
 import SubModuleList from './SubModuleList';
-import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 import Corner, { Line } from 'src/common/components/Corner';
+import TooltipIslocked from './TooltopIsLocked';
 
 interface Props {
   index: number;
   locked: boolean;
   isLast: boolean;
   paddingTop?: string;
+  isOpen: boolean;
+  onClick: (index: number) => any;
 }
-
-const withToolTip = (Component: React.ReactNode) => (
-  <Tooltip
-    hasArrow
-    label='🔒 This module is currently locked.'
-    {...{'aria-label': 'This module is currently locked.'}}
-  >
-    {Component}
-  </Tooltip>
-);
-
-/**
- * Wraps a components with a tooltip that is only shown if `isLocked` is true
- */
-const TooltipIslocked: React.FC<{isLocked: boolean}> = ({children, isLocked}) => {
-  if (isLocked)
-    return withToolTip(children);
-
-  return <>{children}</>;
-};
 
 const Module: FC<ModuleIntf & Props> = (
   {
@@ -62,17 +44,14 @@ const Module: FC<ModuleIntf & Props> = (
     introduction,
     name,
     submodules,
-    paddingTop,
     isLast,
+    isOpen,
+    onClick,
   },
 ) => {
-  const [isOpen, setOpen] =
-    useSessionStorage<boolean>(`module-${id}-${index}`, false,
-      value => JSON.parse(value));
-
   return (
     <Box position='relative'>
-      <Flex onClick={() => setOpen(open => !open)} cursor='pointer'>
+      <Flex onClick={() => onClick(index)} cursor='pointer'>
         {!isLast && <Line height='100%' position='absolute' />}
         <Flex justifyContent='space-between' width='100%' pt={`${index === 0 ? '1.5rem' : ''}`}>
           <Corner isLast={true} />
@@ -87,7 +66,7 @@ const Module: FC<ModuleIntf & Props> = (
           <Flex justifyContent='space-between' width='100%'>
             <TooltipIslocked isLocked={locked}>
               <Text fontSize='2xl' userSelect='none'>
-                {`Module ${index + 1}: ${name}`}
+                {`Module ${index}: ${name}`}
               </Text>
             </TooltipIslocked>
             <Text fontSize='1xl' userSelect='none' m='auto 0'>
@@ -108,4 +87,4 @@ const Module: FC<ModuleIntf & Props> = (
   );
 };
 
-export default Module;
+export default memo(Module);
