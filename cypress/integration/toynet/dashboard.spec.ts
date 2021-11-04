@@ -41,8 +41,8 @@ describe('The dashboard page', () => {
     cy.contains(/module 1/i).click();
     cy.contains(new RegExp('information', 'i')).should('be.visible');
     cy.contains(/who are you/i).should('be.visible');
-    cy.visit(dashboardUrl);
     cy.contains(new RegExp('information', 'i')).should('be.visible');
+    cy.url().should('include', 'module=1');
     cy.contains(/who are you/i).should('be.visible');
     cy.reload();
     cy.contains(new RegExp('information', 'i')).should('be.visible');
