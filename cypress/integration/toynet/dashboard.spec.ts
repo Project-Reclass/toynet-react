@@ -32,13 +32,13 @@ describe('The dashboard page', () => {
   });
   it('should render a description of the module after clicking it', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(new RegExp('information', 'i')).should('be.visible');
     cy.contains(/who are you/i).should('be.visible');
   });
   it('should render a description of the module after clicking it and revisiting page', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(new RegExp('information', 'i')).should('be.visible');
     cy.contains(/who are you/i).should('be.visible');
     cy.visit(dashboardUrl);
@@ -51,13 +51,13 @@ describe('The dashboard page', () => {
   });
   it('should show more about a submodule when clicking it', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/who are you/i).click();
     cy.contains(/first we want to know/i).should('be.visible');
   });
   it('should show more about a submodule when clicking it and revisiting page', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/who are you/i).click();
     cy.contains(/first we want to know/i).should('be.visible');
     cy.visit(dashboardUrl);
@@ -67,46 +67,46 @@ describe('The dashboard page', () => {
   });
   it('should take the user to the appropriate submodule for survey', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/who are you/i).click();
     cy.contains(/survey/i).parent('div').contains(/go to submodule/i).click();
     cy.url().should('include', 'survey');
   });
   it('should take the user to the appropriate submodule for value', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/value/i).click();
     cy.contains(/value/i).parent('div').contains(/go to submodule/i).click();
     cy.url().should('include', 'value');
   });
   it('should take the user to the appropriate submodule for value, go back and see module and submodule still open', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/value/i).click();
     cy.contains(/value/i).parent('div').contains(/go to submodule/i).click();
     cy.url().should('include', 'value');
     cy.go('back');
-    cy.contains(/module 2/i).should('be.visible');
+    cy.contains(/module 1/i).should('be.visible');
     cy.contains(/value/i).should('be.visible');
     cy.contains(/value/i).parent('div').contains(/go to submodule/i);
   });
   it('should take the user to the appropriate submodule for lesson', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/lesson/i).click();
     cy.contains(/lesson/i).parent('div').contains(/go to submodule/i).click();
     cy.url().should('include', 'lesson');
   });
   it('should take the user to the appropriate submodule for quiz', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/quiz/i).click();
     cy.contains(/quiz/i).parent('div').contains(/go to submodule/i).click();
     cy.url().should('include', 'quiz');
   });
   it('should take the user to the appropriate submodule for lab', () => {
     cy.visit(dashboardUrl);
-    cy.contains(/module 2/i).click();
+    cy.contains(/module 1/i).click();
     cy.contains(/lab/i).click();
     cy.contains(/lab/i).parent('div').contains(/go to submodule/i).click();
     cy.url().should('include', 'emulator');
