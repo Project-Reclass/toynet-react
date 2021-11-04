@@ -18,30 +18,21 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Grid } from '@chakra-ui/react';
-
-import Visuals from './Visuals';
-import Instructions from './Instructions';
-import DialogueBox from './DialogueBox';
-import Console from './Console';
 import styled from '@emotion/styled';
-import DrawerProvider from '../common/providers/DrawerProvider';
+import { useParams } from 'react-router';
 import { terminateToyNetSession } from 'src/common/api/topology/requests';
 import { useEmulator } from 'src/common/providers/EmulatorProvider';
+import useLab from 'src/common/api/curriculum/lab/useLab';
+import LoadingSpinner from 'src/common/components/LoadingSpinner';
 
-const data = {
-  'id': 1,
-  'submoduleNumber': 1,
-  'submoduleName': 'Modifying Topology',
-  'objective': 'Add and remove devices and their connections.',
-  'tasks': [
-    'Add a Host (h3)',
-    'Attach h3 to s2',
-    'Detach h3 from s2',
-    'Remove h2',
-  ],
-};
+import Console from './Console';
+import Visuals from './Visuals';
+import DialogueBox from './DialogueBox';
+import Instructions from './Instructions';
+
+import DrawerProvider from '../common/providers/DrawerProvider';
 
 const EmulatorGrid = styled(Grid)`
   margin: auto;
@@ -53,8 +44,15 @@ const EmulatorGrid = styled(Grid)`
   grid-template-columns: auto 1fr;
 `;
 
+interface Params {
+  emulatorId: string;
+  moduleId: string;
+}
+
 const Emulator = () => {
+  const { emulatorId, moduleId } = useParams<Params>();
   const { sessionId } = useEmulator();
+  const { data, isLoading } = useLab(Number(emulatorId));
 
   useEffect(() => {
     const terminateSession = () =>
@@ -66,27 +64,36 @@ const Emulator = () => {
 
   return (
     <DrawerProvider>
-      <EmulatorGrid gap={2}>
-        <Instructions panelData={data} />
-        <Grid
-          gridTemplateRows={'1fr 1fr'}
-          width='100%'
-          overflow='hidden'
-          gap={2}
-        >
-          <Visuals />
+      {(isLoading || !data) ?
+
+        <LoadingSpinner /> :
+
+        <EmulatorGrid gap={2}>
+          <Instructions
+            panelData={data}
+            moduleId={Number(moduleId)}
+            emulatorId={Number(emulatorId)}
+          />
           <Grid
-            height='100%'
-            maxH='100%'
+            gridTemplateRows={'1fr 1fr'}
+            width='100%'
             overflow='hidden'
             gap={2}
-            gridTemplateColumns={'2fr 1fr'}
           >
-            <Console />
-            <DialogueBox />
+            <Visuals emulatorId={Number(emulatorId)} />
+            <Grid
+              height='100%'
+              maxH='100%'
+              overflow='hidden'
+              gap={2}
+              gridTemplateColumns={'2fr 1fr'}
+            >
+              <Console />
+              <DialogueBox />
+            </Grid>
           </Grid>
-        </Grid>
-      </EmulatorGrid>
+        </EmulatorGrid>
+      }
     </DrawerProvider>
   );
 };
