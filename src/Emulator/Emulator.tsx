@@ -80,7 +80,7 @@ const Emulator = () => {
             overflow='hidden'
             gap={2}
           >
-            <Visuals emulatorId={Number(emulatorId)} />
+            <Visuals emulatorId={data.topology} />
             <Grid
               height='100%'
               maxH='100%'

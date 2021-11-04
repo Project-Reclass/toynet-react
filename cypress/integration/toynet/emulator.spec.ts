@@ -187,29 +187,6 @@ describe('The emulator page', () => {
     cy.contains(/bytes of data/i).should('be.visible');
   });
 
-  it('should allow for different histories for different topologies', () => {
-    cy.visit(emulatorUrl);
-    createSwitch();
-
-    cy.get('[data-testid^="emulator-visual"]')
-    .contains(/^s3$/i).should('exist');
-    cy.contains(/created switch s3/i).should('exist');
-
-    cy.visit(emulatorUrlTopoTwo);
-    waitUntilLoaded();
-
-    cy.get('[data-testid^="emulator-visual"]')
-      .contains(/^s3$/i).should('not.exist');
-    cy.contains(/created switch s3/i).should('not.exist');
-
-    cy.visit(emulatorUrl);
-    waitUntilLoaded();
-
-    cy.get('[data-testid^="emulator-visual"]')
-      .contains(/^s3$/i).should('exist');
-    cy.contains(/created switch s3/i).should('exist');
-  });
-
   it('should allow for different histories for different devices', () => {
     cy.visit(emulatorUrl);
 

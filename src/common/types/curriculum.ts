@@ -43,6 +43,7 @@ export interface SubModuleIntf {
 
 export interface Lab {
   id: number,
+  topology: number;
   submoduleNumber: number,
   submoduleName: string;
   objective: string;
