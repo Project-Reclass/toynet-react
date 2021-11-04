@@ -3,321 +3,34 @@
 exports[`The emulator should render and match snapshots 1`] = `
 <div>
   <div
-    class="css-76u7yh"
+    style="position: relative; height: 100%;"
   >
     <div
-      class="css-135o94e"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      class="css-1xkmjny"
+      data-indeterminate=""
+      role="progressbar"
     >
-      <div
-        class="chakra-stack css-1eoe9w1"
+      <svg
+        class="css-jf70f3"
+        viewBox="0 0 100 100"
       >
-        <div
-          class="css-1kch9dj"
-        >
-          <a
-            class="css-r59rv1"
-            href="/"
-          >
-            <svg
-              class="css-112d3fm"
-            >
-              backIcon.svg
-            </svg>
-            <p
-              class="chakra-text css-0"
-            >
-              Back to site
-            </p>
-          </a>
-        </div>
-        <div
-          class="chakra-stack css-n21gh5"
-        >
-          <h2
-            class="chakra-heading css-1jb3vzl"
-          >
-            Module 
-            1
-          </h2>
-          <p
-            class="chakra-text css-0"
-          >
-            Modifying Topology
-          </p>
-        </div>
-        <div
-          class="chakra-stack css-n21gh5"
-        >
-          <h2
-            class="chakra-heading css-1jb3vzl"
-          >
-            Objective
-          </h2>
-          <p
-            class="chakra-text css-0"
-          >
-            Add and remove devices and their connections.
-          </p>
-        </div>
-        <div
-          class="chakra-stack css-zmvmzg"
-        >
-          <h2
-            class="chakra-heading css-1jb3vzl"
-          >
-            Tasks
-          </h2>
-          <div
-            class="css-12f487v"
-          >
-            <div
-              class="css-16cm47t"
-            >
-              <li
-                class="css-p5me83"
-              >
-                Add a Host (h3)
-              </li>
-              <li
-                class="css-p5me83"
-              >
-                Attach h3 to s2
-              </li>
-              <li
-                class="css-p5me83"
-              >
-                Detach h3 from s2
-              </li>
-              <li
-                class="css-p5me83"
-              >
-                Remove h2
-              </li>
-            </div>
-          </div>
-          <div
-            class="css-12kznnm"
-          >
-            <hr
-              aria-orientation="horizontal"
-              class="chakra-divider css-svjswr"
-            />
-            <div
-              class="chakra-stack css-jqjin"
-            >
-              <button
-                aria-label="previous"
-                class="chakra-button css-1ee5khq"
-                disabled=""
-                type="button"
-              >
-                <span
-                  class="chakra-button__icon css-1wh2kri"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="chakra-icon css-onkibi"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
-                      />
-                      <path
-                        d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
-                      />
-                    </g>
-                  </svg>
-                </span>
-                Previous
-              </button>
-              <button
-                aria-label="next"
-                class="chakra-button css-8gfyry"
-                disabled=""
-                type="button"
-              >
-                Next
-                <span
-                  class="chakra-button__icon css-1hzyiq5"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="chakra-icon css-onkibi"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
-                      />
-                      <path
-                        d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
-                      />
-                    </g>
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="css-x9oea1"
-    >
-      <div
-        class="css-tkj973"
-        data-testid="emulator-visual"
-      >
-        <div
-          class="css-ljj55y"
-        >
-          <div
-            class="css-1f8sh1y"
-          >
-            <div
-              class="css-3hcm5q"
-            >
-              <div
-                class="chakra-stack css-1mkri2h"
-              >
-                <div
-                  class="css-7fvxp"
-                >
-                  <div
-                    style="background-color: rgb(158, 16, 89); transform: none;"
-                  />
-                </div>
-                <div
-                  class="css-7fvxp"
-                >
-                  <div
-                    style="background-color: rgb(0, 138, 158); transform: none;"
-                  />
-                </div>
-                <div
-                  class="css-7fvxp"
-                >
-                  <div
-                    style="background-color: rgb(189, 169, 19); transform: none;"
-                  />
-                </div>
-              </div>
-              <div
-                class="chakra-stack css-8e7w4m"
-              >
-                <h2
-                  class="chakra-heading css-xrxou1"
-                >
-                  Creating Network
-                </h2>
-                <p
-                  class="chakra-text css-xi606m"
-                >
-                  Please wait a moment while we create your new ToyNet.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-awfnxv"
-      >
-        <div
-          class="css-1ywxh3e"
-        >
-          <div
-            class="css-17hehh2"
-          >
-            <h2
-              class="chakra-heading css-1jb3vzl"
-            >
-              Console
-            </h2>
-            <div
-              class="css-ki9t1j"
-            >
-              <p
-                class="chakra-text css-19em3gu"
-              >
-                Device
-              </p>
-              <div
-                class="chakra-select__wrapper css-5chdsz"
-              >
-                <select
-                  class="chakra-select css-ftvjbt"
-                  data-testid="console-device-selector"
-                >
-                  <option
-                    value=""
-                  >
-                    Select device
-                  </option>
-                </select>
-                <div
-                  class="chakra-select__icon-wrapper css-150m6y0"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="chakra-select__icon"
-                    focusable="false"
-                    role="presentation"
-                    style="width: 1em; height: 1em; color: currentColor;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-esnmos"
-          >
-            <div
-              class="css-bzltz5"
-            >
-              <textarea
-                class="chakra-textarea css-1n8mez3"
-                data-testid="console-textarea"
-              >
-                &gt;&gt; 
-              </textarea>
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-1fwbold"
-        >
-          <div
-            class="css-4s6pz3"
-          >
-            <div
-              class="css-1not91g"
-            >
-              <h2
-                class="chakra-heading css-1jb3vzl"
-              >
-                Actions
-              </h2>
-            </div>
-            <div
-              class="css-12f487v"
-            />
-          </div>
-        </div>
-      </div>
+        <circle
+          class="chakra-progress__track css-ol3i12"
+          cx="50"
+          cy="50"
+          r="42"
+          stroke-width="10px"
+        />
+        <circle
+          class="chakra-progress__indicator css-wj25ge"
+          cx="50"
+          cy="50"
+          r="42"
+          stroke-width="10px"
+        />
+      </svg>
     </div>
   </div>
 </div>

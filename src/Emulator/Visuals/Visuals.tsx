@@ -30,15 +30,15 @@ import Flow from './Flow';
 import { InnerContainer } from './styled';
 import ContextMenus from './Flow/ContextMenus';
 import useStoredSessionId from 'src/common/hooks/useStoredSessionId';
-import { useParams } from 'react-router';
 
-interface Params {
-  emulatorId: string;
+interface Props {
+  emulatorId: number;
 }
 
-const Visuals = () => {
-  const { emulatorId } = useParams<Params>();
-  const [toynetSessionId] = useStoredSessionId(Number(emulatorId));
+const Visuals = ({
+  emulatorId,
+}: Props) => {
+  const [toynetSessionId] = useStoredSessionId(emulatorId);
   const { appendDialogue, updateDialogueMessage } = useDialogue();
   const { switches, hosts, routers, sessionId, isLoading } = useEmulator();
 

@@ -19,7 +19,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import { FC } from 'react';
-import { useParams } from 'react-router';
 import {
   Heading,
   Text,
@@ -47,16 +46,16 @@ export interface PanelData {
 }
 
 interface Props {
+  moduleId: number;
+  emulatorId: number;
   panelData: PanelData;
 }
 
-interface Params {
-  moduleId: string;
-  emulatorId: string;
-}
-
-const Instructions: FC<Props> = ({ panelData }) => {
-  const { moduleId, emulatorId } = useParams<Params>();
+const Instructions: FC<Props> = ({
+  panelData,
+  moduleId,
+  emulatorId,
+}) => {
 
   return (
       <EmulatorSection
