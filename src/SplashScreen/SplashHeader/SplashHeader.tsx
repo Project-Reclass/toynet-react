@@ -28,7 +28,7 @@ import { useHistory } from 'react-router-dom';
 function SplashHeader() {
   const history = useHistory();
 
-  const goToEmulator = () => history.push('/module/1/emulator/1');
+  const goToEmulator = () => history.push('/dashboard/1?module=0');
 
   return (
     <div className='spash-header__container '>
