@@ -35,9 +35,10 @@ const getLinkForNextSubmodule = (
   submodules: SubModuleIntf[],
   curriculumId: number,
   moduleId: number,
+  moduleIndex: number,
 ): string => {
   if (currIdx === submodules.length - 1) {
-    return `/dashboard/${curriculumId}`;
+    return `/dashboard/${curriculumId}?module=${moduleIndex + 1}`;
   }
 
   const { id, type } = submodules[currIdx + 1];
@@ -72,13 +73,15 @@ export function useCurriculumNavigator(
   const submoduleLength = submodules.length ?? 0;
   const currSubmoduleIndex = submodules.findIndex(({ id, type }) =>
     id === submoduleId && type === submoduleType);
+  const moduleIndex = data?.modules.findIndex(({ id }) =>
+    id === moduleId) || 0;
 
   const isNext = currSubmoduleIndex !== -1 && currSubmoduleIndex < submoduleLength - 1;
   const isPrev = currSubmoduleIndex !== -1 && currSubmoduleIndex > 0;
 
   const next = useCallback(() => {
-    history.push(getLinkForNextSubmodule(currSubmoduleIndex, submodules, curriculumId, moduleId));
-  }, [currSubmoduleIndex, curriculumId, history, moduleId, submodules]);
+    history.push(getLinkForNextSubmodule(currSubmoduleIndex, submodules, curriculumId, moduleId, moduleIndex));
+  }, [currSubmoduleIndex, curriculumId, history, moduleId, submodules, moduleIndex]);
 
   const prev = useCallback(() => {
     history.push(getLinkForPrevSubmodule(currSubmoduleIndex, submodules, curriculumId, moduleId));
