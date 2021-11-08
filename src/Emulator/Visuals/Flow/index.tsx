@@ -18,11 +18,9 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import React from 'react';
 import { ReactFlowProvider } from 'react-flow-renderer';
 
 import Flow, { Props } from './Flow';
-
 
 export const WrappedFlow = (props: Props) => (
   <ReactFlowProvider>

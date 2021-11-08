@@ -23,6 +23,8 @@ import ReactDOM from 'react-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ChakraProvider } from '@chakra-ui/react';
+import LogRocket from 'logrocket';
+import setupLogRocketReact from 'logrocket-react';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -33,6 +35,11 @@ import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
+
+if (process.env.NODE_ENV === 'production') {
+  LogRocket.init('meqhra/toynet');
+  setupLogRocketReact(LogRocket);
+}
 
 ReactDOM.render(
   <React.StrictMode>
