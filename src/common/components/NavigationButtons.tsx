@@ -45,9 +45,9 @@ export default function NavigationButtons({
   submoduleType,
   btnRightProps,
   btnLeftProps,
-  prevText = 'Previous Module',
-  nextText = 'Next Module',
-  completeText = 'Complete Module',
+  prevText = 'Previous Submodule',
+  nextText = 'Next Submodule',
+  completeText = 'Complete Submodule',
   ...btnProps
 }: NavigationButtonsProps) {
   const {
