@@ -405,7 +405,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   </g>
                 </svg>
               </span>
-              Previous Module
+              Previous Submodule
             </button>
             <button
               aria-label="next"
@@ -413,7 +413,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
               disabled=""
               type="button"
             >
-              Next Module
+              Next Submodule
               <span
                 class="chakra-button__icon css-1hzyiq5"
               >
