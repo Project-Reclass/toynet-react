@@ -35,7 +35,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
 
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
   datadogRum.init({
       applicationId: '8594fc9a-c685-44a1-bf23-bda5322e25dd',
       clientToken: 'pub113619b78fa128577018f3c4d99e4699',
@@ -48,7 +48,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 
   datadogRum.startSessionReplayRecording();
-}
+
+// }
 
 ReactDOM.render(
   <React.StrictMode>
