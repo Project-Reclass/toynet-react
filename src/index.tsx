@@ -23,7 +23,10 @@ import ReactDOM from 'react-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ChakraProvider } from '@chakra-ui/react';
-import { datadogRum } from '@datadog/browser-rum';
+
+// import { datadogRum } from '@datadog/browser-rum';
+import * as FS from '@fullstory/browser';
+
 
 import * as serviceWorker from './serviceWorker';
 
@@ -35,19 +38,21 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
 
+FS.init({ orgId: '16GXVM' });
+
 // if (process.env.NODE_ENV === 'production') {
-  datadogRum.init({
-      applicationId: '8594fc9a-c685-44a1-bf23-bda5322e25dd',
-      clientToken: 'pub113619b78fa128577018f3c4d99e4699',
-      site: 'datadoghq.com',
-      service: 'toynet',
+  // datadogRum.init({
+  //     applicationId: '8594fc9a-c685-44a1-bf23-bda5322e25dd',
+  //     clientToken: 'pub113619b78fa128577018f3c4d99e4699',
+  //     site: 'datadoghq.com',
+  //     service: 'toynet',
 
-      sampleRate: 100,
-      trackInteractions: true,
-      defaultPrivacyLevel: 'mask-user-input',
-  });
+  //     sampleRate: 100,
+  //     trackInteractions: true,
+  //     defaultPrivacyLevel: 'mask-user-input',
+  // });
 
-  datadogRum.startSessionReplayRecording();
+  // datadogRum.startSessionReplayRecording();
 
 // }
 

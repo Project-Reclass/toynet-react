@@ -20,6 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import React, { useCallback, useEffect, useRef } from 'react';
+import * as FS from '@fullstory/browser';
 import { EmulatorInnerSection } from 'src/common/components/Emulator';
 import { SessionId, ToynetCommandResponse } from 'src/common/api/topology/types';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
@@ -106,6 +107,11 @@ export default function ConsoleTerminal({
 
   const handleSubmit = useCallback(async (input: string): Promise<boolean> => {
     if (selectedDevice === '') {
+      // This is an example script - don't forget to change it!
+      FS.event('No device selected', {
+        input: input || 'No input provided',
+      });
+
       setHistory(prev => [
         ...prev,
         {
