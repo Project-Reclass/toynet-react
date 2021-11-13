@@ -18,13 +18,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import ReactMarkdown from 'react-markdown';
 import { Box, Container, Divider, Flex } from '@chakra-ui/react';
-
-import { ArticleHeader, MarkdownWrapper } from './ArticleStyles';
-import { useArticleMeta, useArticleText } from 'src/common/api/curriculum/article';
 import { useParams } from 'react-router-dom';
+import { useArticleMeta, useArticleText } from 'src/common/api/curriculum/article';
 import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
+
+import { ArticleHeader } from './ArticleStyles';
+import MarkdownRenderer from 'src/common/components/markdown/MarkdownRenderer/MarkdownRenderer';
 
 interface Params {
   moduleId: string;
@@ -44,9 +44,9 @@ const Article = () => {
           <ArticleHeader as='h2' size='md'>Written By: {meta?.author}</ArticleHeader>
           <Divider />
         </Box>
-        <MarkdownWrapper>
-          <ReactMarkdown escapeHtml={false} source={articleText || ''}/>
-        </MarkdownWrapper>
+        <MarkdownRenderer>
+          {articleText || ''}
+        </MarkdownRenderer>
       </Flex>
       <NavigationWithDivider
         moduleId={Number(moduleId)}

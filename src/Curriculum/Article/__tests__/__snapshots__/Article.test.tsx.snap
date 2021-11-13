@@ -24,7 +24,7 @@ exports[`The Article page should render the same based on URL parameters 1`] = `
           class="chakra-divider css-svjswr"
         />
       </div>
-      <h3
+      <div
         class="css-13v7kg0"
       />
     </div>
