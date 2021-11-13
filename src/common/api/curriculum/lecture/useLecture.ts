@@ -18,5 +18,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import Lesson from './Lesson';
-export default Lesson;
+import axios from 'axios';
+import { useQuery } from 'react-query';
+
+export default function useLecture(lectureId: number) {
+  return useQuery(['lecture', { lectureId }], async () => {
+    const { data } = await axios.get<string>(`/data/lecture/${lectureId}/lecture.md`);
+    return data;
+  });
+}
