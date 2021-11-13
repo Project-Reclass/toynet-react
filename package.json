@@ -23,10 +23,11 @@
     "react-draggable": "^4.4.3",
     "react-flow-renderer": "^9.3.1",
     "react-helmet": "^6.1.0",
-    "react-markdown": "^5.0.2",
+    "react-markdown": "^6.0.0",
     "react-query": "^3.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
+    "remark-gfm": "^3.0.1",
     "use-immer": "^0.4.1"
   },
   "scripts": {
@@ -59,6 +60,7 @@
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^10.4.9",
     "@testing-library/react-hooks": "^3.4.1",
