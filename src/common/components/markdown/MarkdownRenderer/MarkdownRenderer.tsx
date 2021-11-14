@@ -21,7 +21,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 import { Box, Center, Text } from '@chakra-ui/layout';
 import styled from '@emotion/styled';
 import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
 import { Image, ImageProps } from '@chakra-ui/image';
 
 const MarkdownWrapper = styled(Box)`

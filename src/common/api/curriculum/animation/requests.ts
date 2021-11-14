@@ -25,12 +25,12 @@ export interface Meta {
   numSlides: number;
 }
 
-export const getLessonSlide = async (submoduleId: number, slideId: number): Promise<LessonSlideURI> => {
-  const { data } = await axios.get(`/data/lesson/${submoduleId}/${slideId}.png`);
+export const getAnimationSlide = async (submoduleId: number, slideId: number): Promise<LessonSlideURI> => {
+  const { data } = await axios.get(`/data/animation/${submoduleId}/${slideId}.png`);
   return data;
 };
 
-export const getLessonMeta = async (submoduleId: number): Promise<Meta | undefined> => {
-  const { data } = await axios.get(`/data/lesson/${submoduleId}/meta.json`);
+export const getAnimationMeta = async (submoduleId: number): Promise<Meta | undefined> => {
+  const { data } = await axios.get(`/data/animation/${submoduleId}/meta.json`);
   return data;
 };

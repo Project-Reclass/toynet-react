@@ -23,7 +23,7 @@ import { Box, Center, Container, Divider, Heading, SimpleGrid, Stack } from '@ch
 import { Text, Image, Button } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import LoadingContainer from 'src/common/components/LoadingContainer';
-import { useLesson, useLessonSlides } from 'src/common/api/curriculum/lesson';
+import { useAnimation, useAnimationSlides } from 'src/common/api/curriculum/animation';
 import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
 
@@ -34,14 +34,14 @@ interface Params {
 
 const Lesson = () => {
   const { moduleId, lessonId } = useParams<Params>();
-  const { data, isLoading } = useLesson(Number(moduleId), Number(lessonId));
+  const { data, isLoading } = useAnimation(Number(moduleId), Number(lessonId));
   const {
     currSrc,
     nextSlide,
     prevSlide,
     isNextSlide,
     isPrevSlide,
-  } = useLessonSlides(Number(lessonId), data || undefined);
+  } = useAnimationSlides(Number(lessonId), data || undefined);
 
   return (
     <Box id="#">
@@ -49,7 +49,7 @@ const Lesson = () => {
         <Container maxW='container.xl' my='3'>
           <SimpleGrid columns={1} spacing={5}>
             <Stack spacing={2}>
-              <Heading size="lg">{`Lesson: ${data?.name}`}</Heading>
+              <Heading size="lg">{`Animation: ${data?.name}`}</Heading>
               <Text size='sm' color='whiteAlpha.800'>{data?.description}</Text>
               <Divider />
             </Stack>
@@ -82,7 +82,7 @@ const Lesson = () => {
           <NavigationWithDivider
             moduleId={Number(moduleId)}
             submoduleId={Number(lessonId)}
-            submoduleType='LESSON'
+            submoduleType='ANIMATION'
           />
         </Container>
       </LoadingContainer>

@@ -23,24 +23,24 @@ import { useMemo, useState, useCallback, useEffect } from 'react';
 import { DashboardIntf } from 'src/common/types/curriculum';
 import { useCurriculum } from '../dashboard';
 
-import { getLessonMeta, getLessonSlide, Meta } from './requests';
+import { getAnimationMeta, getAnimationSlide, Meta } from './requests';
 
-export interface LessonInfo {
+export interface AnimationInfo {
   name: string;
   description: string;
 }
 
-export type LessonWithInfo = LessonInfo & Meta;
+export type AnimationWithInfo = AnimationInfo & Meta;
 
 
-const getLessonInfo = (
+const getAnimationInfo = (
   moduleId: number,
   lessonId: number,
   curriculum?: DashboardIntf,
-): LessonInfo | null => {
+): AnimationInfo | null => {
   const lessonInfo = curriculum?.modules
     .find(({ id }) => id === moduleId)?.submodules
-    .find(({ id, type }) => id === lessonId && type === 'LESSON');
+    .find(({ id, type }) => id === lessonId && type === 'ANIMATION');
 
   if (!lessonInfo) {
     return null;
@@ -52,21 +52,21 @@ const getLessonInfo = (
   };
 };
 
-export function useLessonSlide(submoduleId: number, slideNumber: number) {
-  return useQuery(['lesson-slide', { submoduleId, slideNumber }], () => getLessonSlide(submoduleId, slideNumber));
+export function useAnimationSlide(submoduleId: number, slideNumber: number) {
+  return useQuery(['animation-slide', { submoduleId, slideNumber }], () => getAnimationSlide(submoduleId, slideNumber));
 }
 
-export function useLessonMeta(submoduleId: number) {
-  return useQuery(['lesson-meta', { submoduleId }], () => getLessonMeta(submoduleId));
+export function useAnimationMeta(submoduleId: number) {
+  return useQuery(['animation-meta', { submoduleId }], () => getAnimationMeta(submoduleId));
 }
 
-export function useLessonSlidesSrc(moduleId: number, meta?: Meta): string[] {
+export function useAnimationSlidesSrc(moduleId: number, meta?: Meta): string[] {
   return useMemo(() => new Array(meta?.numSlides)
-    .fill('').map((_, i) => `/data/lesson/${moduleId}/${i}.png`)
+    .fill('').map((_, i) => `/data/animation/${moduleId}/${i}.png`)
   , [meta?.numSlides, moduleId]);
 }
 
-export function useLessonSlides(moduleId: number, meta?: Meta): {
+export function useAnimationSlides(moduleId: number, meta?: Meta): {
   srcs: string[];
   currSrc: string;
   isNextSlide: boolean;
@@ -75,7 +75,7 @@ export function useLessonSlides(moduleId: number, meta?: Meta): {
   prevSlide: () => void;
 } {
   const [currPage, setCurrPage] = useState(0);
-  const srcs = useLessonSlidesSrc(moduleId, meta);
+  const srcs = useAnimationSlidesSrc(moduleId, meta);
 
   const nextSlide = useCallback(() =>
     setCurrPage(prev => Math.min(prev + 1, (meta?.numSlides ?? 0) - 1)),
@@ -105,17 +105,17 @@ export function useLessonSlides(moduleId: number, meta?: Meta): {
   };
 }
 
-export function useLesson(moduleId: number, lessonId: number): {
+export function useAnimation(moduleId: number, lessonId: number): {
   isLoading: boolean,
-  data: LessonWithInfo | null,
+  data: AnimationWithInfo | null,
 } {
-  const { data: lessonMeta, isLoading: isLessonLoading } = useLessonMeta(lessonId);
+  const { data: animationMeta, isLoading: isAnimationLoading } = useAnimationMeta(lessonId);
   const { data: currData, isLoading: isCurrLoading } = useCurriculum(1);
 
-  const isLoading = isCurrLoading || isLessonLoading;
-  const lessonInfo = getLessonInfo(moduleId, lessonId, currData);
-  const data: LessonWithInfo | null = isLoading ? null :
-    (lessonInfo && lessonMeta) ? { ...lessonInfo, ...lessonMeta } : null;
+  const isLoading = isCurrLoading || isAnimationLoading;
+  const lessonInfo = getAnimationInfo(moduleId, lessonId, currData);
+  const data: AnimationWithInfo | null = isLoading ? null :
+    (lessonInfo && animationMeta) ? { ...lessonInfo, ...animationMeta } : null;
 
   return {
     isLoading,
