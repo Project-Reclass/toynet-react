@@ -18,34 +18,4 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-export interface DashboardIntf {
-  id: number;
-  name: string;
-  introduction: string;
-  modules: ModuleIntf[];
-}
-
-export interface ModuleIntf {
-  id: number;
-  name: string;
-  introduction: string;
-  submodules: SubModuleIntf[];
-}
-
-export type SubModuleType = 'SURVEY' | 'VALUE' | 'ANIMATION' | 'ARTICLE' | 'LAB' | 'QUIZ' | 'VIDEO';
-
-export interface SubModuleIntf {
-  id: number;
-  name: string;
-  introduction: string;
-  type: SubModuleType;
-}
-
-export interface Lab {
-  id: number,
-  topology: number;
-  submoduleNumber: number,
-  submoduleName: string;
-  objective: string;
-  tasks: string[]
-}
+export { default } from './Animation';

@@ -18,19 +18,4 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import axios from 'axios';
-
-type LessonSlideURI = string;
-export interface Meta {
-  numSlides: number;
-}
-
-export const getLessonSlide = async (submoduleId: number, slideId: number): Promise<LessonSlideURI> => {
-  const { data } = await axios.get(`/data/lesson/${submoduleId}/${slideId}.png`);
-  return data;
-};
-
-export const getLessonMeta = async (submoduleId: number): Promise<Meta | undefined> => {
-  const { data } = await axios.get(`/data/lesson/${submoduleId}/meta.json`);
-  return data;
-};
+export { default } from './Lecture';

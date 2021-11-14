@@ -26,12 +26,13 @@ import Layout from './layout';
 import ErrorBoundary from './common/components/ErrorBoundary';
 import LoadingSpinner from './common/components/LoadingSpinner';
 
+const Lecture = React.lazy(() => import('./Curriculum/Lecture'));
 const Login = React.lazy(() => import('./Login'));
 const Emulator = React.lazy(() => import('./Emulator'));
 const Quiz = React.lazy(() => import('./Curriculum/Quiz'));
 const ModuleList = React.lazy(() => import('./Curriculum'));
 const Video = React.lazy(() => import('./Curriculum/Video'));
-const Lesson = React.lazy(() => import('./Curriculum/Lesson'));
+const Animation = React.lazy(() => import('./Curriculum/Animation'));
 const Survey = React.lazy(() => import('./Curriculum/Survey'));
 const Value = React.lazy(() => import('./Curriculum/Value'));
 const NotFound = React.lazy(() => import('./common/NotFound'));
@@ -49,6 +50,7 @@ function App() {
       <Router>
         <Suspense fallback={<LoadingWrapper><LoadingSpinner /></LoadingWrapper>}>
           <Switch>
+
             <Route exact path='/'>
               <Layout title={'Home'} hideSideNav={true}>
                 <SplashScreen />
@@ -79,9 +81,15 @@ function App() {
               </Layout>
             </Route>
 
-            <Route exact path="/module/:moduleId/lesson/:lessonId">
-              <Layout title={'Lesson'}>
-                <Lesson />
+            <Route exact path="/module/:moduleId/animation/:lessonId">
+              <Layout title={'Animation'}>
+                <Animation />
+              </Layout>
+            </Route>
+
+            <Route exact path ="/module/:moduleId/lecture/:lectureId">
+              <Layout title='Lecture'>
+                <Lecture />
               </Layout>
             </Route>
 

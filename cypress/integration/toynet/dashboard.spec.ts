@@ -89,12 +89,12 @@ describe('The dashboard page', () => {
     cy.contains(/value/i).should('be.visible');
     cy.contains(/value/i).parent('div').contains(/go to submodule/i);
   });
-  it('should take the user to the appropriate submodule for lesson', () => {
+  it('should take the user to the appropriate submodule for animation', () => {
     cy.visit(dashboardUrl);
     cy.contains(/module 1/i).click();
-    cy.contains(/lesson/i).click();
-    cy.contains(/lesson/i).parent('div').contains(/go to submodule/i).click();
-    cy.url().should('include', 'lesson');
+    cy.contains(/animation/i).click();
+    cy.contains(/animation/i).parent('div').contains(/go to submodule/i).click();
+    cy.url().should('include', 'animation');
   });
   it('should take the user to the appropriate submodule for quiz', () => {
     cy.visit(dashboardUrl);

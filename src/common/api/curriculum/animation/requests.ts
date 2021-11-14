@@ -18,34 +18,19 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-export interface DashboardIntf {
-  id: number;
-  name: string;
-  introduction: string;
-  modules: ModuleIntf[];
+import axios from 'axios';
+
+type LessonSlideURI = string;
+export interface Meta {
+  numSlides: number;
 }
 
-export interface ModuleIntf {
-  id: number;
-  name: string;
-  introduction: string;
-  submodules: SubModuleIntf[];
-}
+export const getAnimationSlide = async (submoduleId: number, slideId: number): Promise<LessonSlideURI> => {
+  const { data } = await axios.get(`/data/animation/${submoduleId}/${slideId}.png`);
+  return data;
+};
 
-export type SubModuleType = 'SURVEY' | 'VALUE' | 'ANIMATION' | 'ARTICLE' | 'LAB' | 'QUIZ' | 'VIDEO';
-
-export interface SubModuleIntf {
-  id: number;
-  name: string;
-  introduction: string;
-  type: SubModuleType;
-}
-
-export interface Lab {
-  id: number,
-  topology: number;
-  submoduleNumber: number,
-  submoduleName: string;
-  objective: string;
-  tasks: string[]
-}
+export const getAnimationMeta = async (submoduleId: number): Promise<Meta | undefined> => {
+  const { data } = await axios.get(`/data/animation/${submoduleId}/meta.json`);
+  return data;
+};
