@@ -104,7 +104,7 @@ function SplashFooter() {
               <StyledSectionPartOneTwo>
                 <h2>Contact</h2>
                 <p>
-                  E: ProjectReclass.info@gmail.com <br />
+                  E: admin@projectreclass.org <br />
                 </p>
               </StyledSectionPartOneTwo>
             </StyledSectionPart>
