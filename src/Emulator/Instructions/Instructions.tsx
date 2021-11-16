@@ -105,6 +105,7 @@ const Instructions: FC<Props> = ({
                 variant='ghost'
                 nextText='Next'
                 prevText='Previous'
+                completeText='Complete'
                 colorScheme='whiteAlpha'
                 _hover={{ color: 'white' }}
                 moduleId={Number(moduleId)}
