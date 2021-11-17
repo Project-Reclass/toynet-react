@@ -20,10 +20,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Button, ButtonGroup, IconButton, Tooltip, useBoolean } from '@chakra-ui/react';
-import { AddIcon, RepeatClockIcon } from '@chakra-ui/icons';
 import styled from '@emotion/styled';
 import localforage from 'localforage';
+import {
+  useBoolean,
+} from '@chakra-ui/react';
 import ReactFlow, {
   Controls,
   Background,
@@ -41,8 +42,6 @@ import { DeviceInterface } from 'src/common/types';
 import { SessionId } from 'src/common/api/topology/types';
 import { TopologyActions } from 'src/Emulator/useTopology';
 import { useDialogue, useEmulator } from 'src/common/providers/EmulatorProvider';
-import { deviceColorClasses } from 'src/Emulator/Device/deviceColors';
-import { useDrawer } from 'src/common/providers/DrawerProvider';
 import { useCreateDeviceLink } from 'src/common/api/topology';
 import RestartModal from 'src/Emulator/Instructions/RestartModal';
 
@@ -55,6 +54,7 @@ import {
 } from './utils';
 
 import './overrides.css';
+import CustomControls from './CustomControls';
 
 export interface Props {
   sessionId: SessionId;
@@ -78,13 +78,7 @@ const RightAlignedControls = styled(Controls)`
   left: unset !important;
 `;
 
-const CustomControls = styled(ButtonGroup)`
-  z-index: 5;
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
+
 
 /**
  * Determines the number of the newly added device
@@ -117,16 +111,15 @@ const Flow = ({
   hosts,
   isTesting = false,
 }: Props) => {
-  const [isOpen, setIsOpen] = useBoolean(false);
+  const [isRestartModalOpen, setRestartModal] = useBoolean(false);
   const [rfInstance, setRfInstance] = useState<OnLoadParams | null>(null);
 
   const [elements, setElements] = useState<Elements>([]);
   const { appendDialogue, updateDialogueMessage } = useDialogue();
   const { dispatch } = useEmulator();
-  const { openView } = useDrawer();
   const { isLoading, mutateAsync: createLink } = useCreateDeviceLink(sessionId);
 
-  const { transform } = useZoomPanHelper();
+  const { transform, fitView } = useZoomPanHelper();
 
   /**
    * We need to use the `sessionId` here since we do not want
@@ -202,6 +195,15 @@ const Flow = ({
     }
   };
 
+  const handleAutoFormat = () => {
+    const els = createElements([...routers, ...switches, ...hosts]);
+    setElements(getLayoutedElements(els, 'LR', isTesting));
+
+    // We add the fitView to the callback queue so that this function is called
+    // after the the layout is already updated before we fit the view.
+    setTimeout(() => fitView({ padding: 1 }), 0);
+  };
+
   const onEdgeUpdate = (oldEdge: any, newConnection: any) =>
     setElements((els) => updateEdge(oldEdge, newConnection, els));
 
@@ -217,67 +219,17 @@ const Flow = ({
         nodeTypes={nodeTypes}
       >
         <CustomControls
-          spacing={3}
-          padding={3}
-        >
-          <ButtonGroup>
-            <Button
-              size='sm'
-              leftIcon={<AddIcon />}
-              colorScheme="pink"
-              variant="outline"
-              data-testid="emulator-add-host"
-              isDisabled={isLoading}
-              borderColor={deviceColorClasses.get('host')}
-              onClick={() => openView('CREATE_HOST')}
-            >
-              Host
-            </Button>
-            <Button
-              size='sm'
-              leftIcon={<AddIcon />}
-              colorScheme="blue"
-              borderColor={deviceColorClasses.get('switch')}
-              variant="outline"
-              isDisabled={isLoading}
-              data-testid="emulator-add-switch"
-              onClick={() => openView('CREATE_SWITCH')}
-            >
-              Switch
-            </Button>
-            <Button
-              size='sm'
-              leftIcon={<AddIcon />}
-              colorScheme="yellow"
-              data-testid="emulator-add-router"
-              isDisabled={isLoading}
-              borderColor={deviceColorClasses.get('router')}
-              variant="outline"
-              onClick={() => openView('CREATE_ROUTER')}
-            >
-              Router
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Tooltip label='Reset topology'>
-              <IconButton
-                variant='outline'
-                size='md'
-                onClick={setIsOpen.on}
-                aria-label='reset topology'
-                icon={<RepeatClockIcon />}
-                colorScheme='red'
-              />
-            </Tooltip>
-          </ButtonGroup>
-        </CustomControls>
+          isDisabled={isLoading}
+          onAutoFormat={handleAutoFormat}
+          onRestartSession={setRestartModal.on}
+        />
         <RightAlignedControls
           showFitView={true}
         />
         <Background color="#aaa" gap={DEFAULT_BG_GAP} />
         <RestartModal
-          close={setIsOpen.off}
-          isOpen={isOpen}
+          close={setRestartModal.off}
+          isOpen={isRestartModalOpen}
         />
       </ReactFlow>
   );
