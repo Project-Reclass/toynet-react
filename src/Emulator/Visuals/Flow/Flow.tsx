@@ -22,9 +22,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import localforage from 'localforage';
-import {
-  useBoolean,
-} from '@chakra-ui/react';
+import { useBoolean } from '@chakra-ui/react';
 import ReactFlow, {
   Controls,
   Background,
@@ -77,8 +75,6 @@ const RightAlignedControls = styled(Controls)`
   right: 10px;
   left: unset !important;
 `;
-
-
 
 /**
  * Determines the number of the newly added device
