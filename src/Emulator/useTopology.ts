@@ -40,6 +40,8 @@ export interface TopologyState {
   dispatch: React.Dispatch<ReducerAction>;
   isLoading: boolean;
   sessionId: SessionId;
+
+  error?: unknown,
 }
 
 export enum TopologyActions {
@@ -133,7 +135,7 @@ const initialState: ParsedXML = {
  * Provides parsed topology state retrieved from the server.
  */
 export function useTopology(id: number) {
-  const { data, isLoading } = useToynetSession(id);
+  const { data, isLoading, error } = useToynetSession(id);
   const [state, dispatch] = useImmerReducer(reducer, initialState);
 
   useEffect(() => {
@@ -145,6 +147,7 @@ export function useTopology(id: number) {
 
   return {
     ...state,
+    error,
     isLoading,
     dispatch: dispatch,
     sessionId: data?.sessionId || -1,
