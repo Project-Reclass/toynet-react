@@ -50,7 +50,8 @@ const Module: FC<ModuleIntf & Props> = (
   },
 ) => {
   return (
-    <Box position='relative'>
+    <Box position='relative' pb={'2'}
+    >
       <Flex onClick={() => onClick(index)} cursor='pointer'>
         {!isLast && <Line height='100%' position='absolute' />}
         <Flex justifyContent='space-between' width='100%' pt={`${index === 0 ? '1.5rem' : ''}`}>
