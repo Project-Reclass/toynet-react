@@ -32,7 +32,9 @@ export interface ModuleIntf {
   submodules: SubModuleIntf[];
 }
 
-export type SubModuleType = 'SURVEY' | 'VALUE' | 'ANIMATION' | 'ARTICLE' | 'LAB' | 'QUIZ' | 'VIDEO';
+export type SubModuleType = 'SURVEY' | 'VALUE' | 'ANIMATION' |
+                            'ARTICLE' | 'LAB' | 'QUIZ' | 'VIDEO' |
+                            'LECTURE';
 
 export interface SubModuleIntf {
   id: number;
