@@ -46,7 +46,7 @@ export default function Lecture() {
         <NavigationWithDivider
           moduleId={Number(moduleId)}
           submoduleId={Number(lectureId)}
-          submoduleType='ARTICLE'
+          submoduleType='LECTURE'
         />
       </LoadingContainer>
     </Container>
