@@ -19,95 +19,10 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-const dashboardUrl = 'http://localhost:3000/dashboard/1';
 
 describe('The dashboard page', () => {
     beforeEach(() => {
     window.sessionStorage.clear();
   });
-  it('should render a list of modules', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/life of a network packet/i).should('be.visible');
-    cy.contains(/history of the internet/i).should('be.visible');
-  });
-  it('should render a description of the module after clicking it', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(new RegExp('information', 'i')).should('be.visible');
-    cy.contains(/who are you/i).should('be.visible');
-  });
-  it('should render a description of the module after clicking it and revisiting page', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(new RegExp('information', 'i')).should('be.visible');
-    cy.contains(/who are you/i).should('be.visible');
-    cy.contains(new RegExp('information', 'i')).should('be.visible');
-    cy.url().should('include', 'module=1');
-    cy.contains(/who are you/i).should('be.visible');
-    cy.reload();
-    cy.contains(new RegExp('information', 'i')).should('be.visible');
-    cy.contains(/who are you/i).should('be.visible');
 
-  });
-  it('should show more about a submodule when clicking it', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/who are you/i).click();
-    cy.contains(/first we want to know/i).should('be.visible');
-  });
-  it('should show more about a submodule when clicking it and revisiting page', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/who are you/i).click();
-    cy.contains(/first we want to know/i).should('be.visible');
-    cy.contains(/first we want to know/i).should('be.visible');
-    cy.reload();
-    cy.contains(/first we want to know/i).should('be.visible');
-  });
-  it('should take the user to the appropriate submodule for survey', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/who are you/i).click();
-    cy.contains(/survey/i).parent('div').contains(/go to submodule/i).click();
-    cy.url().should('include', 'survey');
-  });
-  it('should take the user to the appropriate submodule for value', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/value/i).click();
-    cy.contains(/value/i).parent('div').contains(/go to submodule/i).click();
-    cy.url().should('include', 'value');
-  });
-  it('should take the user to the appropriate submodule for value, go back and see module and submodule still open', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/value/i).click();
-    cy.contains(/value/i).parent('div').contains(/go to submodule/i).click();
-    cy.url().should('include', 'value');
-    cy.go('back');
-    cy.contains(/module 1/i).should('be.visible');
-    cy.contains(/value/i).should('be.visible');
-    cy.contains(/value/i).parent('div').contains(/go to submodule/i);
-  });
-  it('should take the user to the appropriate submodule for animation', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/animation/i).click();
-    cy.contains(/animation/i).parent('div').contains(/go to submodule/i).click();
-    cy.url().should('include', 'animation');
-  });
-  it('should take the user to the appropriate submodule for quiz', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/quiz/i).click();
-    cy.contains(/quiz/i).parent('div').contains(/go to submodule/i).click();
-    cy.url().should('include', 'quiz');
-  });
-  it('should take the user to the appropriate submodule for lab', () => {
-    cy.visit(dashboardUrl);
-    cy.contains(/module 1/i).click();
-    cy.contains(/lab/i).click();
-    cy.contains(/lab/i).parent('div').contains(/go to submodule/i).click();
-    cy.url().should('include', 'emulator');
-  });
 });
