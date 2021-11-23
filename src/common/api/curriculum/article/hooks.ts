@@ -23,10 +23,10 @@ import { getArticleMeta, getArticleText } from './requests';
 
 export function useArticleText(articleId: number) {
   return useQuery(['article-text', articleId], () =>
-    getArticleText(articleId));
+    getArticleText(articleId), { refetchOnWindowFocus: false });
 }
 
 export function useArticleMeta(articleId: number) {
   return useQuery(['article-meta', articleId], () =>
-    getArticleMeta(articleId));
+    getArticleMeta(articleId), { refetchOnWindowFocus: false });
 }
