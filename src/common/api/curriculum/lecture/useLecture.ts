@@ -25,5 +25,5 @@ export default function useLecture(lectureId: number) {
   return useQuery(['lecture', { lectureId }], async () => {
     const { data } = await axios.get<string>(`/data/lecture/${lectureId}/lecture.md`);
     return data;
-  });
+  }, { refetchOnWindowFocus: false });
 }
