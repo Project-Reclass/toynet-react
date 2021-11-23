@@ -18,10 +18,15 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { Box, Center, Text } from '@chakra-ui/layout';
+import { Box, Center, Divider, Heading, HeadingProps, ListItem, Text, UnorderedList } from '@chakra-ui/layout';
 import styled from '@emotion/styled';
 import ReactMarkdown from 'react-markdown';
 import { Image, ImageProps } from '@chakra-ui/image';
+import { Code } from '@chakra-ui/react';
+
+const Pre = styled.pre`
+  background-color: rgba(0, 0, 0, 0.5);
+`;
 
 const MarkdownWrapper = styled(Box)`
   color: white;
@@ -48,6 +53,13 @@ const ImageRenderer = (props: ImageProps) => (
   </Center>
 );
 
+const HeaderWithDivider = (props: HeadingProps) => (
+  <>
+    <Heading {...props} />
+    <Divider />
+  </>
+);
+
 export interface MarkdownRendererProps {
   source?: string;
   children?: string;
@@ -64,6 +76,27 @@ export const MarkdownRenderer = ({
       components={{
         img: ({ node, ...props }) => <ImageRenderer {...props} />,
         p: ({ node, ...props }) => <Text {...props} my='1rem' />,
+
+        h1: ({ node, ...props }) => <HeaderWithDivider size='xl' {...props} />,
+        h2: ({ node, ...props})  => <Heading size='lg' {...props} />,
+        h3: ({ node, ...props }) => <Heading size='md' {...props} />,
+
+        ul: ({ node, ...props }) => <UnorderedList {...props} ml='5' />,
+        li: ({ node, ...props }) => <ListItem {...props} />,
+
+        pre: ({ node, ...props }) => <Pre {...props} />,
+
+        code({node, inline, className, children, ref, ...props}) {
+          return !inline ? (
+            <code className='className'>
+              {children}
+            </code>
+          ) : (
+            <Code colorScheme='blackAlpha' variant='solid' {...props}>
+              {children}
+            </Code>
+          );
+        },
       }}
     >
       {source || children}
