@@ -20,7 +20,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import { FC } from 'react';
 import { Divider, Flex, Link, Stack, Text, Collapse, Tooltip } from '@chakra-ui/react';
-import { ChevronRightIcon, StarIcon } from '@chakra-ui/icons';
+import { StarIcon } from '@chakra-ui/icons';
+import { BsPlayCircle } from 'react-icons/bs';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 
 import { ModuleName } from './styled';
@@ -73,8 +74,7 @@ export const SubModule: FC<Props> = (
           </ModuleName>
           <ModuleName locked={false} hoverColor='rgba(84,143,155)'>
             <Link href={createLink({ moduleId, type, id })}>
-              Go to Submodule
-              <ChevronRightIcon />
+              <BsPlayCircle />
             </Link>
           </ModuleName>
         </Flex>

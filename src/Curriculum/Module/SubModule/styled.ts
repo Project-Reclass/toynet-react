@@ -31,9 +31,14 @@ export const ModuleName = styled(Link)`
   display: flex;
   cursor: pointer;
   justify-content: space-between;
+  align-items: center;
   a {
     -webkit-user-select: none;
     user-select: none;
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+    }
   }
   :hover {
     color: ${({ hoverColor }: ModuleNameProps) => hoverColor || 'white'};
