@@ -54,6 +54,18 @@ const Emulator = () => {
   const { sessionId } = useEmulator();
   const { data, isLoading } = useLab(Number(emulatorId));
 
+  // We should be terminating the session on unmount of the emulator
+  // as well as on unload of the browser. These represent two different
+  // paths that the user can take when leaving the emulator, going to the
+  // next submodule and refreshing/closing the tab. Not doing this for
+  // both situations can lead to us leaking mininet instances.s
+  useEffect(() => {
+    return () => {
+      if (sessionId !== -1)
+        terminateToyNetSession(sessionId);
+    };
+  }, [sessionId]);
+
   useEffect(() => {
     const terminateSession = () =>
       terminateToyNetSession(sessionId);
