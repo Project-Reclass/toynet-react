@@ -74,7 +74,7 @@ export const SubModule: FC<Props> = (
           </ModuleName>
           <ModuleName locked={false} hoverColor='rgba(84,143,155)'>
             <Link href={createLink({ moduleId, type, id })}>
-              <BsPlayCircle />
+              <BsPlayCircle data-testid='submodule_play_icon' />
             </Link>
           </ModuleName>
         </Flex>
