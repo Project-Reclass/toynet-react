@@ -47,7 +47,7 @@ export default function InfoBtn({
       alignContent='center'
       textAlign='left'
     >
-      More Info
+      More Details
     </Button>
   );
 }
