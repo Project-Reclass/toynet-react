@@ -21,6 +21,12 @@ along with ToyNet React; see the file LICENSE.  If not see
 import styled from '@emotion/styled';
 import { Heading } from '@chakra-ui/react';
 
+export const ArticleContainer = styled('div')` 
+  margin: 0 auto; 
+  width: 80vw; 
+  padding: 50px;
+`;
+
 export const MarkdownWrapper = styled('h3')`
   color: white;
 
@@ -42,6 +48,6 @@ export const MarkdownWrapper = styled('h3')`
 
 export const ArticleHeader = styled(Heading)`
   color: white;
-  width: 80%;
+  width: 100%;
   margin-bottom: 1rem;
 `;
