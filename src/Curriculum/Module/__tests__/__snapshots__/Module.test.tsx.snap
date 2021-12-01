@@ -117,10 +117,10 @@ exports[`The Module should render and match snapshots 1`] = `
               <div
                 class="chakra-collapse"
                 color="white"
-                style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+                style="overflow: initial; display: block; opacity: 1; height: auto;"
               >
                 <p
-                  class="chakra-text css-0"
+                  class="chakra-text css-12txp0z"
                 >
                   coo
                 </p>
