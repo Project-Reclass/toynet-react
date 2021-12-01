@@ -27,6 +27,7 @@ import { SubModuleIntf } from 'src/common/types/curriculum';
 import { ModuleName } from './styled';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 import { createLink } from 'src/common/utils';
+import { SubmoduleDescription } from './styled';
 
 interface Props extends SubModuleIntf {
   moduleId: number;
@@ -79,9 +80,9 @@ export const SubModule: FC<Props> = (
           </ModuleName>
         </Flex>
         <Collapse in={isOpen} color='white'>
-          <Text>
+          <SubmoduleDescription>
             {introduction}
-          </Text>
+          </SubmoduleDescription>
         </Collapse>
         {index !== count -1 && <Divider />}
       </Stack>
