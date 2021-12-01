@@ -50,7 +50,7 @@ export const SubModule: FC<Props> = (
   },
 ) => {
   const [isOpen, setOpen] =
-    useSessionStorage<boolean>(`submodule-${moduleId}-${id}-${index}`, false,
+    useSessionStorage<boolean>(`submodule-${moduleId}-${id}-${index}`, true,
       value => JSON.parse(value));
 
   return (
