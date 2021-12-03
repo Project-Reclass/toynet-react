@@ -19,11 +19,22 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import React from 'react';
-import './SplashHeader.css';
 
-import {ReactComponent as Grid} from 'src/assets/splashScreen/v2/grid-background.svg';
-import {ReactComponent as Illustration} from '../../assets/splashScreen/v2/illustration-header.svg';
+import { ReactComponent as Grid } from 'src/assets/splashScreen/v2/grid-background.svg';
+import { ReactComponent as Illustration } from '../../assets/splashScreen/v2/illustration-header.svg';
 import { useHistory } from 'react-router-dom';
+
+import {
+  Container,
+  ContainerGrid,
+  HeaderContent,
+  HeaderContentH1,
+  HeaderContentH3,
+  HeaderContentButtonText,
+  HeaderContentButton,
+  HeaderContentImageContainer,
+  ContainerBody
+} from './SplashHeaderStyles';
 
 function SplashHeader() {
   const history = useHistory();
@@ -31,29 +42,29 @@ function SplashHeader() {
   const goToEmulator = () => history.push('/dashboard/1?module=0');
 
   return (
-    <div className='spash-header__container '>
-      <div className='spash-header__grid-container '>
+    <Container>
+      <ContainerGrid>
         <Grid />
-      </div>
-      <div className='splash-header-body container-1920 mx-auto' id="home">
-        <div className='splash-header-content'>
-          <h1>
+      </ContainerGrid>
+      <ContainerBody id="home">
+        <HeaderContent>
+          <HeaderContentH1>
             Toynet, your <br />
             computer networking <br />
             companion
-          </h1>
-          <h3>
+          </HeaderContentH1>
+          <HeaderContentH3>
             Learn anywhere, anytime
-          </h3>
-          <button className='how-it-works' onClick={goToEmulator}>
-            <h3 className='splash-button-text'>Try it</h3>
-          </button>
-        </div>
-        <div className='splash-header-image-container'>
+          </HeaderContentH3>
+          <HeaderContentButton onClick={goToEmulator}>
+            <HeaderContentButtonText>Try it</HeaderContentButtonText>
+          </HeaderContentButton>
+        </HeaderContent>
+        <HeaderContentImageContainer>
           <Illustration />
-        </div>
-      </div>
-    </div>
+        </HeaderContentImageContainer>
+      </ContainerBody>
+    </Container>
   );
 }
 

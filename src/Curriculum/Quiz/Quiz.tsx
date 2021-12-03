@@ -113,8 +113,8 @@ const Quiz = () => {
               <Box px={5} py={2} color="white" key={q.question}>
                 <Flex>
                   {isQuizSubmitted && (answerIsCorrect[qIndex] ?
-                    <CheckIcon color="green.500"/> : <IncorrectIcon color="red.500" />)}
-                  <Text fontSize='lg'>{ `${qIndex + 1}. ${q.question}`}</Text>
+                    <CheckIcon color="green.500" /> : <IncorrectIcon color="red.500" />)}
+                  <Text fontSize='lg'>{`${qIndex + 1}. ${q.question}`}</Text>
                 </Flex>
                 <AnswerContainer>
                   <RadioGroup>
@@ -128,7 +128,7 @@ const Quiz = () => {
                           name={qIndex.toString()}
                           value={option}
                           onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
-                          style={{ margin: '5px' }}
+                          margin='5px'
                         >
                           <QuestionLabel
                             as={'label'}
