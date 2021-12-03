@@ -20,12 +20,14 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import { FC } from 'react';
 import { Divider, Flex, Link, Stack, Text, Collapse, Tooltip } from '@chakra-ui/react';
-import { ChevronRightIcon, StarIcon } from '@chakra-ui/icons';
+import { StarIcon } from '@chakra-ui/icons';
+import { BsPlayCircle } from 'react-icons/bs';
 import { SubModuleIntf } from 'src/common/types/curriculum';
 
 import { ModuleName } from './styled';
 import { useSessionStorage } from 'src/common/hooks/useSessionStorage';
 import { createLink } from 'src/common/utils';
+import { SubmoduleDescription } from './styled';
 
 interface Props extends SubModuleIntf {
   moduleId: number;
@@ -49,7 +51,7 @@ export const SubModule: FC<Props> = (
   },
 ) => {
   const [isOpen, setOpen] =
-    useSessionStorage<boolean>(`submodule-${moduleId}-${id}-${index}`, false,
+    useSessionStorage<boolean>(`submodule-${moduleId}-${id}-${index}`, true,
       value => JSON.parse(value));
 
   return (
@@ -73,15 +75,14 @@ export const SubModule: FC<Props> = (
           </ModuleName>
           <ModuleName locked={false} hoverColor='rgba(84,143,155)'>
             <Link href={createLink({ moduleId, type, id })}>
-              Go to Submodule
-              <ChevronRightIcon />
+              <BsPlayCircle data-testid='submodule_play_icon' />
             </Link>
           </ModuleName>
         </Flex>
         <Collapse in={isOpen} color='white'>
-          <Text>
+          <SubmoduleDescription>
             {introduction}
-          </Text>
+          </SubmoduleDescription>
         </Collapse>
         {index !== count -1 && <Divider />}
       </Stack>

@@ -23,7 +23,7 @@ import { useParams } from 'react-router-dom';
 import { useArticleMeta, useArticleText } from 'src/common/api/curriculum/article';
 import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
-import { ArticleHeader } from './ArticleStyles';
+import { ArticleContainer, ArticleHeader } from './ArticleStyled';
 import MarkdownRenderer from 'src/common/components/markdown/MarkdownRenderer/MarkdownRenderer';
 
 interface Params {
@@ -37,23 +37,25 @@ const Article = () => {
   const { data: meta } = useArticleMeta(Number(articleId));
 
   return (
-    <Container maxW='container.lg' my='3'>
-      <Flex justifyContent='center' alignItems='center' flexDirection='column'>
-        <Box my='3'>
-          <ArticleHeader as='h1' size='xl'>{meta?.title}</ArticleHeader>
-          <ArticleHeader as='h2' size='md'>Written By: {meta?.author}</ArticleHeader>
-          <Divider />
-        </Box>
-        <MarkdownRenderer>
-          {articleText || ''}
-        </MarkdownRenderer>
-      </Flex>
-      <NavigationWithDivider
-        moduleId={Number(moduleId)}
-        submoduleId={Number(articleId)}
-        submoduleType='ARTICLE'
-      />
-    </Container>
+    <ArticleContainer id="#">
+      <Container maxW='container.lg'>
+        <Flex justifyContent='center' alignItems='center' flexDirection='column'>
+          <Box>
+            <ArticleHeader as='h1' size='xl'>{meta?.title}</ArticleHeader>
+            <ArticleHeader as='h2' size='md'>Written By: {meta?.author}</ArticleHeader>
+            <Divider />
+          </Box>
+          <MarkdownRenderer>
+            {articleText || ''}
+          </MarkdownRenderer>
+        </Flex>
+        <NavigationWithDivider
+          moduleId={Number(moduleId)}
+          submoduleId={Number(articleId)}
+          submoduleType='ARTICLE'
+        />
+        </Container>
+      </ArticleContainer>
   );
 };
 

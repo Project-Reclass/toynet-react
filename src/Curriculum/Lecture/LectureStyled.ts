@@ -18,36 +18,10 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
+import styled from '@emotion/styled';
 
-import React from 'react';
-import { Button } from '@chakra-ui/react';
-import { useDrawer } from 'src/common/providers/DrawerProvider';
-import { DeviceInterface } from 'src/common/types';
-
-interface Props {
-  device: Pick<DeviceInterface, 'name'>;
-}
-
-export default function InfoBtn({
-  device: {
-    name,
-  },
-}: Props) {
-  const { setInfoView } = useDrawer();
-
-  const handleClick = () =>
-    setInfoView(name);
-
-  return (
-    <Button
-      data-testid='info-btn'
-      onClick={handleClick}
-      variant='ghost'
-      colorScheme='teal'
-      alignContent='center'
-      textAlign='left'
-    >
-      More Details
-    </Button>
-  );
-}
+export const LectureContainer = styled('div')` 
+  margin: 0 auto; 
+  width: 80vw; 
+  padding: 50px;
+`;

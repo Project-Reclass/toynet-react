@@ -19,7 +19,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import styled from '@emotion/styled';
-import { Box, Link } from '@chakra-ui/react';
+import { Box, Link, Text } from '@chakra-ui/react';
 
 interface ModuleNameProps {
   locked: boolean;
@@ -31,9 +31,14 @@ export const ModuleName = styled(Link)`
   display: flex;
   cursor: pointer;
   justify-content: space-between;
+  align-items: center;
   a {
     -webkit-user-select: none;
     user-select: none;
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+    }
   }
   :hover {
     color: ${({ hoverColor }: ModuleNameProps) => hoverColor || 'white'};
@@ -49,4 +54,10 @@ export const StatusIconBox = styled(Box)`
   border-radius: 3px;
   width: 1.5rem;
   height: 1.5rem;
+`;
+
+export const SubmoduleDescription = styled(Text)`
+  font-size: 14px;
+  width: 80%;
+  margin-left: 3rem;
 `;
