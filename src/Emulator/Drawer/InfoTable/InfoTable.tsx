@@ -47,7 +47,7 @@ export default function InfoTable({ activeName }: Props) {
 
   return (
     <Box>
-      <Heading size='md' my={3}>Topology Information</Heading>
+      <Heading size='md' my={3}>Topology Details</Heading>
       <Table>
         <tbody>
           <HostRows routers={routers} hosts={hosts} activeName={activeName} />

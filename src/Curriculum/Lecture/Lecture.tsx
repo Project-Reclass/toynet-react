@@ -25,6 +25,7 @@ import MarkdownRenderer from 'src/common/components/markdown/MarkdownRenderer/Ma
 import { useParams } from 'react-router';
 import useLecture from 'src/common/api/curriculum/lecture/useLecture';
 import LoadingContainer from 'src/common/components/LoadingContainer';
+import { LectureContainer } from './LectureStyled';
 
 interface Params {
   moduleId: string;
@@ -36,19 +37,21 @@ export default function Lecture() {
   const { data, isLoading } = useLecture(Number(lectureId));
 
   return (
-    <Container maxW='container.lg' my='3'>
-      <LoadingContainer isLoading={isLoading || !data}>
-        <Flex justifyContent='center' alignItems='center' flexDirection='column'>
-          <MarkdownRenderer>
-            {data}
-          </MarkdownRenderer>
-        </Flex>
-        <NavigationWithDivider
-          moduleId={Number(moduleId)}
-          submoduleId={Number(lectureId)}
-          submoduleType='LECTURE'
-        />
-      </LoadingContainer>
-    </Container>
+    <LectureContainer id="#">
+      <Container maxW='container.lg'>
+        <LoadingContainer isLoading={isLoading || !data}>
+          <Flex justifyContent='center' alignItems='center' flexDirection='column'>
+            <MarkdownRenderer>
+              {data}
+            </MarkdownRenderer>
+          </Flex>
+          <NavigationWithDivider
+            moduleId={Number(moduleId)}
+            submoduleId={Number(lectureId)}
+            submoduleType='LECTURE'
+          />
+        </LoadingContainer>
+      </Container>
+    </LectureContainer>
   );
 }

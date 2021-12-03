@@ -24,7 +24,7 @@ import LoadingContainer from 'src/common/components/LoadingContainer';
 
 import { DashboardBox } from './styled';
 import { useParams } from 'react-router';
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { BsPlayCircle } from 'react-icons/bs';
 import ModuleList from './Module/ModuleList';
 
 interface Props {
@@ -59,10 +59,7 @@ export default function Dashboard({ username }: Props) {
               </Heading>
               <Text fontSize='lg' color="blackAlpha.800">
                 {`${data?.introduction} You can click on each module’s chevron to see its submodules. You must go through
-                the modules and their submodules in order. To start or revisit a submodule, click`} {' '}
-                <Text color='black.500' as='span' textDecoration='underline' fontWeight='bold'>
-                  Go to submodule <ChevronRightIcon />
-                </Text>
+                the modules and their submodules in order. To start or revisit a submodule, click `}<span><BsPlayCircle  style={{display: 'inline'}}/></span> button.
               </Text>
             </Stack>
           </Flex>
