@@ -49,8 +49,9 @@ describe('The sub modules', () => {
   });
   it('should create a link to the submodule page', () => {
     const { type, id, moduleId } = defaultProps;
-    const { getByText } = renderWithTheme(<SubModule {...defaultProps} />);
-    const link = getByText(new RegExp('go to submodule', 'i'));
-    expect(link.closest('a')?.getAttribute('href')).toBe(`/module/${moduleId}/${type.toString()}/${id}`);
+    const { getByTestId } = renderWithTheme(<SubModule {...defaultProps} />);
+    const playIcon = getByTestId('submodule_play_icon');
+
+    expect(playIcon.closest('a')?.getAttribute('href')).toBe(`/module/${moduleId}/${type.toString()}/${id}`);
   });
 });
