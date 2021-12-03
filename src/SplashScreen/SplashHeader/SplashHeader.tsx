@@ -33,7 +33,7 @@ import {
   HeaderContentButtonText,
   HeaderContentButton,
   HeaderContentImageContainer,
-  ContainerBody
+  ContainerBody,
 } from './SplashHeaderStyles';
 
 function SplashHeader() {
