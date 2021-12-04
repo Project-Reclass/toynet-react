@@ -21,8 +21,8 @@ along with ToyNet React; see the file LICENSE.  If not see
 import { useParams } from 'react-router-dom';
 
 import { useValueMeta } from '../../common/api/curriculum/value';
-import { StyledReflection, StyledBox, StyledTextArea } from './styled';
-import { Box } from '@chakra-ui/react';
+import { StyledReflection, StyledBox, StyledTextArea, ValueContainer } from './ValueStyled';
+import { Container } from '@chakra-ui/react';
 import PrimaryButton from 'src/common/components/buttons/PrimaryButton';
 import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
 
@@ -39,25 +39,27 @@ const Value = () => {
   const placeholderText = `What does ${data?.value.toLowerCase()} mean to you?`;
 
   return (
-    <Box p='1rem 10rem' maxW='1920px' m='0 auto' width='100%' height='100%'>
-      <StyledReflection>Reflection: {data?.value}</StyledReflection>
+    <ValueContainer id="#">
+      <Container maxW='container.xl'>
+        <StyledReflection>Reflection: {data?.value}</StyledReflection>
 
-      {data?.inspiration.map((org) => (
-        <StyledBox key={org.organization} data-testid="styled-box">
-          <h2>{org.organization}</h2>
-          <p>{org.definition}</p>
-        </StyledBox>
-      ))}
+        {data?.inspiration.map((org) => (
+          <StyledBox key={org.organization} data-testid="styled-box">
+            <h2>{org.organization}</h2>
+            <p>{org.definition}</p>
+          </StyledBox>
+        ))}
 
-      <StyledTextArea placeholder={placeholderText}></StyledTextArea>
+        <StyledTextArea placeholder={placeholderText}></StyledTextArea>
 
-      <PrimaryButton>Save</PrimaryButton>
-      <NavigationWithDivider
-        moduleId={Number(moduleId)}
-        submoduleId={Number(valueId)}
-        submoduleType={'VALUE'}
-      />
-    </Box>
+        <PrimaryButton>Save</PrimaryButton>
+        <NavigationWithDivider
+          moduleId={Number(moduleId)}
+          submoduleId={Number(valueId)}
+          submoduleType={'VALUE'}
+        />
+        </Container>
+      </ValueContainer>
   );
 };
 

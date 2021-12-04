@@ -19,12 +19,11 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 import styled from '@emotion/styled';
+import { Heading } from '@chakra-ui/react';
 
-const StyledReflection = styled.h1`
-  font-size: 25px;
+const StyledReflection = styled(Heading)`
   color: white;
-  font-weight: bold;
-  margin: 1.25rem auto;
+  margin-bottom: 1.25rem;
 `;
 
 const StyledBox = styled.div`
@@ -73,9 +72,16 @@ const StyledSavebutton = styled.button`
   float: right;
 `;
 
+const ValueContainer = styled('div')` 
+  margin: 0 auto; 
+  width: 80vw; 
+  padding: 50px;
+`;
+
 export {
   StyledReflection,
   StyledBox,
   StyledTextArea,
   StyledSavebutton,
+  ValueContainer,
 };

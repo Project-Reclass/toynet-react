@@ -3,117 +3,122 @@
 exports[`The value page should render the same based on URL parameters for honor 1`] = `
 <div>
   <div
-    class="css-1vog6cq"
+    class="css-1c3ot3n"
+    id="#"
   >
-    <h1
-      class="css-1t3tbq3"
-    >
-      Reflection: 
-      Honor
-    </h1>
     <div
-      class="css-1yazsj0"
-      data-testid="styled-box"
+      class="chakra-container css-1xo1xlh"
     >
-      <h2>
-        Army
-      </h2>
-      <p>
-        Live up to Army values [...] Honor is a matter of carrying out, acting, and living the values of respect, duty, loyalty, selfless service, integrity and personal courage in everything you do.
-      </p>
-    </div>
-    <div
-      class="css-1yazsj0"
-      data-testid="styled-box"
-    >
-      <h2>
-        Marines / Navy
-      </h2>
-      <p>
-        The quality of maturity, dedication, trust, and dependability that commits Marines to act responsibly; to be accountable for actions; to fulfill obligations; and to hold others accountable for their actions.
-      </p>
-    </div>
-    <textarea
-      class="css-21ory"
-      placeholder="What does honor mean to you?"
-    />
-    <button
-      class="chakra-button css-f6n2t5"
-      type="button"
-    >
-      Save
-    </button>
-    <div
-      class="chakra-stack css-1w6iwr8"
-    >
-      <hr
-        aria-orientation="horizontal"
-        class="chakra-divider css-svjswr"
-      />
-      <div
-        class="css-1lads1q"
+      <h2
+        class="chakra-heading css-1gdkznd"
       >
+        Reflection: 
+        Honor
+      </h2>
+      <div
+        class="css-1yazsj0"
+        data-testid="styled-box"
+      >
+        <h2>
+          Army
+        </h2>
+        <p>
+          Live up to Army values [...] Honor is a matter of carrying out, acting, and living the values of respect, duty, loyalty, selfless service, integrity and personal courage in everything you do.
+        </p>
+      </div>
+      <div
+        class="css-1yazsj0"
+        data-testid="styled-box"
+      >
+        <h2>
+          Marines / Navy
+        </h2>
+        <p>
+          The quality of maturity, dedication, trust, and dependability that commits Marines to act responsibly; to be accountable for actions; to fulfill obligations; and to hold others accountable for their actions.
+        </p>
+      </div>
+      <textarea
+        class="css-21ory"
+        placeholder="What does honor mean to you?"
+      />
+      <button
+        class="chakra-button css-f6n2t5"
+        type="button"
+      >
+        Save
+      </button>
+      <div
+        class="chakra-stack css-1w6iwr8"
+      >
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-svjswr"
+        />
         <div
-          class="chakra-stack css-jqjin"
+          class="css-1lads1q"
         >
-          <button
-            aria-label="previous"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
+          <div
+            class="chakra-stack css-jqjin"
           >
-            <span
-              class="chakra-button__icon css-1wh2kri"
+            <button
+              aria-label="previous"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <span
+                class="chakra-button__icon css-1wh2kri"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
-                  />
-                  <path
-                    d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-            Previous Submodule
-          </button>
-          <button
-            aria-label="next"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
-          >
-            Next Submodule
-            <span
-              class="chakra-button__icon css-1hzyiq5"
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
+                    />
+                    <path
+                      d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+              Previous Submodule
+            </button>
+            <button
+              aria-label="next"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              Next Submodule
+              <span
+                class="chakra-button__icon css-1hzyiq5"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
-                  />
-                  <path
-                    d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-          </button>
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
+                    />
+                    <path
+                      d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -124,128 +129,133 @@ exports[`The value page should render the same based on URL parameters for honor
 exports[`The value page should render the same based on URL parameters for integrity 1`] = `
 <div>
   <div
-    class="css-1vog6cq"
+    class="css-1c3ot3n"
+    id="#"
   >
-    <h1
-      class="css-1t3tbq3"
-    >
-      Reflection: 
-      Integrity
-    </h1>
     <div
-      class="css-1yazsj0"
-      data-testid="styled-box"
+      class="chakra-container css-1xo1xlh"
     >
-      <h2>
-        U.S. Air Force
-      </h2>
-      <p>
-        Integrity is the adherence to a strong moral code and consistency in one’s actions and values [...] Airmen should be guided by a deeply held sense of honor, not one of personal comfort or uncontrolled selfish appetites.
-      </p>
-    </div>
-    <div
-      class="css-1yazsj0"
-      data-testid="styled-box"
-    >
-      <h2>
-        U.S. Army
-      </h2>
-      <p>
-        Do what’s right, legally and morally. Integrity is a quality you develop by adhering to moral principles. It requires that you do and say nothing that deceives others. As your integrity grows, so does the trust others place in you […] and, finally, the fundamental acceptance of yourself.
-      </p>
-    </div>
-    <div
-      class="css-1yazsj0"
-      data-testid="styled-box"
-    >
-      <h2>
-        U.S. Coast Guard
-      </h2>
-      <p>
-        Integrity is our standard. We demonstrate uncompromising ethical conduct and moral behavior in all of our personal actions. We are loyal and accountable to the public trust.
-      </p>
-    </div>
-    <textarea
-      class="css-21ory"
-      placeholder="What does integrity mean to you?"
-    />
-    <button
-      class="chakra-button css-f6n2t5"
-      type="button"
-    >
-      Save
-    </button>
-    <div
-      class="chakra-stack css-1w6iwr8"
-    >
-      <hr
-        aria-orientation="horizontal"
-        class="chakra-divider css-svjswr"
-      />
-      <div
-        class="css-1lads1q"
+      <h2
+        class="chakra-heading css-1gdkznd"
       >
+        Reflection: 
+        Integrity
+      </h2>
+      <div
+        class="css-1yazsj0"
+        data-testid="styled-box"
+      >
+        <h2>
+          U.S. Air Force
+        </h2>
+        <p>
+          Integrity is the adherence to a strong moral code and consistency in one’s actions and values [...] Airmen should be guided by a deeply held sense of honor, not one of personal comfort or uncontrolled selfish appetites.
+        </p>
+      </div>
+      <div
+        class="css-1yazsj0"
+        data-testid="styled-box"
+      >
+        <h2>
+          U.S. Army
+        </h2>
+        <p>
+          Do what’s right, legally and morally. Integrity is a quality you develop by adhering to moral principles. It requires that you do and say nothing that deceives others. As your integrity grows, so does the trust others place in you […] and, finally, the fundamental acceptance of yourself.
+        </p>
+      </div>
+      <div
+        class="css-1yazsj0"
+        data-testid="styled-box"
+      >
+        <h2>
+          U.S. Coast Guard
+        </h2>
+        <p>
+          Integrity is our standard. We demonstrate uncompromising ethical conduct and moral behavior in all of our personal actions. We are loyal and accountable to the public trust.
+        </p>
+      </div>
+      <textarea
+        class="css-21ory"
+        placeholder="What does integrity mean to you?"
+      />
+      <button
+        class="chakra-button css-f6n2t5"
+        type="button"
+      >
+        Save
+      </button>
+      <div
+        class="chakra-stack css-1w6iwr8"
+      >
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-svjswr"
+        />
         <div
-          class="chakra-stack css-jqjin"
+          class="css-1lads1q"
         >
-          <button
-            aria-label="previous"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
+          <div
+            class="chakra-stack css-jqjin"
           >
-            <span
-              class="chakra-button__icon css-1wh2kri"
+            <button
+              aria-label="previous"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <span
+                class="chakra-button__icon css-1wh2kri"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
-                  />
-                  <path
-                    d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-            Previous Submodule
-          </button>
-          <button
-            aria-label="next"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
-          >
-            Next Submodule
-            <span
-              class="chakra-button__icon css-1hzyiq5"
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
+                    />
+                    <path
+                      d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+              Previous Submodule
+            </button>
+            <button
+              aria-label="next"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              Next Submodule
+              <span
+                class="chakra-button__icon css-1hzyiq5"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
-                  />
-                  <path
-                    d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-          </button>
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
+                    />
+                    <path
+                      d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -256,106 +266,111 @@ exports[`The value page should render the same based on URL parameters for integ
 exports[`The value page should render the same based on URL parameters for loyalty 1`] = `
 <div>
   <div
-    class="css-1vog6cq"
+    class="css-1c3ot3n"
+    id="#"
   >
-    <h1
-      class="css-1t3tbq3"
-    >
-      Reflection: 
-      Loyalty
-    </h1>
     <div
-      class="css-1yazsj0"
-      data-testid="styled-box"
+      class="chakra-container css-1xo1xlh"
     >
-      <h2>
-        U.S. Army
-      </h2>
-      <p>
-        Bear true faith and allegiance to the U.S. Constitution, the Army, your unit and other Soldiers. Bearing true faith and allegiance is a matter of believing in and devoting yourself to something or someone … By wearing the uniform of the U.S. Army you are expressing your loyalty. And by doing your share, you show your loyalty to your unit.
-      </p>
-    </div>
-    <textarea
-      class="css-21ory"
-      placeholder="What does loyalty mean to you?"
-    />
-    <button
-      class="chakra-button css-f6n2t5"
-      type="button"
-    >
-      Save
-    </button>
-    <div
-      class="chakra-stack css-1w6iwr8"
-    >
-      <hr
-        aria-orientation="horizontal"
-        class="chakra-divider css-svjswr"
-      />
-      <div
-        class="css-1lads1q"
+      <h2
+        class="chakra-heading css-1gdkznd"
       >
+        Reflection: 
+        Loyalty
+      </h2>
+      <div
+        class="css-1yazsj0"
+        data-testid="styled-box"
+      >
+        <h2>
+          U.S. Army
+        </h2>
+        <p>
+          Bear true faith and allegiance to the U.S. Constitution, the Army, your unit and other Soldiers. Bearing true faith and allegiance is a matter of believing in and devoting yourself to something or someone … By wearing the uniform of the U.S. Army you are expressing your loyalty. And by doing your share, you show your loyalty to your unit.
+        </p>
+      </div>
+      <textarea
+        class="css-21ory"
+        placeholder="What does loyalty mean to you?"
+      />
+      <button
+        class="chakra-button css-f6n2t5"
+        type="button"
+      >
+        Save
+      </button>
+      <div
+        class="chakra-stack css-1w6iwr8"
+      >
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-svjswr"
+        />
         <div
-          class="chakra-stack css-jqjin"
+          class="css-1lads1q"
         >
-          <button
-            aria-label="previous"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
+          <div
+            class="chakra-stack css-jqjin"
           >
-            <span
-              class="chakra-button__icon css-1wh2kri"
+            <button
+              aria-label="previous"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <span
+                class="chakra-button__icon css-1wh2kri"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
-                  />
-                  <path
-                    d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-            Previous Submodule
-          </button>
-          <button
-            aria-label="next"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
-          >
-            Next Submodule
-            <span
-              class="chakra-button__icon css-1hzyiq5"
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
+                    />
+                    <path
+                      d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+              Previous Submodule
+            </button>
+            <button
+              aria-label="next"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              Next Submodule
+              <span
+                class="chakra-button__icon css-1hzyiq5"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
-                  />
-                  <path
-                    d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-          </button>
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
+                    />
+                    <path
+                      d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -366,106 +381,111 @@ exports[`The value page should render the same based on URL parameters for loyal
 exports[`The value page should render the same based on URL parameters for respect 1`] = `
 <div>
   <div
-    class="css-1vog6cq"
+    class="css-1c3ot3n"
+    id="#"
   >
-    <h1
-      class="css-1t3tbq3"
-    >
-      Reflection: 
-      Respect
-    </h1>
     <div
-      class="css-1yazsj0"
-      data-testid="styled-box"
+      class="chakra-container css-1xo1xlh"
     >
-      <h2>
-        Army
-      </h2>
-      <p>
-        Treat people as they should be treated [...] Respect is what allows us to appreciate the best in other people. Respect is trusting that all people have done their jobs and fulfilled their duty.
-      </p>
-    </div>
-    <textarea
-      class="css-21ory"
-      placeholder="What does respect mean to you?"
-    />
-    <button
-      class="chakra-button css-f6n2t5"
-      type="button"
-    >
-      Save
-    </button>
-    <div
-      class="chakra-stack css-1w6iwr8"
-    >
-      <hr
-        aria-orientation="horizontal"
-        class="chakra-divider css-svjswr"
-      />
-      <div
-        class="css-1lads1q"
+      <h2
+        class="chakra-heading css-1gdkznd"
       >
+        Reflection: 
+        Respect
+      </h2>
+      <div
+        class="css-1yazsj0"
+        data-testid="styled-box"
+      >
+        <h2>
+          Army
+        </h2>
+        <p>
+          Treat people as they should be treated [...] Respect is what allows us to appreciate the best in other people. Respect is trusting that all people have done their jobs and fulfilled their duty.
+        </p>
+      </div>
+      <textarea
+        class="css-21ory"
+        placeholder="What does respect mean to you?"
+      />
+      <button
+        class="chakra-button css-f6n2t5"
+        type="button"
+      >
+        Save
+      </button>
+      <div
+        class="chakra-stack css-1w6iwr8"
+      >
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-svjswr"
+        />
         <div
-          class="chakra-stack css-jqjin"
+          class="css-1lads1q"
         >
-          <button
-            aria-label="previous"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
+          <div
+            class="chakra-stack css-jqjin"
           >
-            <span
-              class="chakra-button__icon css-1wh2kri"
+            <button
+              aria-label="previous"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <span
+                class="chakra-button__icon css-1wh2kri"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
-                  />
-                  <path
-                    d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-            Previous Submodule
-          </button>
-          <button
-            aria-label="next"
-            class="chakra-button css-1muaiii"
-            disabled=""
-            type="button"
-          >
-            Next Submodule
-            <span
-              class="chakra-button__icon css-1hzyiq5"
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
+                    />
+                    <path
+                      d="M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+              Previous Submodule
+            </button>
+            <button
+              aria-label="next"
+              class="chakra-button css-1muaiii"
+              disabled=""
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="chakra-icon css-onkibi"
-                focusable="false"
-                viewBox="0 0 24 24"
+              Next Submodule
+              <span
+                class="chakra-button__icon css-1hzyiq5"
               >
-                <g
-                  fill="currentColor"
+                <svg
+                  aria-hidden="true"
+                  class="chakra-icon css-onkibi"
+                  focusable="false"
+                  viewBox="0 0 24 24"
                 >
-                  <path
-                    d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
-                  />
-                  <path
-                    d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
-                  />
-                </g>
-              </svg>
-            </span>
-          </button>
+                  <g
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
+                    />
+                    <path
+                      d="M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
+                    />
+                  </g>
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
