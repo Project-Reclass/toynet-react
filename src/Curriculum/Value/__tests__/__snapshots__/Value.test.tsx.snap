@@ -7,7 +7,7 @@ exports[`The value page should render the same based on URL parameters for honor
     id="#"
   >
     <div
-      class="chakra-container css-1xo1xlh"
+      class="chakra-container css-jf7n8r"
     >
       <h2
         class="chakra-heading css-1gdkznd"
@@ -133,7 +133,7 @@ exports[`The value page should render the same based on URL parameters for integ
     id="#"
   >
     <div
-      class="chakra-container css-1xo1xlh"
+      class="chakra-container css-jf7n8r"
     >
       <h2
         class="chakra-heading css-1gdkznd"
@@ -270,7 +270,7 @@ exports[`The value page should render the same based on URL parameters for loyal
     id="#"
   >
     <div
-      class="chakra-container css-1xo1xlh"
+      class="chakra-container css-jf7n8r"
     >
       <h2
         class="chakra-heading css-1gdkznd"
@@ -385,7 +385,7 @@ exports[`The value page should render the same based on URL parameters for respe
     id="#"
   >
     <div
-      class="chakra-container css-1xo1xlh"
+      class="chakra-container css-jf7n8r"
     >
       <h2
         class="chakra-heading css-1gdkznd"
