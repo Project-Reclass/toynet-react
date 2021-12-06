@@ -19,12 +19,13 @@ along with ToyNet React; see the file LICENSE.  If not see
 
 */
 
-import { Box, Center, Container, Divider, Heading, SimpleGrid, Stack } from '@chakra-ui/layout';
+import { Center, Container, Divider, Heading, SimpleGrid, Stack } from '@chakra-ui/layout';
 import { Text, Image, Button } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import LoadingContainer from 'src/common/components/LoadingContainer';
 import { useAnimation, useAnimationSlides } from 'src/common/api/curriculum/animation';
 import NavigationWithDivider from 'src/common/components/NavigationWithDivider';
+import { AnimationContainer } from './AnimationStyled';
 
 
 interface Params {
@@ -44,9 +45,9 @@ const Lesson = () => {
   } = useAnimationSlides(Number(lessonId), data || undefined);
 
   return (
-    <Box id="#">
+    <AnimationContainer id="#">
       <LoadingContainer isLoading={isLoading}>
-        <Container maxW='container.xl' my='3'>
+        <Container maxW='container.xl'>
           <SimpleGrid columns={1} spacing={5}>
             <Stack spacing={2}>
               <Heading size="lg">{`Animation: ${data?.name}`}</Heading>
@@ -86,7 +87,7 @@ const Lesson = () => {
           />
         </Container>
       </LoadingContainer>
-    </Box>
+    </AnimationContainer>
   );
 };
 
