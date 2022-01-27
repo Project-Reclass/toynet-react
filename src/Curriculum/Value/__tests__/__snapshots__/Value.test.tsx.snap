@@ -87,7 +87,7 @@ exports[`The value page should render the same based on URL parameters for honor
                   </g>
                 </svg>
               </span>
-              Previous Submodule
+              Previous
             </button>
             <button
               aria-label="next"
@@ -95,7 +95,7 @@ exports[`The value page should render the same based on URL parameters for honor
               disabled=""
               type="button"
             >
-              Next Submodule
+              Next
               <span
                 class="chakra-button__icon css-1hzyiq5"
               >
@@ -224,7 +224,7 @@ exports[`The value page should render the same based on URL parameters for integ
                   </g>
                 </svg>
               </span>
-              Previous Submodule
+              Previous
             </button>
             <button
               aria-label="next"
@@ -232,7 +232,7 @@ exports[`The value page should render the same based on URL parameters for integ
               disabled=""
               type="button"
             >
-              Next Submodule
+              Next
               <span
                 class="chakra-button__icon css-1hzyiq5"
               >
@@ -339,7 +339,7 @@ exports[`The value page should render the same based on URL parameters for loyal
                   </g>
                 </svg>
               </span>
-              Previous Submodule
+              Previous
             </button>
             <button
               aria-label="next"
@@ -347,7 +347,7 @@ exports[`The value page should render the same based on URL parameters for loyal
               disabled=""
               type="button"
             >
-              Next Submodule
+              Next
               <span
                 class="chakra-button__icon css-1hzyiq5"
               >
@@ -454,7 +454,7 @@ exports[`The value page should render the same based on URL parameters for respe
                   </g>
                 </svg>
               </span>
-              Previous Submodule
+              Previous
             </button>
             <button
               aria-label="next"
@@ -462,7 +462,7 @@ exports[`The value page should render the same based on URL parameters for respe
               disabled=""
               type="button"
             >
-              Next Submodule
+              Next
               <span
                 class="chakra-button__icon css-1hzyiq5"
               >

@@ -389,7 +389,7 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                   </g>
                 </svg>
               </span>
-              Previous Submodule
+              Previous
             </button>
             <button
               aria-label="next"
@@ -397,7 +397,7 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
               disabled=""
               type="button"
             >
-              Next Submodule
+              Next
               <span
                 class="chakra-button__icon css-1hzyiq5"
               >
