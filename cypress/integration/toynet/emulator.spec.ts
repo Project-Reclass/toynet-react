@@ -80,11 +80,6 @@ describe('The emulator page', () => {
     cy.get('[data-testid^="emulator-visual"]')
       .contains(/^r3$/i).should('exist');
   });
-  it('should have a link to take the user back to the splash screen', () => {
-    cy.visit(emulatorUrl);
-    cy.contains(/back to site/i).click();
-    cy.url().should('equal', 'http://localhost:3000/');
-  });
 
   /**
    * Deleting a node currently does not work. Waiting on that functionality
