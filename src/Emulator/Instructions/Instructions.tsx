@@ -32,8 +32,6 @@ import EmulatorInnerSection from 'src/common/components/Emulator/InnerSection';
 import NavigationButtons from 'src/common/components/NavigationButtons';
 
 import {
-  BackButton,
-  LinkText,
   TaskItem,
   TaskList,
 } from './styled';
