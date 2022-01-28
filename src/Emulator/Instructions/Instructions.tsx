@@ -70,14 +70,6 @@ const Instructions: FC<Props> = ({
           height='100%'
           spacing={6}
         >
-          <Box pb='1rem'>
-            <LinkText href='/'>
-              <BackButton />
-              <Text>
-                Back to site
-              </Text>
-            </LinkText>
-          </Box>
           <Stack>
             <Heading size='lg'>Module {panelData.submoduleNumber}</Heading>
             <Text>{panelData.submoduleName}</Text>
