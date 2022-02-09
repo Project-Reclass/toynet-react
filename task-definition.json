@@ -3,7 +3,7 @@
     {
       "cpu": 0,
       "memoryReservation": 128,
-      "image": "docker.io/projectreclass/toynet-mininet:87967ffaf08ab010e59d300687155ebd839d47b7",
+      "image": "docker.io/projectreclass/toynet-mininet:1174f9d091ed036f7b958e7e84c0bface8bf32cb",
       "name": "mininet"
     },
     {
@@ -23,7 +23,7 @@
         },
         {
           "name": "TOYNET_IMAGE_TAG",
-          "value": "docker.io/projectreclass/toynet-mininet:87967ffaf08ab010e59d300687155ebd839d47b7"
+          "value": "docker.io/projectreclass/toynet-mininet:1174f9d091ed036f7b958e7e84c0bface8bf32cb"
         }
       ],
       "mountPoints": [
@@ -37,7 +37,7 @@
         }
       ],
       "memoryReservation": 128,
-      "image": "docker.io/projectreclass/toynet-backend:87967ffaf08ab010e59d300687155ebd839d47b7",
+      "image": "docker.io/projectreclass/toynet-backend:1174f9d091ed036f7b958e7e84c0bface8bf32cb",
       "name": "backend"
     },
     {
