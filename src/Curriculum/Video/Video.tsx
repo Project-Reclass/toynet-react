@@ -22,7 +22,6 @@ along with ToyNet React; see the file LICENSE.  If not see
 import { Box, Container, Divider, Heading, Stack, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router';
 import useVideo from 'src/common/api/curriculum/video/useVideo';
-import { EmulatorSection } from 'src/common/components/Emulator';
 import LoadingSpinner from 'src/common/components/LoadingSpinner';
 import NavigationButtons from 'src/common/components/NavigationButtons';
 import NotFound from 'src/common/NotFound';
@@ -50,38 +49,29 @@ const Video = () => {
     <Box position='relative' width='100%' height='100%'>
       <Container
         position='absolute'
-        centerContent maxW='container.xl'
+        centerContent
+        maxW='container.lg'
         left='50%'
         top='50%'
         transform='translate(-50%, -50%)'
       >
-        <EmulatorSection
-          p='5'
-          pb='0'
-          maxWidth='1920px'
-          minHeight='80vh'
-          display='flex'
-          flexDirection='column'
-          justifyContent='space-between'
-        >
-          <Stack>
-            <LoadableVideo {...data} />
-            <Stack spacing={3} px='5'>
-              <Heading size='lg'>{data.title}</Heading>
-              <Divider />
-              <Text>{data.description}</Text>
-            </Stack>
+        <Stack width='100%'>
+          <LoadableVideo {...data} />
+          <Stack spacing={3} px='5'>
+            <Heading size='lg'>{data.title}</Heading>
+            <Divider />
+            <Text>{data.description}</Text>
           </Stack>
-          <Box mt='3'>
-            <NavigationButtons
-              my='0'
-              variant='ghost'
-              moduleId={Number(moduleId)}
-              submoduleId={Number(videoId)}
-              submoduleType='VIDEO'
-            />
-          </Box>
-        </EmulatorSection>
+        </Stack>
+        <Box mt='3' width='100%'>
+          <NavigationButtons
+            my='0'
+            variant='ghost'
+            moduleId={Number(moduleId)}
+            submoduleId={Number(videoId)}
+            submoduleType='VIDEO'
+          />
+        </Box>
       </Container>
     </Box>
   );
