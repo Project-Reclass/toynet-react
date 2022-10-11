@@ -4,6 +4,19 @@ services:
   miniflask:
     image: projectreclass/toynet-mininet:1174f9d091ed036f7b958e7e84c0bface8bf32cb
 
+  mockdataserver:
+    image: halverneus/static-file-server
+    environment:
+      - PORT=8888
+      - ALLOW_INDEX=false
+      - DEBUG=true
+    volumes:
+      - ./content:/web
+    ports:
+      - "8888:8888"
+    networks:
+      - reclass_network
+
   backend:
     depends_on:
       - miniflask
@@ -34,8 +47,10 @@ services:
       - reclass_network
     depends_on:
       - backend
+      - mockdataserver
     environment:
-      - SERVER_URI="http://backend:5000"
+      - SERVER_URI=http://backend:5000
+      - CURRICULUM_URI=http://mockdataserver:8888
 
 networks:
   reclass_network:

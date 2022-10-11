@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "submoduleNumber": 1,
+  "topology": 1,
+  "submoduleName": "Modifying Topology",
+  "objective": "Add and remove devices and their connections.",
+  "tasks": [
+    "Add a Host (Name: H3, Default Gateway: 172.16.1.1/24, IP Address: 172.16.1.3/24)",
+    "Attach S2 to H3",
+    "Select Device H1 in the Console",
+    "Run command: ping H3",
+    "Detach H3 from S2",
+    "Remove H2"
+  ]
+}

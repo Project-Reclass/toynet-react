@@ -1,0 +1,74 @@
+{
+    "items": [
+        {
+            "question": "How many nodes share a single channel on a bus topology?",
+            "options": [
+                "One node",
+                "Only ones communicating",
+                "Three nodes",
+                "All nodes"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "Which of the following is the most fault-tolerant WAN topology?",
+            "options": [
+                "Partial Mesh",
+                "Ring",
+                "Star",
+                "Full-mesh"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "If a full-mesh WAN consists of four locations, how many separate connections does it contain?",
+            "options": [
+                "two",
+                "four",
+                "six",
+                "eight"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "What makes IEEE Standards so important for business and network specialists?",
+            "options": [
+                "internet",
+                "interoperability",
+                "instruments",
+                "interloaded"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "Which IEEE working group oversees all LAN/MAN Standards?",
+            "options": [
+                "801",
+                "802",
+                "804",
+                "807"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "What piece of hardware is usually at the center of a star network?",
+            "options": [
+                "Hub",
+                "Modem",
+                "Server",
+                "Router"
+            ],
+            "answer": 0
+        },
+        {
+            "question": "The Internet is an example of which topology?",
+            "options": [
+                "Bus",
+                "Star",
+                "Ring",
+                "Mesh"
+            ],
+            "answer": 3
+        }
+    ]
+}
