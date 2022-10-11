@@ -1,0 +1,104 @@
+{
+    "items": [
+        {
+            "question": "Which Protocol do Internet Browsers (Chrome, Firefox, Internet Explorer) use?",
+            "options": [
+                "SMTP",
+                "FTP",
+                "AOL",
+                "HTTPS"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "What is Layer 6 of OSI model?",
+            "options": [
+                "Physical",
+                "Presentation",
+                "Network",
+                "Transport"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "Within the Session Layer, what connection allows applications to talk through ports?",
+            "options": [
+                "Ports",
+                "Ethernet",
+                "Sockets",
+                "IPP"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "When a sender wants to know the physical address of a device it broadcasts what?",
+            "options": [
+                "ARP Request",
+                "Checksum",
+                "Broadcast Request",
+                "ARP Reply"
+            ],
+            "answer": 0
+        },
+        {
+            "question": "What is an Internet Control Message Protocol to check if a destistination device is responding?",
+            "options": [
+                "UDP Reply",
+                "ICMP Test",
+                "ICMP Reply",
+                "ICMP Ping"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "In 2020 nearly all websites use what type of cryptographic protocol?",
+            "options": [
+                "Transport Layer Security",
+                "Secure Socket Layer",
+                "Transfer Layer Security",
+                "Secure Layer Security,"
+            ],
+            "answer": 0
+        },
+        {
+            "question": "What OSI layer does Chrome and other browsers use TLS to encrypt data?",
+            "options": [
+                "Application",
+                "Network",
+                "Session",
+                "Presentation"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "Which network protocol is often used for video game streaming in which some packet drop is preferable to overall latency?",
+            "options": [
+                "Connectionless Protocol",
+                "User Datagram Protocol",
+                "Transmission Control Protocol",
+                "File Transfer Protocol"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "Which network protocol type can establish a secure connection before sending data?",
+            "options": [
+                "Connectionless Protocol",
+                "User Datagram Protocol",
+                "Transmission Control Protocol",
+                "File Transfer Protocol"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "What is the name of small pieces of information sent via TCP/IP?",
+            "options": [
+                "Packets",
+                "Capsules",
+                "Data points",
+                "Files"
+            ],
+            "answer": 0
+        }
+    ]
+}

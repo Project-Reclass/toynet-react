@@ -1,0 +1,50 @@
+{
+    "items": [
+        {
+            "item_type": "TEXT",
+            "question": "What is your first name?"
+        },
+        {
+            "item_type": "CHOICE",
+            "question": "Are you interested in a career in the technology industry?",
+            "options": [
+                "As of now, I don't plan on it.",
+                "Not sure...",
+                "I'm open to it. :)",
+                "Absolutely!"
+            ]
+        },
+        {
+            "item_type": "LONGTEXT",
+            "question": "What do you hope to get out of this course?"
+        },
+        {
+            "item_type": "SCALE",
+            "question": "How familiar would you say you are with computer networking concepts?",
+            "options": [
+                "Not at all",
+                "Some familiarity",
+                "Quite a bit",
+                "Very familiar",
+                "Professional Experience"
+            ]
+        },
+        {
+            "item_type": "LONGTEXT",
+            "question": "How did you get involved with our program?"
+        },
+        {
+            "item_type": "CHOICE",
+            "question": "Have you ever worked with computer networks during you time in service?",
+            "options": [
+                "Yes",
+                "No"
+            ]
+        },
+        {
+            "item_type": "TEXT",
+            "question": "How many months do you plan to dedicate to this program?",
+            "unit": "months"
+        }
+    ]
+}

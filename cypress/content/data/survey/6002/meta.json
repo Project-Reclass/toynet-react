@@ -1,0 +1,78 @@
+{
+    items: [
+        {
+            "type": "CHOICE",
+            "question": "Do you feel more knowledgable about computer networking than before you took this module?",
+            "options": [
+                "Yes",
+                "About the same",
+                "No"
+            ]
+        },
+        {
+            "type": "SCALE",
+            "question": "How helpful were the diagrams in understanding protocols?",
+            "options": [
+                "Not at all",
+                "A little",
+                "Not very",
+                "Super helpful"
+            ]
+        },
+        {
+            "type": "SCALE",
+            "question": "How helpful was the example of chain of command in understanding OSI layers?",
+            "options": [
+                "Not at all",
+                "A little",
+                "Not very",
+                "Super helpful"
+            ]
+        },
+        {
+            "type": "TEXT",
+            "question": "How difficult as the material to master?"
+        },
+        {
+            "type": "LONGTEXT",
+            "question": "Please list any questions you still have about the content."
+        },
+        {
+            "type": "CHOICE",
+            "question": "Do you feel more knowledgable about computer networking than before you took this module?",
+            "options": [
+                "Yes",
+                "About the same",
+                "No"
+            ]
+        },
+        {
+            "type": "SCALE",
+            "question": "How helpful were the diagrams in understanding protocols?",
+            "options": [
+                "Not at all",
+                "A little",
+                "Not very",
+                "Super helpful"
+            ]
+        },
+        {
+            "type": "SCALE",
+            "question": "How helpful was the example of chain of command in understanding OSI layers?",
+            "options": [
+                "Not at all",
+                "Not very",
+                "Helpful",
+                "Super helpful"
+            ]
+        },
+        {
+            "type": "TEXT",
+            "question": "How difficult as the material to master?"
+        },
+        {
+            "type": "LONGTEXT",
+            "question": "Please list any questions you still have about the content."
+        }
+    ]
+}

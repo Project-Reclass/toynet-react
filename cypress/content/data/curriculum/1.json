@@ -1,0 +1,149 @@
+{
+    "id": 1,
+    "name": "Introduction to Computer Networking",
+    "introduction": "Welcome to the demo of our Networking Fundamentals course.",
+    "modules": [
+        {
+            "id": 100000,
+            "name": "Welcome to ToyNet!",
+            "introduction": "Learn about Project Reclass and ToyNet in this module.",
+            "submodules": [
+                {
+                    "type": "LECTURE",
+                    "id": 7001,
+                    "name": "Course Introduction",
+                    "introduction": "Get to know our primary course instructor and Chief Technology Officer of Project Reclass, Tay Nishimura."
+                },
+                {
+                    "type": "VIDEO",
+                    "id": 1,
+                    "name": "Introductory Video",
+                    "introduction": "Watch a short video on Project Reclass and this learning platform, ToyNet."
+                },
+                {
+                    "type": "ANIMATION",
+                    "id": 1001,
+                    "name": "Motivation",
+                    "introduction": "How does a file move from computer to computer? Let's revisit why we need computer networks in the first place."
+                },
+                {
+                    "type": "LAB",
+                    "id": 1,
+                    "name": "Network Emulator Lab",
+                    "introduction": "Checkout this interactive lab tool we developed on top of Mininet, an enterprise network emulator developed at Stanford!"
+                }
+            ]
+        },
+        {
+            "id": 100001,
+            "name": "Life of a Network Packet",
+            "introduction": "Computer need to move lots of information (e.g. emailed files, social media interactions, video streams) from one device to another. Whether it’s through WiFi or over some kind of cable, computers communicate with a series of bits (0s and 1s) in tiny chunks at a time. The most common way of sending these tiny chunks is with a packet. This module is all about packets!",
+            "submodules": [
+                {
+                    "type": "LECTURE",
+                    "id": 7002,
+                    "name": "Network Protocols",
+                    "introduction": "This lecture covers the intuition behind the communication mechanism used by every compute device connected to the internet."
+                },
+                {
+                    "type": "ARTICLE",
+                    "id": 2001,
+                    "name": "Fiber Optics in the Sea",
+                    "introduction": "Ever wondered how underwater cables are laid? We take a trip on the ship that keeps us online."
+                },
+                {
+                    "type": "LAB",
+                    "id": 1,
+                    "name": "Connecting Devices",
+                    "introduction": "So we now understand why and how we can connect devices through computer networks. Let's give it a try in our hands-on lab!"
+                },
+                {
+                    "type": "QUIZ",
+                    "id": 4001,
+                    "name": "Life of a Network Packet",
+                    "introduction": "Great job on finishing Module 1! Before you move on, take this quick quiz to make sure you understood the material so we can set you up for success with the rest of this curriculum!"
+                },
+                {
+                    "type": "SURVEY",
+                    "id": 6001,
+                    "name": "Who are you?",
+                    "introduction": "First we want to know a little about you so we can make this program even better for you and other other learns."
+                }
+            ]
+        },
+        {
+            "id": 100002,
+            "name": "Career Chat",
+            "introduction": "To understand how it works today, it is helpful to understand how and why it was created as well as how it has evolved over the decades. This module takes you on a journey through half a century of innovations which went into our modern world-wide web.",
+            "submodules": [
+                {
+                    "type": "SURVEY",
+                    "id": 6001,
+                    "name": "Who are you?",
+                    "introduction": "First we want to know a little about you so we can make this program even better for you and other other learns."
+                },
+                {
+                    "type": "VALUE",
+                    "id": 5001,
+                    "name": "Integrity",
+                    "introduction": "At Project Reclass, we are not just focused on what we build but also how we build it. We routinely reflect on values espoused by our military branches, and reflect on what these values mean to us. Throughout your course, we welcome you to do the same!"
+                },
+                {
+                    "type": "VIDEO",
+                    "id": 1,
+                    "name": "Veteran Transitioning into Software Engineering",
+                    "introduction": "Watch one of members talk about their transition from active military service to the tech industry."
+                }
+            ]
+        },
+        {
+            "id": 100003,
+            "name": "Routing",
+            "introduction": "Coming Soon!",
+            "submodules": []
+        },
+        {
+            "id": 100004,
+            "name": "History of the Internet",
+            "introduction": "To understand how computer networks works today, it is helpful to understand how and why they were created as well as how they has evolved over the decades.",
+            "submodules": []
+        },
+        {
+            "id": 100005,
+            "name": "Industry Chat",
+            "introduction": "To understand how it works today, it is helpful to understand how and why it was created as well as how it has evolved over the decades. This module takes you on a journey through half a century of innovations which went into our modern world-wide web.",
+            "submodules": [
+                {
+                    "type": "VIDEO",
+                    "id": 1,
+                    "name": "Industry Panel",
+                    "introduction": "Although most people work for comapnies that aim to make a lot of money, there are a lot of opportunities to give back to the community in ways you care about through working for a nonprofit. Learn how these professionals from all walks of life come together to help formerly incarcerated individuals pave new career paths after serving their sentence."
+                }
+            ]
+        },
+        {
+            "id": 100006,
+            "name": "Domain Name Servers",
+            "introduction": "Coming Soon!",
+            "submodules": []
+        },
+        {
+            "id": 100007,
+            "name": "Securing Networks",
+            "introduction": "Coming Soon!",
+            "submodules": []
+        },
+        {
+            "id": 100008,
+            "name": "Modern Networks",
+            "introduction": "Coming Soon!",
+            "submodules": []
+        },
+        {
+            "id": 10009,
+            "name": "Monitoring Networks",
+            "introduction": "Coming Soon!",
+            "submodules": []
+        }
+    ]
+}

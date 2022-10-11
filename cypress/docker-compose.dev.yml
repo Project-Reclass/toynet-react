@@ -11,7 +11,7 @@ services:
       - ALLOW_INDEX=false
       - DEBUG=true
     volumes:
-      - ./toynet-react/cypress/toynet-content:/web
+      - ./content:/web
     ports:
       - "8888:8888"
     networks:
