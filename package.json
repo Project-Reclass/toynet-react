@@ -39,7 +39,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
-    "start:docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "start:docker:dev": "sudo docker-compose -f docker-compose.dev.yml up --build",
     "start:cypress:test": "docker-compose -f cypress/docker-compose.dev.yml up --build",
     "cy:run": "cypress run",
     "start:cy": "start-server-and-test start http://localhost:3000 cy:run",

@@ -16,7 +16,8 @@ services:
       - TOYNET_IMAGE_TAG=projectreclass/toynet-mininet:1174f9d091ed036f7b958e7e84c0bface8bf32cb
       - FLASK_APP=flasksrc
       - MINI_FLASK_PORT=5000
-
+    cap_add:
+      - ALL
     networks:
       - reclass_network
       - toynet_mininet
