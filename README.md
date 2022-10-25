@@ -13,6 +13,23 @@ Project Reclass is a multi-disciplinary nonprofit organization that teaches tech
 * [See "Help Wanted" Tickets](https://github.com/Project-Reclass/toynet-react/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 * [Check out some of out other projects](https://github.com/orgs/Project-Reclass/repositories)
 
+## Getting Started with Development
+
+The easiest way to get started with development is with [GitPod](https://www.gitpod.io/), however, you can also get started on your local development machine if you have nodejs installed.
+
+1. Sign up for [GitPod](https://www.gitpod.io/) using GitHub Account.
+2. Click New Workspace and enter: https://github.com/Project-Reclass/toynet-react.
+3. Once project is open, navigate to the TERMINAL tab at the bottom of the IDE.
+4. Alter package.json#L91 to say "proxy": "http://localhost:8080".
+5. Cancel the currently running npm instance by hitting ctrl-c or command-c.
+6. Run export DANGEROUSLY_DISABLE_HOST_CHECK=true.
+7. Run `npm run start`
+8. Click Open Browser in the popup indicating A service is available on port 3000.
+9. If the popup does not load:  
+  a. navigate to the `PORTS` tabs right   
+  b. click on the Address column for Port 3000  
+  c. click Open Browser  
+
 ## Getting Started
 
 The easiest way to get ToyNet up and running is by using the docker-compose. This requires [Docker](https://docs.docker.com/get-docker/), [Docker Compose](https://docs.docker.com/compose/install/), and [git](https://git-scm.com/downloads) to be installed. Our `docker-compose.yml` file will start each service necessary for using ToyNet on your machine in a production setup.
