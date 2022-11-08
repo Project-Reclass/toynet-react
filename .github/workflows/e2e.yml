@@ -8,33 +8,29 @@ jobs:
   cypress-run:
     runs-on: ubuntu-18.04
     steps:
-        - name: noop
-          run: |
-            echo "noop"
-         
-#       - name: Checkout
-#         uses: actions/checkout@v2
-#       - name: Cypress run
-#         uses: cypress-io/github-action@v2
-#         with:
-#           headless: true
-#           install-command: npm i
-#           start: npm run start:cypress:test
-#           wait-on: http://localhost:3000
-#           wait-on-timeout: 960
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          headless: true
+          install-command: npm i
+          start: npm run start:cypress:test
+          wait-on: http://localhost:3000
+          wait-on-timeout: 960
 
-#       - name: Archive cypress results
-#         uses: actions/upload-artifact@v2
-#         if: ${{ failure() }}
-#         with:
-#           name: cypress-videos
-#           path: |
-#             cypress/videos
+      - name: Archive cypress results
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: cypress-videos
+          path: |
+            cypress/videos
 
-#       - name: Archive cypress results
-#         uses: actions/upload-artifact@v2
-#         if: ${{ failure() }}
-#         with:
-#           name: cypress-screenshots
-#           path: |
-#             cypress/screenshots
+      - name: Archive cypress results
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: cypress-screenshots
+          path: |
+            cypress/screenshots
