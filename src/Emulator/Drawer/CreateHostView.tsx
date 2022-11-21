@@ -150,6 +150,7 @@ export default function CreateHostView({ nameHint }: Props) {
       <FormControl>
         <FormLabel>IP Address</FormLabel>
         <SpaceSanitizedInput
+          fontFamily='monotype'
           name={ip}
           placeholder='192.168.1.2/24'
           isDisabled={isLoading}
