@@ -128,7 +128,7 @@ const Quiz = () => {
                           name={qIndex.toString()}
                           value={option}
                           onChange={handleAnsweredQuestion(q, qIndex, optionIndex)}
-                          style={{ margin: '5px' }}
+                          margin='5px'
                         >
                           <QuestionLabel
                             as={'label'}

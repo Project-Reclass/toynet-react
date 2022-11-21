@@ -23,13 +23,11 @@ import { MemoryRouter, Route } from 'react-router-dom';
 import { fireEvent, waitFor, screen } from '@testing-library/react';
 
 import Quiz from 'src/Curriculum/Quiz';
-import { getQuizMeta } from 'src/common/api/curriculum/quiz/requests';
 import { useQuiz } from 'src/common/api/curriculum/quiz/hooks';
 import { renderWithWrappers } from 'src/common/test-utils/renderWithWrappers';
 
 jest.mock('src/common/api/curriculum/quiz/requests');
 jest.mock('src/common/api/curriculum/quiz/hooks');
-const getQuizMetaMock = getQuizMeta as jest.MockedFunction<typeof getQuizMeta>;
 const useQuizMock = useQuiz as jest.MockedFunction<typeof useQuiz>;
 
 const RenderWithRouter = ({ children, moduleId, quizId }: {children: React.ReactChild, moduleId: number, quizId: number}) => (

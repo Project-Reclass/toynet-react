@@ -82,7 +82,7 @@ const RenderInput: FC<InputValues> = ({ question, id, updateResp }) => {
               name={id.toString()}
               value={option}
               onChange={() => updateResp(option, id)}
-              style={{ margin: '5px' }}
+              margin='5px'
             >
               <Text color='white'>{option}</Text>
             </Radio>
@@ -103,7 +103,7 @@ const RenderInput: FC<InputValues> = ({ question, id, updateResp }) => {
                 name={id.toString()}
                 value={option}
                 onChange={() => updateResp(option, id)}
-                style={{ margin: '5px' }}
+                margin='5px'
               >
                 <Text color='white'>{option}</Text>
               </Radio>

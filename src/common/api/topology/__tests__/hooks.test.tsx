@@ -18,7 +18,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 <http://www.gnu.org/licenses/>.
 
 */
-import { renderHook, cleanup } from '@testing-library/react-hooks';
+import { cleanup } from '@testing-library/react-hooks';
 import { createToynetSession, getToynetSession } from 'src/common/api/topology/requests';
 import { useToynetSession } from 'src/common/api/topology';
 import { renderHookWithWrappers } from 'src/common/test-utils/renderWithWrappers';
