@@ -71,7 +71,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
               class="css-rhcq65"
             >
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -85,7 +85,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="As of now, I do not plan on it."
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -98,7 +97,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                 </span>
               </label>
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -112,7 +111,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="Not sure..."
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -125,7 +123,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                 </span>
               </label>
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -139,7 +137,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="I am open to it. :)"
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -152,7 +149,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                 </span>
               </label>
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -166,7 +163,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="Absolutely!"
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -217,7 +213,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
               class="css-lz2f5c"
             >
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -231,7 +227,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="Not at all"
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -244,7 +239,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                 </span>
               </label>
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -258,7 +253,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="Some familiarity"
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -271,7 +265,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                 </span>
               </label>
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -285,7 +279,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="Quite a bit"
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -298,7 +291,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                 </span>
               </label>
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -312,7 +305,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="Very familiar"
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"
@@ -325,7 +317,7 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                 </span>
               </label>
               <label
-                class="chakra-radio css-78joka"
+                class="chakra-radio css-kcujnu"
               >
                 <input
                   class="chakra-radio__input"
@@ -339,7 +331,6 @@ exports[`The Survey page should render the same based on URL parameters 1`] = `
                   aria-hidden="true"
                   class="chakra-radio__control css-1rggdzb"
                   data-testid="Professional Experience"
-                  style="margin: 5px;"
                 />
                 <span
                   class="chakra-radio__label css-1i66d7g"

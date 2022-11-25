@@ -20,7 +20,7 @@ along with ToyNet React; see the file LICENSE.  If not see
 */
 import styled from '@emotion/styled';
 import React from 'react';
-import { CircularProgress } from '@chakra-ui/react';
+import { Box, CircularProgress } from '@chakra-ui/react';
 
 export const CenteredProgress = styled(CircularProgress)`
     position: absolute;
@@ -35,9 +35,9 @@ interface Props {
 
 const LoadingSpinner = ({ color = 'green' }: Props) => {
   return (
-    <div style={{ position: 'relative', height: '100%' }}>
+    <Box position='relative' height='100%'>
       <CenteredProgress isIndeterminate color={color} />
-    </div>
+    </Box>
   );
 };
 
