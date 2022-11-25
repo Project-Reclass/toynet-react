@@ -145,6 +145,7 @@ export default function CreateRouterView({ nameHint }: Props) {
       <FormControl>
         <FormLabel>IP Address</FormLabel>
         <SpaceSanitizedInput
+          fontFamily='monospace'
           value={ip}
           placeholder='172.16.1.10/24'
           isDisabled={isLoading}
