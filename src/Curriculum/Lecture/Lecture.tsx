@@ -38,7 +38,7 @@ export default function Lecture() {
 
   return (
     <LectureContainer id="#">
-      <Container maxW='container.lg'>
+      <Container maxW='700px'>
         <LoadingContainer isLoading={isLoading || !data}>
           <Flex justifyContent='center' alignItems='center' flexDirection='column'>
             <MarkdownRenderer>
