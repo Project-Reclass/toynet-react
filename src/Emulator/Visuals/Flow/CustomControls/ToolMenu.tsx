@@ -33,6 +33,7 @@ import {
 } from '@chakra-ui/react';
 import { FaTools } from 'react-icons/fa';
 import { RiLayout4Line } from 'react-icons/ri';
+import { TopologyInfo } from './TopologyDrawer';
 
 const ToolMenuItem: FC<MenuItemProps> = ({ children, ...props }) => (
   <MenuItem
@@ -64,6 +65,10 @@ export default function ToolMenu({
         _expanded={{ bg: 'rgba(255, 255, 255, 0.5)' }}
       />
       <MenuList backgroundColor='#212529'>
+        <ToolMenuItem>
+          <TopologyInfo />
+        </ToolMenuItem>
+        <MenuDivider />
         <ToolMenuItem
           icon={<Icon as={RiLayout4Line} />}
           onClick={onAutoFormat}
