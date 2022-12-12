@@ -38,7 +38,7 @@ const Article = () => {
 
   return (
     <ArticleContainer id="#">
-      <Container maxW='container.lg'>
+      <Container maxW='700px'>
         <Flex justifyContent='center' alignItems='center' flexDirection='column'>
           <Box>
             <ArticleHeader as='h1' size='xl'>{meta?.title}</ArticleHeader>
