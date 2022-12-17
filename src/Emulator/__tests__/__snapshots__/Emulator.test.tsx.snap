@@ -3,7 +3,7 @@
 exports[`The emulator should render and match snapshots 1`] = `
 <div>
   <div
-    style="position: relative; height: 100%;"
+    class="css-1vx1dtt"
   >
     <div
       aria-valuemax="100"

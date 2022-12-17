@@ -53,11 +53,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                 class="css-rhcq65"
               >
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="One node"
                   id="One node"
                   name="0"
-                  style="margin: 5px;"
                   value="One node"
                 >
                   <input
@@ -72,7 +71,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="One node"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
@@ -85,11 +83,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                   </span>
                 </label>
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="Only ones communicating"
                   id="Only ones communicating"
                   name="0"
-                  style="margin: 5px;"
                   value="Only ones communicating"
                 >
                   <input
@@ -104,7 +101,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="Only ones communicating"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
@@ -117,11 +113,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                   </span>
                 </label>
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="Three nodes"
                   id="Three nodes"
                   name="0"
-                  style="margin: 5px;"
                   value="Three nodes"
                 >
                   <input
@@ -136,7 +131,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="Three nodes"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
@@ -149,11 +143,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                   </span>
                 </label>
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="All nodes"
                   id="All nodes"
                   name="0"
-                  style="margin: 5px;"
                   value="All nodes"
                 >
                   <input
@@ -168,7 +161,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="All nodes"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
@@ -207,11 +199,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                 class="css-rhcq65"
               >
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="Partial Mesh"
                   id="Partial Mesh"
                   name="1"
-                  style="margin: 5px;"
                   value="Partial Mesh"
                 >
                   <input
@@ -226,7 +217,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="Partial Mesh"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
@@ -239,11 +229,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                   </span>
                 </label>
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="Ring"
                   id="Ring"
                   name="1"
-                  style="margin: 5px;"
                   value="Ring"
                 >
                   <input
@@ -258,7 +247,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="Ring"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
@@ -271,11 +259,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                   </span>
                 </label>
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="Star"
                   id="Star"
                   name="1"
-                  style="margin: 5px;"
                   value="Star"
                 >
                   <input
@@ -290,7 +277,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="Star"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
@@ -303,11 +289,10 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                   </span>
                 </label>
                 <label
-                  class="chakra-radio css-1081i7r"
+                  class="chakra-radio css-r6y02w"
                   data-testid="Full-mesh"
                   id="Full-mesh"
                   name="1"
-                  style="margin: 5px;"
                   value="Full-mesh"
                 >
                   <input
@@ -322,7 +307,6 @@ exports[`The Quiz page should render the same based on URL parameters 1`] = `
                     aria-hidden="true"
                     class="chakra-radio__control css-1rggdzb"
                     data-testid="Full-mesh"
-                    style="margin: 5px;"
                   />
                   <span
                     class="chakra-radio__label css-1i66d7g"
