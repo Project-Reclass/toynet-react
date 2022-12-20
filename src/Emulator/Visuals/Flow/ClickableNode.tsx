@@ -36,7 +36,13 @@ const ColorSelectorNode: FC<NodeProps> = ({ data }) => {
 
   return (
     <>
-      <Handle type="target" position={Position.Left} />
+      <Handle type="target"
+      position={Position.Left}
+      style={{
+        width: '10px',
+        height: '10px',
+      }}
+      />
       <Flex
         data-testid='clickable_node'
         margin='auto'
@@ -50,7 +56,14 @@ const ColorSelectorNode: FC<NodeProps> = ({ data }) => {
           {data.label}
         </Text>
       </Flex>
-      <Handle type="source" position={Position.Right} />
+      <Handle
+      type="source"
+      position={Position.Right}
+      style={{
+        width: '10px',
+        height: '10px',
+      }}
+      />
     </>
   );
 };
